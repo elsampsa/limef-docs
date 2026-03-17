@@ -1,0 +1,1303 @@
+<!doctype html>
+<html class="no-js" lang="en" data-content_root="../">
+  <head><meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="index" title="Index" href="../genindex.html"><link rel="search" title="Search" href="../search.html"><link rel="next" title="Signals" href="signals.html"><link rel="prev" title="Decoders" href="decoders.html">
+        <link rel="prefetch" href="../_static/logo.png" as="image">
+
+    <!-- Generated with Sphinx 9.1.0 and Furo 2025.12.19 -->
+        <title>Encoders</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=7bdb33bb" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?v=8dab3a3b" />
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #eeffcc;
+  --color-code-foreground: black;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle site navigation sidebar">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc" aria-label="Toggle table of contents sidebar">
+<label class="overlay sidebar-overlay" for="__navigation"></label>
+<label class="overlay toc-overlay" for="__toc"></label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <span class="icon"><svg><use href="#svg-menu"></use></svg></span>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../index.html"><div class="brand">Media Streaming Framework for Linux</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky">
+
+<style>
+    .sidebar-links {
+      list-style-type: none;
+      padding-left: 10px;
+    }
+    .sidebar-links li {
+      margin: 1em 0;
+      padding-left: 20px;
+    }
+</style>
+  
+<a class="sidebar-brand" href="../index.html">
+<img src="../_static/logo.png" alt="Logo" style="width: 200px; height: auto; border-radius: 0px 6px 6px 0px;">
+</a>
+
+<div class="list-container">
+<ul class="sidebar-links">
+    <li><a href="https://github.com/elsampsa/limef-public" target="_blank" rel="noopener noreferrer"><i class="fa fa-github" style="font-size: 16pt"></i> Limef library </a></li>
+    <li><a href="https://github.com/elsampsa/limef-apps" target="_blank" rel="noopener noreferrer"><i class="fa fa-github" style="font-size: 16pt"></i> App examples </a></li>
+    <li><a href="https://github.com/elsampsa/limef-plugins" target="_blank" rel="noopener noreferrer"><i class="fa fa-github" style="font-size: 16pt"></i> Plugin examples </a></li>
+    <li><a href="https://github.com/elsampsa/limef-docs/issues" target="_blank" rel="noopener noreferrer"><i class="fa fa-bug" style="font-size: 16pt"></i> Public issues </a></li>
+    <li><a href="https://github.com/elsampsa/limef-releases/releases" target="_blank" rel="noopener noreferrer"><i class="fa fa-download" style="font-size: 16pt"></i> Releases </a></li>
+    <li><a href="https://github.com/sponsors/elsampsa" target="_blank" rel="noopener noreferrer"><i class="fa fa-heart" style="font-size: 16pt"></i> Sponsor </a></li>
+</ul>
+</div><form class="sidebar-search-container" method="get" action="../search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Limef</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../intro.html">A Media Streaming Framework</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../concepts.html">Key Concepts and Definitions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../under_the_hood.html">Under the Hood</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../tutorial/index.html">Tutorials</a><input aria-label="Toggle navigation of Tutorials" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tutorial/t01_mediafile_dump.html">Tutorial 1: Streaming packets to a DumpFrameFilter</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current has-children"><a class="reference internal" href="index.html">API Reference</a><input aria-label="Toggle navigation of API Reference" checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="frames.html">Frames</a></li>
+<li class="toctree-l2"><a class="reference internal" href="framefilters.html">Framefilters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="framefifos.html">FrameFifos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="threads.html">Threads</a></li>
+<li class="toctree-l2"><a class="reference internal" href="decoders.html">Decoders</a></li>
+<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">Encoders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="signals.html">Signals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rtsp.html">RTSP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="shmem.html">Shared Memory</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../distribution.html">Distributing</a></li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="view-this-page">
+  <a class="muted-link" href="../_sources/api/encoders.md.txt" title="View this page">
+    <svg><use href="#svg-eye"></use></svg>
+    <span class="visually-hidden">View this page</span>
+  </a>
+</div>
+<div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          <section id="encoders">
+<h1>Encoders<a class="headerlink" href="#encoders" title="Link to this heading">¶</a></h1>
+<p>Encoders convert decoded <a class="reference internal" href="frames.html#_CPPv4N5Limef5frame12DecodedFrameE" title="Limef::frame::DecodedFrame"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">Limef::frame::DecodedFrame</span></code></a>s into
+encoded <a class="reference internal" href="frames.html#_CPPv4N5Limef5frame11PacketFrameE" title="Limef::frame::PacketFrame"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">Limef::frame::PacketFrame</span></code></a>s.
+The abstract interface is <a class="reference internal" href="#_CPPv4N5Limef6encode7EncoderE" title="Limef::encode::Encoder"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">Limef::encode::Encoder</span></code></a>; the main
+implementation is <a class="reference internal" href="#_CPPv4N5Limef6encode13FFmpegEncoderE" title="Limef::encode::FFmpegEncoder"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">Limef::encode::FFmpegEncoder</span></code></a>.</p>
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6encodeE">
+<span id="_CPPv3N5Limef6encodeE"></span><span id="_CPPv2N5Limef6encodeE"></span><span id="Limef::encode"></span><span class="target" id="namespaceLimef_1_1encode"></span><span class="k"><span class="pre">namespace</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">encode</span></span></span><a class="headerlink" href="#_CPPv4N5Limef6encodeE" title="Link to this definition">¶</a><br /></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-typedefs">Typedefs</p>
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6encode18VideoEncoderParamsE">
+<span id="_CPPv3N5Limef6encode18VideoEncoderParamsE"></span><span id="_CPPv2N5Limef6encode18VideoEncoderParamsE"></span><span class="target" id="namespaceLimef_1_1encode_1a0ebda6eac295f45a08ec712e01f0d7ee"></span><span class="k"><span class="pre">using</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">VideoEncoderParams</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">variant</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="#_CPPv4N5Limef6encode19FFmpegEncoderParamsE" title="Limef::encode::FFmpegEncoderParams"><span class="n"><span class="pre">FFmpegEncoderParams</span></span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4N5Limef6encode17V4L2EncoderParamsE" title="Limef::encode::V4L2EncoderParams"><span class="n"><span class="pre">V4L2EncoderParams</span></span></a><span class="p"><span class="pre">&gt;</span></span><a class="headerlink" href="#_CPPv4N5Limef6encode18VideoEncoderParamsE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Variant type for encoder parameters. </p>
+<p>All backend param types are always present - no compile-time ifdefs. Use isEncoderAvailable() to check runtime availability before creating.</p>
+<p>Example: <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// FFmpeg backend (always available)</span>
+<span class="n">FFmpegEncoderParams</span><span class="w"> </span><span class="n">ffmpeg_params</span><span class="p">;</span>
+<span class="n">ffmpeg_params</span><span class="p">.</span><span class="n">codec_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">AV_CODEC_ID_H264</span><span class="p">;</span>
+<span class="n">VideoEncoderParams</span><span class="w"> </span><span class="n">params</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ffmpeg_params</span><span class="p">;</span>
+
+<span class="c1">// V4L2 backend (check availability first)</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">isEncoderAvailable</span><span class="p">(</span><span class="n">EncoderBackend</span><span class="o">::</span><span class="n">V4L2</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">V4L2EncoderParams</span><span class="w"> </span><span class="n">v4l2_params</span><span class="p">;</span>
+<span class="w">    </span><span class="n">v4l2_params</span><span class="p">.</span><span class="n">device</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;/dev/video2&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="n">VideoEncoderParams</span><span class="w"> </span><span class="n">params</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">v4l2_params</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</p>
+</dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-enums">Enums</p>
+<dl class="cpp enum-class">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6encode14EncoderBackendE">
+<span id="_CPPv3N5Limef6encode14EncoderBackendE"></span><span id="_CPPv2N5Limef6encode14EncoderBackendE"></span><span class="target" id="namespaceLimef_1_1encode_1a9a90d334e46e01a4d8b9ec8b067f9ea2"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">EncoderBackend</span></span></span><a class="headerlink" href="#_CPPv4N5Limef6encode14EncoderBackendE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Available encoder backends. </p>
+<p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6encode14EncoderBackend6FFmpegE">
+<span id="_CPPv3N5Limef6encode14EncoderBackend6FFmpegE"></span><span id="_CPPv2N5Limef6encode14EncoderBackend6FFmpegE"></span><span class="target" id="namespaceLimef_1_1encode_1a9a90d334e46e01a4d8b9ec8b067f9ea2ac6822fecd09163125469db27944e993b"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">FFmpeg</span></span></span><a class="headerlink" href="#_CPPv4N5Limef6encode14EncoderBackend6FFmpegE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>FFmpeg-based software/hardware encoding. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6encode14EncoderBackend4V4L2E">
+<span id="_CPPv3N5Limef6encode14EncoderBackend4V4L2E"></span><span id="_CPPv2N5Limef6encode14EncoderBackend4V4L2E"></span><span class="target" id="namespaceLimef_1_1encode_1a9a90d334e46e01a4d8b9ec8b067f9ea2a09907146601bd24370d831fe9cf9858c"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">V4L2</span></span></span><a class="headerlink" href="#_CPPv4N5Limef6encode14EncoderBackend4V4L2E" title="Link to this definition">¶</a><br /></dt>
+<dd><p>V4L2 Memory-to-Memory API (Jetson, embedded Linux) </p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="cpp enum-class">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6encode13EncoderStatusE">
+<span id="_CPPv3N5Limef6encode13EncoderStatusE"></span><span id="_CPPv2N5Limef6encode13EncoderStatusE"></span><span class="target" id="namespaceLimef_1_1encode_1a0ec82277889e6b439a46bc4d5b1bc122"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">EncoderStatus</span></span></span><a class="headerlink" href="#_CPPv4N5Limef6encode13EncoderStatusE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Status codes returned by encoder. </p>
+<p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6encode13EncoderStatus13NeedsMoreDataE">
+<span id="_CPPv3N5Limef6encode13EncoderStatus13NeedsMoreDataE"></span><span id="_CPPv2N5Limef6encode13EncoderStatus13NeedsMoreDataE"></span><span class="target" id="namespaceLimef_1_1encode_1a0ec82277889e6b439a46bc4d5b1bc122ac137688dd3fe4599b79282cfd2049f40"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">NeedsMoreData</span></span></span><a class="headerlink" href="#_CPPv4N5Limef6encode13EncoderStatus13NeedsMoreDataE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Ready to accept more frames via push() </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6encode13EncoderStatus9NeedsReadE">
+<span id="_CPPv3N5Limef6encode13EncoderStatus9NeedsReadE"></span><span id="_CPPv2N5Limef6encode13EncoderStatus9NeedsReadE"></span><span class="target" id="namespaceLimef_1_1encode_1a0ec82277889e6b439a46bc4d5b1bc122a12a21322aa2eb06c6c592438cf9452f4"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">NeedsRead</span></span></span><a class="headerlink" href="#_CPPv4N5Limef6encode13EncoderStatus9NeedsReadE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Encoded packet available, call getPacket() </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6encode13EncoderStatus11EndOfStreamE">
+<span id="_CPPv3N5Limef6encode13EncoderStatus11EndOfStreamE"></span><span id="_CPPv2N5Limef6encode13EncoderStatus11EndOfStreamE"></span><span class="target" id="namespaceLimef_1_1encode_1a0ec82277889e6b439a46bc4d5b1bc122acec32ee5e75ca0f05bf073ea213a72c2"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">EndOfStream</span></span></span><a class="headerlink" href="#_CPPv4N5Limef6encode13EncoderStatus11EndOfStreamE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>End of stream (flushing complete) </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6encode13EncoderStatus5ErrorE">
+<span id="_CPPv3N5Limef6encode13EncoderStatus5ErrorE"></span><span id="_CPPv2N5Limef6encode13EncoderStatus5ErrorE"></span><span class="target" id="namespaceLimef_1_1encode_1a0ec82277889e6b439a46bc4d5b1bc122a902b0d55fddef6f8d651fe1035b7d4bd"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Error</span></span></span><a class="headerlink" href="#_CPPv4N5Limef6encode13EncoderStatus5ErrorE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Something went wrong. </p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-functions">Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6encode20getAvailableEncodersEv">
+<span id="_CPPv3N5Limef6encode20getAvailableEncodersEv"></span><span id="_CPPv2N5Limef6encode20getAvailableEncodersEv"></span><span id="Limef::encode::getAvailableEncoders"></span><span class="target" id="namespaceLimef_1_1encode_1ac31f0ef994bf05df22cd3fc93187fa7f"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">vector</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="#_CPPv4N5Limef6encode14EncoderBackendE" title="Limef::encode::EncoderBackend"><span class="n"><span class="pre">EncoderBackend</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getAvailableEncoders</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5Limef6encode20getAvailableEncodersEv" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Query available encoder backends at runtime. </p>
+<p>Returns backends that were compiled in and are functional. For V4L2, also checks if required devices exist.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>std::vector&lt;EncoderBackend&gt; List of available backends </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6encode18isEncoderAvailableE14EncoderBackend">
+<span id="_CPPv3N5Limef6encode18isEncoderAvailableE14EncoderBackend"></span><span id="_CPPv2N5Limef6encode18isEncoderAvailableE14EncoderBackend"></span><span id="Limef::encode::isEncoderAvailable__EncoderBackend"></span><span class="target" id="namespaceLimef_1_1encode_1a19515f5ea744fdc72be0e4870827d964"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">isEncoderAvailable</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv4N5Limef6encode14EncoderBackendE" title="Limef::encode::EncoderBackend"><span class="n"><span class="pre">EncoderBackend</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">backend</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5Limef6encode18isEncoderAvailableE14EncoderBackend" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Check if a specific encoder backend is available. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6encode10getBackendERK18VideoEncoderParams">
+<span id="_CPPv3N5Limef6encode10getBackendERK18VideoEncoderParams"></span><span id="_CPPv2N5Limef6encode10getBackendERK18VideoEncoderParams"></span><span id="Limef::encode::getBackend__VideoEncoderParamsCR"></span><span class="target" id="namespaceLimef_1_1encode_1a35983a0e92ddcc225a24ad838aada26f"></span><a class="reference internal" href="#_CPPv4N5Limef6encode14EncoderBackendE" title="Limef::encode::EncoderBackend"><span class="n"><span class="pre">EncoderBackend</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getBackend</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4N5Limef6encode18VideoEncoderParamsE" title="Limef::encode::VideoEncoderParams"><span class="n"><span class="pre">VideoEncoderParams</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">params</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5Limef6encode10getBackendERK18VideoEncoderParams" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Get the backend type from encoder params. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6encode13createEncoderERKNSt6stringERK18VideoEncoderParams">
+<span id="_CPPv3N5Limef6encode13createEncoderERKNSt6stringERK18VideoEncoderParams"></span><span id="_CPPv2N5Limef6encode13createEncoderERKNSt6stringERK18VideoEncoderParams"></span><span id="Limef::encode::createEncoder__ssCR.VideoEncoderParamsCR"></span><span class="target" id="namespaceLimef_1_1encode_1aa2147aa4746e1d02cd2dfb051da237b9"></span><a class="reference internal" href="#_CPPv4N5Limef6encode7EncoderE" title="Limef::encode::Encoder"><span class="n"><span class="pre">Encoder</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">createEncoder</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">name</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4N5Limef6encode18VideoEncoderParamsE" title="Limef::encode::VideoEncoderParams"><span class="n"><span class="pre">VideoEncoderParams</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">params</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5Limef6encode13createEncoderERKNSt6stringERK18VideoEncoderParams" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Create an encoder from variant parameters. </p>
+<p>Factory function that creates the appropriate encoder based on the active type in the params variant.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> – Identifier for logging </p></li>
+<li><p><strong>params</strong> – Encoder parameters (variant of FFmpegEncoderParams, V4L2EncoderParams, etc.) </p></li>
+</ul>
+</dd>
+<dt class="field-even">Throws<span class="colon">:</span></dt>
+<dd class="field-even"><p><span><span class="cpp-expr sig sig-inline cpp"><span class="n">std</span><span class="p">::</span><span class="n">runtime_error</span></span></span> – if backend not compiled in or not available </p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Encoder* Newly created encoder (caller owns) </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6encode14getEncoderNameE9AVCodecID7HWAccel">
+<span id="_CPPv3N5Limef6encode14getEncoderNameE9AVCodecID7HWAccel"></span><span id="_CPPv2N5Limef6encode14getEncoderNameE9AVCodecID7HWAccel"></span><span id="Limef::encode::getEncoderName__AVCodecID.HWAccel"></span><span class="target" id="namespaceLimef_1_1encode_1a51d6d4f5e646119c4ad6ac48c8f2c31f"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getEncoderName</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">AVCodecID</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">codec_id</span></span>, <span class="n"><span class="pre">HWAccel</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">hw_accel</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5Limef6encode14getEncoderNameE9AVCodecID7HWAccel" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Get FFmpeg encoder name for codec + acceleration combination. </p>
+<p>Maps (codec_id, hw_accel) to FFmpeg encoder name. Returns empty string if combination is not supported.</p>
+<p>Examples:<ul class="simple">
+<li><p>(H264, VAAPI) -&gt; “h264_vaapi”</p></li>
+<li><p>(VP9, SW) -&gt; “libvpx_vp9”</p></li>
+<li><p>(H264, SW) -&gt; “” (no GPL software encoder)</p></li>
+</ul>
+</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>codec_id</strong> – Target codec </p></li>
+<li><p><strong>hw_accel</strong> – Hardware acceleration type </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>std::string FFmpeg encoder name, or empty if unsupported </p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<dl class="cpp class">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6encode7EncoderE">
+<span id="_CPPv3N5Limef6encode7EncoderE"></span><span id="_CPPv2N5Limef6encode7EncoderE"></span><span id="Limef::encode::Encoder"></span><span class="target" id="classLimef_1_1encode_1_1Encoder"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Encoder</span></span></span><a class="headerlink" href="#_CPPv4N5Limef6encode7EncoderE" title="Link to this definition">¶</a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;encoder.h&gt;</em></div>
+<p>Abstract encoder interface for a single video or audio stream. </p>
+<p>State machine that encodes decoded frames into packets. Call status() to determine what operation to do next.</p>
+<p>Implementations:<ul class="simple">
+<li><p>FFmpegEncoder: FFmpeg-based software/hardware encoding</p></li>
+<li><p>V4L2Encoder: V4L2 Memory-to-Memory API (Jetson, embedded Linux)</p></li>
+</ul>
+</p>
+<p>Example usage: <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="n">Encoder</span><span class="o">&gt;</span><span class="w"> </span><span class="n">enc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">make_unique</span><span class="o">&lt;</span><span class="n">FFmpegEncoder</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;my-encoder&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">params</span><span class="p">);</span>
+<span class="n">enc</span><span class="o">-&gt;</span><span class="n">setPacketFrame</span><span class="p">(</span><span class="n">packet_frame</span><span class="p">);</span>
+
+<span class="c1">// Encoding loop:</span>
+<span class="n">EncoderStatus</span><span class="w"> </span><span class="n">stat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">enc</span><span class="o">-&gt;</span><span class="n">status</span><span class="p">();</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">stat</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">EncoderStatus</span><span class="o">::</span><span class="n">NeedsMoreData</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">enc</span><span class="o">-&gt;</span><span class="n">push</span><span class="p">(</span><span class="o">&amp;</span><span class="n">decoded_frame</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">stat</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">EncoderStatus</span><span class="o">::</span><span class="n">NeedsRead</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">PacketFrame</span><span class="o">&amp;</span><span class="w"> </span><span class="n">pkt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">enc</span><span class="o">-&gt;</span><span class="n">getPacket</span><span class="p">();</span>
+<span class="w">    </span><span class="c1">// send packet downstream</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</p>
+<p>All calls to encoder are non-blocking. </p>
+<p>Subclassed by Limef::encode::FFmpegEncoder, Limef::encode::V4L2Encoder</p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6encode7Encoder9setLoggerENSt10shared_ptrIN6spdlog6loggerEEE">
+<span id="_CPPv3N5Limef6encode7Encoder9setLoggerENSt10shared_ptrIN6spdlog6loggerEEE"></span><span id="_CPPv2N5Limef6encode7Encoder9setLoggerENSt10shared_ptrIN6spdlog6loggerEEE"></span><span id="Limef::encode::Encoder::setLogger__std::shared_ptr:spdlog::logger:"></span><span class="target" id="classLimef_1_1encode_1_1Encoder_1aff2b5594d7f9f7cdec7999feca64dafc"></span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">setLogger</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">shared_ptr</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">spdlog</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">logger</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">logger</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><a class="headerlink" href="#_CPPv4N5Limef6encode7Encoder9setLoggerENSt10shared_ptrIN6spdlog6loggerEEE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Set logger for this encoder. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6encode7Encoder14setPacketFrameERN5Limef5frame11PacketFrameE">
+<span id="_CPPv3N5Limef6encode7Encoder14setPacketFrameERN5Limef5frame11PacketFrameE"></span><span id="_CPPv2N5Limef6encode7Encoder14setPacketFrameERN5Limef5frame11PacketFrameE"></span><span id="Limef::encode::Encoder::setPacketFrame__Limef::frame::PacketFrameR"></span><span class="target" id="classLimef_1_1encode_1_1Encoder_1ac18d7eb04f0572dce4214c267dee4c49"></span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">setPacketFrame</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">Limef</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="frames.html#_CPPv4N5Limef5frameE" title="Limef::frame"><span class="n"><span class="pre">frame</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="frames.html#_CPPv4N5Limef5frame11PacketFrameE" title="Limef::frame::PacketFrame"><span class="n"><span class="pre">PacketFrame</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">frame</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><a class="headerlink" href="#_CPPv4N5Limef6encode7Encoder14setPacketFrameERN5Limef5frame11PacketFrameE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Set output packet frame. </p>
+<p>Must be called before encoder can be used. Frame will be reused for encoded output.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>frame</strong> – Frame to use for encoded output </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6encode7Encoder6statusEv">
+<span id="_CPPv3N5Limef6encode7Encoder6statusEv"></span><span id="_CPPv2N5Limef6encode7Encoder6statusEv"></span><span id="Limef::encode::Encoder::status"></span><span class="target" id="classLimef_1_1encode_1_1Encoder_1a1716375ddf48c10e7d43b5a99d4aa8ca"></span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4N5Limef6encode13EncoderStatusE" title="Limef::encode::EncoderStatus"><span class="n"><span class="pre">EncoderStatus</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">status</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><a class="headerlink" href="#_CPPv4N5Limef6encode7Encoder6statusEv" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Get current encoder status. </p>
+<p>Call this to determine what operation to do next:<ul class="simple">
+<li><p>NeedsMoreData: Call push() with next frame</p></li>
+<li><p>NeedsRead: Call getPacket() to get encoded packet</p></li>
+<li><p>Error: Handle error condition</p></li>
+</ul>
+</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>EncoderStatus Current status </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6encode7Encoder4pushEPKN5Limef5frame12DecodedFrameE">
+<span id="_CPPv3N5Limef6encode7Encoder4pushEPKN5Limef5frame12DecodedFrameE"></span><span id="_CPPv2N5Limef6encode7Encoder4pushEPKN5Limef5frame12DecodedFrameE"></span><span id="Limef::encode::Encoder::push__Limef::frame::DecodedFrameCP"></span><span class="target" id="classLimef_1_1encode_1_1Encoder_1ae09e9be391ea59532aa391541f5f2245"></span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">push</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">Limef</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="frames.html#_CPPv4N5Limef5frameE" title="Limef::frame"><span class="n"><span class="pre">frame</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="frames.html#_CPPv4N5Limef5frame12DecodedFrameE" title="Limef::frame::DecodedFrame"><span class="n"><span class="pre">DecodedFrame</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">frame</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><a class="headerlink" href="#_CPPv4N5Limef6encode7Encoder4pushEPKN5Limef5frame12DecodedFrameE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Push decoded frame for encoding. </p>
+<p>Only call when status() returns NeedsMoreData. On first call, may initialize encoder dimensions from frame.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>frame</strong> – DecodedFrame to encode </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6encode7Encoder9getPacketEv">
+<span id="_CPPv3N5Limef6encode7Encoder9getPacketEv"></span><span id="_CPPv2N5Limef6encode7Encoder9getPacketEv"></span><span id="Limef::encode::Encoder::getPacket"></span><span class="target" id="classLimef_1_1encode_1_1Encoder_1ac81d29e88d403709eeadec5566727e33"></span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">Limef</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="frames.html#_CPPv4N5Limef5frameE" title="Limef::frame"><span class="n"><span class="pre">frame</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="frames.html#_CPPv4N5Limef5frame11PacketFrameE" title="Limef::frame::PacketFrame"><span class="n"><span class="pre">PacketFrame</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="sig-name descname"><span class="n"><span class="pre">getPacket</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><a class="headerlink" href="#_CPPv4N5Limef6encode7Encoder9getPacketEv" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Get encoded packet. </p>
+<p>Only call when status() returns NeedsRead</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>const PacketFrame&amp; Reference to encoded packet </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6encode7Encoder5flushEv">
+<span id="_CPPv3N5Limef6encode7Encoder5flushEv"></span><span id="_CPPv2N5Limef6encode7Encoder5flushEv"></span><span id="Limef::encode::Encoder::flush"></span><span class="target" id="classLimef_1_1encode_1_1Encoder_1a42ecc635fc1a73052966c0d391a73168"></span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">flush</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><a class="headerlink" href="#_CPPv4N5Limef6encode7Encoder5flushEv" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Flush the encoder. </p>
+<p>Forces encoder to output any buffered packets. Check status() after this to get remaining packets. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK5Limef6encode7Encoder14getStreamIndexEv">
+<span id="_CPPv3NK5Limef6encode7Encoder14getStreamIndexEv"></span><span id="_CPPv2NK5Limef6encode7Encoder14getStreamIndexEv"></span><span id="Limef::encode::Encoder::getStreamIndexC"></span><span class="target" id="classLimef_1_1encode_1_1Encoder_1aae268f02626f4af2fe720587f216e946"></span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getStreamIndex</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><a class="headerlink" href="#_CPPv4NK5Limef6encode7Encoder14getStreamIndexEv" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Get the stream index this encoder produces. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6encode7Encoder14setStreamIndexEi">
+<span id="_CPPv3N5Limef6encode7Encoder14setStreamIndexEi"></span><span id="_CPPv2N5Limef6encode7Encoder14setStreamIndexEi"></span><span id="Limef::encode::Encoder::setStreamIndex__i"></span><span class="target" id="classLimef_1_1encode_1_1Encoder_1ad9089cd34fbf7e3dc843be39ee6f29f2"></span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">setStreamIndex</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">idx</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><a class="headerlink" href="#_CPPv4N5Limef6encode7Encoder14setStreamIndexEi" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Set stream index for output packets. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK5Limef6encode7Encoder13isInitializedEv">
+<span id="_CPPv3NK5Limef6encode7Encoder13isInitializedEv"></span><span id="_CPPv2NK5Limef6encode7Encoder13isInitializedEv"></span><span id="Limef::encode::Encoder::isInitializedC"></span><span class="target" id="classLimef_1_1encode_1_1Encoder_1aaed1c908362688673f7fdb053bff5e28"></span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">isInitialized</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><a class="headerlink" href="#_CPPv4NK5Limef6encode7Encoder13isInitializedEv" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Check if encoder is fully initialized and ready to produce output. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6encode7Encoder9configureEPK8AVStream">
+<span id="_CPPv3N5Limef6encode7Encoder9configureEPK8AVStream"></span><span id="_CPPv2N5Limef6encode7Encoder9configureEPK8AVStream"></span><span id="Limef::encode::Encoder::configure__AVStreamCP"></span><span class="target" id="classLimef_1_1encode_1_1Encoder_1abf7c101159fec89371acef4f12ec2b37"></span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">configure</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">AVStream</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">stream</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><a class="headerlink" href="#_CPPv4N5Limef6encode7Encoder9configureEPK8AVStream" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Configure encoder timing from stream info. </p>
+<p>Called when StreamFrame arrives. Extracts fps and timebase. Since StreamFrame uses AVFormatContext, all encoders receive AVStream*.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>stream</strong> – Source stream info </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK5Limef6encode7Encoder12isConfiguredEv">
+<span id="_CPPv3NK5Limef6encode7Encoder12isConfiguredEv"></span><span id="_CPPv2NK5Limef6encode7Encoder12isConfiguredEv"></span><span id="Limef::encode::Encoder::isConfiguredC"></span><span class="target" id="classLimef_1_1encode_1_1Encoder_1a429e90178e62d7699edec1c263c893ec"></span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">isConfigured</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><a class="headerlink" href="#_CPPv4NK5Limef6encode7Encoder12isConfiguredEv" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Check if encoder has been configured (received stream info) </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK5Limef6encode7Encoder14getCodecParamsEv">
+<span id="_CPPv3NK5Limef6encode7Encoder14getCodecParamsEv"></span><span id="_CPPv2NK5Limef6encode7Encoder14getCodecParamsEv"></span><span id="Limef::encode::Encoder::getCodecParamsC"></span><span class="target" id="classLimef_1_1encode_1_1Encoder_1a71e08d85270e463c860629347e03c705"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">AVCodecParameters</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">getCodecParams</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK5Limef6encode7Encoder14getCodecParamsEv" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Get codec parameters for muxer/decoder setup. </p>
+<p>Returns codec parameters after encoder is initialized. Used to create CodecFrame for downstream decoders.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>const AVCodecParameters* Codec parameters, or nullptr if not available/initialized </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK5Limef6encode7Encoder11getTimeBaseEv">
+<span id="_CPPv3NK5Limef6encode7Encoder11getTimeBaseEv"></span><span id="_CPPv2NK5Limef6encode7Encoder11getTimeBaseEv"></span><span id="Limef::encode::Encoder::getTimeBaseC"></span><span class="target" id="classLimef_1_1encode_1_1Encoder_1a11d8000e689f3732977f49d5f465a491"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><span class="n"><span class="pre">AVRational</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getTimeBase</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK5Limef6encode7Encoder11getTimeBaseEv" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Get encoder output timebase. </p>
+<p>Returns the timebase of encoded packets. Used for CodecFrame creation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>AVRational Timebase (e.g., {1, 90000} for 90kHz) </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK5Limef6encode7Encoder12getFrameRateEv">
+<span id="_CPPv3NK5Limef6encode7Encoder12getFrameRateEv"></span><span id="_CPPv2NK5Limef6encode7Encoder12getFrameRateEv"></span><span id="Limef::encode::Encoder::getFrameRateC"></span><span class="target" id="classLimef_1_1encode_1_1Encoder_1a81892b54bedf5e2afc29f297acc8122d"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><span class="n"><span class="pre">AVRational</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getFrameRate</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK5Limef6encode7Encoder12getFrameRateEv" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Get encoder output frame rate. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>AVRational Frame rate (e.g., {30, 1} for 30fps) </p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp class">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6encode13FFmpegEncoderE">
+<span id="_CPPv3N5Limef6encode13FFmpegEncoderE"></span><span id="_CPPv2N5Limef6encode13FFmpegEncoderE"></span><span id="Limef::encode::FFmpegEncoder"></span><span class="target" id="classLimef_1_1encode_1_1FFmpegEncoder"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">FFmpegEncoder</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><span class="n"><span class="pre">Limef</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N5Limef6encodeE" title="Limef::encode"><span class="n"><span class="pre">encode</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N5Limef6encode7EncoderE" title="Limef::encode::Encoder"><span class="n"><span class="pre">Encoder</span></span></a><a class="headerlink" href="#_CPPv4N5Limef6encode13FFmpegEncoderE" title="Link to this definition">¶</a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;ffmpeg_encoder.h&gt;</em></div>
+<p>FFmpeg-based encoder for video and audio streams. </p>
+<p>Supports both software encoding and hardware-accelerated encoding via FFmpeg’s hwaccel infrastructure (VAAPI, NVENC, etc.)</p>
+<p>Initialization is two-phase:<ol class="lowerroman simple">
+<li><p>configure() - called when StreamFrame arrives (provides fps, timebase)</p></li>
+<li><p>initFromFrame() - called on first DecodedFrame (provides dimensions, format)</p></li>
+</ol>
+</p>
+<p>Example usage: <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">FFmpegEncoderParams</span><span class="w"> </span><span class="n">params</span><span class="p">;</span>
+<span class="n">params</span><span class="p">.</span><span class="n">codec_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">AV_CODEC_ID_H264</span><span class="p">;</span>
+<span class="n">params</span><span class="p">.</span><span class="n">bitrate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2000000</span><span class="p">;</span>
+
+<span class="n">FFmpegEncoder</span><span class="w"> </span><span class="n">enc</span><span class="p">(</span><span class="s">&quot;my-encoder&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">params</span><span class="p">);</span>
+
+<span class="c1">// When StreamFrame arrives:</span>
+<span class="n">enc</span><span class="p">.</span><span class="n">configure</span><span class="p">(</span><span class="n">stream_frame</span><span class="p">.</span><span class="n">getVideoStream</span><span class="p">());</span>
+
+<span class="c1">// Set output packet frame:</span>
+<span class="n">enc</span><span class="p">.</span><span class="n">setPacketFrame</span><span class="p">(</span><span class="n">packet_frame</span><span class="p">);</span>
+
+<span class="c1">// Encoding loop:</span>
+<span class="n">EncoderStatus</span><span class="w"> </span><span class="n">stat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">enc</span><span class="p">.</span><span class="n">status</span><span class="p">();</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">stat</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">EncoderStatus</span><span class="o">::</span><span class="n">NeedsMoreData</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">enc</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="o">&amp;</span><span class="n">decoded_frame</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">stat</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">EncoderStatus</span><span class="o">::</span><span class="n">NeedsRead</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">PacketFrame</span><span class="o">&amp;</span><span class="w"> </span><span class="n">pkt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">enc</span><span class="p">.</span><span class="n">getPacket</span><span class="p">();</span>
+<span class="w">    </span><span class="c1">// send packet downstream</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6encode13FFmpegEncoder13FFmpegEncoderERKNSt6stringERK19FFmpegEncoderParams">
+<span id="_CPPv3N5Limef6encode13FFmpegEncoder13FFmpegEncoderERKNSt6stringERK19FFmpegEncoderParams"></span><span id="_CPPv2N5Limef6encode13FFmpegEncoder13FFmpegEncoderERKNSt6stringERK19FFmpegEncoderParams"></span><span id="Limef::encode::FFmpegEncoder::FFmpegEncoder__ssCR.FFmpegEncoderParamsCR"></span><span class="target" id="classLimef_1_1encode_1_1FFmpegEncoder_1a6c87948837309306653b43dfa0112412"></span><span class="sig-name descname"><span class="n"><span class="pre">FFmpegEncoder</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">name</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4N5Limef6encode19FFmpegEncoderParamsE" title="Limef::encode::FFmpegEncoderParams"><span class="n"><span class="pre">FFmpegEncoderParams</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">params</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5Limef6encode13FFmpegEncoder13FFmpegEncoderERKNSt6stringERK19FFmpegEncoderParams" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Construct encoder with given parameters. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> – Identifier for logging </p></li>
+<li><p><strong>params</strong> – Encoding parameters (codec, bitrate, etc.) </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6encode13FFmpegEncoder9setLoggerENSt10shared_ptrIN6spdlog6loggerEEE">
+<span id="_CPPv3N5Limef6encode13FFmpegEncoder9setLoggerENSt10shared_ptrIN6spdlog6loggerEEE"></span><span id="_CPPv2N5Limef6encode13FFmpegEncoder9setLoggerENSt10shared_ptrIN6spdlog6loggerEEE"></span><span id="Limef::encode::FFmpegEncoder::setLogger__std::shared_ptr:spdlog::logger:"></span><span class="target" id="classLimef_1_1encode_1_1FFmpegEncoder_1a06653328a9d47d80a8431b9e1e50f14a"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">setLogger</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">shared_ptr</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">spdlog</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">logger</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">logger</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">override</span></span><a class="headerlink" href="#_CPPv4N5Limef6encode13FFmpegEncoder9setLoggerENSt10shared_ptrIN6spdlog6loggerEEE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Set logger for this encoder. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6encode13FFmpegEncoder14setPacketFrameERN5Limef5frame11PacketFrameE">
+<span id="_CPPv3N5Limef6encode13FFmpegEncoder14setPacketFrameERN5Limef5frame11PacketFrameE"></span><span id="_CPPv2N5Limef6encode13FFmpegEncoder14setPacketFrameERN5Limef5frame11PacketFrameE"></span><span id="Limef::encode::FFmpegEncoder::setPacketFrame__Limef::frame::PacketFrameR"></span><span class="target" id="classLimef_1_1encode_1_1FFmpegEncoder_1a0bdaed066c7d15775d71bca37905b761"></span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">setPacketFrame</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">Limef</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="frames.html#_CPPv4N5Limef5frameE" title="Limef::frame"><span class="n"><span class="pre">frame</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="frames.html#_CPPv4N5Limef5frame11PacketFrameE" title="Limef::frame::PacketFrame"><span class="n"><span class="pre">PacketFrame</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">frame</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">override</span></span><a class="headerlink" href="#_CPPv4N5Limef6encode13FFmpegEncoder14setPacketFrameERN5Limef5frame11PacketFrameE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Set output packet frame. </p>
+<p>Must be called before encoder can be used. Frame will be reused for encoded output.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>frame</strong> – Frame to use for encoded output </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6encode13FFmpegEncoder6statusEv">
+<span id="_CPPv3N5Limef6encode13FFmpegEncoder6statusEv"></span><span id="_CPPv2N5Limef6encode13FFmpegEncoder6statusEv"></span><span id="Limef::encode::FFmpegEncoder::status"></span><span class="target" id="classLimef_1_1encode_1_1FFmpegEncoder_1ac3ac4b42ade393ec2dcf6eaabf688921"></span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4N5Limef6encode13EncoderStatusE" title="Limef::encode::EncoderStatus"><span class="n"><span class="pre">EncoderStatus</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">status</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">override</span></span><a class="headerlink" href="#_CPPv4N5Limef6encode13FFmpegEncoder6statusEv" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Get current encoder status. </p>
+<p>Call this to determine what operation to do next:<ul class="simple">
+<li><p>NeedsMoreData: Call push() with next frame</p></li>
+<li><p>NeedsRead: Call getPacket() to get encoded packet</p></li>
+<li><p>Error: Handle error condition</p></li>
+</ul>
+</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>EncoderStatus Current status </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6encode13FFmpegEncoder4pushEPKN5Limef5frame12DecodedFrameE">
+<span id="_CPPv3N5Limef6encode13FFmpegEncoder4pushEPKN5Limef5frame12DecodedFrameE"></span><span id="_CPPv2N5Limef6encode13FFmpegEncoder4pushEPKN5Limef5frame12DecodedFrameE"></span><span id="Limef::encode::FFmpegEncoder::push__Limef::frame::DecodedFrameCP"></span><span class="target" id="classLimef_1_1encode_1_1FFmpegEncoder_1ad51eec5a6dad632ef7b1c9566a57060d"></span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">push</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">Limef</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="frames.html#_CPPv4N5Limef5frameE" title="Limef::frame"><span class="n"><span class="pre">frame</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="frames.html#_CPPv4N5Limef5frame12DecodedFrameE" title="Limef::frame::DecodedFrame"><span class="n"><span class="pre">DecodedFrame</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">frame</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">override</span></span><a class="headerlink" href="#_CPPv4N5Limef6encode13FFmpegEncoder4pushEPKN5Limef5frame12DecodedFrameE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Push decoded frame for encoding. </p>
+<p>Only call when status() returns NeedsMoreData. On first call, may initialize encoder dimensions from frame.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>frame</strong> – DecodedFrame to encode </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6encode13FFmpegEncoder9getPacketEv">
+<span id="_CPPv3N5Limef6encode13FFmpegEncoder9getPacketEv"></span><span id="_CPPv2N5Limef6encode13FFmpegEncoder9getPacketEv"></span><span id="Limef::encode::FFmpegEncoder::getPacket"></span><span class="target" id="classLimef_1_1encode_1_1FFmpegEncoder_1a79dd13a7146cd76a27153d8fdfc44b2b"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">Limef</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="frames.html#_CPPv4N5Limef5frameE" title="Limef::frame"><span class="n"><span class="pre">frame</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="frames.html#_CPPv4N5Limef5frame11PacketFrameE" title="Limef::frame::PacketFrame"><span class="n"><span class="pre">PacketFrame</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="sig-name descname"><span class="n"><span class="pre">getPacket</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">override</span></span><a class="headerlink" href="#_CPPv4N5Limef6encode13FFmpegEncoder9getPacketEv" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Get encoded packet. </p>
+<p>Only call when status() returns NeedsRead</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>const PacketFrame&amp; Reference to encoded packet </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6encode13FFmpegEncoder5flushEv">
+<span id="_CPPv3N5Limef6encode13FFmpegEncoder5flushEv"></span><span id="_CPPv2N5Limef6encode13FFmpegEncoder5flushEv"></span><span id="Limef::encode::FFmpegEncoder::flush"></span><span class="target" id="classLimef_1_1encode_1_1FFmpegEncoder_1a97c8f210532b3d95e20d38cc6e9f7d47"></span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">flush</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">override</span></span><a class="headerlink" href="#_CPPv4N5Limef6encode13FFmpegEncoder5flushEv" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Flush the encoder. </p>
+<p>Forces encoder to output any buffered packets. Check status() after this to get remaining packets. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK5Limef6encode13FFmpegEncoder14getStreamIndexEv">
+<span id="_CPPv3NK5Limef6encode13FFmpegEncoder14getStreamIndexEv"></span><span id="_CPPv2NK5Limef6encode13FFmpegEncoder14getStreamIndexEv"></span><span id="Limef::encode::FFmpegEncoder::getStreamIndexC"></span><span class="target" id="classLimef_1_1encode_1_1FFmpegEncoder_1aa8f0c2d90e9234d883f104369786ad91"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getStreamIndex</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">override</span></span><a class="headerlink" href="#_CPPv4NK5Limef6encode13FFmpegEncoder14getStreamIndexEv" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Get the stream index this encoder produces. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6encode13FFmpegEncoder14setStreamIndexEi">
+<span id="_CPPv3N5Limef6encode13FFmpegEncoder14setStreamIndexEi"></span><span id="_CPPv2N5Limef6encode13FFmpegEncoder14setStreamIndexEi"></span><span id="Limef::encode::FFmpegEncoder::setStreamIndex__i"></span><span class="target" id="classLimef_1_1encode_1_1FFmpegEncoder_1abec5df8a63aa196036576291ede8966f"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">setStreamIndex</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">idx</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">override</span></span><a class="headerlink" href="#_CPPv4N5Limef6encode13FFmpegEncoder14setStreamIndexEi" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Set stream index for output packets. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK5Limef6encode13FFmpegEncoder13isInitializedEv">
+<span id="_CPPv3NK5Limef6encode13FFmpegEncoder13isInitializedEv"></span><span id="_CPPv2NK5Limef6encode13FFmpegEncoder13isInitializedEv"></span><span id="Limef::encode::FFmpegEncoder::isInitializedC"></span><span class="target" id="classLimef_1_1encode_1_1FFmpegEncoder_1a9a550d016e2816ba3c8b9161f9ae5c3e"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">isInitialized</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">override</span></span><a class="headerlink" href="#_CPPv4NK5Limef6encode13FFmpegEncoder13isInitializedEv" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Check if encoder is fully initialized and ready to produce output. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6encode13FFmpegEncoder9configureEPK8AVStream">
+<span id="_CPPv3N5Limef6encode13FFmpegEncoder9configureEPK8AVStream"></span><span id="_CPPv2N5Limef6encode13FFmpegEncoder9configureEPK8AVStream"></span><span id="Limef::encode::FFmpegEncoder::configure__AVStreamCP"></span><span class="target" id="classLimef_1_1encode_1_1FFmpegEncoder_1a629abdb250aeea2f4ae2b315609becab"></span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">configure</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">AVStream</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">stream</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">override</span></span><a class="headerlink" href="#_CPPv4N5Limef6encode13FFmpegEncoder9configureEPK8AVStream" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Configure encoder timing from stream info. </p>
+<p>Called when StreamFrame arrives. Extracts fps and timebase. Since StreamFrame uses AVFormatContext, all encoders receive AVStream*.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>stream</strong> – Source stream info </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK5Limef6encode13FFmpegEncoder12isConfiguredEv">
+<span id="_CPPv3NK5Limef6encode13FFmpegEncoder12isConfiguredEv"></span><span id="_CPPv2NK5Limef6encode13FFmpegEncoder12isConfiguredEv"></span><span id="Limef::encode::FFmpegEncoder::isConfiguredC"></span><span class="target" id="classLimef_1_1encode_1_1FFmpegEncoder_1affec4d4cf568a3d8269eed028772cab1"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">isConfigured</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">override</span></span><a class="headerlink" href="#_CPPv4NK5Limef6encode13FFmpegEncoder12isConfiguredEv" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Check if encoder has been configured (received stream info) </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK5Limef6encode13FFmpegEncoder14getCodecParamsEv">
+<span id="_CPPv3NK5Limef6encode13FFmpegEncoder14getCodecParamsEv"></span><span id="_CPPv2NK5Limef6encode13FFmpegEncoder14getCodecParamsEv"></span><span id="Limef::encode::FFmpegEncoder::getCodecParamsC"></span><span class="target" id="classLimef_1_1encode_1_1FFmpegEncoder_1a67dbf6eb4e089c4cddb9258db8456661"></span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">AVCodecParameters</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">getCodecParams</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">override</span></span><a class="headerlink" href="#_CPPv4NK5Limef6encode13FFmpegEncoder14getCodecParamsEv" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Get codec parameters for muxer/decoder setup. </p>
+<p>Returns codec parameters after encoder is initialized. Used to create CodecFrame for downstream decoders.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>const AVCodecParameters* Codec parameters, or nullptr if not available/initialized </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK5Limef6encode13FFmpegEncoder11getTimeBaseEv">
+<span id="_CPPv3NK5Limef6encode13FFmpegEncoder11getTimeBaseEv"></span><span id="_CPPv2NK5Limef6encode13FFmpegEncoder11getTimeBaseEv"></span><span id="Limef::encode::FFmpegEncoder::getTimeBaseC"></span><span class="target" id="classLimef_1_1encode_1_1FFmpegEncoder_1a1f608ec64dad6b562d65d34151deb6f0"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><span class="n"><span class="pre">AVRational</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getTimeBase</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">override</span></span><a class="headerlink" href="#_CPPv4NK5Limef6encode13FFmpegEncoder11getTimeBaseEv" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Get encoder output timebase. </p>
+<p>Returns the timebase of encoded packets. Used for CodecFrame creation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>AVRational Timebase (e.g., {1, 90000} for 90kHz) </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK5Limef6encode13FFmpegEncoder12getFrameRateEv">
+<span id="_CPPv3NK5Limef6encode13FFmpegEncoder12getFrameRateEv"></span><span id="_CPPv2NK5Limef6encode13FFmpegEncoder12getFrameRateEv"></span><span id="Limef::encode::FFmpegEncoder::getFrameRateC"></span><span class="target" id="classLimef_1_1encode_1_1FFmpegEncoder_1a82873f1cf0ef76dba4aace537e0065bc"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><span class="n"><span class="pre">AVRational</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getFrameRate</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">override</span></span><a class="headerlink" href="#_CPPv4NK5Limef6encode13FFmpegEncoder12getFrameRateEv" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Get encoder output frame rate. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>AVRational Frame rate (e.g., {30, 1} for 30fps) </p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6encode19FFmpegEncoderParamsE">
+<span id="_CPPv3N5Limef6encode19FFmpegEncoderParamsE"></span><span id="_CPPv2N5Limef6encode19FFmpegEncoderParamsE"></span><span id="Limef::encode::FFmpegEncoderParams"></span><span class="target" id="structLimef_1_1encode_1_1FFmpegEncoderParams"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">FFmpegEncoderParams</span></span></span><a class="headerlink" href="#_CPPv4N5Limef6encode19FFmpegEncoderParamsE" title="Link to this definition">¶</a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;ffmpeg_encoder.h&gt;</em></div>
+<p>Encoding parameters for FFmpegEncoder. </p>
+<p>Contains codec selection and quality settings. Dimensions and format come from the incoming DecodedFrame. Timing (fps, timebase) comes from StreamFrame via configure().</p>
+<p>Example usage: <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// VAAPI H.264 encoding (no GPL issues)</span>
+<span class="n">FFmpegEncoderParams</span><span class="w"> </span><span class="n">params</span><span class="p">;</span>
+<span class="n">params</span><span class="p">.</span><span class="n">codec_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">AV_CODEC_ID_H264</span><span class="p">;</span>
+<span class="n">params</span><span class="p">.</span><span class="n">hw_accel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">HWAccel</span><span class="o">::</span><span class="n">VAAPI</span><span class="p">;</span>
+<span class="c1">// hw_device uses sensible default, or specify:</span>
+<span class="c1">// params.hw_device = &quot;/dev/dri/renderD128&quot;;</span>
+
+<span class="c1">// Software VP9 encoding (royalty-free)</span>
+<span class="n">FFmpegEncoderParams</span><span class="w"> </span><span class="n">params</span><span class="p">;</span>
+<span class="n">params</span><span class="p">.</span><span class="n">codec_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">AV_CODEC_ID_VP9</span><span class="p">;</span>
+<span class="n">params</span><span class="p">.</span><span class="n">hw_accel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">HWAccel</span><span class="o">::</span><span class="n">SW</span><span class="p">;</span><span class="w">  </span><span class="c1">// uses libvpx</span>
+</pre></div>
+</div>
+</p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6encode19FFmpegEncoderParams8codec_idE">
+<span id="_CPPv3N5Limef6encode19FFmpegEncoderParams8codec_idE"></span><span id="_CPPv2N5Limef6encode19FFmpegEncoderParams8codec_idE"></span><span id="Limef::encode::FFmpegEncoderParams::codec_id__AVCodecID"></span><span class="target" id="structLimef_1_1encode_1_1FFmpegEncoderParams_1a387b003626b987808153eddd21655b22"></span><span class="n"><span class="pre">AVCodecID</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">codec_id</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="p"><span class="pre">{</span></span><span class="n"><span class="pre">AV_CODEC_ID_H264</span></span><span class="p"><span class="pre">}</span></span><a class="headerlink" href="#_CPPv4N5Limef6encode19FFmpegEncoderParams8codec_idE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Target codec. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6encode19FFmpegEncoderParams7bitrateE">
+<span id="_CPPv3N5Limef6encode19FFmpegEncoderParams7bitrateE"></span><span id="_CPPv2N5Limef6encode19FFmpegEncoderParams7bitrateE"></span><span id="Limef::encode::FFmpegEncoderParams::bitrate__int64_t"></span><span class="target" id="structLimef_1_1encode_1_1FFmpegEncoderParams_1adc86a75719bc0c19ac659be15780f15e"></span><span class="n"><span class="pre">int64_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">bitrate</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="p"><span class="pre">{</span></span><span class="m"><span class="pre">2000000</span></span><span class="p"><span class="pre">}</span></span><a class="headerlink" href="#_CPPv4N5Limef6encode19FFmpegEncoderParams7bitrateE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Target bitrate in bits/sec. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6encode19FFmpegEncoderParams8hw_accelE">
+<span id="_CPPv3N5Limef6encode19FFmpegEncoderParams8hw_accelE"></span><span id="_CPPv2N5Limef6encode19FFmpegEncoderParams8hw_accelE"></span><span id="Limef::encode::FFmpegEncoderParams::hw_accel__HWAccel"></span><span class="target" id="structLimef_1_1encode_1_1FFmpegEncoderParams_1ae29af35d0dd32c5fed2acaf4f89ebd61"></span><span class="n"><span class="pre">HWAccel</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">hw_accel</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="p"><span class="pre">{</span></span><span class="n"><span class="pre">HWAccel</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">SW</span></span><span class="p"><span class="pre">}</span></span><a class="headerlink" href="#_CPPv4N5Limef6encode19FFmpegEncoderParams8hw_accelE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Hardware acceleration backend. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6encode19FFmpegEncoderParams9hw_deviceE">
+<span id="_CPPv3N5Limef6encode19FFmpegEncoderParams9hw_deviceE"></span><span id="_CPPv2N5Limef6encode19FFmpegEncoderParams9hw_deviceE"></span><span id="Limef::encode::FFmpegEncoderParams::hw_device__ss"></span><span class="target" id="structLimef_1_1encode_1_1FFmpegEncoderParams_1ab49ee3634fd32da371444e8e5c635ba5"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">hw_device</span></span></span><a class="headerlink" href="#_CPPv4N5Limef6encode19FFmpegEncoderParams9hw_deviceE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Device path (empty = auto-detect) </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6encode19FFmpegEncoderParams6presetE">
+<span id="_CPPv3N5Limef6encode19FFmpegEncoderParams6presetE"></span><span id="_CPPv2N5Limef6encode19FFmpegEncoderParams6presetE"></span><span id="Limef::encode::FFmpegEncoderParams::preset__ss"></span><span class="target" id="structLimef_1_1encode_1_1FFmpegEncoderParams_1a662231c163e7dd6e6325c83266b28c88"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">preset</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="p"><span class="pre">{</span></span><span class="s"><span class="pre">&quot;medium&quot;</span></span><span class="p"><span class="pre">}</span></span><a class="headerlink" href="#_CPPv4N5Limef6encode19FFmpegEncoderParams6presetE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Encoder preset (SW: “ultrafast”..”veryslow”; NVENC: “p1”..”p7”) </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6encode19FFmpegEncoderParams7profileE">
+<span id="_CPPv3N5Limef6encode19FFmpegEncoderParams7profileE"></span><span id="_CPPv2N5Limef6encode19FFmpegEncoderParams7profileE"></span><span id="Limef::encode::FFmpegEncoderParams::profile__ss"></span><span class="target" id="structLimef_1_1encode_1_1FFmpegEncoderParams_1a268b69e67627fe7c0c958ee917152f02"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">profile</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="p"><span class="pre">{</span></span><span class="p"><span class="pre">}</span></span><a class="headerlink" href="#_CPPv4N5Limef6encode19FFmpegEncoderParams7profileE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Codec profile (H.264: “baseline”,”main”,”high”) </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6encode19FFmpegEncoderParams4tuneE">
+<span id="_CPPv3N5Limef6encode19FFmpegEncoderParams4tuneE"></span><span id="_CPPv2N5Limef6encode19FFmpegEncoderParams4tuneE"></span><span id="Limef::encode::FFmpegEncoderParams::tune__ss"></span><span class="target" id="structLimef_1_1encode_1_1FFmpegEncoderParams_1a3c991606b455ee4a4b4c131cd0be0a20"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">tune</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="p"><span class="pre">{</span></span><span class="p"><span class="pre">}</span></span><a class="headerlink" href="#_CPPv4N5Limef6encode19FFmpegEncoderParams4tuneE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Tuning (SW: “zerolatency”,”film”; NVENC: “ll”,”ull”,”hq”) </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6encode19FFmpegEncoderParams8gop_sizeE">
+<span id="_CPPv3N5Limef6encode19FFmpegEncoderParams8gop_sizeE"></span><span id="_CPPv2N5Limef6encode19FFmpegEncoderParams8gop_sizeE"></span><span id="Limef::encode::FFmpegEncoderParams::gop_size__i"></span><span class="target" id="structLimef_1_1encode_1_1FFmpegEncoderParams_1a67881295e39b8d237c521e4d4bcc9144"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">gop_size</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="p"><span class="pre">{</span></span><span class="m"><span class="pre">30</span></span><span class="p"><span class="pre">}</span></span><a class="headerlink" href="#_CPPv4N5Limef6encode19FFmpegEncoderParams8gop_sizeE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Keyframe interval (0 = codec default) </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6encode19FFmpegEncoderParams12max_b_framesE">
+<span id="_CPPv3N5Limef6encode19FFmpegEncoderParams12max_b_framesE"></span><span id="_CPPv2N5Limef6encode19FFmpegEncoderParams12max_b_framesE"></span><span id="Limef::encode::FFmpegEncoderParams::max_b_frames__i"></span><span class="target" id="structLimef_1_1encode_1_1FFmpegEncoderParams_1aa5f9ea2524fa4a6bfdb08c172e055203"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">max_b_frames</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="p"><span class="pre">{</span></span><span class="o"><span class="pre">-</span></span><span class="m"><span class="pre">1</span></span><span class="p"><span class="pre">}</span></span><a class="headerlink" href="#_CPPv4N5Limef6encode19FFmpegEncoderParams12max_b_framesE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Max B-frames (-1 = codec default) </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6encode19FFmpegEncoderParams3crfE">
+<span id="_CPPv3N5Limef6encode19FFmpegEncoderParams3crfE"></span><span id="_CPPv2N5Limef6encode19FFmpegEncoderParams3crfE"></span><span id="Limef::encode::FFmpegEncoderParams::crf__i"></span><span class="target" id="structLimef_1_1encode_1_1FFmpegEncoderParams_1ac9869d5c8338861a7b201b5c39abbe1c"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">crf</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="p"><span class="pre">{</span></span><span class="o"><span class="pre">-</span></span><span class="m"><span class="pre">1</span></span><span class="p"><span class="pre">}</span></span><a class="headerlink" href="#_CPPv4N5Limef6encode19FFmpegEncoderParams3crfE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Constant Rate Factor (-1 = use bitrate instead) </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6encode19FFmpegEncoderParams12thread_countE">
+<span id="_CPPv3N5Limef6encode19FFmpegEncoderParams12thread_countE"></span><span id="_CPPv2N5Limef6encode19FFmpegEncoderParams12thread_countE"></span><span id="Limef::encode::FFmpegEncoderParams::thread_count__i"></span><span class="target" id="structLimef_1_1encode_1_1FFmpegEncoderParams_1aea91ccb73595dc9ebaa9e6c07d5e3d30"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">thread_count</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="p"><span class="pre">{</span></span><span class="m"><span class="pre">0</span></span><span class="p"><span class="pre">}</span></span><a class="headerlink" href="#_CPPv4N5Limef6encode19FFmpegEncoderParams12thread_countE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Encoder threads (0 = auto) </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6encode10V4L2BufferE">
+<span id="_CPPv3N5Limef6encode10V4L2BufferE"></span><span id="_CPPv2N5Limef6encode10V4L2BufferE"></span><span id="Limef::encode::V4L2Buffer"></span><span class="target" id="structLimef_1_1encode_1_1V4L2Buffer"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">V4L2Buffer</span></span></span><a class="headerlink" href="#_CPPv4N5Limef6encode10V4L2BufferE" title="Link to this definition">¶</a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;v4l2_encoder.h&gt;</em></div>
+<p>Buffer info for mmap’d V4L2 buffers. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6encode10V4L2Buffer5startE">
+<span id="_CPPv3N5Limef6encode10V4L2Buffer5startE"></span><span id="_CPPv2N5Limef6encode10V4L2Buffer5startE"></span><span id="Limef::encode::V4L2Buffer::start__voidP"></span><span class="target" id="structLimef_1_1encode_1_1V4L2Buffer_1afa826622bd27341add3208ce28dcb767"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">start</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="p"><span class="pre">{</span></span><span class="k"><span class="pre">nullptr</span></span><span class="p"><span class="pre">}</span></span><a class="headerlink" href="#_CPPv4N5Limef6encode10V4L2Buffer5startE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>mmap’d address </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6encode10V4L2Buffer6lengthE">
+<span id="_CPPv3N5Limef6encode10V4L2Buffer6lengthE"></span><span id="_CPPv2N5Limef6encode10V4L2Buffer6lengthE"></span><span id="Limef::encode::V4L2Buffer::length__s"></span><span class="target" id="structLimef_1_1encode_1_1V4L2Buffer_1afcec5d98366041afd261f58464ccd561"></span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">length</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="p"><span class="pre">{</span></span><span class="m"><span class="pre">0</span></span><span class="p"><span class="pre">}</span></span><a class="headerlink" href="#_CPPv4N5Limef6encode10V4L2Buffer6lengthE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Buffer size. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6encode10V4L2Buffer5indexE">
+<span id="_CPPv3N5Limef6encode10V4L2Buffer5indexE"></span><span id="_CPPv2N5Limef6encode10V4L2Buffer5indexE"></span><span id="Limef::encode::V4L2Buffer::index__i"></span><span class="target" id="structLimef_1_1encode_1_1V4L2Buffer_1ae8e33ea7f396993509dc18335dd0f6c7"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">index</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="p"><span class="pre">{</span></span><span class="o"><span class="pre">-</span></span><span class="m"><span class="pre">1</span></span><span class="p"><span class="pre">}</span></span><a class="headerlink" href="#_CPPv4N5Limef6encode10V4L2Buffer5indexE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Buffer index. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6encode10V4L2Buffer6queuedE">
+<span id="_CPPv3N5Limef6encode10V4L2Buffer6queuedE"></span><span id="_CPPv2N5Limef6encode10V4L2Buffer6queuedE"></span><span id="Limef::encode::V4L2Buffer::queued__b"></span><span class="target" id="structLimef_1_1encode_1_1V4L2Buffer_1ae51e87b871beb58383d1c54b1f9a870a"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">queued</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="p"><span class="pre">{</span></span><span class="k"><span class="pre">false</span></span><span class="p"><span class="pre">}</span></span><a class="headerlink" href="#_CPPv4N5Limef6encode10V4L2Buffer6queuedE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Currently queued to driver. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp class">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6encode11V4L2EncoderE">
+<span id="_CPPv3N5Limef6encode11V4L2EncoderE"></span><span id="_CPPv2N5Limef6encode11V4L2EncoderE"></span><span id="Limef::encode::V4L2Encoder"></span><span class="target" id="classLimef_1_1encode_1_1V4L2Encoder"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">V4L2Encoder</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><span class="n"><span class="pre">Limef</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N5Limef6encodeE" title="Limef::encode"><span class="n"><span class="pre">encode</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N5Limef6encode7EncoderE" title="Limef::encode::Encoder"><span class="n"><span class="pre">Encoder</span></span></a><a class="headerlink" href="#_CPPv4N5Limef6encode11V4L2EncoderE" title="Link to this definition">¶</a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;v4l2_encoder.h&gt;</em></div>
+<p>V4L2 Memory-to-Memory encoder. </p>
+<p>Implements the Encoder interface using V4L2 M2M API. Developed against vicodec, deployable to Jetson.</p>
+<p>V4L2 M2M uses two buffer queues:<ul class="simple">
+<li><p>OUTPUT: Raw frames go IN (confusing naming from V4L2)</p></li>
+<li><p>CAPTURE: Encoded packets come OUT</p></li>
+</ul>
+</p>
+<p>State machine:<ol class="lowerroman simple">
+<li><p>Open device, set formats</p></li>
+<li><p>Request and mmap buffers for both queues</p></li>
+<li><p>Start streaming on both queues</p></li>
+<li><p>Queue raw frame to OUTPUT, dequeue encoded from CAPTURE</p></li>
+</ol>
+</p>
+<p>Example: <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">V4L2EncoderParams</span><span class="w"> </span><span class="n">params</span><span class="p">;</span>
+<span class="n">params</span><span class="p">.</span><span class="n">device</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;/dev/video2&quot;</span><span class="p">;</span><span class="w">  </span><span class="c1">// vicodec encoder</span>
+<span class="n">params</span><span class="p">.</span><span class="n">codec_fourcc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">V4L2_PIX_FMT_FWHT</span><span class="p">;</span>
+
+<span class="n">V4L2Encoder</span><span class="w"> </span><span class="n">enc</span><span class="p">(</span><span class="s">&quot;v4l2-enc&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">params</span><span class="p">);</span>
+<span class="n">enc</span><span class="p">.</span><span class="n">setPacketFrame</span><span class="p">(</span><span class="n">packet_frame</span><span class="p">);</span>
+
+<span class="c1">// First frame initializes dimensions</span>
+<span class="n">enc</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="o">&amp;</span><span class="n">decoded_frame</span><span class="p">);</span>
+
+<span class="c1">// Check for output</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">enc</span><span class="p">.</span><span class="n">status</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">EncoderStatus</span><span class="o">::</span><span class="n">NeedsRead</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">PacketFrame</span><span class="o">&amp;</span><span class="w"> </span><span class="n">pkt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">enc</span><span class="p">.</span><span class="n">getPacket</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6encode11V4L2Encoder9setLoggerENSt10shared_ptrIN6spdlog6loggerEEE">
+<span id="_CPPv3N5Limef6encode11V4L2Encoder9setLoggerENSt10shared_ptrIN6spdlog6loggerEEE"></span><span id="_CPPv2N5Limef6encode11V4L2Encoder9setLoggerENSt10shared_ptrIN6spdlog6loggerEEE"></span><span id="Limef::encode::V4L2Encoder::setLogger__std::shared_ptr:spdlog::logger:"></span><span class="target" id="classLimef_1_1encode_1_1V4L2Encoder_1ab76b87a65b4edd4f4df9d7a9a901ca21"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">setLogger</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">shared_ptr</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">spdlog</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">logger</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">logger</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">override</span></span><a class="headerlink" href="#_CPPv4N5Limef6encode11V4L2Encoder9setLoggerENSt10shared_ptrIN6spdlog6loggerEEE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Set logger for this encoder. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6encode11V4L2Encoder14setPacketFrameERN5Limef5frame11PacketFrameE">
+<span id="_CPPv3N5Limef6encode11V4L2Encoder14setPacketFrameERN5Limef5frame11PacketFrameE"></span><span id="_CPPv2N5Limef6encode11V4L2Encoder14setPacketFrameERN5Limef5frame11PacketFrameE"></span><span id="Limef::encode::V4L2Encoder::setPacketFrame__Limef::frame::PacketFrameR"></span><span class="target" id="classLimef_1_1encode_1_1V4L2Encoder_1ac56eacc11ce17782d13af086b2904955"></span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">setPacketFrame</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">Limef</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="frames.html#_CPPv4N5Limef5frameE" title="Limef::frame"><span class="n"><span class="pre">frame</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="frames.html#_CPPv4N5Limef5frame11PacketFrameE" title="Limef::frame::PacketFrame"><span class="n"><span class="pre">PacketFrame</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">frame</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">override</span></span><a class="headerlink" href="#_CPPv4N5Limef6encode11V4L2Encoder14setPacketFrameERN5Limef5frame11PacketFrameE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Set output packet frame. </p>
+<p>Must be called before encoder can be used. Frame will be reused for encoded output.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>frame</strong> – Frame to use for encoded output </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6encode11V4L2Encoder6statusEv">
+<span id="_CPPv3N5Limef6encode11V4L2Encoder6statusEv"></span><span id="_CPPv2N5Limef6encode11V4L2Encoder6statusEv"></span><span id="Limef::encode::V4L2Encoder::status"></span><span class="target" id="classLimef_1_1encode_1_1V4L2Encoder_1a1acf42f0b7d0664ee80d30055e3bc6de"></span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4N5Limef6encode13EncoderStatusE" title="Limef::encode::EncoderStatus"><span class="n"><span class="pre">EncoderStatus</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">status</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">override</span></span><a class="headerlink" href="#_CPPv4N5Limef6encode11V4L2Encoder6statusEv" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Get current encoder status. </p>
+<p>Call this to determine what operation to do next:<ul class="simple">
+<li><p>NeedsMoreData: Call push() with next frame</p></li>
+<li><p>NeedsRead: Call getPacket() to get encoded packet</p></li>
+<li><p>Error: Handle error condition</p></li>
+</ul>
+</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>EncoderStatus Current status </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6encode11V4L2Encoder4pushEPKN5Limef5frame12DecodedFrameE">
+<span id="_CPPv3N5Limef6encode11V4L2Encoder4pushEPKN5Limef5frame12DecodedFrameE"></span><span id="_CPPv2N5Limef6encode11V4L2Encoder4pushEPKN5Limef5frame12DecodedFrameE"></span><span id="Limef::encode::V4L2Encoder::push__Limef::frame::DecodedFrameCP"></span><span class="target" id="classLimef_1_1encode_1_1V4L2Encoder_1aba20aae39b30a48c2e18b105c815fb62"></span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">push</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">Limef</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="frames.html#_CPPv4N5Limef5frameE" title="Limef::frame"><span class="n"><span class="pre">frame</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="frames.html#_CPPv4N5Limef5frame12DecodedFrameE" title="Limef::frame::DecodedFrame"><span class="n"><span class="pre">DecodedFrame</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">frame</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">override</span></span><a class="headerlink" href="#_CPPv4N5Limef6encode11V4L2Encoder4pushEPKN5Limef5frame12DecodedFrameE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Push decoded frame for encoding. </p>
+<p>Only call when status() returns NeedsMoreData. On first call, may initialize encoder dimensions from frame.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>frame</strong> – DecodedFrame to encode </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6encode11V4L2Encoder9getPacketEv">
+<span id="_CPPv3N5Limef6encode11V4L2Encoder9getPacketEv"></span><span id="_CPPv2N5Limef6encode11V4L2Encoder9getPacketEv"></span><span id="Limef::encode::V4L2Encoder::getPacket"></span><span class="target" id="classLimef_1_1encode_1_1V4L2Encoder_1a329d373691d837230f475631a0d05f68"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">Limef</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="frames.html#_CPPv4N5Limef5frameE" title="Limef::frame"><span class="n"><span class="pre">frame</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="frames.html#_CPPv4N5Limef5frame11PacketFrameE" title="Limef::frame::PacketFrame"><span class="n"><span class="pre">PacketFrame</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="sig-name descname"><span class="n"><span class="pre">getPacket</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">override</span></span><a class="headerlink" href="#_CPPv4N5Limef6encode11V4L2Encoder9getPacketEv" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Get encoded packet. </p>
+<p>Only call when status() returns NeedsRead</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>const PacketFrame&amp; Reference to encoded packet </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6encode11V4L2Encoder5flushEv">
+<span id="_CPPv3N5Limef6encode11V4L2Encoder5flushEv"></span><span id="_CPPv2N5Limef6encode11V4L2Encoder5flushEv"></span><span id="Limef::encode::V4L2Encoder::flush"></span><span class="target" id="classLimef_1_1encode_1_1V4L2Encoder_1afba03337a041eb0aabaafc0cf8b325c3"></span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">flush</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">override</span></span><a class="headerlink" href="#_CPPv4N5Limef6encode11V4L2Encoder5flushEv" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Flush the encoder. </p>
+<p>Forces encoder to output any buffered packets. Check status() after this to get remaining packets. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK5Limef6encode11V4L2Encoder14getStreamIndexEv">
+<span id="_CPPv3NK5Limef6encode11V4L2Encoder14getStreamIndexEv"></span><span id="_CPPv2NK5Limef6encode11V4L2Encoder14getStreamIndexEv"></span><span id="Limef::encode::V4L2Encoder::getStreamIndexC"></span><span class="target" id="classLimef_1_1encode_1_1V4L2Encoder_1ad63adf4a42c6e3deddeb25e4a85b6966"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getStreamIndex</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">override</span></span><a class="headerlink" href="#_CPPv4NK5Limef6encode11V4L2Encoder14getStreamIndexEv" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Get the stream index this encoder produces. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6encode11V4L2Encoder14setStreamIndexEi">
+<span id="_CPPv3N5Limef6encode11V4L2Encoder14setStreamIndexEi"></span><span id="_CPPv2N5Limef6encode11V4L2Encoder14setStreamIndexEi"></span><span id="Limef::encode::V4L2Encoder::setStreamIndex__i"></span><span class="target" id="classLimef_1_1encode_1_1V4L2Encoder_1aed6311d13377e1a7ac29726807f41d53"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">setStreamIndex</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">idx</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">override</span></span><a class="headerlink" href="#_CPPv4N5Limef6encode11V4L2Encoder14setStreamIndexEi" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Set stream index for output packets. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK5Limef6encode11V4L2Encoder13isInitializedEv">
+<span id="_CPPv3NK5Limef6encode11V4L2Encoder13isInitializedEv"></span><span id="_CPPv2NK5Limef6encode11V4L2Encoder13isInitializedEv"></span><span id="Limef::encode::V4L2Encoder::isInitializedC"></span><span class="target" id="classLimef_1_1encode_1_1V4L2Encoder_1ad19ea9620c7a8fe5243a0831e2526bac"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">isInitialized</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">override</span></span><a class="headerlink" href="#_CPPv4NK5Limef6encode11V4L2Encoder13isInitializedEv" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Check if encoder is fully initialized and ready to produce output. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6encode11V4L2Encoder9configureEPK8AVStream">
+<span id="_CPPv3N5Limef6encode11V4L2Encoder9configureEPK8AVStream"></span><span id="_CPPv2N5Limef6encode11V4L2Encoder9configureEPK8AVStream"></span><span id="Limef::encode::V4L2Encoder::configure__AVStreamCP"></span><span class="target" id="classLimef_1_1encode_1_1V4L2Encoder_1a368ea6bc28e0cb3ed5c8662a738ba900"></span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">configure</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">AVStream</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">stream</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">override</span></span><a class="headerlink" href="#_CPPv4N5Limef6encode11V4L2Encoder9configureEPK8AVStream" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Configure encoder timing from stream info. </p>
+<p>Called when StreamFrame arrives. Extracts fps and timebase. Since StreamFrame uses AVFormatContext, all encoders receive AVStream*.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>stream</strong> – Source stream info </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK5Limef6encode11V4L2Encoder12isConfiguredEv">
+<span id="_CPPv3NK5Limef6encode11V4L2Encoder12isConfiguredEv"></span><span id="_CPPv2NK5Limef6encode11V4L2Encoder12isConfiguredEv"></span><span id="Limef::encode::V4L2Encoder::isConfiguredC"></span><span class="target" id="classLimef_1_1encode_1_1V4L2Encoder_1a43576a399a1d58e4c857d92705aa1c4b"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">isConfigured</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">override</span></span><a class="headerlink" href="#_CPPv4NK5Limef6encode11V4L2Encoder12isConfiguredEv" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Check if encoder has been configured (received stream info) </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6encode17V4L2EncoderParamsE">
+<span id="_CPPv3N5Limef6encode17V4L2EncoderParamsE"></span><span id="_CPPv2N5Limef6encode17V4L2EncoderParamsE"></span><span id="Limef::encode::V4L2EncoderParams"></span><span class="target" id="structLimef_1_1encode_1_1V4L2EncoderParams"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">V4L2EncoderParams</span></span></span><a class="headerlink" href="#_CPPv4N5Limef6encode17V4L2EncoderParamsE" title="Link to this definition">¶</a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;v4l2_encoder.h&gt;</em></div>
+<p>Encoding parameters for V4L2Encoder. </p>
+<p>V4L2-specific parameters using fourcc codes instead of AVCodecID. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6encode17V4L2EncoderParams6deviceE">
+<span id="_CPPv3N5Limef6encode17V4L2EncoderParams6deviceE"></span><span id="_CPPv2N5Limef6encode17V4L2EncoderParams6deviceE"></span><span id="Limef::encode::V4L2EncoderParams::device__ss"></span><span class="target" id="structLimef_1_1encode_1_1V4L2EncoderParams_1a463a0991820ac8200009585e40085c28"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">device</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="p"><span class="pre">{</span></span><span class="s"><span class="pre">&quot;/dev/video2&quot;</span></span><span class="p"><span class="pre">}</span></span><a class="headerlink" href="#_CPPv4N5Limef6encode17V4L2EncoderParams6deviceE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>V4L2 device path (vicodec encoder default) </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6encode17V4L2EncoderParams12codec_fourccE">
+<span id="_CPPv3N5Limef6encode17V4L2EncoderParams12codec_fourccE"></span><span id="_CPPv2N5Limef6encode17V4L2EncoderParams12codec_fourccE"></span><span id="Limef::encode::V4L2EncoderParams::codec_fourcc__uint32_t"></span><span class="target" id="structLimef_1_1encode_1_1V4L2EncoderParams_1a7cdedf97e43fdcd62ba004074c6f4ff0"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">codec_fourcc</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="p"><span class="pre">{</span></span><span class="n"><span class="pre">V4L2_PIX_FMT_FWHT</span></span><span class="p"><span class="pre">}</span></span><a class="headerlink" href="#_CPPv4N5Limef6encode17V4L2EncoderParams12codec_fourccE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Output codec (FWHT, H264, HEVC) </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6encode17V4L2EncoderParams12input_fourccE">
+<span id="_CPPv3N5Limef6encode17V4L2EncoderParams12input_fourccE"></span><span id="_CPPv2N5Limef6encode17V4L2EncoderParams12input_fourccE"></span><span id="Limef::encode::V4L2EncoderParams::input_fourcc__uint32_t"></span><span class="target" id="structLimef_1_1encode_1_1V4L2EncoderParams_1a49283fec58f2d7cbddb490028e8e6cae"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">input_fourcc</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="p"><span class="pre">{</span></span><span class="n"><span class="pre">V4L2_PIX_FMT_NV12</span></span><span class="p"><span class="pre">}</span></span><a class="headerlink" href="#_CPPv4N5Limef6encode17V4L2EncoderParams12input_fourccE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Input pixel format. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6encode17V4L2EncoderParams7bitrateE">
+<span id="_CPPv3N5Limef6encode17V4L2EncoderParams7bitrateE"></span><span id="_CPPv2N5Limef6encode17V4L2EncoderParams7bitrateE"></span><span id="Limef::encode::V4L2EncoderParams::bitrate__int64_t"></span><span class="target" id="structLimef_1_1encode_1_1V4L2EncoderParams_1a29ef686c9b7e0400ba4681f792aa7e0c"></span><span class="n"><span class="pre">int64_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">bitrate</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="p"><span class="pre">{</span></span><span class="m"><span class="pre">2000000</span></span><span class="p"><span class="pre">}</span></span><a class="headerlink" href="#_CPPv4N5Limef6encode17V4L2EncoderParams7bitrateE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Target bitrate in bits/sec. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6encode17V4L2EncoderParams8gop_sizeE">
+<span id="_CPPv3N5Limef6encode17V4L2EncoderParams8gop_sizeE"></span><span id="_CPPv2N5Limef6encode17V4L2EncoderParams8gop_sizeE"></span><span id="Limef::encode::V4L2EncoderParams::gop_size__i"></span><span class="target" id="structLimef_1_1encode_1_1V4L2EncoderParams_1a459c9fd0b893a34c9a1e76297fabf9ad"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">gop_size</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="p"><span class="pre">{</span></span><span class="m"><span class="pre">30</span></span><span class="p"><span class="pre">}</span></span><a class="headerlink" href="#_CPPv4N5Limef6encode17V4L2EncoderParams8gop_sizeE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Keyframe interval. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6encode17V4L2EncoderParams18num_output_buffersE">
+<span id="_CPPv3N5Limef6encode17V4L2EncoderParams18num_output_buffersE"></span><span id="_CPPv2N5Limef6encode17V4L2EncoderParams18num_output_buffersE"></span><span id="Limef::encode::V4L2EncoderParams::num_output_buffers__i"></span><span class="target" id="structLimef_1_1encode_1_1V4L2EncoderParams_1a5e1df40d278edba272e53e83cff325e4"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">num_output_buffers</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="p"><span class="pre">{</span></span><span class="m"><span class="pre">4</span></span><span class="p"><span class="pre">}</span></span><a class="headerlink" href="#_CPPv4N5Limef6encode17V4L2EncoderParams18num_output_buffersE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Number of OUTPUT (raw frame) buffers. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6encode17V4L2EncoderParams19num_capture_buffersE">
+<span id="_CPPv3N5Limef6encode17V4L2EncoderParams19num_capture_buffersE"></span><span id="_CPPv2N5Limef6encode17V4L2EncoderParams19num_capture_buffersE"></span><span id="Limef::encode::V4L2EncoderParams::num_capture_buffers__i"></span><span class="target" id="structLimef_1_1encode_1_1V4L2EncoderParams_1aaec89cdc6345b721406b46c0cf7f98b2"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">num_capture_buffers</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="p"><span class="pre">{</span></span><span class="m"><span class="pre">4</span></span><span class="p"><span class="pre">}</span></span><a class="headerlink" href="#_CPPv4N5Limef6encode17V4L2EncoderParams19num_capture_buffersE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Number of CAPTURE (encoded) buffers. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="signals.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Signals</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="decoders.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Decoders</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2024 Sampsa Riikonen
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Encoders</a><ul>
+<li><a class="reference internal" href="#_CPPv4N5Limef6encodeE"><code class="docutils literal notranslate"><span class="pre">Limef::encode</span></code></a><ul>
+<li><a class="reference internal" href="#_CPPv4N5Limef6encode18VideoEncoderParamsE"><code class="docutils literal notranslate"><span class="pre">VideoEncoderParams</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6encode14EncoderBackendE"><code class="docutils literal notranslate"><span class="pre">EncoderBackend</span></code></a><ul>
+<li><a class="reference internal" href="#_CPPv4N5Limef6encode14EncoderBackend6FFmpegE"><code class="docutils literal notranslate"><span class="pre">FFmpeg</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6encode14EncoderBackend4V4L2E"><code class="docutils literal notranslate"><span class="pre">V4L2</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6encode13EncoderStatusE"><code class="docutils literal notranslate"><span class="pre">EncoderStatus</span></code></a><ul>
+<li><a class="reference internal" href="#_CPPv4N5Limef6encode13EncoderStatus13NeedsMoreDataE"><code class="docutils literal notranslate"><span class="pre">NeedsMoreData</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6encode13EncoderStatus9NeedsReadE"><code class="docutils literal notranslate"><span class="pre">NeedsRead</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6encode13EncoderStatus11EndOfStreamE"><code class="docutils literal notranslate"><span class="pre">EndOfStream</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6encode13EncoderStatus5ErrorE"><code class="docutils literal notranslate"><span class="pre">Error</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6encode20getAvailableEncodersEv"><code class="docutils literal notranslate"><span class="pre">getAvailableEncoders()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6encode18isEncoderAvailableE14EncoderBackend"><code class="docutils literal notranslate"><span class="pre">isEncoderAvailable()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6encode10getBackendERK18VideoEncoderParams"><code class="docutils literal notranslate"><span class="pre">getBackend()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6encode13createEncoderERKNSt6stringERK18VideoEncoderParams"><code class="docutils literal notranslate"><span class="pre">createEncoder()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6encode14getEncoderNameE9AVCodecID7HWAccel"><code class="docutils literal notranslate"><span class="pre">getEncoderName()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6encode7EncoderE"><code class="docutils literal notranslate"><span class="pre">Limef::encode::Encoder</span></code></a><ul>
+<li><a class="reference internal" href="#_CPPv4N5Limef6encode7Encoder9setLoggerENSt10shared_ptrIN6spdlog6loggerEEE"><code class="docutils literal notranslate"><span class="pre">setLogger()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6encode7Encoder14setPacketFrameERN5Limef5frame11PacketFrameE"><code class="docutils literal notranslate"><span class="pre">setPacketFrame()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6encode7Encoder6statusEv"><code class="docutils literal notranslate"><span class="pre">status()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6encode7Encoder4pushEPKN5Limef5frame12DecodedFrameE"><code class="docutils literal notranslate"><span class="pre">push()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6encode7Encoder9getPacketEv"><code class="docutils literal notranslate"><span class="pre">getPacket()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6encode7Encoder5flushEv"><code class="docutils literal notranslate"><span class="pre">flush()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4NK5Limef6encode7Encoder14getStreamIndexEv"><code class="docutils literal notranslate"><span class="pre">getStreamIndex()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6encode7Encoder14setStreamIndexEi"><code class="docutils literal notranslate"><span class="pre">setStreamIndex()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4NK5Limef6encode7Encoder13isInitializedEv"><code class="docutils literal notranslate"><span class="pre">isInitialized()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6encode7Encoder9configureEPK8AVStream"><code class="docutils literal notranslate"><span class="pre">configure()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4NK5Limef6encode7Encoder12isConfiguredEv"><code class="docutils literal notranslate"><span class="pre">isConfigured()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4NK5Limef6encode7Encoder14getCodecParamsEv"><code class="docutils literal notranslate"><span class="pre">getCodecParams()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4NK5Limef6encode7Encoder11getTimeBaseEv"><code class="docutils literal notranslate"><span class="pre">getTimeBase()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4NK5Limef6encode7Encoder12getFrameRateEv"><code class="docutils literal notranslate"><span class="pre">getFrameRate()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6encode13FFmpegEncoderE"><code class="docutils literal notranslate"><span class="pre">Limef::encode::FFmpegEncoder</span></code></a><ul>
+<li><a class="reference internal" href="#_CPPv4N5Limef6encode13FFmpegEncoder13FFmpegEncoderERKNSt6stringERK19FFmpegEncoderParams"><code class="docutils literal notranslate"><span class="pre">FFmpegEncoder()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6encode13FFmpegEncoder9setLoggerENSt10shared_ptrIN6spdlog6loggerEEE"><code class="docutils literal notranslate"><span class="pre">setLogger()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6encode13FFmpegEncoder14setPacketFrameERN5Limef5frame11PacketFrameE"><code class="docutils literal notranslate"><span class="pre">setPacketFrame()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6encode13FFmpegEncoder6statusEv"><code class="docutils literal notranslate"><span class="pre">status()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6encode13FFmpegEncoder4pushEPKN5Limef5frame12DecodedFrameE"><code class="docutils literal notranslate"><span class="pre">push()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6encode13FFmpegEncoder9getPacketEv"><code class="docutils literal notranslate"><span class="pre">getPacket()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6encode13FFmpegEncoder5flushEv"><code class="docutils literal notranslate"><span class="pre">flush()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4NK5Limef6encode13FFmpegEncoder14getStreamIndexEv"><code class="docutils literal notranslate"><span class="pre">getStreamIndex()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6encode13FFmpegEncoder14setStreamIndexEi"><code class="docutils literal notranslate"><span class="pre">setStreamIndex()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4NK5Limef6encode13FFmpegEncoder13isInitializedEv"><code class="docutils literal notranslate"><span class="pre">isInitialized()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6encode13FFmpegEncoder9configureEPK8AVStream"><code class="docutils literal notranslate"><span class="pre">configure()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4NK5Limef6encode13FFmpegEncoder12isConfiguredEv"><code class="docutils literal notranslate"><span class="pre">isConfigured()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4NK5Limef6encode13FFmpegEncoder14getCodecParamsEv"><code class="docutils literal notranslate"><span class="pre">getCodecParams()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4NK5Limef6encode13FFmpegEncoder11getTimeBaseEv"><code class="docutils literal notranslate"><span class="pre">getTimeBase()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4NK5Limef6encode13FFmpegEncoder12getFrameRateEv"><code class="docutils literal notranslate"><span class="pre">getFrameRate()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6encode19FFmpegEncoderParamsE"><code class="docutils literal notranslate"><span class="pre">Limef::encode::FFmpegEncoderParams</span></code></a><ul>
+<li><a class="reference internal" href="#_CPPv4N5Limef6encode19FFmpegEncoderParams8codec_idE"><code class="docutils literal notranslate"><span class="pre">codec_id</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6encode19FFmpegEncoderParams7bitrateE"><code class="docutils literal notranslate"><span class="pre">bitrate</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6encode19FFmpegEncoderParams8hw_accelE"><code class="docutils literal notranslate"><span class="pre">hw_accel</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6encode19FFmpegEncoderParams9hw_deviceE"><code class="docutils literal notranslate"><span class="pre">hw_device</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6encode19FFmpegEncoderParams6presetE"><code class="docutils literal notranslate"><span class="pre">preset</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6encode19FFmpegEncoderParams7profileE"><code class="docutils literal notranslate"><span class="pre">profile</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6encode19FFmpegEncoderParams4tuneE"><code class="docutils literal notranslate"><span class="pre">tune</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6encode19FFmpegEncoderParams8gop_sizeE"><code class="docutils literal notranslate"><span class="pre">gop_size</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6encode19FFmpegEncoderParams12max_b_framesE"><code class="docutils literal notranslate"><span class="pre">max_b_frames</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6encode19FFmpegEncoderParams3crfE"><code class="docutils literal notranslate"><span class="pre">crf</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6encode19FFmpegEncoderParams12thread_countE"><code class="docutils literal notranslate"><span class="pre">thread_count</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6encode10V4L2BufferE"><code class="docutils literal notranslate"><span class="pre">Limef::encode::V4L2Buffer</span></code></a><ul>
+<li><a class="reference internal" href="#_CPPv4N5Limef6encode10V4L2Buffer5startE"><code class="docutils literal notranslate"><span class="pre">start</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6encode10V4L2Buffer6lengthE"><code class="docutils literal notranslate"><span class="pre">length</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6encode10V4L2Buffer5indexE"><code class="docutils literal notranslate"><span class="pre">index</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6encode10V4L2Buffer6queuedE"><code class="docutils literal notranslate"><span class="pre">queued</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6encode11V4L2EncoderE"><code class="docutils literal notranslate"><span class="pre">Limef::encode::V4L2Encoder</span></code></a><ul>
+<li><a class="reference internal" href="#_CPPv4N5Limef6encode11V4L2Encoder9setLoggerENSt10shared_ptrIN6spdlog6loggerEEE"><code class="docutils literal notranslate"><span class="pre">setLogger()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6encode11V4L2Encoder14setPacketFrameERN5Limef5frame11PacketFrameE"><code class="docutils literal notranslate"><span class="pre">setPacketFrame()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6encode11V4L2Encoder6statusEv"><code class="docutils literal notranslate"><span class="pre">status()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6encode11V4L2Encoder4pushEPKN5Limef5frame12DecodedFrameE"><code class="docutils literal notranslate"><span class="pre">push()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6encode11V4L2Encoder9getPacketEv"><code class="docutils literal notranslate"><span class="pre">getPacket()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6encode11V4L2Encoder5flushEv"><code class="docutils literal notranslate"><span class="pre">flush()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4NK5Limef6encode11V4L2Encoder14getStreamIndexEv"><code class="docutils literal notranslate"><span class="pre">getStreamIndex()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6encode11V4L2Encoder14setStreamIndexEi"><code class="docutils literal notranslate"><span class="pre">setStreamIndex()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4NK5Limef6encode11V4L2Encoder13isInitializedEv"><code class="docutils literal notranslate"><span class="pre">isInitialized()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6encode11V4L2Encoder9configureEPK8AVStream"><code class="docutils literal notranslate"><span class="pre">configure()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4NK5Limef6encode11V4L2Encoder12isConfiguredEv"><code class="docutils literal notranslate"><span class="pre">isConfigured()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6encode17V4L2EncoderParamsE"><code class="docutils literal notranslate"><span class="pre">Limef::encode::V4L2EncoderParams</span></code></a><ul>
+<li><a class="reference internal" href="#_CPPv4N5Limef6encode17V4L2EncoderParams6deviceE"><code class="docutils literal notranslate"><span class="pre">device</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6encode17V4L2EncoderParams12codec_fourccE"><code class="docutils literal notranslate"><span class="pre">codec_fourcc</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6encode17V4L2EncoderParams12input_fourccE"><code class="docutils literal notranslate"><span class="pre">input_fourcc</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6encode17V4L2EncoderParams7bitrateE"><code class="docutils literal notranslate"><span class="pre">bitrate</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6encode17V4L2EncoderParams8gop_sizeE"><code class="docutils literal notranslate"><span class="pre">gop_size</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6encode17V4L2EncoderParams18num_output_buffersE"><code class="docutils literal notranslate"><span class="pre">num_output_buffers</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6encode17V4L2EncoderParams19num_capture_buffersE"><code class="docutils literal notranslate"><span class="pre">num_capture_buffers</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script src="../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/scripts/furo.js?v=46bd48cc"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    </body>
+</html>

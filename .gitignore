@@ -1,0 +1,24 @@
+# Doxygen build output
+doxygen/html/
+doxygen/latex/
+
+# Sphinx build output — exclude intermediate dirs, keep html for GitHub Pages
+sphinx/_build/
+!sphinx/_build/html/
+sphinx/_build/html/_sources/
+sphinx/_build/doctrees/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Jupyter
+.ipynb_checkpoints/
+*-checkpoint.ipynb
+
+# Editor temp files
+*~
+*.swp
+*.swo
+xml/

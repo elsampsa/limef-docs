@@ -1,0 +1,919 @@
+<!doctype html>
+<html class="no-js" lang="en" data-content_root="../">
+  <head><meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="index" title="Index" href="../genindex.html"><link rel="search" title="Search" href="../search.html"><link rel="next" title="Distributing" href="../distribution.html"><link rel="prev" title="RTSP" href="rtsp.html">
+        <link rel="prefetch" href="../_static/logo.png" as="image">
+
+    <!-- Generated with Sphinx 9.1.0 and Furo 2025.12.19 -->
+        <title>Shared Memory</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=7bdb33bb" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?v=8dab3a3b" />
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #eeffcc;
+  --color-code-foreground: black;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle site navigation sidebar">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc" aria-label="Toggle table of contents sidebar">
+<label class="overlay sidebar-overlay" for="__navigation"></label>
+<label class="overlay toc-overlay" for="__toc"></label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <span class="icon"><svg><use href="#svg-menu"></use></svg></span>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../index.html"><div class="brand">Media Streaming Framework for Linux</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky">
+
+<style>
+    .sidebar-links {
+      list-style-type: none;
+      padding-left: 10px;
+    }
+    .sidebar-links li {
+      margin: 1em 0;
+      padding-left: 20px;
+    }
+</style>
+  
+<a class="sidebar-brand" href="../index.html">
+<img src="../_static/logo.png" alt="Logo" style="width: 200px; height: auto; border-radius: 0px 6px 6px 0px;">
+</a>
+
+<div class="list-container">
+<ul class="sidebar-links">
+    <li><a href="https://github.com/elsampsa/limef-public" target="_blank" rel="noopener noreferrer"><i class="fa fa-github" style="font-size: 16pt"></i> Limef library </a></li>
+    <li><a href="https://github.com/elsampsa/limef-apps" target="_blank" rel="noopener noreferrer"><i class="fa fa-github" style="font-size: 16pt"></i> App examples </a></li>
+    <li><a href="https://github.com/elsampsa/limef-plugins" target="_blank" rel="noopener noreferrer"><i class="fa fa-github" style="font-size: 16pt"></i> Plugin examples </a></li>
+    <li><a href="https://github.com/elsampsa/limef-docs/issues" target="_blank" rel="noopener noreferrer"><i class="fa fa-bug" style="font-size: 16pt"></i> Public issues </a></li>
+    <li><a href="https://github.com/elsampsa/limef-releases/releases" target="_blank" rel="noopener noreferrer"><i class="fa fa-download" style="font-size: 16pt"></i> Releases </a></li>
+    <li><a href="https://github.com/sponsors/elsampsa" target="_blank" rel="noopener noreferrer"><i class="fa fa-heart" style="font-size: 16pt"></i> Sponsor </a></li>
+</ul>
+</div><form class="sidebar-search-container" method="get" action="../search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Limef</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../intro.html">A Media Streaming Framework</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../concepts.html">Key Concepts and Definitions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../under_the_hood.html">Under the Hood</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../tutorial/index.html">Tutorials</a><input aria-label="Toggle navigation of Tutorials" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tutorial/t01_mediafile_dump.html">Tutorial 1: Streaming packets to a DumpFrameFilter</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current has-children"><a class="reference internal" href="index.html">API Reference</a><input aria-label="Toggle navigation of API Reference" checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="frames.html">Frames</a></li>
+<li class="toctree-l2"><a class="reference internal" href="framefilters.html">Framefilters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="framefifos.html">FrameFifos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="threads.html">Threads</a></li>
+<li class="toctree-l2"><a class="reference internal" href="decoders.html">Decoders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="encoders.html">Encoders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="signals.html">Signals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rtsp.html">RTSP</a></li>
+<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">Shared Memory</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../distribution.html">Distributing</a></li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="view-this-page">
+  <a class="muted-link" href="../_sources/api/shmem.md.txt" title="View this page">
+    <svg><use href="#svg-eye"></use></svg>
+    <span class="visually-hidden">View this page</span>
+  </a>
+</div>
+<div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          <section id="shared-memory">
+<h1>Shared Memory<a class="headerlink" href="#shared-memory" title="Link to this heading">¶</a></h1>
+<p>Shared memory transport for zero-copy inter-process frame passing.</p>
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef5shmemE">
+<span id="_CPPv3N5Limef5shmemE"></span><span id="_CPPv2N5Limef5shmemE"></span><span id="Limef::shmem"></span><span class="target" id="namespaceLimef_1_1shmem"></span><span class="k"><span class="pre">namespace</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">shmem</span></span></span><a class="headerlink" href="#_CPPv4N5Limef5shmemE" title="Link to this definition">¶</a><br /></dt>
+<dd><dl class="cpp class">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef5shmem19SharedMemRingBufferE">
+<span id="_CPPv3N5Limef5shmem19SharedMemRingBufferE"></span><span id="_CPPv2N5Limef5shmem19SharedMemRingBufferE"></span><span id="Limef::shmem::SharedMemRingBuffer"></span><span class="target" id="classLimef_1_1shmem_1_1SharedMemRingBuffer"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">SharedMemRingBuffer</span></span></span><a class="headerlink" href="#_CPPv4N5Limef5shmem19SharedMemRingBufferE" title="Link to this definition">¶</a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;sharedmemringbuffer.h&gt;</em></div>
+<p>Shared memory ring buffer synchronized with POSIX semaphores. </p>
+<p>Multi-process ring buffer using multiple SharedMemSegments. Server pushes data, clients pull data with optional timeout. Handles overflow by zeroing semaphore and setting overflow flag.</p>
+<p>Usage:<ul class="simple">
+<li><p>Server: Create with is_server=true, use push() to add data</p></li>
+<li><p>Client: Create with is_server=false, use pull() to read data</p></li>
+</ul>
+</p>
+<p>Synchronization:<ul class="simple">
+<li><p>count_sem: Counts available items for reading</p></li>
+<li><p>overflow_sem: Indicates buffer overflow occurred</p></li>
+</ul>
+</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// Server process</span>
+<span class="n">SharedMemRingBuffer</span><span class="w"> </span><span class="n">server_ring</span><span class="p">(</span><span class="s">&quot;my_buffer&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="mi">1024</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="nb">true</span><span class="p">);</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">server_ring</span><span class="p">.</span><span class="n">init</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// Handle initialization error</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">-1</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">uint8_t</span><span class="o">&gt;</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mh">0x01</span><span class="p">,</span><span class="w"> </span><span class="mh">0x02</span><span class="p">,</span><span class="w"> </span><span class="mh">0x03</span><span class="p">,</span><span class="w"> </span><span class="mh">0x04</span><span class="p">};</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">server_ring</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">data</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// Handle push error (buffer full, etc.)</span>
+<span class="p">}</span>
+
+<span class="c1">// Client process  </span>
+<span class="n">SharedMemRingBuffer</span><span class="w"> </span><span class="n">client_ring</span><span class="p">(</span><span class="s">&quot;my_buffer&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="mi">1024</span><span class="p">,</span><span class="w"> </span><span class="mi">5000</span><span class="p">,</span><span class="w"> </span><span class="nb">false</span><span class="p">);</span><span class="w"> </span><span class="c1">// 5s timeout</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">client_ring</span><span class="p">.</span><span class="n">init</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// Handle initialization error</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">-1</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">uint8_t</span><span class="o">&gt;</span><span class="w"> </span><span class="n">received</span><span class="p">;</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">client_ring</span><span class="p">.</span><span class="n">pull</span><span class="p">(</span><span class="n">received</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// Process received data</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Received %zu bytes</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">received</span><span class="p">.</span><span class="n">size</span><span class="p">());</span>
+<span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// Timeout or error occurred</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">client_ring</span><span class="p">.</span><span class="n">isOverflow</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Buffer overflow detected</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Param name<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Unique identifier for the shared memory buffer </p>
+</dd>
+<dt class="field-even">Param n_cells<span class="colon">:</span></dt>
+<dd class="field-even"><p>Number of ring buffer cells </p>
+</dd>
+<dt class="field-odd">Param cell_size<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Maximum size per cell in bytes </p>
+</dd>
+<dt class="field-even">Param timeout_ms<span class="colon">:</span></dt>
+<dd class="field-even"><p>Client timeout in milliseconds (0 = no timeout) </p>
+</dd>
+<dt class="field-odd">Param is_server<span class="colon">:</span></dt>
+<dd class="field-odd"><p>true for server (creates buffer), false for client </p>
+</dd>
+</dl>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef5shmem19SharedMemRingBuffer19SharedMemRingBufferERKNSt6stringEi6size_tib">
+<span id="_CPPv3N5Limef5shmem19SharedMemRingBuffer19SharedMemRingBufferERKNSt6stringEi6size_tib"></span><span id="_CPPv2N5Limef5shmem19SharedMemRingBuffer19SharedMemRingBufferERKNSt6stringEi6size_tib"></span><span id="Limef::shmem::SharedMemRingBuffer::SharedMemRingBuffer__ssCR.i.s.i.b"></span><span class="target" id="classLimef_1_1shmem_1_1SharedMemRingBuffer_1a0fe17995ed58d8cdccfe3c9a03f81bb0"></span><span class="sig-name descname"><span class="n"><span class="pre">SharedMemRingBuffer</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">name</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">n_cells</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">cell_size</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">timeout_ms</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span>, <span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">is_server</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="k"><span class="pre">false</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5Limef5shmem19SharedMemRingBuffer19SharedMemRingBufferERKNSt6stringEi6size_tib" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Constructor. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> – Unique identifier for the ring buffer </p></li>
+<li><p><strong>n_cells</strong> – Number of cells in the ring buffer </p></li>
+<li><p><strong>cell_size</strong> – Maximum size of each cell in bytes </p></li>
+<li><p><strong>timeout_ms</strong> – Semaphore timeout in milliseconds (0 = wait forever) </p></li>
+<li><p><strong>is_server</strong> – true for server (creates resources), false for client </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef5shmem19SharedMemRingBufferD0Ev">
+<span id="_CPPv3N5Limef5shmem19SharedMemRingBufferD0Ev"></span><span id="_CPPv2N5Limef5shmem19SharedMemRingBufferD0Ev"></span><span id="Limef::shmem::SharedMemRingBuffer::~SharedMemRingBuffer"></span><span class="target" id="classLimef_1_1shmem_1_1SharedMemRingBuffer_1ac0ef0360ce2b740ba20f0d8ba104d449"></span><span class="sig-name descname"><span class="n"><span class="pre">~SharedMemRingBuffer</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5Limef5shmem19SharedMemRingBufferD0Ev" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Destructor - cleans up semaphores and segments. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef5shmem19SharedMemRingBuffer4initEv">
+<span id="_CPPv3N5Limef5shmem19SharedMemRingBuffer4initEv"></span><span id="_CPPv2N5Limef5shmem19SharedMemRingBuffer4initEv"></span><span id="Limef::shmem::SharedMemRingBuffer::init"></span><span class="target" id="classLimef_1_1shmem_1_1SharedMemRingBuffer_1a090588b065e6e42cc874ad428d54a962"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">init</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5Limef5shmem19SharedMemRingBuffer4initEv" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Initialize the ring buffer. </p>
+<p>Must be called after construction. Creates/opens semaphores and segments.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Throws<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span><span class="cpp-expr sig sig-inline cpp"><span class="n">std</span><span class="p">::</span><span class="n">runtime_error</span></span></span> – if initialization fails </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef5shmem19SharedMemRingBuffer5closeEv">
+<span id="_CPPv3N5Limef5shmem19SharedMemRingBuffer5closeEv"></span><span id="_CPPv2N5Limef5shmem19SharedMemRingBuffer5closeEv"></span><span id="Limef::shmem::SharedMemRingBuffer::close"></span><span class="target" id="classLimef_1_1shmem_1_1SharedMemRingBuffer_1af89130ead612e11f01d2d0b5b49bc40f"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">close</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5Limef5shmem19SharedMemRingBuffer5closeEv" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Clean up ring buffer resources. </p>
+<p>Must be called before destruction. Closes semaphores and segments. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef5shmem19SharedMemRingBuffer4pushERKNSt6vectorI7uint8_tEE">
+<span id="_CPPv3N5Limef5shmem19SharedMemRingBuffer4pushERKNSt6vectorI7uint8_tEE"></span><span id="_CPPv2N5Limef5shmem19SharedMemRingBuffer4pushERKNSt6vectorI7uint8_tEE"></span><span id="Limef::shmem::SharedMemRingBuffer::push__std::vector:uint8_t:CR"></span><span class="target" id="classLimef_1_1shmem_1_1SharedMemRingBuffer_1ae3c463096e368e2c5afc9a1aa93aca5b"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">push</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">vector</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">uint8_t</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">data</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5Limef5shmem19SharedMemRingBuffer4pushERKNSt6vectorI7uint8_tEE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Push data into the ring buffer (server side) </p>
+<p>If buffer is full, zeros the semaphore and sets overflow flag.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>data</strong> – Data to push into the buffer </p>
+</dd>
+<dt class="field-even">Throws<span class="colon">:</span></dt>
+<dd class="field-even"><p><span><span class="cpp-expr sig sig-inline cpp"><span class="n">std</span><span class="p">::</span><span class="n">runtime_error</span></span></span> – if not in server mode or other error </p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>true if successful </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef5shmem19SharedMemRingBuffer4pushEPK7uint8_t6size_t">
+<span id="_CPPv3N5Limef5shmem19SharedMemRingBuffer4pushEPK7uint8_t6size_t"></span><span id="_CPPv2N5Limef5shmem19SharedMemRingBuffer4pushEPK7uint8_t6size_t"></span><span id="Limef::shmem::SharedMemRingBuffer::push__uint8_tCP.s"></span><span class="target" id="classLimef_1_1shmem_1_1SharedMemRingBuffer_1a284bda5f6a382f53386f32d73c2bafdc"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">push</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">buffer</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">size</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5Limef5shmem19SharedMemRingBuffer4pushEPK7uint8_t6size_t" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Push data using direct buffer access (server side) </p>
+<p>Zero-copy version for serialized frames.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>buffer</strong> – Pointer to data buffer </p></li>
+<li><p><strong>size</strong> – Size of data in bytes </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>true if successful </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef5shmem19SharedMemRingBuffer4pushEPF6size_tP7uint8_t6size_tPN5Limef5frame5FrameEEPN5Limef5frame5FrameE">
+<span id="_CPPv3N5Limef5shmem19SharedMemRingBuffer4pushEPF6size_tP7uint8_t6size_tPN5Limef5frame5FrameEEPN5Limef5frame5FrameE"></span><span id="_CPPv2N5Limef5shmem19SharedMemRingBuffer4pushEPF6size_tP7uint8_t6size_tPN5Limef5frame5FrameEEPN5Limef5frame5FrameE"></span><span class="target" id="classLimef_1_1shmem_1_1SharedMemRingBuffer_1af3d8f69bb44542c29bbecea9b8029ec4"></span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">push</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">frame_serialize_func</span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="n"><span class="pre">uint8_t</span></span><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">size_t</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">Limef</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="frames.html#_CPPv4N5Limef5frameE" title="Limef::frame"><span class="n"><span class="pre">frame</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="frames.html#_CPPv4N5Limef5frame5FrameE" title="Limef::frame::Frame"><span class="n"><span class="pre">Frame</span></span></a><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">)</span></span>, <span class="n"><span class="pre">Limef</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="frames.html#_CPPv4N5Limef5frameE" title="Limef::frame"><span class="n"><span class="pre">frame</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="frames.html#_CPPv4N5Limef5frame5FrameE" title="Limef::frame::Frame"><span class="n"><span class="pre">Frame</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">frame</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5Limef5shmem19SharedMemRingBuffer4pushEPF6size_tP7uint8_t6size_tPN5Limef5frame5FrameEEPN5Limef5frame5FrameE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Push data using direct buffer access (server side) </p>
+<p>Give a frame serialization function that writes directly to the correct shmem buffer Function arguments:</p>
+<p>
+the logic: give a callback function that serializes frame data into the desired memory address (that only the sharedmemringbuffe knows) </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pointer</strong> – to function that takes bytebuffer address and size </p></li>
+<li><p><strong>pointer</strong> – to frame </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>returns number of overflown bytes. If all data was written ok, return 0.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef5shmem19SharedMemRingBuffer4pullERNSt6vectorI7uint8_tEE">
+<span id="_CPPv3N5Limef5shmem19SharedMemRingBuffer4pullERNSt6vectorI7uint8_tEE"></span><span id="_CPPv2N5Limef5shmem19SharedMemRingBuffer4pullERNSt6vectorI7uint8_tEE"></span><span id="Limef::shmem::SharedMemRingBuffer::pull__std::vector:uint8_t:R"></span><span class="target" id="classLimef_1_1shmem_1_1SharedMemRingBuffer_1af2c170467d9c7a47f3b21bba92687e70"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">pull</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">vector</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">uint8_t</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">data</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5Limef5shmem19SharedMemRingBuffer4pullERNSt6vectorI7uint8_tEE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Pull data from the ring buffer (client side) </p>
+<p>Blocks until data is available or timeout occurs.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>data</strong> – Vector to receive the data </p>
+</dd>
+<dt class="field-even">Throws<span class="colon">:</span></dt>
+<dd class="field-even"><p><span><span class="cpp-expr sig sig-inline cpp"><span class="n">std</span><span class="p">::</span><span class="n">runtime_error</span></span></span> – if not in client mode or other error </p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>true if data received, false if timeout </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef5shmem19SharedMemRingBuffer4pullERPK7uint8_tR6size_t">
+<span id="_CPPv3N5Limef5shmem19SharedMemRingBuffer4pullERPK7uint8_tR6size_t"></span><span id="_CPPv2N5Limef5shmem19SharedMemRingBuffer4pullERPK7uint8_tR6size_t"></span><span id="Limef::shmem::SharedMemRingBuffer::pull__uint8_tCPR.sR"></span><span class="target" id="classLimef_1_1shmem_1_1SharedMemRingBuffer_1aa27b8840d3ef86d5ac942d910d954337"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">pull</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">buffer</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">size</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5Limef5shmem19SharedMemRingBuffer4pullERPK7uint8_tR6size_t" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Pull data using direct buffer access (client side) </p>
+<p>Zero-copy version for deserialized frames.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>buffer</strong> – Pointer to receive data pointer (read-only) </p></li>
+<li><p><strong>size</strong> – Reference to receive data size </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>true if data received, false if timeout </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK5Limef5shmem19SharedMemRingBuffer7isReadyEv">
+<span id="_CPPv3NK5Limef5shmem19SharedMemRingBuffer7isReadyEv"></span><span id="_CPPv2NK5Limef5shmem19SharedMemRingBuffer7isReadyEv"></span><span id="Limef::shmem::SharedMemRingBuffer::isReadyC"></span><span class="target" id="classLimef_1_1shmem_1_1SharedMemRingBuffer_1a407b6e715ce0c067660764374c03e27e"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">isReady</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK5Limef5shmem19SharedMemRingBuffer7isReadyEv" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Check if ring buffer is ready for use. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>true if all segments are properly initialized </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK5Limef5shmem19SharedMemRingBuffer8getValueEv">
+<span id="_CPPv3NK5Limef5shmem19SharedMemRingBuffer8getValueEv"></span><span id="_CPPv2NK5Limef5shmem19SharedMemRingBuffer8getValueEv"></span><span id="Limef::shmem::SharedMemRingBuffer::getValueC"></span><span class="target" id="classLimef_1_1shmem_1_1SharedMemRingBuffer_1a2ce704fcc573171d27bb0953eb759292"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getValue</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK5Limef5shmem19SharedMemRingBuffer8getValueEv" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Get current semaphore value (available items) </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int Number of items available for reading </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK5Limef5shmem19SharedMemRingBuffer10isOverflowEv">
+<span id="_CPPv3NK5Limef5shmem19SharedMemRingBuffer10isOverflowEv"></span><span id="_CPPv2NK5Limef5shmem19SharedMemRingBuffer10isOverflowEv"></span><span id="Limef::shmem::SharedMemRingBuffer::isOverflowC"></span><span class="target" id="classLimef_1_1shmem_1_1SharedMemRingBuffer_1a5e2e49fd9a8441a1d2e29defab4d92d2"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">isOverflow</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK5Limef5shmem19SharedMemRingBuffer10isOverflowEv" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Check if overflow flag is set. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>true if buffer overflow occurred </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef5shmem19SharedMemRingBuffer13clearOverflowEv">
+<span id="_CPPv3N5Limef5shmem19SharedMemRingBuffer13clearOverflowEv"></span><span id="_CPPv2N5Limef5shmem19SharedMemRingBuffer13clearOverflowEv"></span><span id="Limef::shmem::SharedMemRingBuffer::clearOverflow"></span><span class="target" id="classLimef_1_1shmem_1_1SharedMemRingBuffer_1aac21d77e083e68f395306938a1a4d89f"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">clearOverflow</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5Limef5shmem19SharedMemRingBuffer13clearOverflowEv" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Clear the overflow flag. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef5shmem19SharedMemRingBuffer11serverUseFdER7EventFd">
+<span id="_CPPv3N5Limef5shmem19SharedMemRingBuffer11serverUseFdER7EventFd"></span><span id="_CPPv2N5Limef5shmem19SharedMemRingBuffer11serverUseFdER7EventFd"></span><span id="Limef::shmem::SharedMemRingBuffer::serverUseFd__EventFdR"></span><span class="target" id="classLimef_1_1shmem_1_1SharedMemRingBuffer_1adc6d3e6a215c6d44eb6ae5b501a79e4d"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">serverUseFd</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">EventFd</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">event_fd</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5Limef5shmem19SharedMemRingBuffer11serverUseFdER7EventFd" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Enable eventfd for server-side signaling (call once after construction) </p>
+<p>Registers an eventfd that will be written to (counter += 1) after every successful push(). Call this before the first push().</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>event_fd</strong> – EventFd instance to use for signaling </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef5shmem19SharedMemRingBuffer11clientUseFdER7EventFd">
+<span id="_CPPv3N5Limef5shmem19SharedMemRingBuffer11clientUseFdER7EventFd"></span><span id="_CPPv2N5Limef5shmem19SharedMemRingBuffer11clientUseFdER7EventFd"></span><span id="Limef::shmem::SharedMemRingBuffer::clientUseFd__EventFdR"></span><span class="target" id="classLimef_1_1shmem_1_1SharedMemRingBuffer_1a46d15f4d739ba1921167c756e4e815d9"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">clientUseFd</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">EventFd</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">event_fd</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5Limef5shmem19SharedMemRingBuffer11clientUseFdER7EventFd" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Enable eventfd for client-side polling (call once after construction) </p>
+<p>Registers the same eventfd so that pull() can drain it when the queue empties. The caller can then use select/poll on the fd to multiplex several ring buffers or other I/O sources.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>event_fd</strong> – EventFd instance to use for polling </p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp class">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef5shmem16SharedMemSegmentE">
+<span id="_CPPv3N5Limef5shmem16SharedMemSegmentE"></span><span id="_CPPv2N5Limef5shmem16SharedMemSegmentE"></span><span id="Limef::shmem::SharedMemSegment"></span><span class="target" id="classLimef_1_1shmem_1_1SharedMemSegment"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">SharedMemSegment</span></span></span><a class="headerlink" href="#_CPPv4N5Limef5shmem16SharedMemSegmentE" title="Link to this definition">¶</a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;sharedmemsegment.h&gt;</em></div>
+<p>Simple shared memory segment for serialized frame data. </p>
+<p>Manages a POSIX shared memory segment with a size header followed by data. Layout: [size_t data_size][uint8_t data[max_size]]</p>
+<p>Usage:<ul class="simple">
+<li><p>Server process: Create with is_server=true, use getWritePtr() + commitWrite()</p></li>
+<li><p>Client process: Create with is_server=false, use getReadPtr() + getDataSize()</p></li>
+</ul>
+</p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef5shmem16SharedMemSegment16SharedMemSegmentERKNSt6stringE6size_tb">
+<span id="_CPPv3N5Limef5shmem16SharedMemSegment16SharedMemSegmentERKNSt6stringE6size_tb"></span><span id="_CPPv2N5Limef5shmem16SharedMemSegment16SharedMemSegmentERKNSt6stringE6size_tb"></span><span id="Limef::shmem::SharedMemSegment::SharedMemSegment__ssCR.s.b"></span><span class="target" id="classLimef_1_1shmem_1_1SharedMemSegment_1a2a078e8290187711430b4d085cae5b1d"></span><span class="sig-name descname"><span class="n"><span class="pre">SharedMemSegment</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">name</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">max_size</span></span>, <span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">is_server</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="k"><span class="pre">false</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5Limef5shmem16SharedMemSegment16SharedMemSegmentERKNSt6stringE6size_tb" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Constructor. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> – Unique identifier for the shared memory segment </p></li>
+<li><p><strong>max_size</strong> – Maximum size in bytes for the data payload (not including size header) </p></li>
+<li><p><strong>is_server</strong> – true for server (creates shmem), false for client (attaches to existing) </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef5shmem16SharedMemSegmentD0Ev">
+<span id="_CPPv3N5Limef5shmem16SharedMemSegmentD0Ev"></span><span id="_CPPv2N5Limef5shmem16SharedMemSegmentD0Ev"></span><span id="Limef::shmem::SharedMemSegment::~SharedMemSegment"></span><span class="target" id="classLimef_1_1shmem_1_1SharedMemSegment_1ad2d82b09d46ab5fa2e77fa5cc150b99a"></span><span class="sig-name descname"><span class="n"><span class="pre">~SharedMemSegment</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5Limef5shmem16SharedMemSegmentD0Ev" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Destructor - cleans up shared memory resources. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef5shmem16SharedMemSegment4initEv">
+<span id="_CPPv3N5Limef5shmem16SharedMemSegment4initEv"></span><span id="_CPPv2N5Limef5shmem16SharedMemSegment4initEv"></span><span id="Limef::shmem::SharedMemSegment::init"></span><span class="target" id="classLimef_1_1shmem_1_1SharedMemSegment_1a6e6ac76ebbf74d99601f306d2703d8c2"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">init</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5Limef5shmem16SharedMemSegment4initEv" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Initialize the shared memory segment. </p>
+<p>Must be called after construction. For servers, creates and maps the segment. For clients, attempts to attach to existing segment.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Throws<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span><span class="cpp-expr sig sig-inline cpp"><span class="n">std</span><span class="p">::</span><span class="n">runtime_error</span></span></span> – if initialization fails </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef5shmem16SharedMemSegment5closeEv">
+<span id="_CPPv3N5Limef5shmem16SharedMemSegment5closeEv"></span><span id="_CPPv2N5Limef5shmem16SharedMemSegment5closeEv"></span><span id="Limef::shmem::SharedMemSegment::close"></span><span class="target" id="classLimef_1_1shmem_1_1SharedMemSegment_1a6ccd2716393dbd0c175abded3f6100b7"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">close</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5Limef5shmem16SharedMemSegment5closeEv" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Clean up shared memory resources. </p>
+<p>Must be called before destruction. Unmaps memory and (for servers) unlinks segment. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef5shmem16SharedMemSegment11getWritePtrEv">
+<span id="_CPPv3N5Limef5shmem16SharedMemSegment11getWritePtrEv"></span><span id="_CPPv2N5Limef5shmem16SharedMemSegment11getWritePtrEv"></span><span id="Limef::shmem::SharedMemSegment::getWritePtr"></span><span class="target" id="classLimef_1_1shmem_1_1SharedMemSegment_1a9d2bc81a0934fff83c7c5435e94553c5"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">getWritePtr</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5Limef5shmem16SharedMemSegment11getWritePtrEv" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Get pointer for writing data (server side) </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>uint8_t* Pointer to data area where serialized frame can be written </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK5Limef5shmem16SharedMemSegment10getMaxSizeEv">
+<span id="_CPPv3NK5Limef5shmem16SharedMemSegment10getMaxSizeEv"></span><span id="_CPPv2NK5Limef5shmem16SharedMemSegment10getMaxSizeEv"></span><span id="Limef::shmem::SharedMemSegment::getMaxSizeC"></span><span class="target" id="classLimef_1_1shmem_1_1SharedMemSegment_1a34d05d9550607890b86b1981141484c0"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getMaxSize</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK5Limef5shmem16SharedMemSegment10getMaxSizeEv" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Get maximum available space for data. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>size_t Maximum bytes that can be written via getWritePtr()</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef5shmem16SharedMemSegment11commitWriteE6size_t">
+<span id="_CPPv3N5Limef5shmem16SharedMemSegment11commitWriteE6size_t"></span><span id="_CPPv2N5Limef5shmem16SharedMemSegment11commitWriteE6size_t"></span><span id="Limef::shmem::SharedMemSegment::commitWrite__s"></span><span class="target" id="classLimef_1_1shmem_1_1SharedMemSegment_1a7e8e021ac880b80bf653f12b9b5b67e8"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">commitWrite</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">actual_size</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5Limef5shmem16SharedMemSegment11commitWriteE6size_t" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Commit written data (server side) </p>
+<p>Updates the internal size variable to now how much data the current buffer actually has</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>actual_size</strong> – Number of bytes actually written to the buffer </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK5Limef5shmem16SharedMemSegment10getReadPtrEv">
+<span id="_CPPv3NK5Limef5shmem16SharedMemSegment10getReadPtrEv"></span><span id="_CPPv2NK5Limef5shmem16SharedMemSegment10getReadPtrEv"></span><span id="Limef::shmem::SharedMemSegment::getReadPtrC"></span><span class="target" id="classLimef_1_1shmem_1_1SharedMemSegment_1a6523508944fd36607b86525519060a33"></span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">getReadPtr</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK5Limef5shmem16SharedMemSegment10getReadPtrEv" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Get pointer for reading data (client side) </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>const uint8_t* Pointer to data area containing serialized frame </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK5Limef5shmem16SharedMemSegment11getDataSizeEv">
+<span id="_CPPv3NK5Limef5shmem16SharedMemSegment11getDataSizeEv"></span><span id="_CPPv2NK5Limef5shmem16SharedMemSegment11getDataSizeEv"></span><span id="Limef::shmem::SharedMemSegment::getDataSizeC"></span><span class="target" id="classLimef_1_1shmem_1_1SharedMemSegment_1a5ede2bbe8f84675669efb02898ddd0e4"></span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getDataSize</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK5Limef5shmem16SharedMemSegment11getDataSizeEv" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Get size of available data (client side) </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>size_t Number of bytes available for reading </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef5shmem16SharedMemSegment3putERKNSt6vectorI7uint8_tEE">
+<span id="_CPPv3N5Limef5shmem16SharedMemSegment3putERKNSt6vectorI7uint8_tEE"></span><span id="_CPPv2N5Limef5shmem16SharedMemSegment3putERKNSt6vectorI7uint8_tEE"></span><span id="Limef::shmem::SharedMemSegment::put__std::vector:uint8_t:CR"></span><span class="target" id="classLimef_1_1shmem_1_1SharedMemSegment_1a192fd3c920c48e5166a7c7df1006b02f"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">put</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">vector</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">uint8_t</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">data</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5Limef5shmem16SharedMemSegment3putERKNSt6vectorI7uint8_tEE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Copy data into shared memory (server side) </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>data</strong> – Vector containing data to copy </p>
+</dd>
+<dt class="field-even">Throws<span class="colon">:</span></dt>
+<dd class="field-even"><p><span><span class="cpp-expr sig sig-inline cpp"><span class="n">std</span><span class="p">::</span><span class="n">runtime_error</span></span></span> – if data too large or other error </p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>true if successful </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef5shmem16SharedMemSegment3getERNSt6vectorI7uint8_tEE">
+<span id="_CPPv3N5Limef5shmem16SharedMemSegment3getERNSt6vectorI7uint8_tEE"></span><span id="_CPPv2N5Limef5shmem16SharedMemSegment3getERNSt6vectorI7uint8_tEE"></span><span id="Limef::shmem::SharedMemSegment::get__std::vector:uint8_t:R"></span><span class="target" id="classLimef_1_1shmem_1_1SharedMemSegment_1a72fca844266d1ada78f2c23aeef00b43"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">get</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">vector</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">uint8_t</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">data</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5Limef5shmem16SharedMemSegment3getERNSt6vectorI7uint8_tEE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Copy data from shared memory (client side) </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>data</strong> – Vector to receive copied data </p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>true if successful </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK5Limef5shmem16SharedMemSegment7isReadyEv">
+<span id="_CPPv3NK5Limef5shmem16SharedMemSegment7isReadyEv"></span><span id="_CPPv2NK5Limef5shmem16SharedMemSegment7isReadyEv"></span><span id="Limef::shmem::SharedMemSegment::isReadyC"></span><span class="target" id="classLimef_1_1shmem_1_1SharedMemSegment_1a9e37689754316df8aec433db16a7841e"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">isReady</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK5Limef5shmem16SharedMemSegment7isReadyEv" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Check if shared memory is ready for use. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>true if segment is properly initialized and accessible </p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp class">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef5shmem11ShmemClientE">
+<span id="_CPPv3N5Limef5shmem11ShmemClientE"></span><span id="_CPPv2N5Limef5shmem11ShmemClientE"></span><span id="Limef::shmem::ShmemClient"></span><span class="target" id="classLimef_1_1shmem_1_1ShmemClient"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ShmemClient</span></span></span><a class="headerlink" href="#_CPPv4N5Limef5shmem11ShmemClientE" title="Link to this definition">¶</a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;shmem_client.h&gt;</em></div>
+<p>Unified shared memory client — pulls any supported frame type. </p>
+<p>Connects to a shared memory ring buffer created by ShmemServerFrameFilter and deserializes frames. The server writes a 1-byte FrameClass tag before every payload; pull() reads that tag and dispatches to the right internal frame object, returning a Frame* base pointer.</p>
+<p>Caller downcasts with frame-&gt;as&lt;DecodedFrame&gt;() or frame-&gt;as&lt;RawFrame&gt;(). The returned pointer is valid until the next pull() call.</p>
+<p>Usage: <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">EventFd</span><span class="w"> </span><span class="n">event_fd</span><span class="p">;</span>
+<span class="n">ShmemRingbufferContext</span><span class="w"> </span><span class="n">ctx</span><span class="p">(</span><span class="s">&quot;myring&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="o">*</span><span class="mi">1024</span><span class="o">*</span><span class="mi">1024</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w"> </span><span class="n">event_fd</span><span class="p">);</span>
+<span class="n">ShmemClient</span><span class="w"> </span><span class="nf">client</span><span class="p">(</span><span class="n">ctx</span><span class="p">);</span>
+
+<span class="k">struct</span><span class="w"> </span><span class="nc">pollfd</span><span class="w"> </span><span class="n">pfd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">event_fd</span><span class="p">.</span><span class="n">getFd</span><span class="p">(),</span><span class="w"> </span><span class="n">POLLIN</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">};</span>
+<span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">poll</span><span class="p">(</span><span class="o">&amp;</span><span class="n">pfd</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">timeout_ms</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">Limef</span><span class="o">::</span><span class="n">frame</span><span class="o">::</span><span class="n">Frame</span><span class="o">*</span><span class="w"> </span><span class="n">frame</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">client</span><span class="p">.</span><span class="n">pull</span><span class="p">();</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="k">auto</span><span class="o">*</span><span class="w"> </span><span class="n">df</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">frame</span><span class="o">-&gt;</span><span class="n">as</span><span class="o">&lt;</span><span class="n">Limef</span><span class="o">::</span><span class="n">frame</span><span class="o">::</span><span class="n">DecodedFrame</span><span class="o">&gt;</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// decoded video or audio</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="k">auto</span><span class="o">*</span><span class="w"> </span><span class="n">rf</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">frame</span><span class="o">-&gt;</span><span class="n">as</span><span class="o">&lt;</span><span class="n">Limef</span><span class="o">::</span><span class="n">frame</span><span class="o">::</span><span class="n">RawFrame</span><span class="o">&gt;</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// raw bytes</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef5shmem11ShmemClient4pullEv">
+<span id="_CPPv3N5Limef5shmem11ShmemClient4pullEv"></span><span id="_CPPv2N5Limef5shmem11ShmemClient4pullEv"></span><span id="Limef::shmem::ShmemClient::pull"></span><span class="target" id="classLimef_1_1shmem_1_1ShmemClient_1a3a9df7076a9d3e51fd27f68a56de962d"></span><span class="n"><span class="pre">Limef</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="frames.html#_CPPv4N5Limef5frameE" title="Limef::frame"><span class="n"><span class="pre">frame</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="frames.html#_CPPv4N5Limef5frame5FrameE" title="Limef::frame::Frame"><span class="n"><span class="pre">Frame</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">pull</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5Limef5shmem11ShmemClient4pullEv" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Pull next frame from shared memory. </p>
+<p>Reads the 1-byte FrameClass tag written by the server, then deserializes the payload into the matching internal frame object.</p>
+<p>Returns a pointer to an internal frame that is reused on each call — copy the data if you need it to survive the next pull().</p>
+<dl class="field-list simple">
+<dt class="field-odd">Throws<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span><span class="cpp-expr sig sig-inline cpp"><span class="n">std</span><span class="p">::</span><span class="n">runtime_error</span></span></span> – on timeout, unknown type tag, or deserialization failure </p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Limef::frame::Frame* Pointer to internal DecodedFrame, RawFrame, or StreamFrame </p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef5shmem22ShmemRingbufferContextE">
+<span id="_CPPv3N5Limef5shmem22ShmemRingbufferContextE"></span><span id="_CPPv2N5Limef5shmem22ShmemRingbufferContextE"></span><span id="Limef::shmem::ShmemRingbufferContext"></span><span class="target" id="structLimef_1_1shmem_1_1ShmemRingbufferContext"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ShmemRingbufferContext</span></span></span><a class="headerlink" href="#_CPPv4N5Limef5shmem22ShmemRingbufferContextE" title="Link to this definition">¶</a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;sharedmemringbuffer.h&gt;</em></div>
+<p>Context for shared memory communication. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef5shmem22ShmemRingbufferContext9ring_nameE">
+<span id="_CPPv3N5Limef5shmem22ShmemRingbufferContext9ring_nameE"></span><span id="_CPPv2N5Limef5shmem22ShmemRingbufferContext9ring_nameE"></span><span id="Limef::shmem::ShmemRingbufferContext::ring_name__ss"></span><span class="target" id="structLimef_1_1shmem_1_1ShmemRingbufferContext_1a32bc7122aeef8696e0e3d616c2d63c75"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ring_name</span></span></span><a class="headerlink" href="#_CPPv4N5Limef5shmem22ShmemRingbufferContext9ring_nameE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Name of the shared memory ring buffer. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef5shmem22ShmemRingbufferContext9ring_sizeE">
+<span id="_CPPv3N5Limef5shmem22ShmemRingbufferContext9ring_sizeE"></span><span id="_CPPv2N5Limef5shmem22ShmemRingbufferContext9ring_sizeE"></span><span id="Limef::shmem::ShmemRingbufferContext::ring_size__i"></span><span class="target" id="structLimef_1_1shmem_1_1ShmemRingbufferContext_1ae4130f6dca6fcaae894d9679eaec4ce3"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ring_size</span></span></span><a class="headerlink" href="#_CPPv4N5Limef5shmem22ShmemRingbufferContext9ring_sizeE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Number of cells in the ring buffer. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef5shmem22ShmemRingbufferContext12element_sizeE">
+<span id="_CPPv3N5Limef5shmem22ShmemRingbufferContext12element_sizeE"></span><span id="_CPPv2N5Limef5shmem22ShmemRingbufferContext12element_sizeE"></span><span id="Limef::shmem::ShmemRingbufferContext::element_size__s"></span><span class="target" id="structLimef_1_1shmem_1_1ShmemRingbufferContext_1a07aeaa10b28b36fd290414414764d96c"></span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">element_size</span></span></span><a class="headerlink" href="#_CPPv4N5Limef5shmem22ShmemRingbufferContext12element_sizeE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Maximum size per cell in bytes. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef5shmem22ShmemRingbufferContext10timeout_msE">
+<span id="_CPPv3N5Limef5shmem22ShmemRingbufferContext10timeout_msE"></span><span id="_CPPv2N5Limef5shmem22ShmemRingbufferContext10timeout_msE"></span><span id="Limef::shmem::ShmemRingbufferContext::timeout_ms__i"></span><span class="target" id="structLimef_1_1shmem_1_1ShmemRingbufferContext_1a126acef46f5d74d7f7b9937c3ee6638a"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">timeout_ms</span></span></span><a class="headerlink" href="#_CPPv4N5Limef5shmem22ShmemRingbufferContext10timeout_msE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Timeout for operations in milliseconds. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef5shmem22ShmemRingbufferContext8event_fdE">
+<span id="_CPPv3N5Limef5shmem22ShmemRingbufferContext8event_fdE"></span><span id="_CPPv2N5Limef5shmem22ShmemRingbufferContext8event_fdE"></span><span id="Limef::shmem::ShmemRingbufferContext::event_fd__Limef::shmem::EventFdR"></span><span class="target" id="structLimef_1_1shmem_1_1ShmemRingbufferContext_1af215418ab2fc2683158e9d3968273041"></span><span class="n"><span class="pre">Limef</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N5Limef5shmemE" title="Limef::shmem"><span class="n"><span class="pre">shmem</span></span></a><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">EventFd</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="sig-name descname"><span class="n"><span class="pre">event_fd</span></span></span><a class="headerlink" href="#_CPPv4N5Limef5shmem22ShmemRingbufferContext8event_fdE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>EventFd instance for synchronization. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="../distribution.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Distributing</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="rtsp.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">RTSP</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2024 Sampsa Riikonen
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Shared Memory</a><ul>
+<li><a class="reference internal" href="#_CPPv4N5Limef5shmemE"><code class="docutils literal notranslate"><span class="pre">Limef::shmem</span></code></a><ul>
+<li><a class="reference internal" href="#_CPPv4N5Limef5shmem19SharedMemRingBufferE"><code class="docutils literal notranslate"><span class="pre">Limef::shmem::SharedMemRingBuffer</span></code></a><ul>
+<li><a class="reference internal" href="#_CPPv4N5Limef5shmem19SharedMemRingBuffer19SharedMemRingBufferERKNSt6stringEi6size_tib"><code class="docutils literal notranslate"><span class="pre">SharedMemRingBuffer()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef5shmem19SharedMemRingBufferD0Ev"><code class="docutils literal notranslate"><span class="pre">~SharedMemRingBuffer()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef5shmem19SharedMemRingBuffer4initEv"><code class="docutils literal notranslate"><span class="pre">init()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef5shmem19SharedMemRingBuffer5closeEv"><code class="docutils literal notranslate"><span class="pre">close()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef5shmem19SharedMemRingBuffer4pushERKNSt6vectorI7uint8_tEE"><code class="docutils literal notranslate"><span class="pre">push()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef5shmem19SharedMemRingBuffer4pushEPK7uint8_t6size_t"><code class="docutils literal notranslate"><span class="pre">push()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef5shmem19SharedMemRingBuffer4pushEPF6size_tP7uint8_t6size_tPN5Limef5frame5FrameEEPN5Limef5frame5FrameE"><code class="docutils literal notranslate"><span class="pre">push()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef5shmem19SharedMemRingBuffer4pullERNSt6vectorI7uint8_tEE"><code class="docutils literal notranslate"><span class="pre">pull()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef5shmem19SharedMemRingBuffer4pullERPK7uint8_tR6size_t"><code class="docutils literal notranslate"><span class="pre">pull()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4NK5Limef5shmem19SharedMemRingBuffer7isReadyEv"><code class="docutils literal notranslate"><span class="pre">isReady()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4NK5Limef5shmem19SharedMemRingBuffer8getValueEv"><code class="docutils literal notranslate"><span class="pre">getValue()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4NK5Limef5shmem19SharedMemRingBuffer10isOverflowEv"><code class="docutils literal notranslate"><span class="pre">isOverflow()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef5shmem19SharedMemRingBuffer13clearOverflowEv"><code class="docutils literal notranslate"><span class="pre">clearOverflow()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef5shmem19SharedMemRingBuffer11serverUseFdER7EventFd"><code class="docutils literal notranslate"><span class="pre">serverUseFd()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef5shmem19SharedMemRingBuffer11clientUseFdER7EventFd"><code class="docutils literal notranslate"><span class="pre">clientUseFd()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#_CPPv4N5Limef5shmem16SharedMemSegmentE"><code class="docutils literal notranslate"><span class="pre">Limef::shmem::SharedMemSegment</span></code></a><ul>
+<li><a class="reference internal" href="#_CPPv4N5Limef5shmem16SharedMemSegment16SharedMemSegmentERKNSt6stringE6size_tb"><code class="docutils literal notranslate"><span class="pre">SharedMemSegment()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef5shmem16SharedMemSegmentD0Ev"><code class="docutils literal notranslate"><span class="pre">~SharedMemSegment()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef5shmem16SharedMemSegment4initEv"><code class="docutils literal notranslate"><span class="pre">init()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef5shmem16SharedMemSegment5closeEv"><code class="docutils literal notranslate"><span class="pre">close()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef5shmem16SharedMemSegment11getWritePtrEv"><code class="docutils literal notranslate"><span class="pre">getWritePtr()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4NK5Limef5shmem16SharedMemSegment10getMaxSizeEv"><code class="docutils literal notranslate"><span class="pre">getMaxSize()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef5shmem16SharedMemSegment11commitWriteE6size_t"><code class="docutils literal notranslate"><span class="pre">commitWrite()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4NK5Limef5shmem16SharedMemSegment10getReadPtrEv"><code class="docutils literal notranslate"><span class="pre">getReadPtr()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4NK5Limef5shmem16SharedMemSegment11getDataSizeEv"><code class="docutils literal notranslate"><span class="pre">getDataSize()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef5shmem16SharedMemSegment3putERKNSt6vectorI7uint8_tEE"><code class="docutils literal notranslate"><span class="pre">put()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef5shmem16SharedMemSegment3getERNSt6vectorI7uint8_tEE"><code class="docutils literal notranslate"><span class="pre">get()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4NK5Limef5shmem16SharedMemSegment7isReadyEv"><code class="docutils literal notranslate"><span class="pre">isReady()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#_CPPv4N5Limef5shmem11ShmemClientE"><code class="docutils literal notranslate"><span class="pre">Limef::shmem::ShmemClient</span></code></a><ul>
+<li><a class="reference internal" href="#_CPPv4N5Limef5shmem11ShmemClient4pullEv"><code class="docutils literal notranslate"><span class="pre">pull()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#_CPPv4N5Limef5shmem22ShmemRingbufferContextE"><code class="docutils literal notranslate"><span class="pre">Limef::shmem::ShmemRingbufferContext</span></code></a><ul>
+<li><a class="reference internal" href="#_CPPv4N5Limef5shmem22ShmemRingbufferContext9ring_nameE"><code class="docutils literal notranslate"><span class="pre">ring_name</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef5shmem22ShmemRingbufferContext9ring_sizeE"><code class="docutils literal notranslate"><span class="pre">ring_size</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef5shmem22ShmemRingbufferContext12element_sizeE"><code class="docutils literal notranslate"><span class="pre">element_size</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef5shmem22ShmemRingbufferContext10timeout_msE"><code class="docutils literal notranslate"><span class="pre">timeout_ms</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef5shmem22ShmemRingbufferContext8event_fdE"><code class="docutils literal notranslate"><span class="pre">event_fd</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script src="../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/scripts/furo.js?v=46bd48cc"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    </body>
+</html>

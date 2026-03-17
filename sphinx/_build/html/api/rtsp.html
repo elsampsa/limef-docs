@@ -1,0 +1,857 @@
+<!doctype html>
+<html class="no-js" lang="en" data-content_root="../">
+  <head><meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="index" title="Index" href="../genindex.html"><link rel="search" title="Search" href="../search.html"><link rel="next" title="Shared Memory" href="shmem.html"><link rel="prev" title="Signals" href="signals.html">
+        <link rel="prefetch" href="../_static/logo.png" as="image">
+
+    <!-- Generated with Sphinx 9.1.0 and Furo 2025.12.19 -->
+        <title>RTSP</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=7bdb33bb" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?v=8dab3a3b" />
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #eeffcc;
+  --color-code-foreground: black;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle site navigation sidebar">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc" aria-label="Toggle table of contents sidebar">
+<label class="overlay sidebar-overlay" for="__navigation"></label>
+<label class="overlay toc-overlay" for="__toc"></label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <span class="icon"><svg><use href="#svg-menu"></use></svg></span>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../index.html"><div class="brand">Media Streaming Framework for Linux</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky">
+
+<style>
+    .sidebar-links {
+      list-style-type: none;
+      padding-left: 10px;
+    }
+    .sidebar-links li {
+      margin: 1em 0;
+      padding-left: 20px;
+    }
+</style>
+  
+<a class="sidebar-brand" href="../index.html">
+<img src="../_static/logo.png" alt="Logo" style="width: 200px; height: auto; border-radius: 0px 6px 6px 0px;">
+</a>
+
+<div class="list-container">
+<ul class="sidebar-links">
+    <li><a href="https://github.com/elsampsa/limef-public" target="_blank" rel="noopener noreferrer"><i class="fa fa-github" style="font-size: 16pt"></i> Limef library </a></li>
+    <li><a href="https://github.com/elsampsa/limef-apps" target="_blank" rel="noopener noreferrer"><i class="fa fa-github" style="font-size: 16pt"></i> App examples </a></li>
+    <li><a href="https://github.com/elsampsa/limef-plugins" target="_blank" rel="noopener noreferrer"><i class="fa fa-github" style="font-size: 16pt"></i> Plugin examples </a></li>
+    <li><a href="https://github.com/elsampsa/limef-docs/issues" target="_blank" rel="noopener noreferrer"><i class="fa fa-bug" style="font-size: 16pt"></i> Public issues </a></li>
+    <li><a href="https://github.com/elsampsa/limef-releases/releases" target="_blank" rel="noopener noreferrer"><i class="fa fa-download" style="font-size: 16pt"></i> Releases </a></li>
+    <li><a href="https://github.com/sponsors/elsampsa" target="_blank" rel="noopener noreferrer"><i class="fa fa-heart" style="font-size: 16pt"></i> Sponsor </a></li>
+</ul>
+</div><form class="sidebar-search-container" method="get" action="../search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Limef</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../intro.html">A Media Streaming Framework</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../concepts.html">Key Concepts and Definitions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../under_the_hood.html">Under the Hood</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../tutorial/index.html">Tutorials</a><input aria-label="Toggle navigation of Tutorials" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tutorial/t01_mediafile_dump.html">Tutorial 1: Streaming packets to a DumpFrameFilter</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current has-children"><a class="reference internal" href="index.html">API Reference</a><input aria-label="Toggle navigation of API Reference" checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="frames.html">Frames</a></li>
+<li class="toctree-l2"><a class="reference internal" href="framefilters.html">Framefilters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="framefifos.html">FrameFifos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="threads.html">Threads</a></li>
+<li class="toctree-l2"><a class="reference internal" href="decoders.html">Decoders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="encoders.html">Encoders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="signals.html">Signals</a></li>
+<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">RTSP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="shmem.html">Shared Memory</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../distribution.html">Distributing</a></li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="view-this-page">
+  <a class="muted-link" href="../_sources/api/rtsp.md.txt" title="View this page">
+    <svg><use href="#svg-eye"></use></svg>
+    <span class="visually-hidden">View this page</span>
+  </a>
+</div>
+<div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          <section id="rtsp">
+<h1>RTSP<a class="headerlink" href="#rtsp" title="Link to this heading">¶</a></h1>
+<p>RTSP server classes for live stream serving.
+The main class is <a class="reference internal" href="#_CPPv4N5Limef4rtsp16RTSPServerThreadE" title="Limef::rtsp::RTSPServerThread"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">Limef::rtsp::RTSPServerThread</span></code></a>.</p>
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef4rtspE">
+<span id="_CPPv3N5Limef4rtspE"></span><span id="_CPPv2N5Limef4rtspE"></span><span id="Limef::rtsp"></span><span class="target" id="namespaceLimef_1_1rtsp"></span><span class="k"><span class="pre">namespace</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">rtsp</span></span></span><a class="headerlink" href="#_CPPv4N5Limef4rtspE" title="Link to this definition">¶</a><br /></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-typedefs">Typedefs</p>
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef4rtsp17SDPLookupCallbackE">
+<span id="_CPPv3N5Limef4rtsp17SDPLookupCallbackE"></span><span id="_CPPv2N5Limef4rtsp17SDPLookupCallbackE"></span><span class="target" id="namespaceLimef_1_1rtsp_1a0eb74163158ba9426fecf91830b0dfeb"></span><span class="k"><span class="pre">using</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">SDPLookupCallback</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">function</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="p"><span class="pre">(</span></span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n"><span class="pre">url_tail</span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">&gt;</span></span><a class="headerlink" href="#_CPPv4N5Limef4rtsp17SDPLookupCallbackE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Callback type for SDP lookup. </p>
+<p>The session doesn’t own the SDP data - it requests it via callback. Returns empty string if stream not found. </p>
+</dd></dl>
+
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef4rtsp15UDPPortCallbackE">
+<span id="_CPPv3N5Limef4rtsp15UDPPortCallbackE"></span><span id="_CPPv2N5Limef4rtsp15UDPPortCallbackE"></span><span class="target" id="namespaceLimef_1_1rtsp_1a52710eed5f2d333f11483a8449ef0bf5"></span><span class="k"><span class="pre">using</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UDPPortCallback</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">function</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">pair</span></span><span class="p"><span class="pre">&lt;</span></span><span class="kt"><span class="pre">int</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="kt"><span class="pre">int</span></span><span class="p"><span class="pre">&gt;</span></span><span class="p"><span class="pre">(</span></span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n"><span class="pre">url_tail</span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">&gt;</span></span><a class="headerlink" href="#_CPPv4N5Limef4rtsp15UDPPortCallbackE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Callback type for getting server UDP ports. </p>
+<p>Called during SETUP when client requests UDP transport. Returns pair of (rtp_port, rtcp_port), or (0,0) on failure. </p>
+</dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-enums">Enums</p>
+<dl class="cpp enum-class">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef4rtsp12SessionStateE">
+<span id="_CPPv3N5Limef4rtsp12SessionStateE"></span><span id="_CPPv2N5Limef4rtsp12SessionStateE"></span><span class="target" id="namespaceLimef_1_1rtsp_1a3b851238836d08b7856ad0ab2d1efab9"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">SessionState</span></span></span><a class="headerlink" href="#_CPPv4N5Limef4rtsp12SessionStateE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>RTSP session state machine states. </p>
+<p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef4rtsp12SessionState4INITE">
+<span id="_CPPv3N5Limef4rtsp12SessionState4INITE"></span><span id="_CPPv2N5Limef4rtsp12SessionState4INITE"></span><span class="target" id="namespaceLimef_1_1rtsp_1a3b851238836d08b7856ad0ab2d1efab9afaee4ca3c30ee18148ce3ada37466498"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">INIT</span></span></span><a class="headerlink" href="#_CPPv4N5Limef4rtsp12SessionState4INITE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>TCP connection accepted. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef4rtsp12SessionState9DESCRIBEDE">
+<span id="_CPPv3N5Limef4rtsp12SessionState9DESCRIBEDE"></span><span id="_CPPv2N5Limef4rtsp12SessionState9DESCRIBEDE"></span><span class="target" id="namespaceLimef_1_1rtsp_1a3b851238836d08b7856ad0ab2d1efab9a6f6d6720def10fa490c69d2fdb8c6730"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">DESCRIBED</span></span></span><a class="headerlink" href="#_CPPv4N5Limef4rtsp12SessionState9DESCRIBEDE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Client received the SDP. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef4rtsp12SessionState13SETUP_PARTIALE">
+<span id="_CPPv3N5Limef4rtsp12SessionState13SETUP_PARTIALE"></span><span id="_CPPv2N5Limef4rtsp12SessionState13SETUP_PARTIALE"></span><span class="target" id="namespaceLimef_1_1rtsp_1a3b851238836d08b7856ad0ab2d1efab9a4509df760ab108cfac8aba2bede2fd58"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">SETUP_PARTIAL</span></span></span><a class="headerlink" href="#_CPPv4N5Limef4rtsp12SessionState13SETUP_PARTIALE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Some tracks set up. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef4rtsp12SessionState5READYE">
+<span id="_CPPv3N5Limef4rtsp12SessionState5READYE"></span><span id="_CPPv2N5Limef4rtsp12SessionState5READYE"></span><span class="target" id="namespaceLimef_1_1rtsp_1a3b851238836d08b7856ad0ab2d1efab9a2baa69eafc7204f3bd8648eba580c489"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">READY</span></span></span><a class="headerlink" href="#_CPPv4N5Limef4rtsp12SessionState5READYE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>All requested tracks set up. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef4rtsp12SessionState7PLAYINGE">
+<span id="_CPPv3N5Limef4rtsp12SessionState7PLAYINGE"></span><span id="_CPPv2N5Limef4rtsp12SessionState7PLAYINGE"></span><span class="target" id="namespaceLimef_1_1rtsp_1a3b851238836d08b7856ad0ab2d1efab9a50366a49630a416ab3ccaa004196027e"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">PLAYING</span></span></span><a class="headerlink" href="#_CPPv4N5Limef4rtsp12SessionState7PLAYINGE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Streaming active. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef4rtsp12SessionState6PAUSEDE">
+<span id="_CPPv3N5Limef4rtsp12SessionState6PAUSEDE"></span><span id="_CPPv2N5Limef4rtsp12SessionState6PAUSEDE"></span><span class="target" id="namespaceLimef_1_1rtsp_1a3b851238836d08b7856ad0ab2d1efab9a99b2439e63f73ad515f7ab2447a80673"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">PAUSED</span></span></span><a class="headerlink" href="#_CPPv4N5Limef4rtsp12SessionState6PAUSEDE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Streaming paused. </p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-functions">Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef4rtsp12parseRequestERKNSt6stringE">
+<span id="_CPPv3N5Limef4rtsp12parseRequestERKNSt6stringE"></span><span id="_CPPv2N5Limef4rtsp12parseRequestERKNSt6stringE"></span><span id="Limef::rtsp::parseRequest__ssCR"></span><span class="target" id="namespaceLimef_1_1rtsp_1a532aa2ca3961ff2678983f317f31f9ba"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4N5Limef4rtsp7RequestE" title="Limef::rtsp::Request"><span class="n"><span class="pre">Request</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">parseRequest</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">raw</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5Limef4rtsp12parseRequestERKNSt6stringE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Parse raw RTSP request text into Request struct. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>raw</strong> – The raw request string from client </p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Parsed Request</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef4rtsp14extractUrlTailERKNSt6stringE">
+<span id="_CPPv3N5Limef4rtsp14extractUrlTailERKNSt6stringE"></span><span id="_CPPv2N5Limef4rtsp14extractUrlTailERKNSt6stringE"></span><span id="Limef::rtsp::extractUrlTail__ssCR"></span><span class="target" id="namespaceLimef_1_1rtsp_1ad495c9b1e4b075cb2c5a0f8e319fc602"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">extractUrlTail</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">url</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5Limef4rtsp14extractUrlTailERKNSt6stringE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Extract URL tail (path after host) from RTSP URL. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>url</strong> – Full RTSP URL like rtsp://host:port/path/to/stream </p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Tail like /path/to/stream </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef4rtsp14extractTrackIdERKNSt6stringE">
+<span id="_CPPv3N5Limef4rtsp14extractTrackIdERKNSt6stringE"></span><span id="_CPPv2N5Limef4rtsp14extractTrackIdERKNSt6stringE"></span><span id="Limef::rtsp::extractTrackId__ssCR"></span><span class="target" id="namespaceLimef_1_1rtsp_1a952f6b0ae43b7fc367df3983a086ecdf"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">extractTrackId</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">url</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5Limef4rtsp14extractTrackIdERKNSt6stringE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Extract track ID from URL if present. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>url</strong> – URL like rtsp://host/stream/trackID=0 </p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Track ID or -1 if not found </p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef4rtsp11ClientTrackE">
+<span id="_CPPv3N5Limef4rtsp11ClientTrackE"></span><span id="_CPPv2N5Limef4rtsp11ClientTrackE"></span><span id="Limef::rtsp::ClientTrack"></span><span class="target" id="structLimef_1_1rtsp_1_1ClientTrack"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ClientTrack</span></span></span><a class="headerlink" href="#_CPPv4N5Limef4rtsp11ClientTrackE" title="Link to this definition">¶</a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;rtsp.h&gt;</em></div>
+<p>Client track transport configuration. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef4rtsp11ClientTrack7use_tcpE">
+<span id="_CPPv3N5Limef4rtsp11ClientTrack7use_tcpE"></span><span id="_CPPv2N5Limef4rtsp11ClientTrack7use_tcpE"></span><span id="Limef::rtsp::ClientTrack::use_tcp__b"></span><span class="target" id="structLimef_1_1rtsp_1_1ClientTrack_1a1b663d1511ecf86fc5bf3ac0bf0785ce"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">use_tcp</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="k"><span class="pre">true</span></span><a class="headerlink" href="#_CPPv4N5Limef4rtsp11ClientTrack7use_tcpE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>TCP interleaved vs UDP. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef4rtsp11ClientTrack11rtp_channelE">
+<span id="_CPPv3N5Limef4rtsp11ClientTrack11rtp_channelE"></span><span id="_CPPv2N5Limef4rtsp11ClientTrack11rtp_channelE"></span><span id="Limef::rtsp::ClientTrack::rtp_channel__i"></span><span class="target" id="structLimef_1_1rtsp_1_1ClientTrack_1a11d451fdbdccd85042a7d25474b69266"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">rtp_channel</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><a class="headerlink" href="#_CPPv4N5Limef4rtsp11ClientTrack11rtp_channelE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>For TCP interleaved. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef4rtsp11ClientTrack15server_rtp_portE">
+<span id="_CPPv3N5Limef4rtsp11ClientTrack15server_rtp_portE"></span><span id="_CPPv2N5Limef4rtsp11ClientTrack15server_rtp_portE"></span><span id="Limef::rtsp::ClientTrack::server_rtp_port__i"></span><span class="target" id="structLimef_1_1rtsp_1_1ClientTrack_1a83d488d595cb8fef89069447a4986145"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">server_rtp_port</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><a class="headerlink" href="#_CPPv4N5Limef4rtsp11ClientTrack15server_rtp_portE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Server’s RTP port (set by RTSPServerThread) </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef4rtsp11ClientTrack16server_rtcp_portE">
+<span id="_CPPv3N5Limef4rtsp11ClientTrack16server_rtcp_portE"></span><span id="_CPPv2N5Limef4rtsp11ClientTrack16server_rtcp_portE"></span><span id="Limef::rtsp::ClientTrack::server_rtcp_port__i"></span><span class="target" id="structLimef_1_1rtsp_1_1ClientTrack_1ab2237ea57f1bfb9d4fe5564ae8e3bdfa"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">server_rtcp_port</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><a class="headerlink" href="#_CPPv4N5Limef4rtsp11ClientTrack16server_rtcp_portE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Server’s RTCP port (set by RTSPServerThread) </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef4rtsp7RequestE">
+<span id="_CPPv3N5Limef4rtsp7RequestE"></span><span id="_CPPv2N5Limef4rtsp7RequestE"></span><span id="Limef::rtsp::Request"></span><span class="target" id="structLimef_1_1rtsp_1_1Request"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Request</span></span></span><a class="headerlink" href="#_CPPv4N5Limef4rtsp7RequestE" title="Link to this definition">¶</a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;rtsp.h&gt;</em></div>
+<p>Parsed RTSP request from client. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef4rtsp7Request6methodE">
+<span id="_CPPv3N5Limef4rtsp7Request6methodE"></span><span id="_CPPv2N5Limef4rtsp7Request6methodE"></span><span id="Limef::rtsp::Request::method__ss"></span><span class="target" id="structLimef_1_1rtsp_1_1Request_1ad3646fd93a7617ed254d4c06b4929d14"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">method</span></span></span><a class="headerlink" href="#_CPPv4N5Limef4rtsp7Request6methodE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>OPTIONS, DESCRIBE, SETUP, PLAY, etc. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef4rtsp7Request3urlE">
+<span id="_CPPv3N5Limef4rtsp7Request3urlE"></span><span id="_CPPv2N5Limef4rtsp7Request3urlE"></span><span id="Limef::rtsp::Request::url__ss"></span><span class="target" id="structLimef_1_1rtsp_1_1Request_1ac813db22db9bf6900448f356ace355fe"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">url</span></span></span><a class="headerlink" href="#_CPPv4N5Limef4rtsp7Request3urlE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>rtsp://host/path or rtsp://host/path/trackID=0 </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef4rtsp7Request4cseqE">
+<span id="_CPPv3N5Limef4rtsp7Request4cseqE"></span><span id="_CPPv2N5Limef4rtsp7Request4cseqE"></span><span id="Limef::rtsp::Request::cseq__i"></span><span class="target" id="structLimef_1_1rtsp_1_1Request_1a4f32640df4ddac78fa97c9044327ac52"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">cseq</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><a class="headerlink" href="#_CPPv4N5Limef4rtsp7Request4cseqE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>CSeq header (must echo back) </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef4rtsp7Request10session_idE">
+<span id="_CPPv3N5Limef4rtsp7Request10session_idE"></span><span id="_CPPv2N5Limef4rtsp7Request10session_idE"></span><span id="Limef::rtsp::Request::session_id__ss"></span><span class="target" id="structLimef_1_1rtsp_1_1Request_1a154ac52aa70fd2f62a6ad9a2c70007af"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">session_id</span></span></span><a class="headerlink" href="#_CPPv4N5Limef4rtsp7Request10session_idE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Session header (empty until after SETUP) </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef4rtsp7Request9transportE">
+<span id="_CPPv3N5Limef4rtsp7Request9transportE"></span><span id="_CPPv2N5Limef4rtsp7Request9transportE"></span><span id="Limef::rtsp::Request::transport__ss"></span><span class="target" id="structLimef_1_1rtsp_1_1Request_1a680bb79d9de8f31d75c9fe8f593d96e2"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">transport</span></span></span><a class="headerlink" href="#_CPPv4N5Limef4rtsp7Request9transportE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Transport header (SETUP only) </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef4rtsp7Request7headersE">
+<span id="_CPPv3N5Limef4rtsp7Request7headersE"></span><span id="_CPPv2N5Limef4rtsp7Request7headersE"></span><span id="Limef::rtsp::Request::headers__std::map:ss.ss:"></span><span class="target" id="structLimef_1_1rtsp_1_1Request_1a8011e181a6df8b14c530070396c99d0f"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">map</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">headers</span></span></span><a class="headerlink" href="#_CPPv4N5Limef4rtsp7Request7headersE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>All headers. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef4rtsp9RTPStreamE">
+<span id="_CPPv3N5Limef4rtsp9RTPStreamE"></span><span id="_CPPv2N5Limef4rtsp9RTPStreamE"></span><span id="Limef::rtsp::RTPStream"></span><span class="target" id="structLimef_1_1rtsp_1_1RTPStream"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">RTPStream</span></span></span><a class="headerlink" href="#_CPPv4N5Limef4rtsp9RTPStreamE" title="Link to this definition">¶</a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;rtspserverthread.h&gt;</em></div>
+<p>Per-stream state. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef4rtsp9RTPStream4slotE">
+<span id="_CPPv3N5Limef4rtsp9RTPStream4slotE"></span><span id="_CPPv2N5Limef4rtsp9RTPStream4slotE"></span><span id="Limef::rtsp::RTPStream::slot__i"></span><span class="target" id="structLimef_1_1rtsp_1_1RTPStream_1ad58a54f24be6102bc3043213cb59a972"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">slot</span></span></span><a class="headerlink" href="#_CPPv4N5Limef4rtsp9RTPStream4slotE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Slot number. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef4rtsp9RTPStream8url_tailE">
+<span id="_CPPv3N5Limef4rtsp9RTPStream8url_tailE"></span><span id="_CPPv2N5Limef4rtsp9RTPStream8url_tailE"></span><span id="Limef::rtsp::RTPStream::url_tail__ss"></span><span class="target" id="structLimef_1_1rtsp_1_1RTPStream_1aca5489110d657c1a619473d03b2130bc"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">url_tail</span></span></span><a class="headerlink" href="#_CPPv4N5Limef4rtsp9RTPStream8url_tailE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>URL path like “/live/camera1”. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef4rtsp9RTPStream3sdpE">
+<span id="_CPPv3N5Limef4rtsp9RTPStream3sdpE"></span><span id="_CPPv2N5Limef4rtsp9RTPStream3sdpE"></span><span id="Limef::rtsp::RTPStream::sdp__ss"></span><span class="target" id="structLimef_1_1rtsp_1_1RTPStream_1a92bd12f58602e7d9111a6709d65fdd48"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">sdp</span></span></span><a class="headerlink" href="#_CPPv4N5Limef4rtsp9RTPStream3sdpE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Cached SDP (empty until SDPFrame arrives) </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef4rtsp9RTPStream11session_fdsE">
+<span id="_CPPv3N5Limef4rtsp9RTPStream11session_fdsE"></span><span id="_CPPv2N5Limef4rtsp9RTPStream11session_fdsE"></span><span id="Limef::rtsp::RTPStream::session_fds__std::vector:i:"></span><span class="target" id="structLimef_1_1rtsp_1_1RTPStream_1ae019604afb153a36c907b435a2f338a5"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">vector</span></span><span class="p"><span class="pre">&lt;</span></span><span class="kt"><span class="pre">int</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">session_fds</span></span></span><a class="headerlink" href="#_CPPv4N5Limef4rtsp9RTPStream11session_fdsE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Socket fds of subscribed clients. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef4rtsp9RTPStream10udp_rtp_fdE">
+<span id="_CPPv3N5Limef4rtsp9RTPStream10udp_rtp_fdE"></span><span id="_CPPv2N5Limef4rtsp9RTPStream10udp_rtp_fdE"></span><span id="Limef::rtsp::RTPStream::udp_rtp_fd__i"></span><span class="target" id="structLimef_1_1rtsp_1_1RTPStream_1acf7446136152ced5ec920f7923abe9d2"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">udp_rtp_fd</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="o"><span class="pre">-</span></span><span class="m"><span class="pre">1</span></span><a class="headerlink" href="#_CPPv4N5Limef4rtsp9RTPStream10udp_rtp_fdE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>UDP socket for sending RTP. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef4rtsp9RTPStream11udp_rtcp_fdE">
+<span id="_CPPv3N5Limef4rtsp9RTPStream11udp_rtcp_fdE"></span><span id="_CPPv2N5Limef4rtsp9RTPStream11udp_rtcp_fdE"></span><span id="Limef::rtsp::RTPStream::udp_rtcp_fd__i"></span><span class="target" id="structLimef_1_1rtsp_1_1RTPStream_1aa83d52ffb02517a998c8479b7eb20dde"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">udp_rtcp_fd</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="o"><span class="pre">-</span></span><span class="m"><span class="pre">1</span></span><a class="headerlink" href="#_CPPv4N5Limef4rtsp9RTPStream11udp_rtcp_fdE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>UDP socket for sending RTCP. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef4rtsp9RTPStream12udp_rtp_portE">
+<span id="_CPPv3N5Limef4rtsp9RTPStream12udp_rtp_portE"></span><span id="_CPPv2N5Limef4rtsp9RTPStream12udp_rtp_portE"></span><span id="Limef::rtsp::RTPStream::udp_rtp_port__i"></span><span class="target" id="structLimef_1_1rtsp_1_1RTPStream_1a6bdee5f3dc702b8c453dece89bb092b4"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">udp_rtp_port</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><a class="headerlink" href="#_CPPv4N5Limef4rtsp9RTPStream12udp_rtp_portE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Server’s RTP port. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef4rtsp9RTPStream13udp_rtcp_portE">
+<span id="_CPPv3N5Limef4rtsp9RTPStream13udp_rtcp_portE"></span><span id="_CPPv2N5Limef4rtsp9RTPStream13udp_rtcp_portE"></span><span id="Limef::rtsp::RTPStream::udp_rtcp_port__i"></span><span class="target" id="structLimef_1_1rtsp_1_1RTPStream_1a66e74c828e4c24063111265fedab40e4"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">udp_rtcp_port</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><a class="headerlink" href="#_CPPv4N5Limef4rtsp9RTPStream13udp_rtcp_portE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Server’s RTCP port. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp class">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef4rtsp16RTSPServerSignalE">
+<span id="_CPPv3N5Limef4rtsp16RTSPServerSignalE"></span><span id="_CPPv2N5Limef4rtsp16RTSPServerSignalE"></span><span id="Limef::rtsp::RTSPServerSignal"></span><span class="target" id="classLimef_1_1rtsp_1_1RTSPServerSignal"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">RTSPServerSignal</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><span class="n"><span class="pre">Limef</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="signals.html#_CPPv4N5Limef6signalE" title="Limef::signal"><span class="n"><span class="pre">signal</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="signals.html#_CPPv4N5Limef6signal6SignalE" title="Limef::signal::Signal"><span class="n"><span class="pre">Signal</span></span></a><a class="headerlink" href="#_CPPv4N5Limef4rtsp16RTSPServerSignalE" title="Link to this definition">¶</a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;rtspserverthread.h&gt;</em></div>
+<p>Signal for RTSPServerThread control operations. </p>
+</dd></dl>
+
+<dl class="cpp class">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef4rtsp16RTSPServerThreadE">
+<span id="_CPPv3N5Limef4rtsp16RTSPServerThreadE"></span><span id="_CPPv2N5Limef4rtsp16RTSPServerThreadE"></span><span id="Limef::rtsp::RTSPServerThread"></span><span class="target" id="classLimef_1_1rtsp_1_1RTSPServerThread"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">RTSPServerThread</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><span class="n"><span class="pre">Limef</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="threads.html#_CPPv4N5Limef6threadE" title="Limef::thread"><span class="n"><span class="pre">thread</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="threads.html#_CPPv4I0EN5Limef6thread10PollThreadE" title="Limef::thread::PollThread"><span class="n"><span class="pre">PollThread</span></span></a><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">Limef</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="frames.html#_CPPv4N5Limef5frameE" title="Limef::frame"><span class="n"><span class="pre">frame</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="frames.html#_CPPv4N5Limef5frame14RTPPacketFrameE" title="Limef::frame::RTPPacketFrame"><span class="n"><span class="pre">RTPPacketFrame</span></span></a><span class="p"><span class="pre">&gt;</span></span><a class="headerlink" href="#_CPPv4N5Limef4rtsp16RTSPServerThreadE" title="Link to this definition">¶</a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;rtspserverthread.h&gt;</em></div>
+<p>RTSP server thread. </p>
+<p>Poll-based thread that:<ol class="lowerroman simple">
+<li><p>Listens for RTSP client connections on a TCP port</p></li>
+<li><p>Receives frames (SDPFrame, RTPPacketFrame) from upstream</p></li>
+<li><p>Routes RTP packets to subscribed clients</p></li>
+</ol>
+</p>
+<p>Data flow: <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>MediaFileThread → RTPMuxerFrameFilter → RTSPServerThread
+                  (CodecFrame→SDP)       (caches SDP per slot)
+                  (PacketFrame→RTP)      (routes to playing sessions)
+                                              │
+                              ┌───────────────┼───────────────┐
+                              ▼               ▼               ▼
+                         RTSPSession    RTSPSession    RTSPSession
+                         (client 1)     (client 2)     (client 3)
+</pre></div>
+</div>
+</p>
+<p>Usage: <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">RTSPServerThread</span><span class="w"> </span><span class="n">server</span><span class="p">(</span><span class="s">&quot;rtsp&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">FrameFifoContext</span><span class="p">(</span><span class="nb">false</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="p">),</span><span class="w"> </span><span class="mi">8554</span><span class="p">);</span>
+
+<span class="c1">// Connect callbacks</span>
+<span class="n">server</span><span class="p">.</span><span class="n">streamRequired</span><span class="p">.</span><span class="n">connect</span><span class="p">([</span><span class="o">&amp;</span><span class="p">](</span><span class="kt">int</span><span class="w"> </span><span class="n">slot</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">mediafile</span><span class="p">.</span><span class="n">playStream</span><span class="p">();</span>
+<span class="p">});</span>
+<span class="n">server</span><span class="p">.</span><span class="n">streamNotRequired</span><span class="p">.</span><span class="n">connect</span><span class="p">([</span><span class="o">&amp;</span><span class="p">](</span><span class="kt">int</span><span class="w"> </span><span class="n">slot</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">mediafile</span><span class="p">.</span><span class="n">stopStream</span><span class="p">();</span>
+<span class="p">});</span>
+
+<span class="n">server</span><span class="p">.</span><span class="n">start</span><span class="p">();</span>
+<span class="n">server</span><span class="p">.</span><span class="n">expose</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;/live/camera1&quot;</span><span class="p">);</span><span class="w">  </span><span class="c1">// Register stream</span>
+
+<span class="c1">// ... frames flow in from upstream via server.getInput()</span>
+
+<span class="n">server</span><span class="p">.</span><span class="n">stop</span><span class="p">();</span>
+</pre></div>
+</div>
+</p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef4rtsp16RTSPServerThread16RTSPServerThreadENSt6stringERKN5Limef16FrameFifoContextEi">
+<span id="_CPPv3N5Limef4rtsp16RTSPServerThread16RTSPServerThreadENSt6stringERKN5Limef16FrameFifoContextEi"></span><span id="_CPPv2N5Limef4rtsp16RTSPServerThread16RTSPServerThreadENSt6stringERKN5Limef16FrameFifoContextEi"></span><span id="Limef::rtsp::RTSPServerThread::RTSPServerThread__ss.Limef::FrameFifoContextCR.i"></span><span class="target" id="classLimef_1_1rtsp_1_1RTSPServerThread_1a78f3db21ffe760f4be7ccfc8877b617c"></span><span class="sig-name descname"><span class="n"><span class="pre">RTSPServerThread</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">name</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">Limef</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">FrameFifoContext</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">ctx</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">port</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">554</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5Limef4rtsp16RTSPServerThread16RTSPServerThreadENSt6stringERKN5Limef16FrameFifoContextEi" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Construct RTSP server thread. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> – Thread name </p></li>
+<li><p><strong>ctx</strong> – FrameFifo context </p></li>
+<li><p><strong>port</strong> – TCP port to listen on (default 554) </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef4rtsp16RTSPServerThread6exposeEiRKNSt6stringE">
+<span id="_CPPv3N5Limef4rtsp16RTSPServerThread6exposeEiRKNSt6stringE"></span><span id="_CPPv2N5Limef4rtsp16RTSPServerThread6exposeEiRKNSt6stringE"></span><span id="Limef::rtsp::RTSPServerThread::expose__i.ssCR"></span><span class="target" id="classLimef_1_1rtsp_1_1RTSPServerThread_1a3da02b3ddd60892b129b9b7f24e95ff8"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">expose</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">slot</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">url_tail</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5Limef4rtsp16RTSPServerThread6exposeEiRKNSt6stringE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Expose a stream for clients to access. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>slot</strong> – Slot number (must match SDPFrame/RTPPacketFrame slot) </p></li>
+<li><p><strong>url_tail</strong> – URL path like “/live/camera1” </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef4rtsp16RTSPServerThread8unexposeEi">
+<span id="_CPPv3N5Limef4rtsp16RTSPServerThread8unexposeEi"></span><span id="_CPPv2N5Limef4rtsp16RTSPServerThread8unexposeEi"></span><span id="Limef::rtsp::RTSPServerThread::unexpose__i"></span><span class="target" id="classLimef_1_1rtsp_1_1RTSPServerThread_1a47af4857a5499fe6654e7fd7cab7def4"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">unexpose</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">slot</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5Limef4rtsp16RTSPServerThread8unexposeEi" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Remove stream exposure. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>slot</strong> – Slot number to unexpose </p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef4rtsp16RTSPServerThread14streamRequiredE">
+<span id="_CPPv3N5Limef4rtsp16RTSPServerThread14streamRequiredE"></span><span id="_CPPv2N5Limef4rtsp16RTSPServerThread14streamRequiredE"></span><span id="Limef::rtsp::RTSPServerThread::streamRequired__Limef::comm::Caller:i:"></span><span class="target" id="classLimef_1_1rtsp_1_1RTSPServerThread_1a479b8b7906623496b9a60b51def4e23d"></span><span class="n"><span class="pre">Limef</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">comm</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">Caller</span></span><span class="p"><span class="pre">&lt;</span></span><span class="kt"><span class="pre">int</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">streamRequired</span></span></span><a class="headerlink" href="#_CPPv4N5Limef4rtsp16RTSPServerThread14streamRequiredE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Emitted when first client subscribes to a slot. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef4rtsp16RTSPServerThread17streamNotRequiredE">
+<span id="_CPPv3N5Limef4rtsp16RTSPServerThread17streamNotRequiredE"></span><span id="_CPPv2N5Limef4rtsp16RTSPServerThread17streamNotRequiredE"></span><span id="Limef::rtsp::RTSPServerThread::streamNotRequired__Limef::comm::Caller:i:"></span><span class="target" id="classLimef_1_1rtsp_1_1RTSPServerThread_1a73d21e70837126de6b3b8a3ca0c85c4c"></span><span class="n"><span class="pre">Limef</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">comm</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">Caller</span></span><span class="p"><span class="pre">&lt;</span></span><span class="kt"><span class="pre">int</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">streamNotRequired</span></span></span><a class="headerlink" href="#_CPPv4N5Limef4rtsp16RTSPServerThread17streamNotRequiredE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Emitted when last client unsubscribes from a slot. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp class">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef4rtsp11RTSPSessionE">
+<span id="_CPPv3N5Limef4rtsp11RTSPSessionE"></span><span id="_CPPv2N5Limef4rtsp11RTSPSessionE"></span><span id="Limef::rtsp::RTSPSession"></span><span class="target" id="classLimef_1_1rtsp_1_1RTSPSession"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">RTSPSession</span></span></span><a class="headerlink" href="#_CPPv4N5Limef4rtsp11RTSPSessionE" title="Link to this definition">¶</a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;rtspsession.h&gt;</em></div>
+<p>Encapsulates one RTSP client connection and its state. </p>
+<p>This class handles RTSP protocol state machine for a single client. It parses requests and generates responses, but does NOT handle socket I/O directly - that’s the responsibility of RTSPServerThread.</p>
+<p>Example usage: <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">RTSPSession</span><span class="w"> </span><span class="n">session</span><span class="p">(</span><span class="s">&quot;192.168.1.100&quot;</span><span class="p">);</span>
+<span class="n">session</span><span class="p">.</span><span class="n">setSDPLookup</span><span class="p">([</span><span class="o">&amp;</span><span class="p">](</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span><span class="w"> </span><span class="n">tail</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">sdp_cache_</span><span class="p">[</span><span class="n">tail</span><span class="p">];</span>
+<span class="p">});</span>
+
+<span class="c1">// When data arrives on socket:</span>
+<span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">session</span><span class="p">.</span><span class="n">handleRequest</span><span class="p">(</span><span class="n">raw_request</span><span class="p">);</span>
+<span class="c1">// Send response back to client</span>
+</pre></div>
+</div>
+</p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef4rtsp11RTSPSession11RTSPSessionERKNSt6stringE">
+<span id="_CPPv3N5Limef4rtsp11RTSPSession11RTSPSessionERKNSt6stringE"></span><span id="_CPPv2N5Limef4rtsp11RTSPSession11RTSPSessionERKNSt6stringE"></span><span id="Limef::rtsp::RTSPSession::RTSPSession__ssCR"></span><span class="target" id="classLimef_1_1rtsp_1_1RTSPSession_1a0b878d3264f748a05a2ea21145eaf1e0"></span><span class="k"><span class="pre">explicit</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">RTSPSession</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">client_ip</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5Limef4rtsp11RTSPSession11RTSPSessionERKNSt6stringE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Construct a new session. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>client_ip</strong> – Client’s IP address (for logging/UDP) </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef4rtsp11RTSPSession13handleRequestERKNSt6stringE">
+<span id="_CPPv3N5Limef4rtsp11RTSPSession13handleRequestERKNSt6stringE"></span><span id="_CPPv2N5Limef4rtsp11RTSPSession13handleRequestERKNSt6stringE"></span><span id="Limef::rtsp::RTSPSession::handleRequest__ssCR"></span><span class="target" id="classLimef_1_1rtsp_1_1RTSPSession_1a91410ea89a1269cea20f81635e4b7aae"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">handleRequest</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">raw</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5Limef4rtsp11RTSPSession13handleRequestERKNSt6stringE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Process incoming RTSP request, returns response to send. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>raw</strong> – Raw request text from client </p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Response string to send back </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef4rtsp11RTSPSession12setSDPLookupE17SDPLookupCallback">
+<span id="_CPPv3N5Limef4rtsp11RTSPSession12setSDPLookupE17SDPLookupCallback"></span><span id="_CPPv2N5Limef4rtsp11RTSPSession12setSDPLookupE17SDPLookupCallback"></span><span id="Limef::rtsp::RTSPSession::setSDPLookup__SDPLookupCallback"></span><span class="target" id="classLimef_1_1rtsp_1_1RTSPSession_1a1d34dd36062ab37edaea3797f502802f"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">setSDPLookup</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv4N5Limef4rtsp17SDPLookupCallbackE" title="Limef::rtsp::SDPLookupCallback"><span class="n"><span class="pre">SDPLookupCallback</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">callback</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5Limef4rtsp11RTSPSession12setSDPLookupE17SDPLookupCallback" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Set callback for SDP lookup (used in DESCRIBE) </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef4rtsp11RTSPSession18setUDPPortCallbackE15UDPPortCallback">
+<span id="_CPPv3N5Limef4rtsp11RTSPSession18setUDPPortCallbackE15UDPPortCallback"></span><span id="_CPPv2N5Limef4rtsp11RTSPSession18setUDPPortCallbackE15UDPPortCallback"></span><span id="Limef::rtsp::RTSPSession::setUDPPortCallback__UDPPortCallback"></span><span class="target" id="classLimef_1_1rtsp_1_1RTSPSession_1a3b6e6f7444add07e3f4cccfc505ee26f"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">setUDPPortCallback</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv4N5Limef4rtsp15UDPPortCallbackE" title="Limef::rtsp::UDPPortCallback"><span class="n"><span class="pre">UDPPortCallback</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">callback</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5Limef4rtsp11RTSPSession18setUDPPortCallbackE15UDPPortCallback" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Set callback for getting server UDP ports (used in SETUP with UDP) </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK5Limef4rtsp11RTSPSession9getTracksEv">
+<span id="_CPPv3NK5Limef4rtsp11RTSPSession9getTracksEv"></span><span id="_CPPv2NK5Limef4rtsp11RTSPSession9getTracksEv"></span><span id="Limef::rtsp::RTSPSession::getTracksC"></span><span class="target" id="classLimef_1_1rtsp_1_1RTSPSession_1aee682e09868746636aac9fcc9fed77d5"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">vector</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="#_CPPv4N5Limef4rtsp11ClientTrackE" title="Limef::rtsp::ClientTrack"><span class="n"><span class="pre">ClientTrack</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="sig-name descname"><span class="n"><span class="pre">getTracks</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">noexcept</span></span><a class="headerlink" href="#_CPPv4NK5Limef4rtsp11RTSPSession9getTracksEv" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Get configured tracks for RTP delivery. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK5Limef4rtsp11RTSPSession13getStreamTailEv">
+<span id="_CPPv3NK5Limef4rtsp11RTSPSession13getStreamTailEv"></span><span id="_CPPv2NK5Limef4rtsp11RTSPSession13getStreamTailEv"></span><span id="Limef::rtsp::RTSPSession::getStreamTailC"></span><span class="target" id="classLimef_1_1rtsp_1_1RTSPSession_1a8e334241ec0451ec1f534e5214ea34ea"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="sig-name descname"><span class="n"><span class="pre">getStreamTail</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">noexcept</span></span><a class="headerlink" href="#_CPPv4NK5Limef4rtsp11RTSPSession13getStreamTailEv" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Get the URL tail this session is subscribed to. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="shmem.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Shared Memory</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="signals.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Signals</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2024 Sampsa Riikonen
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">RTSP</a><ul>
+<li><a class="reference internal" href="#_CPPv4N5Limef4rtspE"><code class="docutils literal notranslate"><span class="pre">Limef::rtsp</span></code></a><ul>
+<li><a class="reference internal" href="#_CPPv4N5Limef4rtsp17SDPLookupCallbackE"><code class="docutils literal notranslate"><span class="pre">SDPLookupCallback</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef4rtsp15UDPPortCallbackE"><code class="docutils literal notranslate"><span class="pre">UDPPortCallback</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef4rtsp12SessionStateE"><code class="docutils literal notranslate"><span class="pre">SessionState</span></code></a><ul>
+<li><a class="reference internal" href="#_CPPv4N5Limef4rtsp12SessionState4INITE"><code class="docutils literal notranslate"><span class="pre">INIT</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef4rtsp12SessionState9DESCRIBEDE"><code class="docutils literal notranslate"><span class="pre">DESCRIBED</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef4rtsp12SessionState13SETUP_PARTIALE"><code class="docutils literal notranslate"><span class="pre">SETUP_PARTIAL</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef4rtsp12SessionState5READYE"><code class="docutils literal notranslate"><span class="pre">READY</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef4rtsp12SessionState7PLAYINGE"><code class="docutils literal notranslate"><span class="pre">PLAYING</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef4rtsp12SessionState6PAUSEDE"><code class="docutils literal notranslate"><span class="pre">PAUSED</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#_CPPv4N5Limef4rtsp12parseRequestERKNSt6stringE"><code class="docutils literal notranslate"><span class="pre">parseRequest()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef4rtsp14extractUrlTailERKNSt6stringE"><code class="docutils literal notranslate"><span class="pre">extractUrlTail()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef4rtsp14extractTrackIdERKNSt6stringE"><code class="docutils literal notranslate"><span class="pre">extractTrackId()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef4rtsp11ClientTrackE"><code class="docutils literal notranslate"><span class="pre">Limef::rtsp::ClientTrack</span></code></a><ul>
+<li><a class="reference internal" href="#_CPPv4N5Limef4rtsp11ClientTrack7use_tcpE"><code class="docutils literal notranslate"><span class="pre">use_tcp</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef4rtsp11ClientTrack11rtp_channelE"><code class="docutils literal notranslate"><span class="pre">rtp_channel</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef4rtsp11ClientTrack15server_rtp_portE"><code class="docutils literal notranslate"><span class="pre">server_rtp_port</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef4rtsp11ClientTrack16server_rtcp_portE"><code class="docutils literal notranslate"><span class="pre">server_rtcp_port</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#_CPPv4N5Limef4rtsp7RequestE"><code class="docutils literal notranslate"><span class="pre">Limef::rtsp::Request</span></code></a><ul>
+<li><a class="reference internal" href="#_CPPv4N5Limef4rtsp7Request6methodE"><code class="docutils literal notranslate"><span class="pre">method</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef4rtsp7Request3urlE"><code class="docutils literal notranslate"><span class="pre">url</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef4rtsp7Request4cseqE"><code class="docutils literal notranslate"><span class="pre">cseq</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef4rtsp7Request10session_idE"><code class="docutils literal notranslate"><span class="pre">session_id</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef4rtsp7Request9transportE"><code class="docutils literal notranslate"><span class="pre">transport</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef4rtsp7Request7headersE"><code class="docutils literal notranslate"><span class="pre">headers</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#_CPPv4N5Limef4rtsp9RTPStreamE"><code class="docutils literal notranslate"><span class="pre">Limef::rtsp::RTPStream</span></code></a><ul>
+<li><a class="reference internal" href="#_CPPv4N5Limef4rtsp9RTPStream4slotE"><code class="docutils literal notranslate"><span class="pre">slot</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef4rtsp9RTPStream8url_tailE"><code class="docutils literal notranslate"><span class="pre">url_tail</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef4rtsp9RTPStream3sdpE"><code class="docutils literal notranslate"><span class="pre">sdp</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef4rtsp9RTPStream11session_fdsE"><code class="docutils literal notranslate"><span class="pre">session_fds</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef4rtsp9RTPStream10udp_rtp_fdE"><code class="docutils literal notranslate"><span class="pre">udp_rtp_fd</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef4rtsp9RTPStream11udp_rtcp_fdE"><code class="docutils literal notranslate"><span class="pre">udp_rtcp_fd</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef4rtsp9RTPStream12udp_rtp_portE"><code class="docutils literal notranslate"><span class="pre">udp_rtp_port</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef4rtsp9RTPStream13udp_rtcp_portE"><code class="docutils literal notranslate"><span class="pre">udp_rtcp_port</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#_CPPv4N5Limef4rtsp16RTSPServerSignalE"><code class="docutils literal notranslate"><span class="pre">Limef::rtsp::RTSPServerSignal</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef4rtsp16RTSPServerThreadE"><code class="docutils literal notranslate"><span class="pre">Limef::rtsp::RTSPServerThread</span></code></a><ul>
+<li><a class="reference internal" href="#_CPPv4N5Limef4rtsp16RTSPServerThread16RTSPServerThreadENSt6stringERKN5Limef16FrameFifoContextEi"><code class="docutils literal notranslate"><span class="pre">RTSPServerThread()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef4rtsp16RTSPServerThread6exposeEiRKNSt6stringE"><code class="docutils literal notranslate"><span class="pre">expose()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef4rtsp16RTSPServerThread8unexposeEi"><code class="docutils literal notranslate"><span class="pre">unexpose()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef4rtsp16RTSPServerThread14streamRequiredE"><code class="docutils literal notranslate"><span class="pre">streamRequired</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef4rtsp16RTSPServerThread17streamNotRequiredE"><code class="docutils literal notranslate"><span class="pre">streamNotRequired</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#_CPPv4N5Limef4rtsp11RTSPSessionE"><code class="docutils literal notranslate"><span class="pre">Limef::rtsp::RTSPSession</span></code></a><ul>
+<li><a class="reference internal" href="#_CPPv4N5Limef4rtsp11RTSPSession11RTSPSessionERKNSt6stringE"><code class="docutils literal notranslate"><span class="pre">RTSPSession()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef4rtsp11RTSPSession13handleRequestERKNSt6stringE"><code class="docutils literal notranslate"><span class="pre">handleRequest()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef4rtsp11RTSPSession12setSDPLookupE17SDPLookupCallback"><code class="docutils literal notranslate"><span class="pre">setSDPLookup()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef4rtsp11RTSPSession18setUDPPortCallbackE15UDPPortCallback"><code class="docutils literal notranslate"><span class="pre">setUDPPortCallback()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4NK5Limef4rtsp11RTSPSession9getTracksEv"><code class="docutils literal notranslate"><span class="pre">getTracks()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4NK5Limef4rtsp11RTSPSession13getStreamTailEv"><code class="docutils literal notranslate"><span class="pre">getStreamTail()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script src="../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/scripts/furo.js?v=46bd48cc"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    </body>
+</html>

@@ -1,0 +1,1434 @@
+<!doctype html>
+<html class="no-js" lang="en" data-content_root="../">
+  <head><meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="index" title="Index" href="../genindex.html"><link rel="search" title="Search" href="../search.html"><link rel="next" title="Decoders" href="decoders.html"><link rel="prev" title="FrameFifos" href="framefifos.html">
+        <link rel="prefetch" href="../_static/logo.png" as="image">
+
+    <!-- Generated with Sphinx 9.1.0 and Furo 2025.12.19 -->
+        <title>Threads</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=7bdb33bb" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?v=8dab3a3b" />
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #eeffcc;
+  --color-code-foreground: black;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle site navigation sidebar">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc" aria-label="Toggle table of contents sidebar">
+<label class="overlay sidebar-overlay" for="__navigation"></label>
+<label class="overlay toc-overlay" for="__toc"></label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <span class="icon"><svg><use href="#svg-menu"></use></svg></span>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../index.html"><div class="brand">Media Streaming Framework for Linux</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky">
+
+<style>
+    .sidebar-links {
+      list-style-type: none;
+      padding-left: 10px;
+    }
+    .sidebar-links li {
+      margin: 1em 0;
+      padding-left: 20px;
+    }
+</style>
+  
+<a class="sidebar-brand" href="../index.html">
+<img src="../_static/logo.png" alt="Logo" style="width: 200px; height: auto; border-radius: 0px 6px 6px 0px;">
+</a>
+
+<div class="list-container">
+<ul class="sidebar-links">
+    <li><a href="https://github.com/elsampsa/limef-public" target="_blank" rel="noopener noreferrer"><i class="fa fa-github" style="font-size: 16pt"></i> Limef library </a></li>
+    <li><a href="https://github.com/elsampsa/limef-apps" target="_blank" rel="noopener noreferrer"><i class="fa fa-github" style="font-size: 16pt"></i> App examples </a></li>
+    <li><a href="https://github.com/elsampsa/limef-plugins" target="_blank" rel="noopener noreferrer"><i class="fa fa-github" style="font-size: 16pt"></i> Plugin examples </a></li>
+    <li><a href="https://github.com/elsampsa/limef-docs/issues" target="_blank" rel="noopener noreferrer"><i class="fa fa-bug" style="font-size: 16pt"></i> Public issues </a></li>
+    <li><a href="https://github.com/elsampsa/limef-releases/releases" target="_blank" rel="noopener noreferrer"><i class="fa fa-download" style="font-size: 16pt"></i> Releases </a></li>
+    <li><a href="https://github.com/sponsors/elsampsa" target="_blank" rel="noopener noreferrer"><i class="fa fa-heart" style="font-size: 16pt"></i> Sponsor </a></li>
+</ul>
+</div><form class="sidebar-search-container" method="get" action="../search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Limef</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../intro.html">A Media Streaming Framework</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../concepts.html">Key Concepts and Definitions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../under_the_hood.html">Under the Hood</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../tutorial/index.html">Tutorials</a><input aria-label="Toggle navigation of Tutorials" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tutorial/t01_mediafile_dump.html">Tutorial 1: Streaming packets to a DumpFrameFilter</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current has-children"><a class="reference internal" href="index.html">API Reference</a><input aria-label="Toggle navigation of API Reference" checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="frames.html">Frames</a></li>
+<li class="toctree-l2"><a class="reference internal" href="framefilters.html">Framefilters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="framefifos.html">FrameFifos</a></li>
+<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">Threads</a></li>
+<li class="toctree-l2"><a class="reference internal" href="decoders.html">Decoders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="encoders.html">Encoders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="signals.html">Signals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rtsp.html">RTSP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="shmem.html">Shared Memory</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../distribution.html">Distributing</a></li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="view-this-page">
+  <a class="muted-link" href="../_sources/api/threads.md.txt" title="View this page">
+    <svg><use href="#svg-eye"></use></svg>
+    <span class="visually-hidden">View this page</span>
+  </a>
+</div>
+<div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          <section id="threads">
+<h1>Threads<a class="headerlink" href="#threads" title="Link to this heading">¶</a></h1>
+<p>Threads are the active components of a pipeline.  The base class
+<a class="reference internal" href="#_CPPv4I0EN5Limef6thread6ThreadE" title="Limef::thread::Thread"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">Limef::thread::Thread</span></code></a> is templated on the frame type it handles specially.
+Each thread exposes <a class="reference internal" href="#_CPPv4N5Limef6thread6Thread8getInputEv" title="Limef::thread::Thread::getInput"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Limef::thread::Thread::getInput()</span></code></a> and
+<a class="reference internal" href="#_CPPv4N5Limef6thread6Thread9getOutputEv" title="Limef::thread::Thread::getOutput"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Limef::thread::Thread::getOutput()</span></code></a> as connection points.</p>
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6threadE">
+<span id="_CPPv3N5Limef6threadE"></span><span id="_CPPv2N5Limef6threadE"></span><span id="Limef::thread"></span><span class="target" id="namespaceLimef_1_1thread"></span><span class="k"><span class="pre">namespace</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">thread</span></span></span><a class="headerlink" href="#_CPPv4N5Limef6threadE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>multithreading </p>
+<p>Non-template base class for all thread classes.</p>
+<p>Defines the common interface for all thread classes. Used by ComposeThread to manage thread chains without needing to know the specific template types.</p>
+<p>Each thread:<ul class="simple">
+<li><p>Has input and output framefilters for connecting to other threads</p></li>
+<li><p>Can be started and stopped</p></li>
+<li><p>Can be bound to specific CPU cores</p></li>
+<li><p>Has configurable logging </p></li>
+</ul>
+</p>
+<dl class="cpp class">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6thread13ComposeThreadE">
+<span id="_CPPv3N5Limef6thread13ComposeThreadE"></span><span id="_CPPv2N5Limef6thread13ComposeThreadE"></span><span id="Limef::thread::ComposeThread"></span><span class="target" id="classLimef_1_1thread_1_1ComposeThread"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ComposeThread</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><span class="n"><span class="pre">Limef</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N5Limef6threadE" title="Limef::thread"><span class="n"><span class="pre">thread</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N5Limef6thread10ThreadBaseE" title="Limef::thread::ThreadBase"><span class="n"><span class="pre">ThreadBase</span></span></a><a class="headerlink" href="#_CPPv4N5Limef6thread13ComposeThreadE" title="Link to this definition">¶</a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;compose.h&gt;</em></div>
+<p>Base class for composite threads. </p>
+<p>Allows creating complex thread combinations by composing simpler ones. Subclasses create and chain their threads directly in the constructor call to chainThreads().</p>
+<p>Example usage: <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">StreamThread</span> <span class="p">:</span> <span class="n">public</span> <span class="n">ComposeThread</span> <span class="p">{</span>
+<span class="n">public</span><span class="p">:</span>
+    <span class="n">StreamThread</span><span class="p">(</span><span class="n">const</span> <span class="n">std</span><span class="p">::</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">name</span><span class="p">,</span> <span class="n">const</span> <span class="n">StreamContext</span><span class="o">&amp;</span> <span class="n">ctx</span><span class="p">)</span> 
+        <span class="p">:</span> <span class="n">ComposeThread</span><span class="p">(</span><span class="n">name</span><span class="p">)</span> <span class="p">{</span>
+        
+        <span class="n">chainThreads</span><span class="p">({</span>
+            <span class="n">new</span> <span class="n">LiveStreamThread</span><span class="p">(</span><span class="s2">&quot;live&quot;</span><span class="p">,</span> <span class="n">ctx</span><span class="p">),</span>
+            <span class="n">new</span> <span class="n">PacketBufferThread</span><span class="p">(</span><span class="s2">&quot;buffer&quot;</span><span class="p">,</span> <span class="n">ctx</span><span class="p">),</span>
+            <span class="n">new</span> <span class="n">DecodingThread</span><span class="p">(</span><span class="s2">&quot;decode&quot;</span><span class="p">,</span> <span class="n">ctx</span><span class="p">)</span>
+        <span class="p">});</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+</p>
+<p>ComposeThread takes ownership of the created threads and handles:<ul class="simple">
+<li><p>Chaining outputs to inputs</p></li>
+<li><p>Starting/stopping in correct order</p></li>
+<li><p>Memory cleanup</p></li>
+<li><p>Logger propagation</p></li>
+<li><p>CPU affinity assignment</p></li>
+</ul>
+</p>
+<p>IMPORTANT: when calling start for a ComposeThread, the threads are started in reverse order (in the current example: DecodingThread first, then PacketBufferThread, etc.) This assures that downstream receiving threads are ready &amp; do not miss any frames sent by the upstream threads. </p>
+<p>Subclassed by Limef::thread::MediaFileThread</p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6thread13ComposeThread5startEv">
+<span id="_CPPv3N5Limef6thread13ComposeThread5startEv"></span><span id="_CPPv2N5Limef6thread13ComposeThread5startEv"></span><span id="Limef::thread::ComposeThread::start"></span><span class="target" id="classLimef_1_1thread_1_1ComposeThread_1af303f4b8d4e1fd176313319297c89cd4"></span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">start</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">override</span></span><a class="headerlink" href="#_CPPv4N5Limef6thread13ComposeThread5startEv" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Start the thread. </p>
+<p>Initializes internal structures and starts the thread’s main loop. Thread subclasses may perform additional initialization. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK5Limef6thread13ComposeThread9isStartedEv">
+<span id="_CPPv3NK5Limef6thread13ComposeThread9isStartedEv"></span><span id="_CPPv2NK5Limef6thread13ComposeThread9isStartedEv"></span><span id="Limef::thread::ComposeThread::isStartedC"></span><span class="target" id="classLimef_1_1thread_1_1ComposeThread_1acff05e2f6c1da565d1dbb90a1cd49b26"></span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">isStarted</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">override</span></span><a class="headerlink" href="#_CPPv4NK5Limef6thread13ComposeThread9isStartedEv" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Check if start has been called or not. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6thread13ComposeThread11requestStopEv">
+<span id="_CPPv3N5Limef6thread13ComposeThread11requestStopEv"></span><span id="_CPPv2N5Limef6thread13ComposeThread11requestStopEv"></span><span id="Limef::thread::ComposeThread::requestStop"></span><span class="target" id="classLimef_1_1thread_1_1ComposeThread_1a7c822e3cde17f8156162e2aec8c00567"></span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">requestStop</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">override</span></span><a class="headerlink" href="#_CPPv4N5Limef6thread13ComposeThread11requestStopEv" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Request thread termination. </p>
+<p>Sends termination signal to the thread. Does not wait for completion. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6thread13ComposeThread8waitStopEv">
+<span id="_CPPv3N5Limef6thread13ComposeThread8waitStopEv"></span><span id="_CPPv2N5Limef6thread13ComposeThread8waitStopEv"></span><span id="Limef::thread::ComposeThread::waitStop"></span><span class="target" id="classLimef_1_1thread_1_1ComposeThread_1a77fb0e5710cff2c163405dc00f8e99f4"></span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">waitStop</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">override</span></span><a class="headerlink" href="#_CPPv4N5Limef6thread13ComposeThread8waitStopEv" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Wait for thread termination. </p>
+<p>Blocks until the thread has completely stopped. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6thread13ComposeThread4stopEv">
+<span id="_CPPv3N5Limef6thread13ComposeThread4stopEv"></span><span id="_CPPv2N5Limef6thread13ComposeThread4stopEv"></span><span id="Limef::thread::ComposeThread::stop"></span><span class="target" id="classLimef_1_1thread_1_1ComposeThread_1ae5d7ab574b9ba86d1f96a77a225f894a"></span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">stop</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">override</span></span><a class="headerlink" href="#_CPPv4N5Limef6thread13ComposeThread4stopEv" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Stop the thread. </p>
+<p>Combines requestStop() and waitStop() for convenience. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6thread13ComposeThread11setAffinityEi">
+<span id="_CPPv3N5Limef6thread13ComposeThread11setAffinityEi"></span><span id="_CPPv2N5Limef6thread13ComposeThread11setAffinityEi"></span><span id="Limef::thread::ComposeThread::setAffinity__i"></span><span class="target" id="classLimef_1_1thread_1_1ComposeThread_1abf11c203dd1c0cdefbce3c66843ec4c9"></span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">setAffinity</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">core_id</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">override</span></span><a class="headerlink" href="#_CPPv4N5Limef6thread13ComposeThread11setAffinityEi" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Bind thread to specific CPU core. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>core_id</strong> – CPU core number to bind to </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6thread13ComposeThread11setLogLevelEN6spdlog5level10level_enumE">
+<span id="_CPPv3N5Limef6thread13ComposeThread11setLogLevelEN6spdlog5level10level_enumE"></span><span id="_CPPv2N5Limef6thread13ComposeThread11setLogLevelEN6spdlog5level10level_enumE"></span><span id="Limef::thread::ComposeThread::setLogLevel__spdlog::level::level_enum"></span><span class="target" id="classLimef_1_1thread_1_1ComposeThread_1ac3856741d0b2262e3045b193de3c32f2"></span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">setLogLevel</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">spdlog</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">level</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">level_enum</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">level</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">override</span></span><a class="headerlink" href="#_CPPv4N5Limef6thread13ComposeThread11setLogLevelEN6spdlog5level10level_enumE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Set thread’s log level. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6thread13ComposeThread12setLogFormatERKNSt6stringE">
+<span id="_CPPv3N5Limef6thread13ComposeThread12setLogFormatERKNSt6stringE"></span><span id="_CPPv2N5Limef6thread13ComposeThread12setLogFormatERKNSt6stringE"></span><span id="Limef::thread::ComposeThread::setLogFormat__ssCR"></span><span class="target" id="classLimef_1_1thread_1_1ComposeThread_1a46eaf5bbf177b465e4893828cbc683e0"></span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">setLogFormat</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">format</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">override</span></span><a class="headerlink" href="#_CPPv4N5Limef6thread13ComposeThread12setLogFormatERKNSt6stringE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Set thread’s log format. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6thread13ComposeThread14shortLogFormatEv">
+<span id="_CPPv3N5Limef6thread13ComposeThread14shortLogFormatEv"></span><span id="_CPPv2N5Limef6thread13ComposeThread14shortLogFormatEv"></span><span id="Limef::thread::ComposeThread::shortLogFormat"></span><span class="target" id="classLimef_1_1thread_1_1ComposeThread_1af56a1e241e64cf13b1f502d36b52ac5a"></span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">shortLogFormat</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">override</span></span><a class="headerlink" href="#_CPPv4N5Limef6thread13ComposeThread14shortLogFormatEv" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Set a nice minimal format for thread’s logger. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK5Limef6thread13ComposeThread11getLogLevelEv">
+<span id="_CPPv3NK5Limef6thread13ComposeThread11getLogLevelEv"></span><span id="_CPPv2NK5Limef6thread13ComposeThread11getLogLevelEv"></span><span id="Limef::thread::ComposeThread::getLogLevelC"></span><span class="target" id="classLimef_1_1thread_1_1ComposeThread_1a7a983a75adfc76af13533db8dcecdc51"></span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><span class="n"><span class="pre">spdlog</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">level</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">level_enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getLogLevel</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">override</span></span><a class="headerlink" href="#_CPPv4NK5Limef6thread13ComposeThread11getLogLevelEv" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Get thread’s current log level. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6thread13ComposeThread8getInputEv">
+<span id="_CPPv3N5Limef6thread13ComposeThread8getInputEv"></span><span id="_CPPv2N5Limef6thread13ComposeThread8getInputEv"></span><span id="Limef::thread::ComposeThread::getInput"></span><span class="target" id="classLimef_1_1thread_1_1ComposeThread_1adb04a9dca2a5fddef42dea177ff71920"></span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><span class="n"><span class="pre">Limef</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="framefilters.html#_CPPv4N5Limef2ffE" title="Limef::ff"><span class="n"><span class="pre">ff</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="framefilters.html#_CPPv4N5Limef2ff11FrameFilterE" title="Limef::ff::FrameFilter"><span class="n"><span class="pre">FrameFilter</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="sig-name descname"><span class="n"><span class="pre">getInput</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">override</span></span><a class="headerlink" href="#_CPPv4N5Limef6thread13ComposeThread8getInputEv" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Get thread’s input framefilter. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Reference to input framefilter </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6thread13ComposeThread9getOutputEv">
+<span id="_CPPv3N5Limef6thread13ComposeThread9getOutputEv"></span><span id="_CPPv2N5Limef6thread13ComposeThread9getOutputEv"></span><span id="Limef::thread::ComposeThread::getOutput"></span><span class="target" id="classLimef_1_1thread_1_1ComposeThread_1ae39c7d88a1eb31986a21d486f5c6fbe6"></span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><span class="n"><span class="pre">Limef</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="framefilters.html#_CPPv4N5Limef2ffE" title="Limef::ff"><span class="n"><span class="pre">ff</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="framefilters.html#_CPPv4N5Limef2ff11FrameFilterE" title="Limef::ff::FrameFilter"><span class="n"><span class="pre">FrameFilter</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="sig-name descname"><span class="n"><span class="pre">getOutput</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">override</span></span><a class="headerlink" href="#_CPPv4N5Limef6thread13ComposeThread9getOutputEv" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Get thread’s output framefilter. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Reference to output framefilter </p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp class">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6thread14ConsumerThreadE">
+<span id="_CPPv3N5Limef6thread14ConsumerThreadE"></span><span id="_CPPv2N5Limef6thread14ConsumerThreadE"></span><span id="Limef::thread::ConsumerThread"></span><span class="target" id="classLimef_1_1thread_1_1ConsumerThread"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ConsumerThread</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><span class="n"><span class="pre">Limef</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N5Limef6threadE" title="Limef::thread"><span class="n"><span class="pre">thread</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4I0EN5Limef6thread6ThreadE" title="Limef::thread::Thread"><span class="n"><span class="pre">Thread</span></span></a><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">Limef</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="frames.html#_CPPv4N5Limef5frameE" title="Limef::frame"><span class="n"><span class="pre">frame</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="frames.html#_CPPv4N5Limef5frame11PacketFrameE" title="Limef::frame::PacketFrame"><span class="n"><span class="pre">PacketFrame</span></span></a><span class="p"><span class="pre">&gt;</span></span><a class="headerlink" href="#_CPPv4N5Limef6thread14ConsumerThreadE" title="Link to this definition">¶</a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;consumer.h&gt;</em></div>
+<p>An example consumer thread. </p>
+<p>An example thread that consumes frames Consumes <code class="docutils literal notranslate"><span class="pre">PacketFrame</span></code>s at a certain framerate from the input framefilter. Does not pass anything downstream to output framefilter. </p>
+</dd></dl>
+
+<dl class="cpp class">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6thread17ExamplePollThreadE">
+<span id="_CPPv3N5Limef6thread17ExamplePollThreadE"></span><span id="_CPPv2N5Limef6thread17ExamplePollThreadE"></span><span id="Limef::thread::ExamplePollThread"></span><span class="target" id="classLimef_1_1thread_1_1ExamplePollThread"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ExamplePollThread</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><span class="n"><span class="pre">Limef</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N5Limef6threadE" title="Limef::thread"><span class="n"><span class="pre">thread</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4I0EN5Limef6thread10PollThreadE" title="Limef::thread::PollThread"><span class="n"><span class="pre">PollThread</span></span></a><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">Limef</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="frames.html#_CPPv4N5Limef5frameE" title="Limef::frame"><span class="n"><span class="pre">frame</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="frames.html#_CPPv4N5Limef5frame11PacketFrameE" title="Limef::frame::PacketFrame"><span class="n"><span class="pre">PacketFrame</span></span></a><span class="p"><span class="pre">&gt;</span></span><a class="headerlink" href="#_CPPv4N5Limef6thread17ExamplePollThreadE" title="Link to this definition">¶</a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;pollthread.h&gt;</em></div>
+<p>Concrete example of PollThread for testing. </p>
+<p>Demonstrates PollThread with PacketFrames and a periodic task. </p>
+</dd></dl>
+
+<dl class="cpp class">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6thread13ExampleSignalE">
+<span id="_CPPv3N5Limef6thread13ExampleSignalE"></span><span id="_CPPv2N5Limef6thread13ExampleSignalE"></span><span id="Limef::thread::ExampleSignal"></span><span class="target" id="classLimef_1_1thread_1_1ExampleSignal"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ExampleSignal</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><span class="n"><span class="pre">Limef</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="signals.html#_CPPv4N5Limef6signalE" title="Limef::signal"><span class="n"><span class="pre">signal</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="signals.html#_CPPv4N5Limef6signal6SignalE" title="Limef::signal::Signal"><span class="n"><span class="pre">Signal</span></span></a><a class="headerlink" href="#_CPPv4N5Limef6thread13ExampleSignalE" title="Link to this definition">¶</a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;examplethread.h&gt;</em></div>
+<p>An example signal for <code class="docutils literal notranslate"><span class="pre">ExampleThread</span></code></p>
+<p>An example custom signal class for the <code class="docutils literal notranslate"><span class="pre">ExampleThread</span></code> thread class </p>
+</dd></dl>
+
+<dl class="cpp class">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6thread13ExampleThreadE">
+<span id="_CPPv3N5Limef6thread13ExampleThreadE"></span><span id="_CPPv2N5Limef6thread13ExampleThreadE"></span><span id="Limef::thread::ExampleThread"></span><span class="target" id="classLimef_1_1thread_1_1ExampleThread"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ExampleThread</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><span class="n"><span class="pre">Limef</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N5Limef6threadE" title="Limef::thread"><span class="n"><span class="pre">thread</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4I0EN5Limef6thread6ThreadE" title="Limef::thread::Thread"><span class="n"><span class="pre">Thread</span></span></a><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">Limef</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="frames.html#_CPPv4N5Limef5frameE" title="Limef::frame"><span class="n"><span class="pre">frame</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="frames.html#_CPPv4N5Limef5frame11PacketFrameE" title="Limef::frame::PacketFrame"><span class="n"><span class="pre">PacketFrame</span></span></a><span class="p"><span class="pre">&gt;</span></span><a class="headerlink" href="#_CPPv4N5Limef6thread13ExampleThreadE" title="Link to this definition">¶</a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;examplethread.h&gt;</em></div>
+<p>An example thread. </p>
+<p>An example thread with custom signals, task and frame processing. Receives <code class="docutils literal notranslate"><span class="pre">PacketFrame</span></code>s from upstream (input framefilter) and simply passes them downstream (output framefilter). Executes a periodic task (every 2 secs). Demonstrates intercommunication between thread front- and backend. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6thread13ExampleThread8pingCallEv">
+<span id="_CPPv3N5Limef6thread13ExampleThread8pingCallEv"></span><span id="_CPPv2N5Limef6thread13ExampleThread8pingCallEv"></span><span id="Limef::thread::ExampleThread::pingCall"></span><span class="target" id="classLimef_1_1thread_1_1ExampleThread_1a2073e5f5757cfae94312881dc66081ee"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">pingCall</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5Limef6thread13ExampleThread8pingCallEv" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Frontend method that calls backend method <code class="docutils literal notranslate"><span class="pre">ExampleThread::pingCall__</span></code></p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6thread13ExampleThread9pingCall2Ei">
+<span id="_CPPv3N5Limef6thread13ExampleThread9pingCall2Ei"></span><span id="_CPPv2N5Limef6thread13ExampleThread9pingCall2Ei"></span><span id="Limef::thread::ExampleThread::pingCall2__i"></span><span class="target" id="classLimef_1_1thread_1_1ExampleThread_1a034522370ba9911a12cf4172d19b8cb9"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">pingCall2</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">param</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5Limef6thread13ExampleThread9pingCall2Ei" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Frontend method that calls backend method <code class="docutils literal notranslate"><span class="pre">ExampleThread::pingCall2__</span></code></p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6thread17LiveStreamContextE">
+<span id="_CPPv3N5Limef6thread17LiveStreamContextE"></span><span id="_CPPv2N5Limef6thread17LiveStreamContextE"></span><span id="Limef::thread::LiveStreamContext"></span><span class="target" id="structLimef_1_1thread_1_1LiveStreamContext"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">LiveStreamContext</span></span></span><a class="headerlink" href="#_CPPv4N5Limef6thread17LiveStreamContextE" title="Link to this definition">¶</a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;livestreamcontext.h&gt;</em></div>
+<p>Configuration context for live stream reader. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6thread17LiveStreamContext3urlE">
+<span id="_CPPv3N5Limef6thread17LiveStreamContext3urlE"></span><span id="_CPPv2N5Limef6thread17LiveStreamContext3urlE"></span><span id="Limef::thread::LiveStreamContext::url__ssC"></span><span class="target" id="structLimef_1_1thread_1_1LiveStreamContext_1a075083aca8e3c5d798cbc6e092a1e826"></span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">url</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="p"><span class="pre">{</span></span><span class="s"><span class="pre">&quot;&quot;</span></span><span class="p"><span class="pre">}</span></span><a class="headerlink" href="#_CPPv4N5Limef6thread17LiveStreamContext3urlE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Stream URL (e.g., “rtsp://camera.example.com/stream”) </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6thread17LiveStreamContext4slotE">
+<span id="_CPPv3N5Limef6thread17LiveStreamContext4slotE"></span><span id="_CPPv2N5Limef6thread17LiveStreamContext4slotE"></span><span id="Limef::thread::LiveStreamContext::slot__SlotC"></span><span class="target" id="structLimef_1_1thread_1_1LiveStreamContext_1a539c9bdfa28fb1610f8457bde2190729"></span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">Slot</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">slot</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="p"><span class="pre">{</span></span><span class="m"><span class="pre">1</span></span><span class="p"><span class="pre">}</span></span><a class="headerlink" href="#_CPPv4N5Limef6thread17LiveStreamContext4slotE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Slot identifying this stream. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6thread17LiveStreamContext11timeout_secE">
+<span id="_CPPv3N5Limef6thread17LiveStreamContext11timeout_secE"></span><span id="_CPPv2N5Limef6thread17LiveStreamContext11timeout_secE"></span><span id="Limef::thread::LiveStreamContext::timeout_sec__i"></span><span class="target" id="structLimef_1_1thread_1_1LiveStreamContext_1a6202b755d006ecca53c3c0f15292dd4c"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">timeout_sec</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="p"><span class="pre">{</span></span><span class="m"><span class="pre">5</span></span><span class="p"><span class="pre">}</span></span><a class="headerlink" href="#_CPPv4N5Limef6thread17LiveStreamContext11timeout_secE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Read timeout in seconds. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6thread17LiveStreamContext14rtsp_transportE">
+<span id="_CPPv3N5Limef6thread17LiveStreamContext14rtsp_transportE"></span><span id="_CPPv2N5Limef6thread17LiveStreamContext14rtsp_transportE"></span><span id="Limef::thread::LiveStreamContext::rtsp_transport__ss"></span><span class="target" id="structLimef_1_1thread_1_1LiveStreamContext_1a0e3538f69481c8a3570f47f34e633a3c"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">rtsp_transport</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="p"><span class="pre">{</span></span><span class="s"><span class="pre">&quot;tcp&quot;</span></span><span class="p"><span class="pre">}</span></span><a class="headerlink" href="#_CPPv4N5Limef6thread17LiveStreamContext14rtsp_transportE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>RTSP transport (tcp/udp) for RTSP sources. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6thread17LiveStreamContext12max_delay_msE">
+<span id="_CPPv3N5Limef6thread17LiveStreamContext12max_delay_msE"></span><span id="_CPPv2N5Limef6thread17LiveStreamContext12max_delay_msE"></span><span id="Limef::thread::LiveStreamContext::max_delay_ms__i"></span><span class="target" id="structLimef_1_1thread_1_1LiveStreamContext_1a42eb5c608da000e493c64f27a97c8f94"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">max_delay_ms</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="p"><span class="pre">{</span></span><span class="m"><span class="pre">500</span></span><span class="p"><span class="pre">}</span></span><a class="headerlink" href="#_CPPv4N5Limef6thread17LiveStreamContext12max_delay_msE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Maximum allowed network delay for RTSP sources. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6thread17LiveStreamContext16reopen_retry_maxE">
+<span id="_CPPv3N5Limef6thread17LiveStreamContext16reopen_retry_maxE"></span><span id="_CPPv2N5Limef6thread17LiveStreamContext16reopen_retry_maxE"></span><span id="Limef::thread::LiveStreamContext::reopen_retry_max__i"></span><span class="target" id="structLimef_1_1thread_1_1LiveStreamContext_1a2de8f53e7fa3a46b9095e5e45b2321e5"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">reopen_retry_max</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="p"><span class="pre">{</span></span><span class="o"><span class="pre">-</span></span><span class="m"><span class="pre">1</span></span><span class="p"><span class="pre">}</span></span><a class="headerlink" href="#_CPPv4N5Limef6thread17LiveStreamContext16reopen_retry_maxE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Maximum number of reopen attempts: -1: infinite, 0: none, etc. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6thread17LiveStreamContext17timeout_start_secE">
+<span id="_CPPv3N5Limef6thread17LiveStreamContext17timeout_start_secE"></span><span id="_CPPv2N5Limef6thread17LiveStreamContext17timeout_start_secE"></span><span id="Limef::thread::LiveStreamContext::timeout_start_sec__i"></span><span class="target" id="structLimef_1_1thread_1_1LiveStreamContext_1a06885bb8f14e206cafdddcde63506be9"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">timeout_start_sec</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="p"><span class="pre">{</span></span><span class="m"><span class="pre">5</span></span><span class="p"><span class="pre">}</span></span><a class="headerlink" href="#_CPPv4N5Limef6thread17LiveStreamContext17timeout_start_secE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Start value for retry timeout. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6thread17LiveStreamContext15timeout_max_secE">
+<span id="_CPPv3N5Limef6thread17LiveStreamContext15timeout_max_secE"></span><span id="_CPPv2N5Limef6thread17LiveStreamContext15timeout_max_secE"></span><span id="Limef::thread::LiveStreamContext::timeout_max_sec__i"></span><span class="target" id="structLimef_1_1thread_1_1LiveStreamContext_1a489f37281d7e394e434543c1bb292f3e"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">timeout_max_sec</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="p"><span class="pre">{</span></span><span class="m"><span class="pre">60</span></span><span class="p"><span class="pre">}</span></span><a class="headerlink" href="#_CPPv4N5Limef6thread17LiveStreamContext15timeout_max_secE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Max value for retry timeout. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6thread17LiveStreamContext6factorE">
+<span id="_CPPv3N5Limef6thread17LiveStreamContext6factorE"></span><span id="_CPPv2N5Limef6thread17LiveStreamContext6factorE"></span><span id="Limef::thread::LiveStreamContext::factor__i"></span><span class="target" id="structLimef_1_1thread_1_1LiveStreamContext_1a1b46b4c321c1dcbc381bc8bf58134316"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">factor</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="p"><span class="pre">{</span></span><span class="m"><span class="pre">2</span></span><span class="p"><span class="pre">}</span></span><a class="headerlink" href="#_CPPv4N5Limef6thread17LiveStreamContext6factorE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Factor to increase retry timeouts. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp class">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6thread16LiveStreamThreadE">
+<span id="_CPPv3N5Limef6thread16LiveStreamThreadE"></span><span id="_CPPv2N5Limef6thread16LiveStreamThreadE"></span><span id="Limef::thread::LiveStreamThread"></span><span class="target" id="classLimef_1_1thread_1_1LiveStreamThread"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">LiveStreamThread</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><span class="n"><span class="pre">Limef</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N5Limef6threadE" title="Limef::thread"><span class="n"><span class="pre">thread</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4I0EN5Limef6thread6ThreadE" title="Limef::thread::Thread"><span class="n"><span class="pre">Thread</span></span></a><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">Limef</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="frames.html#_CPPv4N5Limef5frameE" title="Limef::frame"><span class="n"><span class="pre">frame</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="frames.html#_CPPv4N5Limef5frame9NullFrameE" title="Limef::frame::NullFrame"><span class="n"><span class="pre">NullFrame</span></span></a><span class="p"><span class="pre">&gt;</span></span><a class="headerlink" href="#_CPPv4N5Limef6thread16LiveStreamThreadE" title="Link to this definition">¶</a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;livestream.h&gt;</em></div>
+<p>Thread for reading live media streams using FFmpeg. </p>
+<p>Handles live media sources like RTSP cameras using FFmpeg’s interrupt callback system for proper timeout handling. Sends CodecFrame on startup followed by PacketFrames containing media data.</p>
+<p>Example protocols:<ul class="simple">
+<li><p>RTSP (rtsp://)</p></li>
+<li><p>HTTP Live Streaming (<a class="reference external" href="http://">http://</a>)</p></li>
+<li><p>UDP/RTP streams (udp://) </p></li>
+</ul>
+</p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6thread16LiveStreamThread16LiveStreamThreadENSt6stringERK17LiveStreamContext">
+<span id="_CPPv3N5Limef6thread16LiveStreamThread16LiveStreamThreadENSt6stringERK17LiveStreamContext"></span><span id="_CPPv2N5Limef6thread16LiveStreamThread16LiveStreamThreadENSt6stringERK17LiveStreamContext"></span><span id="Limef::thread::LiveStreamThread::LiveStreamThread__ss.LiveStreamContextCR"></span><span class="target" id="classLimef_1_1thread_1_1LiveStreamThread_1a55652e4c5a73d18138aaf8386e255a60"></span><span class="sig-name descname"><span class="n"><span class="pre">LiveStreamThread</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">name</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4N5Limef6thread17LiveStreamContextE" title="Limef::thread::LiveStreamContext"><span class="n"><span class="pre">LiveStreamContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">stream_ctx</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5Limef6thread16LiveStreamThread16LiveStreamThreadENSt6stringERK17LiveStreamContext" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Construct a new Live Stream Reader Thread. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> – Thread name for identification </p></li>
+<li><p><strong>stream_ctx</strong> – LiveStreamContext defining the live stream </p></li>
+</ul>
+</dd>
+<dt class="field-even">Throws<span class="colon">:</span></dt>
+<dd class="field-even"><p><span><span class="cpp-expr sig sig-inline cpp"><span class="n">std</span><span class="p">::</span><span class="n">runtime_error</span></span></span> – if stream cannot be opened or initialized </p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6thread16MediaFileContextE">
+<span id="_CPPv3N5Limef6thread16MediaFileContextE"></span><span id="_CPPv2N5Limef6thread16MediaFileContextE"></span><span id="Limef::thread::MediaFileContext"></span><span class="target" id="structLimef_1_1thread_1_1MediaFileContext"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">MediaFileContext</span></span></span><a class="headerlink" href="#_CPPv4N5Limef6thread16MediaFileContextE" title="Link to this definition">¶</a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;mediafile0.h&gt;</em></div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6thread16MediaFileContext8filenameE">
+<span id="_CPPv3N5Limef6thread16MediaFileContext8filenameE"></span><span id="_CPPv2N5Limef6thread16MediaFileContext8filenameE"></span><span id="Limef::thread::MediaFileContext::filename__ssC"></span><span class="target" id="structLimef_1_1thread_1_1MediaFileContext_1a4d3bd6b5330a3dd592de3850db36cbeb"></span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">filename</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="p"><span class="pre">{</span></span><span class="s"><span class="pre">&quot;&quot;</span></span><span class="p"><span class="pre">}</span></span><a class="headerlink" href="#_CPPv4N5Limef6thread16MediaFileContext8filenameE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Path to media file. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6thread16MediaFileContext4slotE">
+<span id="_CPPv3N5Limef6thread16MediaFileContext4slotE"></span><span id="_CPPv2N5Limef6thread16MediaFileContext4slotE"></span><span id="Limef::thread::MediaFileContext::slot__SlotC"></span><span class="target" id="structLimef_1_1thread_1_1MediaFileContext_1ad281f8cce80050ff66a913f232043867"></span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">Slot</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">slot</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="p"><span class="pre">{</span></span><span class="m"><span class="pre">1</span></span><span class="p"><span class="pre">}</span></span><a class="headerlink" href="#_CPPv4N5Limef6thread16MediaFileContext4slotE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Slot identifying this stream. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6thread16MediaFileContext3fpsE">
+<span id="_CPPv3N5Limef6thread16MediaFileContext3fpsE"></span><span id="_CPPv2N5Limef6thread16MediaFileContext3fpsE"></span><span id="Limef::thread::MediaFileContext::fps__i"></span><span class="target" id="structLimef_1_1thread_1_1MediaFileContext_1a9b40a7bec3328bbf74c01d58f6734c3d"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">fps</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="p"><span class="pre">{</span></span><span class="m"><span class="pre">0</span></span><span class="p"><span class="pre">}</span></span><a class="headerlink" href="#_CPPv4N5Limef6thread16MediaFileContext3fpsE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Target fps for feeding frames. 0 = feed frames at infinite speed. -1 = feed frames at play speed. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6thread16MediaFileContext4loopE">
+<span id="_CPPv3N5Limef6thread16MediaFileContext4loopE"></span><span id="_CPPv2N5Limef6thread16MediaFileContext4loopE"></span><span id="Limef::thread::MediaFileContext::loop__i"></span><span class="target" id="structLimef_1_1thread_1_1MediaFileContext_1a526945c902016499ed47e47f57b0ae86"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">loop</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="p"><span class="pre">{</span></span><span class="o"><span class="pre">-</span></span><span class="m"><span class="pre">1</span></span><span class="p"><span class="pre">}</span></span><a class="headerlink" href="#_CPPv4N5Limef6thread16MediaFileContext4loopE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Loop the file from start at EOF. -1 = no looping, otherwise, the pause in milliseconds before looping. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp class">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6thread15MediaFileSignalE">
+<span id="_CPPv3N5Limef6thread15MediaFileSignalE"></span><span id="_CPPv2N5Limef6thread15MediaFileSignalE"></span><span id="Limef::thread::MediaFileSignal"></span><span class="target" id="classLimef_1_1thread_1_1MediaFileSignal"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">MediaFileSignal</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><span class="n"><span class="pre">Limef</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="signals.html#_CPPv4N5Limef6signalE" title="Limef::signal"><span class="n"><span class="pre">signal</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="signals.html#_CPPv4N5Limef6signal6SignalE" title="Limef::signal::Signal"><span class="n"><span class="pre">Signal</span></span></a><a class="headerlink" href="#_CPPv4N5Limef6thread15MediaFileSignalE" title="Link to this definition">¶</a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;mediafile0.h&gt;</em></div>
+<p>Specific signals to MediaFileThread0. </p>
+</dd></dl>
+
+<dl class="cpp class">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6thread15MediaFileThreadE">
+<span id="_CPPv3N5Limef6thread15MediaFileThreadE"></span><span id="_CPPv2N5Limef6thread15MediaFileThreadE"></span><span id="Limef::thread::MediaFileThread"></span><span class="target" id="classLimef_1_1thread_1_1MediaFileThread"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">MediaFileThread</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><span class="n"><span class="pre">Limef</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N5Limef6threadE" title="Limef::thread"><span class="n"><span class="pre">thread</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N5Limef6thread13ComposeThreadE" title="Limef::thread::ComposeThread"><span class="n"><span class="pre">ComposeThread</span></span></a><a class="headerlink" href="#_CPPv4N5Limef6thread15MediaFileThreadE" title="Link to this definition">¶</a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;mediafile.h&gt;</em></div>
+<p>A safe media playback thread. </p>
+<p>Creates a chain of:</p>
+<p><ol class="lowerroman simple">
+<li><p>MediaFileThread1 for reading files and transcoding / checking them to some standard form</p></li>
+<li><p>OrderedPacketBufferThread for DTS ordering and buffering</p></li>
+</ol>
+</p>
+<p>NOTE: MediaFileThread1 includes conversion to AAC</p>
+<p>NOTE: thread starting order will be (2) -&gt; (1) <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>                <span class="n">thread</span> <span class="n">border</span>
+</pre></div>
+</div>
+ MediaFileThread1 -&gt;| OrderedPacketBufferThread</p>
+</dd></dl>
+
+<dl class="cpp class">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6thread16MediaFileThread0E">
+<span id="_CPPv3N5Limef6thread16MediaFileThread0E"></span><span id="_CPPv2N5Limef6thread16MediaFileThread0E"></span><span id="Limef::thread::MediaFileThread0"></span><span class="target" id="classLimef_1_1thread_1_1MediaFileThread0"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">MediaFileThread0</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><span class="n"><span class="pre">Limef</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N5Limef6threadE" title="Limef::thread"><span class="n"><span class="pre">thread</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N5Limef6thread14ProducerThreadE" title="Limef::thread::ProducerThread"><span class="n"><span class="pre">ProducerThread</span></span></a><a class="headerlink" href="#_CPPv4N5Limef6thread16MediaFileThread0E" title="Link to this definition">¶</a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;mediafile0.h&gt;</em></div>
+<p>Thread for reading media files using FFmpeg. </p>
+<p>Reads packets from a media file and sends them downstream:<ol class="lowerroman simple">
+<li><p>On startup, sends CodecFrame with stream information</p></li>
+<li><p>Continuously sends PacketFrames with media data</p></li>
+</ol>
+</p>
+<p>Uses ProducerThread’s timing system to control packet output rate</p>
+<p>Dumps media downstream as-is - no internal conversions </p>
+<p>Subclassed by Limef::thread::MediaFileThread1</p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6thread16MediaFileThread016MediaFileThread0ENSt6stringERK16MediaFileContext">
+<span id="_CPPv3N5Limef6thread16MediaFileThread016MediaFileThread0ENSt6stringERK16MediaFileContext"></span><span id="_CPPv2N5Limef6thread16MediaFileThread016MediaFileThread0ENSt6stringERK16MediaFileContext"></span><span id="Limef::thread::MediaFileThread0::MediaFileThread0__ss.MediaFileContextCR"></span><span class="target" id="classLimef_1_1thread_1_1MediaFileThread0_1aa49c3b86bc2b3b6eeb28a31062ca9dc4"></span><span class="sig-name descname"><span class="n"><span class="pre">MediaFileThread0</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">name</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4N5Limef6thread16MediaFileContextE" title="Limef::thread::MediaFileContext"><span class="n"><span class="pre">MediaFileContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">ctx</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5Limef6thread16MediaFileThread016MediaFileThread0ENSt6stringERK16MediaFileContext" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Construct a new Media File Reader Thread. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> – Thread name for identification </p></li>
+<li><p><strong>ctx</strong> – MediaFileContext identifying the stream </p></li>
+</ul>
+</dd>
+<dt class="field-even">Throws<span class="colon">:</span></dt>
+<dd class="field-even"><p><span><span class="cpp-expr sig sig-inline cpp"><span class="n">std</span><span class="p">::</span><span class="n">runtime_error</span></span></span> – if file cannot be opened or stream info cannot be read </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6thread16MediaFileThread017handleSignalFrameEPKN5Limef5frame11SignalFrameE">
+<span id="_CPPv3N5Limef6thread16MediaFileThread017handleSignalFrameEPKN5Limef5frame11SignalFrameE"></span><span id="_CPPv2N5Limef6thread16MediaFileThread017handleSignalFrameEPKN5Limef5frame11SignalFrameE"></span><span id="Limef::thread::MediaFileThread0::handleSignalFrame__Limef::frame::SignalFrameCP"></span><span class="target" id="classLimef_1_1thread_1_1MediaFileThread0_1a51949db72856948d7e51f9ca0303b60e"></span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">handleSignalFrame</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">Limef</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="frames.html#_CPPv4N5Limef5frameE" title="Limef::frame"><span class="n"><span class="pre">frame</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="frames.html#_CPPv4N5Limef5frame11SignalFrameE" title="Limef::frame::SignalFrame"><span class="n"><span class="pre">SignalFrame</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">signalFrame</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">override</span></span><a class="headerlink" href="#_CPPv4N5Limef6thread16MediaFileThread017handleSignalFrameEPKN5Limef5frame11SignalFrameE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Handles custom signals as per <code class="docutils literal notranslate"><span class="pre">MediaFileSignal</span></code></p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6thread16MediaFileThread016resendCodecFrameEv">
+<span id="_CPPv3N5Limef6thread16MediaFileThread016resendCodecFrameEv"></span><span id="_CPPv2N5Limef6thread16MediaFileThread016resendCodecFrameEv"></span><span id="Limef::thread::MediaFileThread0::resendCodecFrame"></span><span class="target" id="classLimef_1_1thread_1_1MediaFileThread0_1ad4cf1a92fc57e7b1dfb279d7ce2d4f63"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">resendCodecFrame</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5Limef6thread16MediaFileThread016resendCodecFrameEv" title="Link to this definition">¶</a><br /></dt>
+<dd><p>frontend-method: tell thread to send CodecFrame again downstream </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp class">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6thread16MediaFileThread1E">
+<span id="_CPPv3N5Limef6thread16MediaFileThread1E"></span><span id="_CPPv2N5Limef6thread16MediaFileThread1E"></span><span id="Limef::thread::MediaFileThread1"></span><span class="target" id="classLimef_1_1thread_1_1MediaFileThread1"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">MediaFileThread1</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><span class="n"><span class="pre">Limef</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N5Limef6threadE" title="Limef::thread"><span class="n"><span class="pre">thread</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N5Limef6thread16MediaFileThread0E" title="Limef::thread::MediaFileThread0"><span class="n"><span class="pre">MediaFileThread0</span></span></a><a class="headerlink" href="#_CPPv4N5Limef6thread16MediaFileThread1E" title="Link to this definition">¶</a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;mediafile1.h&gt;</em></div>
+<p>MediaFileThread1. </p>
+<p>Extends MediaFileThread0 to do some encoding and codec checks in order to ensure a “canonical” / standard stream for our framework At the moment, consists of the following:</p>
+<p><ul class="simple">
+<li><p>All incoming audio is encoded into AAC</p></li>
+<li><p>TODO: video codec checks? </p></li>
+</ul>
+</p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6thread16MediaFileThread19getOutputEv">
+<span id="_CPPv3N5Limef6thread16MediaFileThread19getOutputEv"></span><span id="_CPPv2N5Limef6thread16MediaFileThread19getOutputEv"></span><span id="Limef::thread::MediaFileThread1::getOutput"></span><span class="target" id="classLimef_1_1thread_1_1MediaFileThread1_1afe2a7a9aa511e10d6cb0d728ee189466"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><span class="n"><span class="pre">Limef</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="framefilters.html#_CPPv4N5Limef2ffE" title="Limef::ff"><span class="n"><span class="pre">ff</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="framefilters.html#_CPPv4N5Limef2ff11FrameFilterE" title="Limef::ff::FrameFilter"><span class="n"><span class="pre">FrameFilter</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="sig-name descname"><span class="n"><span class="pre">getOutput</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">override</span></span><a class="headerlink" href="#_CPPv4N5Limef6thread16MediaFileThread19getOutputEv" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Get thread’s output framefilter. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Reference to output framefilter </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6thread16MediaFileThread111setLogLevelEN6spdlog5level10level_enumE">
+<span id="_CPPv3N5Limef6thread16MediaFileThread111setLogLevelEN6spdlog5level10level_enumE"></span><span id="_CPPv2N5Limef6thread16MediaFileThread111setLogLevelEN6spdlog5level10level_enumE"></span><span id="Limef::thread::MediaFileThread1::setLogLevel__spdlog::level::level_enum"></span><span class="target" id="classLimef_1_1thread_1_1MediaFileThread1_1adea3ac2e8dcdaa49e99c4eeada699671"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">setLogLevel</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">spdlog</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">level</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">level_enum</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">level</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">override</span></span><a class="headerlink" href="#_CPPv4N5Limef6thread16MediaFileThread111setLogLevelEN6spdlog5level10level_enumE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Set thread’s log level. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6thread16MediaFileThread112setLogFormatERKNSt6stringE">
+<span id="_CPPv3N5Limef6thread16MediaFileThread112setLogFormatERKNSt6stringE"></span><span id="_CPPv2N5Limef6thread16MediaFileThread112setLogFormatERKNSt6stringE"></span><span id="Limef::thread::MediaFileThread1::setLogFormat__ssCR"></span><span class="target" id="classLimef_1_1thread_1_1MediaFileThread1_1a380b4e577f09ce1a3ee7c5bd3fa4d880"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">setLogFormat</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">format</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">override</span></span><a class="headerlink" href="#_CPPv4N5Limef6thread16MediaFileThread112setLogFormatERKNSt6stringE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Set thread’s log format. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp class">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6thread25OrderedPacketBufferThreadE">
+<span id="_CPPv3N5Limef6thread25OrderedPacketBufferThreadE"></span><span id="_CPPv2N5Limef6thread25OrderedPacketBufferThreadE"></span><span id="Limef::thread::OrderedPacketBufferThread"></span><span class="target" id="classLimef_1_1thread_1_1OrderedPacketBufferThread"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">OrderedPacketBufferThread</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><span class="n"><span class="pre">Limef</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N5Limef6threadE" title="Limef::thread"><span class="n"><span class="pre">thread</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N5Limef6thread18PacketBufferThreadE" title="Limef::thread::PacketBufferThread"><span class="n"><span class="pre">PacketBufferThread</span></span></a><a class="headerlink" href="#_CPPv4N5Limef6thread25OrderedPacketBufferThreadE" title="Link to this definition">¶</a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;orderedpacketbuffer.h&gt;</em></div>
+<p>Thread for buffering PacketFrames with DTS ordering. </p>
+<p>Extends PacketBufferThread to use OrderedFrameFifo, which maintains video packets in DTS order. Otherwise methods identical to PacketBufferThread. </p>
+</dd></dl>
+
+<dl class="cpp class">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6thread18PacketBufferThreadE">
+<span id="_CPPv3N5Limef6thread18PacketBufferThreadE"></span><span id="_CPPv2N5Limef6thread18PacketBufferThreadE"></span><span id="Limef::thread::PacketBufferThread"></span><span class="target" id="classLimef_1_1thread_1_1PacketBufferThread"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">PacketBufferThread</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><span class="n"><span class="pre">Limef</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N5Limef6threadE" title="Limef::thread"><span class="n"><span class="pre">thread</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4I0EN5Limef6thread6ThreadE" title="Limef::thread::Thread"><span class="n"><span class="pre">Thread</span></span></a><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">Limef</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="frames.html#_CPPv4N5Limef5frameE" title="Limef::frame"><span class="n"><span class="pre">frame</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="frames.html#_CPPv4N5Limef5frame11PacketFrameE" title="Limef::frame::PacketFrame"><span class="n"><span class="pre">PacketFrame</span></span></a><span class="p"><span class="pre">&gt;</span></span><a class="headerlink" href="#_CPPv4N5Limef6thread18PacketBufferThreadE" title="Link to this definition">¶</a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;packetbuffer.h&gt;</em></div>
+<p>Thread for buffering PacketFrames. </p>
+<p>This thread immediately terminates the filter chain for PacketFrames by:<ol class="lowerroman simple">
+<li><p>Making a copy of incoming PacketFrames using framefifo’s stack</p></li>
+<li><p>Placing the copy into framefifo’s queue</p></li>
+<li><p>Processing frames from the queue in its own thread context </p></li>
+</ol>
+</p>
+<p>Subclassed by Limef::thread::OrderedPacketBufferThread</p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6thread18PacketBufferThread18PacketBufferThreadENSt6stringERKN5Limef16FrameFifoContextE">
+<span id="_CPPv3N5Limef6thread18PacketBufferThread18PacketBufferThreadENSt6stringERKN5Limef16FrameFifoContextE"></span><span id="_CPPv2N5Limef6thread18PacketBufferThread18PacketBufferThreadENSt6stringERKN5Limef16FrameFifoContextE"></span><span id="Limef::thread::PacketBufferThread::PacketBufferThread__ss.Limef::FrameFifoContextCR"></span><span class="target" id="classLimef_1_1thread_1_1PacketBufferThread_1a1a6e1db10a4e27fed7d76e6ac94d71ba"></span><span class="sig-name descname"><span class="n"><span class="pre">PacketBufferThread</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">name</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">Limef</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">FrameFifoContext</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">ctx</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5Limef6thread18PacketBufferThread18PacketBufferThreadENSt6stringERKN5Limef16FrameFifoContextE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Construct a new Packet Buffer Thread. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> – Thread name for identification </p></li>
+<li><p><strong>ctx</strong> – FrameFifoContext defining the framefifo parameters </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6thread13PerSocketDataE">
+<span id="_CPPv3N5Limef6thread13PerSocketDataE"></span><span id="_CPPv2N5Limef6thread13PerSocketDataE"></span><span id="Limef::thread::PerSocketData"></span><span class="target" id="structLimef_1_1thread_1_1PerSocketData"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">PerSocketData</span></span></span><a class="headerlink" href="#_CPPv4N5Limef6thread13PerSocketDataE" title="Link to this definition">¶</a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;websocket.h&gt;</em></div>
+</dd></dl>
+
+<dl class="cpp class">
+<dt class="sig sig-object cpp" id="_CPPv4I0EN5Limef6thread10PollThreadE">
+<span id="_CPPv3I0EN5Limef6thread10PollThreadE"></span><span id="_CPPv2I0EN5Limef6thread10PollThreadE"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T</span></span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="target" id="classLimef_1_1thread_1_1PollThread"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">PollThread</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><span class="n"><span class="pre">Limef</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N5Limef6threadE" title="Limef::thread"><span class="n"><span class="pre">thread</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4I0EN5Limef6thread6ThreadE" title="Limef::thread::Thread"><span class="n"><span class="pre">Thread</span></span></a><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="#_CPPv4I0EN5Limef6thread10PollThreadE" title="Limef::thread::PollThread::T"><span class="n"><span class="pre">T</span></span></a><span class="p"><span class="pre">&gt;</span></span><a class="headerlink" href="#_CPPv4I0EN5Limef6thread10PollThreadE" title="Link to this definition">¶</a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;pollthread.h&gt;</em></div>
+<p>Example thread demonstrating PollFrameFifo usage. </p>
+<p>This thread uses PollFrameFifo instead of the regular FrameFifo, allowing the main loop to multiplex frame reading with other I/O operations (sockets, pipes, etc.) using poll().</p>
+<p>Key differences from regular Thread:<ul class="simple">
+<li><p>Overrides createFrameFifo() to create PollFrameFifo</p></li>
+<li><p>Overrides mainLoop() to use poll() instead of blocking read()</p></li>
+<li><p>Provides getFifoFd() for subclasses to include in their poll set</p></li>
+</ul>
+</p>
+<p>Usage pattern for subclasses (e.g., RTSPServerThread): <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">MyServerThread::mainLoop</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">preRun</span><span class="p">();</span>
+<span class="w">    </span><span class="n">sendSignal__</span><span class="p">(</span><span class="n">BasicSignal</span><span class="p">(</span><span class="n">BasicSignal</span><span class="o">::</span><span class="n">Operation</span><span class="o">::</span><span class="n">started</span><span class="p">));</span>
+
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">pollfd</span><span class="o">&gt;</span><span class="w"> </span><span class="n">fds</span><span class="p">;</span>
+<span class="w">    </span><span class="n">fds</span><span class="p">.</span><span class="n">push_back</span><span class="p">({</span><span class="n">listen_fd_</span><span class="p">,</span><span class="w"> </span><span class="n">POLLIN</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">});</span>
+<span class="w">    </span><span class="n">fds</span><span class="p">.</span><span class="n">push_back</span><span class="p">({</span><span class="n">getFifoFd</span><span class="p">(),</span><span class="w"> </span><span class="n">POLLIN</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">});</span>
+
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">stop_requested_</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">timeout_ms</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">computeTaskTimeout</span><span class="p">();</span>
+<span class="w">        </span><span class="n">poll</span><span class="p">(</span><span class="n">fds</span><span class="p">.</span><span class="n">data</span><span class="p">(),</span><span class="w"> </span><span class="n">fds</span><span class="p">.</span><span class="n">size</span><span class="p">(),</span><span class="w"> </span><span class="n">timeout_ms</span><span class="p">);</span>
+
+<span class="w">        </span><span class="c1">// Handle incoming frames</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">fds</span><span class="p">[</span><span class="mi">1</span><span class="p">].</span><span class="n">revents</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">POLLIN</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="k">auto</span><span class="o">*</span><span class="w"> </span><span class="n">frame</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pollFrameFifo</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">tryRead</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">frameTask</span><span class="p">(</span><span class="n">frame</span><span class="p">);</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+
+<span class="w">        </span><span class="c1">// Handle socket I/O</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">fds</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">revents</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">POLLIN</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">acceptClient</span><span class="p">();</span>
+<span class="w">        </span><span class="p">}</span>
+
+<span class="w">        </span><span class="n">task</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="n">postRun</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</p>
+</dd></dl>
+
+<dl class="cpp class">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6thread14ProducerThreadE">
+<span id="_CPPv3N5Limef6thread14ProducerThreadE"></span><span id="_CPPv2N5Limef6thread14ProducerThreadE"></span><span id="Limef::thread::ProducerThread"></span><span class="target" id="classLimef_1_1thread_1_1ProducerThread"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ProducerThread</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><span class="n"><span class="pre">Limef</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N5Limef6threadE" title="Limef::thread"><span class="n"><span class="pre">thread</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4I0EN5Limef6thread6ThreadE" title="Limef::thread::Thread"><span class="n"><span class="pre">Thread</span></span></a><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">Limef</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="frames.html#_CPPv4N5Limef5frameE" title="Limef::frame"><span class="n"><span class="pre">frame</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="frames.html#_CPPv4N5Limef5frame9NullFrameE" title="Limef::frame::NullFrame"><span class="n"><span class="pre">NullFrame</span></span></a><span class="p"><span class="pre">&gt;</span></span><a class="headerlink" href="#_CPPv4N5Limef6thread14ProducerThreadE" title="Link to this definition">¶</a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;producer.h&gt;</em></div>
+<p>A prototype frame producing thread (aka source) </p>
+<p>An example and base class for <code class="docutils literal notranslate"><span class="pre">Thread</span></code>s that produce frames, i.e. for frame sources. This example implementation produces and sends <code class="docutils literal notranslate"><span class="pre">NullFrame</span></code>s to it’s output framefilter. </p>
+<p>Subclassed by Limef::thread::MediaFileThread0, Limef::thread::USBCameraThread</p>
+</dd></dl>
+
+<dl class="cpp class">
+<dt class="sig sig-object cpp" id="_CPPv4I0EN5Limef6thread6ThreadE">
+<span id="_CPPv3I0EN5Limef6thread6ThreadE"></span><span id="_CPPv2I0EN5Limef6thread6ThreadE"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T</span></span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="target" id="classLimef_1_1thread_1_1Thread"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Thread</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><span class="n"><span class="pre">Limef</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N5Limef6threadE" title="Limef::thread"><span class="n"><span class="pre">thread</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N5Limef6thread10ThreadBaseE" title="Limef::thread::ThreadBase"><span class="n"><span class="pre">ThreadBase</span></span></a><a class="headerlink" href="#_CPPv4I0EN5Limef6thread6ThreadE" title="Link to this definition">¶</a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;thread.h&gt;</em></div>
+<p>A multithreading base class. </p>
+<p>Thread class includes:</p>
+<p><ul class="simple">
+<li><p>thread “frontend” methods: you are supposed to call these from the main thread.</p></li>
+<li><p>thread “backend” methods: these are used internally by the thread after it has been spawned.</p></li>
+<li><p>a single, unified fifo for handling incoming <code class="docutils literal notranslate"><span class="pre">Frame</span></code>s and commands, the <code class="docutils literal notranslate"><span class="pre">FrameFifo</span></code>.</p></li>
+</ul>
+</p>
+<p>Subclassed by Limef::thread::PollThread&lt; Limef::frame::RTPPacketFrame &gt;, Limef::thread::PollThread&lt; Limef::frame::PacketFrame &gt;, Limef::thread::PollThread&lt; T &gt;</p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6thread6Thread6ThreadENSt6stringERKN5Limef16FrameFifoContextE">
+<span id="_CPPv3N5Limef6thread6Thread6ThreadENSt6stringERKN5Limef16FrameFifoContextE"></span><span id="_CPPv2N5Limef6thread6Thread6ThreadENSt6stringERKN5Limef16FrameFifoContextE"></span><span id="Limef::thread::Thread::Thread__ss.Limef::FrameFifoContextCR"></span><span class="target" id="classLimef_1_1thread_1_1Thread_1ad0f506f536978e316e0013810609cb31"></span><span class="sig-name descname"><span class="n"><span class="pre">Thread</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">name</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">Limef</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">FrameFifoContext</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">ctx</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5Limef6thread6Thread6ThreadENSt6stringERKN5Limef16FrameFifoContextE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Default ctor </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> – a unique name identifying this thread </p></li>
+<li><p><strong>ctx</strong> – a <code class="docutils literal notranslate"><span class="pre">FrameFifoContext</span></code> defining the framefifo </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6thread6Thread5startEv">
+<span id="_CPPv3N5Limef6thread6Thread5startEv"></span><span id="_CPPv2N5Limef6thread6Thread5startEv"></span><span id="Limef::thread::Thread::start"></span><span class="target" id="classLimef_1_1thread_1_1Thread_1ae8ed08e6ad33bf44dcf1fe0dc7127925"></span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">start</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">override</span></span><a class="headerlink" href="#_CPPv4N5Limef6thread6Thread5startEv" title="Link to this definition">¶</a><br /></dt>
+<dd><p>sets up thread and starts mainLoop </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK5Limef6thread6Thread9isStartedEv">
+<span id="_CPPv3NK5Limef6thread6Thread9isStartedEv"></span><span id="_CPPv2NK5Limef6thread6Thread9isStartedEv"></span><span id="Limef::thread::Thread::isStartedC"></span><span class="target" id="classLimef_1_1thread_1_1Thread_1a680faeb8334edf5bae064cdc3f2518c4"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">isStarted</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">override</span></span><a class="headerlink" href="#_CPPv4NK5Limef6thread6Thread9isStartedEv" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Check if start has been called or not. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6thread6Thread11requestStopEv">
+<span id="_CPPv3N5Limef6thread6Thread11requestStopEv"></span><span id="_CPPv2N5Limef6thread6Thread11requestStopEv"></span><span id="Limef::thread::Thread::requestStop"></span><span class="target" id="classLimef_1_1thread_1_1Thread_1af8b77ceb90bd5b244a77c9c98679d363"></span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">requestStop</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">override</span></span><a class="headerlink" href="#_CPPv4N5Limef6thread6Thread11requestStopEv" title="Link to this definition">¶</a><br /></dt>
+<dd><p>has the thread been started or not? </p>
+<p>request thread termination </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6thread6Thread8waitStopEv">
+<span id="_CPPv3N5Limef6thread6Thread8waitStopEv"></span><span id="_CPPv2N5Limef6thread6Thread8waitStopEv"></span><span id="Limef::thread::Thread::waitStop"></span><span class="target" id="classLimef_1_1thread_1_1Thread_1a1425dd0dba2d54bbbcdc0f8376e1bbeb"></span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">waitStop</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">override</span></span><a class="headerlink" href="#_CPPv4N5Limef6thread6Thread8waitStopEv" title="Link to this definition">¶</a><br /></dt>
+<dd><p>wait for thread termination </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6thread6Thread4stopEv">
+<span id="_CPPv3N5Limef6thread6Thread4stopEv"></span><span id="_CPPv2N5Limef6thread6Thread4stopEv"></span><span id="Limef::thread::Thread::stop"></span><span class="target" id="classLimef_1_1thread_1_1Thread_1a9e0b393eea3a942be09f88b60b5746ff"></span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">stop</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">override</span></span><a class="headerlink" href="#_CPPv4N5Limef6thread6Thread4stopEv" title="Link to this definition">¶</a><br /></dt>
+<dd><p>combined requestStop() and waitStop()</p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6thread6Thread11setAffinityEi">
+<span id="_CPPv3N5Limef6thread6Thread11setAffinityEi"></span><span id="_CPPv2N5Limef6thread6Thread11setAffinityEi"></span><span id="Limef::thread::Thread::setAffinity__i"></span><span class="target" id="classLimef_1_1thread_1_1Thread_1a468dd8135b2708fa32662e9cc0c3549d"></span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">setAffinity</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">core_id</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">override</span></span><a class="headerlink" href="#_CPPv4N5Limef6thread6Thread11setAffinityEi" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Binds the thread to a certain CPU. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6thread6Thread4readENSt6chrono12microsecondsE">
+<span id="_CPPv3N5Limef6thread6Thread4readENSt6chrono12microsecondsE"></span><span id="_CPPv2N5Limef6thread6Thread4readENSt6chrono12microsecondsE"></span><span id="Limef::thread::Thread::read__std::chrono::microseconds"></span><span class="target" id="classLimef_1_1thread_1_1Thread_1a61bd8f4c7b2feb4460a9adb985b91e3f"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">unique_ptr</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">Limef</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="signals.html#_CPPv4N5Limef6signalE" title="Limef::signal"><span class="n"><span class="pre">signal</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="signals.html#_CPPv4N5Limef6signal6SignalE" title="Limef::signal::Signal"><span class="n"><span class="pre">Signal</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">read</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">chrono</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">microseconds</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">timeout</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><span class="n"><span class="pre">us</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5Limef6thread6Thread4readENSt6chrono12microsecondsE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>read a signal at the frontend. 0 means wait forever -&gt; uses fifo_mutex_ &amp; fifo_condition_ </p>
+<p>Read a signal at the thread frontend (main python thread) sent by the thread backend through an internal fifo. Example: <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">auto</span><span class="w"> </span><span class="n">signal2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">read</span><span class="p">();</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="k">auto</span><span class="o">*</span><span class="w"> </span><span class="n">basicSignal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">signal2</span><span class="o">-&gt;</span><span class="n">as</span><span class="o">&lt;</span><span class="n">SomeSignalClass</span><span class="o">&gt;</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6thread6Thread8getInputEv">
+<span id="_CPPv3N5Limef6thread6Thread8getInputEv"></span><span id="_CPPv2N5Limef6thread6Thread8getInputEv"></span><span id="Limef::thread::Thread::getInput"></span><span class="target" id="classLimef_1_1thread_1_1Thread_1ab81c1f74139598579b4a6ce54d34bd41"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><span class="n"><span class="pre">Limef</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="framefilters.html#_CPPv4N5Limef2ffE" title="Limef::ff"><span class="n"><span class="pre">ff</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="framefilters.html#_CPPv4N5Limef2ff11FrameFilterE" title="Limef::ff::FrameFilter"><span class="n"><span class="pre">FrameFilter</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="sig-name descname"><span class="n"><span class="pre">getInput</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">override</span></span><a class="headerlink" href="#_CPPv4N5Limef6thread6Thread8getInputEv" title="Link to this definition">¶</a><br /></dt>
+<dd><p>returns thread’s input <code class="docutils literal notranslate"><span class="pre">FrameFilter</span></code></p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6thread6Thread9getOutputEv">
+<span id="_CPPv3N5Limef6thread6Thread9getOutputEv"></span><span id="_CPPv2N5Limef6thread6Thread9getOutputEv"></span><span id="Limef::thread::Thread::getOutput"></span><span class="target" id="classLimef_1_1thread_1_1Thread_1a60fddbb3d05ed26ac7dcc8b9b6e20da6"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><span class="n"><span class="pre">Limef</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="framefilters.html#_CPPv4N5Limef2ffE" title="Limef::ff"><span class="n"><span class="pre">ff</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="framefilters.html#_CPPv4N5Limef2ff11FrameFilterE" title="Limef::ff::FrameFilter"><span class="n"><span class="pre">FrameFilter</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="sig-name descname"><span class="n"><span class="pre">getOutput</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">override</span></span><a class="headerlink" href="#_CPPv4N5Limef6thread6Thread9getOutputEv" title="Link to this definition">¶</a><br /></dt>
+<dd><p>returns thread’s output <code class="docutils literal notranslate"><span class="pre">FrameFilter</span></code></p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6thread6Thread11setLogLevelEN6spdlog5level10level_enumE">
+<span id="_CPPv3N5Limef6thread6Thread11setLogLevelEN6spdlog5level10level_enumE"></span><span id="_CPPv2N5Limef6thread6Thread11setLogLevelEN6spdlog5level10level_enumE"></span><span id="Limef::thread::Thread::setLogLevel__spdlog::level::level_enum"></span><span class="target" id="classLimef_1_1thread_1_1Thread_1a23ee54638c72f37b86fd9c368211589d"></span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">setLogLevel</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">spdlog</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">level</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">level_enum</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">level</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">override</span></span><a class="headerlink" href="#_CPPv4N5Limef6thread6Thread11setLogLevelEN6spdlog5level10level_enumE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Sets thread logger’s loglevel. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6thread6Thread12setLogFormatERKNSt6stringE">
+<span id="_CPPv3N5Limef6thread6Thread12setLogFormatERKNSt6stringE"></span><span id="_CPPv2N5Limef6thread6Thread12setLogFormatERKNSt6stringE"></span><span id="Limef::thread::Thread::setLogFormat__ssCR"></span><span class="target" id="classLimef_1_1thread_1_1Thread_1aba2269ed4b4ae130585c89ce8fcb0111"></span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">setLogFormat</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">format</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">override</span></span><a class="headerlink" href="#_CPPv4N5Limef6thread6Thread12setLogFormatERKNSt6stringE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Sets thread logger’s format. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6thread6Thread14shortLogFormatEv">
+<span id="_CPPv3N5Limef6thread6Thread14shortLogFormatEv"></span><span id="_CPPv2N5Limef6thread6Thread14shortLogFormatEv"></span><span id="Limef::thread::Thread::shortLogFormat"></span><span class="target" id="classLimef_1_1thread_1_1Thread_1a8bf75bebda234282bfb27be9e8618aad"></span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">shortLogFormat</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">override</span></span><a class="headerlink" href="#_CPPv4N5Limef6thread6Thread14shortLogFormatEv" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Shortcut method for setting a nice minimal format for thread’s logger. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK5Limef6thread6Thread11getLogLevelEv">
+<span id="_CPPv3NK5Limef6thread6Thread11getLogLevelEv"></span><span id="_CPPv2NK5Limef6thread6Thread11getLogLevelEv"></span><span id="Limef::thread::Thread::getLogLevelC"></span><span class="target" id="classLimef_1_1thread_1_1Thread_1a2e224b7dea64710eab73fa58135ca095"></span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><span class="n"><span class="pre">spdlog</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">level</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">level_enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getLogLevel</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">override</span></span><a class="headerlink" href="#_CPPv4NK5Limef6thread6Thread11getLogLevelEv" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Get thread logger’s current log level. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp class">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6thread10ThreadBaseE">
+<span id="_CPPv3N5Limef6thread10ThreadBaseE"></span><span id="_CPPv2N5Limef6thread10ThreadBaseE"></span><span id="Limef::thread::ThreadBase"></span><span class="target" id="classLimef_1_1thread_1_1ThreadBase"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ThreadBase</span></span></span><a class="headerlink" href="#_CPPv4N5Limef6thread10ThreadBaseE" title="Link to this definition">¶</a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;threadbase.h&gt;</em></div>
+<p>Subclassed by Limef::thread::Thread&lt; Limef::frame::RTPPacketFrame &gt;, Limef::thread::Thread&lt; Limef::frame::PacketFrame &gt;, Limef::thread::Thread&lt; Limef::frame::NullFrame &gt;, Limef::thread::Thread&lt; Limef::frame::RawFrame &gt;, Limef::thread::ComposeThread, Limef::thread::Thread&lt; T &gt;</p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6thread10ThreadBase5startEv">
+<span id="_CPPv3N5Limef6thread10ThreadBase5startEv"></span><span id="_CPPv2N5Limef6thread10ThreadBase5startEv"></span><span id="Limef::thread::ThreadBase::start"></span><span class="target" id="classLimef_1_1thread_1_1ThreadBase_1a61cb27fe9c8a249c579d1a818a11d3bd"></span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">start</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><a class="headerlink" href="#_CPPv4N5Limef6thread10ThreadBase5startEv" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Start the thread. </p>
+<p>Initializes internal structures and starts the thread’s main loop. Thread subclasses may perform additional initialization. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK5Limef6thread10ThreadBase9isStartedEv">
+<span id="_CPPv3NK5Limef6thread10ThreadBase9isStartedEv"></span><span id="_CPPv2NK5Limef6thread10ThreadBase9isStartedEv"></span><span id="Limef::thread::ThreadBase::isStartedC"></span><span class="target" id="classLimef_1_1thread_1_1ThreadBase_1a7caafaf8cefbacb4bc82011ad67cc867"></span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">isStarted</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><a class="headerlink" href="#_CPPv4NK5Limef6thread10ThreadBase9isStartedEv" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Check if start has been called or not. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6thread10ThreadBase11requestStopEv">
+<span id="_CPPv3N5Limef6thread10ThreadBase11requestStopEv"></span><span id="_CPPv2N5Limef6thread10ThreadBase11requestStopEv"></span><span id="Limef::thread::ThreadBase::requestStop"></span><span class="target" id="classLimef_1_1thread_1_1ThreadBase_1aae19d54a75ec24691cbb16d9b87039fc"></span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">requestStop</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><a class="headerlink" href="#_CPPv4N5Limef6thread10ThreadBase11requestStopEv" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Request thread termination. </p>
+<p>Sends termination signal to the thread. Does not wait for completion. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6thread10ThreadBase8waitStopEv">
+<span id="_CPPv3N5Limef6thread10ThreadBase8waitStopEv"></span><span id="_CPPv2N5Limef6thread10ThreadBase8waitStopEv"></span><span id="Limef::thread::ThreadBase::waitStop"></span><span class="target" id="classLimef_1_1thread_1_1ThreadBase_1af29fded215d25720db34490d9a1bf0e1"></span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">waitStop</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><a class="headerlink" href="#_CPPv4N5Limef6thread10ThreadBase8waitStopEv" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Wait for thread termination. </p>
+<p>Blocks until the thread has completely stopped. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6thread10ThreadBase4stopEv">
+<span id="_CPPv3N5Limef6thread10ThreadBase4stopEv"></span><span id="_CPPv2N5Limef6thread10ThreadBase4stopEv"></span><span id="Limef::thread::ThreadBase::stop"></span><span class="target" id="classLimef_1_1thread_1_1ThreadBase_1a1a5f923437e076826831be45775b64c2"></span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">stop</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><a class="headerlink" href="#_CPPv4N5Limef6thread10ThreadBase4stopEv" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Stop the thread. </p>
+<p>Combines requestStop() and waitStop() for convenience. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6thread10ThreadBase11setAffinityEi">
+<span id="_CPPv3N5Limef6thread10ThreadBase11setAffinityEi"></span><span id="_CPPv2N5Limef6thread10ThreadBase11setAffinityEi"></span><span id="Limef::thread::ThreadBase::setAffinity__i"></span><span class="target" id="classLimef_1_1thread_1_1ThreadBase_1abd6a449acd19d65a27876bd7ab428f42"></span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">setAffinity</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">core_id</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><a class="headerlink" href="#_CPPv4N5Limef6thread10ThreadBase11setAffinityEi" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Bind thread to specific CPU core. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>core_id</strong> – CPU core number to bind to </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6thread10ThreadBase11setLogLevelEN6spdlog5level10level_enumE">
+<span id="_CPPv3N5Limef6thread10ThreadBase11setLogLevelEN6spdlog5level10level_enumE"></span><span id="_CPPv2N5Limef6thread10ThreadBase11setLogLevelEN6spdlog5level10level_enumE"></span><span id="Limef::thread::ThreadBase::setLogLevel__spdlog::level::level_enum"></span><span class="target" id="classLimef_1_1thread_1_1ThreadBase_1aa2f17deae72eb4897bc5698b24536474"></span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">setLogLevel</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">spdlog</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">level</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">level_enum</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">level</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><a class="headerlink" href="#_CPPv4N5Limef6thread10ThreadBase11setLogLevelEN6spdlog5level10level_enumE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Set thread’s log level. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6thread10ThreadBase12setLogFormatERKNSt6stringE">
+<span id="_CPPv3N5Limef6thread10ThreadBase12setLogFormatERKNSt6stringE"></span><span id="_CPPv2N5Limef6thread10ThreadBase12setLogFormatERKNSt6stringE"></span><span id="Limef::thread::ThreadBase::setLogFormat__ssCR"></span><span class="target" id="classLimef_1_1thread_1_1ThreadBase_1ac10cce21f457a3b8adcfc931bed022b1"></span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">setLogFormat</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">format</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><a class="headerlink" href="#_CPPv4N5Limef6thread10ThreadBase12setLogFormatERKNSt6stringE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Set thread’s log format. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6thread10ThreadBase14shortLogFormatEv">
+<span id="_CPPv3N5Limef6thread10ThreadBase14shortLogFormatEv"></span><span id="_CPPv2N5Limef6thread10ThreadBase14shortLogFormatEv"></span><span id="Limef::thread::ThreadBase::shortLogFormat"></span><span class="target" id="classLimef_1_1thread_1_1ThreadBase_1a47a132666cc282b7b602628976520f31"></span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">shortLogFormat</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><a class="headerlink" href="#_CPPv4N5Limef6thread10ThreadBase14shortLogFormatEv" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Set a nice minimal format for thread’s logger. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK5Limef6thread10ThreadBase11getLogLevelEv">
+<span id="_CPPv3NK5Limef6thread10ThreadBase11getLogLevelEv"></span><span id="_CPPv2NK5Limef6thread10ThreadBase11getLogLevelEv"></span><span id="Limef::thread::ThreadBase::getLogLevelC"></span><span class="target" id="classLimef_1_1thread_1_1ThreadBase_1a086d1f69d881d12bc4dcb207119f1dbd"></span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><span class="n"><span class="pre">spdlog</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">level</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">level_enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getLogLevel</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><a class="headerlink" href="#_CPPv4NK5Limef6thread10ThreadBase11getLogLevelEv" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Get thread’s current log level. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6thread10ThreadBase8getInputEv">
+<span id="_CPPv3N5Limef6thread10ThreadBase8getInputEv"></span><span id="_CPPv2N5Limef6thread10ThreadBase8getInputEv"></span><span id="Limef::thread::ThreadBase::getInput"></span><span class="target" id="classLimef_1_1thread_1_1ThreadBase_1a246d25dade2f24efaf76f01e1bf51d9e"></span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><span class="n"><span class="pre">Limef</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="framefilters.html#_CPPv4N5Limef2ffE" title="Limef::ff"><span class="n"><span class="pre">ff</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="framefilters.html#_CPPv4N5Limef2ff11FrameFilterE" title="Limef::ff::FrameFilter"><span class="n"><span class="pre">FrameFilter</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="sig-name descname"><span class="n"><span class="pre">getInput</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><a class="headerlink" href="#_CPPv4N5Limef6thread10ThreadBase8getInputEv" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Get thread’s input framefilter. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Reference to input framefilter </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6thread10ThreadBase9getOutputEv">
+<span id="_CPPv3N5Limef6thread10ThreadBase9getOutputEv"></span><span id="_CPPv2N5Limef6thread10ThreadBase9getOutputEv"></span><span id="Limef::thread::ThreadBase::getOutput"></span><span class="target" id="classLimef_1_1thread_1_1ThreadBase_1affbb38ec908bd01ef8b554662ea48397"></span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><span class="n"><span class="pre">Limef</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="framefilters.html#_CPPv4N5Limef2ffE" title="Limef::ff"><span class="n"><span class="pre">ff</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="framefilters.html#_CPPv4N5Limef2ff11FrameFilterE" title="Limef::ff::FrameFilter"><span class="n"><span class="pre">FrameFilter</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="sig-name descname"><span class="n"><span class="pre">getOutput</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><a class="headerlink" href="#_CPPv4N5Limef6thread10ThreadBase9getOutputEv" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Get thread’s output framefilter. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Reference to output framefilter </p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6thread16USBCameraContextE">
+<span id="_CPPv3N5Limef6thread16USBCameraContextE"></span><span id="_CPPv2N5Limef6thread16USBCameraContextE"></span><span id="Limef::thread::USBCameraContext"></span><span class="target" id="structLimef_1_1thread_1_1USBCameraContext"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">USBCameraContext</span></span></span><a class="headerlink" href="#_CPPv4N5Limef6thread16USBCameraContextE" title="Link to this definition">¶</a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;usbcamera.h&gt;</em></div>
+<p>Configuration for USB camera capture. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6thread16USBCameraContext6deviceE">
+<span id="_CPPv3N5Limef6thread16USBCameraContext6deviceE"></span><span id="_CPPv2N5Limef6thread16USBCameraContext6deviceE"></span><span id="Limef::thread::USBCameraContext::device__ss"></span><span class="target" id="structLimef_1_1thread_1_1USBCameraContext_1a29ab5b6dd9291469384c6913272acae8"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">device</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="p"><span class="pre">{</span></span><span class="s"><span class="pre">&quot;/dev/video0&quot;</span></span><span class="p"><span class="pre">}</span></span><a class="headerlink" href="#_CPPv4N5Limef6thread16USBCameraContext6deviceE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>V4L2 device path. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6thread16USBCameraContext4slotE">
+<span id="_CPPv3N5Limef6thread16USBCameraContext4slotE"></span><span id="_CPPv2N5Limef6thread16USBCameraContext4slotE"></span><span id="Limef::thread::USBCameraContext::slot__Slot"></span><span class="target" id="structLimef_1_1thread_1_1USBCameraContext_1a5aacaf9805d78d0fec5d39dddd1c8010"></span><span class="n"><span class="pre">Slot</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">slot</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="p"><span class="pre">{</span></span><span class="m"><span class="pre">1</span></span><span class="p"><span class="pre">}</span></span><a class="headerlink" href="#_CPPv4N5Limef6thread16USBCameraContext4slotE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Slot identifying this stream. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6thread16USBCameraContext5widthE">
+<span id="_CPPv3N5Limef6thread16USBCameraContext5widthE"></span><span id="_CPPv2N5Limef6thread16USBCameraContext5widthE"></span><span id="Limef::thread::USBCameraContext::width__i"></span><span class="target" id="structLimef_1_1thread_1_1USBCameraContext_1a2e10fcc9b26e7ded241225cdfa7544de"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">width</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="p"><span class="pre">{</span></span><span class="m"><span class="pre">640</span></span><span class="p"><span class="pre">}</span></span><a class="headerlink" href="#_CPPv4N5Limef6thread16USBCameraContext5widthE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Requested capture width. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6thread16USBCameraContext6heightE">
+<span id="_CPPv3N5Limef6thread16USBCameraContext6heightE"></span><span id="_CPPv2N5Limef6thread16USBCameraContext6heightE"></span><span id="Limef::thread::USBCameraContext::height__i"></span><span class="target" id="structLimef_1_1thread_1_1USBCameraContext_1a98e3f2a3bd2aa9f370bcdb14f17711f4"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">height</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="p"><span class="pre">{</span></span><span class="m"><span class="pre">480</span></span><span class="p"><span class="pre">}</span></span><a class="headerlink" href="#_CPPv4N5Limef6thread16USBCameraContext6heightE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Requested capture height. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6thread16USBCameraContext3fpsE">
+<span id="_CPPv3N5Limef6thread16USBCameraContext3fpsE"></span><span id="_CPPv2N5Limef6thread16USBCameraContext3fpsE"></span><span id="Limef::thread::USBCameraContext::fps__i"></span><span class="target" id="structLimef_1_1thread_1_1USBCameraContext_1a6b44c0d8cdab6d0687ebcafebed8acdc"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">fps</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="p"><span class="pre">{</span></span><span class="m"><span class="pre">30</span></span><span class="p"><span class="pre">}</span></span><a class="headerlink" href="#_CPPv4N5Limef6thread16USBCameraContext3fpsE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Requested frame rate. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6thread16USBCameraContext13output_formatE">
+<span id="_CPPv3N5Limef6thread16USBCameraContext13output_formatE"></span><span id="_CPPv2N5Limef6thread16USBCameraContext13output_formatE"></span><span id="Limef::thread::USBCameraContext::output_format__AVPixelFormat"></span><span class="target" id="structLimef_1_1thread_1_1USBCameraContext_1abf1550f73de5355d35ecf3725bd50123"></span><span class="n"><span class="pre">AVPixelFormat</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">output_format</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="p"><span class="pre">{</span></span><span class="n"><span class="pre">AV_PIX_FMT_NV12</span></span><span class="p"><span class="pre">}</span></span><a class="headerlink" href="#_CPPv4N5Limef6thread16USBCameraContext13output_formatE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Output format after SwScale (NV12 for GPU) </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp class">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6thread15USBCameraThreadE">
+<span id="_CPPv3N5Limef6thread15USBCameraThreadE"></span><span id="_CPPv2N5Limef6thread15USBCameraThreadE"></span><span id="Limef::thread::USBCameraThread"></span><span class="target" id="classLimef_1_1thread_1_1USBCameraThread"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">USBCameraThread</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><span class="n"><span class="pre">Limef</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N5Limef6threadE" title="Limef::thread"><span class="n"><span class="pre">thread</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N5Limef6thread14ProducerThreadE" title="Limef::thread::ProducerThread"><span class="n"><span class="pre">ProducerThread</span></span></a><a class="headerlink" href="#_CPPv4N5Limef6thread15USBCameraThreadE" title="Link to this definition">¶</a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;usbcamera.h&gt;</em></div>
+<p>Thread for capturing frames from USB cameras. </p>
+<p>Reads raw frames from a V4L2 device, converts them to the target pixel format using SwScale, and sends them downstream as DecodedFrames.</p>
+<p>On startup, sends a StreamFrame with video stream information. Then continuously sends DecodedFrames with pixel data.</p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6thread15USBCameraThread15USBCameraThreadENSt6stringERK16USBCameraContext">
+<span id="_CPPv3N5Limef6thread15USBCameraThread15USBCameraThreadENSt6stringERK16USBCameraContext"></span><span id="_CPPv2N5Limef6thread15USBCameraThread15USBCameraThreadENSt6stringERK16USBCameraContext"></span><span id="Limef::thread::USBCameraThread::USBCameraThread__ss.USBCameraContextCR"></span><span class="target" id="classLimef_1_1thread_1_1USBCameraThread_1a8859439e651e25418a9197605f01ae14"></span><span class="sig-name descname"><span class="n"><span class="pre">USBCameraThread</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">name</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4N5Limef6thread16USBCameraContextE" title="Limef::thread::USBCameraContext"><span class="n"><span class="pre">USBCameraContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">ctx</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5Limef6thread15USBCameraThread15USBCameraThreadENSt6stringERK16USBCameraContext" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Construct USB camera capture thread. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> – Thread name for logging/identification </p></li>
+<li><p><strong>ctx</strong> – Camera configuration (device, resolution, format) </p></li>
+</ul>
+</dd>
+<dt class="field-even">Throws<span class="colon">:</span></dt>
+<dd class="field-even"><p><span><span class="cpp-expr sig sig-inline cpp"><span class="n">std</span><span class="p">::</span><span class="n">runtime_error</span></span></span> – if device cannot be opened </p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp class">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6thread21WebSocketServerSignalE">
+<span id="_CPPv3N5Limef6thread21WebSocketServerSignalE"></span><span id="_CPPv2N5Limef6thread21WebSocketServerSignalE"></span><span id="Limef::thread::WebSocketServerSignal"></span><span class="target" id="classLimef_1_1thread_1_1WebSocketServerSignal"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">WebSocketServerSignal</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><span class="n"><span class="pre">Limef</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="signals.html#_CPPv4N5Limef6signalE" title="Limef::signal"><span class="n"><span class="pre">signal</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="signals.html#_CPPv4N5Limef6signal6SignalE" title="Limef::signal::Signal"><span class="n"><span class="pre">Signal</span></span></a><a class="headerlink" href="#_CPPv4N5Limef6thread21WebSocketServerSignalE" title="Link to this definition">¶</a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;websocket.h&gt;</em></div>
+<p>Single signal class for WebSocketServerThread with signal type enum </p>
+</dd></dl>
+
+<dl class="cpp class">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6thread21WebSocketServerThreadE">
+<span id="_CPPv3N5Limef6thread21WebSocketServerThreadE"></span><span id="_CPPv2N5Limef6thread21WebSocketServerThreadE"></span><span id="Limef::thread::WebSocketServerThread"></span><span class="target" id="classLimef_1_1thread_1_1WebSocketServerThread"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">WebSocketServerThread</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><span class="n"><span class="pre">Limef</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N5Limef6threadE" title="Limef::thread"><span class="n"><span class="pre">thread</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4I0EN5Limef6thread6ThreadE" title="Limef::thread::Thread"><span class="n"><span class="pre">Thread</span></span></a><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">Limef</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="frames.html#_CPPv4N5Limef5frameE" title="Limef::frame"><span class="n"><span class="pre">frame</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="frames.html#_CPPv4N5Limef5frame8RawFrameE" title="Limef::frame::RawFrame"><span class="n"><span class="pre">RawFrame</span></span></a><span class="p"><span class="pre">&gt;</span></span><a class="headerlink" href="#_CPPv4N5Limef6thread21WebSocketServerThreadE" title="Link to this definition">¶</a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;websocket.h&gt;</em></div>
+<p>Ultra-fast WebSocket server for streaming frag-MP4 video</p>
+<p>Features:<ul class="simple">
+<li><p>Zero-copy streaming where possible</p></li>
+<li><p>Lockfree hot path for frame handling</p></li>
+<li><p>Automatic initialization segment caching (FTYP + MOOV)</p></li>
+<li><p>Keyframe-synchronized client onboarding</p></li>
+<li><p>Token-based stream access control</p></li>
+<li><p>Multiple clients per stream</p></li>
+<li><p>Automatic cleanup of dead connections</p></li>
+</ul>
+</p>
+<p>All incoming ftyp and moov packets per slot are cached</p>
+<p>Complete walkthrough: <div class="highlight-default notranslate"><div class="highlight"><pre><span></span> <span class="n">media_thread</span><span class="p">:</span>
+  <span class="n">class</span><span class="p">:</span> <span class="n">MediaFileThread</span>
+  <span class="n">note</span><span class="p">:</span> <span class="n">sends</span> <span class="n">CodecFrame</span> <span class="n">only</span> <span class="n">once</span> <span class="n">at</span> <span class="n">thread</span> <span class="n">startup</span>
+  <span class="n">fork</span><span class="p">:</span>
+    <span class="n">fmp4</span><span class="p">:</span>
+      <span class="n">class</span><span class="p">:</span> <span class="n">FMP4FrameFilter</span>
+      <span class="n">internal</span><span class="p">:</span>
+        <span class="n">gate</span><span class="p">:</span>
+          <span class="n">class</span><span class="p">:</span> <span class="n">GateFrameFilter</span>
+          <span class="n">note</span><span class="p">:</span> <span class="o">|</span> 
+            <span class="n">although</span> <span class="n">initially</span> <span class="n">closed</span><span class="p">,</span> <span class="ow">is</span> <span class="n">always</span> <span class="n">listening</span> <span class="ow">and</span> <span class="n">caching</span>
+            <span class="n">CodecFrame</span><span class="p">(</span><span class="n">s</span><span class="p">)</span><span class="o">.</span>  <span class="n">When</span> <span class="n">gate</span> <span class="ow">is</span> <span class="n">opened</span><span class="p">,</span> <span class="n">passes</span> <span class="n">immediately</span> <span class="n">CodecFrame</span> <span class="n">downstream</span>
+        <span class="n">transcode</span><span class="p">:</span>
+          <span class="n">class</span><span class="p">:</span> <span class="n">AudioTranscodeFrameFilter</span>
+          <span class="n">note</span><span class="p">:</span> <span class="n">transcodes</span> <span class="n">to</span> <span class="n">AAC</span> <span class="ow">and</span> <span class="n">sends</span> <span class="n">modified</span> <span class="n">CodecFrame</span> <span class="n">downstream</span>
+        <span class="n">muxer</span><span class="p">:</span>
+          <span class="n">class</span><span class="p">:</span> <span class="n">MuxerFrameFilter</span>
+          <span class="n">note</span><span class="p">:</span> <span class="o">|</span> 
+            <span class="n">requires</span> <span class="n">CodecFrame</span> <span class="n">to</span> <span class="n">start</span> <span class="n">muxing</span>
+            <span class="k">for</span> <span class="n">fmp4</span><span class="p">,</span> <span class="n">CodecFrame</span> <span class="ow">is</span> <span class="n">necessary</span> <span class="n">so</span> <span class="n">that</span> <span class="n">ftyp</span> <span class="ow">and</span> <span class="n">moov</span> <span class="n">get</span> <span class="n">emitted</span>
+        <span class="n">partitioner</span><span class="p">:</span>
+          <span class="n">class</span><span class="p">:</span> <span class="n">MP4PartitionFrameFilter</span>
+      <span class="n">fork</span><span class="p">:</span>
+        <span class="n">websocket</span><span class="p">:</span>
+          <span class="n">class</span><span class="p">:</span> <span class="n">WebSocketServerThread</span>
+ 
+<span class="n">Suppose</span> <span class="n">gate</span> <span class="n">first</span> <span class="n">closed</span><span class="o">.</span>  <span class="n">Once</span> <span class="n">it</span> <span class="ow">is</span> <span class="n">opened</span><span class="p">,</span> <span class="n">sends</span> <span class="n">CodecFrame</span> <span class="n">immediately</span> <span class="n">downstream</span><span class="p">,</span>
+<span class="n">muxer</span> <span class="ow">is</span> <span class="n">initialized</span><span class="p">,</span> <span class="n">ftyp</span> <span class="ow">and</span> <span class="n">moov</span> <span class="n">are</span> <span class="n">sent</span> <span class="n">correctly</span> <span class="n">downstream</span>
+
+ <span class="o">*</span>
+</pre></div>
+</div>
+</p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6thread21WebSocketServerThread11startServerEi">
+<span id="_CPPv3N5Limef6thread21WebSocketServerThread11startServerEi"></span><span id="_CPPv2N5Limef6thread21WebSocketServerThread11startServerEi"></span><span id="Limef::thread::WebSocketServerThread::startServer__i"></span><span class="target" id="classLimef_1_1thread_1_1WebSocketServerThread_1aeeee7655542afdebf0b7c6095cba17e3"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">startServer</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">port</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">8080</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5Limef6thread21WebSocketServerThread11startServerEi" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Start WebSocket server on specified port </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6thread21WebSocketServerThread11setSlotUUIDE4SlotRKNSt6stringE">
+<span id="_CPPv3N5Limef6thread21WebSocketServerThread11setSlotUUIDE4SlotRKNSt6stringE"></span><span id="_CPPv2N5Limef6thread21WebSocketServerThread11setSlotUUIDE4SlotRKNSt6stringE"></span><span id="Limef::thread::WebSocketServerThread::setSlotUUID__Slot.ssCR"></span><span class="target" id="classLimef_1_1thread_1_1WebSocketServerThread_1aba3e27835eecdb5efc533a3524e3868d"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">setSlotUUID</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">Slot</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">slot</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">uuid</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5Limef6thread21WebSocketServerThread11setSlotUUIDE4SlotRKNSt6stringE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Register UUID &lt;-&gt; Slot mapping Called when camera/stream is added to system </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6thread21WebSocketServerThread14addStreamTokenERKNSt6stringERKNSt6vectorINSt6stringEEE7int64_t">
+<span id="_CPPv3N5Limef6thread21WebSocketServerThread14addStreamTokenERKNSt6stringERKNSt6vectorINSt6stringEEE7int64_t"></span><span id="_CPPv2N5Limef6thread21WebSocketServerThread14addStreamTokenERKNSt6stringERKNSt6vectorINSt6stringEEE7int64_t"></span><span id="Limef::thread::WebSocketServerThread::addStreamToken__ssCR.std::vector:ss:CR.int64_t"></span><span class="target" id="classLimef_1_1thread_1_1WebSocketServerThread_1a95fd458d3edd0a4aeda5baca9a954179"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">addStreamToken</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">token</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">vector</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">allowed_uuids</span></span>, <span class="n"><span class="pre">int64_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">expires_timestamp</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5Limef6thread21WebSocketServerThread14addStreamTokenERKNSt6stringERKNSt6vectorINSt6stringEEE7int64_t" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Add streaming token with allowed UUIDs </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>token</strong> – Access token string </p></li>
+<li><p><strong>allowed_uuids</strong> – List of stream UUIDs this token can access </p></li>
+<li><p><strong>expires_timestamp</strong> – Unix timestamp when token expires (0 = never) </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK5Limef6thread21WebSocketServerThread15isServerRunningEv">
+<span id="_CPPv3NK5Limef6thread21WebSocketServerThread15isServerRunningEv"></span><span id="_CPPv2NK5Limef6thread21WebSocketServerThread15isServerRunningEv"></span><span id="Limef::thread::WebSocketServerThread::isServerRunningC"></span><span class="target" id="classLimef_1_1thread_1_1WebSocketServerThread_1a91b08ee6ed47d6c6e6cc8649ce6f46be"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">isServerRunning</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK5Limef6thread21WebSocketServerThread15isServerRunningEv" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Get server status (lockfree) </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp class">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6thread21WebSocketStreamBufferE">
+<span id="_CPPv3N5Limef6thread21WebSocketStreamBufferE"></span><span id="_CPPv2N5Limef6thread21WebSocketStreamBufferE"></span><span id="Limef::thread::WebSocketStreamBuffer"></span><span class="target" id="classLimef_1_1thread_1_1WebSocketStreamBuffer"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">WebSocketStreamBuffer</span></span></span><a class="headerlink" href="#_CPPv4N5Limef6thread21WebSocketStreamBufferE" title="Link to this definition">¶</a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;websocket.h&gt;</em></div>
+<p>Helper class for per-stream data structures Handles initialization segment caching and client management </p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="decoders.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Decoders</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="framefifos.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">FrameFifos</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2024 Sampsa Riikonen
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Threads</a><ul>
+<li><a class="reference internal" href="#_CPPv4N5Limef6threadE"><code class="docutils literal notranslate"><span class="pre">Limef::thread</span></code></a><ul>
+<li><a class="reference internal" href="#_CPPv4N5Limef6thread13ComposeThreadE"><code class="docutils literal notranslate"><span class="pre">Limef::thread::ComposeThread</span></code></a><ul>
+<li><a class="reference internal" href="#_CPPv4N5Limef6thread13ComposeThread5startEv"><code class="docutils literal notranslate"><span class="pre">start()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4NK5Limef6thread13ComposeThread9isStartedEv"><code class="docutils literal notranslate"><span class="pre">isStarted()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6thread13ComposeThread11requestStopEv"><code class="docutils literal notranslate"><span class="pre">requestStop()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6thread13ComposeThread8waitStopEv"><code class="docutils literal notranslate"><span class="pre">waitStop()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6thread13ComposeThread4stopEv"><code class="docutils literal notranslate"><span class="pre">stop()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6thread13ComposeThread11setAffinityEi"><code class="docutils literal notranslate"><span class="pre">setAffinity()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6thread13ComposeThread11setLogLevelEN6spdlog5level10level_enumE"><code class="docutils literal notranslate"><span class="pre">setLogLevel()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6thread13ComposeThread12setLogFormatERKNSt6stringE"><code class="docutils literal notranslate"><span class="pre">setLogFormat()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6thread13ComposeThread14shortLogFormatEv"><code class="docutils literal notranslate"><span class="pre">shortLogFormat()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4NK5Limef6thread13ComposeThread11getLogLevelEv"><code class="docutils literal notranslate"><span class="pre">getLogLevel()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6thread13ComposeThread8getInputEv"><code class="docutils literal notranslate"><span class="pre">getInput()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6thread13ComposeThread9getOutputEv"><code class="docutils literal notranslate"><span class="pre">getOutput()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6thread14ConsumerThreadE"><code class="docutils literal notranslate"><span class="pre">Limef::thread::ConsumerThread</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6thread17ExamplePollThreadE"><code class="docutils literal notranslate"><span class="pre">Limef::thread::ExamplePollThread</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6thread13ExampleSignalE"><code class="docutils literal notranslate"><span class="pre">Limef::thread::ExampleSignal</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6thread13ExampleThreadE"><code class="docutils literal notranslate"><span class="pre">Limef::thread::ExampleThread</span></code></a><ul>
+<li><a class="reference internal" href="#_CPPv4N5Limef6thread13ExampleThread8pingCallEv"><code class="docutils literal notranslate"><span class="pre">pingCall()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6thread13ExampleThread9pingCall2Ei"><code class="docutils literal notranslate"><span class="pre">pingCall2()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6thread17LiveStreamContextE"><code class="docutils literal notranslate"><span class="pre">Limef::thread::LiveStreamContext</span></code></a><ul>
+<li><a class="reference internal" href="#_CPPv4N5Limef6thread17LiveStreamContext3urlE"><code class="docutils literal notranslate"><span class="pre">url</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6thread17LiveStreamContext4slotE"><code class="docutils literal notranslate"><span class="pre">slot</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6thread17LiveStreamContext11timeout_secE"><code class="docutils literal notranslate"><span class="pre">timeout_sec</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6thread17LiveStreamContext14rtsp_transportE"><code class="docutils literal notranslate"><span class="pre">rtsp_transport</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6thread17LiveStreamContext12max_delay_msE"><code class="docutils literal notranslate"><span class="pre">max_delay_ms</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6thread17LiveStreamContext16reopen_retry_maxE"><code class="docutils literal notranslate"><span class="pre">reopen_retry_max</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6thread17LiveStreamContext17timeout_start_secE"><code class="docutils literal notranslate"><span class="pre">timeout_start_sec</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6thread17LiveStreamContext15timeout_max_secE"><code class="docutils literal notranslate"><span class="pre">timeout_max_sec</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6thread17LiveStreamContext6factorE"><code class="docutils literal notranslate"><span class="pre">factor</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6thread16LiveStreamThreadE"><code class="docutils literal notranslate"><span class="pre">Limef::thread::LiveStreamThread</span></code></a><ul>
+<li><a class="reference internal" href="#_CPPv4N5Limef6thread16LiveStreamThread16LiveStreamThreadENSt6stringERK17LiveStreamContext"><code class="docutils literal notranslate"><span class="pre">LiveStreamThread()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6thread16MediaFileContextE"><code class="docutils literal notranslate"><span class="pre">Limef::thread::MediaFileContext</span></code></a><ul>
+<li><a class="reference internal" href="#_CPPv4N5Limef6thread16MediaFileContext8filenameE"><code class="docutils literal notranslate"><span class="pre">filename</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6thread16MediaFileContext4slotE"><code class="docutils literal notranslate"><span class="pre">slot</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6thread16MediaFileContext3fpsE"><code class="docutils literal notranslate"><span class="pre">fps</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6thread16MediaFileContext4loopE"><code class="docutils literal notranslate"><span class="pre">loop</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6thread15MediaFileSignalE"><code class="docutils literal notranslate"><span class="pre">Limef::thread::MediaFileSignal</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6thread15MediaFileThreadE"><code class="docutils literal notranslate"><span class="pre">Limef::thread::MediaFileThread</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6thread16MediaFileThread0E"><code class="docutils literal notranslate"><span class="pre">Limef::thread::MediaFileThread0</span></code></a><ul>
+<li><a class="reference internal" href="#_CPPv4N5Limef6thread16MediaFileThread016MediaFileThread0ENSt6stringERK16MediaFileContext"><code class="docutils literal notranslate"><span class="pre">MediaFileThread0()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6thread16MediaFileThread017handleSignalFrameEPKN5Limef5frame11SignalFrameE"><code class="docutils literal notranslate"><span class="pre">handleSignalFrame()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6thread16MediaFileThread016resendCodecFrameEv"><code class="docutils literal notranslate"><span class="pre">resendCodecFrame()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6thread16MediaFileThread1E"><code class="docutils literal notranslate"><span class="pre">Limef::thread::MediaFileThread1</span></code></a><ul>
+<li><a class="reference internal" href="#_CPPv4N5Limef6thread16MediaFileThread19getOutputEv"><code class="docutils literal notranslate"><span class="pre">getOutput()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6thread16MediaFileThread111setLogLevelEN6spdlog5level10level_enumE"><code class="docutils literal notranslate"><span class="pre">setLogLevel()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6thread16MediaFileThread112setLogFormatERKNSt6stringE"><code class="docutils literal notranslate"><span class="pre">setLogFormat()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6thread25OrderedPacketBufferThreadE"><code class="docutils literal notranslate"><span class="pre">Limef::thread::OrderedPacketBufferThread</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6thread18PacketBufferThreadE"><code class="docutils literal notranslate"><span class="pre">Limef::thread::PacketBufferThread</span></code></a><ul>
+<li><a class="reference internal" href="#_CPPv4N5Limef6thread18PacketBufferThread18PacketBufferThreadENSt6stringERKN5Limef16FrameFifoContextE"><code class="docutils literal notranslate"><span class="pre">PacketBufferThread()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6thread13PerSocketDataE"><code class="docutils literal notranslate"><span class="pre">Limef::thread::PerSocketData</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4I0EN5Limef6thread10PollThreadE"><code class="docutils literal notranslate"><span class="pre">Limef::thread::PollThread</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6thread14ProducerThreadE"><code class="docutils literal notranslate"><span class="pre">Limef::thread::ProducerThread</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4I0EN5Limef6thread6ThreadE"><code class="docutils literal notranslate"><span class="pre">Limef::thread::Thread</span></code></a><ul>
+<li><a class="reference internal" href="#_CPPv4N5Limef6thread6Thread6ThreadENSt6stringERKN5Limef16FrameFifoContextE"><code class="docutils literal notranslate"><span class="pre">Thread()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6thread6Thread5startEv"><code class="docutils literal notranslate"><span class="pre">start()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4NK5Limef6thread6Thread9isStartedEv"><code class="docutils literal notranslate"><span class="pre">isStarted()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6thread6Thread11requestStopEv"><code class="docutils literal notranslate"><span class="pre">requestStop()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6thread6Thread8waitStopEv"><code class="docutils literal notranslate"><span class="pre">waitStop()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6thread6Thread4stopEv"><code class="docutils literal notranslate"><span class="pre">stop()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6thread6Thread11setAffinityEi"><code class="docutils literal notranslate"><span class="pre">setAffinity()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6thread6Thread4readENSt6chrono12microsecondsE"><code class="docutils literal notranslate"><span class="pre">read()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6thread6Thread8getInputEv"><code class="docutils literal notranslate"><span class="pre">getInput()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6thread6Thread9getOutputEv"><code class="docutils literal notranslate"><span class="pre">getOutput()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6thread6Thread11setLogLevelEN6spdlog5level10level_enumE"><code class="docutils literal notranslate"><span class="pre">setLogLevel()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6thread6Thread12setLogFormatERKNSt6stringE"><code class="docutils literal notranslate"><span class="pre">setLogFormat()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6thread6Thread14shortLogFormatEv"><code class="docutils literal notranslate"><span class="pre">shortLogFormat()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4NK5Limef6thread6Thread11getLogLevelEv"><code class="docutils literal notranslate"><span class="pre">getLogLevel()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6thread10ThreadBaseE"><code class="docutils literal notranslate"><span class="pre">Limef::thread::ThreadBase</span></code></a><ul>
+<li><a class="reference internal" href="#_CPPv4N5Limef6thread10ThreadBase5startEv"><code class="docutils literal notranslate"><span class="pre">start()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4NK5Limef6thread10ThreadBase9isStartedEv"><code class="docutils literal notranslate"><span class="pre">isStarted()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6thread10ThreadBase11requestStopEv"><code class="docutils literal notranslate"><span class="pre">requestStop()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6thread10ThreadBase8waitStopEv"><code class="docutils literal notranslate"><span class="pre">waitStop()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6thread10ThreadBase4stopEv"><code class="docutils literal notranslate"><span class="pre">stop()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6thread10ThreadBase11setAffinityEi"><code class="docutils literal notranslate"><span class="pre">setAffinity()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6thread10ThreadBase11setLogLevelEN6spdlog5level10level_enumE"><code class="docutils literal notranslate"><span class="pre">setLogLevel()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6thread10ThreadBase12setLogFormatERKNSt6stringE"><code class="docutils literal notranslate"><span class="pre">setLogFormat()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6thread10ThreadBase14shortLogFormatEv"><code class="docutils literal notranslate"><span class="pre">shortLogFormat()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4NK5Limef6thread10ThreadBase11getLogLevelEv"><code class="docutils literal notranslate"><span class="pre">getLogLevel()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6thread10ThreadBase8getInputEv"><code class="docutils literal notranslate"><span class="pre">getInput()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6thread10ThreadBase9getOutputEv"><code class="docutils literal notranslate"><span class="pre">getOutput()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6thread16USBCameraContextE"><code class="docutils literal notranslate"><span class="pre">Limef::thread::USBCameraContext</span></code></a><ul>
+<li><a class="reference internal" href="#_CPPv4N5Limef6thread16USBCameraContext6deviceE"><code class="docutils literal notranslate"><span class="pre">device</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6thread16USBCameraContext4slotE"><code class="docutils literal notranslate"><span class="pre">slot</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6thread16USBCameraContext5widthE"><code class="docutils literal notranslate"><span class="pre">width</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6thread16USBCameraContext6heightE"><code class="docutils literal notranslate"><span class="pre">height</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6thread16USBCameraContext3fpsE"><code class="docutils literal notranslate"><span class="pre">fps</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6thread16USBCameraContext13output_formatE"><code class="docutils literal notranslate"><span class="pre">output_format</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6thread15USBCameraThreadE"><code class="docutils literal notranslate"><span class="pre">Limef::thread::USBCameraThread</span></code></a><ul>
+<li><a class="reference internal" href="#_CPPv4N5Limef6thread15USBCameraThread15USBCameraThreadENSt6stringERK16USBCameraContext"><code class="docutils literal notranslate"><span class="pre">USBCameraThread()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6thread21WebSocketServerSignalE"><code class="docutils literal notranslate"><span class="pre">Limef::thread::WebSocketServerSignal</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6thread21WebSocketServerThreadE"><code class="docutils literal notranslate"><span class="pre">Limef::thread::WebSocketServerThread</span></code></a><ul>
+<li><a class="reference internal" href="#_CPPv4N5Limef6thread21WebSocketServerThread11startServerEi"><code class="docutils literal notranslate"><span class="pre">startServer()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6thread21WebSocketServerThread11setSlotUUIDE4SlotRKNSt6stringE"><code class="docutils literal notranslate"><span class="pre">setSlotUUID()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6thread21WebSocketServerThread14addStreamTokenERKNSt6stringERKNSt6vectorINSt6stringEEE7int64_t"><code class="docutils literal notranslate"><span class="pre">addStreamToken()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4NK5Limef6thread21WebSocketServerThread15isServerRunningEv"><code class="docutils literal notranslate"><span class="pre">isServerRunning()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6thread21WebSocketStreamBufferE"><code class="docutils literal notranslate"><span class="pre">Limef::thread::WebSocketStreamBuffer</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script src="../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/scripts/furo.js?v=46bd48cc"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    </body>
+</html>
