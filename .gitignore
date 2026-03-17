@@ -1,6 +1,8 @@
 # Doxygen build output
-doxygen/html/
 doxygen/latex/
+doxygen/html/xml/
+doxygen/html/*.md5
+doxygen/html/*.map
 
 # Sphinx build output — exclude intermediate dirs, keep html for GitHub Pages
 sphinx/_build/

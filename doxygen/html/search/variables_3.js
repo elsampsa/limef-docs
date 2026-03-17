@@ -1,0 +1,24 @@
+var searchData=
+[
+  ['chain_0',['chain',['../classLimef_1_1ff_1_1ComposeFrameFilter.html#a58ed958a42bb5555e9a183bc25c65aba',1,'Limef::ff::ComposeFrameFilter']]],
+  ['channels_1',['channels',['../structPyStreamInfo.html#ac9b3b597642a8c0c0ac94a7fe757ff81',1,'PyStreamInfo']]],
+  ['chars_5fread_5fcurrent_5fline_2',['chars_read_current_line',['../structdetail_1_1position__t.html#a6548d584bd03d1d47bfcd7cf8b1fb0c6',1,'detail::position_t']]],
+  ['chars_5fread_5ftotal_3',['chars_read_total',['../structdetail_1_1position__t.html#ac4d220d61ce61eeffbea40985727a3b0',1,'detail::position_t']]],
+  ['children_4',['children',['../structLimef_1_1mp4_1_1BoxInfo.html#a1d762254243acd9b30e5d23776b03b8e',1,'Limef::mp4::BoxInfo']]],
+  ['client_5fcount_5',['client_count',['../classLimef_1_1thread_1_1WebSocketStreamBuffer.html#aedfe04bbe0203669444996ea8d620d5c',1,'Limef::thread::WebSocketStreamBuffer']]],
+  ['client_5fip_6',['client_ip',['../structLimef_1_1rtsp_1_1ClientTrack.html#a05cad415ad36a7d9bee1714a12b2f488',1,'Limef::rtsp::ClientTrack']]],
+  ['client_5frtcp_5fport_7',['client_rtcp_port',['../structLimef_1_1rtsp_1_1ClientTrack.html#aa79fa638e392e565fbc8e07580aa83b5',1,'Limef::rtsp::ClientTrack']]],
+  ['client_5frtp_5fport_8',['client_rtp_port',['../structLimef_1_1rtsp_1_1ClientTrack.html#a6f509bc5408e75474f70cd4758c54a6f',1,'Limef::rtsp::ClientTrack']]],
+  ['closed_9',['closed',['../classLimef_1_1FrameFifo.html#abacc8483459cbe78784bd804d2c44583',1,'Limef::FrameFifo']]],
+  ['codec_5fflags_10',['codec_flags',['../structLimef_1_1ff_1_1AudioTranscodeContext.html#a7962591aa62d04a300df6c8a2bf83ff7',1,'Limef::ff::AudioTranscodeContext']]],
+  ['codec_5ffourcc_11',['codec_fourcc',['../structLimef_1_1decode_1_1V4L2DecoderParams.html#a29a309a6b4d69e3e559b72e798f88112',1,'Limef::decode::V4L2DecoderParams::codec_fourcc'],['../structLimef_1_1encode_1_1V4L2EncoderParams.html#a7cdedf97e43fdcd62ba004074c6f4ff0',1,'Limef::encode::V4L2EncoderParams::codec_fourcc']]],
+  ['codec_5fid_12',['codec_id',['../structLimef_1_1encode_1_1FFmpegEncoderParams.html#a387b003626b987808153eddd21655b22',1,'Limef::encode::FFmpegEncoderParams::codec_id'],['../structPyStreamInfo.html#aa3831cc255ebcfbd5443aff8fa71fd2f',1,'PyStreamInfo::codec_id'],['../structLimef_1_1ff_1_1AudioTranscodeContext.html#a04476e9b464a4b1fb168e529de0131d0',1,'Limef::ff::AudioTranscodeContext::codec_id']]],
+  ['codec_5ftype_13',['codec_type',['../structPyStreamInfo.html#aa6121edc400463236a2b0416f93fd454',1,'PyStreamInfo']]],
+  ['completion_5fevent_14',['completion_event',['../classLimef_1_1thread_1_1WebSocketServerSignal.html#a233d6469f6b59d8a3eba3ea076b55a6d',1,'Limef::thread::WebSocketServerSignal']]],
+  ['connect_5ftime_15',['connect_time',['../structLimef_1_1thread_1_1PerSocketData.html#ad49720bc8de5355e773c1dcbb3a32bfa',1,'Limef::thread::PerSocketData']]],
+  ['crf_16',['crf',['../structLimef_1_1encode_1_1FFmpegEncoderParams.html#ac9869d5c8338861a7b201b5c39abbe1c',1,'Limef::encode::FFmpegEncoderParams']]],
+  ['cseq_17',['cseq',['../structLimef_1_1rtsp_1_1Request.html#a4f32640df4ddac78fa97c9044327ac52',1,'Limef::rtsp::Request']]],
+  ['ctx_18',['ctx',['../classLimef_1_1FrameFifo.html#a7635a3d97e8313a52516b27c086d14a0',1,'Limef::FrameFifo::ctx'],['../classLimef_1_1thread_1_1Thread.html#a4b2a53ec35355f09efe8d903562553c5',1,'Limef::thread::Thread::ctx']]],
+  ['ctx_5f_19',['ctx_',['../classLimef_1_1shmem_1_1ShmemClient.html#a878413cdc4dea8708ae927e0ba6071bf',1,'Limef::shmem::ShmemClient']]],
+  ['current_5fframe_5f_20',['current_frame_',['../classPythonInterfaceClient.html#a76a7fde10fe5694081263390d8d19b69',1,'PythonInterfaceClient::current_frame_'],['../classTensorPythonInterfaceClient.html#a3a432b1abdada8f6633d887f4a5ffd44',1,'TensorPythonInterfaceClient::current_frame_']]]
+];

@@ -1,0 +1,28 @@
+var searchData=
+[
+  ['sample_5fformat_0',['sample_format',['../structLimef_1_1ff_1_1AudioTranscodeContext.html#abc029080cee7bdbc390626430b23d3d6',1,'Limef::ff::AudioTranscodeContext']]],
+  ['sample_5frate_1',['sample_rate',['../structPyStreamInfo.html#abe452488394914c4a5c9e8bf06856e92',1,'PyStreamInfo']]],
+  ['sample_5fsize_2',['sample_size',['../structLimef_1_1ff_1_1AudioTranscodeContext.html#a876223af77db22e4214cb6013777d232',1,'Limef::ff::AudioTranscodeContext']]],
+  ['sdp_3',['sdp',['../structLimef_1_1rtsp_1_1RTPStream.html#a92bd12f58602e7d9111a6709d65fdd48',1,'Limef::rtsp::RTPStream']]],
+  ['server_5frtcp_5fport_4',['server_rtcp_port',['../structLimef_1_1rtsp_1_1ClientTrack.html#ab2237ea57f1bfb9d4fe5564ae8e3bdfa',1,'Limef::rtsp::ClientTrack']]],
+  ['server_5frtp_5fport_5',['server_rtp_port',['../structLimef_1_1rtsp_1_1ClientTrack.html#a83d488d595cb8fef89069447a4986145',1,'Limef::rtsp::ClientTrack']]],
+  ['session_5ffds_6',['session_fds',['../structLimef_1_1rtsp_1_1RTPStream.html#ae019604afb153a36c907b435a2f338a5',1,'Limef::rtsp::RTPStream']]],
+  ['session_5fid_7',['session_id',['../structLimef_1_1rtsp_1_1Request.html#a154ac52aa70fd2f62a6ad9a2c70007af',1,'Limef::rtsp::Request']]],
+  ['shape_8',['shape',['../structLimef_1_1frame_1_1Plane.html#a7b7a064ccdfc9b9f764b279e503ba4af',1,'Limef::frame::Plane']]],
+  ['signal_5ftype_9',['signal_type',['../classLimef_1_1thread_1_1WebSocketServerSignal.html#a12178bbb4bfa3ff05399f869421e84d2',1,'Limef::thread::WebSocketServerSignal']]],
+  ['size_10',['size',['../structLimef_1_1mp4_1_1BoxInfo.html#acc95f9cdfde0fd2ae7fef3c97da8d8d6',1,'Limef::mp4::BoxInfo']]],
+  ['slot_11',['slot',['../classLimef_1_1frame_1_1Frame.html#af5dafacca962cdec9082c40d7b6a4682',1,'Limef::frame::Frame::slot'],['../classLimef_1_1thread_1_1WebSocketServerSignal.html#aca56ad1de200cef55806f44ce104c3be',1,'Limef::thread::WebSocketServerSignal::slot'],['../classLimef_1_1thread_1_1WebSocketStreamBuffer.html#ab863f9016fa5da41ab225b315341a1c2',1,'Limef::thread::WebSocketStreamBuffer::slot'],['../structLimef_1_1thread_1_1USBCameraContext.html#a5aacaf9805d78d0fec5d39dddd1c8010',1,'Limef::thread::USBCameraContext::slot'],['../classLimef_1_1thread_1_1ProducerThread.html#a32357498701ad1388bccafab098803aa',1,'Limef::thread::ProducerThread::slot'],['../structLimef_1_1thread_1_1MediaFileContext.html#ad281f8cce80050ff66a913f232043867',1,'Limef::thread::MediaFileContext::slot'],['../structLimef_1_1thread_1_1LiveStreamContext.html#a539c9bdfa28fb1610f8457bde2190729',1,'Limef::thread::LiveStreamContext::slot'],['../structLimef_1_1rtsp_1_1RTPStream.html#ad58a54f24be6102bc3043213cb59a972',1,'Limef::rtsp::RTPStream::slot']]],
+  ['stack_12',['stack',['../classLimef_1_1FrameFifo.html#adae7f282b4b06ae6f381aabc3a51bf1c',1,'Limef::FrameFifo']]],
+  ['stack_5fmutex_13',['stack_mutex',['../classLimef_1_1FrameFifo.html#a9cb9170be01819271c6007bd0214b635',1,'Limef::FrameFifo']]],
+  ['stack_5fready_5fcondition_14',['stack_ready_condition',['../classLimef_1_1FrameFifo.html#a176df7d30dba577032f97576beebad88',1,'Limef::FrameFifo']]],
+  ['stack_5fsize_15',['stack_size',['../structLimef_1_1FrameFifoContext.html#a83f2bf8f2db8e17017c50940a3de7252',1,'Limef::FrameFifoContext']]],
+  ['start_16',['start',['../structLimef_1_1decode_1_1V4L2DecoderBuffer.html#a9725acee60da9b10c92f5aec97e66b46',1,'Limef::decode::V4L2DecoderBuffer::start'],['../structLimef_1_1encode_1_1V4L2Buffer.html#afa826622bd27341add3208ce28dcb767',1,'Limef::encode::V4L2Buffer::start']]],
+  ['start_5f_17',['start_',['../structLimef_1_1fb_1_1StreamInfoBuilder.html#a7be123e12f8b551a89390f2f3d764997',1,'Limef::fb::StreamInfoBuilder::start_'],['../structLimef_1_1fb_1_1StreamFrameBufferBuilder.html#abf87090853f8cfeb7984cb2e50f4d810',1,'Limef::fb::StreamFrameBufferBuilder::start_'],['../structLimef_1_1fb_1_1RawFrameBufferBuilder.html#a22db91d46a05563911e033b1b805d012',1,'Limef::fb::RawFrameBufferBuilder::start_'],['../structLimef_1_1fb_1_1DecodedFrameBufferBuilder.html#a0c4b0449501a223f5444088dde7acc06',1,'Limef::fb::DecodedFrameBufferBuilder::start_'],['../structLimef_1_1fb_1_1AudioFrameHeaderBuilder.html#a02a0ace872323122f3a8ec56872861ea',1,'Limef::fb::AudioFrameHeaderBuilder::start_'],['../structLimef_1_1fb_1_1VideoFrameHeaderBuilder.html#a099ef2a429b1588d511c3f22d8297649',1,'Limef::fb::VideoFrameHeaderBuilder::start_']]],
+  ['state_18',['state',['../classdetail_1_1serializer.html#a2db3d61cfc616f83763b6d4a03d0d772',1,'detail::serializer']]],
+  ['stop_5frequested_5f_19',['stop_requested_',['../classLimef_1_1thread_1_1Thread.html#af35b3c2c9bdb52517cd295bf1b837f1e',1,'Limef::thread::Thread']]],
+  ['streamnotrequired_20',['streamNotRequired',['../classLimef_1_1rtsp_1_1RTSPServerThread.html#a73d21e70837126de6b3b8a3ca0c85c4c',1,'Limef::rtsp::RTSPServerThread']]],
+  ['streamrequired_21',['streamRequired',['../classLimef_1_1rtsp_1_1RTSPServerThread.html#a479b8b7906623496b9a60b51def4e23d',1,'Limef::rtsp::RTSPServerThread']]],
+  ['strides_22',['strides',['../structLimef_1_1frame_1_1Plane.html#a7ed5860b9018b31c83ca8dff9018f2c4',1,'Limef::frame::Plane']]],
+  ['string_5fbuffer_23',['string_buffer',['../classdetail_1_1serializer.html#a27a61728ed0fbc65de009286531a6e70',1,'detail::serializer']]],
+  ['success_5fresult_24',['success_result',['../classLimef_1_1thread_1_1WebSocketServerSignal.html#a9f270324da39b2e7d21d302512b2d535',1,'Limef::thread::WebSocketServerSignal']]]
+];
