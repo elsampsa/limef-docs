@@ -1,9 +1,10 @@
 # Limef Docs
 
-This folder is a git submodule pointing to the public `limef-docs` repository,
-served via GitHub Pages.
+Please go to [Limef library documentation](https://elsampsa.github.io/limef-docs/sphinx/_build/html/index.html)
 
 ## Structure
+
+This folder is a git submodule pointing to the public `limef-docs` repository, served via GitHub Pages.
 
 ```
 docs/
