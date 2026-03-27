@@ -79,14 +79,14 @@ $(function() {
 <p>consumeBytes(pArr, len_arr); # pointer to uint8_t, length of the byte blob if (boxlen &lt;= 0): # a new mp4 box boxlen=mp4probe(pArr);</p>
 <p>required = boxlen - cached</p>
 <p>if len_arr &gt;= required: offset += boxlen </p>
-<h1><a class="anchor" id="autotoc_md17"></a>
+<h1><a class="anchor" id="autotoc_md19"></a>
 append cached bytes</h1>
-<h1><a class="anchor" id="autotoc_md18"></a>
+<h1><a class="anchor" id="autotoc_md20"></a>
 send fragment and reset</h1>
 <p>if len_arr == required: pass else: # there are more boxes here consumeBytes(pArr + offset, len_arr - offset) <br  />
 </p>
 <p>elif: # len_arr &lt; required </p>
-<h1><a class="anchor" id="autotoc_md19"></a>
+<h1><a class="anchor" id="autotoc_md21"></a>
 append bytes to cache, increment cached</h1>
 <p>return</p>
 <p>(boxlen==0) len_arr = 200 boxlen = 100 required = 100 send boxlen bytes offset = 100 -&gt; recursion with len_arr=200-100 (boxlen==100) len_arr = 100 required = 100 offset = 0, boxlen = 0, return</p>

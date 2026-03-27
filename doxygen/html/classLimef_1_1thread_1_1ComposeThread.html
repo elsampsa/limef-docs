@@ -123,6 +123,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:acff05e2f6c1da565d1dbb90a1cd49b26" id="r_acff05e2f6c1da565d1dbb90a1cd49b26"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1thread_1_1ComposeThread.html#acff05e2f6c1da565d1dbb90a1cd49b26">isStarted</a> () const override</td></tr>
 <tr class="memdesc:acff05e2f6c1da565d1dbb90a1cd49b26"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if start has been called or not.  <br /></td></tr>
 <tr class="separator:acff05e2f6c1da565d1dbb90a1cd49b26"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4ae80bc9c69ca3e0221558f5807e2304" id="r_a4ae80bc9c69ca3e0221558f5807e2304"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1thread_1_1ComposeThread.html#a4ae80bc9c69ca3e0221558f5807e2304">isRunning</a> () const override</td></tr>
+<tr class="memdesc:a4ae80bc9c69ca3e0221558f5807e2304"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the thread backend is currently running (mainLoop is executing)  <br /></td></tr>
+<tr class="separator:a4ae80bc9c69ca3e0221558f5807e2304"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7c822e3cde17f8156162e2aec8c00567" id="r_a7c822e3cde17f8156162e2aec8c00567"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1thread_1_1ComposeThread.html#a7c822e3cde17f8156162e2aec8c00567">requestStop</a> () override</td></tr>
 <tr class="memdesc:a7c822e3cde17f8156162e2aec8c00567"><td class="mdescLeft">&#160;</td><td class="mdescRight">Request thread termination.  <br /></td></tr>
 <tr class="separator:a7c822e3cde17f8156162e2aec8c00567"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -440,6 +443,36 @@ Additional Inherited Members</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>Reference to output framefilter </dd></dl>
 
 <p>Implements <a class="el" href="classLimef_1_1thread_1_1ThreadBase.html#affbb38ec908bd01ef8b554662ea48397">Limef::thread::ThreadBase</a>.</p>
+
+</div>
+</div>
+<a id="a4ae80bc9c69ca3e0221558f5807e2304" name="a4ae80bc9c69ca3e0221558f5807e2304"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4ae80bc9c69ca3e0221558f5807e2304">&#9670;&#160;</a></span>isRunning()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Limef::thread::ComposeThread::isRunning </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Check if the thread backend is currently running (mainLoop is executing) </p>
+<p>Returns true between <a class="el" href="classLimef_1_1thread_1_1ComposeThread.html#af303f4b8d4e1fd176313319297c89cd4" title="Start the thread.">start()</a> and natural/requested stop, false before <a class="el" href="classLimef_1_1thread_1_1ComposeThread.html#af303f4b8d4e1fd176313319297c89cd4" title="Start the thread.">start()</a> and after the thread has fully exited mainLoop(). Unlike <a class="el" href="classLimef_1_1thread_1_1ComposeThread.html#acff05e2f6c1da565d1dbb90a1cd49b26" title="Check if start has been called or not.">isStarted()</a>, this becomes false once the thread stops — either from <a class="el" href="classLimef_1_1thread_1_1ComposeThread.html#ae5d7ab574b9ba86d1f96a77a225f894a" title="Stop the thread.">stop()</a> or from setting stop_requested_ itself (e.g. on EOF with no looping). </p>
+
+<p>Implements <a class="el" href="classLimef_1_1thread_1_1ThreadBase.html#a7f8dd4f1974b18674fa57b632b78b15d">Limef::thread::ThreadBase</a>.</p>
 
 </div>
 </div>

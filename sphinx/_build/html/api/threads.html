@@ -295,6 +295,14 @@ Each thread exposes <a class="reference internal" href="#_CPPv4N5Limef6thread6Th
 <li><p>Has configurable logging </p></li>
 </ul>
 </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-functions">Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6thread11cpuFmtToSDLE13AVPixelFormat">
+<span id="_CPPv3N5Limef6thread11cpuFmtToSDLE13AVPixelFormat"></span><span id="_CPPv2N5Limef6thread11cpuFmtToSDLE13AVPixelFormat"></span><span id="Limef::thread::cpuFmtToSDL__AVPixelFormat"></span><span class="target" id="namespaceLimef_1_1thread_1a432555dab6a68066e50596fd943a69f6"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="n"><span class="pre">Uint32</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">cpuFmtToSDL</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">AVPixelFormat</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">fmt</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5Limef6thread11cpuFmtToSDLE13AVPixelFormat" title="Link to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
 <dl class="cpp class">
 <dt class="sig sig-object cpp" id="_CPPv4N5Limef6thread13ComposeThreadE">
 <span id="_CPPv3N5Limef6thread13ComposeThreadE"></span><span id="_CPPv2N5Limef6thread13ComposeThreadE"></span><span id="Limef::thread::ComposeThread"></span><span class="target" id="classLimef_1_1thread_1_1ComposeThread"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ComposeThread</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><span class="n"><span class="pre">Limef</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N5Limef6threadE" title="Limef::thread"><span class="n"><span class="pre">thread</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N5Limef6thread10ThreadBaseE" title="Limef::thread::ThreadBase"><span class="n"><span class="pre">ThreadBase</span></span></a><a class="headerlink" href="#_CPPv4N5Limef6thread13ComposeThreadE" title="Link to this definition">¶</a><br /></dt>
@@ -340,6 +348,13 @@ Each thread exposes <a class="reference internal" href="#_CPPv4N5Limef6thread6Th
 <dt class="sig sig-object cpp" id="_CPPv4NK5Limef6thread13ComposeThread9isStartedEv">
 <span id="_CPPv3NK5Limef6thread13ComposeThread9isStartedEv"></span><span id="_CPPv2NK5Limef6thread13ComposeThread9isStartedEv"></span><span id="Limef::thread::ComposeThread::isStartedC"></span><span class="target" id="classLimef_1_1thread_1_1ComposeThread_1acff05e2f6c1da565d1dbb90a1cd49b26"></span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">isStarted</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">override</span></span><a class="headerlink" href="#_CPPv4NK5Limef6thread13ComposeThread9isStartedEv" title="Link to this definition">¶</a><br /></dt>
 <dd><p>Check if start has been called or not. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK5Limef6thread13ComposeThread9isRunningEv">
+<span id="_CPPv3NK5Limef6thread13ComposeThread9isRunningEv"></span><span id="_CPPv2NK5Limef6thread13ComposeThread9isRunningEv"></span><span id="Limef::thread::ComposeThread::isRunningC"></span><span class="target" id="classLimef_1_1thread_1_1ComposeThread_1a4ae80bc9c69ca3e0221558f5807e2304"></span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">isRunning</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">override</span></span><a class="headerlink" href="#_CPPv4NK5Limef6thread13ComposeThread9isRunningEv" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Check if the thread backend is currently running (mainLoop is executing) </p>
+<p>Returns true between start() and natural/requested stop, false before start() and after the thread has fully exited mainLoop(). Unlike isStarted(), this becomes false once the thread stops — either from stop() or from setting stop_requested_ itself (e.g. on EOF with no looping). </p>
 </dd></dl>
 
 <dl class="cpp function">
@@ -433,6 +448,41 @@ Each thread exposes <a class="reference internal" href="#_CPPv4N5Limef6thread6Th
 </dd></dl>
 
 <dl class="cpp class">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6thread18EGLPresenterThreadE">
+<span id="_CPPv3N5Limef6thread18EGLPresenterThreadE"></span><span id="_CPPv2N5Limef6thread18EGLPresenterThreadE"></span><span id="Limef::thread::EGLPresenterThread"></span><span class="target" id="classLimef_1_1thread_1_1EGLPresenterThread"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">EGLPresenterThread</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><span class="n"><span class="pre">Limef</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N5Limef6threadE" title="Limef::thread"><span class="n"><span class="pre">thread</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N5Limef6thread15PresenterThreadE" title="Limef::thread::PresenterThread"><span class="n"><span class="pre">PresenterThread</span></span></a><a class="headerlink" href="#_CPPv4N5Limef6thread18EGLPresenterThreadE" title="Link to this definition">¶</a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;eglpresenterthread.h&gt;</em></div>
+<p>EGL/OpenGL video presenter: renders decoded frames on screen via EGL. </p>
+<p>Subclass of PresenterThread that creates an X11 window with an EGL context and renders each decoded video frame using OpenGL. Supports three frame paths without any extra configuration:</p>
+<p><ul class="simple">
+<li><p><strong>CPU frames</strong> (SW decode, YUV420P / NV12): uploaded via <code class="docutils literal notranslate"><span class="pre">glTexSubImage2D</span></code>.</p></li>
+<li><p><strong>VAAPI frames</strong> (Intel/AMD GPU): exported as DMA-buf, imported as an EGL image — no CPU hop.</p></li>
+<li><p><strong>CUDA frames</strong> (NVDEC, NV12 on GPU): zero-copy via <code class="docutils literal notranslate"><span class="pre">cudaGraphicsEGLRegisterImage</span></code><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">cudaMemcpy2DToArray</span></code> when supported; CPU fallback otherwise (compiled only when <code class="docutils literal notranslate"><span class="pre">LIMEF_CUDA</span></code> is defined).</p></li>
+</ul>
+</p></li>
+</ul>
+</p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6thread18EGLPresenterThread18EGLPresenterThreadENSt6stringERKN5Limef16FrameFifoContextERK16PresenterContext">
+<span id="_CPPv3N5Limef6thread18EGLPresenterThread18EGLPresenterThreadENSt6stringERKN5Limef16FrameFifoContextERK16PresenterContext"></span><span id="_CPPv2N5Limef6thread18EGLPresenterThread18EGLPresenterThreadENSt6stringERKN5Limef16FrameFifoContextERK16PresenterContext"></span><span id="Limef::thread::EGLPresenterThread::EGLPresenterThread__ss.Limef::FrameFifoContextCR.PresenterContextCR"></span><span class="target" id="classLimef_1_1thread_1_1EGLPresenterThread_1aae63d34379f8d0959e92cec71049a812"></span><span class="sig-name descname"><span class="n"><span class="pre">EGLPresenterThread</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">name</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">Limef</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">FrameFifoContext</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">ctx</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4N5Limef6thread16PresenterContextE" title="Limef::thread::PresenterContext"><span class="n"><span class="pre">PresenterContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">pctx</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="p"><span class="pre">{</span></span><span class="p"><span class="pre">}</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5Limef6thread18EGLPresenterThread18EGLPresenterThreadENSt6stringERKN5Limef16FrameFifoContextERK16PresenterContext" title="Link to this definition">¶</a><br /></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> – Thread name (used for logger and window title) </p></li>
+<li><p><strong>ctx</strong> – FrameFifo configuration </p></li>
+<li><p><strong>pctx</strong> – Window / timing options (see PresenterContext) </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp class">
 <dt class="sig sig-object cpp" id="_CPPv4N5Limef6thread17ExamplePollThreadE">
 <span id="_CPPv3N5Limef6thread17ExamplePollThreadE"></span><span id="_CPPv2N5Limef6thread17ExamplePollThreadE"></span><span id="Limef::thread::ExamplePollThread"></span><span class="target" id="classLimef_1_1thread_1_1ExamplePollThread"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ExamplePollThread</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><span class="n"><span class="pre">Limef</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N5Limef6threadE" title="Limef::thread"><span class="n"><span class="pre">thread</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4I0EN5Limef6thread10PollThreadE" title="Limef::thread::PollThread"><span class="n"><span class="pre">PollThread</span></span></a><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">Limef</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="frames.html#_CPPv4N5Limef5frameE" title="Limef::frame"><span class="n"><span class="pre">frame</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="frames.html#_CPPv4N5Limef5frame11PacketFrameE" title="Limef::frame::PacketFrame"><span class="n"><span class="pre">PacketFrame</span></span></a><span class="p"><span class="pre">&gt;</span></span><a class="headerlink" href="#_CPPv4N5Limef6thread17ExamplePollThreadE" title="Link to this definition">¶</a><br /></dt>
 <dd><div class="docutils container">
@@ -469,6 +519,41 @@ Each thread exposes <a class="reference internal" href="#_CPPv4N5Limef6thread6Th
 <dt class="sig sig-object cpp" id="_CPPv4N5Limef6thread13ExampleThread9pingCall2Ei">
 <span id="_CPPv3N5Limef6thread13ExampleThread9pingCall2Ei"></span><span id="_CPPv2N5Limef6thread13ExampleThread9pingCall2Ei"></span><span id="Limef::thread::ExampleThread::pingCall2__i"></span><span class="target" id="classLimef_1_1thread_1_1ExampleThread_1a034522370ba9911a12cf4172d19b8cb9"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">pingCall2</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">param</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5Limef6thread13ExampleThread9pingCall2Ei" title="Link to this definition">¶</a><br /></dt>
 <dd><p>Frontend method that calls backend method <code class="docutils literal notranslate"><span class="pre">ExampleThread::pingCall2__</span></code></p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp class">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6thread18GLXPresenterThreadE">
+<span id="_CPPv3N5Limef6thread18GLXPresenterThreadE"></span><span id="_CPPv2N5Limef6thread18GLXPresenterThreadE"></span><span id="Limef::thread::GLXPresenterThread"></span><span class="target" id="classLimef_1_1thread_1_1GLXPresenterThread"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">GLXPresenterThread</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><span class="n"><span class="pre">Limef</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N5Limef6threadE" title="Limef::thread"><span class="n"><span class="pre">thread</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N5Limef6thread15PresenterThreadE" title="Limef::thread::PresenterThread"><span class="n"><span class="pre">PresenterThread</span></span></a><a class="headerlink" href="#_CPPv4N5Limef6thread18GLXPresenterThreadE" title="Link to this definition">¶</a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;glxpresenterthread.h&gt;</em></div>
+<p>GLX/OpenGL video presenter: renders decoded frames on screen via GLX. </p>
+<p>Subclass of PresenterThread that creates an X11 window with a GLX context and renders each decoded video frame using OpenGL. Supports three frame paths without any extra configuration:</p>
+<p><ul class="simple">
+<li><p><strong>CPU frames</strong> (SW decode, YUV420P / NV12): uploaded via <code class="docutils literal notranslate"><span class="pre">glTexSubImage2D</span></code>.</p></li>
+<li><p><strong>VAAPI frames</strong> (Intel/AMD GPU): CPU fallback via <code class="docutils literal notranslate"><span class="pre">materializeToCPU()</span></code>. (DMA-buf zero-copy requires EGL; use <code class="docutils literal notranslate"><span class="pre">EGLPresenterThread</span></code> for that path.)</p></li>
+<li><p><strong>CUDA frames</strong> (NVDEC, NV12 on GPU): zero-copy via <code class="docutils literal notranslate"><span class="pre">cudaGraphicsGLRegisterImage</span></code><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">cudaMemcpy2DToArray</span></code> (compiled only when <code class="docutils literal notranslate"><span class="pre">LIMEF_CUDA</span></code> is defined). This is the principal advantage of GLX over EGL on X11: NVIDIA’s CUDA GL interop queries <code class="docutils literal notranslate"><span class="pre">glXGetCurrentDisplay()</span></code> internally and only works with a current GLX context. <strong>Requirement: the GLX context and the CUDA device must be on the same physical GPU.</strong> On hybrid (PRIME/optimus) systems the default GLX context is on the Intel/Mesa GPU; <code class="docutils literal notranslate"><span class="pre">cudaGraphicsGLRegisterImage</span></code> will fail and fall back to CPU upload. Force the NVIDIA GPU with: <code class="docutils literal notranslate"><span class="pre">__NV_PRIME_RENDER_OFFLOAD=1</span> <span class="pre">__GLX_VENDOR_LIBRARY_NAME=nvidia</span></code> and set <code class="docutils literal notranslate"><span class="pre">PresenterContext::bypass_compositor</span> <span class="pre">=</span> <span class="pre">true</span></code> so KWin does not try to re-composite the NVIDIA-rendered window through its Mesa compositor. Alternatively, use <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">prime-select</span> <span class="pre">nvidia</span></code> to make NVIDIA the system default (see <code class="docutils literal notranslate"><span class="pre">tools/nvidia/check_display.bash</span></code>).</p></li>
+</ul>
+</p></li>
+</ul>
+</p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6thread18GLXPresenterThread18GLXPresenterThreadENSt6stringERKN5Limef16FrameFifoContextERK16PresenterContext">
+<span id="_CPPv3N5Limef6thread18GLXPresenterThread18GLXPresenterThreadENSt6stringERKN5Limef16FrameFifoContextERK16PresenterContext"></span><span id="_CPPv2N5Limef6thread18GLXPresenterThread18GLXPresenterThreadENSt6stringERKN5Limef16FrameFifoContextERK16PresenterContext"></span><span id="Limef::thread::GLXPresenterThread::GLXPresenterThread__ss.Limef::FrameFifoContextCR.PresenterContextCR"></span><span class="target" id="classLimef_1_1thread_1_1GLXPresenterThread_1aa060519c0d5f3d73ce82a7c4c43c4e29"></span><span class="sig-name descname"><span class="n"><span class="pre">GLXPresenterThread</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">name</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">Limef</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">FrameFifoContext</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">ctx</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4N5Limef6thread16PresenterContextE" title="Limef::thread::PresenterContext"><span class="n"><span class="pre">PresenterContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">pctx</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="p"><span class="pre">{</span></span><span class="p"><span class="pre">}</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5Limef6thread18GLXPresenterThread18GLXPresenterThreadENSt6stringERKN5Limef16FrameFifoContextERK16PresenterContext" title="Link to this definition">¶</a><br /></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> – Thread name (used for logger and window title) </p></li>
+<li><p><strong>ctx</strong> – FrameFifo configuration </p></li>
+<li><p><strong>pctx</strong> – Window / timing options (see PresenterContext) </p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 </div>
@@ -817,6 +902,83 @@ Each thread exposes <a class="reference internal" href="#_CPPv4N5Limef6thread6Th
 </p>
 </dd></dl>
 
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6thread16PresenterContextE">
+<span id="_CPPv3N5Limef6thread16PresenterContextE"></span><span id="_CPPv2N5Limef6thread16PresenterContextE"></span><span id="Limef::thread::PresenterContext"></span><span class="target" id="structLimef_1_1thread_1_1PresenterContext"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">PresenterContext</span></span></span><a class="headerlink" href="#_CPPv4N5Limef6thread16PresenterContextE" title="Link to this definition">¶</a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;presenterthread.h&gt;</em></div>
+<p>Configuration for X11 presenter threads (EGLPresenterThread, GLXPresenterThread). </p>
+<p>Collects all window and timing parameters in one place so the thread constructors stay concise as new options are added.</p>
+<p>Example: <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">PresenterContext</span><span class="w"> </span><span class="n">pctx</span><span class="p">;</span>
+<span class="n">pctx</span><span class="p">.</span><span class="n">width</span><span class="w">              </span><span class="o">=</span><span class="w"> </span><span class="mi">1920</span><span class="p">;</span>
+<span class="n">pctx</span><span class="p">.</span><span class="n">height</span><span class="w">             </span><span class="o">=</span><span class="w"> </span><span class="mi">1080</span><span class="p">;</span>
+<span class="n">pctx</span><span class="p">.</span><span class="n">bypass_compositor</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span><span class="w">   </span><span class="c1">// needed on PRIME/KWin for GLX</span>
+<span class="n">GLXPresenterThread</span><span class="w"> </span><span class="n">glx</span><span class="p">(</span><span class="s">&quot;glx&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">FrameFifoContext</span><span class="p">(</span><span class="nb">false</span><span class="p">,</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w"> </span><span class="mi">40</span><span class="p">),</span><span class="w"> </span><span class="n">pctx</span><span class="p">);</span>
+</pre></div>
+</div>
+</p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6thread16PresenterContext5widthE">
+<span id="_CPPv3N5Limef6thread16PresenterContext5widthE"></span><span id="_CPPv2N5Limef6thread16PresenterContext5widthE"></span><span id="Limef::thread::PresenterContext::width__i"></span><span class="target" id="structLimef_1_1thread_1_1PresenterContext_1a0f691b9ebe1654ba4de59acd201d3bc2"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">width</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">1280</span></span><a class="headerlink" href="#_CPPv4N5Limef6thread16PresenterContext5widthE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Initial window width in pixels. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6thread16PresenterContext6heightE">
+<span id="_CPPv3N5Limef6thread16PresenterContext6heightE"></span><span id="_CPPv2N5Limef6thread16PresenterContext6heightE"></span><span id="Limef::thread::PresenterContext::height__i"></span><span class="target" id="structLimef_1_1thread_1_1PresenterContext_1a4aff96281e9d9b26e2405fb27bcc45a6"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">height</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">720</span></span><a class="headerlink" href="#_CPPv4N5Limef6thread16PresenterContext6heightE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Initial window height in pixels. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6thread16PresenterContext10borderlessE">
+<span id="_CPPv3N5Limef6thread16PresenterContext10borderlessE"></span><span id="_CPPv2N5Limef6thread16PresenterContext10borderlessE"></span><span id="Limef::thread::PresenterContext::borderless__b"></span><span class="target" id="structLimef_1_1thread_1_1PresenterContext_1a6d2f4642fb2dd0551b9b3a3a8ba0682b"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">borderless</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="k"><span class="pre">false</span></span><a class="headerlink" href="#_CPPv4N5Limef6thread16PresenterContext10borderlessE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Create window without WM decorations. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6thread16PresenterContext17bypass_compositorE">
+<span id="_CPPv3N5Limef6thread16PresenterContext17bypass_compositorE"></span><span id="_CPPv2N5Limef6thread16PresenterContext17bypass_compositorE"></span><span id="Limef::thread::PresenterContext::bypass_compositor__b"></span><span class="target" id="structLimef_1_1thread_1_1PresenterContext_1aef6a7426b20db2016c41765fa95dbcb7"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">bypass_compositor</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="k"><span class="pre">false</span></span><a class="headerlink" href="#_CPPv4N5Limef6thread16PresenterContext17bypass_compositorE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Set _NET_WM_BYPASS_COMPOSITOR (needed on KWin + PRIME/GLX) </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6thread16PresenterContext7max_ageE">
+<span id="_CPPv3N5Limef6thread16PresenterContext7max_ageE"></span><span id="_CPPv2N5Limef6thread16PresenterContext7max_ageE"></span><span id="Limef::thread::PresenterContext::max_age__std::chrono::microseconds"></span><span class="target" id="structLimef_1_1thread_1_1PresenterContext_1a7a700fe9503597b87854cf991853be24"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">chrono</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">microseconds</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">max_age</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="p"><span class="pre">{</span></span><span class="m"><span class="pre">0</span></span><span class="p"><span class="pre">}</span></span><a class="headerlink" href="#_CPPv4N5Limef6thread16PresenterContext7max_ageE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Drop frames older than this (0 = disabled) </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp class">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6thread15PresenterThreadE">
+<span id="_CPPv3N5Limef6thread15PresenterThreadE"></span><span id="_CPPv2N5Limef6thread15PresenterThreadE"></span><span id="Limef::thread::PresenterThread"></span><span class="target" id="classLimef_1_1thread_1_1PresenterThread"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">PresenterThread</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><span class="n"><span class="pre">Limef</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N5Limef6threadE" title="Limef::thread"><span class="n"><span class="pre">thread</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4I0EN5Limef6thread6ThreadE" title="Limef::thread::Thread"><span class="n"><span class="pre">Thread</span></span></a><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">Limef</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="frames.html#_CPPv4N5Limef5frameE" title="Limef::frame"><span class="n"><span class="pre">frame</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="frames.html#_CPPv4N5Limef5frame12DecodedFrameE" title="Limef::frame::DecodedFrame"><span class="n"><span class="pre">DecodedFrame</span></span></a><span class="p"><span class="pre">&gt;</span></span><a class="headerlink" href="#_CPPv4N5Limef6thread15PresenterThreadE" title="Link to this definition">¶</a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;presenterthread.h&gt;</em></div>
+<p>Base class for threads that present media at the correct wall-clock time. </p>
+<p>PresenterThread receives DecodedFrames from upstream and holds them in an internal queue. Instead of processing each frame immediately on arrival, it inspects <code class="docutils literal notranslate"><span class="pre">Frame::absolute_timestamp_</span></code> and presents frames only when their timestamp is “due” (i.e. wall-clock time &gt;= frame timestamp).</p>
+<p>Subclassed by Limef::thread::EGLPresenterThread, Limef::thread::GLXPresenterThread, Limef::thread::SDLVideoPresenterThread</p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6thread15PresenterThread15PresenterThreadENSt6stringERKN5Limef16FrameFifoContextENSt6chrono12microsecondsE">
+<span id="_CPPv3N5Limef6thread15PresenterThread15PresenterThreadENSt6stringERKN5Limef16FrameFifoContextENSt6chrono12microsecondsE"></span><span id="_CPPv2N5Limef6thread15PresenterThread15PresenterThreadENSt6stringERKN5Limef16FrameFifoContextENSt6chrono12microsecondsE"></span><span id="Limef::thread::PresenterThread::PresenterThread__ss.Limef::FrameFifoContextCR.std::chrono::microseconds"></span><span class="target" id="classLimef_1_1thread_1_1PresenterThread_1ac6b9bdf9a15da0fce6e0ec1200f1675e"></span><span class="sig-name descname"><span class="n"><span class="pre">PresenterThread</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">name</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">Limef</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">FrameFifoContext</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">ctx</span></span>, <span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">chrono</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">microseconds</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">max_age</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">chrono</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">microseconds</span></span><span class="p"><span class="pre">(</span></span><span class="m"><span class="pre">0</span></span><span class="p"><span class="pre">)</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5Limef6thread15PresenterThread15PresenterThreadENSt6stringERKN5Limef16FrameFifoContextENSt6chrono12microsecondsE" title="Link to this definition">¶</a><br /></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> – Thread name. </p></li>
+<li><p><strong>ctx</strong> – FrameFifo configuration. </p></li>
+<li><p><strong>max_age</strong> – Drop frames whose timestamp is older than this. Zero (default) disables the tolerance: all due frames are presented regardless of how late they are. </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+</dd></dl>
+
 <dl class="cpp class">
 <dt class="sig sig-object cpp" id="_CPPv4N5Limef6thread14ProducerThreadE">
 <span id="_CPPv3N5Limef6thread14ProducerThreadE"></span><span id="_CPPv2N5Limef6thread14ProducerThreadE"></span><span id="Limef::thread::ProducerThread"></span><span class="target" id="classLimef_1_1thread_1_1ProducerThread"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ProducerThread</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><span class="n"><span class="pre">Limef</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N5Limef6threadE" title="Limef::thread"><span class="n"><span class="pre">thread</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4I0EN5Limef6thread6ThreadE" title="Limef::thread::Thread"><span class="n"><span class="pre">Thread</span></span></a><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">Limef</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="frames.html#_CPPv4N5Limef5frameE" title="Limef::frame"><span class="n"><span class="pre">frame</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="frames.html#_CPPv4N5Limef5frame9NullFrameE" title="Limef::frame::NullFrame"><span class="n"><span class="pre">NullFrame</span></span></a><span class="p"><span class="pre">&gt;</span></span><a class="headerlink" href="#_CPPv4N5Limef6thread14ProducerThreadE" title="Link to this definition">¶</a><br /></dt>
@@ -825,6 +987,74 @@ Each thread exposes <a class="reference internal" href="#_CPPv4N5Limef6thread6Th
 <p>A prototype frame producing thread (aka source) </p>
 <p>An example and base class for <code class="docutils literal notranslate"><span class="pre">Thread</span></code>s that produce frames, i.e. for frame sources. This example implementation produces and sends <code class="docutils literal notranslate"><span class="pre">NullFrame</span></code>s to it’s output framefilter. </p>
 <p>Subclassed by Limef::thread::MediaFileThread0, Limef::thread::USBCameraThread</p>
+</dd></dl>
+
+<dl class="cpp class">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6thread23SDLVideoPresenterThreadE">
+<span id="_CPPv3N5Limef6thread23SDLVideoPresenterThreadE"></span><span id="_CPPv2N5Limef6thread23SDLVideoPresenterThreadE"></span><span id="Limef::thread::SDLVideoPresenterThread"></span><span class="target" id="classLimef_1_1thread_1_1SDLVideoPresenterThread"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">SDLVideoPresenterThread</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><span class="n"><span class="pre">Limef</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N5Limef6threadE" title="Limef::thread"><span class="n"><span class="pre">thread</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N5Limef6thread15PresenterThreadE" title="Limef::thread::PresenterThread"><span class="n"><span class="pre">PresenterThread</span></span></a><a class="headerlink" href="#_CPPv4N5Limef6thread23SDLVideoPresenterThreadE" title="Link to this definition">¶</a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;sdlvideopresenterthread.h&gt;</em></div>
+<p>SDL2-based video presenter: renders decoded video frames to a window. </p>
+<p>Subclass of PresenterThread that opens an SDL2 window and blits each decoded video frame via SDL2’s texture update API. Supports both CPU-resident and GPU-resident frames:</p>
+<p><ul class="simple">
+<li><p><strong>CPU frames</strong> (SW decode): YUV420P / YUVJ420P — uses <code class="docutils literal notranslate"><span class="pre">SDL_PIXELFORMAT_IYUV</span></code> and <code class="docutils literal notranslate"><span class="pre">SDL_UpdateYUVTexture</span></code>.</p></li>
+<li><p><strong>GPU frames</strong> (VAAPI / CUDA): calls <code class="docutils literal notranslate"><span class="pre">DecodedFrame::materializeToCPU()</span></code> (i.e. <code class="docutils literal notranslate"><span class="pre">av_hwframe_transfer_data</span></code>) which downloads to NV12 in system memory, then uses <code class="docutils literal notranslate"><span class="pre">SDL_PIXELFORMAT_NV12</span></code> and <code class="docutils literal notranslate"><span class="pre">SDL_UpdateNVTexture</span></code>.</p></li>
+</ul>
+</p>
+<p>The SDL texture is created lazily on the first frame so the pixel format is always correct without needing to be specified at construction time. If the format or resolution changes mid-stream the texture is recreated.</p>
+<p>All SDL calls happen on the PresenterThread backend so no cross-thread synchronisation is needed. Window close (<code class="docutils literal notranslate"><span class="pre">SDL_QUIT</span></code>) sets <code class="docutils literal notranslate"><span class="pre">stop_requested_</span></code>; resize (<code class="docutils literal notranslate"><span class="pre">SDL_WINDOWEVENT_RESIZED</span></code>) recreates the texture.</p>
+<p>Example usage: <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">SDLVideoPresenterThread</span><span class="w"> </span><span class="n">presenter</span><span class="p">(</span><span class="s">&quot;sdl&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">FrameFifoContext</span><span class="p">(</span><span class="nb">false</span><span class="p">,</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w"> </span><span class="mi">40</span><span class="p">),</span>
+<span class="w">                                  </span><span class="mi">1280</span><span class="p">,</span><span class="w"> </span><span class="mi">720</span><span class="p">);</span>
+<span class="n">mediafile</span><span class="p">.</span><span class="n">getOutput</span><span class="p">().</span><span class="n">cc</span><span class="p">(</span><span class="n">decoding_ff</span><span class="p">).</span><span class="n">cc</span><span class="p">(</span><span class="n">presenter</span><span class="p">.</span><span class="n">getInput</span><span class="p">());</span>
+<span class="n">presenter</span><span class="p">.</span><span class="n">start</span><span class="p">();</span>
+<span class="c1">// ... wait ...</span>
+<span class="n">presenter</span><span class="p">.</span><span class="n">stop</span><span class="p">();</span>
+</pre></div>
+</div>
+</p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6thread23SDLVideoPresenterThread23SDLVideoPresenterThreadENSt6stringERKN5Limef16FrameFifoContextEiibNSt6chrono12microsecondsE">
+<span id="_CPPv3N5Limef6thread23SDLVideoPresenterThread23SDLVideoPresenterThreadENSt6stringERKN5Limef16FrameFifoContextEiibNSt6chrono12microsecondsE"></span><span id="_CPPv2N5Limef6thread23SDLVideoPresenterThread23SDLVideoPresenterThreadENSt6stringERKN5Limef16FrameFifoContextEiibNSt6chrono12microsecondsE"></span><span id="Limef::thread::SDLVideoPresenterThread::SDLVideoPresenterThread__ss.Limef::FrameFifoContextCR.i.i.b.std::chrono::microseconds"></span><span class="target" id="classLimef_1_1thread_1_1SDLVideoPresenterThread_1aeb71530b0405e581fe01a7ae429ef251"></span><span class="sig-name descname"><span class="n"><span class="pre">SDLVideoPresenterThread</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">name</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">Limef</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">FrameFifoContext</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">ctx</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">width</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">height</span></span>, <span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">borderless</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="k"><span class="pre">false</span></span>, <span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">chrono</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">microseconds</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">max_age</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">chrono</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">microseconds</span></span><span class="p"><span class="pre">(</span></span><span class="m"><span class="pre">0</span></span><span class="p"><span class="pre">)</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5Limef6thread23SDLVideoPresenterThread23SDLVideoPresenterThreadENSt6stringERKN5Limef16FrameFifoContextEiibNSt6chrono12microsecondsE" title="Link to this definition">¶</a><br /></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> – Thread name (used for logger) </p></li>
+<li><p><strong>ctx</strong> – FrameFifo configuration </p></li>
+<li><p><strong>width</strong> – Initial window / texture width in pixels </p></li>
+<li><p><strong>height</strong> – Initial window / texture height in pixels </p></li>
+<li><p><strong>borderless</strong> – If true the window is created without decorations </p></li>
+<li><p><strong>max_age</strong> – Drop frames older than this (0 = disabled, default) </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp class">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6thread12TensorThreadE">
+<span id="_CPPv3N5Limef6thread12TensorThreadE"></span><span id="_CPPv2N5Limef6thread12TensorThreadE"></span><span id="Limef::thread::TensorThread"></span><span class="target" id="classLimef_1_1thread_1_1TensorThread"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">TensorThread</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><span class="n"><span class="pre">Limef</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N5Limef6threadE" title="Limef::thread"><span class="n"><span class="pre">thread</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4I0EN5Limef6thread6ThreadE" title="Limef::thread::Thread"><span class="n"><span class="pre">Thread</span></span></a><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">Limef</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="frames.html#_CPPv4N5Limef5frameE" title="Limef::frame"><span class="n"><span class="pre">frame</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="frames.html#_CPPv4N5Limef5frame11TensorFrameE" title="Limef::frame::TensorFrame"><span class="n"><span class="pre">TensorFrame</span></span></a><span class="p"><span class="pre">&gt;</span></span><a class="headerlink" href="#_CPPv4N5Limef6thread12TensorThreadE" title="Link to this definition">¶</a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;tensorthread.h&gt;</em></div>
+<p>A pass-through thread for TensorFrame streams. </p>
+<p>Receives TensorFrames, copies them through its internal TensorFrameFifo (breaking the synchronous filterchain), and forwards them unchanged downstream via output_ff.</p>
+<p>This is the building block for the CPUBlock and GPUBlock pipeline nodes. It establishes the thread boundary — i.e. the point at which frames are copied into a pre-allocated pool and ownership transfers to this thread — without performing any computation. Subclass and override processFrame() to add per-frame work.</p>
+<p>The TensorFrameFifo honours the <code class="docutils literal notranslate"><span class="pre">gpu_target</span></code> field of the context:<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">HWAccel::SW</span></code> (default) — keep frames on CPU</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">HWAccel::CUDA</span></code> — upload incoming CPU frames to GPU in one H2D copy</p></li>
+</ul>
+</p>
+<p>Non-TensorFrame frames (SignalFrame, StreamFrame, etc.) are dispatched by the base class and pass through unchanged.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">FrameFifoContext</span><span class="w"> </span><span class="n">ctx</span><span class="p">;</span>
+<span class="n">TensorThread</span><span class="w"> </span><span class="n">tr</span><span class="p">(</span><span class="s">&quot;worker&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">ctx</span><span class="p">);</span>
+<span class="n">upstream</span><span class="p">.</span><span class="n">cc</span><span class="p">(</span><span class="n">tr</span><span class="p">.</span><span class="n">getInput</span><span class="p">());</span>
+<span class="n">tr</span><span class="p">.</span><span class="n">getOutput</span><span class="p">().</span><span class="n">cc</span><span class="p">(</span><span class="n">downstream</span><span class="p">);</span>
+<span class="n">tr</span><span class="p">.</span><span class="n">start</span><span class="p">();</span>
+</pre></div>
+</div>
 </dd></dl>
 
 <dl class="cpp class">
@@ -870,9 +1100,15 @@ Each thread exposes <a class="reference internal" href="#_CPPv4N5Limef6thread6Th
 </dd></dl>
 
 <dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK5Limef6thread6Thread9isRunningEv">
+<span id="_CPPv3NK5Limef6thread6Thread9isRunningEv"></span><span id="_CPPv2NK5Limef6thread6Thread9isRunningEv"></span><span id="Limef::thread::Thread::isRunningC"></span><span class="target" id="classLimef_1_1thread_1_1Thread_1af0e3b1bce401a7f877396146e8afb57d"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">isRunning</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">override</span></span><a class="headerlink" href="#_CPPv4NK5Limef6thread6Thread9isRunningEv" title="Link to this definition">¶</a><br /></dt>
+<dd><p>has the thread been started or not? </p>
+</dd></dl>
+
+<dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N5Limef6thread6Thread11requestStopEv">
 <span id="_CPPv3N5Limef6thread6Thread11requestStopEv"></span><span id="_CPPv2N5Limef6thread6Thread11requestStopEv"></span><span id="Limef::thread::Thread::requestStop"></span><span class="target" id="classLimef_1_1thread_1_1Thread_1af8b77ceb90bd5b244a77c9c98679d363"></span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">requestStop</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">override</span></span><a class="headerlink" href="#_CPPv4N5Limef6thread6Thread11requestStopEv" title="Link to this definition">¶</a><br /></dt>
-<dd><p>has the thread been started or not? </p>
+<dd><p>true while mainLoop() is executing </p>
 <p>request thread termination </p>
 </dd></dl>
 
@@ -950,7 +1186,7 @@ Each thread exposes <a class="reference internal" href="#_CPPv4N5Limef6thread6Th
 <span id="_CPPv3N5Limef6thread10ThreadBaseE"></span><span id="_CPPv2N5Limef6thread10ThreadBaseE"></span><span id="Limef::thread::ThreadBase"></span><span class="target" id="classLimef_1_1thread_1_1ThreadBase"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ThreadBase</span></span></span><a class="headerlink" href="#_CPPv4N5Limef6thread10ThreadBaseE" title="Link to this definition">¶</a><br /></dt>
 <dd><div class="docutils container">
 <em>#include &lt;threadbase.h&gt;</em></div>
-<p>Subclassed by Limef::thread::Thread&lt; Limef::frame::RTPPacketFrame &gt;, Limef::thread::Thread&lt; Limef::frame::PacketFrame &gt;, Limef::thread::Thread&lt; Limef::frame::NullFrame &gt;, Limef::thread::Thread&lt; Limef::frame::RawFrame &gt;, Limef::thread::ComposeThread, Limef::thread::Thread&lt; T &gt;</p>
+<p>Subclassed by Limef::thread::Thread&lt; Limef::frame::RTPPacketFrame &gt;, Limef::thread::Thread&lt; Limef::frame::PacketFrame &gt;, Limef::thread::Thread&lt; Limef::frame::NullFrame &gt;, Limef::thread::Thread&lt; Limef::frame::DecodedFrame &gt;, Limef::thread::Thread&lt; Limef::frame::TensorFrame &gt;, Limef::thread::Thread&lt; Limef::frame::RawFrame &gt;, Limef::thread::ComposeThread, Limef::thread::Thread&lt; T &gt;</p>
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
 <dl class="cpp function">
@@ -964,6 +1200,13 @@ Each thread exposes <a class="reference internal" href="#_CPPv4N5Limef6thread6Th
 <dt class="sig sig-object cpp" id="_CPPv4NK5Limef6thread10ThreadBase9isStartedEv">
 <span id="_CPPv3NK5Limef6thread10ThreadBase9isStartedEv"></span><span id="_CPPv2NK5Limef6thread10ThreadBase9isStartedEv"></span><span id="Limef::thread::ThreadBase::isStartedC"></span><span class="target" id="classLimef_1_1thread_1_1ThreadBase_1a7caafaf8cefbacb4bc82011ad67cc867"></span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">isStarted</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><a class="headerlink" href="#_CPPv4NK5Limef6thread10ThreadBase9isStartedEv" title="Link to this definition">¶</a><br /></dt>
 <dd><p>Check if start has been called or not. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK5Limef6thread10ThreadBase9isRunningEv">
+<span id="_CPPv3NK5Limef6thread10ThreadBase9isRunningEv"></span><span id="_CPPv2NK5Limef6thread10ThreadBase9isRunningEv"></span><span id="Limef::thread::ThreadBase::isRunningC"></span><span class="target" id="classLimef_1_1thread_1_1ThreadBase_1a7f8dd4f1974b18674fa57b632b78b15d"></span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">isRunning</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><a class="headerlink" href="#_CPPv4NK5Limef6thread10ThreadBase9isRunningEv" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Check if the thread backend is currently running (mainLoop is executing) </p>
+<p>Returns true between start() and natural/requested stop, false before start() and after the thread has fully exited mainLoop(). Unlike isStarted(), this becomes false once the thread stops — either from stop() or from setting stop_requested_ itself (e.g. on EOF with no looping). </p>
 </dd></dl>
 
 <dl class="cpp function">
@@ -1289,9 +1532,11 @@ Each thread exposes <a class="reference internal" href="#_CPPv4N5Limef6thread6Th
             <ul>
 <li><a class="reference internal" href="#">Threads</a><ul>
 <li><a class="reference internal" href="#_CPPv4N5Limef6threadE"><code class="docutils literal notranslate"><span class="pre">Limef::thread</span></code></a><ul>
+<li><a class="reference internal" href="#_CPPv4N5Limef6thread11cpuFmtToSDLE13AVPixelFormat"><code class="docutils literal notranslate"><span class="pre">cpuFmtToSDL()</span></code></a></li>
 <li><a class="reference internal" href="#_CPPv4N5Limef6thread13ComposeThreadE"><code class="docutils literal notranslate"><span class="pre">Limef::thread::ComposeThread</span></code></a><ul>
 <li><a class="reference internal" href="#_CPPv4N5Limef6thread13ComposeThread5startEv"><code class="docutils literal notranslate"><span class="pre">start()</span></code></a></li>
 <li><a class="reference internal" href="#_CPPv4NK5Limef6thread13ComposeThread9isStartedEv"><code class="docutils literal notranslate"><span class="pre">isStarted()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4NK5Limef6thread13ComposeThread9isRunningEv"><code class="docutils literal notranslate"><span class="pre">isRunning()</span></code></a></li>
 <li><a class="reference internal" href="#_CPPv4N5Limef6thread13ComposeThread11requestStopEv"><code class="docutils literal notranslate"><span class="pre">requestStop()</span></code></a></li>
 <li><a class="reference internal" href="#_CPPv4N5Limef6thread13ComposeThread8waitStopEv"><code class="docutils literal notranslate"><span class="pre">waitStop()</span></code></a></li>
 <li><a class="reference internal" href="#_CPPv4N5Limef6thread13ComposeThread4stopEv"><code class="docutils literal notranslate"><span class="pre">stop()</span></code></a></li>
@@ -1305,11 +1550,19 @@ Each thread exposes <a class="reference internal" href="#_CPPv4N5Limef6thread6Th
 </ul>
 </li>
 <li><a class="reference internal" href="#_CPPv4N5Limef6thread14ConsumerThreadE"><code class="docutils literal notranslate"><span class="pre">Limef::thread::ConsumerThread</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6thread18EGLPresenterThreadE"><code class="docutils literal notranslate"><span class="pre">Limef::thread::EGLPresenterThread</span></code></a><ul>
+<li><a class="reference internal" href="#_CPPv4N5Limef6thread18EGLPresenterThread18EGLPresenterThreadENSt6stringERKN5Limef16FrameFifoContextERK16PresenterContext"><code class="docutils literal notranslate"><span class="pre">EGLPresenterThread()</span></code></a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#_CPPv4N5Limef6thread17ExamplePollThreadE"><code class="docutils literal notranslate"><span class="pre">Limef::thread::ExamplePollThread</span></code></a></li>
 <li><a class="reference internal" href="#_CPPv4N5Limef6thread13ExampleSignalE"><code class="docutils literal notranslate"><span class="pre">Limef::thread::ExampleSignal</span></code></a></li>
 <li><a class="reference internal" href="#_CPPv4N5Limef6thread13ExampleThreadE"><code class="docutils literal notranslate"><span class="pre">Limef::thread::ExampleThread</span></code></a><ul>
 <li><a class="reference internal" href="#_CPPv4N5Limef6thread13ExampleThread8pingCallEv"><code class="docutils literal notranslate"><span class="pre">pingCall()</span></code></a></li>
 <li><a class="reference internal" href="#_CPPv4N5Limef6thread13ExampleThread9pingCall2Ei"><code class="docutils literal notranslate"><span class="pre">pingCall2()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6thread18GLXPresenterThreadE"><code class="docutils literal notranslate"><span class="pre">Limef::thread::GLXPresenterThread</span></code></a><ul>
+<li><a class="reference internal" href="#_CPPv4N5Limef6thread18GLXPresenterThread18GLXPresenterThreadENSt6stringERKN5Limef16FrameFifoContextERK16PresenterContext"><code class="docutils literal notranslate"><span class="pre">GLXPresenterThread()</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#_CPPv4N5Limef6thread17LiveStreamContextE"><code class="docutils literal notranslate"><span class="pre">Limef::thread::LiveStreamContext</span></code></a><ul>
@@ -1356,11 +1609,29 @@ Each thread exposes <a class="reference internal" href="#_CPPv4N5Limef6thread6Th
 </li>
 <li><a class="reference internal" href="#_CPPv4N5Limef6thread13PerSocketDataE"><code class="docutils literal notranslate"><span class="pre">Limef::thread::PerSocketData</span></code></a></li>
 <li><a class="reference internal" href="#_CPPv4I0EN5Limef6thread10PollThreadE"><code class="docutils literal notranslate"><span class="pre">Limef::thread::PollThread</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6thread16PresenterContextE"><code class="docutils literal notranslate"><span class="pre">Limef::thread::PresenterContext</span></code></a><ul>
+<li><a class="reference internal" href="#_CPPv4N5Limef6thread16PresenterContext5widthE"><code class="docutils literal notranslate"><span class="pre">width</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6thread16PresenterContext6heightE"><code class="docutils literal notranslate"><span class="pre">height</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6thread16PresenterContext10borderlessE"><code class="docutils literal notranslate"><span class="pre">borderless</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6thread16PresenterContext17bypass_compositorE"><code class="docutils literal notranslate"><span class="pre">bypass_compositor</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6thread16PresenterContext7max_ageE"><code class="docutils literal notranslate"><span class="pre">max_age</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6thread15PresenterThreadE"><code class="docutils literal notranslate"><span class="pre">Limef::thread::PresenterThread</span></code></a><ul>
+<li><a class="reference internal" href="#_CPPv4N5Limef6thread15PresenterThread15PresenterThreadENSt6stringERKN5Limef16FrameFifoContextENSt6chrono12microsecondsE"><code class="docutils literal notranslate"><span class="pre">PresenterThread()</span></code></a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#_CPPv4N5Limef6thread14ProducerThreadE"><code class="docutils literal notranslate"><span class="pre">Limef::thread::ProducerThread</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6thread23SDLVideoPresenterThreadE"><code class="docutils literal notranslate"><span class="pre">Limef::thread::SDLVideoPresenterThread</span></code></a><ul>
+<li><a class="reference internal" href="#_CPPv4N5Limef6thread23SDLVideoPresenterThread23SDLVideoPresenterThreadENSt6stringERKN5Limef16FrameFifoContextEiibNSt6chrono12microsecondsE"><code class="docutils literal notranslate"><span class="pre">SDLVideoPresenterThread()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6thread12TensorThreadE"><code class="docutils literal notranslate"><span class="pre">Limef::thread::TensorThread</span></code></a></li>
 <li><a class="reference internal" href="#_CPPv4I0EN5Limef6thread6ThreadE"><code class="docutils literal notranslate"><span class="pre">Limef::thread::Thread</span></code></a><ul>
 <li><a class="reference internal" href="#_CPPv4N5Limef6thread6Thread6ThreadENSt6stringERKN5Limef16FrameFifoContextE"><code class="docutils literal notranslate"><span class="pre">Thread()</span></code></a></li>
 <li><a class="reference internal" href="#_CPPv4N5Limef6thread6Thread5startEv"><code class="docutils literal notranslate"><span class="pre">start()</span></code></a></li>
 <li><a class="reference internal" href="#_CPPv4NK5Limef6thread6Thread9isStartedEv"><code class="docutils literal notranslate"><span class="pre">isStarted()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4NK5Limef6thread6Thread9isRunningEv"><code class="docutils literal notranslate"><span class="pre">isRunning()</span></code></a></li>
 <li><a class="reference internal" href="#_CPPv4N5Limef6thread6Thread11requestStopEv"><code class="docutils literal notranslate"><span class="pre">requestStop()</span></code></a></li>
 <li><a class="reference internal" href="#_CPPv4N5Limef6thread6Thread8waitStopEv"><code class="docutils literal notranslate"><span class="pre">waitStop()</span></code></a></li>
 <li><a class="reference internal" href="#_CPPv4N5Limef6thread6Thread4stopEv"><code class="docutils literal notranslate"><span class="pre">stop()</span></code></a></li>
@@ -1377,6 +1648,7 @@ Each thread exposes <a class="reference internal" href="#_CPPv4N5Limef6thread6Th
 <li><a class="reference internal" href="#_CPPv4N5Limef6thread10ThreadBaseE"><code class="docutils literal notranslate"><span class="pre">Limef::thread::ThreadBase</span></code></a><ul>
 <li><a class="reference internal" href="#_CPPv4N5Limef6thread10ThreadBase5startEv"><code class="docutils literal notranslate"><span class="pre">start()</span></code></a></li>
 <li><a class="reference internal" href="#_CPPv4NK5Limef6thread10ThreadBase9isStartedEv"><code class="docutils literal notranslate"><span class="pre">isStarted()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4NK5Limef6thread10ThreadBase9isRunningEv"><code class="docutils literal notranslate"><span class="pre">isRunning()</span></code></a></li>
 <li><a class="reference internal" href="#_CPPv4N5Limef6thread10ThreadBase11requestStopEv"><code class="docutils literal notranslate"><span class="pre">requestStop()</span></code></a></li>
 <li><a class="reference internal" href="#_CPPv4N5Limef6thread10ThreadBase8waitStopEv"><code class="docutils literal notranslate"><span class="pre">waitStop()</span></code></a></li>
 <li><a class="reference internal" href="#_CPPv4N5Limef6thread10ThreadBase4stopEv"><code class="docutils literal notranslate"><span class="pre">stop()</span></code></a></li>

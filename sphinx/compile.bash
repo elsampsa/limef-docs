@@ -1,7 +1,7 @@
 #!/bin/bash
 # sphinx-apidoc -f -e -o . ..
+python3 code2md.py tutorial/
 make html
-
 # # ** Gitlab users **
 # # Enable these lines if you want to hack gitlab for online docs
 # # here we assume that you keep your gitlab wiki repositories in $HOME/gitlab_wikis

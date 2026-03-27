@@ -184,7 +184,7 @@ Additional Inherited Members</h2></td></tr>
 <div class="textblock"><p>Uploads CPU DecodedFrames to GPU memory. </p>
 <p>Takes DecodedFrames with pixel data in system RAM and uploads them to GPU memory, setting hw_frames_ctx on the output frame.</p>
 <p>Non-DecodedFrame frames are passed through unchanged. DecodedFrames already on GPU (hw_frames_ctx set) are passed through.</p>
-<h2><a class="anchor" id="autotoc_md39"></a>
+<h2><a class="anchor" id="autotoc_md45"></a>
 Example Usage</h2>
 <div class="fragment"><div class="line"><a class="code hl_struct" href="structLimef_1_1ff_1_1UploadGPUParams.html">UploadGPUParams</a> params(<a class="code hl_enumvalue" href="namespaceLimef.html#ab3f21e06ce812c9f9b7f47da2f6a2188aa33b7755e5f9b504d2d038eaca4ff28d">HWAccel::CUDA</a>);</div>
 <div class="line"><a class="code hl_class" href="classLimef_1_1ff_1_1UploadGPUFrameFilter.html">UploadGPUFrameFilter</a> upload(<span class="stringliteral">&quot;gpu-upload&quot;</span>, params);</div>
@@ -194,7 +194,7 @@ Example Usage</h2>
 <div class="ttc" id="aclassLimef_1_1ff_1_1UploadGPUFrameFilter_html"><div class="ttname"><a href="classLimef_1_1ff_1_1UploadGPUFrameFilter.html">Limef::ff::UploadGPUFrameFilter</a></div><div class="ttdoc">Uploads CPU DecodedFrames to GPU memory.</div><div class="ttdef"><b>Definition</b> uploadgpu.h:106</div></div>
 <div class="ttc" id="anamespaceLimef_html_ab3f21e06ce812c9f9b7f47da2f6a2188aa33b7755e5f9b504d2d038eaca4ff28d"><div class="ttname"><a href="namespaceLimef.html#ab3f21e06ce812c9f9b7f47da2f6a2188aa33b7755e5f9b504d2d038eaca4ff28d">Limef::HWAccel::CUDA</a></div><div class="ttdeci">@ CUDA</div><div class="ttdoc">NVIDIA hardware via NVENC/NVDEC.</div></div>
 <div class="ttc" id="astructLimef_1_1ff_1_1UploadGPUParams_html"><div class="ttname"><a href="structLimef_1_1ff_1_1UploadGPUParams.html">Limef::ff::UploadGPUParams</a></div><div class="ttdoc">Configuration for GPU upload.</div><div class="ttdef"><b>Definition</b> uploadgpu.h:73</div></div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md40"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md46"></a>
 Thread Safety</h2>
 <p>Like all framefilters, this is driven by the upstream thread. Do not call methods from other threads while the pipeline is running. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>

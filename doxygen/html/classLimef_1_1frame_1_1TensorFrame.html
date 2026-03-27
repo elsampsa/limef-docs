@@ -213,7 +213,7 @@ Additional Inherited Members</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>General-purpose multi-plane tensor frame, decoupled from FFmpeg. </p>
 <p>Planes are reserved explicitly with <a class="el" href="classLimef_1_1frame_1_1TensorFrame.html#a2c9c8dd4c3522f8fc234d16dfbc22c15" title="Allocate or reuse a CPU plane.">reserveCPUPlane()</a> / reserveGPUPlane(). Memory is grow-only — buffers are reused across frames of the same or smaller size, reallocated only when a larger frame arrives.</p>
-<h2><a class="anchor" id="autotoc_md4"></a>
+<h2><a class="anchor" id="autotoc_md5"></a>
 Example — CPU video frame</h2>
 <div class="fragment"><div class="line"><a class="code hl_class" href="classLimef_1_1frame_1_1TensorFrame.html">TensorFrame</a> tf;</div>
 <div class="line">int64_t shape[] = {3, 1080, 1920};</div>
@@ -224,7 +224,7 @@ Example — CPU video frame</h2>
 <div class="ttc" id="aclassLimef_1_1frame_1_1TensorFrame_html_a2c9c8dd4c3522f8fc234d16dfbc22c15"><div class="ttname"><a href="classLimef_1_1frame_1_1TensorFrame.html#a2c9c8dd4c3522f8fc234d16dfbc22c15">Limef::frame::TensorFrame::reserveCPUPlane</a></div><div class="ttdeci">bool reserveCPUPlane(int plane_idx, int ndim, const int64_t *shape, DType dtype)</div><div class="ttdoc">Allocate or reuse a CPU plane.</div><div class="ttdef"><b>Definition</b> tensorframe.cpp:127</div></div>
 <div class="ttc" id="aclassLimef_1_1frame_1_1TensorFrame_html_ac69a6e35952cccd60b99c548b753af5c"><div class="ttname"><a href="classLimef_1_1frame_1_1TensorFrame.html#ac69a6e35952cccd60b99c548b753af5c">Limef::frame::TensorFrame::setNumPlanes</a></div><div class="ttdeci">void setNumPlanes(int n) noexcept</div><div class="ttdef"><b>Definition</b> tensorframe.h:208</div></div>
 <div class="ttc" id="anamespaceLimef_1_1frame_html_a35c6dbafa1f42654aa4fa1e1e2487810a166495adc0d0f53bee6baecc577f5204"><div class="ttname"><a href="namespaceLimef_1_1frame.html#a35c6dbafa1f42654aa4fa1e1e2487810a166495adc0d0f53bee6baecc577f5204">Limef::frame::DType::Float32</a></div><div class="ttdeci">@ Float32</div></div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md5"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md6"></a>
 Example — GPU video frame</h2>
 <div class="fragment"><div class="line"><a class="code hl_class" href="classLimef_1_1frame_1_1TensorFrame.html">TensorFrame</a> tf;</div>
 <div class="line">int64_t shape[] = {3, 1080, 1920};</div>

@@ -188,6 +188,12 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:affc500e412d12bd91c18e17f641a70cd" id="r_affc500e412d12bd91c18e17f641a70cd"><td class="memItemLeft" align="right" valign="top">const uint8_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1frame_1_1DecodedFrame.html#affc500e412d12bd91c18e17f641a70cd">getCPUData</a> (int plane=0) const</td></tr>
 <tr class="memdesc:affc500e412d12bd91c18e17f641a70cd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get CPU-accessible data for a plane.  <br /></td></tr>
 <tr class="separator:affc500e412d12bd91c18e17f641a70cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9b8de489f4014a9566fa78cf670e1e4c" id="r_a9b8de489f4014a9566fa78cf670e1e4c"><td class="memItemLeft" align="right" valign="top">AVPixelFormat&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1frame_1_1DecodedFrame.html#a9b8de489f4014a9566fa78cf670e1e4c">getCPUFormat</a> () const</td></tr>
+<tr class="memdesc:a9b8de489f4014a9566fa78cf670e1e4c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the pixel format of the CPU-accessible data.  <br /></td></tr>
+<tr class="separator:a9b8de489f4014a9566fa78cf670e1e4c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a81d3cc3f95397a7745fed521b64f86ff" id="r_a81d3cc3f95397a7745fed521b64f86ff"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1frame_1_1DecodedFrame.html#a81d3cc3f95397a7745fed521b64f86ff">getCPULinesize</a> (int plane=0) const</td></tr>
+<tr class="memdesc:a81d3cc3f95397a7745fed521b64f86ff"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the row stride for a CPU-accessible plane.  <br /></td></tr>
+<tr class="separator:a81d3cc3f95397a7745fed521b64f86ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aed6048a8e2c1586de33831734ea11f97" id="r_aed6048a8e2c1586de33831734ea11f97"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1frame_1_1DecodedFrame.html#aed6048a8e2c1586de33831734ea11f97">materializeToCPU</a> ()</td></tr>
 <tr class="memdesc:aed6048a8e2c1586de33831734ea11f97"><td class="mdescLeft">&#160;</td><td class="mdescRight">Explicitly copy frame data from GPU to CPU.  <br /></td></tr>
 <tr class="separator:aed6048a8e2c1586de33831734ea11f97"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -299,7 +305,7 @@ Additional Inherited Members</h2></td></tr>
 <div class="ttc" id="aclassLimef_1_1frame_1_1DecodedFrame_html"><div class="ttname"><a href="classLimef_1_1frame_1_1DecodedFrame.html">Limef::frame::DecodedFrame</a></div><div class="ttdoc">Frame containing either decoded video, audio data or both.</div><div class="ttdef"><b>Definition</b> decodedframe.h:70</div></div>
 <div class="ttc" id="aclassLimef_1_1frame_1_1DecodedFrame_html_a60aa94b28e7d7f519e1ff8377df9ed76a34e2d1989a1dbf75cd631596133ee5ee"><div class="ttname"><a href="classLimef_1_1frame_1_1DecodedFrame.html#a60aa94b28e7d7f519e1ff8377df9ed76a34e2d1989a1dbf75cd631596133ee5ee">Limef::frame::DecodedFrame::MediaType::Video</a></div><div class="ttdeci">@ Video</div><div class="ttdoc">Frame contains video data.</div></div>
 <div class="ttc" id="aclassLimef_1_1frame_1_1DecodedFrame_html_a8e5ae5164d63e7edb62cf07467e4a535"><div class="ttname"><a href="classLimef_1_1frame_1_1DecodedFrame.html#a8e5ae5164d63e7edb62cf07467e4a535">Limef::frame::DecodedFrame::reserveVideo</a></div><div class="ttdeci">bool reserveVideo(int width, int height, AVPixelFormat format, AVBufferRef *hw_ctx=nullptr)</div><div class="ttdoc">Reserve space for video frame.</div><div class="ttdef"><b>Definition</b> decodedframe.cpp:345</div></div>
-<div class="ttc" id="aclassLimef_1_1frame_1_1DecodedFrame_html_ad3fef7e5cb4e348d9435f5760843855c"><div class="ttname"><a href="classLimef_1_1frame_1_1DecodedFrame.html#ad3fef7e5cb4e348d9435f5760843855c">Limef::frame::DecodedFrame::getFrame</a></div><div class="ttdeci">const AVFrame * getFrame() const noexcept</div><div class="ttdoc">Get currently active frame.</div><div class="ttdef"><b>Definition</b> decodedframe.h:239</div></div>
+<div class="ttc" id="aclassLimef_1_1frame_1_1DecodedFrame_html_ad3fef7e5cb4e348d9435f5760843855c"><div class="ttname"><a href="classLimef_1_1frame_1_1DecodedFrame.html#ad3fef7e5cb4e348d9435f5760843855c">Limef::frame::DecodedFrame::getFrame</a></div><div class="ttdeci">const AVFrame * getFrame() const noexcept</div><div class="ttdoc">Get currently active frame.</div><div class="ttdef"><b>Definition</b> decodedframe.h:262</div></div>
 <div class="ttc" id="aclassLimef_1_1frame_1_1DecodedFrame_html_adc7bcf838d963c38adcd7c9df3629d3b"><div class="ttname"><a href="classLimef_1_1frame_1_1DecodedFrame.html#adc7bcf838d963c38adcd7c9df3629d3b">Limef::frame::DecodedFrame::setMediaType</a></div><div class="ttdeci">void setMediaType(MediaType media_type_)</div><div class="ttdoc">Set current active MediaType of the frame.</div><div class="ttdef"><b>Definition</b> decodedframe.h:125</div></div>
 <div class="ttc" id="aclassLimef_1_1frame_1_1DecodedFrame_html_aecc81d46811ecc47d001812555b7483c"><div class="ttname"><a href="classLimef_1_1frame_1_1DecodedFrame.html#aecc81d46811ecc47d001812555b7483c">Limef::frame::DecodedFrame::reserveAudio</a></div><div class="ttdeci">bool reserveAudio(int sample_rate, const AVChannelLayout &amp;ch_layout, AVSampleFormat format, int nb_samples)</div><div class="ttdoc">Reserve space for audio frame.</div><div class="ttdef"><b>Definition</b> decodedframe.cpp:369</div></div>
 </div><!-- fragment --> </div><h2 class="groupheader">Member Enumeration Documentation</h2>
@@ -634,6 +640,54 @@ Additional Inherited Members</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Pointer to plane data, or nullptr if unavailable </dd></dl>
+
+</div>
+</div>
+<a id="a9b8de489f4014a9566fa78cf670e1e4c" name="a9b8de489f4014a9566fa78cf670e1e4c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9b8de489f4014a9566fa78cf670e1e4c">&#9670;&#160;</a></span>getCPUFormat()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">AVPixelFormat Limef::frame::DecodedFrame::getCPUFormat </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get the pixel format of the CPU-accessible data. </p>
+<p>For CPU frames returns the frame's own format (e.g. AV_PIX_FMT_YUV420P). For GPU frames (VAAPI, CUDA) returns the format of the downloaded CPU cache (e.g. AV_PIX_FMT_NV12 for VAAPI, AV_PIX_FMT_NV12 for NVDEC). Returns AV_PIX_FMT_NONE if the frame is unavailable or the download fails.</p>
+<p>Always call <a class="el" href="classLimef_1_1frame_1_1DecodedFrame.html#aed6048a8e2c1586de33831734ea11f97" title="Explicitly copy frame data from GPU to CPU.">materializeToCPU()</a> or <a class="el" href="classLimef_1_1frame_1_1DecodedFrame.html#affc500e412d12bd91c18e17f641a70cd" title="Get CPU-accessible data for a plane.">getCPUData()</a> first for GPU frames. </p>
+
+</div>
+</div>
+<a id="a81d3cc3f95397a7745fed521b64f86ff" name="a81d3cc3f95397a7745fed521b64f86ff"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a81d3cc3f95397a7745fed521b64f86ff">&#9670;&#160;</a></span>getCPULinesize()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Limef::frame::DecodedFrame::getCPULinesize </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>plane</em> = <code>0</code></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get the row stride for a CPU-accessible plane. </p>
+<p>Mirrors <a class="el" href="classLimef_1_1frame_1_1DecodedFrame.html#affc500e412d12bd91c18e17f641a70cd" title="Get CPU-accessible data for a plane.">getCPUData()</a>: for CPU frames returns the AVFrame linesize directly; for GPU frames triggers a download and returns the cache's linesize. Returns 0 if the plane is unavailable or the download fails.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">plane</td><td><a class="el" href="structLimef_1_1frame_1_1Plane.html" title="One plane of a TensorFrame.">Plane</a> index (0=Y, 1=U, 2=V for YUV) </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

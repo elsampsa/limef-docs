@@ -1,6 +1,6 @@
-## A Media Streaming Framework
+# A Media Streaming Framework
 
-### What is a "Media Streaming Framework" anyway?
+## What is a "Media Streaming Framework" anyway?
 
 Employing AI machine vision systems at scale in the cloud and in the edge devices is a challenging problem.
 
@@ -12,15 +12,17 @@ A media streaming framework handles all this gruntwork of multithreading, queque
 
 For specialized ML/AI tasks, you write dedicated threads, conforming to the framework's API, and they become a natural part of the pipeline.
 
-### Why not just use ffmpeg?
+## Why not just use ffmpeg?
 
 You would typically start with ffmpeg C libraries that have all the necessary infra to decode and encode media streams.
 
 However, ffmpeg doesn't provide a framework for stream replication, sharing and serving.  You'd need to write all that piping yourself.
 
-### What can Limef do?
+## What can Limef do?
 
 Limef is Work In Progress and I will be adding new features along the way as they fit my personal goals and interests.
+
+For a quick showcase, please take a look at the [python example apps](https://github.com/elsampsa/limef-apps/tree/master/python).
 
 At the moment working modules are:
 

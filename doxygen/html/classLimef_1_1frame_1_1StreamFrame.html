@@ -121,6 +121,10 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a33886d72b9a658a6e1dd38ed72466804"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a72ac2234e53fe604e165d5dc2e8f701f" id="r_a72ac2234e53fe604e165d5dc2e8f701f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classLimef_1_1frame_1_1StreamFrame.html">StreamFrame</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1frame_1_1StreamFrame.html#a72ac2234e53fe604e165d5dc2e8f701f">operator=</a> (const <a class="el" href="classLimef_1_1frame_1_1StreamFrame.html">StreamFrame</a> &amp;other)</td></tr>
 <tr class="separator:a72ac2234e53fe604e165d5dc2e8f701f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4f2fefb142889832fff5e38ce9a6d933" id="r_a4f2fefb142889832fff5e38ce9a6d933"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1frame_1_1StreamFrame.html#a4f2fefb142889832fff5e38ce9a6d933">isFromSource</a> () const noexcept</td></tr>
+<tr class="separator:a4f2fefb142889832fff5e38ce9a6d933"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abdbf99311b411065390e8cea445c837c" id="r_abdbf99311b411065390e8cea445c837c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1frame_1_1StreamFrame.html#abdbf99311b411065390e8cea445c837c">setFromSource</a> (bool v) noexcept</td></tr>
+<tr class="separator:abdbf99311b411065390e8cea445c837c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a984577b51493a3813b9a028796e0c72a" id="r_a984577b51493a3813b9a028796e0c72a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespaceLimef_1_1frame.html#ab9cc5488441f6cdcaffb6d29b679a4de">FrameClass</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1frame_1_1StreamFrame.html#a984577b51493a3813b9a028796e0c72a">getFrameClass</a> () const noexcept override</td></tr>
 <tr class="memdesc:a984577b51493a3813b9a028796e0c72a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return <code><a class="el" href="classLimef_1_1frame_1_1Frame.html" title="Frame base class.">Frame</a></code>'s type.  <br /></td></tr>
 <tr class="separator:a984577b51493a3813b9a028796e0c72a"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -235,7 +239,16 @@ Additional Inherited Members</h2></td></tr>
 <li>DecodingFrameFilter expects <a class="el" href="classLimef_1_1frame_1_1CodecFrame.html" title="A frame containing stream information for decoders.">CodecFrame</a> (encoded stream)</li>
 <li>EncodingFrameFilter expects <a class="el" href="classLimef_1_1frame_1_1StreamFrame.html" title="A frame containing stream information for raw/decoded sources.">StreamFrame</a> (raw/decoded stream)</li>
 </ul>
-<p>Internally uses the same AVFormatContext/AVStream mechanism as <a class="el" href="classLimef_1_1frame_1_1CodecFrame.html" title="A frame containing stream information for decoders.">CodecFrame</a>, but the codec_id will typically be AV_CODEC_ID_RAWVIDEO or AV_CODEC_ID_PCM_*. </p>
+<p>Internally uses the same AVFormatContext/AVStream mechanism as <a class="el" href="classLimef_1_1frame_1_1CodecFrame.html" title="A frame containing stream information for decoders.">CodecFrame</a>, but the codec_id will typically be AV_CODEC_ID_RAWVIDEO or AV_CODEC_ID_PCM_*.</p>
+<h2><a class="anchor" id="autotoc_md1"></a>
+from_source flag</h2>
+<p><code>from_source</code> indicates whether this <a class="el" href="classLimef_1_1frame_1_1StreamFrame.html" title="A frame containing stream information for raw/decoded sources.">StreamFrame</a> originated directly from a source thread (USBCameraThread, MediaFileThread, etc.) as a genuine stream lifecycle event (start, reinitialisation), or whether it is a relay sent by an intermediate filter to initialise a cold branch.</p>
+<p>Rules:</p><ul>
+<li>Sources create StreamFrames with <code>from_source = true</code> (the default).</li>
+<li>Filters that cache and replay StreamFrames (e.g. SwitchFrameFilter) set <code>from_source = false</code> on the replayed copy before forwarding it.</li>
+<li>All other filters pass the flag through unchanged.</li>
+</ul>
+<p>Downstream consumers that maintain persistent state (e.g. EncodingFrameFilter) use this flag to avoid unnecessary reinitialisation when the same metadata is replayed through a newly activated branch. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="ad7819669418db2439ded2994010ae7b9" name="ad7819669418db2439ded2994010ae7b9"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ad7819669418db2439ded2994010ae7b9">&#9670;&#160;</a></span>StreamFrame() <span class="overload">[1/2]</span></h2>
@@ -443,6 +456,31 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
+<a id="a4f2fefb142889832fff5e38ce9a6d933" name="a4f2fefb142889832fff5e38ce9a6d933"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4f2fefb142889832fff5e38ce9a6d933">&#9670;&#160;</a></span>isFromSource()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Limef::frame::StreamFrame::isFromSource </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a72ac2234e53fe604e165d5dc2e8f701f" name="a72ac2234e53fe604e165d5dc2e8f701f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a72ac2234e53fe604e165d5dc2e8f701f">&#9670;&#160;</a></span>operator=()</h2>
 
@@ -504,6 +542,32 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Reimplemented from <a class="el" href="classLimef_1_1frame_1_1Frame.html#ad824af6a7d3dba6f76c3b8d08549830d">Limef::frame::Frame</a>.</p>
+
+</div>
+</div>
+<a id="abdbf99311b411065390e8cea445c837c" name="abdbf99311b411065390e8cea445c837c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abdbf99311b411065390e8cea445c837c">&#9670;&#160;</a></span>setFromSource()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Limef::frame::StreamFrame::setFromSource </td>
+          <td>(</td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>v</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
 
 </div>
 </div>

@@ -233,26 +233,26 @@ Namespaces</h2></td></tr>
 <dl class="section author"><dt>Author</dt><dd>Sampsa Riikonen </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>2025 </dd></dl>
 <dl class="section version"><dt>Version</dt><dd>1.6.1</dd></dl>
-<h2><a class="anchor" id="autotoc_md32"></a>
+<h2><a class="anchor" id="autotoc_md38"></a>
 Overview</h2>
 <p>UploadGPUFrameFilter takes DecodedFrames with CPU pixel data and uploads them to GPU memory, producing DecodedFrames with hw_frames_ctx set.</p>
-<h2><a class="anchor" id="autotoc_md33"></a>
+<h2><a class="anchor" id="autotoc_md39"></a>
 GPU Backend Support</h2>
-<h3><a class="anchor" id="autotoc_md34"></a>
+<h3><a class="anchor" id="autotoc_md40"></a>
 NVIDIA (CUDA) - Desktop &amp; Jetson</h3>
 <ul>
 <li>Uses AV_PIX_FMT_CUDA</li>
 <li>Direct integration with cv::cuda::GpuMat</li>
 <li>Preferred for Jetson development</li>
 </ul>
-<h3><a class="anchor" id="autotoc_md35"></a>
+<h3><a class="anchor" id="autotoc_md41"></a>
 Intel (VAAPI)</h3>
 <ul>
 <li>Uses AV_PIX_FMT_VAAPI</li>
 <li>Surface format typically NV12</li>
 <li>OpenCV integration requires cl_intel_va_api_media_sharing extension</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md36"></a>
+<h2><a class="anchor" id="autotoc_md42"></a>
 Memory Management</h2>
 <p>The filter owns its own hw_frames_ctx pool. When a frame is uploaded:</p><ol type="1">
 <li>Get buffer from pool (av_hwframe_get_buffer)</li>
@@ -260,13 +260,13 @@ Memory Management</h2>
 <li>Pass GPU frame downstream</li>
 </ol>
 <p>Downstream consumers (e.g., DecodedFrameFifo) should create their own pools and copy the GPU frame data, ensuring proper buffer ownership.</p>
-<h2><a class="anchor" id="autotoc_md37"></a>
+<h2><a class="anchor" id="autotoc_md43"></a>
 Pipeline Integration</h2>
 <div class="fragment"><div class="line">USBCameraThread -&gt; UploadGPUFrameFilter -&gt; GPUProcessingThread</div>
 <div class="line">                        |</div>
 <div class="line">                        v</div>
 <div class="line">                   [CPU frame in, GPU frame out]</div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md38"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md44"></a>
 Input Requirements</h2>
 <ul>
 <li>DecodedFrame with CPU pixel data</li>

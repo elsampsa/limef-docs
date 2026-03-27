@@ -402,21 +402,73 @@ to wire threads into the chain.</p>
 media payload, while <a class="reference internal" href="api/frames.html#_CPPv4N5Limef5frame11SignalFrameE" title="Limef::frame::SignalFrame"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">Limef::frame::SignalFrame</span></code></a> carries control commands (start, stop,
 flush, parameter changes) — all through the same <code class="docutils literal notranslate"><span class="pre">go()</span></code> call, no separate control bus needed.</p>
 </section>
+<section id="diagram-notation">
+<h3>Diagram notation<a class="headerlink" href="#diagram-notation" title="Link to this heading">¶</a></h3>
+<p>Diagrams follow these conventions:</p>
+<ul class="simple">
+<li><p><strong>Thread</strong> — rectangle <code class="docutils literal notranslate"><span class="pre">[Name]</span></code>, abbreviated <code class="docutils literal notranslate"><span class="pre">...TR</span></code>.
+Incoming edge uses an arrow (<code class="docutils literal notranslate"><span class="pre">--&gt;</span></code>) to mark the thread boundary: the frame is copied into a FrameFifo before the thread processes it.</p></li>
+<li><p><strong>FrameFilter</strong> — rounded rectangle <code class="docutils literal notranslate"><span class="pre">(Name)</span></code>, abbreviated <code class="docutils literal notranslate"><span class="pre">...FF</span></code>.
+Incoming edge uses a plain line (<code class="docutils literal notranslate"><span class="pre">---</span></code>) to show synchronous, same-chain forwarding — no copy, no boundary.</p></li>
+<li><p><strong>Block</strong> — subroutine box <code class="docutils literal notranslate"><span class="pre">[[Name]]</span></code>.
+Always uses an arrow on incoming edges since blocks always contain internal threads.</p></li>
+</ul>
+<pre  class="mermaid">
+        flowchart LR
+    ff1(UpstreamFF) --- ff2(AnotherFF) --&gt; thr[ConsumerTR]
+
+    classDef thread fill:#4a90d9,stroke:#2c5f8a,color:#fff
+    classDef ff     fill:#5ba85a,stroke:#3d6e3d,color:#fff
+    class thr thread
+    class ff1,ff2 ff
+    </pre><p>FF→FF: no arrow (same chain).  FF→Thread: arrow (FrameFifo boundary).</p>
+</section>
+<section id="yaml-declarations">
+<h3>YAML declarations<a class="headerlink" href="#yaml-declarations" title="Link to this heading">¶</a></h3>
+<p>Pipelines can be described in YAML.  Inline nesting reflects the filterchain topology directly — each node’s downstream is nested under its <code class="docutils literal notranslate"><span class="pre">connect:</span></code> key:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">source</span><span class="p">:</span><span class="w">              </span><span class="c1"># top-level named node</span>
+<span class="w">    </span><span class="nt">class</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MediaFileThread</span>
+<span class="w">    </span><span class="nt">connect</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">split</span><span class="p">:</span><span class="w">       </span><span class="c1"># inline anonymous node, nested under source</span>
+<span class="w">            </span><span class="nt">class</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SplitFrameFilter</span>
+<span class="w">            </span><span class="nt">connect</span><span class="p">:</span>
+<span class="w">                </span><span class="nt">decode</span><span class="p">:</span>
+<span class="w">                    </span><span class="nt">class</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DecodingFrameFilter</span>
+<span class="w">                    </span><span class="nt">connect</span><span class="p">:</span>
+<span class="w">                        </span><span class="nt">analyzer</span><span class="p">:</span>
+<span class="w">                            </span><span class="nt">class</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DumpFrameFilter</span>
+<span class="w">                </span><span class="nt">muxer</span><span class="p">:</span><span class="w">       </span><span class="c1"># second branch of the split</span>
+<span class="w">                    </span><span class="nt">class</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MuxerFrameFilter</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">connect:</span></code> reference rules:</p>
+<ul class="simple">
+<li><p><strong>bare name</strong> → top-level named node: <code class="docutils literal notranslate"><span class="pre">connect:</span> <span class="pre">encoderblock</span></code></p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">./name</span></code></strong> → sibling member within the same block: <code class="docutils literal notranslate"><span class="pre">connect:</span> <span class="pre">./cuda2dec</span></code></p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">../name</span></code></strong> → sibling of the parent (one level up): <code class="docutils literal notranslate"><span class="pre">connect:</span> <span class="pre">../output</span></code>  <em>(used from inside switch branches)</em></p></li>
+</ul>
+</section>
 <section id="a-complete-example">
 <h3>A complete example<a class="headerlink" href="#a-complete-example" title="Link to this heading">¶</a></h3>
 <p>Encoded frames (H265) come from a file-reading thread.  The stream is forked: one branch is
 decoded for analysis, the other goes to a muxer.</p>
 <pre  class="mermaid">
         flowchart TD
-    src[&quot;MediaFileThread&quot;]
-    split[&quot;SplitFrameFilter&quot;]
-    decode[&quot;DecodingFrameFilter&quot;]
-    analyze[&quot;analysis filterchain&quot;]
-    mux[&quot;MuxerFrameFilter&quot;]
+    src[MediaFileTR]
+    split(SplitFF)
+    decode(DecodingFF)
+    analyze(DumpFF)
+    mux(MuxerFF)
 
-    src --&gt; split
-    split --&gt; decode --&gt; analyze
-    split --&gt; mux
+    src --- split
+    split --- decode
+    decode --- analyze
+    split --- mux
+
+    classDef thread fill:#4a90d9,stroke:#2c5f8a,color:#fff
+    classDef ff     fill:#5ba85a,stroke:#3d6e3d,color:#fff
+    class src thread
+    class split,decode,analyze,mux ff
     </pre><p>In C++:</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">DumpFrameFilter</span><span class="w">     </span><span class="n">analyzer</span><span class="p">(</span><span class="s">&quot;analyzer&quot;</span><span class="p">);</span>
 <span class="n">MuxerFrameFilter</span><span class="w">    </span><span class="n">muxer</span><span class="p">(</span><span class="s">&quot;muxer&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">mux_ctx</span><span class="p">);</span>
@@ -431,25 +483,6 @@ decoded for analysis, the other goes to a muxer.</p>
 <span class="n">source</span><span class="p">.</span><span class="n">getOutput</span><span class="p">().</span><span class="n">cc</span><span class="p">(</span><span class="n">split</span><span class="p">);</span>
 
 <span class="n">source</span><span class="p">.</span><span class="n">start</span><span class="p">();</span>
-</pre></div>
-</div>
-<p>As YAML:</p>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">source</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">class</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MediaFileThread</span>
-<span class="w">    </span><span class="nt">connect</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">split</span>
-
-<span class="nt">split</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">class</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SplitFrameFilter</span>
-<span class="w">    </span><span class="nt">connect</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">decode</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">muxer</span>
-
-<span class="nt">decode</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">class</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DecodingFrameFilter</span>
-<span class="w">    </span><span class="nt">connect</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">analyzer</span>
-
-<span class="nt">muxer</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">class</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MuxerFrameFilter</span>
 </pre></div>
 </div>
 <p>For a deeper look at how threads and framefifos work under the hood, see <a class="reference internal" href="under_the_hood.html"><span class="doc">Under the Hood</span></a>.</p>
@@ -519,6 +552,8 @@ decoded for analysis, the other goes to a muxer.</p>
 <li><a class="reference internal" href="#filterchains">Filterchains</a><ul>
 <li><a class="reference internal" href="#upstream-and-downstream">Upstream and downstream</a></li>
 <li><a class="reference internal" href="#connecting-threads">Connecting threads</a></li>
+<li><a class="reference internal" href="#diagram-notation">Diagram notation</a></li>
+<li><a class="reference internal" href="#yaml-declarations">YAML declarations</a></li>
 <li><a class="reference internal" href="#a-complete-example">A complete example</a></li>
 </ul>
 </li>

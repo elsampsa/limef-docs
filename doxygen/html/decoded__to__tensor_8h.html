@@ -250,19 +250,19 @@ Enumerations</h2></td></tr>
 <dl class="section author"><dt>Author</dt><dd>Sampsa Riikonen </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>2025 </dd></dl>
 <dl class="section version"><dt>Version</dt><dd>1.6.1</dd></dl>
-<h2><a class="anchor" id="autotoc_md8"></a>
+<h2><a class="anchor" id="autotoc_md9"></a>
 Design</h2>
 <p>The filter auto-detects the incoming pixel format and selects the appropriate internal converter (strategy pattern). Users interact only with the filter itself — converters are an implementation detail.</p>
 <p>Output is always a single-plane TensorFrame with shape <code>(c, h, w)</code>:</p><ul>
 <li>c = 1 for greyscale, c = 3 for colour</li>
 <li>dtype = UInt8</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md9"></a>
+<h2><a class="anchor" id="autotoc_md10"></a>
 Supported input formats</h2>
 <p>CPU: AV_PIX_FMT_GBRP, AV_PIX_FMT_GRAY8 (see note below) GPU: AV_PIX_FMT_CUDA / NV12 (requires LIMEF_CUDA)</p>
 <p>Any unrecognised format causes a one-time error log and the filter deactivates (drops all subsequent DecodedFrames) until the format changes.</p>
 <p>Non-DecodedFrame types (SignalFrame, StreamFrame, …) always pass through.</p>
-<h2><a class="anchor" id="autotoc_md10"></a>
+<h2><a class="anchor" id="autotoc_md11"></a>
 CPU path: prepend SwScaleFrameFilter</h2>
 <p>The CPU converters expect the pixel format to already be normalised to either GBRP (colour) or GRAY8 (greyscale). For any other input format — YUV420P from a software decoder, YUYV422 / MJPEG from a webcam, NV12, packed RGB, etc. — prepend a SwScaleFrameFilter to perform the format conversion first:</p>
 <div class="fragment"><div class="line">DumpFrameFilter         dump (<span class="stringliteral">&quot;dump&quot;</span>);</div>

@@ -237,33 +237,33 @@ Namespaces</h2></td></tr>
 <dl class="section date"><dt>Date</dt><dd>2025 </dd></dl>
 <dl class="section version"><dt>Version</dt><dd>1.6.1</dd></dl>
 <p>Handles both CPU and GPU (CUDA) input planes automatically — the path is selected per-frame based on <code>Plane::isGPU()</code>.</p>
-<h2><a class="anchor" id="autotoc_md21"></a>
+<h2><a class="anchor" id="autotoc_md27"></a>
 Accepted input</h2>
 <p>TensorFrame with shape <code>(3, H, W)</code> or <code>(1, H, W)</code>, dtype UInt8. Any other shape or dtype is logged as an error and the frame is dropped.</p>
 <p><code>in_order</code> describes the channel order of the <em>input</em> tensor:</p><ul>
 <li>ChannelOrder::RGB — tensor channels [R, G, B]</li>
 <li>ChannelOrder::BGR — tensor channels [B, G, R]</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md22"></a>
+<h2><a class="anchor" id="autotoc_md28"></a>
 CPU path (plane on CPU RAM)</h2>
 <p>Output: DecodedFrame with pixel format:</p><ul>
 <li>3-channel input → AV_PIX_FMT_GBRP</li>
 <li>1-channel input → AV_PIX_FMT_GRAY8</li>
 </ul>
 <p>GBRP is the natural inverse of GBRPConverter. Add SwScaleFrameFilter downstream to convert to YUV420P for software encoding if needed.</p>
-<h2><a class="anchor" id="autotoc_md23"></a>
+<h2><a class="anchor" id="autotoc_md29"></a>
 GPU path (plane on CUDA device, LIMEF_CUDA only)</h2>
 <p>Only 3-channel tensors are supported (NV12 is colour-only). Output: DecodedFrame with <code>AV_PIX_FMT_CUDA</code> / <code>sw_format = AV_PIX_FMT_NV12</code>. A <code>launchCHWtoNV12</code> CUDA kernel converts the CHW device buffer directly into an NV12 CUDA surface — no CPU involvement. The internal <code>CudaCHWConverter</code> manages its own <code>AVHWFramesContext</code> pool (lazy-init, reinit on resize). The output CUDA DecodedFrame can be fed directly into an NVENC encoder.</p>
-<h2><a class="anchor" id="autotoc_md24"></a>
+<h2><a class="anchor" id="autotoc_md30"></a>
 StreamFrame</h2>
 <p>On the first frame and whenever dimensions or CPU/GPU mode change, a StreamFrame is emitted <em>before</em> the DecodedFrame. Downstream encoders use this to initialise. The StreamFrame format reflects the active path:</p><ul>
 <li>CPU path → AV_PIX_FMT_GBRP or AV_PIX_FMT_GRAY8</li>
 <li>GPU path → AV_PIX_FMT_CUDA</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md25"></a>
+<h2><a class="anchor" id="autotoc_md31"></a>
 Timestamps</h2>
 <p><code>abs_timestamp_</code> from the TensorFrame is converted to PTS (microseconds since first frame) using PTStamp. The DecodedFrame time_base is set to {1, 1000000}.</p>
-<h2><a class="anchor" id="autotoc_md26"></a>
+<h2><a class="anchor" id="autotoc_md32"></a>
 Why not pointer-wrap?</h2>
 <p>See md/tensorframe.md — short answer: FFmpeg encoders call av_frame_make_writable() which breaks with null buf[] refs. We just copy. </p>
 </div></div><!-- contents -->

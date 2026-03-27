@@ -6,9 +6,15 @@ In this first tutorial we build the simplest possible Limef pipeline:
 
 ```{mermaid}
 flowchart TD
-    src["MediaFileThread"]
-    dump["DumpFrameFilter"]
-    src --> dump
+    src[MediaFileTR]
+    dump(DumpFF)
+
+    src --- dump
+
+    classDef thread fill:#4a90d9,stroke:#2c5f8a,color:#fff
+    classDef ff     fill:#5ba85a,stroke:#3d6e3d,color:#fff
+    class src thread
+    class dump ff
 ```
 
 {cpp:class}`Limef::thread::MediaFileThread` reads a media file and pushes encoded

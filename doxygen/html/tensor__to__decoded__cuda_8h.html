@@ -86,13 +86,13 @@ $(function() {
 <dl class="section date"><dt>Date</dt><dd>2025 </dd></dl>
 <dl class="section version"><dt>Version</dt><dd>1.6.1</dd></dl>
 <p>Mirror of CudaNV12Converter in <a class="el" href="decoded__to__tensor__cuda_8h.html" title="CUDA converter subclass for DecodedToTensorFrameFilter.">decoded_to_tensor_cuda.h</a> — the other direction.</p>
-<h2><a class="anchor" id="autotoc_md27"></a>
+<h2><a class="anchor" id="autotoc_md33"></a>
 Input</h2>
 <p>TensorFrame with one GPU plane, shape <code>(3, H, W)</code>, dtype UInt8. <code>in_order</code> describes the channel order of the tensor channels.</p>
-<h2><a class="anchor" id="autotoc_md28"></a>
+<h2><a class="anchor" id="autotoc_md34"></a>
 Output</h2>
 <p>DecodedFrame with <code>AV_PIX_FMT_CUDA</code> / <code>sw_format = AV_PIX_FMT_NV12</code>. The converter manages its own <code>AVHWFramesContext</code> pool (lazy-init, reinit on resize). A fresh GPU surface is obtained from the pool on every call — safe for synchronous filter chains because <code>pass()</code> completes before we unref the previous surface.</p>
-<h2><a class="anchor" id="autotoc_md29"></a>
+<h2><a class="anchor" id="autotoc_md35"></a>
 Split .cu / .cpp</h2>
 <p>The kernel and its launcher live in <code>tensor_to_decoded_cuda.cu</code> (nvcc, no spdlog). The converter class lives in <code><a class="el" href="tensor__to__decoded__cuda_8cpp.html" title="CudaCHWConverter::convert() — compiled by g++, may use spdlog / FFmpeg.">tensor_to_decoded_cuda.cpp</a></code> (g++, may use spdlog / FFmpeg). </p>
 </div></div><!-- contents -->

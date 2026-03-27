@@ -229,13 +229,13 @@ Namespaces</h2></td></tr>
 <dl class="section author"><dt>Author</dt><dd>Sampsa Riikonen </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>2025 </dd></dl>
 <dl class="section version"><dt>Version</dt><dd>1.6.1</dd></dl>
-<h2><a class="anchor" id="autotoc_md11"></a>
+<h2><a class="anchor" id="autotoc_md12"></a>
 Expected usage</h2>
 <p>Prepend a SwScaleFrameFilter that normalises the pixel format to either AV_PIX_FMT_GBRP (colour) or AV_PIX_FMT_GRAY8 (greyscale). Any other format arriving here is rejected (one-time error log, filter deactivates).</p>
-<h2><a class="anchor" id="autotoc_md12"></a>
+<h2><a class="anchor" id="autotoc_md13"></a>
 Why GBRP and not packed RGB24?</h2>
 <p>GBRP is planar: each channel (G, B, R) lives in its own contiguous AVFrame plane. Converting to the output shape (C, H, W) is then three row-by-row memcpys in the desired channel order — no element-wise scatter needed. Packed RGB24 (interleaved RGBRGB…) would require de-interleaving, which is roughly 3× more memory traffic for the same result.</p>
-<h2><a class="anchor" id="autotoc_md13"></a>
+<h2><a class="anchor" id="autotoc_md14"></a>
 Future: direct format converters</h2>
 <p>A single-copy path (e.g. YUV420P → CHW directly, without the SwScale hop) is possible but would need SIMD (SSE/AVX/NEON) to match SwScale's throughput. Add such converters here only when profiling shows the two-copy path is a real bottleneck. </p>
 </div></div><!-- contents -->

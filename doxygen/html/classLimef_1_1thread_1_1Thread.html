@@ -141,14 +141,17 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a680faeb8334edf5bae064cdc3f2518c4" id="r_a680faeb8334edf5bae064cdc3f2518c4"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1thread_1_1Thread.html#a680faeb8334edf5bae064cdc3f2518c4">isStarted</a> () const override</td></tr>
 <tr class="memdesc:a680faeb8334edf5bae064cdc3f2518c4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if start has been called or not.  <br /></td></tr>
 <tr class="separator:a680faeb8334edf5bae064cdc3f2518c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af0e3b1bce401a7f877396146e8afb57d" id="r_af0e3b1bce401a7f877396146e8afb57d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1thread_1_1Thread.html#af0e3b1bce401a7f877396146e8afb57d">isRunning</a> () const override</td></tr>
+<tr class="memdesc:af0e3b1bce401a7f877396146e8afb57d"><td class="mdescLeft">&#160;</td><td class="mdescRight">has the thread been started or not?  <br /></td></tr>
+<tr class="separator:af0e3b1bce401a7f877396146e8afb57d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af8b77ceb90bd5b244a77c9c98679d363" id="r_af8b77ceb90bd5b244a77c9c98679d363"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1thread_1_1Thread.html#af8b77ceb90bd5b244a77c9c98679d363">requestStop</a> () override</td></tr>
-<tr class="memdesc:af8b77ceb90bd5b244a77c9c98679d363"><td class="mdescLeft">&#160;</td><td class="mdescRight">has the thread been started or not?  <br /></td></tr>
+<tr class="memdesc:af8b77ceb90bd5b244a77c9c98679d363"><td class="mdescLeft">&#160;</td><td class="mdescRight">true while <a class="el" href="classLimef_1_1thread_1_1Thread.html#a68b383b869edf65ee86f8d57cb261508" title="Threads main functionality. Uses preRun, postRun, processFrame, frameTask and task.">mainLoop()</a> is executing  <br /></td></tr>
 <tr class="separator:af8b77ceb90bd5b244a77c9c98679d363"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1425dd0dba2d54bbbcdc0f8376e1bbeb" id="r_a1425dd0dba2d54bbbcdc0f8376e1bbeb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1thread_1_1Thread.html#a1425dd0dba2d54bbbcdc0f8376e1bbeb">waitStop</a> () override</td></tr>
 <tr class="memdesc:a1425dd0dba2d54bbbcdc0f8376e1bbeb"><td class="mdescLeft">&#160;</td><td class="mdescRight">wait for thread termination  <br /></td></tr>
 <tr class="separator:a1425dd0dba2d54bbbcdc0f8376e1bbeb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9e0b393eea3a942be09f88b60b5746ff" id="r_a9e0b393eea3a942be09f88b60b5746ff"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1thread_1_1Thread.html#a9e0b393eea3a942be09f88b60b5746ff">stop</a> () override</td></tr>
-<tr class="memdesc:a9e0b393eea3a942be09f88b60b5746ff"><td class="mdescLeft">&#160;</td><td class="mdescRight">combined <a class="el" href="classLimef_1_1thread_1_1Thread.html#af8b77ceb90bd5b244a77c9c98679d363" title="has the thread been started or not?">requestStop()</a> and <a class="el" href="classLimef_1_1thread_1_1Thread.html#a1425dd0dba2d54bbbcdc0f8376e1bbeb" title="wait for thread termination">waitStop()</a>  <br /></td></tr>
+<tr class="memdesc:a9e0b393eea3a942be09f88b60b5746ff"><td class="mdescLeft">&#160;</td><td class="mdescRight">combined <a class="el" href="classLimef_1_1thread_1_1Thread.html#af8b77ceb90bd5b244a77c9c98679d363" title="true while mainLoop() is executing">requestStop()</a> and <a class="el" href="classLimef_1_1thread_1_1Thread.html#a1425dd0dba2d54bbbcdc0f8376e1bbeb" title="wait for thread termination">waitStop()</a>  <br /></td></tr>
 <tr class="separator:a9e0b393eea3a942be09f88b60b5746ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a468dd8135b2708fa32662e9cc0c3549d" id="r_a468dd8135b2708fa32662e9cc0c3549d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1thread_1_1Thread.html#a468dd8135b2708fa32662e9cc0c3549d">setAffinity</a> (int core_id) override</td></tr>
 <tr class="memdesc:a468dd8135b2708fa32662e9cc0c3549d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Binds the thread to a certain CPU.  <br /></td></tr>
@@ -232,6 +235,8 @@ Protected Member Functions</h2></td></tr>
 Protected Attributes</h2></td></tr>
 <tr class="memitem:af35b3c2c9bdb52517cd295bf1b837f1e" id="r_af35b3c2c9bdb52517cd295bf1b837f1e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1thread_1_1Thread.html#af35b3c2c9bdb52517cd295bf1b837f1e">stop_requested_</a></td></tr>
 <tr class="separator:af35b3c2c9bdb52517cd295bf1b837f1e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6c9a250e57ccbe5aa94a21e8d466a0f9" id="r_a6c9a250e57ccbe5aa94a21e8d466a0f9"><td class="memItemLeft" align="right" valign="top">std::atomic&lt; bool &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1thread_1_1Thread.html#a6c9a250e57ccbe5aa94a21e8d466a0f9">running_</a> {false}</td></tr>
+<tr class="separator:a6c9a250e57ccbe5aa94a21e8d466a0f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4b2a53ec35355f09efe8d903562553c5" id="r_a4b2a53ec35355f09efe8d903562553c5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structLimef_1_1FrameFifoContext.html">Limef::FrameFifoContext</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1thread_1_1Thread.html#a4b2a53ec35355f09efe8d903562553c5">ctx</a></td></tr>
 <tr class="separator:a4b2a53ec35355f09efe8d903562553c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afa2b2954bbaf77643ee3b9c0998b0fc1" id="r_afa2b2954bbaf77643ee3b9c0998b0fc1"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="classLimef_1_1FrameFifo.html">FrameFifo</a>&lt; T &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1thread_1_1Thread.html#afa2b2954bbaf77643ee3b9c0998b0fc1">framefifo</a></td></tr>
@@ -267,11 +272,11 @@ class Limef::thread::Thread&lt; T &gt;</div><p>A multithreading base class. </p>
 <li>thread "backend" methods: these are used internally by the thread after it has been spawned.</li>
 <li>a single, unified fifo for handling incoming <code>Frame</code>s and commands, the <code><a class="el" href="classLimef_1_1FrameFifo.html" title="FrameFifo: a stack and a fifo.">FrameFifo</a></code>.</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md41"></a>
+<h2><a class="anchor" id="autotoc_md54"></a>
 thread intercom</h2>
 <p>The only communication channel of the thread to the "outside" world (i.e. to main thread) is the <code><a class="el" href="classLimef_1_1FrameFifo.html" title="FrameFifo: a stack and a fifo.">FrameFifo</a></code>.</p>
 <p><a class="el" href="classLimef_1_1thread_1_1Thread.html" title="A multithreading base class.">Thread</a> backend receives a continuous stream of <code>Frame</code>s into its <code><a class="el" href="classLimef_1_1FrameFifo.html" title="FrameFifo: a stack and a fifo.">FrameFifo</a></code> and based on those <code>Frame</code>s it performs actions. These can be, for example, the decoding of the <code>Frame</code> and sending it downstream, or if the <code>Frame</code> is a <code>SignalFrame</code>, perform some action, for example, to stop the thread: it is important to note that thread control is also achieved by streaming frames into the <code><a class="el" href="classLimef_1_1FrameFifo.html" title="FrameFifo: a stack and a fifo.">FrameFifo</a></code>.</p>
-<h2><a class="anchor" id="autotoc_md42"></a>
+<h2><a class="anchor" id="autotoc_md55"></a>
 templating</h2>
 <p>While a thread class reads and accepts all frames from it's <code><a class="el" href="classLimef_1_1FrameFifo.html" title="FrameFifo: a stack and a fifo.">FrameFifo</a></code>, it is templated by a special frame type.</p>
 <p>The special frame type is handled in another way than all the other frame types: if an incoming frame belongs to the special frame type, an internal frame of that type is pulled from the <a class="el" href="classLimef_1_1FrameFifo.html" title="FrameFifo: a stack and a fifo.">FrameFifo</a>, and a copy of the incoming frame is made into the internal frame. After this, that internal frame is placed into a fifo for further processing and sent downstream.</p>
@@ -281,10 +286,10 @@ templating</h2>
 <p>A <code>SignalFrame</code> on the other hand, arrives very seldomly, so such copying avoiding reallocation is not necessary.</p>
 <p>A note on the implementation: the said logic of handling special frame class differently, is implemented in the <code><a class="el" href="classLimef_1_1FrameFifo.html" title="FrameFifo: a stack and a fifo.">Limef::FrameFifo</a></code> class, and so the <code><a class="el" href="classLimef_1_1thread_1_1Thread.html" title="A multithreading base class.">Limef::thread::Thread</a></code> implementation looks pretty simple.</p>
 <p>The input framefilter of the thread is connected to the framefifo in the ctor.</p>
-<h2><a class="anchor" id="autotoc_md43"></a>
+<h2><a class="anchor" id="autotoc_md56"></a>
 periodic tasks</h2>
 <p>In addition to receiving frames, processing them and sending them downstream, a thread can have an internal, periodic task, defined in <code><a class="el" href="classLimef_1_1thread_1_1Thread.html#a463ae243a655cb32b1514a084aad29a9" title="Internal/backend method: a periodic task done by the thread (in addition to receiving frames)">Thread::task</a></code>. The processing of incoming frames and the periodic execution of the task is "interleaved" and guaranteed to happen always in time. For example implementation of a periodic task, see <code><a class="el" href="classLimef_1_1thread_1_1ExampleThread.html" title="An example thread.">ExampleThread</a></code> and <code><a class="el" href="classLimef_1_1thread_1_1ProducerThread.html" title="A prototype frame producing thread (aka source)">ProducerThread</a></code> source codes.</p>
-<h2><a class="anchor" id="autotoc_md44"></a>
+<h2><a class="anchor" id="autotoc_md57"></a>
 thread usage example</h2>
 <p>An example how you would use a thread subclass named <code><a class="el" href="classLimef_1_1thread_1_1ExampleThread.html" title="An example thread.">ExampleThread</a></code>: </p><div class="fragment"><div class="line"><a class="code hl_class" href="classLimef_1_1thread_1_1ExampleThread.html">ExampleThread</a> exampleThread(<span class="stringliteral">&quot;example&quot;</span>, <a class="code hl_struct" href="structLimef_1_1FrameFifoContext.html">FrameFifoContext</a>(<span class="keyword">false</span>, 5, 10));</div>
 <div class="line">exampleThread.start(); <span class="comment">// starts the thread &quot;backend&quot;</span></div>
@@ -444,7 +449,7 @@ template&lt;typename T &gt; </div>
 </div><div class="memdoc">
 <p>Virtual factory method for creating the fifo More flexible inheritance polymorphism: each <a class="el" href="classLimef_1_1thread_1_1Thread.html" title="A multithreading base class.">Thread</a> subclass can choose it's flavor of the <a class="el" href="classLimef_1_1FrameFifo.html" title="FrameFifo: a stack and a fifo.">FrameFifo</a>. Populates member variable framefifo. Defaults to vanilla <a class="el" href="classLimef_1_1FrameFifo.html" title="FrameFifo: a stack and a fifo.">FrameFifo</a>. Called at <a class="el" href="classLimef_1_1thread_1_1Thread.html#ae8ed08e6ad33bf44dcf1fe0dc7127925" title="sets up thread and starts mainLoop">start()</a>. </p>
 
-<p>Reimplemented in <a class="el" href="classLimef_1_1thread_1_1OrderedPacketBufferThread.html#a3c7ec13a1bd2d5be87fb4554669f4834">Limef::thread::OrderedPacketBufferThread</a>, <a class="el" href="classLimef_1_1thread_1_1PollThread.html#a5d56534be5e8b6a4b21a9ca4493e2c7f">Limef::thread::PollThread&lt; T &gt;</a>, <a class="el" href="classLimef_1_1thread_1_1PollThread.html#a5d56534be5e8b6a4b21a9ca4493e2c7f">Limef::thread::PollThread&lt; Limef::frame::PacketFrame &gt;</a>, and <a class="el" href="classLimef_1_1thread_1_1PollThread.html#a5d56534be5e8b6a4b21a9ca4493e2c7f">Limef::thread::PollThread&lt; Limef::frame::RTPPacketFrame &gt;</a>.</p>
+<p>Reimplemented in <a class="el" href="classLimef_1_1thread_1_1OrderedPacketBufferThread.html#a3c7ec13a1bd2d5be87fb4554669f4834">Limef::thread::OrderedPacketBufferThread</a>, <a class="el" href="classLimef_1_1thread_1_1PollThread.html#a5d56534be5e8b6a4b21a9ca4493e2c7f">Limef::thread::PollThread&lt; T &gt;</a>, <a class="el" href="classLimef_1_1thread_1_1PollThread.html#a5d56534be5e8b6a4b21a9ca4493e2c7f">Limef::thread::PollThread&lt; Limef::frame::PacketFrame &gt;</a>, <a class="el" href="classLimef_1_1thread_1_1PollThread.html#a5d56534be5e8b6a4b21a9ca4493e2c7f">Limef::thread::PollThread&lt; Limef::frame::RTPPacketFrame &gt;</a>, and <a class="el" href="classLimef_1_1thread_1_1TensorThread.html#adf07db1bbaf0efe1ff8054bde31779d5">Limef::thread::TensorThread</a>.</p>
 
 </div>
 </div>
@@ -506,7 +511,7 @@ template&lt;typename T &gt; </div>
 
 <p>Internal/backend method: starting point in processing all frames: uses processFrame and handleSignalFrame. Handles BasicSignalFrames. </p>
 
-<p>Reimplemented in <a class="el" href="classLimef_1_1thread_1_1WebSocketServerThread.html#a7108396801421399d6cf5db91cd40a4f">Limef::thread::WebSocketServerThread</a>.</p>
+<p>Reimplemented in <a class="el" href="classLimef_1_1thread_1_1WebSocketServerThread.html#a7108396801421399d6cf5db91cd40a4f">Limef::thread::WebSocketServerThread</a>, and <a class="el" href="classLimef_1_1thread_1_1PresenterThread.html#a3e33ae94d51de667bc54ae05e8afcaa3">Limef::thread::PresenterThread</a>.</p>
 
 </div>
 </div>
@@ -691,6 +696,37 @@ template&lt;typename T &gt; </div>
 
 </div>
 </div>
+<a id="af0e3b1bce401a7f877396146e8afb57d" name="af0e3b1bce401a7f877396146e8afb57d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af0e3b1bce401a7f877396146e8afb57d">&#9670;&#160;</a></span>isRunning()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="classLimef_1_1thread_1_1Thread.html">Limef::thread::Thread</a>&lt; T &gt;::isRunning </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>has the thread been started or not? </p>
+
+<p>Implements <a class="el" href="classLimef_1_1thread_1_1ThreadBase.html#a7f8dd4f1974b18674fa57b632b78b15d">Limef::thread::ThreadBase</a>.</p>
+
+</div>
+</div>
 <a id="a680faeb8334edf5bae064cdc3f2518c4" name="a680faeb8334edf5bae064cdc3f2518c4"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a680faeb8334edf5bae064cdc3f2518c4">&#9670;&#160;</a></span>isStarted()</h2>
 
@@ -836,7 +872,7 @@ template&lt;typename T &gt; </div>
 
 <p>Internal/backend method: executed immediately before the mainLoop exits. </p>
 
-<p>Reimplemented in <a class="el" href="classLimef_1_1rtsp_1_1RTSPServerThread.html#aad6934aca6ff1898f8d544fc97447587">Limef::rtsp::RTSPServerThread</a>, <a class="el" href="classLimef_1_1thread_1_1ConsumerThread.html#a341d09068c5e5f743170cbb4babe1673">Limef::thread::ConsumerThread</a>, <a class="el" href="classLimef_1_1thread_1_1LiveStreamThread.html#a3aedff985ecfc2875b738f291a1644a6">Limef::thread::LiveStreamThread</a>, <a class="el" href="classLimef_1_1thread_1_1MediaFileThread0.html#a5b7475fe7019ace8131c0fad7c7e15e2">Limef::thread::MediaFileThread0</a>, <a class="el" href="classLimef_1_1thread_1_1PacketBufferThread.html#a53a78e4de47988307042d16410e79b40">Limef::thread::PacketBufferThread</a>, <a class="el" href="classLimef_1_1thread_1_1ProducerThread.html#adb40edb4852788e387d83776d4faafb8">Limef::thread::ProducerThread</a>, <a class="el" href="classLimef_1_1thread_1_1USBCameraThread.html#aec1d31801a0de5a29dca8aa4b2bf39f3">Limef::thread::USBCameraThread</a>, and <a class="el" href="classLimef_1_1thread_1_1WebSocketServerThread.html#a13f1a644f14d4e77bd1371eeb8b12890">Limef::thread::WebSocketServerThread</a>.</p>
+<p>Reimplemented in <a class="el" href="classLimef_1_1rtsp_1_1RTSPServerThread.html#aad6934aca6ff1898f8d544fc97447587">Limef::rtsp::RTSPServerThread</a>, <a class="el" href="classLimef_1_1thread_1_1ConsumerThread.html#a341d09068c5e5f743170cbb4babe1673">Limef::thread::ConsumerThread</a>, <a class="el" href="classLimef_1_1thread_1_1EGLPresenterThread.html#af0ad774ab9859f1a0b829181cf6f6389">Limef::thread::EGLPresenterThread</a>, <a class="el" href="classLimef_1_1thread_1_1GLXPresenterThread.html#a1adcfac317ea7d63e6e39cd7f8f6f05b">Limef::thread::GLXPresenterThread</a>, <a class="el" href="classLimef_1_1thread_1_1LiveStreamThread.html#a3aedff985ecfc2875b738f291a1644a6">Limef::thread::LiveStreamThread</a>, <a class="el" href="classLimef_1_1thread_1_1MediaFileThread0.html#a5b7475fe7019ace8131c0fad7c7e15e2">Limef::thread::MediaFileThread0</a>, <a class="el" href="classLimef_1_1thread_1_1PacketBufferThread.html#a53a78e4de47988307042d16410e79b40">Limef::thread::PacketBufferThread</a>, <a class="el" href="classLimef_1_1thread_1_1PresenterThread.html#ab8b5198b4e07d5596d6be56bc4784475">Limef::thread::PresenterThread</a>, <a class="el" href="classLimef_1_1thread_1_1ProducerThread.html#adb40edb4852788e387d83776d4faafb8">Limef::thread::ProducerThread</a>, <a class="el" href="classLimef_1_1thread_1_1SDLVideoPresenterThread.html#abdd300eb0128c227be9d3843eee5339f">Limef::thread::SDLVideoPresenterThread</a>, <a class="el" href="classLimef_1_1thread_1_1USBCameraThread.html#aec1d31801a0de5a29dca8aa4b2bf39f3">Limef::thread::USBCameraThread</a>, and <a class="el" href="classLimef_1_1thread_1_1WebSocketServerThread.html#a13f1a644f14d4e77bd1371eeb8b12890">Limef::thread::WebSocketServerThread</a>.</p>
 
 </div>
 </div>
@@ -867,7 +903,7 @@ template&lt;typename T &gt; </div>
 
 <p>Internal/backend method: executed just before the mainLoop starts. </p>
 
-<p>Reimplemented in <a class="el" href="classLimef_1_1rtsp_1_1RTSPServerThread.html#ad262f124c112939da67a003bf5709351">Limef::rtsp::RTSPServerThread</a>, <a class="el" href="classLimef_1_1thread_1_1ConsumerThread.html#ac9ac8a5b0669adffee12b67f77fd682c">Limef::thread::ConsumerThread</a>, <a class="el" href="classLimef_1_1thread_1_1LiveStreamThread.html#a78c346292feefa40691fe0e5b6cc0d4a">Limef::thread::LiveStreamThread</a>, <a class="el" href="classLimef_1_1thread_1_1MediaFileThread0.html#a232adc0d44326dc744c060a5e0fbc765">Limef::thread::MediaFileThread0</a>, <a class="el" href="classLimef_1_1thread_1_1PacketBufferThread.html#aef030debe274412f2aec235ce5716aae">Limef::thread::PacketBufferThread</a>, <a class="el" href="classLimef_1_1thread_1_1ProducerThread.html#a277712e2f732a4750605096461e5f889">Limef::thread::ProducerThread</a>, and <a class="el" href="classLimef_1_1thread_1_1USBCameraThread.html#a27b206e8dae2cc5e8ea7ffba1c0b9d1a">Limef::thread::USBCameraThread</a>.</p>
+<p>Reimplemented in <a class="el" href="classLimef_1_1rtsp_1_1RTSPServerThread.html#ad262f124c112939da67a003bf5709351">Limef::rtsp::RTSPServerThread</a>, <a class="el" href="classLimef_1_1thread_1_1ConsumerThread.html#ac9ac8a5b0669adffee12b67f77fd682c">Limef::thread::ConsumerThread</a>, <a class="el" href="classLimef_1_1thread_1_1EGLPresenterThread.html#a07ed09364085fd5eb33a5d63681f5b08">Limef::thread::EGLPresenterThread</a>, <a class="el" href="classLimef_1_1thread_1_1GLXPresenterThread.html#aa754868947eade05be8fe1fb9bdb707c">Limef::thread::GLXPresenterThread</a>, <a class="el" href="classLimef_1_1thread_1_1LiveStreamThread.html#a78c346292feefa40691fe0e5b6cc0d4a">Limef::thread::LiveStreamThread</a>, <a class="el" href="classLimef_1_1thread_1_1MediaFileThread0.html#a232adc0d44326dc744c060a5e0fbc765">Limef::thread::MediaFileThread0</a>, <a class="el" href="classLimef_1_1thread_1_1PacketBufferThread.html#aef030debe274412f2aec235ce5716aae">Limef::thread::PacketBufferThread</a>, <a class="el" href="classLimef_1_1thread_1_1ProducerThread.html#a277712e2f732a4750605096461e5f889">Limef::thread::ProducerThread</a>, <a class="el" href="classLimef_1_1thread_1_1SDLVideoPresenterThread.html#a2d26d639d04babb752979558407dfdd4">Limef::thread::SDLVideoPresenterThread</a>, and <a class="el" href="classLimef_1_1thread_1_1USBCameraThread.html#a27b206e8dae2cc5e8ea7ffba1c0b9d1a">Limef::thread::USBCameraThread</a>.</p>
 
 </div>
 </div>
@@ -899,7 +935,7 @@ template&lt;typename T &gt; </div>
 
 <p>Internal/backend method: processes frames belonging to the special template class T. </p>
 
-<p>Reimplemented in <a class="el" href="classLimef_1_1rtsp_1_1RTSPServerThread.html#ab534b87586b1e79db1545b6647d7c534">Limef::rtsp::RTSPServerThread</a>, <a class="el" href="classLimef_1_1thread_1_1ConsumerThread.html#aa11236346432af2004abf4d9e37764f6">Limef::thread::ConsumerThread</a>, <a class="el" href="classLimef_1_1thread_1_1ExampleThread.html#ab8ae84985e586d367c3ae5dee1e0db10">Limef::thread::ExampleThread</a>, <a class="el" href="classLimef_1_1thread_1_1PacketBufferThread.html#a133fed9255cd93a15c0278d9bcd6500f">Limef::thread::PacketBufferThread</a>, <a class="el" href="classLimef_1_1thread_1_1ExamplePollThread.html#acb833c33f72bb1800dd5a2f9e6ce6f39">Limef::thread::ExamplePollThread</a>, <a class="el" href="classLimef_1_1thread_1_1ProducerThread.html#afc4f40b0eb31fdcc42dab6ad4a71e5c1">Limef::thread::ProducerThread</a>, and <a class="el" href="classLimef_1_1thread_1_1WebSocketServerThread.html#af9b2c3388de94eeb26a612da4a0723fb">Limef::thread::WebSocketServerThread</a>.</p>
+<p>Reimplemented in <a class="el" href="classLimef_1_1rtsp_1_1RTSPServerThread.html#ab534b87586b1e79db1545b6647d7c534">Limef::rtsp::RTSPServerThread</a>, <a class="el" href="classLimef_1_1thread_1_1ConsumerThread.html#aa11236346432af2004abf4d9e37764f6">Limef::thread::ConsumerThread</a>, <a class="el" href="classLimef_1_1thread_1_1ExampleThread.html#ab8ae84985e586d367c3ae5dee1e0db10">Limef::thread::ExampleThread</a>, <a class="el" href="classLimef_1_1thread_1_1PacketBufferThread.html#a133fed9255cd93a15c0278d9bcd6500f">Limef::thread::PacketBufferThread</a>, <a class="el" href="classLimef_1_1thread_1_1ExamplePollThread.html#acb833c33f72bb1800dd5a2f9e6ce6f39">Limef::thread::ExamplePollThread</a>, <a class="el" href="classLimef_1_1thread_1_1ProducerThread.html#afc4f40b0eb31fdcc42dab6ad4a71e5c1">Limef::thread::ProducerThread</a>, <a class="el" href="classLimef_1_1thread_1_1TensorThread.html#a825817a02c0890007f9966a721d0bd14">Limef::thread::TensorThread</a>, and <a class="el" href="classLimef_1_1thread_1_1WebSocketServerThread.html#af9b2c3388de94eeb26a612da4a0723fb">Limef::thread::WebSocketServerThread</a>.</p>
 
 </div>
 </div>
@@ -954,7 +990,7 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>has the thread been started or not? </p>
+<p>true while <a class="el" href="classLimef_1_1thread_1_1Thread.html#a68b383b869edf65ee86f8d57cb261508" title="Threads main functionality. Uses preRun, postRun, processFrame, frameTask and task.">mainLoop()</a> is executing </p>
 <p>request thread termination </p>
 
 <p>Implements <a class="el" href="classLimef_1_1thread_1_1ThreadBase.html#aae19d54a75ec24691cbb16d9b87039fc">Limef::thread::ThreadBase</a>.</p>
@@ -1202,7 +1238,7 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>combined <a class="el" href="classLimef_1_1thread_1_1Thread.html#af8b77ceb90bd5b244a77c9c98679d363" title="has the thread been started or not?">requestStop()</a> and <a class="el" href="classLimef_1_1thread_1_1Thread.html#a1425dd0dba2d54bbbcdc0f8376e1bbeb" title="wait for thread termination">waitStop()</a> </p>
+<p>combined <a class="el" href="classLimef_1_1thread_1_1Thread.html#af8b77ceb90bd5b244a77c9c98679d363" title="true while mainLoop() is executing">requestStop()</a> and <a class="el" href="classLimef_1_1thread_1_1Thread.html#a1425dd0dba2d54bbbcdc0f8376e1bbeb" title="wait for thread termination">waitStop()</a> </p>
 
 <p>Implements <a class="el" href="classLimef_1_1thread_1_1ThreadBase.html#a1a5f923437e076826831be45775b64c2">Limef::thread::ThreadBase</a>.</p>
 
@@ -1235,7 +1271,7 @@ template&lt;typename T &gt; </div>
 
 <p>Internal/backend method: a periodic task done by the thread (in addition to receiving frames) </p>
 
-<p>Reimplemented in <a class="el" href="classLimef_1_1thread_1_1ExampleThread.html#ae6b6fba7aee10342e91173a7e728df8d">Limef::thread::ExampleThread</a>, <a class="el" href="classLimef_1_1thread_1_1LiveStreamThread.html#a07efdd89b38d640c669577c6004b278a">Limef::thread::LiveStreamThread</a>, <a class="el" href="classLimef_1_1thread_1_1MediaFileThread0.html#aa031ebfa1fb2021772abed48e5f4928c">Limef::thread::MediaFileThread0</a>, <a class="el" href="classLimef_1_1thread_1_1PacketBufferThread.html#ab60e4505e2639c3a0b188dae95b35c9b">Limef::thread::PacketBufferThread</a>, <a class="el" href="classLimef_1_1thread_1_1ExamplePollThread.html#aa504821f12d017ce57128a25aac06957">Limef::thread::ExamplePollThread</a>, <a class="el" href="classLimef_1_1thread_1_1ProducerThread.html#a288cab0b3e85f9a1eee0f9599ebc1f17">Limef::thread::ProducerThread</a>, <a class="el" href="classLimef_1_1thread_1_1USBCameraThread.html#a8ce64d313e1e1f3abdcb6af39ac778c7">Limef::thread::USBCameraThread</a>, and <a class="el" href="classLimef_1_1thread_1_1WebSocketServerThread.html#ab37ebb74fe1b52580a97cd8cc8d4b609">Limef::thread::WebSocketServerThread</a>.</p>
+<p>Reimplemented in <a class="el" href="classLimef_1_1thread_1_1EGLPresenterThread.html#adfc030686684a7ce8621236f3a30df32">Limef::thread::EGLPresenterThread</a>, <a class="el" href="classLimef_1_1thread_1_1ExampleThread.html#ae6b6fba7aee10342e91173a7e728df8d">Limef::thread::ExampleThread</a>, <a class="el" href="classLimef_1_1thread_1_1GLXPresenterThread.html#a7f24fcb038804e9f4346214170ed0f83">Limef::thread::GLXPresenterThread</a>, <a class="el" href="classLimef_1_1thread_1_1LiveStreamThread.html#a07efdd89b38d640c669577c6004b278a">Limef::thread::LiveStreamThread</a>, <a class="el" href="classLimef_1_1thread_1_1MediaFileThread0.html#aa031ebfa1fb2021772abed48e5f4928c">Limef::thread::MediaFileThread0</a>, <a class="el" href="classLimef_1_1thread_1_1PacketBufferThread.html#ab60e4505e2639c3a0b188dae95b35c9b">Limef::thread::PacketBufferThread</a>, <a class="el" href="classLimef_1_1thread_1_1ExamplePollThread.html#aa504821f12d017ce57128a25aac06957">Limef::thread::ExamplePollThread</a>, <a class="el" href="classLimef_1_1thread_1_1PresenterThread.html#a6219ccf2dede4216a0882774eafd210a">Limef::thread::PresenterThread</a>, <a class="el" href="classLimef_1_1thread_1_1ProducerThread.html#a288cab0b3e85f9a1eee0f9599ebc1f17">Limef::thread::ProducerThread</a>, <a class="el" href="classLimef_1_1thread_1_1SDLVideoPresenterThread.html#a00055db75baf1cd4e89377c2d20356b7">Limef::thread::SDLVideoPresenterThread</a>, <a class="el" href="classLimef_1_1thread_1_1USBCameraThread.html#a8ce64d313e1e1f3abdcb6af39ac778c7">Limef::thread::USBCameraThread</a>, and <a class="el" href="classLimef_1_1thread_1_1WebSocketServerThread.html#ab37ebb74fe1b52580a97cd8cc8d4b609">Limef::thread::WebSocketServerThread</a>.</p>
 
 </div>
 </div>
@@ -1420,6 +1456,30 @@ template&lt;typename T &gt; </div>
 </div><div class="memdoc">
 
 <p>The output framefilter for this thread. </p>
+
+</div>
+</div>
+<a id="a6c9a250e57ccbe5aa94a21e8d466a0f9" name="a6c9a250e57ccbe5aa94a21e8d466a0f9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6c9a250e57ccbe5aa94a21e8d466a0f9">&#9670;&#160;</a></span>running_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::atomic&lt;bool&gt; <a class="el" href="classLimef_1_1thread_1_1Thread.html">Limef::thread::Thread</a>&lt; T &gt;::running_ {false}</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
 
 </div>
 </div>

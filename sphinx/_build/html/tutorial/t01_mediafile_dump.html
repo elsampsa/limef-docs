@@ -282,9 +282,15 @@
 <p>In this first tutorial we build the simplest possible Limef pipeline:</p>
 <pre  class="mermaid">
         flowchart TD
-    src[&quot;MediaFileThread&quot;]
-    dump[&quot;DumpFrameFilter&quot;]
-    src --&gt; dump
+    src[MediaFileTR]
+    dump(DumpFF)
+
+    src --- dump
+
+    classDef thread fill:#4a90d9,stroke:#2c5f8a,color:#fff
+    classDef ff     fill:#5ba85a,stroke:#3d6e3d,color:#fff
+    class src thread
+    class dump ff
     </pre><p><a class="reference internal" href="../api/threads.html#_CPPv4N5Limef6thread15MediaFileThreadE" title="Limef::thread::MediaFileThread"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">Limef::thread::MediaFileThread</span></code></a> reads a media file and pushes encoded
 <a class="reference internal" href="../api/frames.html#_CPPv4N5Limef5frame11PacketFrameE" title="Limef::frame::PacketFrame"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">Limef::frame::PacketFrame</span></code></a>s downstream.
 <a class="reference internal" href="../api/framefilters.html#_CPPv4N5Limef2ff15DumpFrameFilterE" title="Limef::ff::DumpFrameFilter"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">Limef::ff::DumpFrameFilter</span></code></a> prints a one-line description of every

@@ -86,11 +86,11 @@ $(function() {
 <dl class="section date"><dt>Date</dt><dd>2025 </dd></dl>
 <dl class="section version"><dt>Version</dt><dd>1.6.1</dd></dl>
 <p>Both filters are only available when LIMEF_CUDA is defined.</p>
-<h2><a class="anchor" id="autotoc_md30"></a>
+<h2><a class="anchor" id="autotoc_md36"></a>
 When to use these vs TensorFrameFifo</h2>
 <p>TensorFrameFifo with <code>gpu_target=CUDA</code> or <code>gpu_target=SW</code> performs the same H2D / D2H transfer at the thread boundary in a single copy — the preferred approach whenever a thread boundary already exists.</p>
 <p>Use these filters when you need an explicit mid-chain transfer <em>without</em> a thread boundary (e.g. upload once, then fan out to multiple GPU consumers via a SplitFrameFilter).</p>
-<h2><a class="anchor" id="autotoc_md31"></a>
+<h2><a class="anchor" id="autotoc_md37"></a>
 Pass-through rules</h2>
 <ul>
 <li>Non-TensorFrame frames always pass through unchanged.</li>

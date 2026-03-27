@@ -85,13 +85,13 @@ $(function() {
 <dl class="section author"><dt>Author</dt><dd>Sampsa Riikonen </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>2025 </dd></dl>
 <dl class="section version"><dt>Version</dt><dd>1.6.1</dd></dl>
-<h2><a class="anchor" id="autotoc_md14"></a>
+<h2><a class="anchor" id="autotoc_md15"></a>
 Expected input</h2>
 <p>DecodedFrame with <code>av-&gt;format == AV_PIX_FMT_CUDA</code> and a software format of <code>AV_PIX_FMT_NV12</code> in <code>hw_frames_ctx</code> — i.e. frames produced by NVDEC. Any other format is rejected with a one-time error log and the converter deactivates (same behaviour as the CPU converters).</p>
-<h2><a class="anchor" id="autotoc_md15"></a>
+<h2><a class="anchor" id="autotoc_md16"></a>
 Output</h2>
 <p>TensorFrame with one GPU plane, shape <code>(3, H, W)</code>, dtype UInt8. The kernel converts NV12 → planar RGB or BGR directly on the GPU — no CPU involvement and no intermediate packed buffer.</p>
-<h2><a class="anchor" id="autotoc_md16"></a>
+<h2><a class="anchor" id="autotoc_md17"></a>
 Split .cu / .cpp</h2>
 <p>The CUDA kernel and its launcher live in <code>decoded_to_tensor_cuda.cu</code> (compiled by nvcc, no spdlog). The converter class lives in <code><a class="el" href="decoded__to__tensor__cuda_8cpp.html" title="CudaNV12Converter::convert() — compiled by g++, may use spdlog / FFmpeg.">decoded_to_tensor_cuda.cpp</a></code> (compiled by g++, may use spdlog / FFmpeg headers). </p>
 </div></div><!-- contents -->

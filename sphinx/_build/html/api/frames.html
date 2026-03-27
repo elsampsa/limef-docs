@@ -852,6 +852,26 @@ The base class is <a class="reference internal" href="#_CPPv4N5Limef5frame5Frame
 </dd></dl>
 
 <dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK5Limef5frame12DecodedFrame12getCPUFormatEv">
+<span id="_CPPv3NK5Limef5frame12DecodedFrame12getCPUFormatEv"></span><span id="_CPPv2NK5Limef5frame12DecodedFrame12getCPUFormatEv"></span><span id="Limef::frame::DecodedFrame::getCPUFormatC"></span><span class="target" id="classLimef_1_1frame_1_1DecodedFrame_1a9b8de489f4014a9566fa78cf670e1e4c"></span><span class="n"><span class="pre">AVPixelFormat</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getCPUFormat</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK5Limef5frame12DecodedFrame12getCPUFormatEv" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Get the pixel format of the CPU-accessible data. </p>
+<p>For CPU frames returns the frame’s own format (e.g. AV_PIX_FMT_YUV420P). For GPU frames (VAAPI, CUDA) returns the format of the downloaded CPU cache (e.g. AV_PIX_FMT_NV12 for VAAPI, AV_PIX_FMT_NV12 for NVDEC). Returns AV_PIX_FMT_NONE if the frame is unavailable or the download fails.</p>
+<p>Always call materializeToCPU() or getCPUData() first for GPU frames. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK5Limef5frame12DecodedFrame14getCPULinesizeEi">
+<span id="_CPPv3NK5Limef5frame12DecodedFrame14getCPULinesizeEi"></span><span id="_CPPv2NK5Limef5frame12DecodedFrame14getCPULinesizeEi"></span><span id="Limef::frame::DecodedFrame::getCPULinesize__iC"></span><span class="target" id="classLimef_1_1frame_1_1DecodedFrame_1a81d3cc3f95397a7745fed521b64f86ff"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getCPULinesize</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">plane</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK5Limef5frame12DecodedFrame14getCPULinesizeEi" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Get the row stride for a CPU-accessible plane. </p>
+<p>Mirrors getCPUData(): for CPU frames returns the AVFrame linesize directly; for GPU frames triggers a download and returns the cache’s linesize. Returns 0 if the plane is unavailable or the download fails.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>plane</strong> – Plane index (0=Y, 1=U, 2=V for YUV) </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N5Limef5frame12DecodedFrame16materializeToCPUEv">
 <span id="_CPPv3N5Limef5frame12DecodedFrame16materializeToCPUEv"></span><span id="_CPPv2N5Limef5frame12DecodedFrame16materializeToCPUEv"></span><span id="Limef::frame::DecodedFrame::materializeToCPU"></span><span class="target" id="classLimef_1_1frame_1_1DecodedFrame_1aed6048a8e2c1586de33831734ea11f97"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">materializeToCPU</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5Limef5frame12DecodedFrame16materializeToCPUEv" title="Link to this definition">¶</a><br /></dt>
 <dd><p>Explicitly copy frame data from GPU to CPU. </p>
@@ -1984,7 +2004,7 @@ Writes all data it can - the return value indicates the number of bytes that wou
 <li><p>EncodingFrameFilter expects StreamFrame (raw/decoded stream)</p></li>
 </ul>
 </p>
-<p>Internally uses the same AVFormatContext/AVStream mechanism as CodecFrame, but the codec_id will typically be AV_CODEC_ID_RAWVIDEO or AV_CODEC_ID_PCM_*. </p>
+<p>Internally uses the same AVFormatContext/AVStream mechanism as CodecFrame, but the codec_id will typically be AV_CODEC_ID_RAWVIDEO or AV_CODEC_ID_PCM_*.</p>
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
 <dl class="cpp function">
@@ -2239,6 +2259,8 @@ Writes all data it can - the return value indicates the number of bytes that wou
 <li><a class="reference internal" href="#_CPPv4N5Limef5frame12DecodedFrame15setTargetHWPoolEP11AVBufferRef"><code class="docutils literal notranslate"><span class="pre">setTargetHWPool()</span></code></a></li>
 <li><a class="reference internal" href="#_CPPv4NK5Limef5frame12DecodedFrame15getTargetHWPoolEv"><code class="docutils literal notranslate"><span class="pre">getTargetHWPool()</span></code></a></li>
 <li><a class="reference internal" href="#_CPPv4NK5Limef5frame12DecodedFrame10getCPUDataEi"><code class="docutils literal notranslate"><span class="pre">getCPUData()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4NK5Limef5frame12DecodedFrame12getCPUFormatEv"><code class="docutils literal notranslate"><span class="pre">getCPUFormat()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4NK5Limef5frame12DecodedFrame14getCPULinesizeEi"><code class="docutils literal notranslate"><span class="pre">getCPULinesize()</span></code></a></li>
 <li><a class="reference internal" href="#_CPPv4N5Limef5frame12DecodedFrame16materializeToCPUEv"><code class="docutils literal notranslate"><span class="pre">materializeToCPU()</span></code></a></li>
 <li><a class="reference internal" href="#_CPPv4NK5Limef5frame12DecodedFrame13getSampleRateEv"><code class="docutils literal notranslate"><span class="pre">getSampleRate()</span></code></a></li>
 <li><a class="reference internal" href="#_CPPv4NK5Limef5frame12DecodedFrame16getChannelLayoutEv"><code class="docutils literal notranslate"><span class="pre">getChannelLayout()</span></code></a></li>

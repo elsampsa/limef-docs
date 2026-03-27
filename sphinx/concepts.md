@@ -118,6 +118,54 @@ Almost any kind of information flows in a filterchain.  Data frames
 media payload, while {cpp:class}`Limef::frame::SignalFrame` carries control commands (start, stop,
 flush, parameter changes) — all through the same `go()` call, no separate control bus needed.
 
+### Diagram notation
+
+Diagrams follow these conventions:
+
+- **Thread** — rectangle `[Name]`, abbreviated `...TR`.
+  Incoming edge uses an arrow (`-->`) to mark the thread boundary: the frame is copied into a FrameFifo before the thread processes it.
+- **FrameFilter** — rounded rectangle `(Name)`, abbreviated `...FF`.
+  Incoming edge uses a plain line (`---`) to show synchronous, same-chain forwarding — no copy, no boundary.
+- **Block** — subroutine box `[[Name]]`.
+  Always uses an arrow on incoming edges since blocks always contain internal threads.
+
+```{mermaid}
+flowchart LR
+    ff1(UpstreamFF) --- ff2(AnotherFF) --> thr[ConsumerTR]
+
+    classDef thread fill:#4a90d9,stroke:#2c5f8a,color:#fff
+    classDef ff     fill:#5ba85a,stroke:#3d6e3d,color:#fff
+    class thr thread
+    class ff1,ff2 ff
+```
+
+FF→FF: no arrow (same chain).  FF→Thread: arrow (FrameFifo boundary).
+
+### YAML declarations
+
+Pipelines can be described in YAML.  Inline nesting reflects the filterchain topology directly — each node's downstream is nested under its `connect:` key:
+
+```yaml
+source:              # top-level named node
+    class: MediaFileThread
+    connect:
+        split:       # inline anonymous node, nested under source
+            class: SplitFrameFilter
+            connect:
+                decode:
+                    class: DecodingFrameFilter
+                    connect:
+                        analyzer:
+                            class: DumpFrameFilter
+                muxer:       # second branch of the split
+                    class: MuxerFrameFilter
+```
+
+`connect:` reference rules:
+- **bare name** → top-level named node: `connect: encoderblock`
+- **`./name`** → sibling member within the same block: `connect: ./cuda2dec`
+- **`../name`** → sibling of the parent (one level up): `connect: ../output`  *(used from inside switch branches)*
+
 ### A complete example
 
 Encoded frames (H265) come from a file-reading thread.  The stream is forked: one branch is
@@ -125,15 +173,21 @@ decoded for analysis, the other goes to a muxer.
 
 ```{mermaid}
 flowchart TD
-    src["MediaFileThread"]
-    split["SplitFrameFilter"]
-    decode["DecodingFrameFilter"]
-    analyze["analysis filterchain"]
-    mux["MuxerFrameFilter"]
+    src[MediaFileTR]
+    split(SplitFF)
+    decode(DecodingFF)
+    analyze(DumpFF)
+    mux(MuxerFF)
 
-    src --> split
-    split --> decode --> analyze
-    split --> mux
+    src --- split
+    split --- decode
+    decode --- analyze
+    split --- mux
+
+    classDef thread fill:#4a90d9,stroke:#2c5f8a,color:#fff
+    classDef ff     fill:#5ba85a,stroke:#3d6e3d,color:#fff
+    class src thread
+    class split,decode,analyze,mux ff
 ```
 
 In C++:
@@ -152,27 +206,6 @@ MediaFileThread source("source", media_ctx);
 source.getOutput().cc(split);
 
 source.start();
-```
-
-As YAML:
-
-```yaml
-source:
-    class: MediaFileThread
-    connect: split
-
-split:
-    class: SplitFrameFilter
-    connect:
-        - decode
-        - muxer
-
-decode:
-    class: DecodingFrameFilter
-    connect: analyzer
-
-muxer:
-    class: MuxerFrameFilter
 ```
 
 For a deeper look at how threads and framefifos work under the hood, see {doc}`under_the_hood`.

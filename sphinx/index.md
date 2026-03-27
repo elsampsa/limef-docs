@@ -21,17 +21,33 @@ serve the modified video stream through an RTSP server for transmission LAN.  Th
 
 ```{mermaid}
 flowchart TD
-    cam["USBCameraThread"]
-    upload["UploadGPUFrameFilter"]
-    d2t["DecodedToTensorFrameFilter"]
-    py["TensorPythonInterface"]
-    t2d["TensorToDecodedFrameFilter"]
-    enc["EncodingFrameFilter"]
-    rtp["RTPMuxerFrameFilter"]
-    rtsp["RTSPServerThread"]
+    camtr[USBCameraTR]
+    uploadff(UploadGPUFF)
+    d2t(Dec2TensorFF)
+    pyif[TensorPythonInterface]
+    t2d(Tensor2DecFF)
+    encff(EncFF)
+    rtpmux(RTPMuxerFF)
+    rtsptr[RTSPServerTR]
 
-    cam --> upload --> d2t --> py --> t2d --> enc --> rtp --> rtsp
+    camtr --- uploadff
+    uploadff --- d2t
+    d2t -->|TensorFrame CUDA| pyif
+    pyif --- t2d
+    t2d --- encff
+    encff --- rtpmux
+    rtpmux --> rtsptr
+
+    classDef thread fill:#4a90d9,stroke:#2c5f8a,color:#fff
+    classDef pytr   fill:#7b5ea7,stroke:#4a3570,color:#fff
+    classDef ff     fill:#5ba85a,stroke:#3d6e3d,color:#fff
+    class camtr,rtsptr thread
+    class pyif pytr
+    class uploadff,d2t,t2d,encff,rtpmux ff
 ```
+We could also fork that pipeline from any node: think of writing the stream to disk, sending it to various machine vision processes, etc.
+
+For more complex pipelines, please take a look at the [python example apps](https://github.com/elsampsa/limef-apps/tree/master/python).
 
 Some Limef features:
 

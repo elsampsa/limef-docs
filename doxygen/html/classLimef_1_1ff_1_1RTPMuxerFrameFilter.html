@@ -199,7 +199,7 @@ Additional Inherited Members</h2></td></tr>
 <div class="line"><span class="comment">// Then send packets - RTPPacketFrames will be passed downstream</span></div>
 <div class="line">rtp_muxer.go(&amp;packet_frame);</div>
 </div><!-- fragment --><p>The RTP muxer uses FFmpeg's RTP format. Each track gets its own AVFormatContext because RTP only supports one stream per context. SDP is generated from all tracks using av_sdp_create().</p>
-<h2><a class="anchor" id="autotoc_md20"></a>
+<h2><a class="anchor" id="autotoc_md22"></a>
 Codec Compatibility</h2>
 <p>Best supported combinations for wide client compatibility:</p>
 <table class="markdownTable">

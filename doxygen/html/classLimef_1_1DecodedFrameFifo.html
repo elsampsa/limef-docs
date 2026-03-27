@@ -173,7 +173,7 @@ Additional Inherited Members</h2></td></tr>
 <li>GPU frames on different device: GPU→CPU→GPU transfer (with warning)</li>
 </ul>
 <p>Pool creation is lazy - happens on first frame with matching dimensions. Resolution changes trigger pool recreation.</p>
-<h2><a class="anchor" id="autotoc_md6"></a>
+<h2><a class="anchor" id="autotoc_md7"></a>
 GPU Surface Lifecycle in the Stack</h2>
 <p>When <a class="el" href="classLimef_1_1FrameFifo.html#a914a43cab1194cdec1d8aef3e9c1eaeb">recycle()</a> returns a DecodedFrame to the stack, the GPU surface inside it is <b>not</b> immediately released. It stays allocated until the frame is reused by <a class="el" href="classLimef_1_1DecodedFrameFifo.html#a3e2e16dad17a656b231f6d5cd3e9a099" title="Copy frame into fifo with GPU pool management.">writeCopy()</a>, at which point updateFrom() unrefs the old AVFrame data — returning the surface to this fifo's hw_frames_ctx pool. This "lazy release" is intentional: it avoids unnecessary alloc/free cycles and matches how CPU frame buffers are reused. The hw_frames_ctx pool (initial_pool_size) should be sized to accommodate both in-flight fifo frames and parked stack frames. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>

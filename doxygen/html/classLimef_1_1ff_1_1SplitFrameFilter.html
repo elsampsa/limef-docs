@@ -112,6 +112,9 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a1c0e220221da42889988a2b29a9a94bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a66d99a4bb875dc9f8225a3a49c50b42a" id="r_a66d99a4bb875dc9f8225a3a49c50b42a"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1ff_1_1SplitFrameFilter.html#a66d99a4bb875dc9f8225a3a49c50b42a">~SplitFrameFilter</a> ()=default</td></tr>
 <tr class="separator:a66d99a4bb875dc9f8225a3a49c50b42a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a34592782f1de0f5bac86d0ca2bc6e9a2" id="r_a34592782f1de0f5bac86d0ca2bc6e9a2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1ff_1_1SplitFrameFilter.html#a34592782f1de0f5bac86d0ca2bc6e9a2">go</a> (const <a class="el" href="classLimef_1_1frame_1_1Frame.html">Limef::frame::Frame</a> *frame) override</td></tr>
+<tr class="memdesc:a34592782f1de0f5bac86d0ca2bc6e9a2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implementation of the framefilter action.  <br /></td></tr>
+<tr class="separator:a34592782f1de0f5bac86d0ca2bc6e9a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad504d2daf5995282383a124112d75658" id="r_ad504d2daf5995282383a124112d75658"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1ff_1_1SplitFrameFilter.html#ad504d2daf5995282383a124112d75658">pass</a> (const <a class="el" href="classLimef_1_1frame_1_1Frame.html">Limef::frame::Frame</a> *frame) final</td></tr>
 <tr class="memdesc:ad504d2daf5995282383a124112d75658"><td class="mdescLeft">&#160;</td><td class="mdescRight">Define how frames are passed downstream.  <br /></td></tr>
 <tr class="separator:ad504d2daf5995282383a124112d75658"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -147,9 +150,6 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a3649ef2a2902c4cec33e032727ec4e84 inherit pub_methods_classLimef_1_1ff_1_1FrameFilter" id="r_a3649ef2a2902c4cec33e032727ec4e84"><td class="memItemLeft" align="right" valign="top">const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1ff_1_1FrameFilter.html#a3649ef2a2902c4cec33e032727ec4e84">getName</a> () const</td></tr>
 <tr class="memdesc:a3649ef2a2902c4cec33e032727ec4e84 inherit pub_methods_classLimef_1_1ff_1_1FrameFilter"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize framefilter.  <br /></td></tr>
 <tr class="separator:a3649ef2a2902c4cec33e032727ec4e84 inherit pub_methods_classLimef_1_1ff_1_1FrameFilter"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a107bea7552dd3c27bd1b324466ced0a3 inherit pub_methods_classLimef_1_1ff_1_1FrameFilter" id="r_a107bea7552dd3c27bd1b324466ced0a3"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1ff_1_1FrameFilter.html#a107bea7552dd3c27bd1b324466ced0a3">go</a> (const <a class="el" href="classLimef_1_1frame_1_1Frame.html">Limef::frame::Frame</a> *frame)=0</td></tr>
-<tr class="memdesc:a107bea7552dd3c27bd1b324466ced0a3 inherit pub_methods_classLimef_1_1ff_1_1FrameFilter"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implementation of the framefilter action.  <br /></td></tr>
-<tr class="separator:a107bea7552dd3c27bd1b324466ced0a3 inherit pub_methods_classLimef_1_1ff_1_1FrameFilter"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
@@ -347,6 +347,38 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+</div>
+</div>
+<a id="a34592782f1de0f5bac86d0ca2bc6e9a2" name="a34592782f1de0f5bac86d0ca2bc6e9a2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a34592782f1de0f5bac86d0ca2bc6e9a2">&#9670;&#160;</a></span>go()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Limef::ff::SplitFrameFilter::go </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classLimef_1_1frame_1_1Frame.html">Limef::frame::Frame</a> *&#160;</td>
+          <td class="paramname"><em>frame</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Implementation of the framefilter action. </p>
+<p>Uses <code>Limef::ff:FrameFilter::pass</code> to pass frames downstream.</p>
+<p>The framefilter ensures that the frame is not modified. If it needs a modified frame it has to take an internal copy of the frame first. </p>
+
+<p>Implements <a class="el" href="classLimef_1_1ff_1_1FrameFilter.html#a107bea7552dd3c27bd1b324466ced0a3">Limef::ff::FrameFilter</a>.</p>
 
 </div>
 </div>

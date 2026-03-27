@@ -11,5 +11,6 @@ var searchData=
   ['rtcp_5fchannel_8',['rtcp_channel',['../structLimef_1_1rtsp_1_1ClientTrack.html#a8c24d1ab035600e3c9e8a6e8536f29c8',1,'Limef::rtsp::ClientTrack']]],
   ['rtp_5fchannel_9',['rtp_channel',['../structLimef_1_1rtsp_1_1ClientTrack.html#a11d451fdbdccd85042a7d25474b69266',1,'Limef::rtsp::ClientTrack']]],
   ['rtp_5fnopts_5fvalue_10',['RTP_NOPTS_VALUE',['../namespaceLimef_1_1frame.html#acedac4f711f60935e74c8bfef8c910ba',1,'Limef::frame']]],
-  ['rtsp_5ftransport_11',['rtsp_transport',['../structLimef_1_1thread_1_1LiveStreamContext.html#a0e3538f69481c8a3570f47f34e633a3c',1,'Limef::thread::LiveStreamContext']]]
+  ['rtsp_5ftransport_11',['rtsp_transport',['../structLimef_1_1thread_1_1LiveStreamContext.html#a0e3538f69481c8a3570f47f34e633a3c',1,'Limef::thread::LiveStreamContext']]],
+  ['running_5f_12',['running_',['../classLimef_1_1thread_1_1Thread.html#a6c9a250e57ccbe5aa94a21e8d466a0f9',1,'Limef::thread::Thread']]]
 ];

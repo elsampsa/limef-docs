@@ -25,13 +25,14 @@ var searchData=
   ['uploadgpuparams_22',['uploadgpuparams',['../structLimef_1_1ff_1_1UploadGPUParams.html',1,'Limef::ff::UploadGPUParams'],['../structLimef_1_1ff_1_1UploadGPUParams.html#ac017e9393e97f770225d08ce5db148b6',1,'Limef::ff::UploadGPUParams::UploadGPUParams()=default'],['../structLimef_1_1ff_1_1UploadGPUParams.html#a90d1b5b952de5b735a275c54d3b49033',1,'Limef::ff::UploadGPUParams::UploadGPUParams(HWAccel accel)']]],
   ['url_23',['url',['../structLimef_1_1rtsp_1_1Request.html#ac813db22db9bf6900448f356ace355fe',1,'Limef::rtsp::Request::url'],['../structLimef_1_1thread_1_1LiveStreamContext.html#a075083aca8e3c5d798cbc6e092a1e826',1,'Limef::thread::LiveStreamContext::url']]],
   ['url_5ftail_24',['url_tail',['../structLimef_1_1rtsp_1_1RTPStream.html#aca5489110d657c1a619473d03b2130bc',1,'Limef::rtsp::RTPStream']]],
-  ['usage_25',['usage',['../classLimef_1_1thread_1_1USBCameraThread.html#autotoc_md51',1,'Example Usage'],['../classLimef_1_1ff_1_1UploadGPUFrameFilter.html#autotoc_md39',1,'Example Usage'],['../decoded__to__tensor__cpu_8h.html#autotoc_md11',1,'Expected usage']]],
-  ['usage_20example_26',['thread usage example',['../classLimef_1_1thread_1_1Thread.html#autotoc_md44',1,'']]],
+  ['usage_25',['usage',['../classLimef_1_1thread_1_1USBCameraThread.html#autotoc_md64',1,'Example Usage'],['../classLimef_1_1ff_1_1UploadGPUFrameFilter.html#autotoc_md45',1,'Example Usage'],['../decoded__to__tensor__cpu_8h.html#autotoc_md12',1,'Expected usage']]],
+  ['usage_20example_26',['thread usage example',['../classLimef_1_1thread_1_1Thread.html#autotoc_md57',1,'']]],
   ['usbcamera_2ecpp_27',['usbcamera.cpp',['../usbcamera_8cpp.html',1,'']]],
   ['usbcamera_2eh_28',['usbcamera.h',['../usbcamera_8h.html',1,'']]],
   ['usbcameracontext_29',['usbcameracontext',['../structLimef_1_1thread_1_1USBCameraContext.html',1,'Limef::thread::USBCameraContext'],['../structLimef_1_1thread_1_1USBCameraContext.html#a853e13b4c128a015d5e759ba185b2ee0',1,'Limef::thread::USBCameraContext::USBCameraContext(const std::string &amp;dev, Slot s)'],['../structLimef_1_1thread_1_1USBCameraContext.html#a440a89bae5ee99721d6f23bcfdb98d98',1,'Limef::thread::USBCameraContext::USBCameraContext()=default']]],
   ['usbcamerathread_30',['usbcamerathread',['../classLimef_1_1thread_1_1USBCameraThread.html#a8859439e651e25418a9197605f01ae14',1,'Limef::thread::USBCameraThread::USBCameraThread()'],['../classLimef_1_1thread_1_1USBCameraThread.html',1,'Limef::thread::USBCameraThread']]],
-  ['use_20these_20vs_20tensorframefifo_31',['When to use these vs TensorFrameFifo',['../tensor__transfer_8h.html#autotoc_md30',1,'']]],
-  ['use_5ftcp_32',['use_tcp',['../structLimef_1_1rtsp_1_1ClientTrack.html#a1b663d1511ecf86fc5bf3ac0bf0785ce',1,'Limef::rtsp::ClientTrack']]],
-  ['uuid_33',['uuid',['../classLimef_1_1thread_1_1WebSocketServerSignal.html#a7ff352913aa0c1ce56c1c3bbc6ab3a6c',1,'Limef::thread::WebSocketServerSignal::uuid'],['../classLimef_1_1thread_1_1WebSocketStreamBuffer.html#a24e470c088e4b01b68eeb3cb724a604c',1,'Limef::thread::WebSocketStreamBuffer::uuid']]]
+  ['use_31',['When to use',['../classLimef_1_1ff_1_1StreamGateFrameFilter.html#autotoc_md23',1,'']]],
+  ['use_20these_20vs_20tensorframefifo_32',['When to use these vs TensorFrameFifo',['../tensor__transfer_8h.html#autotoc_md36',1,'']]],
+  ['use_5ftcp_33',['use_tcp',['../structLimef_1_1rtsp_1_1ClientTrack.html#a1b663d1511ecf86fc5bf3ac0bf0785ce',1,'Limef::rtsp::ClientTrack']]],
+  ['uuid_34',['uuid',['../classLimef_1_1thread_1_1WebSocketServerSignal.html#a7ff352913aa0c1ce56c1c3bbc6ab3a6c',1,'Limef::thread::WebSocketServerSignal::uuid'],['../classLimef_1_1thread_1_1WebSocketStreamBuffer.html#a24e470c088e4b01b68eeb3cb724a604c',1,'Limef::thread::WebSocketStreamBuffer::uuid']]]
 ];
