@@ -485,7 +485,74 @@ decoded for analysis, the other goes to a muxer.</p>
 <span class="n">source</span><span class="p">.</span><span class="n">start</span><span class="p">();</span>
 </pre></div>
 </div>
-<p>For a deeper look at how threads and framefifos work under the hood, see <a class="reference internal" href="under_the_hood.html"><span class="doc">Under the Hood</span></a>.</p>
+</section>
+<section id="python-guidelines">
+<h3>Python Guidelines<a class="headerlink" href="#python-guidelines" title="Link to this heading">¶</a></h3>
+<p>Limef has Python bindings, so filter chains can be built entirely from Python.
+The same pipeline as above looks like this:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">limef</span>
+
+<span class="n">analyze</span> <span class="o">=</span> <span class="n">limef</span><span class="o">.</span><span class="n">DumpFrameFilter</span><span class="p">(</span><span class="s2">&quot;analyzer&quot;</span><span class="p">)</span>
+<span class="n">muxer</span>   <span class="o">=</span> <span class="n">limef</span><span class="o">.</span><span class="n">MuxerFrameFilter</span><span class="p">(</span><span class="s2">&quot;muxer&quot;</span><span class="p">,</span> <span class="n">mux_ctx</span><span class="p">)</span>
+<span class="n">decode</span>  <span class="o">=</span> <span class="n">limef</span><span class="o">.</span><span class="n">DecodingFrameFilter</span><span class="p">(</span><span class="s2">&quot;decode&quot;</span><span class="p">)</span>
+<span class="n">split</span>   <span class="o">=</span> <span class="n">limef</span><span class="o">.</span><span class="n">SplitFrameFilter</span><span class="p">(</span><span class="s2">&quot;split&quot;</span><span class="p">)</span>
+
+<span class="n">decode</span><span class="o">.</span><span class="n">cc</span><span class="p">(</span><span class="n">analyze</span><span class="p">)</span>
+<span class="n">split</span><span class="o">.</span><span class="n">cc</span><span class="p">(</span><span class="n">decode</span><span class="p">)</span>
+<span class="n">split</span><span class="o">.</span><span class="n">cc</span><span class="p">(</span><span class="n">muxer</span><span class="p">)</span>
+
+<span class="n">source</span> <span class="o">=</span> <span class="n">limef</span><span class="o">.</span><span class="n">MediaFileThread</span><span class="p">(</span><span class="s2">&quot;source&quot;</span><span class="p">,</span> <span class="n">media_ctx</span><span class="p">)</span>
+<span class="n">source</span><span class="o">.</span><span class="n">getOutput</span><span class="p">()</span><span class="o">.</span><span class="n">cc</span><span class="p">(</span><span class="n">split</span><span class="p">)</span>
+
+<span class="n">source</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>However, some rules must be followed when developing with python.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p><code class="docutils literal notranslate"><span class="pre">cc()</span></code> stores raw C++ pointers — Python’s garbage collector has no visibility into
+these references.  Any Python object whose refcount drops to zero will be destroyed
+even if a C++ chain still points at it, causing a crash or a “pure virtual method
+called” abort:</p>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p><code class="docutils literal notranslate"><span class="pre">FrameFilter</span></code> or <code class="docutils literal notranslate"><span class="pre">Thread</span></code> object that participates in a chain <strong>must be
+kept alive by a Python variable</strong> for the entire duration of the pipeline run.</p>
+</div>
+<p>The safe pattern when a pipeline is assembled inside a helper function is to own
+all objects as <strong>instance attributes</strong> of a class:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">MyPipeline</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">media_ctx</span><span class="p">,</span> <span class="n">mux_ctx</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_analyze</span> <span class="o">=</span> <span class="n">limef</span><span class="o">.</span><span class="n">DumpFrameFilter</span><span class="p">(</span><span class="s2">&quot;analyzer&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_muxer</span>   <span class="o">=</span> <span class="n">limef</span><span class="o">.</span><span class="n">MuxerFrameFilter</span><span class="p">(</span><span class="s2">&quot;muxer&quot;</span><span class="p">,</span> <span class="n">mux_ctx</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_decode</span>  <span class="o">=</span> <span class="n">limef</span><span class="o">.</span><span class="n">DecodingFrameFilter</span><span class="p">(</span><span class="s2">&quot;decode&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_split</span>   <span class="o">=</span> <span class="n">limef</span><span class="o">.</span><span class="n">SplitFrameFilter</span><span class="p">(</span><span class="s2">&quot;split&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_source</span>  <span class="o">=</span> <span class="n">limef</span><span class="o">.</span><span class="n">MediaFileThread</span><span class="p">(</span><span class="s2">&quot;source&quot;</span><span class="p">,</span> <span class="n">media_ctx</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_decode</span><span class="o">.</span><span class="n">cc</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_analyze</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_split</span><span class="o">.</span><span class="n">cc</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_decode</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_split</span><span class="o">.</span><span class="n">cc</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_muxer</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_source</span><span class="o">.</span><span class="n">getOutput</span><span class="p">()</span><span class="o">.</span><span class="n">cc</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_split</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">chain</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_split</span>   <span class="c1"># expose tail for downstream wiring</span>
+
+    <span class="k">def</span> <span class="nf">start</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="bp">self</span><span class="o">.</span><span class="n">_source</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">stop</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>  <span class="bp">self</span><span class="o">.</span><span class="n">_source</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>All objects live exactly as long as the <code class="docutils literal notranslate"><span class="pre">MyPipeline</span></code> instance.</p>
+<p>Avoid these:</p>
+<ul class="simple">
+<li><p><strong>Inline temporaries</strong> — <code class="docutils literal notranslate"><span class="pre">ff1.cc(limef.SomeFilter()).cc(ff2)</span></code>: the filter has no
+variable holding it and is GC’d immediately after the statement.</p></li>
+<li><p><strong>Only returning the tail</strong> — a helper that builds <code class="docutils literal notranslate"><span class="pre">A</span> <span class="pre">→</span> <span class="pre">B</span> <span class="pre">→</span> <span class="pre">C</span></code> and returns only
+<code class="docutils literal notranslate"><span class="pre">C</span></code> silently destroys <code class="docutils literal notranslate"><span class="pre">A</span></code> and <code class="docutils literal notranslate"><span class="pre">B</span></code> when the function returns.</p></li>
+<li><p><strong>Reassigning <code class="docutils literal notranslate"><span class="pre">chain</span></code></strong> — <code class="docutils literal notranslate"><span class="pre">chain</span> <span class="pre">=</span> <span class="pre">chain.cc(x)</span></code> drops the reference to whatever
+<code class="docutils literal notranslate"><span class="pre">chain</span></code> pointed to before; if that was the only reference, the object is GC’d.</p></li>
+<li><p><strong>Context temporaries</strong> — <code class="docutils literal notranslate"><span class="pre">SomeThread(SomeCtx())</span></code> is only safe when the C++
+constructor copies the context by value (which Limef thread constructors do).</p></li>
+</ul>
 </section>
 </section>
 </section>
@@ -555,6 +622,7 @@ decoded for analysis, the other goes to a muxer.</p>
 <li><a class="reference internal" href="#diagram-notation">Diagram notation</a></li>
 <li><a class="reference internal" href="#yaml-declarations">YAML declarations</a></li>
 <li><a class="reference internal" href="#a-complete-example">A complete example</a></li>
+<li><a class="reference internal" href="#python-guidelines">Python Guidelines</a></li>
 </ul>
 </li>
 </ul>

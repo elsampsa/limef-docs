@@ -208,4 +208,75 @@ source.getOutput().cc(split);
 source.start();
 ```
 
-For a deeper look at how threads and framefifos work under the hood, see {doc}`under_the_hood`.
+### Python Guidelines
+
+Limef has Python bindings, so filter chains can be built entirely from Python.
+The same pipeline as above looks like this:
+
+```python
+import limef
+
+analyze = limef.DumpFrameFilter("analyzer")
+muxer   = limef.MuxerFrameFilter("muxer", mux_ctx)
+decode  = limef.DecodingFrameFilter("decode")
+split   = limef.SplitFrameFilter("split")
+
+decode.cc(analyze)
+split.cc(decode)
+split.cc(muxer)
+
+source = limef.MediaFileThread("source", media_ctx)
+source.getOutput().cc(split)
+
+source.start()
+```
+
+However, some rules must be followed when developing with python.
+
+```{warning}
+`cc()` stores raw C++ pointers — Python's garbage collector has no visibility into
+these references.  Any Python object whose refcount drops to zero will be destroyed
+even if a C++ chain still points at it, causing a crash or a "pure virtual method
+called" abort:
+```
+
+```{important}
+`FrameFilter` or `Thread` object that participates in a chain **must be
+kept alive by a Python variable** for the entire duration of the pipeline run.
+```
+
+The safe pattern when a pipeline is assembled inside a helper function is to own
+all objects as **instance attributes** of a class:
+
+```python
+class MyPipeline:
+    def __init__(self, media_ctx, mux_ctx):
+        self._analyze = limef.DumpFrameFilter("analyzer")
+        self._muxer   = limef.MuxerFrameFilter("muxer", mux_ctx)
+        self._decode  = limef.DecodingFrameFilter("decode")
+        self._split   = limef.SplitFrameFilter("split")
+        self._source  = limef.MediaFileThread("source", media_ctx)
+
+        self._decode.cc(self._analyze)
+        self._split.cc(self._decode)
+        self._split.cc(self._muxer)
+        self._source.getOutput().cc(self._split)
+
+        self.chain = self._split   # expose tail for downstream wiring
+
+    def start(self): self._source.start()
+    def stop(self):  self._source.stop()
+```
+
+All objects live exactly as long as the `MyPipeline` instance.
+
+Avoid these:
+
+- **Inline temporaries** — `ff1.cc(limef.SomeFilter()).cc(ff2)`: the filter has no
+  variable holding it and is GC'd immediately after the statement.
+- **Only returning the tail** — a helper that builds `A → B → C` and returns only
+  `C` silently destroys `A` and `B` when the function returns.
+- **Reassigning `chain`** — `chain = chain.cc(x)` drops the reference to whatever
+  `chain` pointed to before; if that was the only reference, the object is GC'd.
+- **Context temporaries** — `SomeThread(SomeCtx())` is only safe when the C++
+  constructor copies the context by value (which Limef thread constructors do).
