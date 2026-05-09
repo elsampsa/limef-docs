@@ -237,7 +237,7 @@ However, some rules must be followed when developing with python.
 `cc()` stores raw C++ pointers — Python's garbage collector has no visibility into
 these references.  Any Python object whose refcount drops to zero will be destroyed
 even if a C++ chain still points at it, causing a crash or a "pure virtual method
-called" abort:
+called" abort
 ```
 
 ```{important}
@@ -279,4 +279,4 @@ Avoid these:
 - **Reassigning `chain`** — `chain = chain.cc(x)` drops the reference to whatever
   `chain` pointed to before; if that was the only reference, the object is GC'd.
 - **Context temporaries** — `SomeThread(SomeCtx())` is only safe when the C++
-  constructor copies the context by value (which Limef thread constructors do).
+  constructor copies the context by value
