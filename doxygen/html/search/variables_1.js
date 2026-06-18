@@ -4,6 +4,7 @@ var searchData=
   ['active_5fclients_1',['active_clients',['../classLimef_1_1thread_1_1WebSocketStreamBuffer.html#a7518d995fb33835a0e483eff890b80d9',1,'Limef::thread::WebSocketStreamBuffer']]],
   ['allowed_5fuuids_2',['allowed_uuids',['../classLimef_1_1thread_1_1WebSocketServerSignal.html#a353444305f4224c8b29e33f419c61634',1,'Limef::thread::WebSocketServerSignal']]],
   ['array_5fiterator_3',['array_iterator',['../structdetail_1_1internal__iterator.html#a2ad2dc9ea8bba2b50811e34f905350bd',1,'detail::internal_iterator']]],
-  ['authenticated_4',['authenticated',['../structLimef_1_1thread_1_1PerSocketData.html#a1662dbf4369953bbd124d4621d641331',1,'Limef::thread::PerSocketData']]],
-  ['avg_5fframe_5frate_5',['avg_frame_rate',['../structPyStreamInfo.html#add48bd6bb15bab68354268090d8184f3',1,'PyStreamInfo']]]
+  ['audio_4',['audio',['../structLimef_1_1ff_1_1CodecPair.html#ac8ecc372a212ed42d11f4b623443bc2d',1,'Limef::ff::CodecPair']]],
+  ['authenticated_5',['authenticated',['../structLimef_1_1thread_1_1PerSocketData.html#a1662dbf4369953bbd124d4621d641331',1,'Limef::thread::PerSocketData']]],
+  ['avg_5fframe_5frate_6',['avg_frame_rate',['../structPyStreamInfo.html#add48bd6bb15bab68354268090d8184f3',1,'PyStreamInfo']]]
 ];

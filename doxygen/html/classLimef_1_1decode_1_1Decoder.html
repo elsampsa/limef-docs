@@ -22,7 +22,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">My Project<span id="projectnumber">&#160;0.1.0</span>
+   <div id="projectname">My Project<span id="projectnumber">&#160;0.2.0</span>
    </div>
   </td>
  </tr>
@@ -91,11 +91,13 @@ Inheritance diagram for Limef::decode::Decoder:</div>
 <div class="dyncontent">
 <div class="center"><img src="classLimef_1_1decode_1_1Decoder__inherit__graph.png" border="0" usemap="#aLimef_1_1decode_1_1Decoder_inherit__map" alt="Inheritance graph"/></div>
 <map name="aLimef_1_1decode_1_1Decoder_inherit__map" id="aLimef_1_1decode_1_1Decoder_inherit__map">
-<area shape="rect" title="Abstract decoder interface for a single video or audio stream." alt="" coords="152,5,327,31"/>
-<area shape="rect" href="classLimef_1_1decode_1_1FFmpegDecoder.html" title="FFmpeg&#45;based decoder for video and audio streams." alt="" coords="5,79,233,104"/>
-<area shape="poly" title=" " alt="" coords="209,40,140,81,138,76,207,35"/>
-<area shape="rect" href="classLimef_1_1decode_1_1V4L2Decoder.html" title="V4L2 Memory&#45;to&#45;Memory decoder." alt="" coords="257,79,464,104"/>
-<area shape="poly" title=" " alt="" coords="272,35,342,76,339,81,270,40"/>
+<area shape="rect" title="Abstract decoder interface for a single video or audio stream." alt="" coords="5,55,180,80"/>
+<area shape="rect" href="classLimef_1_1decode_1_1FFmpegDecoder.html" title="FFmpeg&#45;based decoder for video and audio streams." alt="" coords="228,5,456,31"/>
+<area shape="poly" title=" " alt="" coords="170,49,276,28,277,33,171,55"/>
+<area shape="rect" href="classLimef_1_1decode_1_1V4L2Decoder.html" title="V4L2 Memory&#45;to&#45;Memory decoder." alt="" coords="239,55,445,80"/>
+<area shape="poly" title=" " alt="" coords="194,65,238,65,238,70,194,70"/>
+<area shape="rect" href="classLimef_1_1decode_1_1V4L2NVDecoder.html" title="V4L2 Memory&#45;to&#45;Memory decoder." alt="" coords="229,104,455,129"/>
+<area shape="poly" title=" " alt="" coords="171,80,277,101,276,107,170,85"/>
 </map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
@@ -136,10 +138,16 @@ Protected Member Functions</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Abstract decoder interface for a single video or audio stream. </p>
-<p>State machine that decodes packets into frames. Call <a class="el" href="classLimef_1_1decode_1_1Decoder.html#a20b43537a506e4b88a299dff11460247" title="Get current decoder status.">status()</a> to determine what operation to do next.</p>
+<p>State machine that decodes packets into frames. Call <a class="el" href="classLimef_1_1decode_1_1Decoder.html#a20b43537a506e4b88a299dff11460247" title="Get current decoder status.">status()</a> to determine what operation to do next. <a class="el" href="classLimef_1_1decode_1_1Decoder.html" title="Abstract decoder interface for a single video or audio stream.">Decoder</a> may attach resources to the DecodedFrame which lifetime it manages As decoder is going to be used with filterchains, i.e. with blocking callbacks and synchronous operations, this contract holds:</p>
+<ul>
+<li>call to <a class="el" href="classLimef_1_1decode_1_1Decoder.html#a20b43537a506e4b88a299dff11460247" title="Get current decoder status.">status()</a> releases the resources associated with the previous frame</li>
+<li><a class="el" href="classLimef_1_1decode_1_1Decoder.html#a2a0aff146485823679bc6bc71df62029" title="Get decoded frame.">getFrame()</a> reserves resources for the new frame</li>
+<li>resources must be hold between calls to <a class="el" href="classLimef_1_1decode_1_1Decoder.html#a2a0aff146485823679bc6bc71df62029" title="Get decoded frame.">getFrame()</a> -&gt; <a class="el" href="classLimef_1_1decode_1_1Decoder.html#a20b43537a506e4b88a299dff11460247" title="Get current decoder status.">status()</a>, after that they can be freed</li>
+<li>..the DecodedFrame is typically pushed down the filterchain between <a class="el" href="classLimef_1_1decode_1_1Decoder.html#a2a0aff146485823679bc6bc71df62029" title="Get decoded frame.">getFrame()</a> and <a class="el" href="classLimef_1_1decode_1_1Decoder.html#a20b43537a506e4b88a299dff11460247" title="Get current decoder status.">status()</a> calls</li>
+</ul>
 <p>Implementations:</p><ul>
 <li><a class="el" href="classLimef_1_1decode_1_1FFmpegDecoder.html" title="FFmpeg-based decoder for video and audio streams.">FFmpegDecoder</a>: FFmpeg-based software/hardware decoding</li>
-<li><a class="el" href="classLimef_1_1decode_1_1V4L2Decoder.html" title="V4L2 Memory-to-Memory decoder.">V4L2Decoder</a>: V4L2 Memory-to-Memory API (Jetson, embedded Linux)</li>
+<li><a class="el" href="classLimef_1_1decode_1_1V4L2NVDecoder.html" title="V4L2 Memory-to-Memory decoder.">V4L2NVDecoder</a>: V4L2 Memory-to-Memory API (Jetson, embedded Linux)</li>
 </ul>
 <p>Example usage: </p><div class="fragment"><div class="line">std::unique_ptr&lt;Decoder&gt; dec = std::make_unique&lt;FFmpegDecoder&gt;(<span class="stringliteral">&quot;my-decoder&quot;</span>, stream);</div>
 <div class="line"><a class="code hl_enumeration" href="namespaceLimef_1_1decode.html#ac17c8285fc9a2f620ebacd0d99fb8b5f">DecoderStatus</a> stat;</div>
@@ -151,6 +159,8 @@ Protected Member Functions</h2></td></tr>
 <div class="line">}</div>
 <div class="line"><span class="keywordflow">if</span> (stat == <a class="code hl_enumvalue" href="namespaceLimef_1_1decode.html#ac17c8285fc9a2f620ebacd0d99fb8b5fa12a21322aa2eb06c6c592438cf9452f4">DecoderStatus::NeedsRead</a>) {</div>
 <div class="line">    <span class="keyword">const</span> DecodedFrame&amp; decframe = dec-&gt;getFrame();</div>
+<div class="line">    <span class="comment">// if the decoder has reserved resources (fds, shmem) from the previous</span></div>
+<div class="line">    <span class="comment">// frame, those can be released when the client calls getFrame()</span></div>
 <div class="line">    <span class="comment">// decframe now has the bitmap (typically YUV420P) or decoded audio</span></div>
 <div class="line">}</div>
 <div class="line"><span class="keywordflow">if</span> (stat == <a class="code hl_enumvalue" href="namespaceLimef_1_1decode.html#ac17c8285fc9a2f620ebacd0d99fb8b5facec32ee5e75ca0f05bf073ea213a72c2">DecoderStatus::EndOfStream</a>) {</div>
@@ -159,15 +169,20 @@ Protected Member Functions</h2></td></tr>
 <div class="line"><span class="keywordflow">if</span> (stat == <a class="code hl_enumvalue" href="namespaceLimef_1_1decode.html#ac17c8285fc9a2f620ebacd0d99fb8b5fa902b0d55fddef6f8d651fe1035b7d4bd">DecoderStatus::Error</a>) {</div>
 <div class="line">    <span class="comment">// something went wrong</span></div>
 <div class="line">}</div>
-<div class="ttc" id="anamespaceLimef_1_1decode_html_ac17c8285fc9a2f620ebacd0d99fb8b5f"><div class="ttname"><a href="namespaceLimef_1_1decode.html#ac17c8285fc9a2f620ebacd0d99fb8b5f">Limef::decode::DecoderStatus</a></div><div class="ttdeci">DecoderStatus</div><div class="ttdoc">Status codes returned by decoder.</div><div class="ttdef"><b>Definition</b> decoder.h:58</div></div>
+<div class="ttc" id="anamespaceLimef_1_1decode_html_ac17c8285fc9a2f620ebacd0d99fb8b5f"><div class="ttname"><a href="namespaceLimef_1_1decode.html#ac17c8285fc9a2f620ebacd0d99fb8b5f">Limef::decode::DecoderStatus</a></div><div class="ttdeci">DecoderStatus</div><div class="ttdoc">Status codes returned by decoder.</div><div class="ttdef"><b>Definition</b> decoder.h:55</div></div>
 <div class="ttc" id="anamespaceLimef_1_1decode_html_ac17c8285fc9a2f620ebacd0d99fb8b5fa12a21322aa2eb06c6c592438cf9452f4"><div class="ttname"><a href="namespaceLimef_1_1decode.html#ac17c8285fc9a2f620ebacd0d99fb8b5fa12a21322aa2eb06c6c592438cf9452f4">Limef::decode::DecoderStatus::NeedsRead</a></div><div class="ttdeci">@ NeedsRead</div><div class="ttdoc">Decoded frame available, call getFrame()</div></div>
 <div class="ttc" id="anamespaceLimef_1_1decode_html_ac17c8285fc9a2f620ebacd0d99fb8b5fa902b0d55fddef6f8d651fe1035b7d4bd"><div class="ttname"><a href="namespaceLimef_1_1decode.html#ac17c8285fc9a2f620ebacd0d99fb8b5fa902b0d55fddef6f8d651fe1035b7d4bd">Limef::decode::DecoderStatus::Error</a></div><div class="ttdeci">@ Error</div><div class="ttdoc">Something went wrong.</div></div>
 <div class="ttc" id="anamespaceLimef_1_1decode_html_ac17c8285fc9a2f620ebacd0d99fb8b5fac137688dd3fe4599b79282cfd2049f40"><div class="ttname"><a href="namespaceLimef_1_1decode.html#ac17c8285fc9a2f620ebacd0d99fb8b5fac137688dd3fe4599b79282cfd2049f40">Limef::decode::DecoderStatus::NeedsMoreData</a></div><div class="ttdeci">@ NeedsMoreData</div><div class="ttdoc">Ready to accept more packets via push()</div></div>
 <div class="ttc" id="anamespaceLimef_1_1decode_html_ac17c8285fc9a2f620ebacd0d99fb8b5facec32ee5e75ca0f05bf073ea213a72c2"><div class="ttname"><a href="namespaceLimef_1_1decode.html#ac17c8285fc9a2f620ebacd0d99fb8b5facec32ee5e75ca0f05bf073ea213a72c2">Limef::decode::DecoderStatus::EndOfStream</a></div><div class="ttdeci">@ EndOfStream</div><div class="ttdoc">End of stream.</div></div>
 </div><!-- fragment --><p>All calls to decoder are non-blocking.</p>
 <h2><a class="anchor" id="autotoc_md0"></a>
-Hardware Frame Lifecycle</h2>
-<p>When using hardware-accelerated decoding (VAAPI, CUDA), the decoder maintains an internal pool of GPU surfaces. Each call to <a class="el" href="classLimef_1_1decode_1_1Decoder.html#a20b43537a506e4b88a299dff11460247" title="Get current decoder status.">status()</a> internally calls avcodec_receive_frame(), which unrefs the previous frame before writing new data — returning the previous GPU surface to the decoder's pool. This means the decoded frame is only valid between <a class="el" href="classLimef_1_1decode_1_1Decoder.html#a2a0aff146485823679bc6bc71df62029" title="Get decoded frame.">getFrame()</a> and the next call to <a class="el" href="classLimef_1_1decode_1_1Decoder.html#a20b43537a506e4b88a299dff11460247" title="Get current decoder status.">status()</a>. The entire downstream processing (e.g., encoding, copying into a <a class="el" href="classLimef_1_1DecodedFrameFifo.html" title="FrameFifo for DecodedFrame with GPU buffer pool support.">DecodedFrameFifo</a>) must complete synchronously within that window. If the downstream includes an inter-thread boundary (<a class="el" href="classLimef_1_1DecodedFrameFifo.html" title="FrameFifo for DecodedFrame with GPU buffer pool support.">DecodedFrameFifo</a>), writeCopy() copies the GPU data into the fifo's own pool during the synchronous pass() call, so the decoder's surface is safely released afterward. </p>
+Internal resource ownership</h2>
+<h3><a class="anchor" id="autotoc_md1"></a>
+FFmpeg hardware accelerated decoding</h3>
+<p>When using hardware-accelerated decoding (VAAPI, CUDA), the decoder maintains an internal pool of GPU surfaces. Each call to <a class="el" href="classLimef_1_1decode_1_1Decoder.html#a20b43537a506e4b88a299dff11460247" title="Get current decoder status.">status()</a> internally calls avcodec_receive_frame(), which unrefs the previous frame before writing new data — returning the previous GPU surface to the decoder's pool. This means the decoded frame is only valid between <a class="el" href="classLimef_1_1decode_1_1Decoder.html#a2a0aff146485823679bc6bc71df62029" title="Get decoded frame.">getFrame()</a> and the next call to <a class="el" href="classLimef_1_1decode_1_1Decoder.html#a20b43537a506e4b88a299dff11460247" title="Get current decoder status.">status()</a>. The entire downstream processing (e.g., encoding, copying into a <a class="el" href="classLimef_1_1DecodedFrameFifo.html" title="FrameFifo for DecodedFrame with GPU buffer pool support.">DecodedFrameFifo</a>) must complete synchronously within that window. If the downstream includes an inter-thread boundary (<a class="el" href="classLimef_1_1DecodedFrameFifo.html" title="FrameFifo for DecodedFrame with GPU buffer pool support.">DecodedFrameFifo</a>), writeCopy() copies the GPU data into the fifo's own pool during the synchronous pass() call, so the decoder's surface is safely released afterward.</p>
+<h3><a class="anchor" id="autotoc_md2"></a>
+V4L2</h3>
+<p>Same as above. In this case the internal resources are typically mmapped memory from file dtor into cuda memory </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a288eaecc3c723e86f630de6d0c4f46fa" name="a288eaecc3c723e86f630de6d0c4f46fa"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a288eaecc3c723e86f630de6d0c4f46fa">&#9670;&#160;</a></span>~Decoder()</h2>
@@ -272,7 +287,7 @@ Hardware Frame Lifecycle</h2>
 <p>Flush the decoder. </p>
 <p>Forces decoder to output any buffered frames. Check <a class="el" href="classLimef_1_1decode_1_1Decoder.html#a20b43537a506e4b88a299dff11460247" title="Get current decoder status.">status()</a> after this to get remaining frames. </p>
 
-<p>Implemented in <a class="el" href="classLimef_1_1decode_1_1FFmpegDecoder.html#a83c48a8b6d656415f8ec0696a445ab97">Limef::decode::FFmpegDecoder</a>, and <a class="el" href="classLimef_1_1decode_1_1V4L2Decoder.html#af2585c2da4670afed748e346a8d4ca97">Limef::decode::V4L2Decoder</a>.</p>
+<p>Implemented in <a class="el" href="classLimef_1_1decode_1_1FFmpegDecoder.html#a83c48a8b6d656415f8ec0696a445ab97">Limef::decode::FFmpegDecoder</a>, <a class="el" href="classLimef_1_1decode_1_1V4L2Decoder.html#af2585c2da4670afed748e346a8d4ca97">Limef::decode::V4L2Decoder</a>, and <a class="el" href="classLimef_1_1decode_1_1V4L2NVDecoder.html#a7041a69ac26817f665ac3b87b7267b3d">Limef::decode::V4L2NVDecoder</a>.</p>
 
 </div>
 </div>
@@ -303,7 +318,7 @@ Hardware Frame Lifecycle</h2>
 <p>Only call when <a class="el" href="classLimef_1_1decode_1_1Decoder.html#a20b43537a506e4b88a299dff11460247" title="Get current decoder status.">status()</a> returns NeedsRead</p>
 <dl class="section return"><dt>Returns</dt><dd>const DecodedFrame&amp; Reference to decoded frame </dd></dl>
 
-<p>Implemented in <a class="el" href="classLimef_1_1decode_1_1FFmpegDecoder.html#a0c28c7de40324d47db2bff149effc531">Limef::decode::FFmpegDecoder</a>, and <a class="el" href="classLimef_1_1decode_1_1V4L2Decoder.html#a3419a088b36b88fca60d36c4d0f202ec">Limef::decode::V4L2Decoder</a>.</p>
+<p>Implemented in <a class="el" href="classLimef_1_1decode_1_1FFmpegDecoder.html#a0c28c7de40324d47db2bff149effc531">Limef::decode::FFmpegDecoder</a>, <a class="el" href="classLimef_1_1decode_1_1V4L2Decoder.html#a3419a088b36b88fca60d36c4d0f202ec">Limef::decode::V4L2Decoder</a>, and <a class="el" href="classLimef_1_1decode_1_1V4L2NVDecoder.html#a899454d23f43221d1f4fb1ac4ad74473">Limef::decode::V4L2NVDecoder</a>.</p>
 
 </div>
 </div>
@@ -332,7 +347,7 @@ Hardware Frame Lifecycle</h2>
 
 <p>Get stream index this decoder handles. </p>
 
-<p>Implemented in <a class="el" href="classLimef_1_1decode_1_1FFmpegDecoder.html#af4a392e119d956520c639e6fe1e8cd0f">Limef::decode::FFmpegDecoder</a>, and <a class="el" href="classLimef_1_1decode_1_1V4L2Decoder.html#aa028da9b7ae2bf1a9fc32b562b8fe88c">Limef::decode::V4L2Decoder</a>.</p>
+<p>Implemented in <a class="el" href="classLimef_1_1decode_1_1FFmpegDecoder.html#af4a392e119d956520c639e6fe1e8cd0f">Limef::decode::FFmpegDecoder</a>, <a class="el" href="classLimef_1_1decode_1_1V4L2Decoder.html#aa028da9b7ae2bf1a9fc32b562b8fe88c">Limef::decode::V4L2Decoder</a>, and <a class="el" href="classLimef_1_1decode_1_1V4L2NVDecoder.html#a3df6dcbe096e370ff16fbc0e868e1d92">Limef::decode::V4L2NVDecoder</a>.</p>
 
 </div>
 </div>
@@ -401,7 +416,7 @@ Hardware Frame Lifecycle</h2>
   </dd>
 </dl>
 
-<p>Implemented in <a class="el" href="classLimef_1_1decode_1_1FFmpegDecoder.html#ab227dc787f5694544f0f733011bb4e4c">Limef::decode::FFmpegDecoder</a>, and <a class="el" href="classLimef_1_1decode_1_1V4L2Decoder.html#ab7d0e250937ca592752d58af95b4a187">Limef::decode::V4L2Decoder</a>.</p>
+<p>Implemented in <a class="el" href="classLimef_1_1decode_1_1FFmpegDecoder.html#ab227dc787f5694544f0f733011bb4e4c">Limef::decode::FFmpegDecoder</a>, <a class="el" href="classLimef_1_1decode_1_1V4L2Decoder.html#ab7d0e250937ca592752d58af95b4a187">Limef::decode::V4L2Decoder</a>, and <a class="el" href="classLimef_1_1decode_1_1V4L2NVDecoder.html#a797b023af90ba62d0b162880f20e3651">Limef::decode::V4L2NVDecoder</a>.</p>
 
 </div>
 </div>
@@ -438,7 +453,7 @@ Hardware Frame Lifecycle</h2>
   </dd>
 </dl>
 
-<p>Implemented in <a class="el" href="classLimef_1_1decode_1_1FFmpegDecoder.html#a91c921fa9cbe490c80c5d61cf9920177">Limef::decode::FFmpegDecoder</a>, and <a class="el" href="classLimef_1_1decode_1_1V4L2Decoder.html#a43fec31f9e2b23eef5d88fdf3332d4f2">Limef::decode::V4L2Decoder</a>.</p>
+<p>Implemented in <a class="el" href="classLimef_1_1decode_1_1FFmpegDecoder.html#a91c921fa9cbe490c80c5d61cf9920177">Limef::decode::FFmpegDecoder</a>, <a class="el" href="classLimef_1_1decode_1_1V4L2Decoder.html#a43fec31f9e2b23eef5d88fdf3332d4f2">Limef::decode::V4L2Decoder</a>, and <a class="el" href="classLimef_1_1decode_1_1V4L2NVDecoder.html#aa64848bab40c64e1ee852b7f4a216853">Limef::decode::V4L2NVDecoder</a>.</p>
 
 </div>
 </div>
@@ -468,7 +483,7 @@ Hardware Frame Lifecycle</h2>
 
 <p>Set logger for this decoder. </p>
 
-<p>Implemented in <a class="el" href="classLimef_1_1decode_1_1FFmpegDecoder.html#a13f224d05272af2e59267bc956d36621">Limef::decode::FFmpegDecoder</a>, and <a class="el" href="classLimef_1_1decode_1_1V4L2Decoder.html#a2eda9ac6390873bf1bb7bb7ba9f67be4">Limef::decode::V4L2Decoder</a>.</p>
+<p>Implemented in <a class="el" href="classLimef_1_1decode_1_1FFmpegDecoder.html#a13f224d05272af2e59267bc956d36621">Limef::decode::FFmpegDecoder</a>, <a class="el" href="classLimef_1_1decode_1_1V4L2Decoder.html#a2eda9ac6390873bf1bb7bb7ba9f67be4">Limef::decode::V4L2Decoder</a>, and <a class="el" href="classLimef_1_1decode_1_1V4L2NVDecoder.html#a737c3c6c0f384328aa9242379d1407da">Limef::decode::V4L2NVDecoder</a>.</p>
 
 </div>
 </div>
@@ -503,7 +518,7 @@ Hardware Frame Lifecycle</h2>
 </ul>
 <dl class="section return"><dt>Returns</dt><dd>DecoderStatus Current status </dd></dl>
 
-<p>Implemented in <a class="el" href="classLimef_1_1decode_1_1FFmpegDecoder.html#a6c7e67349068eb327166ff7b83271016">Limef::decode::FFmpegDecoder</a>, and <a class="el" href="classLimef_1_1decode_1_1V4L2Decoder.html#a8610e3357b58b70b2e60e9872736d6f8">Limef::decode::V4L2Decoder</a>.</p>
+<p>Implemented in <a class="el" href="classLimef_1_1decode_1_1FFmpegDecoder.html#a6c7e67349068eb327166ff7b83271016">Limef::decode::FFmpegDecoder</a>, <a class="el" href="classLimef_1_1decode_1_1V4L2Decoder.html#a8610e3357b58b70b2e60e9872736d6f8">Limef::decode::V4L2Decoder</a>, and <a class="el" href="classLimef_1_1decode_1_1V4L2NVDecoder.html#ac8e2f3e304b8bc1ffd839e763c3ee347">Limef::decode::V4L2NVDecoder</a>.</p>
 
 </div>
 </div>

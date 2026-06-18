@@ -22,7 +22,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">My Project<span id="projectnumber">&#160;0.1.0</span>
+   <div id="projectname">My Project<span id="projectnumber">&#160;0.2.0</span>
    </div>
   </td>
  </tr>
@@ -87,10 +87,16 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1ff_1_1AnnexBFrameFilter.html">AnnexBFrameFilter</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classLimef_1_1ff_1_1FrameFilter.html">FrameFilter</a> that converts H.264/H.265 video from AVCC to Annex B format.  <a href="classLimef_1_1ff_1_1AnnexBFrameFilter.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLimef_1_1ff_1_1AudioTranscodeContext.html">AudioTranscodeContext</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1ff_1_1AudioTranscodeFrameFilter.html">AudioTranscodeFrameFilter</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classLimef_1_1ff_1_1FrameFilter.html">FrameFilter</a> that transcodes audio to a different codec.  <a href="classLimef_1_1ff_1_1AudioTranscodeFrameFilter.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1ff_1_1CodecAssertFrameFilter.html">CodecAssertFrameFilter</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classLimef_1_1ff_1_1FrameFilter.html">FrameFilter</a> that asserts the incoming stream matches an allowed codec pair.  <a href="classLimef_1_1ff_1_1CodecAssertFrameFilter.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1ff_1_1CodecCacheFrameFilter.html">CodecCacheFrameFilter</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classLimef_1_1ff_1_1FrameFilter.html">FrameFilter</a> that caches and can resend CodecFrames.  <a href="classLimef_1_1ff_1_1CodecCacheFrameFilter.html#details">More...</a><br /></td></tr>
@@ -98,14 +104,38 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1ff_1_1CodecMessageFrameFilter.html">CodecMessageFrameFilter</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classLimef_1_1ff_1_1FrameFilter.html">FrameFilter</a> that sends a JSON message through a pipe when it encounters a CodecFrame.  <a href="classLimef_1_1ff_1_1CodecMessageFrameFilter.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLimef_1_1ff_1_1CodecPair.html">CodecPair</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A (video, audio) codec pair used by <a class="el" href="classLimef_1_1ff_1_1CodecAssertFrameFilter.html" title="FrameFilter that asserts the incoming stream matches an allowed codec pair.">CodecAssertFrameFilter</a>.  <a href="structLimef_1_1ff_1_1CodecPair.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1ff_1_1ComposeFrameFilter.html">ComposeFrameFilter</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Base class for composite framechain.  <a href="classLimef_1_1ff_1_1ComposeFrameFilter.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1ff_1_1CountDecodedFrameFilter.html">CountDecodedFrameFilter</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Count DecodedFrames and report count + fps on demand.  <a href="classLimef_1_1ff_1_1CountDecodedFrameFilter.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1ff_1_1CpuSwScaleConverter.html">CpuSwScaleConverter</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts any CPU DecodedFrame → TensorFrame (c, h, w) UInt8 via libswscale.  <a href="classLimef_1_1ff_1_1CpuSwScaleConverter.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1ff_1_1CUDAScaleFrameFilter.html">CUDAScaleFrameFilter</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Scales NV12 CUDA DecodedFrames to a target resolution on the GPU.  <a href="classLimef_1_1ff_1_1CUDAScaleFrameFilter.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLimef_1_1ff_1_1CUDAScaleParams.html">CUDAScaleParams</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configuration for <a class="el" href="classLimef_1_1ff_1_1CUDAScaleFrameFilter.html" title="Scales NV12 CUDA DecodedFrames to a target resolution on the GPU.">CUDAScaleFrameFilter</a>.  <a href="structLimef_1_1ff_1_1CUDAScaleParams.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1ff_1_1DecodedDownloadFrameFilter.html">DecodedDownloadFrameFilter</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Downloads CUDA/CUDA_FFMPEG DecodedFrames to CPU memory (BufferLocation::CPU, NV12).  <a href="classLimef_1_1ff_1_1DecodedDownloadFrameFilter.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1ff_1_1DecodedToTensorConverter.html">DecodedToTensorConverter</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Abstract base for pixel-format converters used by <a class="el" href="classLimef_1_1ff_1_1DecodedToTensorFrameFilter.html" title="FrameFilter that converts DecodedFrame → TensorFrame (c, h, w).">DecodedToTensorFrameFilter</a>.  <a href="classLimef_1_1ff_1_1DecodedToTensorConverter.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1ff_1_1DecodedToTensorFrameFilter.html">DecodedToTensorFrameFilter</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classLimef_1_1ff_1_1FrameFilter.html">FrameFilter</a> that converts DecodedFrame → TensorFrame (c, h, w).  <a href="classLimef_1_1ff_1_1DecodedToTensorFrameFilter.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1ff_1_1DecodedUploadFrameFilter.html">DecodedUploadFrameFilter</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Uploads CPU DecodedFrames to plain CUDA memory (BufferLocation::CUDA).  <a href="classLimef_1_1ff_1_1DecodedUploadFrameFilter.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLimef_1_1ff_1_1DecodedUploadParams.html">DecodedUploadParams</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configuration for CPU→CUDA upload.  <a href="structLimef_1_1ff_1_1DecodedUploadParams.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1ff_1_1DecodingFrameFilter.html">DecodingFrameFilter</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A <code><a class="el" href="classLimef_1_1ff_1_1FrameFilter.html">FrameFilter</a></code> that decodes frames.  <a href="classLimef_1_1ff_1_1DecodingFrameFilter.html#details">More...</a><br /></td></tr>
@@ -126,7 +156,7 @@ Classes</h2></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A <code><a class="el" href="classLimef_1_1ff_1_1FrameFilter.html">FrameFilter</a></code> that encodes frames.  <a href="classLimef_1_1ff_1_1EncodingFrameFilter.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1ff_1_1FMP4FrameFilter.html">FMP4FrameFilter</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Composite filter that transcodes audio to AAC and muxes to fragmented MP4.  <a href="classLimef_1_1ff_1_1FMP4FrameFilter.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Composite filter that muxes to fragmented MP4 for browser MediaSource Extensions.  <a href="classLimef_1_1ff_1_1FMP4FrameFilter.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1ff_1_1FrameFifoFrameFilter.html">FrameFifoFrameFilter</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Feeding <code><a class="el" href="classLimef_1_1FrameFifo.html" title="FrameFifo: a stack and a fifo.">FrameFifo</a></code>  <a href="classLimef_1_1ff_1_1FrameFifoFrameFilter.html#details">More...</a><br /></td></tr>
@@ -136,11 +166,8 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1ff_1_1GateFrameFilter.html">GateFrameFilter</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Frame filter that can Gate packet stream on/off with timestamp correction.  <a href="classLimef_1_1ff_1_1GateFrameFilter.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1ff_1_1GBRPConverter.html">GBRPConverter</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts AV_PIX_FMT_GBRP (planar GBR, 8-bit) → TensorFrame (c, h, w) UInt8.  <a href="classLimef_1_1ff_1_1GBRPConverter.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1ff_1_1GRAY8Converter.html">GRAY8Converter</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts AV_PIX_FMT_GRAY8 → TensorFrame (1, h, w) UInt8.  <a href="classLimef_1_1ff_1_1GRAY8Converter.html#details">More...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1ff_1_1H264StripParamSetsFrameFilter.html">H264StripParamSetsFrameFilter</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Strips SPS (NAL type 7) and PPS (NAL type 8) from H.264 Annex B packets after the first occurrence, preventing NVDEC from firing repeated V4L2_EVENT_SOURCE_CHANGE events on every GOP boundary.  <a href="classLimef_1_1ff_1_1H264StripParamSetsFrameFilter.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1ff_1_1InfoFrameFilter.html">InfoFrameFilter</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Captures InfoFrames and stores their messages.  <a href="classLimef_1_1ff_1_1InfoFrameFilter.html#details">More...</a><br /></td></tr>
@@ -163,6 +190,9 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLimef_1_1ff_1_1RTPTrackContext.html">RTPTrackContext</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Context for a single RTP track (video or audio)  <a href="structLimef_1_1ff_1_1RTPTrackContext.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1ff_1_1RTSPMuxerFrameFilter.html">RTSPMuxerFrameFilter</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Composite filter that canonizes a stream for RTSP/RTP delivery.  <a href="classLimef_1_1ff_1_1RTSPMuxerFrameFilter.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1ff_1_1ShmemServerFrameFilter.html">ShmemServerFrameFilter</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Server-side framefilter that serializes frames to shared memory.  <a href="classLimef_1_1ff_1_1ShmemServerFrameFilter.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -184,11 +214,17 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1ff_1_1TensorToDecodedFrameFilter.html">TensorToDecodedFrameFilter</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts TensorFrame (c, h, w) UInt8 → DecodedFrame.  <a href="classLimef_1_1ff_1_1TensorToDecodedFrameFilter.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1ff_1_1UploadGPUFrameFilter.html">UploadGPUFrameFilter</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Uploads CPU DecodedFrames to GPU memory.  <a href="classLimef_1_1ff_1_1UploadGPUFrameFilter.html#details">More...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1ff_1_1WebMFrameFilter.html">WebMFrameFilter</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Composite filter that muxes a VP8/VP9/AV1 stream to WebM for browser MSE.  <a href="classLimef_1_1ff_1_1WebMFrameFilter.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLimef_1_1ff_1_1UploadGPUParams.html">UploadGPUParams</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configuration for GPU upload.  <a href="structLimef_1_1ff_1_1UploadGPUParams.html#details">More...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1ff_1_1WebMPartitionFrameFilter.html">WebMPartitionFrameFilter</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Repartitions a WebM/EBML byte stream into MSE-friendly segments.  <a href="classLimef_1_1ff_1_1WebMPartitionFrameFilter.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1ff_1_1WebRTCMuxerFrameFilter.html">WebRTCMuxerFrameFilter</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Composite filter that canonizes a stream for WebRTC delivery.  <a href="classLimef_1_1ff_1_1WebRTCMuxerFrameFilter.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1ff_1_1WritePNGFrameFilter.html">WritePNGFrameFilter</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Writes each decoded video frame to a PNG file in a directory.  <a href="classLimef_1_1ff_1_1WritePNGFrameFilter.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>

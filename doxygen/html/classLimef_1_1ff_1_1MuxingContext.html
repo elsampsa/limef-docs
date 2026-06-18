@@ -22,7 +22,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">My Project<span id="projectnumber">&#160;0.1.0</span>
+   <div id="projectname">My Project<span id="projectnumber">&#160;0.2.0</span>
    </div>
   </td>
  </tr>
@@ -101,6 +101,8 @@ Static Public Member Functions</h2></td></tr>
 <tr class="separator:a2246785d775c28d4c1cc3f6d29dd3dd0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afb2a1194466c787f34c3abd8572f3b19" id="r_afb2a1194466c787f34c3abd8572f3b19"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classLimef_1_1ff_1_1MuxingContext.html">MuxingContext</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1ff_1_1MuxingContext.html#afb2a1194466c787f34c3abd8572f3b19">FMP4_KEYFRAG</a> ()</td></tr>
 <tr class="separator:afb2a1194466c787f34c3abd8572f3b19"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaa44850393605d297538688a9b62508d" id="r_aaa44850393605d297538688a9b62508d"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classLimef_1_1ff_1_1MuxingContext.html">MuxingContext</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1ff_1_1MuxingContext.html#aaa44850393605d297538688a9b62508d">WebM</a> ()</td></tr>
+<tr class="separator:aaa44850393605d297538688a9b62508d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -225,6 +227,34 @@ Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <p>Ready-made context for Matroska </p>
+
+</div>
+</div>
+<a id="aaa44850393605d297538688a9b62508d" name="aaa44850393605d297538688a9b62508d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaa44850393605d297538688a9b62508d">&#9670;&#160;</a></span>WebM()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="classLimef_1_1ff_1_1MuxingContext.html">MuxingContext</a> Limef::ff::MuxingContext::WebM </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Ready-made context for streaming WebM (VP8 / VP9).</p>
+<p>cluster_time_limit forces a new Cluster every N milliseconds, giving the browser regular segment boundaries without needing the muxer to seek back and fill in a Cluster size (which is impossible with custom IO). Clusters written this way carry unknown size (0x01FFFFFFFFFFFFFF), which <a class="el" href="classLimef_1_1ff_1_1WebMPartitionFrameFilter.html" title="Repartitions a WebM/EBML byte stream into MSE-friendly segments.">WebMPartitionFrameFilter</a> handles by detecting the next Cluster start.</p>
+<p>Audio note: WebM uses Vorbis or Opus, not AAC. If the upstream source carries AAC audio, the muxer will reject it. For video-only VP8/VP9 sources (e.g. USBCameraThread with no audio) this is fine. </p>
 
 </div>
 </div>

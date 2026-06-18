@@ -22,7 +22,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">My Project<span id="projectnumber">&#160;0.1.0</span>
+   <div id="projectname">My Project<span id="projectnumber">&#160;0.2.0</span>
    </div>
   </td>
  </tr>
@@ -113,8 +113,8 @@ Collaboration diagram for Limef::ff::InfoFrameFilter:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a96736a59e0ee9975cb06215f52e89247" id="r_a96736a59e0ee9975cb06215f52e89247"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1ff_1_1InfoFrameFilter.html#a96736a59e0ee9975cb06215f52e89247">InfoFrameFilter</a> (std::string <a class="el" href="classLimef_1_1ff_1_1FrameFilter.html#adb255db62a05c800af1d73cba2201812">name</a>=&quot;InfoFrameFilter&quot;)</td></tr>
-<tr class="separator:a96736a59e0ee9975cb06215f52e89247"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a84f63d5a7c250a53b93adad1e1ffe507" id="r_a84f63d5a7c250a53b93adad1e1ffe507"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1ff_1_1InfoFrameFilter.html#a84f63d5a7c250a53b93adad1e1ffe507">InfoFrameFilter</a> (std::string <a class="el" href="classLimef_1_1ff_1_1FrameFilter.html#adb255db62a05c800af1d73cba2201812">name</a>=&quot;InfoFrameFilter&quot;, std::shared_ptr&lt; <a class="el" href="classLimef_1_1EventFd.html">Limef::EventFd</a> &gt; efd=nullptr)</td></tr>
+<tr class="separator:a84f63d5a7c250a53b93adad1e1ffe507"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a935212312a48faf0c14eac382d05d725" id="r_a935212312a48faf0c14eac382d05d725"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1ff_1_1InfoFrameFilter.html#a935212312a48faf0c14eac382d05d725">~InfoFrameFilter</a> () override=default</td></tr>
 <tr class="separator:a935212312a48faf0c14eac382d05d725"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a723ca8d252c81fef7d93cd0800f0500e" id="r_a723ca8d252c81fef7d93cd0800f0500e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1ff_1_1InfoFrameFilter.html#a723ca8d252c81fef7d93cd0800f0500e">go</a> (const <a class="el" href="classLimef_1_1frame_1_1Frame.html">Limef::frame::Frame</a> *frame) override</td></tr>
@@ -189,8 +189,8 @@ Additional Inherited Members</h2></td></tr>
 <div class="textblock"><p>Captures InfoFrames and stores their messages. </p>
 <p>Passes all other frames downstream but captures InfoFrames. Messages can be retrieved later using <a class="el" href="classLimef_1_1ff_1_1InfoFrameFilter.html#aeec84b8a9e2d5d870a7e91ec87e2232b" title="Get oldest message from queue.">popMessage()</a>. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a96736a59e0ee9975cb06215f52e89247" name="a96736a59e0ee9975cb06215f52e89247"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a96736a59e0ee9975cb06215f52e89247">&#9670;&#160;</a></span>InfoFrameFilter()</h2>
+<a id="a84f63d5a7c250a53b93adad1e1ffe507" name="a84f63d5a7c250a53b93adad1e1ffe507"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a84f63d5a7c250a53b93adad1e1ffe507">&#9670;&#160;</a></span>InfoFrameFilter()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -202,8 +202,18 @@ Additional Inherited Members</h2></td></tr>
           <td class="memname">Limef::ff::InfoFrameFilter::InfoFrameFilter </td>
           <td>(</td>
           <td class="paramtype">std::string&#160;</td>
-          <td class="paramname"><em>name</em> = <code>&quot;InfoFrameFilter&quot;</code></td><td>)</td>
+          <td class="paramname"><em>name</em> = <code>&quot;InfoFrameFilter&quot;</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">std::shared_ptr&lt; <a class="el" href="classLimef_1_1EventFd.html">Limef::EventFd</a> &gt;&#160;</td>
+          <td class="paramname"><em>efd</em> = <code>nullptr</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
   </td>

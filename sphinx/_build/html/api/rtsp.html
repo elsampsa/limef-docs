@@ -207,7 +207,7 @@
     <li><a href="https://github.com/elsampsa/limef-apps" target="_blank" rel="noopener noreferrer"><i class="fa fa-github" style="font-size: 16pt"></i> App examples </a></li>
     <li><a href="https://github.com/elsampsa/limef-plugins" target="_blank" rel="noopener noreferrer"><i class="fa fa-github" style="font-size: 16pt"></i> Plugin examples </a></li>
     <li><a href="https://github.com/elsampsa/limef-docs/issues" target="_blank" rel="noopener noreferrer"><i class="fa fa-bug" style="font-size: 16pt"></i> Public issues </a></li>
-    <li><a href="https://github.com/elsampsa/limef-releases/releases" target="_blank" rel="noopener noreferrer"><i class="fa fa-download" style="font-size: 16pt"></i> Releases </a></li>
+    <li><a href="https://github.com/elsampsa/limef-releases/releases" target="_blank" rel="noopener noreferrer"><i class="fa fa-download" style="font-size: 16pt"></i> Releases (private) </a></li>
     <li><a href="https://github.com/sponsors/elsampsa" target="_blank" rel="noopener noreferrer"><i class="fa fa-heart" style="font-size: 16pt"></i> Sponsor </a></li>
 </ul>
 </div><form class="sidebar-search-container" method="get" action="../search.html" role="search">
@@ -237,7 +237,7 @@
 <li class="toctree-l2"><a class="reference internal" href="shmem.html">Shared Memory</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../distribution.html">Distributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../distribution.html">Distributing and Licensing</a></li>
 </ul>
 
 </div>
@@ -506,6 +506,12 @@ The main class is <a class="reference internal" href="#_CPPv4N5Limef4rtsp16RTSPS
 </dd></dl>
 
 <dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef4rtsp9RTPStream6pausedE">
+<span id="_CPPv3N5Limef4rtsp9RTPStream6pausedE"></span><span id="_CPPv2N5Limef4rtsp9RTPStream6pausedE"></span><span id="Limef::rtsp::RTPStream::paused__b"></span><span class="target" id="structLimef_1_1rtsp_1_1RTPStream_1abb4e17e5ecc9cb1d562c081e70ddf2c4"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">paused</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="p"><span class="pre">{</span></span><span class="k"><span class="pre">false</span></span><span class="p"><span class="pre">}</span></span><a class="headerlink" href="#_CPPv4N5Limef4rtsp9RTPStream6pausedE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>When true, RTP forwarding is silently suppressed. </p>
+</dd></dl>
+
+<dl class="cpp var">
 <dt class="sig sig-object cpp" id="_CPPv4N5Limef4rtsp9RTPStream10udp_rtp_fdE">
 <span id="_CPPv3N5Limef4rtsp9RTPStream10udp_rtp_fdE"></span><span id="_CPPv2N5Limef4rtsp9RTPStream10udp_rtp_fdE"></span><span id="Limef::rtsp::RTPStream::udp_rtp_fd__i"></span><span class="target" id="structLimef_1_1rtsp_1_1RTPStream_1acf7446136152ced5ec920f7923abe9d2"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">udp_rtp_fd</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="o"><span class="pre">-</span></span><span class="m"><span class="pre">1</span></span><a class="headerlink" href="#_CPPv4N5Limef4rtsp9RTPStream10udp_rtp_fdE" title="Link to this definition">¶</a><br /></dt>
 <dd><p>UDP socket for sending RTP. </p>
@@ -542,13 +548,13 @@ The main class is <a class="reference internal" href="#_CPPv4N5Limef4rtsp16RTSPS
 
 <dl class="cpp class">
 <dt class="sig sig-object cpp" id="_CPPv4N5Limef4rtsp16RTSPServerThreadE">
-<span id="_CPPv3N5Limef4rtsp16RTSPServerThreadE"></span><span id="_CPPv2N5Limef4rtsp16RTSPServerThreadE"></span><span id="Limef::rtsp::RTSPServerThread"></span><span class="target" id="classLimef_1_1rtsp_1_1RTSPServerThread"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">RTSPServerThread</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><span class="n"><span class="pre">Limef</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="threads.html#_CPPv4N5Limef6threadE" title="Limef::thread"><span class="n"><span class="pre">thread</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="threads.html#_CPPv4I0EN5Limef6thread10PollThreadE" title="Limef::thread::PollThread"><span class="n"><span class="pre">PollThread</span></span></a><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">Limef</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="frames.html#_CPPv4N5Limef5frameE" title="Limef::frame"><span class="n"><span class="pre">frame</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="frames.html#_CPPv4N5Limef5frame14RTPPacketFrameE" title="Limef::frame::RTPPacketFrame"><span class="n"><span class="pre">RTPPacketFrame</span></span></a><span class="p"><span class="pre">&gt;</span></span><a class="headerlink" href="#_CPPv4N5Limef4rtsp16RTSPServerThreadE" title="Link to this definition">¶</a><br /></dt>
+<span id="_CPPv3N5Limef4rtsp16RTSPServerThreadE"></span><span id="_CPPv2N5Limef4rtsp16RTSPServerThreadE"></span><span id="Limef::rtsp::RTSPServerThread"></span><span class="target" id="classLimef_1_1rtsp_1_1RTSPServerThread"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">RTSPServerThread</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><span class="n"><span class="pre">Limef</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="threads.html#_CPPv4N5Limef6threadE" title="Limef::thread"><span class="n"><span class="pre">thread</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="threads.html#_CPPv4I0EN5Limef6thread10PollThreadE" title="Limef::thread::PollThread"><span class="n"><span class="pre">PollThread</span></span></a><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">Limef</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="frames.html#_CPPv4N5Limef5frameE" title="Limef::frame"><span class="n"><span class="pre">frame</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="frames.html#_CPPv4N5Limef5frame8RTPFrameE" title="Limef::frame::RTPFrame"><span class="n"><span class="pre">RTPFrame</span></span></a><span class="p"><span class="pre">&gt;</span></span><a class="headerlink" href="#_CPPv4N5Limef4rtsp16RTSPServerThreadE" title="Link to this definition">¶</a><br /></dt>
 <dd><div class="docutils container">
 <em>#include &lt;rtspserverthread.h&gt;</em></div>
 <p>RTSP server thread. </p>
 <p>Poll-based thread that:<ol class="lowerroman simple">
 <li><p>Listens for RTSP client connections on a TCP port</p></li>
-<li><p>Receives frames (SDPFrame, RTPPacketFrame) from upstream</p></li>
+<li><p>Receives frames (SDPFrame, RTPFrame) from upstream</p></li>
 <li><p>Routes RTP packets to subscribed clients</p></li>
 </ol>
 </p>
@@ -563,7 +569,7 @@ The main class is <a class="reference internal" href="#_CPPv4N5Limef4rtsp16RTSPS
 </pre></div>
 </div>
 </p>
-<p>Usage: <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">RTSPServerThread</span><span class="w"> </span><span class="n">server</span><span class="p">(</span><span class="s">&quot;rtsp&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">FrameFifoContext</span><span class="p">(</span><span class="nb">false</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="p">),</span><span class="w"> </span><span class="mi">8554</span><span class="p">);</span>
+<p>Usage: <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">RTSPServerThread</span><span class="w"> </span><span class="n">server</span><span class="p">(</span><span class="s">&quot;rtsp&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">FrameFifoContext</span><span class="p">(</span><span class="nb">false</span><span class="p">,</span><span class="w"> </span><span class="mi">30</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="p">),</span><span class="w"> </span><span class="mi">8554</span><span class="p">);</span>
 
 <span class="c1">// Connect callbacks</span>
 <span class="n">server</span><span class="p">.</span><span class="n">streamRequired</span><span class="p">.</span><span class="n">connect</span><span class="p">([</span><span class="o">&amp;</span><span class="p">](</span><span class="kt">int</span><span class="w"> </span><span class="n">slot</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
@@ -592,7 +598,19 @@ The main class is <a class="reference internal" href="#_CPPv4N5Limef4rtsp16RTSPS
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>name</strong> – Thread name </p></li>
-<li><p><strong>ctx</strong> – FrameFifo context </p></li>
+<li><p><strong>ctx</strong> – FrameFifo context (default: NON-leaky, 30 frames stack, 100-frame fifo). <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>        IMPORTANT: the fifo MUST be non-leaky (leaky=false).
+        RTP is a sequence-numbered protocol: every dropped packet creates
+        a sequence-number gap that the client cannot recover from — ffplay
+        and other clients will log &quot;RTP: missed N packets&quot; and produce
+        corrupt video.  Backpressure (leaky=false) is far preferable to
+        silent packet loss.
+
+        Stack size of 50 is recommended: RTPFrames are small (~1400 bytes
+        each, ~70 KB total) but an I-frame burst can produce 20-30 packets in
+        rapid succession — 50 slots gives enough breathing room for I-frame bursts.
+</pre></div>
+</div>
+</p></li>
 <li><p><strong>port</strong> – TCP port to listen on (default 554) </p></li>
 </ul>
 </dd>
@@ -606,7 +624,7 @@ The main class is <a class="reference internal" href="#_CPPv4N5Limef4rtsp16RTSPS
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>slot</strong> – Slot number (must match SDPFrame/RTPPacketFrame slot) </p></li>
+<li><p><strong>slot</strong> – Slot number (must match SDPFrame/RTPFrame slot) </p></li>
 <li><p><strong>url_tail</strong> – URL path like “/live/camera1” </p></li>
 </ul>
 </dd>
@@ -620,6 +638,29 @@ The main class is <a class="reference internal" href="#_CPPv4N5Limef4rtsp16RTSPS
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>slot</strong> – Slot number to unexpose </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef4rtsp16RTSPServerThread11pauseStreamEi">
+<span id="_CPPv3N5Limef4rtsp16RTSPServerThread11pauseStreamEi"></span><span id="_CPPv2N5Limef4rtsp16RTSPServerThread11pauseStreamEi"></span><span id="Limef::rtsp::RTSPServerThread::pauseStream__i"></span><span class="target" id="classLimef_1_1rtsp_1_1RTSPServerThread_1a6b31b53e85a082ecf9e66fca8300d153"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">pauseStream</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">slot</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5Limef4rtsp16RTSPServerThread11pauseStreamEi" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Pause RTP forwarding for a slot without tearing down client sessions. </p>
+<p>Silently drops all incoming RTP packets for the slot. Connected clients will see a frozen stream and eventually time out and reconnect. On resume, all sessions for the slot are put back into keyframe-wait state so decoders get a clean start. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>slot</strong> – Slot number to pause </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef4rtsp16RTSPServerThread12resumeStreamEi">
+<span id="_CPPv3N5Limef4rtsp16RTSPServerThread12resumeStreamEi"></span><span id="_CPPv2N5Limef4rtsp16RTSPServerThread12resumeStreamEi"></span><span id="Limef::rtsp::RTSPServerThread::resumeStream__i"></span><span class="target" id="classLimef_1_1rtsp_1_1RTSPServerThread_1aff5887c98989d4cd68d63a6cde9c07c9"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">resumeStream</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">slot</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5Limef4rtsp16RTSPServerThread12resumeStreamEi" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Resume RTP forwarding for a previously paused slot. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>slot</strong> – Slot number to resume </p>
 </dd>
 </dl>
 </dd></dl>
@@ -810,6 +851,7 @@ The main class is <a class="reference internal" href="#_CPPv4N5Limef4rtsp16RTSPS
 <li><a class="reference internal" href="#_CPPv4N5Limef4rtsp9RTPStream8url_tailE"><code class="docutils literal notranslate"><span class="pre">url_tail</span></code></a></li>
 <li><a class="reference internal" href="#_CPPv4N5Limef4rtsp9RTPStream3sdpE"><code class="docutils literal notranslate"><span class="pre">sdp</span></code></a></li>
 <li><a class="reference internal" href="#_CPPv4N5Limef4rtsp9RTPStream11session_fdsE"><code class="docutils literal notranslate"><span class="pre">session_fds</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef4rtsp9RTPStream6pausedE"><code class="docutils literal notranslate"><span class="pre">paused</span></code></a></li>
 <li><a class="reference internal" href="#_CPPv4N5Limef4rtsp9RTPStream10udp_rtp_fdE"><code class="docutils literal notranslate"><span class="pre">udp_rtp_fd</span></code></a></li>
 <li><a class="reference internal" href="#_CPPv4N5Limef4rtsp9RTPStream11udp_rtcp_fdE"><code class="docutils literal notranslate"><span class="pre">udp_rtcp_fd</span></code></a></li>
 <li><a class="reference internal" href="#_CPPv4N5Limef4rtsp9RTPStream12udp_rtp_portE"><code class="docutils literal notranslate"><span class="pre">udp_rtp_port</span></code></a></li>
@@ -821,6 +863,8 @@ The main class is <a class="reference internal" href="#_CPPv4N5Limef4rtsp16RTSPS
 <li><a class="reference internal" href="#_CPPv4N5Limef4rtsp16RTSPServerThread16RTSPServerThreadENSt6stringERKN5Limef16FrameFifoContextEi"><code class="docutils literal notranslate"><span class="pre">RTSPServerThread()</span></code></a></li>
 <li><a class="reference internal" href="#_CPPv4N5Limef4rtsp16RTSPServerThread6exposeEiRKNSt6stringE"><code class="docutils literal notranslate"><span class="pre">expose()</span></code></a></li>
 <li><a class="reference internal" href="#_CPPv4N5Limef4rtsp16RTSPServerThread8unexposeEi"><code class="docutils literal notranslate"><span class="pre">unexpose()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef4rtsp16RTSPServerThread11pauseStreamEi"><code class="docutils literal notranslate"><span class="pre">pauseStream()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef4rtsp16RTSPServerThread12resumeStreamEi"><code class="docutils literal notranslate"><span class="pre">resumeStream()</span></code></a></li>
 <li><a class="reference internal" href="#_CPPv4N5Limef4rtsp16RTSPServerThread14streamRequiredE"><code class="docutils literal notranslate"><span class="pre">streamRequired</span></code></a></li>
 <li><a class="reference internal" href="#_CPPv4N5Limef4rtsp16RTSPServerThread17streamNotRequiredE"><code class="docutils literal notranslate"><span class="pre">streamNotRequired</span></code></a></li>
 </ul>

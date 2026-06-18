@@ -22,7 +22,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">My Project<span id="projectnumber">&#160;0.1.0</span>
+   <div id="projectname">My Project<span id="projectnumber">&#160;0.2.0</span>
    </div>
   </td>
  </tr>
@@ -164,27 +164,27 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:ad14a24ff20a7f9f8e581e3aa8be6b42b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a83ecb54421668c8b66bbdc3986ce59a6" id="r_a83ecb54421668c8b66bbdc3986ce59a6"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1frame_1_1DecodedFrame.html#a83ecb54421668c8b66bbdc3986ce59a6">isHWFrame</a> () const noexcept</td></tr>
 <tr class="separator:a83ecb54421668c8b66bbdc3986ce59a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4cad3eb5483079eb80b4c996216714d3" id="r_a4cad3eb5483079eb80b4c996216714d3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespaceLimef_1_1frame.html#a2a0e8597a20bf03625897c499c620c6e">BufferLocation</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1frame_1_1DecodedFrame.html#a4cad3eb5483079eb80b4c996216714d3">location</a> () const noexcept</td></tr>
-<tr class="memdesc:a4cad3eb5483079eb80b4c996216714d3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the location of the frame buffer.  <br /></td></tr>
-<tr class="separator:a4cad3eb5483079eb80b4c996216714d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3008620e62ad8ab08c5ab90112dd7650" id="r_a3008620e62ad8ab08c5ab90112dd7650"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespaceLimef_1_1frame.html#a2a0e8597a20bf03625897c499c620c6e">BufferLocation</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1frame_1_1DecodedFrame.html#a3008620e62ad8ab08c5ab90112dd7650">getBufferLocation</a> () const noexcept</td></tr>
+<tr class="memdesc:a3008620e62ad8ab08c5ab90112dd7650"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the authoritative buffer location for this frame.  <br /></td></tr>
+<tr class="separator:a3008620e62ad8ab08c5ab90112dd7650"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3e6a3235a08da2bec7705b9b794d4fa1" id="r_a3e6a3235a08da2bec7705b9b794d4fa1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1frame_1_1DecodedFrame.html#a3e6a3235a08da2bec7705b9b794d4fa1">setBufferLocation</a> (<a class="el" href="namespaceLimef_1_1frame.html#a2a0e8597a20bf03625897c499c620c6e">BufferLocation</a> loc) noexcept</td></tr>
+<tr class="memdesc:a3e6a3235a08da2bec7705b9b794d4fa1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the buffer location — caller must ensure AVFrame state is consistent.  <br /></td></tr>
+<tr class="separator:a3e6a3235a08da2bec7705b9b794d4fa1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3d6087f80957c3ad4d72af03c0ead632" id="r_a3d6087f80957c3ad4d72af03c0ead632"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1frame_1_1DecodedFrame.html#a3d6087f80957c3ad4d72af03c0ead632">isOnCPU</a> () const noexcept</td></tr>
-<tr class="memdesc:a3d6087f80957c3ad4d72af03c0ead632"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if frame data is on CPU.  <br /></td></tr>
+<tr class="memdesc:a3d6087f80957c3ad4d72af03c0ead632"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if frame data is in CPU-accessible memory.  <br /></td></tr>
 <tr class="separator:a3d6087f80957c3ad4d72af03c0ead632"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a647f295dcdd74698325db955a86d8f41" id="r_a647f295dcdd74698325db955a86d8f41"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1frame_1_1DecodedFrame.html#a647f295dcdd74698325db955a86d8f41">isOnGPU</a> () const noexcept</td></tr>
-<tr class="memdesc:a647f295dcdd74698325db955a86d8f41"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if frame data is on GPU/hardware.  <br /></td></tr>
+<tr class="memdesc:a647f295dcdd74698325db955a86d8f41"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if frame data is on GPU (not CPU-accessible without a transfer)  <br /></td></tr>
 <tr class="separator:a647f295dcdd74698325db955a86d8f41"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3e4b7c2cbe019e53ce32ed39884cbea8" id="r_a3e4b7c2cbe019e53ce32ed39884cbea8"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1frame_1_1DecodedFrame.html#a3e4b7c2cbe019e53ce32ed39884cbea8">dmaBufFd</a> () const noexcept</td></tr>
-<tr class="memdesc:a3e4b7c2cbe019e53ce32ed39884cbea8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get DMA-buf file descriptor (returns -1 if not a DMA-buf frame)  <br /></td></tr>
-<tr class="separator:a3e4b7c2cbe019e53ce32ed39884cbea8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aae859ea2cd763e46249518dd2fb7f2c9" id="r_aae859ea2cd763e46249518dd2fb7f2c9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1frame_1_1DecodedFrame.html#aae859ea2cd763e46249518dd2fb7f2c9">setDMABufFd</a> (int fd) noexcept</td></tr>
-<tr class="memdesc:aae859ea2cd763e46249518dd2fb7f2c9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set DMA-buf file descriptor (for V4L2 backend)  <br /></td></tr>
-<tr class="separator:aae859ea2cd763e46249518dd2fb7f2c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab547389aee5382e904c2b39459bb3d08" id="r_ab547389aee5382e904c2b39459bb3d08"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1frame_1_1DecodedFrame.html#ab547389aee5382e904c2b39459bb3d08">setTargetHWPool</a> (AVBufferRef *pool) noexcept</td></tr>
-<tr class="memdesc:ab547389aee5382e904c2b39459bb3d08"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set target HW frames pool for GPU→GPU copy in <a class="el" href="classLimef_1_1frame_1_1DecodedFrame.html#ac5b3b9c20d17097b8630fe8e7973a20b" title="Copy data from another frame.">updateFrom()</a>  <br /></td></tr>
-<tr class="separator:ab547389aee5382e904c2b39459bb3d08"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af49a23f1a6203bffdbd665242e88fdfa" id="r_af49a23f1a6203bffdbd665242e88fdfa"><td class="memItemLeft" align="right" valign="top">AVBufferRef *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1frame_1_1DecodedFrame.html#af49a23f1a6203bffdbd665242e88fdfa">getTargetHWPool</a> () const noexcept</td></tr>
-<tr class="memdesc:af49a23f1a6203bffdbd665242e88fdfa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the target HW pool (nullptr if not set)  <br /></td></tr>
-<tr class="separator:af49a23f1a6203bffdbd665242e88fdfa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9a2991300586a91fa8df00a6fa3cede4" id="r_a9a2991300586a91fa8df00a6fa3cede4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1frame_1_1DecodedFrame.html#a9a2991300586a91fa8df00a6fa3cede4">setupNVDECCPUView</a> (int width, int height, uint8_t *y_ptr, uint8_t *uv_ptr, size_t y_sz)</td></tr>
+<tr class="memdesc:a9a2991300586a91fa8df00a6fa3cede4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set up frame as a non-owning CPU NV12 view into pre-mapped NVMM memory.  <br /></td></tr>
+<tr class="separator:a9a2991300586a91fa8df00a6fa3cede4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a477a36b2fd7ca25fe1be808b746161c2" id="r_a477a36b2fd7ca25fe1be808b746161c2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1frame_1_1DecodedFrame.html#a477a36b2fd7ca25fe1be808b746161c2">setupArgusCPUView</a> (int width, int height, uint8_t *y_ptr, uint8_t *uv_ptr, int y_pitch, int uv_pitch)</td></tr>
+<tr class="memdesc:a477a36b2fd7ca25fe1be808b746161c2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Non-owning CPU NV12 view into a pre-mapped pitch-linear NvBufSurface.  <br /></td></tr>
+<tr class="separator:a477a36b2fd7ca25fe1be808b746161c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1ae9d73c908408228512595636849229" id="r_a1ae9d73c908408228512595636849229"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1frame_1_1DecodedFrame.html#a1ae9d73c908408228512595636849229">setupCPUNvBufVideo</a> (int width, int height, int dma_fd, size_t nv12_size)</td></tr>
+<tr class="memdesc:a1ae9d73c908408228512595636849229"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set up frame as CPU NV12 from a NvBuf dma-buf fd (mmap, zero-copy).  <br /></td></tr>
+<tr class="separator:a1ae9d73c908408228512595636849229"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:affc500e412d12bd91c18e17f641a70cd" id="r_affc500e412d12bd91c18e17f641a70cd"><td class="memItemLeft" align="right" valign="top">const uint8_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1frame_1_1DecodedFrame.html#affc500e412d12bd91c18e17f641a70cd">getCPUData</a> (int plane=0) const</td></tr>
 <tr class="memdesc:affc500e412d12bd91c18e17f641a70cd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get CPU-accessible data for a plane.  <br /></td></tr>
 <tr class="separator:affc500e412d12bd91c18e17f641a70cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -209,6 +209,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a4b8667bf60ab64fb30a373e1220fb660"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a397764c0be472b4fa8397c88e87403b8" id="r_a397764c0be472b4fa8397c88e87403b8"><td class="memItemLeft" align="right" valign="top">AVRational&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1frame_1_1DecodedFrame.html#a397764c0be472b4fa8397c88e87403b8">getTimeBase</a> () const noexcept</td></tr>
 <tr class="separator:a397764c0be472b4fa8397c88e87403b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a929ab28b9e0c6af075cc16d260cd4e36" id="r_a929ab28b9e0c6af075cc16d260cd4e36"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1frame_1_1DecodedFrame.html#a929ab28b9e0c6af075cc16d260cd4e36">hasPTS</a> () const noexcept</td></tr>
+<tr class="separator:a929ab28b9e0c6af075cc16d260cd4e36"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaed7d19edf95bb5866c7095f9a5cccc3" id="r_aaed7d19edf95bb5866c7095f9a5cccc3"><td class="memItemLeft" align="right" valign="top">std::chrono::microseconds&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1frame_1_1DecodedFrame.html#aaed7d19edf95bb5866c7095f9a5cccc3">getTimestamp</a> () const noexcept</td></tr>
 <tr class="separator:aaed7d19edf95bb5866c7095f9a5cccc3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a38952b6d5b7fc3074d92a4382fb70c4c" id="r_a38952b6d5b7fc3074d92a4382fb70c4c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1frame_1_1DecodedFrame.html#a38952b6d5b7fc3074d92a4382fb70c4c">setTimestamp</a> (std::chrono::microseconds ts) noexcept</td></tr>
@@ -302,12 +304,12 @@ Additional Inherited Members</h2></td></tr>
 <div class="line"> </div>
 <div class="line"><span class="comment">// Switch frame mode to video:</span></div>
 <div class="line">frame-&gt;<a class="code hl_function" href="classLimef_1_1frame_1_1DecodedFrame.html#adc7bcf838d963c38adcd7c9df3629d3b">setMediaType</a>(<a class="code hl_enumvalue" href="classLimef_1_1frame_1_1DecodedFrame.html#a60aa94b28e7d7f519e1ff8377df9ed76a34e2d1989a1dbf75cd631596133ee5ee">MediaType::Video</a>)</div>
-<div class="ttc" id="aclassLimef_1_1frame_1_1DecodedFrame_html"><div class="ttname"><a href="classLimef_1_1frame_1_1DecodedFrame.html">Limef::frame::DecodedFrame</a></div><div class="ttdoc">Frame containing either decoded video, audio data or both.</div><div class="ttdef"><b>Definition</b> decodedframe.h:70</div></div>
+<div class="ttc" id="aclassLimef_1_1frame_1_1DecodedFrame_html"><div class="ttname"><a href="classLimef_1_1frame_1_1DecodedFrame.html">Limef::frame::DecodedFrame</a></div><div class="ttdoc">Frame containing either decoded video, audio data or both.</div><div class="ttdef"><b>Definition</b> decodedframe.h:83</div></div>
 <div class="ttc" id="aclassLimef_1_1frame_1_1DecodedFrame_html_a60aa94b28e7d7f519e1ff8377df9ed76a34e2d1989a1dbf75cd631596133ee5ee"><div class="ttname"><a href="classLimef_1_1frame_1_1DecodedFrame.html#a60aa94b28e7d7f519e1ff8377df9ed76a34e2d1989a1dbf75cd631596133ee5ee">Limef::frame::DecodedFrame::MediaType::Video</a></div><div class="ttdeci">@ Video</div><div class="ttdoc">Frame contains video data.</div></div>
-<div class="ttc" id="aclassLimef_1_1frame_1_1DecodedFrame_html_a8e5ae5164d63e7edb62cf07467e4a535"><div class="ttname"><a href="classLimef_1_1frame_1_1DecodedFrame.html#a8e5ae5164d63e7edb62cf07467e4a535">Limef::frame::DecodedFrame::reserveVideo</a></div><div class="ttdeci">bool reserveVideo(int width, int height, AVPixelFormat format, AVBufferRef *hw_ctx=nullptr)</div><div class="ttdoc">Reserve space for video frame.</div><div class="ttdef"><b>Definition</b> decodedframe.cpp:345</div></div>
-<div class="ttc" id="aclassLimef_1_1frame_1_1DecodedFrame_html_ad3fef7e5cb4e348d9435f5760843855c"><div class="ttname"><a href="classLimef_1_1frame_1_1DecodedFrame.html#ad3fef7e5cb4e348d9435f5760843855c">Limef::frame::DecodedFrame::getFrame</a></div><div class="ttdeci">const AVFrame * getFrame() const noexcept</div><div class="ttdoc">Get currently active frame.</div><div class="ttdef"><b>Definition</b> decodedframe.h:262</div></div>
-<div class="ttc" id="aclassLimef_1_1frame_1_1DecodedFrame_html_adc7bcf838d963c38adcd7c9df3629d3b"><div class="ttname"><a href="classLimef_1_1frame_1_1DecodedFrame.html#adc7bcf838d963c38adcd7c9df3629d3b">Limef::frame::DecodedFrame::setMediaType</a></div><div class="ttdeci">void setMediaType(MediaType media_type_)</div><div class="ttdoc">Set current active MediaType of the frame.</div><div class="ttdef"><b>Definition</b> decodedframe.h:125</div></div>
-<div class="ttc" id="aclassLimef_1_1frame_1_1DecodedFrame_html_aecc81d46811ecc47d001812555b7483c"><div class="ttname"><a href="classLimef_1_1frame_1_1DecodedFrame.html#aecc81d46811ecc47d001812555b7483c">Limef::frame::DecodedFrame::reserveAudio</a></div><div class="ttdeci">bool reserveAudio(int sample_rate, const AVChannelLayout &amp;ch_layout, AVSampleFormat format, int nb_samples)</div><div class="ttdoc">Reserve space for audio frame.</div><div class="ttdef"><b>Definition</b> decodedframe.cpp:369</div></div>
+<div class="ttc" id="aclassLimef_1_1frame_1_1DecodedFrame_html_a8e5ae5164d63e7edb62cf07467e4a535"><div class="ttname"><a href="classLimef_1_1frame_1_1DecodedFrame.html#a8e5ae5164d63e7edb62cf07467e4a535">Limef::frame::DecodedFrame::reserveVideo</a></div><div class="ttdeci">bool reserveVideo(int width, int height, AVPixelFormat format, AVBufferRef *hw_ctx=nullptr)</div><div class="ttdoc">Reserve space for video frame.</div><div class="ttdef"><b>Definition</b> decodedframe.cpp:500</div></div>
+<div class="ttc" id="aclassLimef_1_1frame_1_1DecodedFrame_html_ad3fef7e5cb4e348d9435f5760843855c"><div class="ttname"><a href="classLimef_1_1frame_1_1DecodedFrame.html#ad3fef7e5cb4e348d9435f5760843855c">Limef::frame::DecodedFrame::getFrame</a></div><div class="ttdeci">const AVFrame * getFrame() const noexcept</div><div class="ttdoc">Get currently active frame.</div><div class="ttdef"><b>Definition</b> decodedframe.h:360</div></div>
+<div class="ttc" id="aclassLimef_1_1frame_1_1DecodedFrame_html_adc7bcf838d963c38adcd7c9df3629d3b"><div class="ttname"><a href="classLimef_1_1frame_1_1DecodedFrame.html#adc7bcf838d963c38adcd7c9df3629d3b">Limef::frame::DecodedFrame::setMediaType</a></div><div class="ttdeci">void setMediaType(MediaType media_type_)</div><div class="ttdoc">Set current active MediaType of the frame.</div><div class="ttdef"><b>Definition</b> decodedframe.h:138</div></div>
+<div class="ttc" id="aclassLimef_1_1frame_1_1DecodedFrame_html_aecc81d46811ecc47d001812555b7483c"><div class="ttname"><a href="classLimef_1_1frame_1_1DecodedFrame.html#aecc81d46811ecc47d001812555b7483c">Limef::frame::DecodedFrame::reserveAudio</a></div><div class="ttdeci">bool reserveAudio(int sample_rate, const AVChannelLayout &amp;ch_layout, AVSampleFormat format, int nb_samples)</div><div class="ttdoc">Reserve space for audio frame.</div><div class="ttdef"><b>Definition</b> decodedframe.cpp:597</div></div>
 </div><!-- fragment --> </div><h2 class="groupheader">Member Enumeration Documentation</h2>
 <a id="a60aa94b28e7d7f519e1ff8377df9ed76" name="a60aa94b28e7d7f519e1ff8377df9ed76"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a60aa94b28e7d7f519e1ff8377df9ed76">&#9670;&#160;</a></span>MediaType</h2>
@@ -506,33 +508,6 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
-<a id="a3e4b7c2cbe019e53ce32ed39884cbea8" name="a3e4b7c2cbe019e53ce32ed39884cbea8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3e4b7c2cbe019e53ce32ed39884cbea8">&#9670;&#160;</a></span>dmaBufFd()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">int Limef::frame::DecodedFrame::dmaBufFd </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Get DMA-buf file descriptor (returns -1 if not a DMA-buf frame) </p>
-
-</div>
-</div>
 <a id="a687c4ec082bd5656812e62c65eb191be" name="a687c4ec082bd5656812e62c65eb191be"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a687c4ec082bd5656812e62c65eb191be">&#9670;&#160;</a></span>dump()</h2>
 
@@ -586,6 +561,33 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <p>If current active type is audio, return sample fmt </p>
+
+</div>
+</div>
+<a id="a3008620e62ad8ab08c5ab90112dd7650" name="a3008620e62ad8ab08c5ab90112dd7650"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3008620e62ad8ab08c5ab90112dd7650">&#9670;&#160;</a></span>getBufferLocation()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="namespaceLimef_1_1frame.html#a2a0e8597a20bf03625897c499c620c6e">BufferLocation</a> Limef::frame::DecodedFrame::getBufferLocation </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Get the authoritative buffer location for this frame. </p>
 
 </div>
 </div>
@@ -854,33 +856,6 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
-<a id="af49a23f1a6203bffdbd665242e88fdfa" name="af49a23f1a6203bffdbd665242e88fdfa"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af49a23f1a6203bffdbd665242e88fdfa">&#9670;&#160;</a></span>getTargetHWPool()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">AVBufferRef * Limef::frame::DecodedFrame::getTargetHWPool </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Get the target HW pool (nullptr if not set) </p>
-
-</div>
-</div>
 <a id="a397764c0be472b4fa8397c88e87403b8" name="a397764c0be472b4fa8397c88e87403b8"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a397764c0be472b4fa8397c88e87403b8">&#9670;&#160;</a></span>getTimeBase()</h2>
 
@@ -1016,6 +991,32 @@ false If no overflow was detected </dd></dl>
 
 </div>
 </div>
+<a id="a929ab28b9e0c6af075cc16d260cd4e36" name="a929ab28b9e0c6af075cc16d260cd4e36"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a929ab28b9e0c6af075cc16d260cd4e36">&#9670;&#160;</a></span>hasPTS()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Limef::frame::DecodedFrame::hasPTS </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Returns true if the frame has a valid PTS (i.e. pts != AV_NOPTS_VALUE and timebase is set). </p>
+
+</div>
+</div>
 <a id="acbb88daceb6e5d6d98ae2ab92a487579" name="acbb88daceb6e5d6d98ae2ab92a487579"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#acbb88daceb6e5d6d98ae2ab92a487579">&#9670;&#160;</a></span>isAudio()</h2>
 
@@ -1090,7 +1091,7 @@ false If no overflow was detected </dd></dl>
 </table>
 </div><div class="memdoc">
 
-<p>Check if frame data is on CPU. </p>
+<p>Check if frame data is in CPU-accessible memory. </p>
 
 </div>
 </div>
@@ -1117,7 +1118,7 @@ false If no overflow was detected </dd></dl>
 </table>
 </div><div class="memdoc">
 
-<p>Check if frame data is on GPU/hardware. </p>
+<p>Check if frame data is on GPU (not CPU-accessible without a transfer) </p>
 
 </div>
 </div>
@@ -1143,33 +1144,6 @@ false If no overflow was detected </dd></dl>
   </tr>
 </table>
 </div><div class="memdoc">
-
-</div>
-</div>
-<a id="a4cad3eb5483079eb80b4c996216714d3" name="a4cad3eb5483079eb80b4c996216714d3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4cad3eb5483079eb80b4c996216714d3">&#9670;&#160;</a></span>location()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="namespaceLimef_1_1frame.html#a2a0e8597a20bf03625897c499c620c6e">BufferLocation</a> Limef::frame::DecodedFrame::location </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Get the location of the frame buffer. </p>
 
 </div>
 </div>
@@ -1422,8 +1396,8 @@ false If no overflow was detected </dd></dl>
 
 </div>
 </div>
-<a id="aae859ea2cd763e46249518dd2fb7f2c9" name="aae859ea2cd763e46249518dd2fb7f2c9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aae859ea2cd763e46249518dd2fb7f2c9">&#9670;&#160;</a></span>setDMABufFd()</h2>
+<a id="a3e6a3235a08da2bec7705b9b794d4fa1" name="a3e6a3235a08da2bec7705b9b794d4fa1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3e6a3235a08da2bec7705b9b794d4fa1">&#9670;&#160;</a></span>setBufferLocation()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1432,10 +1406,10 @@ false If no overflow was detected </dd></dl>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void Limef::frame::DecodedFrame::setDMABufFd </td>
+          <td class="memname">void Limef::frame::DecodedFrame::setBufferLocation </td>
           <td>(</td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>fd</em></td><td>)</td>
+          <td class="paramtype"><a class="el" href="namespaceLimef_1_1frame.html#a2a0e8597a20bf03625897c499c620c6e">BufferLocation</a>&#160;</td>
+          <td class="paramname"><em>loc</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -1446,7 +1420,7 @@ false If no overflow was detected </dd></dl>
 </table>
 </div><div class="memdoc">
 
-<p>Set DMA-buf file descriptor (for V4L2 backend) </p>
+<p>Set the buffer location — caller must ensure AVFrame state is consistent. </p>
 
 </div>
 </div>
@@ -1475,41 +1449,6 @@ false If no overflow was detected </dd></dl>
 </div><div class="memdoc">
 
 <p>Set current active MediaType of the frame. </p>
-
-</div>
-</div>
-<a id="ab547389aee5382e904c2b39459bb3d08" name="ab547389aee5382e904c2b39459bb3d08"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab547389aee5382e904c2b39459bb3d08">&#9670;&#160;</a></span>setTargetHWPool()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void Limef::frame::DecodedFrame::setTargetHWPool </td>
-          <td>(</td>
-          <td class="paramtype">AVBufferRef *&#160;</td>
-          <td class="paramname"><em>pool</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Set target HW frames pool for GPU→GPU copy in <a class="el" href="classLimef_1_1frame_1_1DecodedFrame.html#ac5b3b9c20d17097b8630fe8e7973a20b" title="Copy data from another frame.">updateFrom()</a> </p>
-<p>When set, <a class="el" href="classLimef_1_1frame_1_1DecodedFrame.html#ac5b3b9c20d17097b8630fe8e7973a20b" title="Copy data from another frame.">updateFrom()</a> will allocate from this pool and do a true GPU→GPU copy instead of just referencing the source buffer. Used by <a class="el" href="classLimef_1_1FrameFifo.html" title="FrameFifo: a stack and a fifo.">FrameFifo</a> to ensure stack frames own their GPU buffers.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">pool</td><td>The hw_frames_ctx pool to allocate from (not owned, must outlive frame) </td></tr>
-  </table>
-  </dd>
-</dl>
 
 </div>
 </div>
@@ -1564,6 +1503,186 @@ false If no overflow was detected </dd></dl>
 </table>
 </div><div class="memdoc">
 <p>Sets the active frame's PTS from microseconds (rescaled via time_base) </p>
+
+</div>
+</div>
+<a id="a477a36b2fd7ca25fe1be808b746161c2" name="a477a36b2fd7ca25fe1be808b746161c2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a477a36b2fd7ca25fe1be808b746161c2">&#9670;&#160;</a></span>setupArgusCPUView()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Limef::frame::DecodedFrame::setupArgusCPUView </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>width</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>height</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t *&#160;</td>
+          <td class="paramname"><em>y_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t *&#160;</td>
+          <td class="paramname"><em>uv_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>y_pitch</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>uv_pitch</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Non-owning CPU NV12 view into a pre-mapped pitch-linear NvBufSurface. </p>
+<p>Used by ArgusCameraThread after copyToNvBuffer + NvBufSurfaceSyncForCpu. ArgusCameraThread owns the NvBufSurface mapping for the stream lifetime. Pitch comes from planeParams.pitch[] (may differ from width due to alignment).</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">width</td><td><a class="el" href="classLimef_1_1frame_1_1Frame.html" title="Frame base class.">Frame</a> width in pixels </td></tr>
+    <tr><td class="paramname">height</td><td><a class="el" href="classLimef_1_1frame_1_1Frame.html" title="Frame base class.">Frame</a> height in pixels </td></tr>
+    <tr><td class="paramname">y_ptr</td><td>Pre-mapped Y-plane CPU pointer </td></tr>
+    <tr><td class="paramname">uv_ptr</td><td>Pre-mapped UV-plane CPU pointer </td></tr>
+    <tr><td class="paramname">y_pitch</td><td>Y-plane row stride in bytes </td></tr>
+    <tr><td class="paramname">uv_pitch</td><td>UV-plane row stride in bytes </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a1ae9d73c908408228512595636849229" name="a1ae9d73c908408228512595636849229"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1ae9d73c908408228512595636849229">&#9670;&#160;</a></span>setupCPUNvBufVideo()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Limef::frame::DecodedFrame::setupCPUNvBufVideo </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>width</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>height</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>dma_fd</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>nv12_size</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set up frame as CPU NV12 from a NvBuf dma-buf fd (mmap, zero-copy). </p>
+<p>mmaps the fd into userspace, sets data[0]/[1] directly into the mmap'd region, and attaches a custom AVBufferRef destructor that calls munmap + close. No pixel copy — the mmap IS the AVFrame buffer.</p>
+<p>Caller must NOT close dma_fd after this call.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">width</td><td><a class="el" href="classLimef_1_1frame_1_1Frame.html" title="Frame base class.">Frame</a> width </td></tr>
+    <tr><td class="paramname">height</td><td><a class="el" href="classLimef_1_1frame_1_1Frame.html" title="Frame base class.">Frame</a> height </td></tr>
+    <tr><td class="paramname">dma_fd</td><td>DMA-buf fd (ownership transferred) </td></tr>
+    <tr><td class="paramname">nv12_size</td><td>Total NV12 size in bytes (width * height * 3 / 2) </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true on success </dd></dl>
+
+</div>
+</div>
+<a id="a9a2991300586a91fa8df00a6fa3cede4" name="a9a2991300586a91fa8df00a6fa3cede4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9a2991300586a91fa8df00a6fa3cede4">&#9670;&#160;</a></span>setupNVDECCPUView()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Limef::frame::DecodedFrame::setupNVDECCPUView </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>width</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>height</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t *&#160;</td>
+          <td class="paramname"><em>y_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t *&#160;</td>
+          <td class="paramname"><em>uv_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>y_sz</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set up frame as a non-owning CPU NV12 view into pre-mapped NVMM memory. </p>
+<p>Used by V4L2NVDecoder's EXPBUF-at-setup path: CAPTURE slot CPU pointers are established once in setupCapture() and outlive individual frames. The V4L2NVDecoder owns the memory — this frame holds a no-op AVBufferRef so that AVFrame reference-counting does not free the mapping on unref.</p>
+<p>Pointers remain valid until V4L2NVDecoder re-queues the slot via the next status() call (hold/release contract validated in playground/jetson/2/).</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">width</td><td><a class="el" href="classLimef_1_1frame_1_1Frame.html" title="Frame base class.">Frame</a> width </td></tr>
+    <tr><td class="paramname">height</td><td><a class="el" href="classLimef_1_1frame_1_1Frame.html" title="Frame base class.">Frame</a> height </td></tr>
+    <tr><td class="paramname">y_ptr</td><td>Pre-mapped Y-plane CPU pointer (owned by V4L2NVDecoder) </td></tr>
+    <tr><td class="paramname">uv_ptr</td><td>Pre-mapped UV-plane CPU pointer (owned by V4L2NVDecoder) </td></tr>
+    <tr><td class="paramname">y_sz</td><td>Y-plane size in bytes </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

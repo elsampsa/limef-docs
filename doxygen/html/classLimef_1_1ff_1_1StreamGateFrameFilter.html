@@ -22,7 +22,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">My Project<span id="projectnumber">&#160;0.1.0</span>
+   <div id="projectname">My Project<span id="projectnumber">&#160;0.2.0</span>
    </div>
   </td>
  </tr>
@@ -186,11 +186,11 @@ Additional Inherited Members</h2></td></tr>
 <li><code>from_source == false</code> → frame is silently dropped.</li>
 </ul>
 <p>All other frame types (PacketFrame, DecodedFrame, TensorFrame, SignalFrame, CodecFrame, …) pass through unconditionally.</p>
-<h2><a class="anchor" id="autotoc_md23"></a>
+<h2><a class="anchor" id="autotoc_md37"></a>
 When to use</h2>
 <p>Place a <code><a class="el" href="classLimef_1_1ff_1_1StreamGateFrameFilter.html" title="Passes only source-originated StreamFrames; drops relay replays.">StreamGateFrameFilter</a></code> immediately upstream of any stateful filter that must only reinitialise on genuine stream lifecycle events (source restart, resolution/format change) and must never see relay StreamFrames injected by intermediate routing filters such as <code><a class="el" href="classLimef_1_1ff_1_1SwitchFrameFilter.html" title="Routes incoming frames to exactly one of N output terminals.">SwitchFrameFilter</a></code>.</p>
 <p>This is the composable alternative to per-filter <code>from_source</code> checks. Use it when you want the relay-suppression behaviour to be explicit and visible in the pipeline topology rather than buried inside each consumer.</p>
-<h2><a class="anchor" id="autotoc_md24"></a>
+<h2><a class="anchor" id="autotoc_md38"></a>
 Example</h2>
 <div class="fragment"><div class="line"><a class="code hl_class" href="classLimef_1_1ff_1_1StreamGateFrameFilter.html">StreamGateFrameFilter</a> gate(<span class="stringliteral">&quot;gate&quot;</span>);</div>
 <div class="line"><a class="code hl_class" href="classLimef_1_1ff_1_1SwitchFrameFilter.html">SwitchFrameFilter</a>      sw(<span class="stringliteral">&quot;sw&quot;</span>, 2);</div>
@@ -199,13 +199,13 @@ Example</h2>
 <div class="line"><span class="comment">// relay StreamFrames from sw never reach enc</span></div>
 <div class="line">sw.cc(0, gate);</div>
 <div class="line">gate.cc(enc);</div>
-<div class="ttc" id="aclassLimef_1_1ff_1_1EncodingFrameFilter_html"><div class="ttname"><a href="classLimef_1_1ff_1_1EncodingFrameFilter.html">Limef::ff::EncodingFrameFilter</a></div><div class="ttdoc">A FrameFilter that encodes frames.</div><div class="ttdef"><b>Definition</b> encoding.h:69</div></div>
-<div class="ttc" id="aclassLimef_1_1ff_1_1StreamGateFrameFilter_html"><div class="ttname"><a href="classLimef_1_1ff_1_1StreamGateFrameFilter.html">Limef::ff::StreamGateFrameFilter</a></div><div class="ttdoc">Passes only source-originated StreamFrames; drops relay replays.</div><div class="ttdef"><b>Definition</b> streamgate.h:77</div></div>
-<div class="ttc" id="aclassLimef_1_1ff_1_1SwitchFrameFilter_html"><div class="ttname"><a href="classLimef_1_1ff_1_1SwitchFrameFilter.html">Limef::ff::SwitchFrameFilter</a></div><div class="ttdoc">Routes incoming frames to exactly one of N output terminals.</div><div class="ttdef"><b>Definition</b> switch.h:69</div></div>
+<div class="ttc" id="aclassLimef_1_1ff_1_1EncodingFrameFilter_html"><div class="ttname"><a href="classLimef_1_1ff_1_1EncodingFrameFilter.html">Limef::ff::EncodingFrameFilter</a></div><div class="ttdoc">A FrameFilter that encodes frames.</div><div class="ttdef"><b>Definition</b> encoding.h:67</div></div>
+<div class="ttc" id="aclassLimef_1_1ff_1_1StreamGateFrameFilter_html"><div class="ttname"><a href="classLimef_1_1ff_1_1StreamGateFrameFilter.html">Limef::ff::StreamGateFrameFilter</a></div><div class="ttdoc">Passes only source-originated StreamFrames; drops relay replays.</div><div class="ttdef"><b>Definition</b> streamgate.h:74</div></div>
+<div class="ttc" id="aclassLimef_1_1ff_1_1SwitchFrameFilter_html"><div class="ttname"><a href="classLimef_1_1ff_1_1SwitchFrameFilter.html">Limef::ff::SwitchFrameFilter</a></div><div class="ttdoc">Routes incoming frames to exactly one of N output terminals.</div><div class="ttdef"><b>Definition</b> switch.h:66</div></div>
 </div><!-- fragment --><p>In Python: </p><div class="fragment"><div class="line">gate = limef.StreamGateFrameFilter(<span class="stringliteral">&quot;gate&quot;</span>)</div>
 <div class="line">sw.cc(0, gate)</div>
 <div class="line">gate.cc(enc)</div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md25"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md39"></a>
 Relation to EncodingFrameFilter</h2>
 <p><code><a class="el" href="classLimef_1_1ff_1_1EncodingFrameFilter.html" title="A FrameFilter that encodes frames.">EncodingFrameFilter</a></code> already inspects <code>from_source</code> internally and skips reinitialisation for relay StreamFrames. <code><a class="el" href="classLimef_1_1ff_1_1StreamGateFrameFilter.html" title="Passes only source-originated StreamFrames; drops relay replays.">StreamGateFrameFilter</a></code> provides the same protection as an explicit pipeline element, useful when the downstream filter does not (yet) handle <code>from_source</code> itself.</p>
 <dl class="section see"><dt>See also</dt><dd>StreamFrame::from_source </dd>

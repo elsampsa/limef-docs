@@ -22,7 +22,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">My Project<span id="projectnumber">&#160;0.1.0</span>
+   <div id="projectname">My Project<span id="projectnumber">&#160;0.2.0</span>
    </div>
   </td>
  </tr>
@@ -90,21 +90,23 @@ Inheritance diagram for Limef::signal::Signal:</div>
 <div class="dyncontent">
 <div class="center"><img src="classLimef_1_1signal_1_1Signal__inherit__graph.png" border="0" usemap="#aLimef_1_1signal_1_1Signal_inherit__map" alt="Inheritance graph"/></div>
 <map name="aLimef_1_1signal_1_1Signal_inherit__map" id="aLimef_1_1signal_1_1Signal_inherit__map">
-<area shape="rect" title="Signal base class." alt="" coords="5,169,159,195"/>
+<area shape="rect" title="Signal base class." alt="" coords="5,195,159,220"/>
 <area shape="rect" href="classLimef_1_1rtsp_1_1RTSPServerSignal.html" title="Signal for RTSPServerThread control operations." alt="" coords="207,5,420,31"/>
-<area shape="poly" title=" " alt="" coords="96,156,140,97,170,66,205,40,231,28,233,33,208,44,174,70,144,100,100,159"/>
+<area shape="poly" title=" " alt="" coords="93,181,110,148,135,110,167,72,205,40,228,28,230,33,208,44,171,76,139,113,115,151,97,183"/>
 <area shape="rect" href="classLimef_1_1signal_1_1BasicSignal.html" title="A thread intercom Signal." alt="" coords="219,55,407,80"/>
-<area shape="poly" title=" " alt="" coords="106,158,150,123,206,90,241,78,243,83,208,95,153,127,109,162"/>
+<area shape="poly" title=" " alt="" coords="100,182,145,135,174,111,205,90,237,78,239,83,208,95,177,115,148,139,104,186"/>
 <area shape="rect" href="classLimef_1_1signal_1_1FlowControlSignal.html" title="Flow control signal for framefilter chains." alt="" coords="218,105,409,145"/>
-<area shape="poly" title=" " alt="" coords="146,163,232,142,233,147,148,169"/>
+<area shape="poly" title=" " alt="" coords="124,187,206,154,242,142,243,147,208,159,126,192"/>
 <area shape="rect" href="classLimef_1_1signal_1_1NullSignal.html" title="A dummy/placeholder signal class &amp; a minimal example of creating a new signal class." alt="" coords="224,169,403,195"/>
-<area shape="poly" title=" " alt="" coords="172,179,224,179,224,185,172,185"/>
+<area shape="poly" title=" " alt="" coords="172,195,224,189,224,194,173,200"/>
 <area shape="rect" href="classLimef_1_1thread_1_1ExampleSignal.html" title="An example signal for ExampleThread" alt="" coords="207,219,420,244"/>
-<area shape="poly" title=" " alt="" coords="156,195,253,216,252,221,155,200"/>
+<area shape="poly" title=" " alt="" coords="173,214,207,218,206,223,172,219"/>
 <area shape="rect" href="classLimef_1_1thread_1_1MediaFileSignal.html" title="Specific signals to MediaFileThread0." alt="" coords="224,269,403,309"/>
-<area shape="poly" title=" " alt="" coords="115,200,158,227,208,253,242,266,240,271,206,258,155,232,112,205"/>
+<area shape="poly" title=" " alt="" coords="129,223,208,253,247,266,245,271,206,258,127,228"/>
 <area shape="rect" href="classLimef_1_1thread_1_1WebSocketServerSignal.html" title=" " alt="" coords="220,333,407,373"/>
-<area shape="poly" title=" " alt="" coords="101,205,145,262,175,292,208,318,231,330,228,335,205,323,171,296,141,265,97,208"/>
+<area shape="poly" title=" " alt="" coords="105,229,149,274,177,298,208,318,233,330,231,335,205,323,174,302,146,278,101,232"/>
+<area shape="rect" href="classLimef_1_1webrtc_1_1WebRTCServerSignal.html" title=" " alt="" coords="207,397,419,437"/>
+<area shape="poly" title=" " alt="" coords="97,232,114,266,139,307,170,348,208,383,229,394,226,399,205,387,166,351,134,310,109,268,92,234"/>
 </map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
@@ -125,7 +127,7 @@ Public Member Functions</h2></td></tr>
 <div class="textblock"><p><a class="el" href="classLimef_1_1signal_1_1Signal.html" title="Signal base class.">Signal</a> base class. </p>
 <p>Signals are encapsulated into <code>SignalFrame</code>s and they are used to inform <code>Thread</code>'s and downstream framefilters about actions and parameters they should do and use.</p>
 <p>Each subclass must implement method <code>staticSignalClass</code> that is used by <code><a class="el" href="classLimef_1_1signal_1_1Signal.html#a09fae9af4e8789686b14d4bdc16ae2b9" title="Test and cast signal type Tests if the signal is of desired type and if so, cast it to the desider ty...">Signal::as</a></code>, for example: </p><div class="fragment"><div class="line"><span class="keyword">static</span> <a class="code hl_enumeration" href="namespaceLimef_1_1signal.html#aaf87ae235935d3cf395850dc5deea980">SignalClass</a> staticSignalClass() { <span class="keywordflow">return</span> <a class="code hl_enumvalue" href="namespaceLimef_1_1signal.html#aaf87ae235935d3cf395850dc5deea980a20d944e028fb6d36923c480c380cf478">SignalClass::NullSignal</a>; }</div>
-<div class="ttc" id="anamespaceLimef_1_1signal_html_aaf87ae235935d3cf395850dc5deea980"><div class="ttname"><a href="namespaceLimef_1_1signal.html#aaf87ae235935d3cf395850dc5deea980">Limef::signal::SignalClass</a></div><div class="ttdeci">SignalClass</div><div class="ttdef"><b>Definition</b> signal.h:37</div></div>
+<div class="ttc" id="anamespaceLimef_1_1signal_html_aaf87ae235935d3cf395850dc5deea980"><div class="ttname"><a href="namespaceLimef_1_1signal.html#aaf87ae235935d3cf395850dc5deea980">Limef::signal::SignalClass</a></div><div class="ttdeci">SignalClass</div><div class="ttdef"><b>Definition</b> signal.h:34</div></div>
 <div class="ttc" id="anamespaceLimef_1_1signal_html_aaf87ae235935d3cf395850dc5deea980a20d944e028fb6d36923c480c380cf478"><div class="ttname"><a href="namespaceLimef_1_1signal.html#aaf87ae235935d3cf395850dc5deea980a20d944e028fb6d36923c480c380cf478">Limef::signal::SignalClass::NullSignal</a></div><div class="ttdeci">@ NullSignal</div><div class="ttdoc">identifies class NullSignal</div></div>
 </div><!-- fragment --> </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a92bdea53197afde2f00579eb5f8261d2" name="a92bdea53197afde2f00579eb5f8261d2"></a>
@@ -208,7 +210,7 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Implemented in <a class="el" href="classLimef_1_1rtsp_1_1RTSPServerSignal.html#a8ba30dde8c2861f01b674c2e6fa4c231">Limef::rtsp::RTSPServerSignal</a>, <a class="el" href="classLimef_1_1signal_1_1NullSignal.html#ab90faa2d85db42a24ac992f72b35fdd1">Limef::signal::NullSignal</a>, <a class="el" href="classLimef_1_1signal_1_1BasicSignal.html#a9a6dd17a270c8880657133bcc7666bf1">Limef::signal::BasicSignal</a>, <a class="el" href="classLimef_1_1signal_1_1FlowControlSignal.html#aa9ef3a32ba9434bec1f75cb8495c093f">Limef::signal::FlowControlSignal</a>, <a class="el" href="classLimef_1_1thread_1_1ExampleSignal.html#ad87857da517cfcf056b37701c70205b1">Limef::thread::ExampleSignal</a>, <a class="el" href="classLimef_1_1thread_1_1MediaFileSignal.html#a097d6badf10e4c2c68c18ab32368d936">Limef::thread::MediaFileSignal</a>, and <a class="el" href="classLimef_1_1thread_1_1WebSocketServerSignal.html#aa0683cfc1f677c8b5290d7c5a28e5be6">Limef::thread::WebSocketServerSignal</a>.</p>
+<p>Implemented in <a class="el" href="classLimef_1_1rtsp_1_1RTSPServerSignal.html#a8ba30dde8c2861f01b674c2e6fa4c231">Limef::rtsp::RTSPServerSignal</a>, <a class="el" href="classLimef_1_1signal_1_1NullSignal.html#ab90faa2d85db42a24ac992f72b35fdd1">Limef::signal::NullSignal</a>, <a class="el" href="classLimef_1_1signal_1_1BasicSignal.html#a9a6dd17a270c8880657133bcc7666bf1">Limef::signal::BasicSignal</a>, <a class="el" href="classLimef_1_1signal_1_1FlowControlSignal.html#aa9ef3a32ba9434bec1f75cb8495c093f">Limef::signal::FlowControlSignal</a>, <a class="el" href="classLimef_1_1thread_1_1ExampleSignal.html#ad87857da517cfcf056b37701c70205b1">Limef::thread::ExampleSignal</a>, <a class="el" href="classLimef_1_1thread_1_1MediaFileSignal.html#a097d6badf10e4c2c68c18ab32368d936">Limef::thread::MediaFileSignal</a>, <a class="el" href="classLimef_1_1thread_1_1WebSocketServerSignal.html#aa0683cfc1f677c8b5290d7c5a28e5be6">Limef::thread::WebSocketServerSignal</a>, and <a class="el" href="classLimef_1_1webrtc_1_1WebRTCServerSignal.html#acc0f722dbeadb1e27a81267a663d03f3">Limef::webrtc::WebRTCServerSignal</a>.</p>
 
 </div>
 </div>
@@ -235,7 +237,7 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Implemented in <a class="el" href="classLimef_1_1rtsp_1_1RTSPServerSignal.html#a0ad273d8218cf5fb0eb3c24e32ed3671">Limef::rtsp::RTSPServerSignal</a>, <a class="el" href="classLimef_1_1signal_1_1NullSignal.html#ac104229db20234db8b713cc5de640125">Limef::signal::NullSignal</a>, <a class="el" href="classLimef_1_1signal_1_1BasicSignal.html#a2ee469f1c0d1e3e494c70148d1b26d33">Limef::signal::BasicSignal</a>, <a class="el" href="classLimef_1_1signal_1_1FlowControlSignal.html#ac13c363fa93a284f1897ed2f769dc7e4">Limef::signal::FlowControlSignal</a>, <a class="el" href="classLimef_1_1thread_1_1ExampleSignal.html#ac676b9e291820ab713f1ca2864b4854d">Limef::thread::ExampleSignal</a>, <a class="el" href="classLimef_1_1thread_1_1MediaFileSignal.html#abb9081fae3c957af90fa0e51cbf7390e">Limef::thread::MediaFileSignal</a>, and <a class="el" href="classLimef_1_1thread_1_1WebSocketServerSignal.html#a1ee685ce00ea2631c330c9a118886fa1">Limef::thread::WebSocketServerSignal</a>.</p>
+<p>Implemented in <a class="el" href="classLimef_1_1rtsp_1_1RTSPServerSignal.html#a0ad273d8218cf5fb0eb3c24e32ed3671">Limef::rtsp::RTSPServerSignal</a>, <a class="el" href="classLimef_1_1signal_1_1NullSignal.html#ac104229db20234db8b713cc5de640125">Limef::signal::NullSignal</a>, <a class="el" href="classLimef_1_1signal_1_1BasicSignal.html#a2ee469f1c0d1e3e494c70148d1b26d33">Limef::signal::BasicSignal</a>, <a class="el" href="classLimef_1_1signal_1_1FlowControlSignal.html#ac13c363fa93a284f1897ed2f769dc7e4">Limef::signal::FlowControlSignal</a>, <a class="el" href="classLimef_1_1thread_1_1ExampleSignal.html#ac676b9e291820ab713f1ca2864b4854d">Limef::thread::ExampleSignal</a>, <a class="el" href="classLimef_1_1thread_1_1MediaFileSignal.html#abb9081fae3c957af90fa0e51cbf7390e">Limef::thread::MediaFileSignal</a>, <a class="el" href="classLimef_1_1thread_1_1WebSocketServerSignal.html#a1ee685ce00ea2631c330c9a118886fa1">Limef::thread::WebSocketServerSignal</a>, and <a class="el" href="classLimef_1_1webrtc_1_1WebRTCServerSignal.html#a2ece6d584547b9048b7fc5f14f21b256">Limef::webrtc::WebRTCServerSignal</a>.</p>
 
 </div>
 </div>

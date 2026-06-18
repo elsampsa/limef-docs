@@ -22,7 +22,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">My Project<span id="projectnumber">&#160;0.1.0</span>
+   <div id="projectname">My Project<span id="projectnumber">&#160;0.2.0</span>
    </div>
   </td>
  </tr>
@@ -81,7 +81,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>Composite filter that transcodes audio to AAC and muxes to fragmented MP4.  
+<p>Composite filter that muxes to fragmented MP4 for browser MediaSource Extensions.  
  <a href="classLimef_1_1ff_1_1FMP4FrameFilter.html#details">More...</a></p>
 
 <p><code>#include &lt;fmp4.h&gt;</code></p>
@@ -90,7 +90,7 @@ Inheritance diagram for Limef::ff::FMP4FrameFilter:</div>
 <div class="dyncontent">
 <div class="center"><img src="classLimef_1_1ff_1_1FMP4FrameFilter__inherit__graph.png" border="0" usemap="#aLimef_1_1ff_1_1FMP4FrameFilter_inherit__map" alt="Inheritance graph"/></div>
 <map name="aLimef_1_1ff_1_1FMP4FrameFilter_inherit__map" id="aLimef_1_1ff_1_1FMP4FrameFilter_inherit__map">
-<area shape="rect" title="Composite filter that transcodes audio to AAC and muxes to fragmented MP4." alt="" coords="18,152,211,177"/>
+<area shape="rect" title="Composite filter that muxes to fragmented MP4 for browser MediaSource Extensions." alt="" coords="18,152,211,177"/>
 <area shape="rect" href="classLimef_1_1ff_1_1ComposeFrameFilter.html" title="Base class for composite framechain." alt="" coords="5,79,224,104"/>
 <area shape="poly" title=" " alt="" coords="117,118,117,152,112,152,112,118"/>
 <area shape="rect" href="classLimef_1_1ff_1_1FrameFilter.html" title=" " alt="" coords="36,5,193,31"/>
@@ -102,7 +102,7 @@ Collaboration diagram for Limef::ff::FMP4FrameFilter:</div>
 <div class="dyncontent">
 <div class="center"><img src="classLimef_1_1ff_1_1FMP4FrameFilter__coll__graph.png" border="0" usemap="#aLimef_1_1ff_1_1FMP4FrameFilter_coll__map" alt="Collaboration graph"/></div>
 <map name="aLimef_1_1ff_1_1FMP4FrameFilter_coll__map" id="aLimef_1_1ff_1_1FMP4FrameFilter_coll__map">
-<area shape="rect" title="Composite filter that transcodes audio to AAC and muxes to fragmented MP4." alt="" coords="18,197,211,223"/>
+<area shape="rect" title="Composite filter that muxes to fragmented MP4 for browser MediaSource Extensions." alt="" coords="18,197,211,223"/>
 <area shape="rect" href="classLimef_1_1ff_1_1ComposeFrameFilter.html" title="Base class for composite framechain." alt="" coords="5,123,224,148"/>
 <area shape="poly" title=" " alt="" coords="117,162,117,197,112,197,112,162"/>
 <area shape="rect" href="classLimef_1_1ff_1_1FrameFilter.html" title=" " alt="" coords="36,5,193,31"/>
@@ -114,7 +114,6 @@ Collaboration diagram for Limef::ff::FMP4FrameFilter:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:af6b5b1623e8eae0eb6f26344c44a219b" id="r_af6b5b1623e8eae0eb6f26344c44a219b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1ff_1_1FMP4FrameFilter.html#af6b5b1623e8eae0eb6f26344c44a219b">FMP4FrameFilter</a> (std::string <a class="el" href="classLimef_1_1ff_1_1FrameFilter.html#adb255db62a05c800af1d73cba2201812">name</a>=&quot;FMP4FrameFilter&quot;)</td></tr>
-<tr class="memdesc:af6b5b1623e8eae0eb6f26344c44a219b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct the composite filter chain.  <br /></td></tr>
 <tr class="separator:af6b5b1623e8eae0eb6f26344c44a219b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abfbe07c53bec9910e40ab235973dd032" id="r_abfbe07c53bec9910e40ab235973dd032"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1ff_1_1FMP4FrameFilter.html#abfbe07c53bec9910e40ab235973dd032">open</a> ()</td></tr>
 <tr class="memdesc:abfbe07c53bec9910e40ab235973dd032"><td class="mdescLeft">&#160;</td><td class="mdescRight">Call internal Limef:ff::SwithFrameFilter's open method.  <br /></td></tr>
@@ -191,23 +190,41 @@ Additional Inherited Members</h2></td></tr>
 <tr class="separator:ae522c58262190d34fd6cc8753651a0e3 inherit pro_attribs_classLimef_1_1ff_1_1FrameFilter"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Composite filter that transcodes audio to AAC and muxes to fragmented MP4. </p>
+<div class="textblock"><p>Composite filter that muxes to fragmented MP4 for browser MediaSource Extensions. </p>
 <p>Creates a chain of:</p><ol type="1">
-<li><a class="el" href="classLimef_1_1ff_1_1GateFrameFilter.html" title="Frame filter that can Gate packet stream on/off with timestamp correction.">GateFrameFilter</a> for toggling the stream on/off</li>
-<li><a class="el" href="classLimef_1_1ff_1_1AudioTranscodeFrameFilter.html" title="FrameFilter that transcodes audio to a different codec.">AudioTranscodeFrameFilter</a> configured for AAC</li>
-<li><a class="el" href="classLimef_1_1ff_1_1MuxerFrameFilter.html" title="FrameFilter that muxes elementary streams into a container format.">MuxerFrameFilter</a> configured for fragmented MP4</li>
-<li><a class="el" href="classLimef_1_1ff_1_1MP4PartitionFrameFilter.html" title="Repartitions fragmented MP4 stream into proper box-aligned chunks.">MP4PartitionFrameFilter</a> for reconstructing the MP4 stream into concise packets</li>
+<li><a class="el" href="classLimef_1_1ff_1_1CodecAssertFrameFilter.html" title="FrameFilter that asserts the incoming stream matches an allowed codec pair.">CodecAssertFrameFilter</a> — rejects unsupported codec pairs (see table below)</li>
+<li><a class="el" href="classLimef_1_1ff_1_1GateFrameFilter.html" title="Frame filter that can Gate packet stream on/off with timestamp correction.">GateFrameFilter</a> — toggles the stream on/off; call <a class="el" href="classLimef_1_1ff_1_1FMP4FrameFilter.html#abfbe07c53bec9910e40ab235973dd032" title="Call internal Limef:ff::SwithFrameFilter&#39;s open method.">open()</a> to start</li>
+<li><a class="el" href="classLimef_1_1ff_1_1MuxerFrameFilter.html" title="FrameFilter that muxes elementary streams into a container format.">MuxerFrameFilter</a> — muxes packets into fMP4 boxes</li>
+<li><a class="el" href="classLimef_1_1ff_1_1MP4PartitionFrameFilter.html" title="Repartitions fragmented MP4 stream into proper box-aligned chunks.">MP4PartitionFrameFilter</a> — splits the muxed stream into ftyp/moov/moof/mdat RawFrames</li>
 </ol>
-<p>This framefilter is typically connected to MediaFileThread that has also <a class="el" href="classLimef_1_1ff_1_1AudioTranscodeFrameFilter.html" title="FrameFilter that transcodes audio to a different codec.">AudioTranscodeFrameFilter</a> and a DTS packet reordering thread.</p>
-<p>That additional <a class="el" href="classLimef_1_1ff_1_1AudioTranscodeFrameFilter.html" title="FrameFilter that transcodes audio to a different codec.">AudioTranscodeFrameFilter</a> does no harm here as it goes into passthrough mode.</p>
-<p>Example usage: </p><div class="fragment"><div class="line"><a class="code hl_class" href="classLimef_1_1ff_1_1FMP4FrameFilter.html">FMP4FrameFilter</a> fmp4(<span class="stringliteral">&quot;aac-fmp4&quot;</span>);</div>
-<div class="line"><span class="comment">// Connect to upstream filter</span></div>
-<div class="line">upstream_filter.cc(fmp4);</div>
-<div class="line"><span class="comment">// Connect downstream</span></div>
-<div class="line">fmp4.cc(downstream_filter);</div>
-<div class="line"><span class="comment">// remember to open, so that stream can pass through</span></div>
-<div class="line">fmp4.open();</div>
-<div class="ttc" id="aclassLimef_1_1ff_1_1FMP4FrameFilter_html"><div class="ttname"><a href="classLimef_1_1ff_1_1FMP4FrameFilter.html">Limef::ff::FMP4FrameFilter</a></div><div class="ttdoc">Composite filter that transcodes audio to AAC and muxes to fragmented MP4.</div><div class="ttdef"><b>Definition</b> fmp4.h:48</div></div>
+<p>Audio transcoding is <b>not</b> performed here — the upstream pipeline is responsible for providing the correct codec pair.</p>
+<h2><a class="anchor" id="autotoc_md29"></a>
+Allowed codec pairs (browser MSE / ISOBMFF)</h2>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Video   </th><th class="markdownTableHeadNone">Audio   </th><th class="markdownTableHeadNone">Browser support    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">H264   </td><td class="markdownTableBodyNone">AAC   </td><td class="markdownTableBodyNone">Universal: Chrome, Firefox, Safari, Edge    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">H264   </td><td class="markdownTableBodyNone">MP3   </td><td class="markdownTableBodyNone">Legacy; some older browsers    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">H264   </td><td class="markdownTableBodyNone">—   </td><td class="markdownTableBodyNone">Video-only    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">H265   </td><td class="markdownTableBodyNone">AAC   </td><td class="markdownTableBodyNone">Safari desktop/iOS, Chrome (behind flag); Firefox: NO    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">H265   </td><td class="markdownTableBodyNone">—   </td><td class="markdownTableBodyNone">Video-only    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">AV1   </td><td class="markdownTableBodyNone">Opus   </td><td class="markdownTableBodyNone">Chrome 70+, Firefox 67+, Edge 79+; Safari: NO    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">AV1   </td><td class="markdownTableBodyNone">AAC   </td><td class="markdownTableBodyNone">Chrome, Firefox (limited)    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">AV1   </td><td class="markdownTableBodyNone">—   </td><td class="markdownTableBodyNone">Video-only   </td></tr>
+</table>
+<p>VP8 and VP9 <b>cannot</b> be carried in fMP4 for MSE — use <a class="el" href="classLimef_1_1ff_1_1WebMFrameFilter.html" title="Composite filter that muxes a VP8/VP9/AV1 stream to WebM for browser MSE.">WebMFrameFilter</a> instead.</p>
+<p>Example usage: </p><div class="fragment"><div class="line"><a class="code hl_class" href="classLimef_1_1ff_1_1FMP4FrameFilter.html">FMP4FrameFilter</a> fmp4(<span class="stringliteral">&quot;fmp4&quot;</span>);</div>
+<div class="line">upstream_filter.cc(fmp4).cc(downstream_filter);</div>
+<div class="line">fmp4.open();  <span class="comment">// open gate to let frames through</span></div>
+<div class="ttc" id="aclassLimef_1_1ff_1_1FMP4FrameFilter_html"><div class="ttname"><a href="classLimef_1_1ff_1_1FMP4FrameFilter.html">Limef::ff::FMP4FrameFilter</a></div><div class="ttdoc">Composite filter that muxes to fragmented MP4 for browser MediaSource Extensions.</div><div class="ttdef"><b>Definition</b> fmp4.h:52</div></div>
 </div><!-- fragment --> </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="af6b5b1623e8eae0eb6f26344c44a219b" name="af6b5b1623e8eae0eb6f26344c44a219b"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#af6b5b1623e8eae0eb6f26344c44a219b">&#9670;&#160;</a></span>FMP4FrameFilter()</h2>
@@ -232,15 +249,6 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p>Construct the composite filter chain. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">name</td><td>Name for logging </td></tr>
-    <tr><td class="paramname">next</td><td>Optional next filter in chain </td></tr>
-  </table>
-  </dd>
-</dl>
 
 </div>
 </div>

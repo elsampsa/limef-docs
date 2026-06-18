@@ -207,7 +207,7 @@
     <li><a href="https://github.com/elsampsa/limef-apps" target="_blank" rel="noopener noreferrer"><i class="fa fa-github" style="font-size: 16pt"></i> App examples </a></li>
     <li><a href="https://github.com/elsampsa/limef-plugins" target="_blank" rel="noopener noreferrer"><i class="fa fa-github" style="font-size: 16pt"></i> Plugin examples </a></li>
     <li><a href="https://github.com/elsampsa/limef-docs/issues" target="_blank" rel="noopener noreferrer"><i class="fa fa-bug" style="font-size: 16pt"></i> Public issues </a></li>
-    <li><a href="https://github.com/elsampsa/limef-releases/releases" target="_blank" rel="noopener noreferrer"><i class="fa fa-download" style="font-size: 16pt"></i> Releases </a></li>
+    <li><a href="https://github.com/elsampsa/limef-releases/releases" target="_blank" rel="noopener noreferrer"><i class="fa fa-download" style="font-size: 16pt"></i> Releases (private) </a></li>
     <li><a href="https://github.com/sponsors/elsampsa" target="_blank" rel="noopener noreferrer"><i class="fa fa-heart" style="font-size: 16pt"></i> Sponsor </a></li>
 </ul>
 </div><form class="sidebar-search-container" method="get" action="../search.html" role="search">
@@ -237,7 +237,7 @@
 <li class="toctree-l2"><a class="reference internal" href="shmem.html">Shared Memory</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../distribution.html">Distributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../distribution.html">Distributing and Licensing</a></li>
 </ul>
 
 </div>
@@ -448,6 +448,29 @@ Each thread exposes <a class="reference internal" href="#_CPPv4N5Limef6thread6Th
 </dd></dl>
 
 <dl class="cpp class">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6thread13DecodedThreadE">
+<span id="_CPPv3N5Limef6thread13DecodedThreadE"></span><span id="_CPPv2N5Limef6thread13DecodedThreadE"></span><span id="Limef::thread::DecodedThread"></span><span class="target" id="classLimef_1_1thread_1_1DecodedThread"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">DecodedThread</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><span class="n"><span class="pre">Limef</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N5Limef6threadE" title="Limef::thread"><span class="n"><span class="pre">thread</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4I0EN5Limef6thread6ThreadE" title="Limef::thread::Thread"><span class="n"><span class="pre">Thread</span></span></a><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">Limef</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="frames.html#_CPPv4N5Limef5frameE" title="Limef::frame"><span class="n"><span class="pre">frame</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="frames.html#_CPPv4N5Limef5frame12DecodedFrameE" title="Limef::frame::DecodedFrame"><span class="n"><span class="pre">DecodedFrame</span></span></a><span class="p"><span class="pre">&gt;</span></span><a class="headerlink" href="#_CPPv4N5Limef6thread13DecodedThreadE" title="Link to this definition">¶</a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;decodedthread.h&gt;</em></div>
+<p>A pass-through thread for DecodedFrame streams. </p>
+<p>Receives DecodedFrames, copies them through its internal DecodedFrameFifo (breaking the synchronous filterchain), and forwards them unchanged downstream via output_ff.</p>
+<p>Use this as a thread boundary in decoded-video pipelines — for example, to decouple a decoder from a downstream processing chain, or to hand off frames between Python filterchains without blocking the decoder thread.</p>
+<p>The DecodedFrameFifo honours the <code class="docutils literal notranslate"><span class="pre">target</span></code> field of the context:<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">BufferLocation::CPU</span></code> (default) — CPU→CPU deep copy</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">BufferLocation::CUDA</span></code> — stack frames pre-allocated via cudaMalloc</p></li>
+</ul>
+</p>
+<p>Non-DecodedFrame frames (SignalFrame, StreamFrame, etc.) are dispatched by the base class and pass through unchanged.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">FrameFifoContext</span><span class="w"> </span><span class="n">ctx</span><span class="p">;</span>
+<span class="n">DecodedThread</span><span class="w"> </span><span class="n">dt</span><span class="p">(</span><span class="s">&quot;decoded-boundary&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">ctx</span><span class="p">);</span>
+<span class="n">upstream</span><span class="p">.</span><span class="n">cc</span><span class="p">(</span><span class="n">dt</span><span class="p">.</span><span class="n">getInput</span><span class="p">());</span>
+<span class="n">dt</span><span class="p">.</span><span class="n">getOutput</span><span class="p">().</span><span class="n">cc</span><span class="p">(</span><span class="n">downstream</span><span class="p">);</span>
+<span class="n">dt</span><span class="p">.</span><span class="n">start</span><span class="p">();</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="cpp class">
 <dt class="sig sig-object cpp" id="_CPPv4N5Limef6thread18EGLPresenterThreadE">
 <span id="_CPPv3N5Limef6thread18EGLPresenterThreadE"></span><span id="_CPPv2N5Limef6thread18EGLPresenterThreadE"></span><span id="Limef::thread::EGLPresenterThread"></span><span class="target" id="classLimef_1_1thread_1_1EGLPresenterThread"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">EGLPresenterThread</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><span class="n"><span class="pre">Limef</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N5Limef6threadE" title="Limef::thread"><span class="n"><span class="pre">thread</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N5Limef6thread15PresenterThreadE" title="Limef::thread::PresenterThread"><span class="n"><span class="pre">PresenterThread</span></span></a><a class="headerlink" href="#_CPPv4N5Limef6thread18EGLPresenterThreadE" title="Link to this definition">¶</a><br /></dt>
 <dd><div class="docutils container">
@@ -467,12 +490,12 @@ Each thread exposes <a class="reference internal" href="#_CPPv4N5Limef6thread6Th
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N5Limef6thread18EGLPresenterThread18EGLPresenterThreadENSt6stringERKN5Limef16FrameFifoContextERK16PresenterContext">
-<span id="_CPPv3N5Limef6thread18EGLPresenterThread18EGLPresenterThreadENSt6stringERKN5Limef16FrameFifoContextERK16PresenterContext"></span><span id="_CPPv2N5Limef6thread18EGLPresenterThread18EGLPresenterThreadENSt6stringERKN5Limef16FrameFifoContextERK16PresenterContext"></span><span id="Limef::thread::EGLPresenterThread::EGLPresenterThread__ss.Limef::FrameFifoContextCR.PresenterContextCR"></span><span class="target" id="classLimef_1_1thread_1_1EGLPresenterThread_1aae63d34379f8d0959e92cec71049a812"></span><span class="sig-name descname"><span class="n"><span class="pre">EGLPresenterThread</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">name</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">Limef</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">FrameFifoContext</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">ctx</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4N5Limef6thread16PresenterContextE" title="Limef::thread::PresenterContext"><span class="n"><span class="pre">PresenterContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">pctx</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="p"><span class="pre">{</span></span><span class="p"><span class="pre">}</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5Limef6thread18EGLPresenterThread18EGLPresenterThreadENSt6stringERKN5Limef16FrameFifoContextERK16PresenterContext" title="Link to this definition">¶</a><br /></dt>
+<span id="_CPPv3N5Limef6thread18EGLPresenterThread18EGLPresenterThreadENSt6stringERKN5Limef16FrameFifoContextERK16PresenterContext"></span><span id="_CPPv2N5Limef6thread18EGLPresenterThread18EGLPresenterThreadENSt6stringERKN5Limef16FrameFifoContextERK16PresenterContext"></span><span id="Limef::thread::EGLPresenterThread::EGLPresenterThread__ss.Limef::FrameFifoContextCR.PresenterContextCR"></span><span class="target" id="classLimef_1_1thread_1_1EGLPresenterThread_1aa5d67029e8ece7584782c9d9ec0708f4"></span><span class="sig-name descname"><span class="n"><span class="pre">EGLPresenterThread</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">name</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">Limef</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">FrameFifoContext</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">ctx</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="n"><span class="pre">Limef</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">FrameFifoContext</span></span><span class="p"><span class="pre">(</span></span><span class="k"><span class="pre">true</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="m"><span class="pre">20</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="m"><span class="pre">40</span></span><span class="p"><span class="pre">)</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4N5Limef6thread16PresenterContextE" title="Limef::thread::PresenterContext"><span class="n"><span class="pre">PresenterContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">pctx</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="p"><span class="pre">{</span></span><span class="p"><span class="pre">}</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5Limef6thread18EGLPresenterThread18EGLPresenterThreadENSt6stringERKN5Limef16FrameFifoContextERK16PresenterContext" title="Link to this definition">¶</a><br /></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>name</strong> – Thread name (used for logger and window title) </p></li>
-<li><p><strong>ctx</strong> – FrameFifo configuration </p></li>
+<li><p><strong>ctx</strong> – FrameFifo configuration (default: leaky, 20 frames stack, 40-frame fifo — appropriate for live streaming) </p></li>
 <li><p><strong>pctx</strong> – Window / timing options (see PresenterContext) </p></li>
 </ul>
 </dd>
@@ -544,12 +567,12 @@ Each thread exposes <a class="reference internal" href="#_CPPv4N5Limef6thread6Th
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N5Limef6thread18GLXPresenterThread18GLXPresenterThreadENSt6stringERKN5Limef16FrameFifoContextERK16PresenterContext">
-<span id="_CPPv3N5Limef6thread18GLXPresenterThread18GLXPresenterThreadENSt6stringERKN5Limef16FrameFifoContextERK16PresenterContext"></span><span id="_CPPv2N5Limef6thread18GLXPresenterThread18GLXPresenterThreadENSt6stringERKN5Limef16FrameFifoContextERK16PresenterContext"></span><span id="Limef::thread::GLXPresenterThread::GLXPresenterThread__ss.Limef::FrameFifoContextCR.PresenterContextCR"></span><span class="target" id="classLimef_1_1thread_1_1GLXPresenterThread_1aa060519c0d5f3d73ce82a7c4c43c4e29"></span><span class="sig-name descname"><span class="n"><span class="pre">GLXPresenterThread</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">name</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">Limef</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">FrameFifoContext</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">ctx</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4N5Limef6thread16PresenterContextE" title="Limef::thread::PresenterContext"><span class="n"><span class="pre">PresenterContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">pctx</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="p"><span class="pre">{</span></span><span class="p"><span class="pre">}</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5Limef6thread18GLXPresenterThread18GLXPresenterThreadENSt6stringERKN5Limef16FrameFifoContextERK16PresenterContext" title="Link to this definition">¶</a><br /></dt>
+<span id="_CPPv3N5Limef6thread18GLXPresenterThread18GLXPresenterThreadENSt6stringERKN5Limef16FrameFifoContextERK16PresenterContext"></span><span id="_CPPv2N5Limef6thread18GLXPresenterThread18GLXPresenterThreadENSt6stringERKN5Limef16FrameFifoContextERK16PresenterContext"></span><span id="Limef::thread::GLXPresenterThread::GLXPresenterThread__ss.Limef::FrameFifoContextCR.PresenterContextCR"></span><span class="target" id="classLimef_1_1thread_1_1GLXPresenterThread_1a92e0e91ada42d801316fb5380646dff7"></span><span class="sig-name descname"><span class="n"><span class="pre">GLXPresenterThread</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">name</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">Limef</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">FrameFifoContext</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">ctx</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="n"><span class="pre">Limef</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">FrameFifoContext</span></span><span class="p"><span class="pre">(</span></span><span class="k"><span class="pre">true</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="m"><span class="pre">20</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="m"><span class="pre">40</span></span><span class="p"><span class="pre">)</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4N5Limef6thread16PresenterContextE" title="Limef::thread::PresenterContext"><span class="n"><span class="pre">PresenterContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">pctx</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="p"><span class="pre">{</span></span><span class="p"><span class="pre">}</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5Limef6thread18GLXPresenterThread18GLXPresenterThreadENSt6stringERKN5Limef16FrameFifoContextERK16PresenterContext" title="Link to this definition">¶</a><br /></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>name</strong> – Thread name (used for logger and window title) </p></li>
-<li><p><strong>ctx</strong> – FrameFifo configuration </p></li>
+<li><p><strong>ctx</strong> – FrameFifo configuration (default: leaky, 20 frames stack, 40-frame fifo — appropriate for live streaming) </p></li>
 <li><p><strong>pctx</strong> – Window / timing options (see PresenterContext) </p></li>
 </ul>
 </dd>
@@ -581,8 +604,14 @@ Each thread exposes <a class="reference internal" href="#_CPPv4N5Limef6thread6Th
 
 <dl class="cpp var">
 <dt class="sig sig-object cpp" id="_CPPv4N5Limef6thread17LiveStreamContext11timeout_secE">
-<span id="_CPPv3N5Limef6thread17LiveStreamContext11timeout_secE"></span><span id="_CPPv2N5Limef6thread17LiveStreamContext11timeout_secE"></span><span id="Limef::thread::LiveStreamContext::timeout_sec__i"></span><span class="target" id="structLimef_1_1thread_1_1LiveStreamContext_1a6202b755d006ecca53c3c0f15292dd4c"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">timeout_sec</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="p"><span class="pre">{</span></span><span class="m"><span class="pre">5</span></span><span class="p"><span class="pre">}</span></span><a class="headerlink" href="#_CPPv4N5Limef6thread17LiveStreamContext11timeout_secE" title="Link to this definition">¶</a><br /></dt>
-<dd><p>Read timeout in seconds. </p>
+<span id="_CPPv3N5Limef6thread17LiveStreamContext11timeout_secE"></span><span id="_CPPv2N5Limef6thread17LiveStreamContext11timeout_secE"></span><span id="Limef::thread::LiveStreamContext::timeout_sec__i"></span><span class="target" id="structLimef_1_1thread_1_1LiveStreamContext_1a6202b755d006ecca53c3c0f15292dd4c"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">timeout_sec</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="p"><span class="pre">{</span></span><span class="m"><span class="pre">15</span></span><span class="p"><span class="pre">}</span></span><a class="headerlink" href="#_CPPv4N5Limef6thread17LiveStreamContext11timeout_secE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Read timeout in seconds (av_read_frame streaming phase) - if no packets in this many secs during streaming, then reconnect. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6thread17LiveStreamContext19timeout_connect_secE">
+<span id="_CPPv3N5Limef6thread17LiveStreamContext19timeout_connect_secE"></span><span id="_CPPv2N5Limef6thread17LiveStreamContext19timeout_connect_secE"></span><span id="Limef::thread::LiveStreamContext::timeout_connect_sec__i"></span><span class="target" id="structLimef_1_1thread_1_1LiveStreamContext_1a24c00a7d8e2c5e9c1f304d267b15fcac"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">timeout_connect_sec</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="p"><span class="pre">{</span></span><span class="m"><span class="pre">20</span></span><span class="p"><span class="pre">}</span></span><a class="headerlink" href="#_CPPv4N5Limef6thread17LiveStreamContext19timeout_connect_secE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Connection timeout in seconds (avformat_open_input setup phase) - if RTSP DESCRIBE/SETUP/PLAY handshake is not completed within this many seconds, reconnect. </p>
 </dd></dl>
 
 <dl class="cpp var">
@@ -606,19 +635,48 @@ Each thread exposes <a class="reference internal" href="#_CPPv4N5Limef6thread6Th
 <dl class="cpp var">
 <dt class="sig sig-object cpp" id="_CPPv4N5Limef6thread17LiveStreamContext17timeout_start_secE">
 <span id="_CPPv3N5Limef6thread17LiveStreamContext17timeout_start_secE"></span><span id="_CPPv2N5Limef6thread17LiveStreamContext17timeout_start_secE"></span><span id="Limef::thread::LiveStreamContext::timeout_start_sec__i"></span><span class="target" id="structLimef_1_1thread_1_1LiveStreamContext_1a06885bb8f14e206cafdddcde63506be9"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">timeout_start_sec</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="p"><span class="pre">{</span></span><span class="m"><span class="pre">5</span></span><span class="p"><span class="pre">}</span></span><a class="headerlink" href="#_CPPv4N5Limef6thread17LiveStreamContext17timeout_start_secE" title="Link to this definition">¶</a><br /></dt>
-<dd><p>Start value for retry timeout. </p>
+<dd><p>Start value for retry timeout - try to re-establish connection after this many seconds. </p>
 </dd></dl>
 
 <dl class="cpp var">
 <dt class="sig sig-object cpp" id="_CPPv4N5Limef6thread17LiveStreamContext15timeout_max_secE">
 <span id="_CPPv3N5Limef6thread17LiveStreamContext15timeout_max_secE"></span><span id="_CPPv2N5Limef6thread17LiveStreamContext15timeout_max_secE"></span><span id="Limef::thread::LiveStreamContext::timeout_max_sec__i"></span><span class="target" id="structLimef_1_1thread_1_1LiveStreamContext_1a489f37281d7e394e434543c1bb292f3e"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">timeout_max_sec</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="p"><span class="pre">{</span></span><span class="m"><span class="pre">60</span></span><span class="p"><span class="pre">}</span></span><a class="headerlink" href="#_CPPv4N5Limef6thread17LiveStreamContext15timeout_max_secE" title="Link to this definition">¶</a><br /></dt>
-<dd><p>Max value for retry timeout. </p>
+<dd><p>Max value for retry timeout - try to re-establish connection after this many seconds. </p>
 </dd></dl>
 
 <dl class="cpp var">
 <dt class="sig sig-object cpp" id="_CPPv4N5Limef6thread17LiveStreamContext6factorE">
 <span id="_CPPv3N5Limef6thread17LiveStreamContext6factorE"></span><span id="_CPPv2N5Limef6thread17LiveStreamContext6factorE"></span><span id="Limef::thread::LiveStreamContext::factor__i"></span><span class="target" id="structLimef_1_1thread_1_1LiveStreamContext_1a1b46b4c321c1dcbc381bc8bf58134316"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">factor</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="p"><span class="pre">{</span></span><span class="m"><span class="pre">2</span></span><span class="p"><span class="pre">}</span></span><a class="headerlink" href="#_CPPv4N5Limef6thread17LiveStreamContext6factorE" title="Link to this definition">¶</a><br /></dt>
 <dd><p>Factor to increase retry timeouts. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6thread17LiveStreamContext18probe_duration_secE">
+<span id="_CPPv3N5Limef6thread17LiveStreamContext18probe_duration_secE"></span><span id="_CPPv2N5Limef6thread17LiveStreamContext18probe_duration_secE"></span><span id="Limef::thread::LiveStreamContext::probe_duration_sec__i"></span><span class="target" id="structLimef_1_1thread_1_1LiveStreamContext_1af580704656ab094bd110fde0ed16edeb"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">probe_duration_sec</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="p"><span class="pre">{</span></span><span class="m"><span class="pre">15</span></span><span class="p"><span class="pre">}</span></span><a class="headerlink" href="#_CPPv4N5Limef6thread17LiveStreamContext18probe_duration_secE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>How long avformat_find_stream_info is allowed to probe for codec parameters, in seconds. On a lightly loaded system packets arrive quickly and the probe completes in well under a second. On a heavily loaded system (many parallel streams, valgrind, slow hardware) the server may be slow to deliver the first keyframe and the default FFmpeg probe window (~5 s) expires before width/height can be determined, causing a spurious retry loop. Increase this for production deployments with many concurrent streams or slow cameras.</p>
+<p>The wall-clock interrupt deadline is set to 1.2× this value, giving FFmpeg time to hit its own internal limit before the hard abort fires.</p>
+<p>Default: 15 s (3× the FFmpeg internal default). </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6thread17LiveStreamContext7use_ntpE">
+<span id="_CPPv3N5Limef6thread17LiveStreamContext7use_ntpE"></span><span id="_CPPv2N5Limef6thread17LiveStreamContext7use_ntpE"></span><span id="Limef::thread::LiveStreamContext::use_ntp__b"></span><span class="target" id="structLimef_1_1thread_1_1LiveStreamContext_1afb63dbb6c7a9ac28a17842192d979197"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">use_ntp</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="p"><span class="pre">{</span></span><span class="k"><span class="pre">false</span></span><span class="p"><span class="pre">}</span></span><a class="headerlink" href="#_CPPv4N5Limef6thread17LiveStreamContext7use_ntpE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Use NTP wallclock from RTCP Sender Reports as the absolute timestamp.</p>
+<p>When true, absolute timestamps are taken from the camera’s NTP clock (delivered via RTCP Sender Reports). This enables wall-clock-aligned multi-stream synchronisation, but relies on the camera having a correctly configured NTP clock. A camera with a wrong clock (wrong year, large drift) will produce garbage absolute timestamps that break presentation scheduling — symptoms include a frozen first frame, pipeline stalls, or frames that never appear.</p>
+<p>Before the first RTCP SR arrives (typically 1–5 s after stream open), the t0+PTS_delta fallback is used regardless of this setting, so early packets are always timestamped consistently.</p>
+<p>Default: false (t0+PTS_delta, safe for all cameras). Set to true only when you know the camera’s NTP is reliable. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6thread17LiveStreamContext15ntp_timeout_secE">
+<span id="_CPPv3N5Limef6thread17LiveStreamContext15ntp_timeout_secE"></span><span id="_CPPv2N5Limef6thread17LiveStreamContext15ntp_timeout_secE"></span><span id="Limef::thread::LiveStreamContext::ntp_timeout_sec__i"></span><span class="target" id="structLimef_1_1thread_1_1LiveStreamContext_1a3451525e1b19f7e8cded1c92dcfc2c09"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ntp_timeout_sec</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="p"><span class="pre">{</span></span><span class="m"><span class="pre">10</span></span><span class="p"><span class="pre">}</span></span><a class="headerlink" href="#_CPPv4N5Limef6thread17LiveStreamContext15ntp_timeout_secE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Warn if no NTP timestamp received within this many seconds after stream open. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6thread17LiveStreamContext22reconnect_interval_secE">
+<span id="_CPPv3N5Limef6thread17LiveStreamContext22reconnect_interval_secE"></span><span id="_CPPv2N5Limef6thread17LiveStreamContext22reconnect_interval_secE"></span><span id="Limef::thread::LiveStreamContext::reconnect_interval_sec__i"></span><span class="target" id="structLimef_1_1thread_1_1LiveStreamContext_1a01483af5750ec8fdbfc71381121329af"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">reconnect_interval_sec</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="p"><span class="pre">{</span></span><span class="m"><span class="pre">0</span></span><span class="p"><span class="pre">}</span></span><a class="headerlink" href="#_CPPv4N5Limef6thread17LiveStreamContext22reconnect_interval_secE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Mandatory reconnection interval in seconds. When non-zero, the stream is forcibly dropped and re-opened after this many seconds of continuous streaming. Useful for cameras (notably some Chinese IP cameras) whose streams start lagging or corrupting after long sessions. The reconnect follows the normal backoff path (onLost emitted, then onConnected once the new session is established). Default: 0 = never force-reconnect. </p>
 </dd></dl>
 
 </div>
@@ -654,6 +712,21 @@ Each thread exposes <a class="reference internal" href="#_CPPv4N5Limef6thread6Th
 <dd class="field-even"><p><span><span class="cpp-expr sig sig-inline cpp"><span class="n">std</span><span class="p">::</span><span class="n">runtime_error</span></span></span> – if stream cannot be opened or initialized </p>
 </dd>
 </dl>
+</dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6thread16LiveStreamThread11onConnectedE">
+<span id="_CPPv3N5Limef6thread16LiveStreamThread11onConnectedE"></span><span id="_CPPv2N5Limef6thread16LiveStreamThread11onConnectedE"></span><span id="Limef::thread::LiveStreamThread::onConnected__Limef::comm::Caller:i:"></span><span class="target" id="classLimef_1_1thread_1_1LiveStreamThread_1a36b848625c5f9954b605750d3b81e254"></span><span class="n"><span class="pre">Limef</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">comm</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">Caller</span></span><span class="p"><span class="pre">&lt;</span></span><span class="kt"><span class="pre">int</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">onConnected</span></span></span><a class="headerlink" href="#_CPPv4N5Limef6thread16LiveStreamThread11onConnectedE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Emitted when stream opens successfully (first time or reconnect). Arg: slot number. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6thread16LiveStreamThread6onLostE">
+<span id="_CPPv3N5Limef6thread16LiveStreamThread6onLostE"></span><span id="_CPPv2N5Limef6thread16LiveStreamThread6onLostE"></span><span id="Limef::thread::LiveStreamThread::onLost__Limef::comm::Caller:i:"></span><span class="target" id="classLimef_1_1thread_1_1LiveStreamThread_1abedefd5a9a0dd91ec072dfb149727cc1"></span><span class="n"><span class="pre">Limef</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">comm</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">Caller</span></span><span class="p"><span class="pre">&lt;</span></span><span class="kt"><span class="pre">int</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">onLost</span></span></span><a class="headerlink" href="#_CPPv4N5Limef6thread16LiveStreamThread6onLostE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Emitted when stream is lost (error, timeout, or EOF). Arg: slot number. </p>
 </dd></dl>
 
 </div>
@@ -706,18 +779,17 @@ Each thread exposes <a class="reference internal" href="#_CPPv4N5Limef6thread6Th
 <span id="_CPPv3N5Limef6thread15MediaFileThreadE"></span><span id="_CPPv2N5Limef6thread15MediaFileThreadE"></span><span id="Limef::thread::MediaFileThread"></span><span class="target" id="classLimef_1_1thread_1_1MediaFileThread"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">MediaFileThread</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><span class="n"><span class="pre">Limef</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N5Limef6threadE" title="Limef::thread"><span class="n"><span class="pre">thread</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N5Limef6thread13ComposeThreadE" title="Limef::thread::ComposeThread"><span class="n"><span class="pre">ComposeThread</span></span></a><a class="headerlink" href="#_CPPv4N5Limef6thread15MediaFileThreadE" title="Link to this definition">¶</a><br /></dt>
 <dd><div class="docutils container">
 <em>#include &lt;mediafile.h&gt;</em></div>
-<p>A safe media playback thread. </p>
+<p>Media playback thread with DTS-ordered buffering. </p>
 <p>Creates a chain of:</p>
 <p><ol class="lowerroman simple">
-<li><p>MediaFileThread1 for reading files and transcoding / checking them to some standard form</p></li>
+<li><p>MediaFileThread0 for reading files and sending packets as-is</p></li>
 <li><p>OrderedPacketBufferThread for DTS ordering and buffering</p></li>
 </ol>
 </p>
-<p>NOTE: MediaFileThread1 includes conversion to AAC</p>
 <p>NOTE: thread starting order will be (2) -&gt; (1) <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>                <span class="n">thread</span> <span class="n">border</span>
 </pre></div>
 </div>
- MediaFileThread1 -&gt;| OrderedPacketBufferThread</p>
+ MediaFileThread0 -&gt;| OrderedPacketBufferThread</p>
 </dd></dl>
 
 <dl class="cpp class">
@@ -733,7 +805,6 @@ Each thread exposes <a class="reference internal" href="#_CPPv4N5Limef6thread6Th
 </p>
 <p>Uses ProducerThread’s timing system to control packet output rate</p>
 <p>Dumps media downstream as-is - no internal conversions </p>
-<p>Subclassed by Limef::thread::MediaFileThread1</p>
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
 <dl class="cpp function">
@@ -763,46 +834,6 @@ Each thread exposes <a class="reference internal" href="#_CPPv4N5Limef6thread6Th
 <dt class="sig sig-object cpp" id="_CPPv4N5Limef6thread16MediaFileThread016resendCodecFrameEv">
 <span id="_CPPv3N5Limef6thread16MediaFileThread016resendCodecFrameEv"></span><span id="_CPPv2N5Limef6thread16MediaFileThread016resendCodecFrameEv"></span><span id="Limef::thread::MediaFileThread0::resendCodecFrame"></span><span class="target" id="classLimef_1_1thread_1_1MediaFileThread0_1ad4cf1a92fc57e7b1dfb279d7ce2d4f63"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">resendCodecFrame</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5Limef6thread16MediaFileThread016resendCodecFrameEv" title="Link to this definition">¶</a><br /></dt>
 <dd><p>frontend-method: tell thread to send CodecFrame again downstream </p>
-</dd></dl>
-
-</div>
-</dd></dl>
-
-<dl class="cpp class">
-<dt class="sig sig-object cpp" id="_CPPv4N5Limef6thread16MediaFileThread1E">
-<span id="_CPPv3N5Limef6thread16MediaFileThread1E"></span><span id="_CPPv2N5Limef6thread16MediaFileThread1E"></span><span id="Limef::thread::MediaFileThread1"></span><span class="target" id="classLimef_1_1thread_1_1MediaFileThread1"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">MediaFileThread1</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><span class="n"><span class="pre">Limef</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N5Limef6threadE" title="Limef::thread"><span class="n"><span class="pre">thread</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N5Limef6thread16MediaFileThread0E" title="Limef::thread::MediaFileThread0"><span class="n"><span class="pre">MediaFileThread0</span></span></a><a class="headerlink" href="#_CPPv4N5Limef6thread16MediaFileThread1E" title="Link to this definition">¶</a><br /></dt>
-<dd><div class="docutils container">
-<em>#include &lt;mediafile1.h&gt;</em></div>
-<p>MediaFileThread1. </p>
-<p>Extends MediaFileThread0 to do some encoding and codec checks in order to ensure a “canonical” / standard stream for our framework At the moment, consists of the following:</p>
-<p><ul class="simple">
-<li><p>All incoming audio is encoded into AAC</p></li>
-<li><p>TODO: video codec checks? </p></li>
-</ul>
-</p>
-<div class="breathe-sectiondef docutils container">
-<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
-<dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv4N5Limef6thread16MediaFileThread19getOutputEv">
-<span id="_CPPv3N5Limef6thread16MediaFileThread19getOutputEv"></span><span id="_CPPv2N5Limef6thread16MediaFileThread19getOutputEv"></span><span id="Limef::thread::MediaFileThread1::getOutput"></span><span class="target" id="classLimef_1_1thread_1_1MediaFileThread1_1afe2a7a9aa511e10d6cb0d728ee189466"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><span class="n"><span class="pre">Limef</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="framefilters.html#_CPPv4N5Limef2ffE" title="Limef::ff"><span class="n"><span class="pre">ff</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="framefilters.html#_CPPv4N5Limef2ff11FrameFilterE" title="Limef::ff::FrameFilter"><span class="n"><span class="pre">FrameFilter</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="sig-name descname"><span class="n"><span class="pre">getOutput</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">override</span></span><a class="headerlink" href="#_CPPv4N5Limef6thread16MediaFileThread19getOutputEv" title="Link to this definition">¶</a><br /></dt>
-<dd><p>Get thread’s output framefilter. </p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Reference to output framefilter </p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv4N5Limef6thread16MediaFileThread111setLogLevelEN6spdlog5level10level_enumE">
-<span id="_CPPv3N5Limef6thread16MediaFileThread111setLogLevelEN6spdlog5level10level_enumE"></span><span id="_CPPv2N5Limef6thread16MediaFileThread111setLogLevelEN6spdlog5level10level_enumE"></span><span id="Limef::thread::MediaFileThread1::setLogLevel__spdlog::level::level_enum"></span><span class="target" id="classLimef_1_1thread_1_1MediaFileThread1_1adea3ac2e8dcdaa49e99c4eeada699671"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">setLogLevel</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">spdlog</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">level</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">level_enum</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">level</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">override</span></span><a class="headerlink" href="#_CPPv4N5Limef6thread16MediaFileThread111setLogLevelEN6spdlog5level10level_enumE" title="Link to this definition">¶</a><br /></dt>
-<dd><p>Set thread’s log level. </p>
-</dd></dl>
-
-<dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv4N5Limef6thread16MediaFileThread112setLogFormatERKNSt6stringE">
-<span id="_CPPv3N5Limef6thread16MediaFileThread112setLogFormatERKNSt6stringE"></span><span id="_CPPv2N5Limef6thread16MediaFileThread112setLogFormatERKNSt6stringE"></span><span id="Limef::thread::MediaFileThread1::setLogFormat__ssCR"></span><span class="target" id="classLimef_1_1thread_1_1MediaFileThread1_1a380b4e577f09ce1a3ee7c5bd3fa4d880"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">setLogFormat</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">format</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">override</span></span><a class="headerlink" href="#_CPPv4N5Limef6thread16MediaFileThread112setLogFormatERKNSt6stringE" title="Link to this definition">¶</a><br /></dt>
-<dd><p>Set thread’s log format. </p>
 </dd></dl>
 
 </div>
@@ -949,6 +980,12 @@ Each thread exposes <a class="reference internal" href="#_CPPv4N5Limef6thread6Th
 <dd><p>Drop frames older than this (0 = disabled) </p>
 </dd></dl>
 
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6thread16PresenterContext14max_future_ageE">
+<span id="_CPPv3N5Limef6thread16PresenterContext14max_future_ageE"></span><span id="_CPPv2N5Limef6thread16PresenterContext14max_future_ageE"></span><span id="Limef::thread::PresenterContext::max_future_age__std::chrono::microseconds"></span><span class="target" id="structLimef_1_1thread_1_1PresenterContext_1af073b387ea17f1988c65cccc8e8a125c"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">chrono</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">microseconds</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">max_future_age</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="p"><span class="pre">{</span></span><span class="m"><span class="pre">0</span></span><span class="p"><span class="pre">}</span></span><a class="headerlink" href="#_CPPv4N5Limef6thread16PresenterContext14max_future_ageE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Drop frames newer than now+this (0 = disabled). Set this for live streaming to guard against cameras that send wrong NTP timestamps: a frame with ABS_TS far in the future would otherwise fill pending_frames_ indefinitely and block the entire upstream pipeline. A value of 5–10 s is a safe default for IP cameras. </p>
+</dd></dl>
+
 </div>
 </dd></dl>
 
@@ -963,14 +1000,15 @@ Each thread exposes <a class="reference internal" href="#_CPPv4N5Limef6thread6Th
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
 <dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv4N5Limef6thread15PresenterThread15PresenterThreadENSt6stringERKN5Limef16FrameFifoContextENSt6chrono12microsecondsE">
-<span id="_CPPv3N5Limef6thread15PresenterThread15PresenterThreadENSt6stringERKN5Limef16FrameFifoContextENSt6chrono12microsecondsE"></span><span id="_CPPv2N5Limef6thread15PresenterThread15PresenterThreadENSt6stringERKN5Limef16FrameFifoContextENSt6chrono12microsecondsE"></span><span id="Limef::thread::PresenterThread::PresenterThread__ss.Limef::FrameFifoContextCR.std::chrono::microseconds"></span><span class="target" id="classLimef_1_1thread_1_1PresenterThread_1ac6b9bdf9a15da0fce6e0ec1200f1675e"></span><span class="sig-name descname"><span class="n"><span class="pre">PresenterThread</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">name</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">Limef</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">FrameFifoContext</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">ctx</span></span>, <span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">chrono</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">microseconds</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">max_age</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">chrono</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">microseconds</span></span><span class="p"><span class="pre">(</span></span><span class="m"><span class="pre">0</span></span><span class="p"><span class="pre">)</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5Limef6thread15PresenterThread15PresenterThreadENSt6stringERKN5Limef16FrameFifoContextENSt6chrono12microsecondsE" title="Link to this definition">¶</a><br /></dt>
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6thread15PresenterThread15PresenterThreadENSt6stringERKN5Limef16FrameFifoContextENSt6chrono12microsecondsENSt6chrono12microsecondsE">
+<span id="_CPPv3N5Limef6thread15PresenterThread15PresenterThreadENSt6stringERKN5Limef16FrameFifoContextENSt6chrono12microsecondsENSt6chrono12microsecondsE"></span><span id="_CPPv2N5Limef6thread15PresenterThread15PresenterThreadENSt6stringERKN5Limef16FrameFifoContextENSt6chrono12microsecondsENSt6chrono12microsecondsE"></span><span id="Limef::thread::PresenterThread::PresenterThread__ss.Limef::FrameFifoContextCR.std::chrono::microseconds.std::chrono::microseconds"></span><span class="target" id="classLimef_1_1thread_1_1PresenterThread_1a2b6cb95602352824c998caadda9b4acb"></span><span class="sig-name descname"><span class="n"><span class="pre">PresenterThread</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">name</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">Limef</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">FrameFifoContext</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">ctx</span></span>, <span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">chrono</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">microseconds</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">max_age</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">chrono</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">microseconds</span></span><span class="p"><span class="pre">(</span></span><span class="m"><span class="pre">0</span></span><span class="p"><span class="pre">)</span></span>, <span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">chrono</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">microseconds</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">max_future_age</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">chrono</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">microseconds</span></span><span class="p"><span class="pre">(</span></span><span class="m"><span class="pre">0</span></span><span class="p"><span class="pre">)</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5Limef6thread15PresenterThread15PresenterThreadENSt6stringERKN5Limef16FrameFifoContextENSt6chrono12microsecondsENSt6chrono12microsecondsE" title="Link to this definition">¶</a><br /></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>name</strong> – Thread name. </p></li>
-<li><p><strong>ctx</strong> – FrameFifo configuration. </p></li>
-<li><p><strong>max_age</strong> – Drop frames whose timestamp is older than this. Zero (default) disables the tolerance: all due frames are presented regardless of how late they are. </p></li>
+<li><p><strong>ctx</strong> – FrameFifo configuration. For live streaming, set ctx.leaky = true so that writeCopy() drops frames instead of blocking when the stack is full. </p></li>
+<li><p><strong>max_age</strong> – Drop frames whose timestamp is older than this. Zero (default) disables: all due frames are presented regardless of how late they are. </p></li>
+<li><p><strong>max_future_age</strong> – Drop frames whose timestamp is more than this far ahead of now. Zero (default) disables. Set to 5–10 s for live streaming to guard against cameras that send wrong NTP wallclock in their RTCP SR. </p></li>
 </ul>
 </dd>
 </dl>
@@ -1015,17 +1053,18 @@ Each thread exposes <a class="reference internal" href="#_CPPv4N5Limef6thread6Th
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
 <dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv4N5Limef6thread23SDLVideoPresenterThread23SDLVideoPresenterThreadENSt6stringERKN5Limef16FrameFifoContextEiibNSt6chrono12microsecondsE">
-<span id="_CPPv3N5Limef6thread23SDLVideoPresenterThread23SDLVideoPresenterThreadENSt6stringERKN5Limef16FrameFifoContextEiibNSt6chrono12microsecondsE"></span><span id="_CPPv2N5Limef6thread23SDLVideoPresenterThread23SDLVideoPresenterThreadENSt6stringERKN5Limef16FrameFifoContextEiibNSt6chrono12microsecondsE"></span><span id="Limef::thread::SDLVideoPresenterThread::SDLVideoPresenterThread__ss.Limef::FrameFifoContextCR.i.i.b.std::chrono::microseconds"></span><span class="target" id="classLimef_1_1thread_1_1SDLVideoPresenterThread_1aeb71530b0405e581fe01a7ae429ef251"></span><span class="sig-name descname"><span class="n"><span class="pre">SDLVideoPresenterThread</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">name</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">Limef</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">FrameFifoContext</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">ctx</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">width</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">height</span></span>, <span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">borderless</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="k"><span class="pre">false</span></span>, <span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">chrono</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">microseconds</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">max_age</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">chrono</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">microseconds</span></span><span class="p"><span class="pre">(</span></span><span class="m"><span class="pre">0</span></span><span class="p"><span class="pre">)</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5Limef6thread23SDLVideoPresenterThread23SDLVideoPresenterThreadENSt6stringERKN5Limef16FrameFifoContextEiibNSt6chrono12microsecondsE" title="Link to this definition">¶</a><br /></dt>
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6thread23SDLVideoPresenterThread23SDLVideoPresenterThreadENSt6stringERKN5Limef16FrameFifoContextEiibNSt6chrono12microsecondsENSt6chrono12microsecondsE">
+<span id="_CPPv3N5Limef6thread23SDLVideoPresenterThread23SDLVideoPresenterThreadENSt6stringERKN5Limef16FrameFifoContextEiibNSt6chrono12microsecondsENSt6chrono12microsecondsE"></span><span id="_CPPv2N5Limef6thread23SDLVideoPresenterThread23SDLVideoPresenterThreadENSt6stringERKN5Limef16FrameFifoContextEiibNSt6chrono12microsecondsENSt6chrono12microsecondsE"></span><span id="Limef::thread::SDLVideoPresenterThread::SDLVideoPresenterThread__ss.Limef::FrameFifoContextCR.i.i.b.std::chrono::microseconds.std::chrono::microseconds"></span><span class="target" id="classLimef_1_1thread_1_1SDLVideoPresenterThread_1ac707d59c959e6ac43f19842c94114e34"></span><span class="sig-name descname"><span class="n"><span class="pre">SDLVideoPresenterThread</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">name</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">Limef</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">FrameFifoContext</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">ctx</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="n"><span class="pre">Limef</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">FrameFifoContext</span></span><span class="p"><span class="pre">(</span></span><span class="k"><span class="pre">true</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="m"><span class="pre">20</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="m"><span class="pre">40</span></span><span class="p"><span class="pre">)</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">width</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">1280</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">height</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">720</span></span>, <span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">borderless</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="k"><span class="pre">false</span></span>, <span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">chrono</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">microseconds</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">max_age</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">chrono</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">microseconds</span></span><span class="p"><span class="pre">(</span></span><span class="m"><span class="pre">0</span></span><span class="p"><span class="pre">)</span></span>, <span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">chrono</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">microseconds</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">max_future_age</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">chrono</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">microseconds</span></span><span class="p"><span class="pre">(</span></span><span class="m"><span class="pre">0</span></span><span class="p"><span class="pre">)</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5Limef6thread23SDLVideoPresenterThread23SDLVideoPresenterThreadENSt6stringERKN5Limef16FrameFifoContextEiibNSt6chrono12microsecondsENSt6chrono12microsecondsE" title="Link to this definition">¶</a><br /></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>name</strong> – Thread name (used for logger) </p></li>
-<li><p><strong>ctx</strong> – FrameFifo configuration </p></li>
+<li><p><strong>ctx</strong> – FrameFifo configuration (default: leaky, 20 frames stack, 40-frame fifo — appropriate for live streaming) </p></li>
 <li><p><strong>width</strong> – Initial window / texture width in pixels </p></li>
 <li><p><strong>height</strong> – Initial window / texture height in pixels </p></li>
 <li><p><strong>borderless</strong> – If true the window is created without decorations </p></li>
 <li><p><strong>max_age</strong> – Drop frames older than this (0 = disabled, default) </p></li>
+<li><p><strong>max_future_age</strong> – Drop frames newer than now+this (0 = disabled). Set to 5–10 s for live streaming. </p></li>
 </ul>
 </dd>
 </dl>
@@ -1070,7 +1109,7 @@ Each thread exposes <a class="reference internal" href="#_CPPv4N5Limef6thread6Th
 <li><p>a single, unified fifo for handling incoming <code class="docutils literal notranslate"><span class="pre">Frame</span></code>s and commands, the <code class="docutils literal notranslate"><span class="pre">FrameFifo</span></code>.</p></li>
 </ul>
 </p>
-<p>Subclassed by Limef::thread::PollThread&lt; Limef::frame::RTPPacketFrame &gt;, Limef::thread::PollThread&lt; Limef::frame::PacketFrame &gt;, Limef::thread::PollThread&lt; T &gt;</p>
+<p>Subclassed by Limef::thread::PollThread&lt; Limef::frame::RTPFrame &gt;, Limef::thread::PollThread&lt; Limef::frame::PacketFrame &gt;, Limef::thread::PollThread&lt; T &gt;</p>
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
 <dl class="cpp function">
@@ -1106,10 +1145,15 @@ Each thread exposes <a class="reference internal" href="#_CPPv4N5Limef6thread6Th
 </dd></dl>
 
 <dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK5Limef6thread6Thread16getTaskCallCountEv">
+<span id="_CPPv3NK5Limef6thread6Thread16getTaskCallCountEv"></span><span id="_CPPv2NK5Limef6thread6Thread16getTaskCallCountEv"></span><span id="Limef::thread::Thread::getTaskCallCountC"></span><span class="target" id="classLimef_1_1thread_1_1Thread_1ab6fe98003a127d64d35cd4d06636bfcb"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="n"><span class="pre">uint64_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getTaskCallCount</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK5Limef6thread6Thread16getTaskCallCountEv" title="Link to this definition">¶</a><br /></dt>
+<dd><p>true while mainLoop() is executing </p>
+</dd></dl>
+
+<dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N5Limef6thread6Thread11requestStopEv">
 <span id="_CPPv3N5Limef6thread6Thread11requestStopEv"></span><span id="_CPPv2N5Limef6thread6Thread11requestStopEv"></span><span id="Limef::thread::Thread::requestStop"></span><span class="target" id="classLimef_1_1thread_1_1Thread_1af8b77ceb90bd5b244a77c9c98679d363"></span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">requestStop</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">override</span></span><a class="headerlink" href="#_CPPv4N5Limef6thread6Thread11requestStopEv" title="Link to this definition">¶</a><br /></dt>
-<dd><p>true while mainLoop() is executing </p>
-<p>request thread termination </p>
+<dd><p>request thread termination </p>
 </dd></dl>
 
 <dl class="cpp function">
@@ -1186,7 +1230,7 @@ Each thread exposes <a class="reference internal" href="#_CPPv4N5Limef6thread6Th
 <span id="_CPPv3N5Limef6thread10ThreadBaseE"></span><span id="_CPPv2N5Limef6thread10ThreadBaseE"></span><span id="Limef::thread::ThreadBase"></span><span class="target" id="classLimef_1_1thread_1_1ThreadBase"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ThreadBase</span></span></span><a class="headerlink" href="#_CPPv4N5Limef6thread10ThreadBaseE" title="Link to this definition">¶</a><br /></dt>
 <dd><div class="docutils container">
 <em>#include &lt;threadbase.h&gt;</em></div>
-<p>Subclassed by Limef::thread::Thread&lt; Limef::frame::RTPPacketFrame &gt;, Limef::thread::Thread&lt; Limef::frame::PacketFrame &gt;, Limef::thread::Thread&lt; Limef::frame::NullFrame &gt;, Limef::thread::Thread&lt; Limef::frame::DecodedFrame &gt;, Limef::thread::Thread&lt; Limef::frame::TensorFrame &gt;, Limef::thread::Thread&lt; Limef::frame::RawFrame &gt;, Limef::thread::ComposeThread, Limef::thread::Thread&lt; T &gt;</p>
+<p>Subclassed by Limef::thread::Thread&lt; Limef::frame::RTPFrame &gt;, Limef::thread::Thread&lt; Limef::frame::PacketFrame &gt;, Limef::thread::Thread&lt; Limef::frame::DecodedFrame &gt;, Limef::thread::Thread&lt; Limef::frame::NullFrame &gt;, Limef::thread::Thread&lt; Limef::frame::TensorFrame &gt;, Limef::thread::Thread&lt; Limef::frame::RawFrame &gt;, Limef::thread::ComposeThread, Limef::thread::Thread&lt; T &gt;</p>
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
 <dl class="cpp function">
@@ -1329,9 +1373,9 @@ Each thread exposes <a class="reference internal" href="#_CPPv4N5Limef6thread6Th
 </dd></dl>
 
 <dl class="cpp var">
-<dt class="sig sig-object cpp" id="_CPPv4N5Limef6thread16USBCameraContext13output_formatE">
-<span id="_CPPv3N5Limef6thread16USBCameraContext13output_formatE"></span><span id="_CPPv2N5Limef6thread16USBCameraContext13output_formatE"></span><span id="Limef::thread::USBCameraContext::output_format__AVPixelFormat"></span><span class="target" id="structLimef_1_1thread_1_1USBCameraContext_1abf1550f73de5355d35ecf3725bd50123"></span><span class="n"><span class="pre">AVPixelFormat</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">output_format</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="p"><span class="pre">{</span></span><span class="n"><span class="pre">AV_PIX_FMT_NV12</span></span><span class="p"><span class="pre">}</span></span><a class="headerlink" href="#_CPPv4N5Limef6thread16USBCameraContext13output_formatE" title="Link to this definition">¶</a><br /></dt>
-<dd><p>Output format after SwScale (NV12 for GPU) </p>
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6thread16USBCameraContext14capture_formatE">
+<span id="_CPPv3N5Limef6thread16USBCameraContext14capture_formatE"></span><span id="_CPPv2N5Limef6thread16USBCameraContext14capture_formatE"></span><span id="Limef::thread::USBCameraContext::capture_format__AVPixelFormat"></span><span class="target" id="structLimef_1_1thread_1_1USBCameraContext_1a06e119e05751748e9ab264da332a0115"></span><span class="n"><span class="pre">AVPixelFormat</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">capture_format</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="p"><span class="pre">{</span></span><span class="n"><span class="pre">AV_PIX_FMT_YUYV422</span></span><span class="p"><span class="pre">}</span></span><a class="headerlink" href="#_CPPv4N5Limef6thread16USBCameraContext14capture_formatE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Format to request from camera via VIDIOC_S_FMT. </p>
 </dd></dl>
 
 </div>
@@ -1381,6 +1425,7 @@ Each thread exposes <a class="reference internal" href="#_CPPv4N5Limef6thread6Th
 <dd><div class="docutils container">
 <em>#include &lt;websocket.h&gt;</em></div>
 <p>Ultra-fast WebSocket server for streaming frag-MP4 video</p>
+<p>Accepts RawFrame(s), i.e. muxed raw media stream: just bytes.</p>
 <p>Features:<ul class="simple">
 <li><p>Zero-copy streaming where possible</p></li>
 <li><p>Lockfree hot path for frame handling</p></li>
@@ -1550,6 +1595,7 @@ Each thread exposes <a class="reference internal" href="#_CPPv4N5Limef6thread6Th
 </ul>
 </li>
 <li><a class="reference internal" href="#_CPPv4N5Limef6thread14ConsumerThreadE"><code class="docutils literal notranslate"><span class="pre">Limef::thread::ConsumerThread</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6thread13DecodedThreadE"><code class="docutils literal notranslate"><span class="pre">Limef::thread::DecodedThread</span></code></a></li>
 <li><a class="reference internal" href="#_CPPv4N5Limef6thread18EGLPresenterThreadE"><code class="docutils literal notranslate"><span class="pre">Limef::thread::EGLPresenterThread</span></code></a><ul>
 <li><a class="reference internal" href="#_CPPv4N5Limef6thread18EGLPresenterThread18EGLPresenterThreadENSt6stringERKN5Limef16FrameFifoContextERK16PresenterContext"><code class="docutils literal notranslate"><span class="pre">EGLPresenterThread()</span></code></a></li>
 </ul>
@@ -1569,16 +1615,23 @@ Each thread exposes <a class="reference internal" href="#_CPPv4N5Limef6thread6Th
 <li><a class="reference internal" href="#_CPPv4N5Limef6thread17LiveStreamContext3urlE"><code class="docutils literal notranslate"><span class="pre">url</span></code></a></li>
 <li><a class="reference internal" href="#_CPPv4N5Limef6thread17LiveStreamContext4slotE"><code class="docutils literal notranslate"><span class="pre">slot</span></code></a></li>
 <li><a class="reference internal" href="#_CPPv4N5Limef6thread17LiveStreamContext11timeout_secE"><code class="docutils literal notranslate"><span class="pre">timeout_sec</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6thread17LiveStreamContext19timeout_connect_secE"><code class="docutils literal notranslate"><span class="pre">timeout_connect_sec</span></code></a></li>
 <li><a class="reference internal" href="#_CPPv4N5Limef6thread17LiveStreamContext14rtsp_transportE"><code class="docutils literal notranslate"><span class="pre">rtsp_transport</span></code></a></li>
 <li><a class="reference internal" href="#_CPPv4N5Limef6thread17LiveStreamContext12max_delay_msE"><code class="docutils literal notranslate"><span class="pre">max_delay_ms</span></code></a></li>
 <li><a class="reference internal" href="#_CPPv4N5Limef6thread17LiveStreamContext16reopen_retry_maxE"><code class="docutils literal notranslate"><span class="pre">reopen_retry_max</span></code></a></li>
 <li><a class="reference internal" href="#_CPPv4N5Limef6thread17LiveStreamContext17timeout_start_secE"><code class="docutils literal notranslate"><span class="pre">timeout_start_sec</span></code></a></li>
 <li><a class="reference internal" href="#_CPPv4N5Limef6thread17LiveStreamContext15timeout_max_secE"><code class="docutils literal notranslate"><span class="pre">timeout_max_sec</span></code></a></li>
 <li><a class="reference internal" href="#_CPPv4N5Limef6thread17LiveStreamContext6factorE"><code class="docutils literal notranslate"><span class="pre">factor</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6thread17LiveStreamContext18probe_duration_secE"><code class="docutils literal notranslate"><span class="pre">probe_duration_sec</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6thread17LiveStreamContext7use_ntpE"><code class="docutils literal notranslate"><span class="pre">use_ntp</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6thread17LiveStreamContext15ntp_timeout_secE"><code class="docutils literal notranslate"><span class="pre">ntp_timeout_sec</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6thread17LiveStreamContext22reconnect_interval_secE"><code class="docutils literal notranslate"><span class="pre">reconnect_interval_sec</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#_CPPv4N5Limef6thread16LiveStreamThreadE"><code class="docutils literal notranslate"><span class="pre">Limef::thread::LiveStreamThread</span></code></a><ul>
 <li><a class="reference internal" href="#_CPPv4N5Limef6thread16LiveStreamThread16LiveStreamThreadENSt6stringERK17LiveStreamContext"><code class="docutils literal notranslate"><span class="pre">LiveStreamThread()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6thread16LiveStreamThread11onConnectedE"><code class="docutils literal notranslate"><span class="pre">onConnected</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6thread16LiveStreamThread6onLostE"><code class="docutils literal notranslate"><span class="pre">onLost</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#_CPPv4N5Limef6thread16MediaFileContextE"><code class="docutils literal notranslate"><span class="pre">Limef::thread::MediaFileContext</span></code></a><ul>
@@ -1596,12 +1649,6 @@ Each thread exposes <a class="reference internal" href="#_CPPv4N5Limef6thread6Th
 <li><a class="reference internal" href="#_CPPv4N5Limef6thread16MediaFileThread016resendCodecFrameEv"><code class="docutils literal notranslate"><span class="pre">resendCodecFrame()</span></code></a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#_CPPv4N5Limef6thread16MediaFileThread1E"><code class="docutils literal notranslate"><span class="pre">Limef::thread::MediaFileThread1</span></code></a><ul>
-<li><a class="reference internal" href="#_CPPv4N5Limef6thread16MediaFileThread19getOutputEv"><code class="docutils literal notranslate"><span class="pre">getOutput()</span></code></a></li>
-<li><a class="reference internal" href="#_CPPv4N5Limef6thread16MediaFileThread111setLogLevelEN6spdlog5level10level_enumE"><code class="docutils literal notranslate"><span class="pre">setLogLevel()</span></code></a></li>
-<li><a class="reference internal" href="#_CPPv4N5Limef6thread16MediaFileThread112setLogFormatERKNSt6stringE"><code class="docutils literal notranslate"><span class="pre">setLogFormat()</span></code></a></li>
-</ul>
-</li>
 <li><a class="reference internal" href="#_CPPv4N5Limef6thread25OrderedPacketBufferThreadE"><code class="docutils literal notranslate"><span class="pre">Limef::thread::OrderedPacketBufferThread</span></code></a></li>
 <li><a class="reference internal" href="#_CPPv4N5Limef6thread18PacketBufferThreadE"><code class="docutils literal notranslate"><span class="pre">Limef::thread::PacketBufferThread</span></code></a><ul>
 <li><a class="reference internal" href="#_CPPv4N5Limef6thread18PacketBufferThread18PacketBufferThreadENSt6stringERKN5Limef16FrameFifoContextE"><code class="docutils literal notranslate"><span class="pre">PacketBufferThread()</span></code></a></li>
@@ -1615,15 +1662,16 @@ Each thread exposes <a class="reference internal" href="#_CPPv4N5Limef6thread6Th
 <li><a class="reference internal" href="#_CPPv4N5Limef6thread16PresenterContext10borderlessE"><code class="docutils literal notranslate"><span class="pre">borderless</span></code></a></li>
 <li><a class="reference internal" href="#_CPPv4N5Limef6thread16PresenterContext17bypass_compositorE"><code class="docutils literal notranslate"><span class="pre">bypass_compositor</span></code></a></li>
 <li><a class="reference internal" href="#_CPPv4N5Limef6thread16PresenterContext7max_ageE"><code class="docutils literal notranslate"><span class="pre">max_age</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6thread16PresenterContext14max_future_ageE"><code class="docutils literal notranslate"><span class="pre">max_future_age</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#_CPPv4N5Limef6thread15PresenterThreadE"><code class="docutils literal notranslate"><span class="pre">Limef::thread::PresenterThread</span></code></a><ul>
-<li><a class="reference internal" href="#_CPPv4N5Limef6thread15PresenterThread15PresenterThreadENSt6stringERKN5Limef16FrameFifoContextENSt6chrono12microsecondsE"><code class="docutils literal notranslate"><span class="pre">PresenterThread()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6thread15PresenterThread15PresenterThreadENSt6stringERKN5Limef16FrameFifoContextENSt6chrono12microsecondsENSt6chrono12microsecondsE"><code class="docutils literal notranslate"><span class="pre">PresenterThread()</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#_CPPv4N5Limef6thread14ProducerThreadE"><code class="docutils literal notranslate"><span class="pre">Limef::thread::ProducerThread</span></code></a></li>
 <li><a class="reference internal" href="#_CPPv4N5Limef6thread23SDLVideoPresenterThreadE"><code class="docutils literal notranslate"><span class="pre">Limef::thread::SDLVideoPresenterThread</span></code></a><ul>
-<li><a class="reference internal" href="#_CPPv4N5Limef6thread23SDLVideoPresenterThread23SDLVideoPresenterThreadENSt6stringERKN5Limef16FrameFifoContextEiibNSt6chrono12microsecondsE"><code class="docutils literal notranslate"><span class="pre">SDLVideoPresenterThread()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6thread23SDLVideoPresenterThread23SDLVideoPresenterThreadENSt6stringERKN5Limef16FrameFifoContextEiibNSt6chrono12microsecondsENSt6chrono12microsecondsE"><code class="docutils literal notranslate"><span class="pre">SDLVideoPresenterThread()</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#_CPPv4N5Limef6thread12TensorThreadE"><code class="docutils literal notranslate"><span class="pre">Limef::thread::TensorThread</span></code></a></li>
@@ -1632,6 +1680,7 @@ Each thread exposes <a class="reference internal" href="#_CPPv4N5Limef6thread6Th
 <li><a class="reference internal" href="#_CPPv4N5Limef6thread6Thread5startEv"><code class="docutils literal notranslate"><span class="pre">start()</span></code></a></li>
 <li><a class="reference internal" href="#_CPPv4NK5Limef6thread6Thread9isStartedEv"><code class="docutils literal notranslate"><span class="pre">isStarted()</span></code></a></li>
 <li><a class="reference internal" href="#_CPPv4NK5Limef6thread6Thread9isRunningEv"><code class="docutils literal notranslate"><span class="pre">isRunning()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4NK5Limef6thread6Thread16getTaskCallCountEv"><code class="docutils literal notranslate"><span class="pre">getTaskCallCount()</span></code></a></li>
 <li><a class="reference internal" href="#_CPPv4N5Limef6thread6Thread11requestStopEv"><code class="docutils literal notranslate"><span class="pre">requestStop()</span></code></a></li>
 <li><a class="reference internal" href="#_CPPv4N5Limef6thread6Thread8waitStopEv"><code class="docutils literal notranslate"><span class="pre">waitStop()</span></code></a></li>
 <li><a class="reference internal" href="#_CPPv4N5Limef6thread6Thread4stopEv"><code class="docutils literal notranslate"><span class="pre">stop()</span></code></a></li>
@@ -1667,7 +1716,7 @@ Each thread exposes <a class="reference internal" href="#_CPPv4N5Limef6thread6Th
 <li><a class="reference internal" href="#_CPPv4N5Limef6thread16USBCameraContext5widthE"><code class="docutils literal notranslate"><span class="pre">width</span></code></a></li>
 <li><a class="reference internal" href="#_CPPv4N5Limef6thread16USBCameraContext6heightE"><code class="docutils literal notranslate"><span class="pre">height</span></code></a></li>
 <li><a class="reference internal" href="#_CPPv4N5Limef6thread16USBCameraContext3fpsE"><code class="docutils literal notranslate"><span class="pre">fps</span></code></a></li>
-<li><a class="reference internal" href="#_CPPv4N5Limef6thread16USBCameraContext13output_formatE"><code class="docutils literal notranslate"><span class="pre">output_format</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6thread16USBCameraContext14capture_formatE"><code class="docutils literal notranslate"><span class="pre">capture_format</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#_CPPv4N5Limef6thread15USBCameraThreadE"><code class="docutils literal notranslate"><span class="pre">Limef::thread::USBCameraThread</span></code></a><ul>

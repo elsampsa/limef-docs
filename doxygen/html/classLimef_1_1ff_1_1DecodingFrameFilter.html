@@ -22,7 +22,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">My Project<span id="projectnumber">&#160;0.1.0</span>
+   <div id="projectname">My Project<span id="projectnumber">&#160;0.2.0</span>
    </div>
   </td>
  </tr>
@@ -113,7 +113,7 @@ Collaboration diagram for Limef::ff::DecodingFrameFilter:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a463399235cbbc0eac1e47f66c3a18925" id="r_a463399235cbbc0eac1e47f66c3a18925"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1ff_1_1DecodingFrameFilter.html#a463399235cbbc0eac1e47f66c3a18925">DecodingFrameFilter</a> (std::string <a class="el" href="classLimef_1_1ff_1_1FrameFilter.html#adb255db62a05c800af1d73cba2201812">name</a>=&quot;DecodingFrameFilter&quot;, const <a class="el" href="namespaceLimef_1_1decode.html#a1aa852b5b1275455e6d4cc39c22effd3">Limef::decode::VideoDecoderParams</a> &amp;params=<a class="el" href="structLimef_1_1decode_1_1FFmpegDecoderParams.html">Limef::decode::FFmpegDecoderParams</a>{})</td></tr>
+<tr class="memitem:a463399235cbbc0eac1e47f66c3a18925" id="r_a463399235cbbc0eac1e47f66c3a18925"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1ff_1_1DecodingFrameFilter.html#a463399235cbbc0eac1e47f66c3a18925">DecodingFrameFilter</a> (std::string <a class="el" href="classLimef_1_1ff_1_1FrameFilter.html#adb255db62a05c800af1d73cba2201812">name</a>=&quot;DecodingFrameFilter&quot;, const <a class="el" href="namespaceLimef_1_1decode.html#aec1a1704aebf904a8ab9ac536276a95e">Limef::decode::VideoDecoderParams</a> &amp;params=<a class="el" href="structLimef_1_1decode_1_1FFmpegDecoderParams.html">Limef::decode::FFmpegDecoderParams</a>{})</td></tr>
 <tr class="memdesc:a463399235cbbc0eac1e47f66c3a18925"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a decoding framefilter.  <br /></td></tr>
 <tr class="separator:a463399235cbbc0eac1e47f66c3a18925"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4a566734b5855769e97fc98df5c34909" id="r_a4a566734b5855769e97fc98df5c34909"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1ff_1_1DecodingFrameFilter.html#a4a566734b5855769e97fc98df5c34909">~DecodingFrameFilter</a> () override</td></tr>
@@ -200,10 +200,10 @@ Additional Inherited Members</h2></td></tr>
 <div class="line"><a class="code hl_class" href="classLimef_1_1ff_1_1DecodingFrameFilter.html">DecodingFrameFilter</a> decode(<span class="stringliteral">&quot;decode&quot;</span>, params);</div>
 <div class="line"> </div>
 <div class="line"><span class="comment">// V4L2 hardware decoding (when available)</span></div>
-<div class="line">V4L2DecoderParams v4l2_params;</div>
+<div class="line">V4L2NVDecoderParams v4l2_params;</div>
 <div class="line">v4l2_params.device = <span class="stringliteral">&quot;/dev/video0&quot;</span>;</div>
 <div class="line"><a class="code hl_class" href="classLimef_1_1ff_1_1DecodingFrameFilter.html">DecodingFrameFilter</a> decode(<span class="stringliteral">&quot;decode&quot;</span>, v4l2_params);</div>
-<div class="ttc" id="aclassLimef_1_1ff_1_1DecodingFrameFilter_html"><div class="ttname"><a href="classLimef_1_1ff_1_1DecodingFrameFilter.html">Limef::ff::DecodingFrameFilter</a></div><div class="ttdoc">A FrameFilter that decodes frames.</div><div class="ttdef"><b>Definition</b> decoding.h:61</div></div>
+<div class="ttc" id="aclassLimef_1_1ff_1_1DecodingFrameFilter_html"><div class="ttname"><a href="classLimef_1_1ff_1_1DecodingFrameFilter.html">Limef::ff::DecodingFrameFilter</a></div><div class="ttdoc">A FrameFilter that decodes frames.</div><div class="ttdef"><b>Definition</b> decoding.h:58</div></div>
 </div><!-- fragment --> </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a463399235cbbc0eac1e47f66c3a18925" name="a463399235cbbc0eac1e47f66c3a18925"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a463399235cbbc0eac1e47f66c3a18925">&#9670;&#160;</a></span>DecodingFrameFilter()</h2>
@@ -223,7 +223,7 @@ Additional Inherited Members</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="namespaceLimef_1_1decode.html#a1aa852b5b1275455e6d4cc39c22effd3">Limef::decode::VideoDecoderParams</a> &amp;&#160;</td>
+          <td class="paramtype">const <a class="el" href="namespaceLimef_1_1decode.html#aec1a1704aebf904a8ab9ac536276a95e">Limef::decode::VideoDecoderParams</a> &amp;&#160;</td>
           <td class="paramname"><em>params</em> = <code><a class="el" href="structLimef_1_1decode_1_1FFmpegDecoderParams.html">Limef::decode::FFmpegDecoderParams</a>{}</code>&#160;</td>
         </tr>
         <tr>
@@ -243,7 +243,7 @@ Additional Inherited Members</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">name</td><td>Identifier for logging </td></tr>
-    <tr><td class="paramname">params</td><td>Decoder parameters (FFmpegDecoderParams, V4L2DecoderParams, etc.) </td></tr>
+    <tr><td class="paramname">params</td><td>Decoder parameters (FFmpegDecoderParams, V4L2NVDecoderParams, etc.) </td></tr>
   </table>
   </dd>
 </dl>

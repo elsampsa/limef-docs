@@ -22,7 +22,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">My Project<span id="projectnumber">&#160;0.1.0</span>
+   <div id="projectname">My Project<span id="projectnumber">&#160;0.2.0</span>
    </div>
   </td>
  </tr>
@@ -91,11 +91,13 @@ Inheritance diagram for Limef::encode::Encoder:</div>
 <div class="dyncontent">
 <div class="center"><img src="classLimef_1_1encode_1_1Encoder__inherit__graph.png" border="0" usemap="#aLimef_1_1encode_1_1Encoder_inherit__map" alt="Inheritance graph"/></div>
 <map name="aLimef_1_1encode_1_1Encoder_inherit__map" id="aLimef_1_1encode_1_1Encoder_inherit__map">
-<area shape="rect" title="Abstract encoder interface for a single video or audio stream." alt="" coords="152,5,325,31"/>
-<area shape="rect" href="classLimef_1_1encode_1_1FFmpegEncoder.html" title="FFmpeg&#45;based encoder for video and audio streams." alt="" coords="5,79,232,104"/>
-<area shape="poly" title=" " alt="" coords="209,40,140,81,137,76,206,35"/>
-<area shape="rect" href="classLimef_1_1encode_1_1V4L2Encoder.html" title="V4L2 Memory&#45;to&#45;Memory encoder." alt="" coords="256,79,461,104"/>
-<area shape="poly" title=" " alt="" coords="271,35,340,76,338,81,269,40"/>
+<area shape="rect" title="Abstract encoder interface for a single video or audio stream." alt="" coords="5,55,179,80"/>
+<area shape="rect" href="classLimef_1_1encode_1_1FFmpegEncoder.html" title="FFmpeg&#45;based encoder for video and audio streams." alt="" coords="227,5,453,31"/>
+<area shape="poly" title=" " alt="" coords="169,49,275,28,276,33,170,55"/>
+<area shape="rect" href="classLimef_1_1encode_1_1V4L2Encoder.html" title="V4L2 Memory&#45;to&#45;Memory encoder." alt="" coords="237,55,443,80"/>
+<area shape="poly" title=" " alt="" coords="192,65,237,65,237,70,192,70"/>
+<area shape="rect" href="classLimef_1_1encode_1_1V4L2NVEncoder.html" title="V4L2 Memory&#45;to&#45;Memory encoder." alt="" coords="228,104,452,129"/>
+<area shape="poly" title=" " alt="" coords="170,80,276,101,275,107,169,85"/>
 </map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
@@ -136,9 +138,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a429e90178e62d7699edec1c263c893ec" id="r_a429e90178e62d7699edec1c263c893ec"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1encode_1_1Encoder.html#a429e90178e62d7699edec1c263c893ec">isConfigured</a> () const =0</td></tr>
 <tr class="memdesc:a429e90178e62d7699edec1c263c893ec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if encoder has been configured (received stream info)  <br /></td></tr>
 <tr class="separator:a429e90178e62d7699edec1c263c893ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a71e08d85270e463c860629347e03c705" id="r_a71e08d85270e463c860629347e03c705"><td class="memItemLeft" align="right" valign="top">virtual const AVCodecParameters *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1encode_1_1Encoder.html#a71e08d85270e463c860629347e03c705">getCodecParams</a> () const</td></tr>
-<tr class="memdesc:a71e08d85270e463c860629347e03c705"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get codec parameters for muxer/decoder setup.  <br /></td></tr>
-<tr class="separator:a71e08d85270e463c860629347e03c705"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acbb33577b9639fdfa3f38e3ff4785995" id="r_acbb33577b9639fdfa3f38e3ff4785995"><td class="memItemLeft" align="right" valign="top">virtual const AVCodecParameters *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1encode_1_1Encoder.html#acbb33577b9639fdfa3f38e3ff4785995">getCodecParams</a> () const =0</td></tr>
+<tr class="memdesc:acbb33577b9639fdfa3f38e3ff4785995"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get codec parameters for muxer/decoder setup.  <br /></td></tr>
+<tr class="separator:acbb33577b9639fdfa3f38e3ff4785995"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a11d8000e689f3732977f49d5f465a491" id="r_a11d8000e689f3732977f49d5f465a491"><td class="memItemLeft" align="right" valign="top">virtual AVRational&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1encode_1_1Encoder.html#a11d8000e689f3732977f49d5f465a491">getTimeBase</a> () const</td></tr>
 <tr class="memdesc:a11d8000e689f3732977f49d5f465a491"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get encoder output timebase.  <br /></td></tr>
 <tr class="separator:a11d8000e689f3732977f49d5f465a491"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -174,10 +176,11 @@ Protected Member Functions</h2></td></tr>
 <div class="line">    <span class="keyword">const</span> PacketFrame&amp; pkt = enc-&gt;getPacket();</div>
 <div class="line">    <span class="comment">// send packet downstream</span></div>
 <div class="line">}</div>
-<div class="ttc" id="anamespaceLimef_1_1encode_html_a0ec82277889e6b439a46bc4d5b1bc122"><div class="ttname"><a href="namespaceLimef_1_1encode.html#a0ec82277889e6b439a46bc4d5b1bc122">Limef::encode::EncoderStatus</a></div><div class="ttdeci">EncoderStatus</div><div class="ttdoc">Status codes returned by encoder.</div><div class="ttdef"><b>Definition</b> encoder.h:54</div></div>
+<div class="ttc" id="anamespaceLimef_1_1encode_html_a0ec82277889e6b439a46bc4d5b1bc122"><div class="ttname"><a href="namespaceLimef_1_1encode.html#a0ec82277889e6b439a46bc4d5b1bc122">Limef::encode::EncoderStatus</a></div><div class="ttdeci">EncoderStatus</div><div class="ttdoc">Status codes returned by encoder.</div><div class="ttdef"><b>Definition</b> encoder.h:52</div></div>
 <div class="ttc" id="anamespaceLimef_1_1encode_html_a0ec82277889e6b439a46bc4d5b1bc122a12a21322aa2eb06c6c592438cf9452f4"><div class="ttname"><a href="namespaceLimef_1_1encode.html#a0ec82277889e6b439a46bc4d5b1bc122a12a21322aa2eb06c6c592438cf9452f4">Limef::encode::EncoderStatus::NeedsRead</a></div><div class="ttdeci">@ NeedsRead</div><div class="ttdoc">Encoded packet available, call getPacket()</div></div>
 <div class="ttc" id="anamespaceLimef_1_1encode_html_a0ec82277889e6b439a46bc4d5b1bc122ac137688dd3fe4599b79282cfd2049f40"><div class="ttname"><a href="namespaceLimef_1_1encode.html#a0ec82277889e6b439a46bc4d5b1bc122ac137688dd3fe4599b79282cfd2049f40">Limef::encode::EncoderStatus::NeedsMoreData</a></div><div class="ttdeci">@ NeedsMoreData</div><div class="ttdoc">Ready to accept more frames via push()</div></div>
-</div><!-- fragment --><p>All calls to encoder are non-blocking. </p>
+</div><!-- fragment --><p><a class="el" href="classLimef_1_1encode_1_1Encoder.html" title="Abstract encoder interface for a single video or audio stream.">Encoder</a> has this contract (similar to decoder): the PacketFrame returned by <a class="el" href="classLimef_1_1encode_1_1Encoder.html#ac81d29e88d403709eeadec5566727e33" title="Get encoded packet.">getPacket()</a> is not mutated while the <a class="el" href="classLimef_1_1encode_1_1Encoder.html#a1716375ddf48c10e7d43b5a99d4aa8ca" title="Get current encoder status.">status()</a> is not called: so its safe to send the PacketFrame downstream between calls to <a class="el" href="classLimef_1_1encode_1_1Encoder.html#a1716375ddf48c10e7d43b5a99d4aa8ca" title="Get current encoder status.">status()</a></p>
+<p>All calls to encoder are non-blocking. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="ae7f16e1e82876c8251b3b91d905ea5b2" name="ae7f16e1e82876c8251b3b91d905ea5b2"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae7f16e1e82876c8251b3b91d905ea5b2">&#9670;&#160;</a></span>~Encoder()</h2>
@@ -289,7 +292,7 @@ Protected Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>Implemented in <a class="el" href="classLimef_1_1encode_1_1FFmpegEncoder.html#a629abdb250aeea2f4ae2b315609becab">Limef::encode::FFmpegEncoder</a>, and <a class="el" href="classLimef_1_1encode_1_1V4L2Encoder.html#a368ea6bc28e0cb3ed5c8662a738ba900">Limef::encode::V4L2Encoder</a>.</p>
+<p>Implemented in <a class="el" href="classLimef_1_1encode_1_1FFmpegEncoder.html#a629abdb250aeea2f4ae2b315609becab">Limef::encode::FFmpegEncoder</a>, <a class="el" href="classLimef_1_1encode_1_1V4L2Encoder.html#a368ea6bc28e0cb3ed5c8662a738ba900">Limef::encode::V4L2Encoder</a>, and <a class="el" href="classLimef_1_1encode_1_1V4L2NVEncoder.html#a0730394bd2ed5a08f334c5363a80f463">Limef::encode::V4L2NVEncoder</a>.</p>
 
 </div>
 </div>
@@ -319,12 +322,12 @@ Protected Member Functions</h2></td></tr>
 <p>Flush the encoder. </p>
 <p>Forces encoder to output any buffered packets. Check <a class="el" href="classLimef_1_1encode_1_1Encoder.html#a1716375ddf48c10e7d43b5a99d4aa8ca" title="Get current encoder status.">status()</a> after this to get remaining packets. </p>
 
-<p>Implemented in <a class="el" href="classLimef_1_1encode_1_1FFmpegEncoder.html#a97c8f210532b3d95e20d38cc6e9f7d47">Limef::encode::FFmpegEncoder</a>, and <a class="el" href="classLimef_1_1encode_1_1V4L2Encoder.html#afba03337a041eb0aabaafc0cf8b325c3">Limef::encode::V4L2Encoder</a>.</p>
+<p>Implemented in <a class="el" href="classLimef_1_1encode_1_1FFmpegEncoder.html#a97c8f210532b3d95e20d38cc6e9f7d47">Limef::encode::FFmpegEncoder</a>, <a class="el" href="classLimef_1_1encode_1_1V4L2Encoder.html#afba03337a041eb0aabaafc0cf8b325c3">Limef::encode::V4L2Encoder</a>, and <a class="el" href="classLimef_1_1encode_1_1V4L2NVEncoder.html#a46f80caa3d9648b3a5fb0caccee5ee26">Limef::encode::V4L2NVEncoder</a>.</p>
 
 </div>
 </div>
-<a id="a71e08d85270e463c860629347e03c705" name="a71e08d85270e463c860629347e03c705"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a71e08d85270e463c860629347e03c705">&#9670;&#160;</a></span>getCodecParams()</h2>
+<a id="acbb33577b9639fdfa3f38e3ff4785995" name="acbb33577b9639fdfa3f38e3ff4785995"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acbb33577b9639fdfa3f38e3ff4785995">&#9670;&#160;</a></span>getCodecParams()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -341,16 +344,16 @@ Protected Member Functions</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
 <p>Get codec parameters for muxer/decoder setup. </p>
 <p>Returns codec parameters after encoder is initialized. Used to create CodecFrame for downstream decoders.</p>
-<dl class="section return"><dt>Returns</dt><dd>const AVCodecParameters* Codec parameters, or nullptr if not available/initialized </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>const AVCodecParameters* Codec parameters, or nullptr if not yet initialized </dd></dl>
 
-<p>Reimplemented in <a class="el" href="classLimef_1_1encode_1_1FFmpegEncoder.html#a67dbf6eb4e089c4cddb9258db8456661">Limef::encode::FFmpegEncoder</a>.</p>
+<p>Implemented in <a class="el" href="classLimef_1_1encode_1_1FFmpegEncoder.html#a67dbf6eb4e089c4cddb9258db8456661">Limef::encode::FFmpegEncoder</a>, <a class="el" href="classLimef_1_1encode_1_1V4L2Encoder.html#a01099f64083f82bad29fc1e69367645b">Limef::encode::V4L2Encoder</a>, and <a class="el" href="classLimef_1_1encode_1_1V4L2NVEncoder.html#abc59b8b2071648b2da6435fb8add0baa">Limef::encode::V4L2NVEncoder</a>.</p>
 
 </div>
 </div>
@@ -380,7 +383,7 @@ Protected Member Functions</h2></td></tr>
 <p>Get encoder output frame rate. </p>
 <dl class="section return"><dt>Returns</dt><dd>AVRational Frame rate (e.g., {30, 1} for 30fps) </dd></dl>
 
-<p>Reimplemented in <a class="el" href="classLimef_1_1encode_1_1FFmpegEncoder.html#a82873f1cf0ef76dba4aace537e0065bc">Limef::encode::FFmpegEncoder</a>.</p>
+<p>Reimplemented in <a class="el" href="classLimef_1_1encode_1_1FFmpegEncoder.html#a82873f1cf0ef76dba4aace537e0065bc">Limef::encode::FFmpegEncoder</a>, <a class="el" href="classLimef_1_1encode_1_1V4L2Encoder.html#aa0199c44b0bd7fe04882fb9098a36a49">Limef::encode::V4L2Encoder</a>, and <a class="el" href="classLimef_1_1encode_1_1V4L2NVEncoder.html#ab0ed80374aef830a65c15cbc5711531d">Limef::encode::V4L2NVEncoder</a>.</p>
 
 </div>
 </div>
@@ -411,7 +414,7 @@ Protected Member Functions</h2></td></tr>
 <p>Only call when <a class="el" href="classLimef_1_1encode_1_1Encoder.html#a1716375ddf48c10e7d43b5a99d4aa8ca" title="Get current encoder status.">status()</a> returns NeedsRead</p>
 <dl class="section return"><dt>Returns</dt><dd>const PacketFrame&amp; Reference to encoded packet </dd></dl>
 
-<p>Implemented in <a class="el" href="classLimef_1_1encode_1_1FFmpegEncoder.html#a79dd13a7146cd76a27153d8fdfc44b2b">Limef::encode::FFmpegEncoder</a>, and <a class="el" href="classLimef_1_1encode_1_1V4L2Encoder.html#a329d373691d837230f475631a0d05f68">Limef::encode::V4L2Encoder</a>.</p>
+<p>Implemented in <a class="el" href="classLimef_1_1encode_1_1FFmpegEncoder.html#a79dd13a7146cd76a27153d8fdfc44b2b">Limef::encode::FFmpegEncoder</a>, <a class="el" href="classLimef_1_1encode_1_1V4L2Encoder.html#a329d373691d837230f475631a0d05f68">Limef::encode::V4L2Encoder</a>, and <a class="el" href="classLimef_1_1encode_1_1V4L2NVEncoder.html#a7f2a40819c66d4fcfcd121e68c3af418">Limef::encode::V4L2NVEncoder</a>.</p>
 
 </div>
 </div>
@@ -440,7 +443,7 @@ Protected Member Functions</h2></td></tr>
 
 <p>Get the stream index this encoder produces. </p>
 
-<p>Implemented in <a class="el" href="classLimef_1_1encode_1_1FFmpegEncoder.html#aa8f0c2d90e9234d883f104369786ad91">Limef::encode::FFmpegEncoder</a>, and <a class="el" href="classLimef_1_1encode_1_1V4L2Encoder.html#ad63adf4a42c6e3deddeb25e4a85b6966">Limef::encode::V4L2Encoder</a>.</p>
+<p>Implemented in <a class="el" href="classLimef_1_1encode_1_1FFmpegEncoder.html#aa8f0c2d90e9234d883f104369786ad91">Limef::encode::FFmpegEncoder</a>, <a class="el" href="classLimef_1_1encode_1_1V4L2Encoder.html#ad63adf4a42c6e3deddeb25e4a85b6966">Limef::encode::V4L2Encoder</a>, and <a class="el" href="classLimef_1_1encode_1_1V4L2NVEncoder.html#af72c5ef10ea878fb92d067ba9810846e">Limef::encode::V4L2NVEncoder</a>.</p>
 
 </div>
 </div>
@@ -471,7 +474,7 @@ Protected Member Functions</h2></td></tr>
 <p>Returns the timebase of encoded packets. Used for CodecFrame creation.</p>
 <dl class="section return"><dt>Returns</dt><dd>AVRational Timebase (e.g., {1, 90000} for 90kHz) </dd></dl>
 
-<p>Reimplemented in <a class="el" href="classLimef_1_1encode_1_1FFmpegEncoder.html#a1f608ec64dad6b562d65d34151deb6f0">Limef::encode::FFmpegEncoder</a>.</p>
+<p>Reimplemented in <a class="el" href="classLimef_1_1encode_1_1FFmpegEncoder.html#a1f608ec64dad6b562d65d34151deb6f0">Limef::encode::FFmpegEncoder</a>, <a class="el" href="classLimef_1_1encode_1_1V4L2Encoder.html#ae8d2a46c8b83314491b9c5a44ea861e2">Limef::encode::V4L2Encoder</a>, and <a class="el" href="classLimef_1_1encode_1_1V4L2NVEncoder.html#af71d433c3db131dd0ee5210231770222">Limef::encode::V4L2NVEncoder</a>.</p>
 
 </div>
 </div>
@@ -500,7 +503,7 @@ Protected Member Functions</h2></td></tr>
 
 <p>Check if encoder has been configured (received stream info) </p>
 
-<p>Implemented in <a class="el" href="classLimef_1_1encode_1_1FFmpegEncoder.html#affec4d4cf568a3d8269eed028772cab1">Limef::encode::FFmpegEncoder</a>, and <a class="el" href="classLimef_1_1encode_1_1V4L2Encoder.html#a43576a399a1d58e4c857d92705aa1c4b">Limef::encode::V4L2Encoder</a>.</p>
+<p>Implemented in <a class="el" href="classLimef_1_1encode_1_1FFmpegEncoder.html#affec4d4cf568a3d8269eed028772cab1">Limef::encode::FFmpegEncoder</a>, <a class="el" href="classLimef_1_1encode_1_1V4L2Encoder.html#a43576a399a1d58e4c857d92705aa1c4b">Limef::encode::V4L2Encoder</a>, and <a class="el" href="classLimef_1_1encode_1_1V4L2NVEncoder.html#acbaf6c1c0a7c1bd0d97f3c41d656d8bd">Limef::encode::V4L2NVEncoder</a>.</p>
 
 </div>
 </div>
@@ -529,7 +532,7 @@ Protected Member Functions</h2></td></tr>
 
 <p>Check if encoder is fully initialized and ready to produce output. </p>
 
-<p>Implemented in <a class="el" href="classLimef_1_1encode_1_1FFmpegEncoder.html#a9a550d016e2816ba3c8b9161f9ae5c3e">Limef::encode::FFmpegEncoder</a>, and <a class="el" href="classLimef_1_1encode_1_1V4L2Encoder.html#ad19ea9620c7a8fe5243a0831e2526bac">Limef::encode::V4L2Encoder</a>.</p>
+<p>Implemented in <a class="el" href="classLimef_1_1encode_1_1FFmpegEncoder.html#a9a550d016e2816ba3c8b9161f9ae5c3e">Limef::encode::FFmpegEncoder</a>, <a class="el" href="classLimef_1_1encode_1_1V4L2Encoder.html#ad19ea9620c7a8fe5243a0831e2526bac">Limef::encode::V4L2Encoder</a>, and <a class="el" href="classLimef_1_1encode_1_1V4L2NVEncoder.html#a81e2079633fb61c1e8dfd724db4f29a5">Limef::encode::V4L2NVEncoder</a>.</p>
 
 </div>
 </div>
@@ -592,7 +595,7 @@ Protected Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>Implemented in <a class="el" href="classLimef_1_1encode_1_1FFmpegEncoder.html#ad51eec5a6dad632ef7b1c9566a57060d">Limef::encode::FFmpegEncoder</a>, and <a class="el" href="classLimef_1_1encode_1_1V4L2Encoder.html#aba20aae39b30a48c2e18b105c815fb62">Limef::encode::V4L2Encoder</a>.</p>
+<p>Implemented in <a class="el" href="classLimef_1_1encode_1_1FFmpegEncoder.html#ad51eec5a6dad632ef7b1c9566a57060d">Limef::encode::FFmpegEncoder</a>, <a class="el" href="classLimef_1_1encode_1_1V4L2Encoder.html#aba20aae39b30a48c2e18b105c815fb62">Limef::encode::V4L2Encoder</a>, and <a class="el" href="classLimef_1_1encode_1_1V4L2NVEncoder.html#a2e4eea71d000dad7e5e60d1026a1596f">Limef::encode::V4L2NVEncoder</a>.</p>
 
 </div>
 </div>
@@ -622,7 +625,7 @@ Protected Member Functions</h2></td></tr>
 
 <p>Set logger for this encoder. </p>
 
-<p>Implemented in <a class="el" href="classLimef_1_1encode_1_1FFmpegEncoder.html#a06653328a9d47d80a8431b9e1e50f14a">Limef::encode::FFmpegEncoder</a>, and <a class="el" href="classLimef_1_1encode_1_1V4L2Encoder.html#ab76b87a65b4edd4f4df9d7a9a901ca21">Limef::encode::V4L2Encoder</a>.</p>
+<p>Implemented in <a class="el" href="classLimef_1_1encode_1_1FFmpegEncoder.html#a06653328a9d47d80a8431b9e1e50f14a">Limef::encode::FFmpegEncoder</a>, <a class="el" href="classLimef_1_1encode_1_1V4L2Encoder.html#ab76b87a65b4edd4f4df9d7a9a901ca21">Limef::encode::V4L2Encoder</a>, and <a class="el" href="classLimef_1_1encode_1_1V4L2NVEncoder.html#ae4cbc80502ce49248330915c87296646">Limef::encode::V4L2NVEncoder</a>.</p>
 
 </div>
 </div>
@@ -659,7 +662,7 @@ Protected Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>Implemented in <a class="el" href="classLimef_1_1encode_1_1FFmpegEncoder.html#a0bdaed066c7d15775d71bca37905b761">Limef::encode::FFmpegEncoder</a>, and <a class="el" href="classLimef_1_1encode_1_1V4L2Encoder.html#ac56eacc11ce17782d13af086b2904955">Limef::encode::V4L2Encoder</a>.</p>
+<p>Implemented in <a class="el" href="classLimef_1_1encode_1_1FFmpegEncoder.html#a0bdaed066c7d15775d71bca37905b761">Limef::encode::FFmpegEncoder</a>, <a class="el" href="classLimef_1_1encode_1_1V4L2Encoder.html#ac56eacc11ce17782d13af086b2904955">Limef::encode::V4L2Encoder</a>, and <a class="el" href="classLimef_1_1encode_1_1V4L2NVEncoder.html#a25b415efd33c36c4a9c33d339b24df0f">Limef::encode::V4L2NVEncoder</a>.</p>
 
 </div>
 </div>
@@ -689,7 +692,7 @@ Protected Member Functions</h2></td></tr>
 
 <p>Set stream index for output packets. </p>
 
-<p>Implemented in <a class="el" href="classLimef_1_1encode_1_1FFmpegEncoder.html#abec5df8a63aa196036576291ede8966f">Limef::encode::FFmpegEncoder</a>, and <a class="el" href="classLimef_1_1encode_1_1V4L2Encoder.html#aed6311d13377e1a7ac29726807f41d53">Limef::encode::V4L2Encoder</a>.</p>
+<p>Implemented in <a class="el" href="classLimef_1_1encode_1_1FFmpegEncoder.html#abec5df8a63aa196036576291ede8966f">Limef::encode::FFmpegEncoder</a>, <a class="el" href="classLimef_1_1encode_1_1V4L2Encoder.html#aed6311d13377e1a7ac29726807f41d53">Limef::encode::V4L2Encoder</a>, and <a class="el" href="classLimef_1_1encode_1_1V4L2NVEncoder.html#a5a71f1a81b8dd37927c9585edc24cc43">Limef::encode::V4L2NVEncoder</a>.</p>
 
 </div>
 </div>
@@ -724,7 +727,7 @@ Protected Member Functions</h2></td></tr>
 </ul>
 <dl class="section return"><dt>Returns</dt><dd>EncoderStatus Current status </dd></dl>
 
-<p>Implemented in <a class="el" href="classLimef_1_1encode_1_1FFmpegEncoder.html#ac3ac4b42ade393ec2dcf6eaabf688921">Limef::encode::FFmpegEncoder</a>, and <a class="el" href="classLimef_1_1encode_1_1V4L2Encoder.html#a1acf42f0b7d0664ee80d30055e3bc6de">Limef::encode::V4L2Encoder</a>.</p>
+<p>Implemented in <a class="el" href="classLimef_1_1encode_1_1FFmpegEncoder.html#ac3ac4b42ade393ec2dcf6eaabf688921">Limef::encode::FFmpegEncoder</a>, <a class="el" href="classLimef_1_1encode_1_1V4L2Encoder.html#a1acf42f0b7d0664ee80d30055e3bc6de">Limef::encode::V4L2Encoder</a>, and <a class="el" href="classLimef_1_1encode_1_1V4L2NVEncoder.html#a79ea51826d14fa33f4aa3bc8ecf8919d">Limef::encode::V4L2NVEncoder</a>.</p>
 
 </div>
 </div>

@@ -1,20 +1,10 @@
-# Distributing
-
-## Binary packages
-
-Are available [here](https://github.com/elsampsa/limef-releases/releases).
-
-## Source code
+# Distributing and Licensing
 
 [App examples](https://github.com/elsampsa/limef-apps) and [plugin examples](https://github.com/elsampsa/limef-plugins) are public and MIT licensed.
 
-If you want access to limef library [source code repo](https://github.com/elsampsa/limef-public), you need to become a [sponsor](https://github.com/sponsors/elsampsa) 🥰 and pay symbolic $10.
+[Base library source code](https://github.com/elsampsa/limef-public) itself is LGPL v3 licensed.
 
-## License
-
-Limef source code is licensed under the **Limef License**, which grants you free non-commercial use.
-
-You will find the complete license text and terms of use in the source code repo.
+If you want access to [binary packages](https://github.com/elsampsa/limef-releases/releases) (which automatically grant your rights to the source code according to LGPL), you need to become a [sponsor](https://github.com/sponsors/elsampsa) 🥰
 
 ## Copyright
 

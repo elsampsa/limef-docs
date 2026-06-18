@@ -9,6 +9,5 @@ var searchData=
   ['store_6',['store',['../namespacedetail.html#a7c070b2bf3d61e3d8b8013f6fb18d592a8cd892b7b97ef9489ae4479d3f4ef0fc',1,'detail']]],
   ['stream_7',['Stream',['../namespaceLimef_1_1frame.html#ab9cc5488441f6cdcaffb6d29b679a4deaeae835e83c0494a376229f254f7d3392',1,'Limef::frame']]],
   ['strict_8',['strict',['../namespacedetail.html#abe7cfa1fd8fa706ff4392bff9d1a8298a2133fd717402a7966ee88d06f9e0b792',1,'detail']]],
-  ['string_9',['string',['../namespacedetail.html#a917c3efabea8a20dc72d9ae2c673d632ab45cffe084dd3d20d928bee85e7b0f21',1,'detail']]],
-  ['sw_10',['SW',['../namespaceLimef.html#ab3f21e06ce812c9f9b7f47da2f6a2188a6f56aa4e2561eb66f17f6d8de8070a77',1,'Limef']]]
+  ['string_9',['string',['../namespacedetail.html#a917c3efabea8a20dc72d9ae2c673d632ab45cffe084dd3d20d928bee85e7b0f21',1,'detail']]]
 ];

@@ -22,7 +22,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">My Project<span id="projectnumber">&#160;0.1.0</span>
+   <div id="projectname">My Project<span id="projectnumber">&#160;0.2.0</span>
    </div>
   </td>
  </tr>
@@ -103,6 +103,8 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:a7a700fe9503597b87854cf991853be24" id="r_a7a700fe9503597b87854cf991853be24"><td class="memItemLeft" align="right" valign="top">std::chrono::microseconds&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLimef_1_1thread_1_1PresenterContext.html#a7a700fe9503597b87854cf991853be24">max_age</a> {0}</td></tr>
 <tr class="memdesc:a7a700fe9503597b87854cf991853be24"><td class="mdescLeft">&#160;</td><td class="mdescRight">Drop frames older than this (0 = disabled)  <br /></td></tr>
 <tr class="separator:a7a700fe9503597b87854cf991853be24"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af073b387ea17f1988c65cccc8e8a125c" id="r_af073b387ea17f1988c65cccc8e8a125c"><td class="memItemLeft" align="right" valign="top">std::chrono::microseconds&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLimef_1_1thread_1_1PresenterContext.html#af073b387ea17f1988c65cccc8e8a125c">max_future_age</a> {0}</td></tr>
+<tr class="separator:af073b387ea17f1988c65cccc8e8a125c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Configuration for X11 presenter threads (<a class="el" href="classLimef_1_1thread_1_1EGLPresenterThread.html" title="EGL/OpenGL video presenter: renders decoded frames on screen via EGL.">EGLPresenterThread</a>, <a class="el" href="classLimef_1_1thread_1_1GLXPresenterThread.html" title="GLX/OpenGL video presenter: renders decoded frames on screen via GLX.">GLXPresenterThread</a>). </p>
@@ -112,12 +114,12 @@ Public Attributes</h2></td></tr>
 <div class="line">pctx.<a class="code hl_variable" href="structLimef_1_1thread_1_1PresenterContext.html#a4aff96281e9d9b26e2405fb27bcc45a6">height</a>             = 1080;</div>
 <div class="line">pctx.<a class="code hl_variable" href="structLimef_1_1thread_1_1PresenterContext.html#aef6a7426b20db2016c41765fa95dbcb7">bypass_compositor</a>  = <span class="keyword">true</span>;   <span class="comment">// needed on PRIME/KWin for GLX</span></div>
 <div class="line"><a class="code hl_class" href="classLimef_1_1thread_1_1GLXPresenterThread.html">GLXPresenterThread</a> glx(<span class="stringliteral">&quot;glx&quot;</span>, <a class="code hl_struct" href="structLimef_1_1FrameFifoContext.html">FrameFifoContext</a>(<span class="keyword">false</span>, 20, 40), pctx);</div>
-<div class="ttc" id="aclassLimef_1_1thread_1_1GLXPresenterThread_html"><div class="ttname"><a href="classLimef_1_1thread_1_1GLXPresenterThread.html">Limef::thread::GLXPresenterThread</a></div><div class="ttdoc">GLX/OpenGL video presenter: renders decoded frames on screen via GLX.</div><div class="ttdef"><b>Definition</b> glxpresenterthread.h:88</div></div>
-<div class="ttc" id="astructLimef_1_1FrameFifoContext_html"><div class="ttname"><a href="structLimef_1_1FrameFifoContext.html">Limef::FrameFifoContext</a></div><div class="ttdoc">Parameters and behaviour for a FrameFifo.</div><div class="ttdef"><b>Definition</b> framefifocontext.h:48</div></div>
-<div class="ttc" id="astructLimef_1_1thread_1_1PresenterContext_html"><div class="ttname"><a href="structLimef_1_1thread_1_1PresenterContext.html">Limef::thread::PresenterContext</a></div><div class="ttdoc">Configuration for X11 presenter threads (EGLPresenterThread, GLXPresenterThread).</div><div class="ttdef"><b>Definition</b> presenterthread.h:44</div></div>
-<div class="ttc" id="astructLimef_1_1thread_1_1PresenterContext_html_a0f691b9ebe1654ba4de59acd201d3bc2"><div class="ttname"><a href="structLimef_1_1thread_1_1PresenterContext.html#a0f691b9ebe1654ba4de59acd201d3bc2">Limef::thread::PresenterContext::width</a></div><div class="ttdeci">int width</div><div class="ttdoc">Initial window width in pixels.</div><div class="ttdef"><b>Definition</b> presenterthread.h:45</div></div>
-<div class="ttc" id="astructLimef_1_1thread_1_1PresenterContext_html_a4aff96281e9d9b26e2405fb27bcc45a6"><div class="ttname"><a href="structLimef_1_1thread_1_1PresenterContext.html#a4aff96281e9d9b26e2405fb27bcc45a6">Limef::thread::PresenterContext::height</a></div><div class="ttdeci">int height</div><div class="ttdoc">Initial window height in pixels.</div><div class="ttdef"><b>Definition</b> presenterthread.h:46</div></div>
-<div class="ttc" id="astructLimef_1_1thread_1_1PresenterContext_html_aef6a7426b20db2016c41765fa95dbcb7"><div class="ttname"><a href="structLimef_1_1thread_1_1PresenterContext.html#aef6a7426b20db2016c41765fa95dbcb7">Limef::thread::PresenterContext::bypass_compositor</a></div><div class="ttdeci">bool bypass_compositor</div><div class="ttdoc">Set _NET_WM_BYPASS_COMPOSITOR (needed on KWin + PRIME/GLX)</div><div class="ttdef"><b>Definition</b> presenterthread.h:48</div></div>
+<div class="ttc" id="aclassLimef_1_1thread_1_1GLXPresenterThread_html"><div class="ttname"><a href="classLimef_1_1thread_1_1GLXPresenterThread.html">Limef::thread::GLXPresenterThread</a></div><div class="ttdoc">GLX/OpenGL video presenter: renders decoded frames on screen via GLX.</div><div class="ttdef"><b>Definition</b> glxpresenterthread.h:85</div></div>
+<div class="ttc" id="astructLimef_1_1FrameFifoContext_html"><div class="ttname"><a href="structLimef_1_1FrameFifoContext.html">Limef::FrameFifoContext</a></div><div class="ttdoc">Parameters and behaviour for a FrameFifo.</div><div class="ttdef"><b>Definition</b> framefifocontext.h:45</div></div>
+<div class="ttc" id="astructLimef_1_1thread_1_1PresenterContext_html"><div class="ttname"><a href="structLimef_1_1thread_1_1PresenterContext.html">Limef::thread::PresenterContext</a></div><div class="ttdoc">Configuration for X11 presenter threads (EGLPresenterThread, GLXPresenterThread).</div><div class="ttdef"><b>Definition</b> presenterthread.h:41</div></div>
+<div class="ttc" id="astructLimef_1_1thread_1_1PresenterContext_html_a0f691b9ebe1654ba4de59acd201d3bc2"><div class="ttname"><a href="structLimef_1_1thread_1_1PresenterContext.html#a0f691b9ebe1654ba4de59acd201d3bc2">Limef::thread::PresenterContext::width</a></div><div class="ttdeci">int width</div><div class="ttdoc">Initial window width in pixels.</div><div class="ttdef"><b>Definition</b> presenterthread.h:42</div></div>
+<div class="ttc" id="astructLimef_1_1thread_1_1PresenterContext_html_a4aff96281e9d9b26e2405fb27bcc45a6"><div class="ttname"><a href="structLimef_1_1thread_1_1PresenterContext.html#a4aff96281e9d9b26e2405fb27bcc45a6">Limef::thread::PresenterContext::height</a></div><div class="ttdeci">int height</div><div class="ttdoc">Initial window height in pixels.</div><div class="ttdef"><b>Definition</b> presenterthread.h:43</div></div>
+<div class="ttc" id="astructLimef_1_1thread_1_1PresenterContext_html_aef6a7426b20db2016c41765fa95dbcb7"><div class="ttname"><a href="structLimef_1_1thread_1_1PresenterContext.html#aef6a7426b20db2016c41765fa95dbcb7">Limef::thread::PresenterContext::bypass_compositor</a></div><div class="ttdeci">bool bypass_compositor</div><div class="ttdoc">Set _NET_WM_BYPASS_COMPOSITOR (needed on KWin + PRIME/GLX)</div><div class="ttdef"><b>Definition</b> presenterthread.h:45</div></div>
 </div><!-- fragment --> </div><h2 class="groupheader">Member Data Documentation</h2>
 <a id="a6d2f4642fb2dd0551b9b3a3a8ba0682b" name="a6d2f4642fb2dd0551b9b3a3a8ba0682b"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a6d2f4642fb2dd0551b9b3a3a8ba0682b">&#9670;&#160;</a></span>borderless</h2>
@@ -180,6 +182,21 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Drop frames older than this (0 = disabled) </p>
+
+</div>
+</div>
+<a id="af073b387ea17f1988c65cccc8e8a125c" name="af073b387ea17f1988c65cccc8e8a125c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af073b387ea17f1988c65cccc8e8a125c">&#9670;&#160;</a></span>max_future_age</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::chrono::microseconds Limef::thread::PresenterContext::max_future_age {0}</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Drop frames newer than now+this (0 = disabled). Set this for live streaming to guard against cameras that send wrong NTP timestamps: a frame with ABS_TS far in the future would otherwise fill pending_frames_ indefinitely and block the entire upstream pipeline. A value of 5–10 s is a safe default for IP cameras. </p>
 
 </div>
 </div>

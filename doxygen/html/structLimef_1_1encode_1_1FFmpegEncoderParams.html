@@ -22,7 +22,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">My Project<span id="projectnumber">&#160;0.1.0</span>
+   <div id="projectname">My Project<span id="projectnumber">&#160;0.2.0</span>
    </div>
   </td>
  </tr>
@@ -104,7 +104,7 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:adc86a75719bc0c19ac659be15780f15e" id="r_adc86a75719bc0c19ac659be15780f15e"><td class="memItemLeft" align="right" valign="top">int64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLimef_1_1encode_1_1FFmpegEncoderParams.html#adc86a75719bc0c19ac659be15780f15e">bitrate</a> {2000000}</td></tr>
 <tr class="memdesc:adc86a75719bc0c19ac659be15780f15e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Target bitrate in bits/sec.  <br /></td></tr>
 <tr class="separator:adc86a75719bc0c19ac659be15780f15e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae29af35d0dd32c5fed2acaf4f89ebd61" id="r_ae29af35d0dd32c5fed2acaf4f89ebd61"><td class="memItemLeft" align="right" valign="top">HWAccel&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLimef_1_1encode_1_1FFmpegEncoderParams.html#ae29af35d0dd32c5fed2acaf4f89ebd61">hw_accel</a> {<a class="el" href="namespaceLimef.html#ab3f21e06ce812c9f9b7f47da2f6a2188a6f56aa4e2561eb66f17f6d8de8070a77">HWAccel::SW</a>}</td></tr>
+<tr class="memitem:ae29af35d0dd32c5fed2acaf4f89ebd61" id="r_ae29af35d0dd32c5fed2acaf4f89ebd61"><td class="memItemLeft" align="right" valign="top">HWAccel&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLimef_1_1encode_1_1FFmpegEncoderParams.html#ae29af35d0dd32c5fed2acaf4f89ebd61">hw_accel</a> {<a class="el" href="namespaceLimef.html#ab3f21e06ce812c9f9b7f47da2f6a2188ab50339a10e1de285ac99d4c3990b8693">HWAccel::NONE</a>}</td></tr>
 <tr class="memdesc:ae29af35d0dd32c5fed2acaf4f89ebd61"><td class="mdescLeft">&#160;</td><td class="mdescRight">Hardware acceleration backend.  <br /></td></tr>
 <tr class="separator:ae29af35d0dd32c5fed2acaf4f89ebd61"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab49ee3634fd32da371444e8e5c635ba5" id="r_ab49ee3634fd32da371444e8e5c635ba5"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLimef_1_1encode_1_1FFmpegEncoderParams.html#ab49ee3634fd32da371444e8e5c635ba5">hw_device</a></td></tr>
@@ -131,6 +131,9 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:aea91ccb73595dc9ebaa9e6c07d5e3d30" id="r_aea91ccb73595dc9ebaa9e6c07d5e3d30"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLimef_1_1encode_1_1FFmpegEncoderParams.html#aea91ccb73595dc9ebaa9e6c07d5e3d30">thread_count</a> {0}</td></tr>
 <tr class="memdesc:aea91ccb73595dc9ebaa9e6c07d5e3d30"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classLimef_1_1encode_1_1Encoder.html" title="Abstract encoder interface for a single video or audio stream.">Encoder</a> threads (0 = auto)  <br /></td></tr>
 <tr class="separator:aea91ccb73595dc9ebaa9e6c07d5e3d30"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a95dc3e400706e6ade197567b9f31b205" id="r_a95dc3e400706e6ade197567b9f31b205"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLimef_1_1encode_1_1FFmpegEncoderParams.html#a95dc3e400706e6ade197567b9f31b205">global_header</a> {true}</td></tr>
+<tr class="memdesc:a95dc3e400706e6ade197567b9f31b205"><td class="mdescLeft">&#160;</td><td class="mdescRight">Store SPS/PPS in extradata rather than inline in the stream.  <br /></td></tr>
+<tr class="separator:a95dc3e400706e6ade197567b9f31b205"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Encoding parameters for <a class="el" href="classLimef_1_1encode_1_1FFmpegEncoder.html" title="FFmpeg-based encoder for video and audio streams.">FFmpegEncoder</a>. </p>
@@ -145,12 +148,12 @@ Public Attributes</h2></td></tr>
 <div class="line"><span class="comment">// Software VP9 encoding (royalty-free)</span></div>
 <div class="line"><a class="code hl_struct" href="structLimef_1_1encode_1_1FFmpegEncoderParams.html">FFmpegEncoderParams</a> params;</div>
 <div class="line">params.<a class="code hl_variable" href="structLimef_1_1encode_1_1FFmpegEncoderParams.html#a387b003626b987808153eddd21655b22">codec_id</a> = AV_CODEC_ID_VP9;</div>
-<div class="line">params.<a class="code hl_variable" href="structLimef_1_1encode_1_1FFmpegEncoderParams.html#ae29af35d0dd32c5fed2acaf4f89ebd61">hw_accel</a> = <a class="code hl_enumvalue" href="namespaceLimef.html#ab3f21e06ce812c9f9b7f47da2f6a2188a6f56aa4e2561eb66f17f6d8de8070a77">HWAccel::SW</a>;  <span class="comment">// uses libvpx</span></div>
-<div class="ttc" id="anamespaceLimef_html_ab3f21e06ce812c9f9b7f47da2f6a2188a6f56aa4e2561eb66f17f6d8de8070a77"><div class="ttname"><a href="namespaceLimef.html#ab3f21e06ce812c9f9b7f47da2f6a2188a6f56aa4e2561eb66f17f6d8de8070a77">Limef::HWAccel::SW</a></div><div class="ttdeci">@ SW</div><div class="ttdoc">Software encoding/decoding.</div></div>
+<div class="line">params.<a class="code hl_variable" href="structLimef_1_1encode_1_1FFmpegEncoderParams.html#ae29af35d0dd32c5fed2acaf4f89ebd61">hw_accel</a> = <a class="code hl_enumvalue" href="namespaceLimef.html#ab3f21e06ce812c9f9b7f47da2f6a2188ab50339a10e1de285ac99d4c3990b8693">HWAccel::NONE</a>;  <span class="comment">// uses libvpx</span></div>
+<div class="ttc" id="anamespaceLimef_html_ab3f21e06ce812c9f9b7f47da2f6a2188ab50339a10e1de285ac99d4c3990b8693"><div class="ttname"><a href="namespaceLimef.html#ab3f21e06ce812c9f9b7f47da2f6a2188ab50339a10e1de285ac99d4c3990b8693">Limef::HWAccel::NONE</a></div><div class="ttdeci">@ NONE</div><div class="ttdoc">Software encoding/decoding (no hardware accelerator)</div></div>
 <div class="ttc" id="anamespaceLimef_html_ab3f21e06ce812c9f9b7f47da2f6a2188ab80a85e9723eafdfdfb1221ae4bb4bf3"><div class="ttname"><a href="namespaceLimef.html#ab3f21e06ce812c9f9b7f47da2f6a2188ab80a85e9723eafdfdfb1221ae4bb4bf3">Limef::HWAccel::VAAPI</a></div><div class="ttdeci">@ VAAPI</div><div class="ttdoc">Intel/AMD hardware via VAAPI.</div></div>
-<div class="ttc" id="astructLimef_1_1encode_1_1FFmpegEncoderParams_html"><div class="ttname"><a href="structLimef_1_1encode_1_1FFmpegEncoderParams.html">Limef::encode::FFmpegEncoderParams</a></div><div class="ttdoc">Encoding parameters for FFmpegEncoder.</div><div class="ttdef"><b>Definition</b> ffmpeg_encoder.h:73</div></div>
-<div class="ttc" id="astructLimef_1_1encode_1_1FFmpegEncoderParams_html_a387b003626b987808153eddd21655b22"><div class="ttname"><a href="structLimef_1_1encode_1_1FFmpegEncoderParams.html#a387b003626b987808153eddd21655b22">Limef::encode::FFmpegEncoderParams::codec_id</a></div><div class="ttdeci">AVCodecID codec_id</div><div class="ttdoc">Target codec.</div><div class="ttdef"><b>Definition</b> ffmpeg_encoder.h:74</div></div>
-<div class="ttc" id="astructLimef_1_1encode_1_1FFmpegEncoderParams_html_ae29af35d0dd32c5fed2acaf4f89ebd61"><div class="ttname"><a href="structLimef_1_1encode_1_1FFmpegEncoderParams.html#ae29af35d0dd32c5fed2acaf4f89ebd61">Limef::encode::FFmpegEncoderParams::hw_accel</a></div><div class="ttdeci">HWAccel hw_accel</div><div class="ttdoc">Hardware acceleration backend.</div><div class="ttdef"><b>Definition</b> ffmpeg_encoder.h:78</div></div>
+<div class="ttc" id="astructLimef_1_1encode_1_1FFmpegEncoderParams_html"><div class="ttname"><a href="structLimef_1_1encode_1_1FFmpegEncoderParams.html">Limef::encode::FFmpegEncoderParams</a></div><div class="ttdoc">Encoding parameters for FFmpegEncoder.</div><div class="ttdef"><b>Definition</b> ffmpeg_encoder.h:70</div></div>
+<div class="ttc" id="astructLimef_1_1encode_1_1FFmpegEncoderParams_html_a387b003626b987808153eddd21655b22"><div class="ttname"><a href="structLimef_1_1encode_1_1FFmpegEncoderParams.html#a387b003626b987808153eddd21655b22">Limef::encode::FFmpegEncoderParams::codec_id</a></div><div class="ttdeci">AVCodecID codec_id</div><div class="ttdoc">Target codec.</div><div class="ttdef"><b>Definition</b> ffmpeg_encoder.h:71</div></div>
+<div class="ttc" id="astructLimef_1_1encode_1_1FFmpegEncoderParams_html_ae29af35d0dd32c5fed2acaf4f89ebd61"><div class="ttname"><a href="structLimef_1_1encode_1_1FFmpegEncoderParams.html#ae29af35d0dd32c5fed2acaf4f89ebd61">Limef::encode::FFmpegEncoderParams::hw_accel</a></div><div class="ttdeci">HWAccel hw_accel</div><div class="ttdoc">Hardware acceleration backend.</div><div class="ttdef"><b>Definition</b> ffmpeg_encoder.h:75</div></div>
 </div><!-- fragment --> </div><h2 class="groupheader">Member Data Documentation</h2>
 <a id="adc86a75719bc0c19ac659be15780f15e" name="adc86a75719bc0c19ac659be15780f15e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#adc86a75719bc0c19ac659be15780f15e">&#9670;&#160;</a></span>bitrate</h2>
@@ -200,6 +203,25 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="a95dc3e400706e6ade197567b9f31b205" name="a95dc3e400706e6ade197567b9f31b205"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a95dc3e400706e6ade197567b9f31b205">&#9670;&#160;</a></span>global_header</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Limef::encode::FFmpegEncoderParams::global_header {true}</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Store SPS/PPS in extradata rather than inline in the stream. </p>
+<p><b>NVENC note:</b> h264_nvenc always outputs Annex B byte-stream packets regardless of this flag. The flag only controls where SPS/PPS parameter sets appear:</p>
+<p>true — SPS/PPS in extradata only, absent from packets. RTPMuxerFrameFilter reads extradata from CodecFrame → SDP gets profile-level-id and sprop-parameter-sets. Required for RTSP. IDR packets carry no inline SPS/PPS — browsers cannot decode without them.</p>
+<p>false — extradata empty, SPS/PPS prepended inline before every IDR packet. SDP lacks profile-level-id / sprop-parameter-sets. Required for WebRTC with NVENC. </p>
+
+</div>
+</div>
 <a id="a67881295e39b8d237c521e4d4bcc9144" name="a67881295e39b8d237c521e4d4bcc9144"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a67881295e39b8d237c521e4d4bcc9144">&#9670;&#160;</a></span>gop_size</h2>
 
@@ -223,7 +245,7 @@ Public Attributes</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">HWAccel Limef::encode::FFmpegEncoderParams::hw_accel {<a class="el" href="namespaceLimef.html#ab3f21e06ce812c9f9b7f47da2f6a2188a6f56aa4e2561eb66f17f6d8de8070a77">HWAccel::SW</a>}</td>
+          <td class="memname">HWAccel Limef::encode::FFmpegEncoderParams::hw_accel {<a class="el" href="namespaceLimef.html#ab3f21e06ce812c9f9b7f47da2f6a2188ab50339a10e1de285ac99d4c3990b8693">HWAccel::NONE</a>}</td>
         </tr>
       </table>
 </div><div class="memdoc">

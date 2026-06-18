@@ -207,7 +207,7 @@
     <li><a href="https://github.com/elsampsa/limef-apps" target="_blank" rel="noopener noreferrer"><i class="fa fa-github" style="font-size: 16pt"></i> App examples </a></li>
     <li><a href="https://github.com/elsampsa/limef-plugins" target="_blank" rel="noopener noreferrer"><i class="fa fa-github" style="font-size: 16pt"></i> Plugin examples </a></li>
     <li><a href="https://github.com/elsampsa/limef-docs/issues" target="_blank" rel="noopener noreferrer"><i class="fa fa-bug" style="font-size: 16pt"></i> Public issues </a></li>
-    <li><a href="https://github.com/elsampsa/limef-releases/releases" target="_blank" rel="noopener noreferrer"><i class="fa fa-download" style="font-size: 16pt"></i> Releases </a></li>
+    <li><a href="https://github.com/elsampsa/limef-releases/releases" target="_blank" rel="noopener noreferrer"><i class="fa fa-download" style="font-size: 16pt"></i> Releases (private) </a></li>
     <li><a href="https://github.com/sponsors/elsampsa" target="_blank" rel="noopener noreferrer"><i class="fa fa-heart" style="font-size: 16pt"></i> Sponsor </a></li>
 </ul>
 </div><form class="sidebar-search-container" method="get" action="../search.html" role="search">
@@ -237,7 +237,7 @@
 <li class="toctree-l2"><a class="reference internal" href="shmem.html">Shared Memory</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../distribution.html">Distributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../distribution.html">Distributing and Licensing</a></li>
 </ul>
 
 </div>
@@ -325,7 +325,7 @@ inter-thread communication.  All <code class="docutils literal notranslate"><spa
 
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N5Limef9FrameFifo5closeEv">
-<span id="_CPPv3N5Limef9FrameFifo5closeEv"></span><span id="_CPPv2N5Limef9FrameFifo5closeEv"></span><span id="Limef::FrameFifo::close"></span><span class="target" id="classLimef_1_1FrameFifo_1a79c9ff5561e0908ea2ead9a20d1e4102"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">close</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5Limef9FrameFifo5closeEv" title="Link to this definition">¶</a><br /></dt>
+<span id="_CPPv3N5Limef9FrameFifo5closeEv"></span><span id="_CPPv2N5Limef9FrameFifo5closeEv"></span><span id="Limef::FrameFifo::close"></span><span class="target" id="classLimef_1_1FrameFifo_1a7381badb5c0f1fcd7b96a08e282a8b57"></span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">close</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5Limef9FrameFifo5closeEv" title="Link to this definition">¶</a><br /></dt>
 <dd><p>Stop waiting for all condition variables asap </p>
 </dd></dl>
 
@@ -382,26 +382,34 @@ If timeout takes place, returns nullptr <dl class="simple">
 <dt class="sig sig-object cpp" id="_CPPv4N5Limef16DecodedFrameFifoE">
 <span id="_CPPv3N5Limef16DecodedFrameFifoE"></span><span id="_CPPv2N5Limef16DecodedFrameFifoE"></span><span id="Limef::DecodedFrameFifo"></span><span class="target" id="classLimef_1_1DecodedFrameFifo"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">DecodedFrameFifo</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><span class="n"><span class="pre">Limef</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4I0EN5Limef9FrameFifoE" title="Limef::FrameFifo"><span class="n"><span class="pre">FrameFifo</span></span></a><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="frames.html#_CPPv4N5Limef5frameE" title="Limef::frame"><span class="n"><span class="pre">frame</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="frames.html#_CPPv4N5Limef5frame12DecodedFrameE" title="Limef::frame::DecodedFrame"><span class="n"><span class="pre">DecodedFrame</span></span></a><span class="p"><span class="pre">&gt;</span></span><a class="headerlink" href="#_CPPv4N5Limef16DecodedFrameFifoE" title="Link to this definition">¶</a><br /></dt>
 <dd><p>FrameFifo for DecodedFrame with GPU buffer pool support. </p>
-<p>Extends FrameFifo&lt;DecodedFrame&gt; to manage a dedicated GPU buffer pool (hw_frames_ctx) for stack frames. Handles multiple scenarios:</p>
-<p>When ctx.gpu_target == SW (default):<ul class="simple">
-<li><p>CPU frames: CPU→CPU copy (standard behavior)</p></li>
-<li><p>GPU frames: GPU→GPU copy into owned pool (prevents buffer reuse issues)</p></li>
+<p>Extends FrameFifo&lt;DecodedFrame&gt; to manage GPU buffer pools for stack frames.</p>
+<p>Supported targets:<ul class="simple">
+<li><p>CPU (default): CPU→CPU deep copy.</p></li>
+<li><p>CUDA: stack frames pre-allocated via cudaMalloc (reserveVideoCUDA). Pool is created lazily on the first video frame; recreated on resolution change after the fifo drains.</p></li>
+<li><p>VAAPI: error — not supported as a fifo target.</p></li>
+<li><p>CUDA_FFMPEG: error — not supported as a fifo target.</p></li>
 </ul>
 </p>
-<p>When ctx.gpu_target == CUDA/VAAPI:<ul class="simple">
-<li><p>CPU frames: CPU→GPU upload to target device</p></li>
-<li><p>GPU frames on target device: GPU→GPU copy</p></li>
-<li><p>GPU frames on different device: GPU→CPU→GPU transfer (with warning)</p></li>
-</ul>
-</p>
-<p>Pool creation is lazy - happens on first frame with matching dimensions. Resolution changes trigger pool recreation.</p>
+<p>CUDA_FFMPEG frames arriving as <em>source</em> are handled by updateFrom() (CUDA_FFMPEG→CUDA or CUDA_FFMPEG→CPU), not by this class. </p>
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N5Limef16DecodedFrameFifo9writeCopyEPKN5frame5FrameE">
 <span id="_CPPv3N5Limef16DecodedFrameFifo9writeCopyEPKN5frame5FrameE"></span><span id="_CPPv2N5Limef16DecodedFrameFifo9writeCopyEPKN5frame5FrameE"></span><span id="Limef::DecodedFrameFifo::writeCopy__frame::FrameCP"></span><span class="target" id="classLimef_1_1DecodedFrameFifo_1a3e2e16dad17a656b231f6d5cd3e9a099"></span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">writeCopy</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="frames.html#_CPPv4N5Limef5frameE" title="Limef::frame"><span class="n"><span class="pre">frame</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="frames.html#_CPPv4N5Limef5frame5FrameE" title="Limef::frame::Frame"><span class="n"><span class="pre">Frame</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">f</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">override</span></span><a class="headerlink" href="#_CPPv4N5Limef16DecodedFrameFifo9writeCopyEPKN5frame5FrameE" title="Link to this definition">¶</a><br /></dt>
-<dd><p>Copy frame into fifo with GPU pool management. </p>
-<p>Handles CPU→GPU upload, GPU→GPU copy, and cross-device transfers based on ctx.gpu_target setting. </p>
+<dd><p>Copies or clones a frame and places it into the internal fifo</p>
+<p>
+For frames of the template type T:<dl class="simple">
+<dt><strong>f : incoming frame</strong></dt><dd><p></p>
+</dd>
+</dl>
+</p>
+<p><ul class="simple">
+<li><p>takes frame (b) from the stack</p></li>
+<li><p>copies contents of (f) into (b)</p></li>
+<li><p>places (b) into the fifo</p></li>
+</ul>
+</p>
+<p>For all other frame types just clones the frame, using the <code class="docutils literal notranslate"><span class="pre">Limef::frame::Frame</span></code> class clone method, and places it into the fifo </p>
 </dd></dl>
 
 </div>
@@ -478,6 +486,12 @@ If timeout takes place, returns nullptr <dl class="simple">
 <span id="_CPPv3N5Limef13PollFrameFifo9writeCopyEPKN5Limef5frame5FrameE"></span><span id="_CPPv2N5Limef13PollFrameFifo9writeCopyEPKN5Limef5frame5FrameE"></span><span id="Limef::PollFrameFifo::writeCopy__Limef::frame::FrameCP"></span><span class="target" id="classLimef_1_1PollFrameFifo_1ad9980c8f68f165842735280645d2e31b"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">writeCopy</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">Limef</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="frames.html#_CPPv4N5Limef5frameE" title="Limef::frame"><span class="n"><span class="pre">frame</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="frames.html#_CPPv4N5Limef5frame5FrameE" title="Limef::frame::Frame"><span class="n"><span class="pre">Frame</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">f</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">override</span></span><a class="headerlink" href="#_CPPv4N5Limef13PollFrameFifo9writeCopyEPKN5Limef5frame5FrameE" title="Link to this definition">¶</a><br /></dt>
 <dd><p>Write a copy of the frame and signal the eventfd. </p>
 <p>Overrides FrameFifo::writeCopy to also signal the eventfd, waking up any poll() waiting on getFd(). </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef13PollFrameFifo5closeEv">
+<span id="_CPPv3N5Limef13PollFrameFifo5closeEv"></span><span id="_CPPv2N5Limef13PollFrameFifo5closeEv"></span><span id="Limef::PollFrameFifo::close"></span><span class="target" id="classLimef_1_1PollFrameFifo_1acd0cd378f7c219afd3cab8fba7dde510"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">close</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">override</span></span><a class="headerlink" href="#_CPPv4N5Limef13PollFrameFifo5closeEv" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Stop waiting for all condition variables asap </p>
 </dd></dl>
 
 <dl class="cpp function">
@@ -575,6 +589,7 @@ If timeout takes place, returns nullptr <dl class="simple">
 <li><a class="reference internal" href="#_CPPv4I0EN5Limef13PollFrameFifoE"><code class="docutils literal notranslate"><span class="pre">Limef::PollFrameFifo</span></code></a><ul>
 <li><a class="reference internal" href="#_CPPv4NK5Limef13PollFrameFifo5getFdEv"><code class="docutils literal notranslate"><span class="pre">getFd()</span></code></a></li>
 <li><a class="reference internal" href="#_CPPv4N5Limef13PollFrameFifo9writeCopyEPKN5Limef5frame5FrameE"><code class="docutils literal notranslate"><span class="pre">writeCopy()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef13PollFrameFifo5closeEv"><code class="docutils literal notranslate"><span class="pre">close()</span></code></a></li>
 <li><a class="reference internal" href="#_CPPv4N5Limef13PollFrameFifo7tryReadEv"><code class="docutils literal notranslate"><span class="pre">tryRead()</span></code></a></li>
 </ul>
 </li>

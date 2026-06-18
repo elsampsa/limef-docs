@@ -22,7 +22,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">My Project<span id="projectnumber">&#160;0.1.0</span>
+   <div id="projectname">My Project<span id="projectnumber">&#160;0.2.0</span>
    </div>
   </td>
  </tr>
@@ -218,11 +218,11 @@ This graph shows which files directly or indirectly include this file:</div>
 <area shape="poly" title=" " alt="" coords="744,162,739,209,730,232,716,253,645,276,524,308,523,303,644,271,712,249,725,230,733,207,739,161"/>
 <area shape="rect" href="decoded__to__tensor_8cpp.html" title="DecodedToTensorFrameFilter implementation." alt="" coords="1003,299,1177,353"/>
 <area shape="poly" title=" " alt="" coords="834,134,910,157,949,173,985,194,1014,217,1040,245,1077,297,1073,300,1035,248,1010,221,982,198,946,178,908,162,832,140"/>
-<area shape="rect" href="decoded__to__tensor__cpu_8h.html" title="CPU converter subclasses for DecodedToTensorFrameFilter." alt="" coords="780,196,971,251"/>
+<area shape="rect" href="decoded__to__tensor__cpu_8h.html" title="CPU converter for DecodedToTensorFrameFilter." alt="" coords="780,196,971,251"/>
 <area shape="poly" title=" " alt="" coords="787,154,841,194,838,198,784,158"/>
 <area shape="poly" title=" " alt="" coords="700,159,653,198,650,194,696,155"/>
 <area shape="poly" title=" " alt="" coords="945,254,1035,296,1033,301,942,259"/>
-<area shape="rect" href="decoded__to__tensor__cpu_8cpp.html" title="CPU converter implementations for DecodedToTensorFrameFilter." alt="" coords="772,299,979,353"/>
+<area shape="rect" href="decoded__to__tensor__cpu_8cpp.html" title="CpuSwScaleConverter — converts any CPU DecodedFrame to a CHW TensorFrame." alt="" coords="772,299,979,353"/>
 <area shape="poly" title=" " alt="" coords="878,264,878,299,873,299,873,264"/>
 <area shape="poly" title=" " alt="" coords="565,260,483,308,480,303,563,255"/>
 <area shape="rect" href="tensor__to__decoded_8cpp.html" title="TensorToDecodedFrameFilter implementation (CPU, GBRP / GRAY8 output)." alt="" coords="571,299,747,353"/>
@@ -274,17 +274,17 @@ Functions</h2></td></tr>
 <dl class="section author"><dt>Author</dt><dd>Sampsa Riikonen </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>2025 </dd></dl>
 <dl class="section version"><dt>Version</dt><dd>1.6.1</dd></dl>
-<h2><a class="anchor" id="autotoc_md2"></a>
+<h2><a class="anchor" id="autotoc_md5"></a>
 Overview</h2>
 <p>TensorFrame holds N independent planes of arbitrary shape and dtype. Each plane lives entirely on CPU (data_) or entirely on GPU (d_data_). All planes in one TensorFrame reside on the same device.</p>
 <p>One TensorFrame represents one media stream (video OR audio — not both):</p><ul>
 <li>Video: typically one plane, shape (C, H, W), dtype Float32 or UInt8</li>
 <li>Audio: typically one plane, shape (samples, channels), dtype Float32</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md3"></a>
+<h2><a class="anchor" id="autotoc_md6"></a>
 Memory management</h2>
 <p>Buffers are grow-only: reused when the new content fits, reallocated only when larger. Contiguous (C-order) strides are computed automatically by reserveCPUPlane() / reserveGPUPlane().</p>
-<h2><a class="anchor" id="autotoc_md4"></a>
+<h2><a class="anchor" id="autotoc_md7"></a>
 C++ interop</h2>
 <p>Plane fields are public. Consumers read them directly: </p><div class="fragment"><div class="line"><span class="keyword">const</span> <span class="keyword">auto</span>&amp; p = tf.planes[0];</div>
 <div class="line">cv::cuda::GpuMat mat(p.shape[0], p.shape[1], CV_8UC1, p.d_data_, p.strides[0]);</div>

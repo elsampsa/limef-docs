@@ -22,7 +22,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">My Project<span id="projectnumber">&#160;0.1.0</span>
+   <div id="projectname">My Project<span id="projectnumber">&#160;0.2.0</span>
    </div>
   </td>
  </tr>
@@ -105,22 +105,24 @@ Collaboration diagram for Limef::thread::USBCameraThread:</div>
 <div class="dyncontent">
 <div class="center"><img src="classLimef_1_1thread_1_1USBCameraThread__coll__graph.png" border="0" usemap="#aLimef_1_1thread_1_1USBCameraThread_coll__map" alt="Collaboration graph"/></div>
 <map name="aLimef_1_1thread_1_1USBCameraThread_coll__map" id="aLimef_1_1thread_1_1USBCameraThread_coll__map">
-<area shape="rect" title="Thread for capturing frames from USB cameras." alt="" coords="217,435,411,475"/>
-<area shape="rect" href="classLimef_1_1thread_1_1ProducerThread.html" title="A prototype frame producing thread (aka source)" alt="" coords="205,360,423,385"/>
-<area shape="poly" title=" " alt="" coords="317,399,317,435,311,435,311,399"/>
-<area shape="rect" href="classLimef_1_1thread_1_1Thread.html" title=" " alt="" coords="209,271,419,311"/>
-<area shape="poly" title=" " alt="" coords="317,324,317,360,311,360,311,324"/>
-<area shape="rect" href="classLimef_1_1thread_1_1ThreadBase.html" title=" " alt="" coords="5,168,199,193"/>
-<area shape="poly" title=" " alt="" coords="138,197,278,268,276,273,136,202"/>
-<area shape="rect" href="structLimef_1_1FrameFifoContext.html" title="Parameters and behaviour for a FrameFifo." alt="" coords="223,168,405,193"/>
-<area shape="poly" title=" " alt="" coords="317,207,317,270,311,270,311,207"/>
-<area shape="rect" href="classLimef_1_1ff_1_1EmptyFrameFilter.html" title="Dummy FrameFilter" alt="" coords="429,168,628,193"/>
-<area shape="poly" title=" " alt="" coords="495,202,353,273,350,268,492,197"/>
+<area shape="rect" title="Thread for capturing frames from USB cameras." alt="" coords="217,448,411,488"/>
+<area shape="rect" href="classLimef_1_1thread_1_1ProducerThread.html" title="A prototype frame producing thread (aka source)" alt="" coords="205,373,423,399"/>
+<area shape="poly" title=" " alt="" coords="317,412,317,448,311,448,311,412"/>
+<area shape="rect" href="classLimef_1_1thread_1_1Thread.html" title=" " alt="" coords="209,284,419,324"/>
+<area shape="poly" title=" " alt="" coords="317,338,317,373,311,373,311,338"/>
+<area shape="rect" href="classLimef_1_1thread_1_1ThreadBase.html" title=" " alt="" coords="5,181,199,207"/>
+<area shape="poly" title=" " alt="" coords="138,211,278,282,276,286,136,215"/>
+<area shape="rect" href="structLimef_1_1FrameFifoContext.html" title="Parameters and behaviour for a FrameFifo." alt="" coords="223,181,405,207"/>
+<area shape="poly" title=" " alt="" coords="317,221,317,284,311,284,311,221"/>
+<area shape="rect" title=" " alt="" coords="256,93,372,119"/>
+<area shape="poly" title=" " alt="" coords="317,133,317,181,311,181,311,133"/>
+<area shape="rect" href="classLimef_1_1ff_1_1EmptyFrameFilter.html" title="Dummy FrameFilter" alt="" coords="429,181,628,207"/>
+<area shape="poly" title=" " alt="" coords="495,215,353,286,350,282,492,211"/>
 <area shape="rect" href="classLimef_1_1ff_1_1SimpleFrameFilter.html" title="A base class for simple one&#45;to&#45;one framefilters." alt="" coords="427,93,630,119"/>
-<area shape="poly" title=" " alt="" coords="531,133,531,168,526,168,526,133"/>
-<area shape="rect" href="classLimef_1_1ff_1_1FrameFilter.html" title=" " alt="" coords="450,5,607,31"/>
-<area shape="poly" title=" " alt="" coords="529,45,529,55,530,93,525,93,523,55,524,44"/>
-<area shape="poly" title=" " alt="" coords="531,45,531,93,526,93,526,45"/>
+<area shape="poly" title=" " alt="" coords="531,133,531,181,526,181,526,133"/>
+<area shape="rect" href="classLimef_1_1ff_1_1FrameFilter.html" title=" " alt="" coords="449,5,606,31"/>
+<area shape="poly" title=" " alt="" coords="528,45,527,69,530,93,524,93,522,69,522,45"/>
+<area shape="poly" title=" " alt="" coords="530,45,531,93,526,93,525,45"/>
 </map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
@@ -154,14 +156,17 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:af0e3b1bce401a7f877396146e8afb57d inherit pub_methods_classLimef_1_1thread_1_1Thread" id="r_af0e3b1bce401a7f877396146e8afb57d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1thread_1_1Thread.html#af0e3b1bce401a7f877396146e8afb57d">isRunning</a> () const override</td></tr>
 <tr class="memdesc:af0e3b1bce401a7f877396146e8afb57d inherit pub_methods_classLimef_1_1thread_1_1Thread"><td class="mdescLeft">&#160;</td><td class="mdescRight">has the thread been started or not?  <br /></td></tr>
 <tr class="separator:af0e3b1bce401a7f877396146e8afb57d inherit pub_methods_classLimef_1_1thread_1_1Thread"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab6fe98003a127d64d35cd4d06636bfcb inherit pub_methods_classLimef_1_1thread_1_1Thread" id="r_ab6fe98003a127d64d35cd4d06636bfcb"><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1thread_1_1Thread.html#ab6fe98003a127d64d35cd4d06636bfcb">getTaskCallCount</a> () const</td></tr>
+<tr class="memdesc:ab6fe98003a127d64d35cd4d06636bfcb inherit pub_methods_classLimef_1_1thread_1_1Thread"><td class="mdescLeft">&#160;</td><td class="mdescRight">true while <a class="el" href="classLimef_1_1thread_1_1Thread.html#a68b383b869edf65ee86f8d57cb261508" title="Threads main functionality. Uses preRun, postRun, processFrame, frameTask and task.">mainLoop()</a> is executing  <br /></td></tr>
+<tr class="separator:ab6fe98003a127d64d35cd4d06636bfcb inherit pub_methods_classLimef_1_1thread_1_1Thread"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af8b77ceb90bd5b244a77c9c98679d363 inherit pub_methods_classLimef_1_1thread_1_1Thread" id="r_af8b77ceb90bd5b244a77c9c98679d363"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1thread_1_1Thread.html#af8b77ceb90bd5b244a77c9c98679d363">requestStop</a> () override</td></tr>
-<tr class="memdesc:af8b77ceb90bd5b244a77c9c98679d363 inherit pub_methods_classLimef_1_1thread_1_1Thread"><td class="mdescLeft">&#160;</td><td class="mdescRight">true while <a class="el" href="classLimef_1_1thread_1_1Thread.html#a68b383b869edf65ee86f8d57cb261508" title="Threads main functionality. Uses preRun, postRun, processFrame, frameTask and task.">mainLoop()</a> is executing  <br /></td></tr>
+<tr class="memdesc:af8b77ceb90bd5b244a77c9c98679d363 inherit pub_methods_classLimef_1_1thread_1_1Thread"><td class="mdescLeft">&#160;</td><td class="mdescRight">request thread termination  <br /></td></tr>
 <tr class="separator:af8b77ceb90bd5b244a77c9c98679d363 inherit pub_methods_classLimef_1_1thread_1_1Thread"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1425dd0dba2d54bbbcdc0f8376e1bbeb inherit pub_methods_classLimef_1_1thread_1_1Thread" id="r_a1425dd0dba2d54bbbcdc0f8376e1bbeb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1thread_1_1Thread.html#a1425dd0dba2d54bbbcdc0f8376e1bbeb">waitStop</a> () override</td></tr>
 <tr class="memdesc:a1425dd0dba2d54bbbcdc0f8376e1bbeb inherit pub_methods_classLimef_1_1thread_1_1Thread"><td class="mdescLeft">&#160;</td><td class="mdescRight">wait for thread termination  <br /></td></tr>
 <tr class="separator:a1425dd0dba2d54bbbcdc0f8376e1bbeb inherit pub_methods_classLimef_1_1thread_1_1Thread"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9e0b393eea3a942be09f88b60b5746ff inherit pub_methods_classLimef_1_1thread_1_1Thread" id="r_a9e0b393eea3a942be09f88b60b5746ff"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1thread_1_1Thread.html#a9e0b393eea3a942be09f88b60b5746ff">stop</a> () override</td></tr>
-<tr class="memdesc:a9e0b393eea3a942be09f88b60b5746ff inherit pub_methods_classLimef_1_1thread_1_1Thread"><td class="mdescLeft">&#160;</td><td class="mdescRight">combined <a class="el" href="classLimef_1_1thread_1_1Thread.html#af8b77ceb90bd5b244a77c9c98679d363" title="true while mainLoop() is executing">requestStop()</a> and <a class="el" href="classLimef_1_1thread_1_1Thread.html#a1425dd0dba2d54bbbcdc0f8376e1bbeb" title="wait for thread termination">waitStop()</a>  <br /></td></tr>
+<tr class="memdesc:a9e0b393eea3a942be09f88b60b5746ff inherit pub_methods_classLimef_1_1thread_1_1Thread"><td class="mdescLeft">&#160;</td><td class="mdescRight">combined <a class="el" href="classLimef_1_1thread_1_1Thread.html#af8b77ceb90bd5b244a77c9c98679d363" title="request thread termination">requestStop()</a> and <a class="el" href="classLimef_1_1thread_1_1Thread.html#a1425dd0dba2d54bbbcdc0f8376e1bbeb" title="wait for thread termination">waitStop()</a>  <br /></td></tr>
 <tr class="separator:a9e0b393eea3a942be09f88b60b5746ff inherit pub_methods_classLimef_1_1thread_1_1Thread"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a468dd8135b2708fa32662e9cc0c3549d inherit pub_methods_classLimef_1_1thread_1_1Thread" id="r_a468dd8135b2708fa32662e9cc0c3549d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1thread_1_1Thread.html#a468dd8135b2708fa32662e9cc0c3549d">setAffinity</a> (int core_id) override</td></tr>
 <tr class="memdesc:a468dd8135b2708fa32662e9cc0c3549d inherit pub_methods_classLimef_1_1thread_1_1Thread"><td class="mdescLeft">&#160;</td><td class="mdescRight">Binds the thread to a certain CPU.  <br /></td></tr>
@@ -250,8 +255,8 @@ Additional Inherited Members</h2></td></tr>
 <tr class="memdesc:a32357498701ad1388bccafab098803aa inherit pro_attribs_classLimef_1_1thread_1_1ProducerThread"><td class="mdescLeft">&#160;</td><td class="mdescRight">Slot identification of the produced frames.  <br /></td></tr>
 <tr class="separator:a32357498701ad1388bccafab098803aa inherit pro_attribs_classLimef_1_1thread_1_1ProducerThread"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pro_attribs_classLimef_1_1thread_1_1Thread"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_classLimef_1_1thread_1_1Thread')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="classLimef_1_1thread_1_1Thread.html">Limef::thread::Thread&lt; Limef::frame::NullFrame &gt;</a></td></tr>
-<tr class="memitem:af35b3c2c9bdb52517cd295bf1b837f1e inherit pro_attribs_classLimef_1_1thread_1_1Thread" id="r_af35b3c2c9bdb52517cd295bf1b837f1e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1thread_1_1Thread.html#af35b3c2c9bdb52517cd295bf1b837f1e">stop_requested_</a></td></tr>
-<tr class="separator:af35b3c2c9bdb52517cd295bf1b837f1e inherit pro_attribs_classLimef_1_1thread_1_1Thread"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a991d4fc6d1bca78a4cd2207ff39c06f8 inherit pro_attribs_classLimef_1_1thread_1_1Thread" id="r_a991d4fc6d1bca78a4cd2207ff39c06f8"><td class="memItemLeft" align="right" valign="top">std::atomic&lt; bool &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1thread_1_1Thread.html#a991d4fc6d1bca78a4cd2207ff39c06f8">stop_requested_</a></td></tr>
+<tr class="separator:a991d4fc6d1bca78a4cd2207ff39c06f8 inherit pro_attribs_classLimef_1_1thread_1_1Thread"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6c9a250e57ccbe5aa94a21e8d466a0f9 inherit pro_attribs_classLimef_1_1thread_1_1Thread" id="r_a6c9a250e57ccbe5aa94a21e8d466a0f9"><td class="memItemLeft" align="right" valign="top">std::atomic&lt; bool &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1thread_1_1Thread.html#a6c9a250e57ccbe5aa94a21e8d466a0f9">running_</a></td></tr>
 <tr class="separator:a6c9a250e57ccbe5aa94a21e8d466a0f9 inherit pro_attribs_classLimef_1_1thread_1_1Thread"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4b2a53ec35355f09efe8d903562553c5 inherit pro_attribs_classLimef_1_1thread_1_1Thread" id="r_a4b2a53ec35355f09efe8d903562553c5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structLimef_1_1FrameFifoContext.html">Limef::FrameFifoContext</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1thread_1_1Thread.html#a4b2a53ec35355f09efe8d903562553c5">ctx</a></td></tr>
@@ -261,6 +266,8 @@ Additional Inherited Members</h2></td></tr>
 <tr class="separator:afa2b2954bbaf77643ee3b9c0998b0fc1 inherit pro_attribs_classLimef_1_1thread_1_1Thread"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1c120ab9e05fd070b81231a0e1f8e42e inherit pro_attribs_classLimef_1_1thread_1_1Thread" id="r_a1c120ab9e05fd070b81231a0e1f8e42e"><td class="memItemLeft" align="right" valign="top">std::chrono::steady_clock::time_point&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1thread_1_1Thread.html#a1c120ab9e05fd070b81231a0e1f8e42e">task_last_exec</a></td></tr>
 <tr class="separator:a1c120ab9e05fd070b81231a0e1f8e42e inherit pro_attribs_classLimef_1_1thread_1_1Thread"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5c7a558af562e01df30454417bd54602 inherit pro_attribs_classLimef_1_1thread_1_1Thread" id="r_a5c7a558af562e01df30454417bd54602"><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1thread_1_1Thread.html#a5c7a558af562e01df30454417bd54602">task_call_count_</a></td></tr>
+<tr class="separator:a5c7a558af562e01df30454417bd54602 inherit pro_attribs_classLimef_1_1thread_1_1Thread"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a58c9161cd729c34b7cfc3af5d67e9957 inherit pro_attribs_classLimef_1_1thread_1_1Thread" id="r_a58c9161cd729c34b7cfc3af5d67e9957"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="classLimef_1_1ff_1_1FrameFifoFrameFilter.html">Limef::ff::FrameFifoFrameFilter</a>&lt; <a class="el" href="classLimef_1_1frame_1_1NullFrame.html">Limef::frame::NullFrame</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1thread_1_1Thread.html#a58c9161cd729c34b7cfc3af5d67e9957">framefifo_ff</a></td></tr>
 <tr class="separator:a58c9161cd729c34b7cfc3af5d67e9957 inherit pro_attribs_classLimef_1_1thread_1_1Thread"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3e00850cd9564a52dd35901ee4beff85 inherit pro_attribs_classLimef_1_1thread_1_1Thread" id="r_a3e00850cd9564a52dd35901ee4beff85"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classLimef_1_1ff_1_1EmptyFrameFilter.html">Limef::ff::EmptyFrameFilter</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1thread_1_1Thread.html#a3e00850cd9564a52dd35901ee4beff85">input_ff</a></td></tr>
@@ -284,26 +291,27 @@ Additional Inherited Members</h2></td></tr>
 <div class="textblock"><p><a class="el" href="classLimef_1_1thread_1_1Thread.html" title="A multithreading base class.">Thread</a> for capturing frames from USB cameras. </p>
 <p>Reads raw frames from a V4L2 device, converts them to the target pixel format using SwScale, and sends them downstream as DecodedFrames.</p>
 <p>On startup, sends a StreamFrame with video stream information. Then continuously sends DecodedFrames with pixel data.</p>
-<h2><a class="anchor" id="autotoc_md64"></a>
+<h2><a class="anchor" id="autotoc_md73"></a>
 Example Usage</h2>
 <div class="fragment"><div class="line"><a class="code hl_struct" href="structLimef_1_1thread_1_1USBCameraContext.html">USBCameraContext</a> <a class="code hl_variable" href="classLimef_1_1thread_1_1Thread.html#a4b2a53ec35355f09efe8d903562553c5">ctx</a>(<span class="stringliteral">&quot;/dev/video0&quot;</span>, 1);</div>
 <div class="line"><a class="code hl_variable" href="classLimef_1_1thread_1_1Thread.html#a4b2a53ec35355f09efe8d903562553c5">ctx</a>.width = 1280;</div>
 <div class="line"><a class="code hl_variable" href="classLimef_1_1thread_1_1Thread.html#a4b2a53ec35355f09efe8d903562553c5">ctx</a>.height = 720;</div>
 <div class="line"><a class="code hl_variable" href="classLimef_1_1thread_1_1Thread.html#a4b2a53ec35355f09efe8d903562553c5">ctx</a>.fps = 30;</div>
-<div class="line"><a class="code hl_variable" href="classLimef_1_1thread_1_1Thread.html#a4b2a53ec35355f09efe8d903562553c5">ctx</a>.output_format = AV_PIX_FMT_NV12;</div>
+<div class="line"><a class="code hl_variable" href="classLimef_1_1thread_1_1Thread.html#a4b2a53ec35355f09efe8d903562553c5">ctx</a>.capture_format = AV_PIX_FMT_YUYV422;  <span class="comment">// request native camera format</span></div>
 <div class="line"> </div>
 <div class="line"><a class="code hl_class" href="classLimef_1_1thread_1_1USBCameraThread.html">USBCameraThread</a> camera(<span class="stringliteral">&quot;usb-cam&quot;</span>, <a class="code hl_variable" href="classLimef_1_1thread_1_1Thread.html#a4b2a53ec35355f09efe8d903562553c5">ctx</a>);</div>
-<div class="line">UploadGPUFrameFilter upload(<span class="stringliteral">&quot;gpu-upload&quot;</span>, hw_device);</div>
+<div class="line">SwScaleFrameFilter swscale(<span class="stringliteral">&quot;swscale&quot;</span>, AV_PIX_FMT_NV12);  <span class="comment">// explicit conversion</span></div>
+<div class="line">DecodedUploadFrameFilter upload(<span class="stringliteral">&quot;gpu-upload&quot;</span>);</div>
 <div class="line">DumpFrameFilter dump(<span class="stringliteral">&quot;dump&quot;</span>);</div>
 <div class="line"> </div>
-<div class="line">camera.getOutput().cc(upload).cc(dump);</div>
+<div class="line">camera.getOutput().cc(swscale).cc(upload).cc(dump);</div>
 <div class="line"> </div>
 <div class="line">camera.start();</div>
 <div class="line"><span class="comment">// ... capture frames ...</span></div>
 <div class="line">camera.stop();</div>
-<div class="ttc" id="aclassLimef_1_1thread_1_1Thread_html_a4b2a53ec35355f09efe8d903562553c5"><div class="ttname"><a href="classLimef_1_1thread_1_1Thread.html#a4b2a53ec35355f09efe8d903562553c5">Limef::thread::Thread&lt; Limef::frame::NullFrame &gt;::ctx</a></div><div class="ttdeci">Limef::FrameFifoContext ctx</div><div class="ttdef"><b>Definition</b> thread.h:195</div></div>
-<div class="ttc" id="aclassLimef_1_1thread_1_1USBCameraThread_html"><div class="ttname"><a href="classLimef_1_1thread_1_1USBCameraThread.html">Limef::thread::USBCameraThread</a></div><div class="ttdoc">Thread for capturing frames from USB cameras.</div><div class="ttdef"><b>Definition</b> usbcamera.h:110</div></div>
-<div class="ttc" id="astructLimef_1_1thread_1_1USBCameraContext_html"><div class="ttname"><a href="structLimef_1_1thread_1_1USBCameraContext.html">Limef::thread::USBCameraContext</a></div><div class="ttdoc">Configuration for USB camera capture.</div><div class="ttdef"><b>Definition</b> usbcamera.h:68</div></div>
+<div class="ttc" id="aclassLimef_1_1thread_1_1Thread_html_a4b2a53ec35355f09efe8d903562553c5"><div class="ttname"><a href="classLimef_1_1thread_1_1Thread.html#a4b2a53ec35355f09efe8d903562553c5">Limef::thread::Thread&lt; Limef::frame::NullFrame &gt;::ctx</a></div><div class="ttdeci">Limef::FrameFifoContext ctx</div><div class="ttdef"><b>Definition</b> thread.h:193</div></div>
+<div class="ttc" id="aclassLimef_1_1thread_1_1USBCameraThread_html"><div class="ttname"><a href="classLimef_1_1thread_1_1USBCameraThread.html">Limef::thread::USBCameraThread</a></div><div class="ttdoc">Thread for capturing frames from USB cameras.</div><div class="ttdef"><b>Definition</b> usbcamera.h:99</div></div>
+<div class="ttc" id="astructLimef_1_1thread_1_1USBCameraContext_html"><div class="ttname"><a href="structLimef_1_1thread_1_1USBCameraContext.html">Limef::thread::USBCameraContext</a></div><div class="ttdoc">Configuration for USB camera capture.</div><div class="ttdef"><b>Definition</b> usbcamera.h:56</div></div>
 </div><!-- fragment --> </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a8859439e651e25418a9197605f01ae14" name="a8859439e651e25418a9197605f01ae14"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a8859439e651e25418a9197605f01ae14">&#9670;&#160;</a></span>USBCameraThread()</h2>

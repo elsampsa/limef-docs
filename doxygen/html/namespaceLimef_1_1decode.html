@@ -22,7 +22,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">My Project<span id="projectnumber">&#160;0.1.0</span>
+   <div id="projectname">My Project<span id="projectnumber">&#160;0.2.0</span>
    </div>
   </td>
  </tr>
@@ -106,12 +106,21 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLimef_1_1decode_1_1V4L2DecoderParams.html">V4L2DecoderParams</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Decoding parameters for <a class="el" href="classLimef_1_1decode_1_1V4L2Decoder.html" title="V4L2 Memory-to-Memory decoder.">V4L2Decoder</a>.  <a href="structLimef_1_1decode_1_1V4L2DecoderParams.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1decode_1_1V4L2NVDecoder.html">V4L2NVDecoder</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">V4L2 Memory-to-Memory decoder.  <a href="classLimef_1_1decode_1_1V4L2NVDecoder.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLimef_1_1decode_1_1V4L2NVDecoderBuffer.html">V4L2NVDecoderBuffer</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Buffer info for V4L2 CAPTURE buffers.  <a href="structLimef_1_1decode_1_1V4L2NVDecoderBuffer.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLimef_1_1decode_1_1V4L2NVDecoderParams.html">V4L2NVDecoderParams</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Backend parameters for <a class="el" href="classLimef_1_1decode_1_1V4L2NVDecoder.html" title="V4L2 Memory-to-Memory decoder.">V4L2NVDecoder</a>.  <a href="structLimef_1_1decode_1_1V4L2NVDecoderParams.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 Typedefs</h2></td></tr>
-<tr class="memitem:a1aa852b5b1275455e6d4cc39c22effd3" id="r_a1aa852b5b1275455e6d4cc39c22effd3"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLimef_1_1decode.html#a1aa852b5b1275455e6d4cc39c22effd3">VideoDecoderParams</a> = std::variant&lt; <a class="el" href="structLimef_1_1decode_1_1FFmpegDecoderParams.html">FFmpegDecoderParams</a>, <a class="el" href="structLimef_1_1decode_1_1V4L2DecoderParams.html">V4L2DecoderParams</a> &gt;</td></tr>
-<tr class="memdesc:a1aa852b5b1275455e6d4cc39c22effd3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Variant type for decoder parameters.  <br /></td></tr>
-<tr class="separator:a1aa852b5b1275455e6d4cc39c22effd3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aec1a1704aebf904a8ab9ac536276a95e" id="r_aec1a1704aebf904a8ab9ac536276a95e"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLimef_1_1decode.html#aec1a1704aebf904a8ab9ac536276a95e">VideoDecoderParams</a> = std::variant&lt; <a class="el" href="structLimef_1_1decode_1_1FFmpegDecoderParams.html">FFmpegDecoderParams</a>, <a class="el" href="structLimef_1_1decode_1_1V4L2DecoderParams.html">V4L2DecoderParams</a>, <a class="el" href="structLimef_1_1decode_1_1V4L2NVDecoderParams.html">V4L2NVDecoderParams</a> &gt;</td></tr>
+<tr class="memdesc:aec1a1704aebf904a8ab9ac536276a95e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Variant type for decoder parameters.  <br /></td></tr>
+<tr class="separator:aec1a1704aebf904a8ab9ac536276a95e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
 Enumerations</h2></td></tr>
@@ -136,33 +145,24 @@ Functions</h2></td></tr>
 <tr class="memitem:ae0b5a298424308a844fc01f35b678504" id="r_ae0b5a298424308a844fc01f35b678504"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLimef_1_1decode.html#ae0b5a298424308a844fc01f35b678504">isDecoderAvailable</a> (<a class="el" href="namespaceLimef_1_1decode.html#abcac822acddec7a20fbb0a2f8f9bfcf4">DecoderBackend</a> backend)</td></tr>
 <tr class="memdesc:ae0b5a298424308a844fc01f35b678504"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if a specific decoder backend is available.  <br /></td></tr>
 <tr class="separator:ae0b5a298424308a844fc01f35b678504"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2623bd5080ed29c2e22c3c641bf92c97" id="r_a2623bd5080ed29c2e22c3c641bf92c97"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespaceLimef_1_1decode.html#abcac822acddec7a20fbb0a2f8f9bfcf4">DecoderBackend</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLimef_1_1decode.html#a2623bd5080ed29c2e22c3c641bf92c97">getBackend</a> (const <a class="el" href="namespaceLimef_1_1decode.html#a1aa852b5b1275455e6d4cc39c22effd3">VideoDecoderParams</a> &amp;params)</td></tr>
+<tr class="memitem:a2623bd5080ed29c2e22c3c641bf92c97" id="r_a2623bd5080ed29c2e22c3c641bf92c97"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespaceLimef_1_1decode.html#abcac822acddec7a20fbb0a2f8f9bfcf4">DecoderBackend</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLimef_1_1decode.html#a2623bd5080ed29c2e22c3c641bf92c97">getBackend</a> (const <a class="el" href="namespaceLimef_1_1decode.html#aec1a1704aebf904a8ab9ac536276a95e">VideoDecoderParams</a> &amp;params)</td></tr>
 <tr class="memdesc:a2623bd5080ed29c2e22c3c641bf92c97"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the backend type from decoder params.  <br /></td></tr>
 <tr class="separator:a2623bd5080ed29c2e22c3c641bf92c97"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6e1e86a52f15731be5c18e47cf95ed00" id="r_a6e1e86a52f15731be5c18e47cf95ed00"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classLimef_1_1decode_1_1Decoder.html">Decoder</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLimef_1_1decode.html#a6e1e86a52f15731be5c18e47cf95ed00">createDecoder</a> (const std::string &amp;name, const AVStream *stream, const <a class="el" href="namespaceLimef_1_1decode.html#a1aa852b5b1275455e6d4cc39c22effd3">VideoDecoderParams</a> &amp;params)</td></tr>
+<tr class="memitem:a6e1e86a52f15731be5c18e47cf95ed00" id="r_a6e1e86a52f15731be5c18e47cf95ed00"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classLimef_1_1decode_1_1Decoder.html">Decoder</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLimef_1_1decode.html#a6e1e86a52f15731be5c18e47cf95ed00">createDecoder</a> (const std::string &amp;name, const AVStream *stream, const <a class="el" href="namespaceLimef_1_1decode.html#aec1a1704aebf904a8ab9ac536276a95e">VideoDecoderParams</a> &amp;params)</td></tr>
 <tr class="memdesc:a6e1e86a52f15731be5c18e47cf95ed00"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a decoder from variant parameters.  <br /></td></tr>
 <tr class="separator:a6e1e86a52f15731be5c18e47cf95ed00"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae7e01b53856c4cac79127b4c17f3b6a5" id="r_ae7e01b53856c4cac79127b4c17f3b6a5"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLimef_1_1decode.html#ae7e01b53856c4cac79127b4c17f3b6a5">getDecoderName</a> (AVCodecID codec_id, HWAccel hw_accel)</td></tr>
-<tr class="memdesc:ae7e01b53856c4cac79127b4c17f3b6a5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get FFmpeg decoder name for codec + acceleration combination.  <br /></td></tr>
-<tr class="separator:ae7e01b53856c4cac79127b4c17f3b6a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2f81d80b1fdcc39b26c9e4fd5ee104d5" id="r_a2f81d80b1fdcc39b26c9e4fd5ee104d5"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLimef_1_1decode.html#a2f81d80b1fdcc39b26c9e4fd5ee104d5">avCodecIdToV4L2Fourcc</a> (AVCodecID codec_id)</td></tr>
-<tr class="memdesc:a2f81d80b1fdcc39b26c9e4fd5ee104d5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert AVCodecID to V4L2 fourcc.  <br /></td></tr>
-<tr class="separator:a2f81d80b1fdcc39b26c9e4fd5ee104d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab6e76b40725429bdbb3c37eaaee1fc60" id="r_ab6e76b40725429bdbb3c37eaaee1fc60"><td class="memItemLeft" align="right" valign="top">AVCodecID&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLimef_1_1decode.html#ab6e76b40725429bdbb3c37eaaee1fc60">v4l2FourccToAvCodecId</a> (uint32_t fourcc)</td></tr>
-<tr class="memdesc:ab6e76b40725429bdbb3c37eaaee1fc60"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert V4L2 fourcc to AVCodecID.  <br /></td></tr>
-<tr class="separator:ab6e76b40725429bdbb3c37eaaee1fc60"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Decoding utilities. </p>
 </div><h2 class="groupheader">Typedef Documentation</h2>
-<a id="a1aa852b5b1275455e6d4cc39c22effd3" name="a1aa852b5b1275455e6d4cc39c22effd3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1aa852b5b1275455e6d4cc39c22effd3">&#9670;&#160;</a></span>VideoDecoderParams</h2>
+<a id="aec1a1704aebf904a8ab9ac536276a95e" name="aec1a1704aebf904a8ab9ac536276a95e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aec1a1704aebf904a8ab9ac536276a95e">&#9670;&#160;</a></span>VideoDecoderParams</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">using <a class="el" href="namespaceLimef_1_1decode.html#a1aa852b5b1275455e6d4cc39c22effd3">Limef::decode::VideoDecoderParams</a> = typedef std::variant&lt; <a class="el" href="structLimef_1_1decode_1_1FFmpegDecoderParams.html">FFmpegDecoderParams</a>, <a class="el" href="structLimef_1_1decode_1_1V4L2DecoderParams.html">V4L2DecoderParams</a> &gt;</td>
+          <td class="memname">using <a class="el" href="namespaceLimef_1_1decode.html#aec1a1704aebf904a8ab9ac536276a95e">Limef::decode::VideoDecoderParams</a> = typedef std::variant&lt; <a class="el" href="structLimef_1_1decode_1_1FFmpegDecoderParams.html">FFmpegDecoderParams</a>, <a class="el" href="structLimef_1_1decode_1_1V4L2DecoderParams.html">V4L2DecoderParams</a>, <a class="el" href="structLimef_1_1decode_1_1V4L2NVDecoderParams.html">V4L2NVDecoderParams</a> &gt;</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -172,21 +172,21 @@ Functions</h2></td></tr>
 <p>Example: </p><div class="fragment"><div class="line"><span class="comment">// FFmpeg backend (always available)</span></div>
 <div class="line"><a class="code hl_struct" href="structLimef_1_1decode_1_1FFmpegDecoderParams.html">FFmpegDecoderParams</a> ffmpeg_params;</div>
 <div class="line">ffmpeg_params.<a class="code hl_variable" href="structLimef_1_1decode_1_1FFmpegDecoderParams.html#a9843b365b6bf779fdb2fa5bf2f54d68b">thread_count</a> = 4;</div>
-<div class="line"><a class="code hl_typedef" href="namespaceLimef_1_1decode.html#a1aa852b5b1275455e6d4cc39c22effd3">VideoDecoderParams</a> params = ffmpeg_params;</div>
+<div class="line"><a class="code hl_typedef" href="namespaceLimef_1_1decode.html#aec1a1704aebf904a8ab9ac536276a95e">VideoDecoderParams</a> params = ffmpeg_params;</div>
 <div class="line"> </div>
 <div class="line"><span class="comment">// V4L2 backend (check availability first)</span></div>
 <div class="line"><span class="keywordflow">if</span> (<a class="code hl_function" href="namespaceLimef_1_1decode.html#ae0b5a298424308a844fc01f35b678504">isDecoderAvailable</a>(<a class="code hl_enumvalue" href="namespaceLimef_1_1decode.html#abcac822acddec7a20fbb0a2f8f9bfcf4a09907146601bd24370d831fe9cf9858c">DecoderBackend::V4L2</a>)) {</div>
-<div class="line">    <a class="code hl_struct" href="structLimef_1_1decode_1_1V4L2DecoderParams.html">V4L2DecoderParams</a> v4l2_params;</div>
-<div class="line">    v4l2_params.<a class="code hl_variable" href="structLimef_1_1decode_1_1V4L2DecoderParams.html#a3ab4dc5e35ffbbe042db852faf0f5ebb">device</a> = <span class="stringliteral">&quot;/dev/video0&quot;</span>;</div>
-<div class="line">    <a class="code hl_typedef" href="namespaceLimef_1_1decode.html#a1aa852b5b1275455e6d4cc39c22effd3">VideoDecoderParams</a> params = v4l2_params;</div>
+<div class="line">    <a class="code hl_struct" href="structLimef_1_1decode_1_1V4L2NVDecoderParams.html">V4L2NVDecoderParams</a> v4l2_params;</div>
+<div class="line">    v4l2_params.<a class="code hl_variable" href="structLimef_1_1decode_1_1V4L2NVDecoderParams.html#ac2711047bc57c9f57fb734cf3f616991">device</a> = <span class="stringliteral">&quot;/dev/video0&quot;</span>;</div>
+<div class="line">    <a class="code hl_typedef" href="namespaceLimef_1_1decode.html#aec1a1704aebf904a8ab9ac536276a95e">VideoDecoderParams</a> params = v4l2_params;</div>
 <div class="line">}</div>
-<div class="ttc" id="anamespaceLimef_1_1decode_html_a1aa852b5b1275455e6d4cc39c22effd3"><div class="ttname"><a href="namespaceLimef_1_1decode.html#a1aa852b5b1275455e6d4cc39c22effd3">Limef::decode::VideoDecoderParams</a></div><div class="ttdeci">std::variant&lt; FFmpegDecoderParams, V4L2DecoderParams &gt; VideoDecoderParams</div><div class="ttdoc">Variant type for decoder parameters.</div><div class="ttdef"><b>Definition</b> decoder_factory.h:63</div></div>
 <div class="ttc" id="anamespaceLimef_1_1decode_html_abcac822acddec7a20fbb0a2f8f9bfcf4a09907146601bd24370d831fe9cf9858c"><div class="ttname"><a href="namespaceLimef_1_1decode.html#abcac822acddec7a20fbb0a2f8f9bfcf4a09907146601bd24370d831fe9cf9858c">Limef::decode::DecoderBackend::V4L2</a></div><div class="ttdeci">@ V4L2</div><div class="ttdoc">V4L2 Memory-to-Memory API (Jetson, embedded Linux)</div></div>
-<div class="ttc" id="anamespaceLimef_1_1decode_html_ae0b5a298424308a844fc01f35b678504"><div class="ttname"><a href="namespaceLimef_1_1decode.html#ae0b5a298424308a844fc01f35b678504">Limef::decode::isDecoderAvailable</a></div><div class="ttdeci">bool isDecoderAvailable(DecoderBackend backend)</div><div class="ttdoc">Check if a specific decoder backend is available.</div><div class="ttdef"><b>Definition</b> decoder_factory.cpp:44</div></div>
-<div class="ttc" id="astructLimef_1_1decode_1_1FFmpegDecoderParams_html"><div class="ttname"><a href="structLimef_1_1decode_1_1FFmpegDecoderParams.html">Limef::decode::FFmpegDecoderParams</a></div><div class="ttdoc">Decoding parameters for FFmpegDecoder.</div><div class="ttdef"><b>Definition</b> ffmpeg_decoder.h:74</div></div>
-<div class="ttc" id="astructLimef_1_1decode_1_1FFmpegDecoderParams_html_a9843b365b6bf779fdb2fa5bf2f54d68b"><div class="ttname"><a href="structLimef_1_1decode_1_1FFmpegDecoderParams.html#a9843b365b6bf779fdb2fa5bf2f54d68b">Limef::decode::FFmpegDecoderParams::thread_count</a></div><div class="ttdeci">int thread_count</div><div class="ttdoc">Number of decoding threads.</div><div class="ttdef"><b>Definition</b> ffmpeg_decoder.h:80</div></div>
-<div class="ttc" id="astructLimef_1_1decode_1_1V4L2DecoderParams_html"><div class="ttname"><a href="structLimef_1_1decode_1_1V4L2DecoderParams.html">Limef::decode::V4L2DecoderParams</a></div><div class="ttdoc">Decoding parameters for V4L2Decoder.</div><div class="ttdef"><b>Definition</b> v4l2_decoder.h:68</div></div>
-<div class="ttc" id="astructLimef_1_1decode_1_1V4L2DecoderParams_html_a3ab4dc5e35ffbbe042db852faf0f5ebb"><div class="ttname"><a href="structLimef_1_1decode_1_1V4L2DecoderParams.html#a3ab4dc5e35ffbbe042db852faf0f5ebb">Limef::decode::V4L2DecoderParams::device</a></div><div class="ttdeci">std::string device</div><div class="ttdoc">V4L2 device path (vicodec decoder: /dev/video3)</div><div class="ttdef"><b>Definition</b> v4l2_decoder.h:69</div></div>
+<div class="ttc" id="anamespaceLimef_1_1decode_html_ae0b5a298424308a844fc01f35b678504"><div class="ttname"><a href="namespaceLimef_1_1decode.html#ae0b5a298424308a844fc01f35b678504">Limef::decode::isDecoderAvailable</a></div><div class="ttdeci">bool isDecoderAvailable(DecoderBackend backend)</div><div class="ttdoc">Check if a specific decoder backend is available.</div><div class="ttdef"><b>Definition</b> decoder_factory.cpp:41</div></div>
+<div class="ttc" id="anamespaceLimef_1_1decode_html_aec1a1704aebf904a8ab9ac536276a95e"><div class="ttname"><a href="namespaceLimef_1_1decode.html#aec1a1704aebf904a8ab9ac536276a95e">Limef::decode::VideoDecoderParams</a></div><div class="ttdeci">std::variant&lt; FFmpegDecoderParams, V4L2DecoderParams, V4L2NVDecoderParams &gt; VideoDecoderParams</div><div class="ttdoc">Variant type for decoder parameters.</div><div class="ttdef"><b>Definition</b> decoder_factory.h:62</div></div>
+<div class="ttc" id="astructLimef_1_1decode_1_1FFmpegDecoderParams_html"><div class="ttname"><a href="structLimef_1_1decode_1_1FFmpegDecoderParams.html">Limef::decode::FFmpegDecoderParams</a></div><div class="ttdoc">Decoding parameters for FFmpegDecoder.</div><div class="ttdef"><b>Definition</b> ffmpeg_decoder.h:42</div></div>
+<div class="ttc" id="astructLimef_1_1decode_1_1FFmpegDecoderParams_html_a9843b365b6bf779fdb2fa5bf2f54d68b"><div class="ttname"><a href="structLimef_1_1decode_1_1FFmpegDecoderParams.html#a9843b365b6bf779fdb2fa5bf2f54d68b">Limef::decode::FFmpegDecoderParams::thread_count</a></div><div class="ttdeci">int thread_count</div><div class="ttdoc">Number of decoding threads.</div><div class="ttdef"><b>Definition</b> ffmpeg_decoder.h:47</div></div>
+<div class="ttc" id="astructLimef_1_1decode_1_1V4L2NVDecoderParams_html"><div class="ttname"><a href="structLimef_1_1decode_1_1V4L2NVDecoderParams.html">Limef::decode::V4L2NVDecoderParams</a></div><div class="ttdoc">Backend parameters for V4L2NVDecoder.</div><div class="ttdef"><b>Definition</b> v4l2_nv_decoder.h:46</div></div>
+<div class="ttc" id="astructLimef_1_1decode_1_1V4L2NVDecoderParams_html_ac2711047bc57c9f57fb734cf3f616991"><div class="ttname"><a href="structLimef_1_1decode_1_1V4L2NVDecoderParams.html#ac2711047bc57c9f57fb734cf3f616991">Limef::decode::V4L2NVDecoderParams::device</a></div><div class="ttdeci">std::string device</div><div class="ttdoc">V4L2 device path (vicodec decoder: /dev/video3)</div><div class="ttdef"><b>Definition</b> v4l2_nv_decoder.h:47</div></div>
 </div><!-- fragment --> 
 </div>
 </div>
@@ -257,34 +257,6 @@ Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="a2f81d80b1fdcc39b26c9e4fd5ee104d5" name="a2f81d80b1fdcc39b26c9e4fd5ee104d5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2f81d80b1fdcc39b26c9e4fd5ee104d5">&#9670;&#160;</a></span>avCodecIdToV4L2Fourcc()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">uint32_t Limef::decode::avCodecIdToV4L2Fourcc </td>
-          <td>(</td>
-          <td class="paramtype">AVCodecID&#160;</td>
-          <td class="paramname"><em>codec_id</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Convert AVCodecID to V4L2 fourcc. </p>
-<p>Maps FFmpeg codec IDs to V4L2 pixel format codes. Returns 0 for unsupported codecs.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">codec_id</td><td>FFmpeg codec ID </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>uint32_t V4L2 fourcc code, or 0 if unsupported </dd></dl>
-
-</div>
-</div>
 <a id="a6e1e86a52f15731be5c18e47cf95ed00" name="a6e1e86a52f15731be5c18e47cf95ed00"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a6e1e86a52f15731be5c18e47cf95ed00">&#9670;&#160;</a></span>createDecoder()</h2>
 
@@ -306,7 +278,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="namespaceLimef_1_1decode.html#a1aa852b5b1275455e6d4cc39c22effd3">VideoDecoderParams</a> &amp;&#160;</td>
+          <td class="paramtype">const <a class="el" href="namespaceLimef_1_1decode.html#aec1a1704aebf904a8ab9ac536276a95e">VideoDecoderParams</a> &amp;&#160;</td>
           <td class="paramname"><em>params</em>&#160;</td>
         </tr>
         <tr>
@@ -324,7 +296,7 @@ Functions</h2></td></tr>
   <table class="params">
     <tr><td class="paramname">name</td><td>Identifier for logging </td></tr>
     <tr><td class="paramname">stream</td><td>AVStream to decode (from CodecFrame) </td></tr>
-    <tr><td class="paramname">params</td><td><a class="el" href="classLimef_1_1decode_1_1Decoder.html" title="Abstract decoder interface for a single video or audio stream.">Decoder</a> parameters (variant of <a class="el" href="structLimef_1_1decode_1_1FFmpegDecoderParams.html" title="Decoding parameters for FFmpegDecoder.">FFmpegDecoderParams</a>, <a class="el" href="structLimef_1_1decode_1_1V4L2DecoderParams.html" title="Decoding parameters for V4L2Decoder.">V4L2DecoderParams</a>, etc.) </td></tr>
+    <tr><td class="paramname">params</td><td><a class="el" href="classLimef_1_1decode_1_1Decoder.html" title="Abstract decoder interface for a single video or audio stream.">Decoder</a> parameters (variant of <a class="el" href="structLimef_1_1decode_1_1FFmpegDecoderParams.html" title="Decoding parameters for FFmpegDecoder.">FFmpegDecoderParams</a>, <a class="el" href="structLimef_1_1decode_1_1V4L2NVDecoderParams.html" title="Backend parameters for V4L2NVDecoder.">V4L2NVDecoderParams</a>, etc.) </td></tr>
   </table>
   </dd>
 </dl>
@@ -367,7 +339,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname"><a class="el" href="namespaceLimef_1_1decode.html#abcac822acddec7a20fbb0a2f8f9bfcf4">DecoderBackend</a> Limef::decode::getBackend </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="namespaceLimef_1_1decode.html#a1aa852b5b1275455e6d4cc39c22effd3">VideoDecoderParams</a> &amp;&#160;</td>
+          <td class="paramtype">const <a class="el" href="namespaceLimef_1_1decode.html#aec1a1704aebf904a8ab9ac536276a95e">VideoDecoderParams</a> &amp;&#160;</td>
           <td class="paramname"><em>params</em></td><td>)</td>
           <td></td>
         </tr>
@@ -375,50 +347,6 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Get the backend type from decoder params. </p>
-
-</div>
-</div>
-<a id="ae7e01b53856c4cac79127b4c17f3b6a5" name="ae7e01b53856c4cac79127b4c17f3b6a5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae7e01b53856c4cac79127b4c17f3b6a5">&#9670;&#160;</a></span>getDecoderName()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::string Limef::decode::getDecoderName </td>
-          <td>(</td>
-          <td class="paramtype">AVCodecID&#160;</td>
-          <td class="paramname"><em>codec_id</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">HWAccel&#160;</td>
-          <td class="paramname"><em>hw_accel</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Get FFmpeg decoder name for codec + acceleration combination. </p>
-<p>Maps (codec_id, hw_accel) to FFmpeg decoder name. For software decoding, returns empty string (use avcodec_find_decoder). For hardware decoding, returns the hardware decoder name if available.</p>
-<p>Examples:</p><ul>
-<li>(H264, SW) -&gt; "" (use default decoder)</li>
-<li>(H264, VAAPI) -&gt; "h264" (VAAPI uses hwaccel, not separate decoder)</li>
-</ul>
-<p>Note: VAAPI decoding works differently than encoding - it uses the standard decoder with hw_device_ctx set, not a separate decoder.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">codec_id</td><td>Target codec </td></tr>
-    <tr><td class="paramname">hw_accel</td><td>Hardware acceleration type </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>std::string FFmpeg decoder name, or empty for default </dd></dl>
 
 </div>
 </div>
@@ -439,34 +367,6 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Check if a specific decoder backend is available. </p>
-
-</div>
-</div>
-<a id="ab6e76b40725429bdbb3c37eaaee1fc60" name="ab6e76b40725429bdbb3c37eaaee1fc60"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab6e76b40725429bdbb3c37eaaee1fc60">&#9670;&#160;</a></span>v4l2FourccToAvCodecId()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">AVCodecID Limef::decode::v4l2FourccToAvCodecId </td>
-          <td>(</td>
-          <td class="paramtype">uint32_t&#160;</td>
-          <td class="paramname"><em>fourcc</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Convert V4L2 fourcc to AVCodecID. </p>
-<p>Maps V4L2 pixel format codes to FFmpeg codec IDs. Returns AV_CODEC_ID_NONE for unsupported formats.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">fourcc</td><td>V4L2 fourcc code </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>AVCodecID FFmpeg codec ID, or AV_CODEC_ID_NONE if unsupported </dd></dl>
 
 </div>
 </div>

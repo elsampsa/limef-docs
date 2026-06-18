@@ -22,7 +22,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">My Project<span id="projectnumber">&#160;0.1.0</span>
+   <div id="projectname">My Project<span id="projectnumber">&#160;0.2.0</span>
    </div>
   </td>
  </tr>
@@ -142,9 +142,9 @@ class Limef::comm::Caller&lt; Args &gt;</div><p>Qt-style signal/callback mechani
 <div class="line"> </div>
 <div class="line"><span class="comment">// Emit from server thread (invokes all connected callbacks)</span></div>
 <div class="line">streamRequested.<a class="code hl_function" href="classLimef_1_1comm_1_1Caller.html#a531a8c007681d74477f270008b7724f3">emit</a>(1, <span class="stringliteral">&quot;/live/camera1&quot;</span>);</div>
-<div class="ttc" id="aclassLimef_1_1comm_1_1Caller_html"><div class="ttname"><a href="classLimef_1_1comm_1_1Caller.html">Limef::comm::Caller</a></div><div class="ttdoc">Qt-style signal/callback mechanism for event notification.</div><div class="ttdef"><b>Definition</b> caller.h:45</div></div>
-<div class="ttc" id="aclassLimef_1_1comm_1_1Caller_html_a531a8c007681d74477f270008b7724f3"><div class="ttname"><a href="classLimef_1_1comm_1_1Caller.html#a531a8c007681d74477f270008b7724f3">Limef::comm::Caller::emit</a></div><div class="ttdeci">void emit(Args... args)</div><div class="ttdoc">Invoke all connected callbacks with the given arguments.</div><div class="ttdef"><b>Definition</b> caller.h:98</div></div>
-<div class="ttc" id="aclassLimef_1_1comm_1_1Caller_html_a88ce9124c0e80c545b03edc3e3793e9e"><div class="ttname"><a href="classLimef_1_1comm_1_1Caller.html#a88ce9124c0e80c545b03edc3e3793e9e">Limef::comm::Caller::connect</a></div><div class="ttdeci">ConnectionId connect(Callback cb)</div><div class="ttdoc">Connect a callback to this caller.</div><div class="ttdef"><b>Definition</b> caller.h:65</div></div>
+<div class="ttc" id="aclassLimef_1_1comm_1_1Caller_html"><div class="ttname"><a href="classLimef_1_1comm_1_1Caller.html">Limef::comm::Caller</a></div><div class="ttdoc">Qt-style signal/callback mechanism for event notification.</div><div class="ttdef"><b>Definition</b> caller.h:42</div></div>
+<div class="ttc" id="aclassLimef_1_1comm_1_1Caller_html_a531a8c007681d74477f270008b7724f3"><div class="ttname"><a href="classLimef_1_1comm_1_1Caller.html#a531a8c007681d74477f270008b7724f3">Limef::comm::Caller::emit</a></div><div class="ttdeci">void emit(Args... args)</div><div class="ttdoc">Invoke all connected callbacks with the given arguments.</div><div class="ttdef"><b>Definition</b> caller.h:95</div></div>
+<div class="ttc" id="aclassLimef_1_1comm_1_1Caller_html_a88ce9124c0e80c545b03edc3e3793e9e"><div class="ttname"><a href="classLimef_1_1comm_1_1Caller.html#a88ce9124c0e80c545b03edc3e3793e9e">Limef::comm::Caller::connect</a></div><div class="ttdeci">ConnectionId connect(Callback cb)</div><div class="ttdoc">Connect a callback to this caller.</div><div class="ttdef"><b>Definition</b> caller.h:62</div></div>
 </div><!-- fragment --><dl class="section note"><dt>Note</dt><dd>Callbacks are invoked synchronously in the emitting thread's context. Keep callbacks lightweight - just set flags, send signals, or open gates. </dd></dl>
 </div><h2 class="groupheader">Member Typedef Documentation</h2>
 <a id="abeee9b7f977cd19916e3adbcd7b30a8e" name="abeee9b7f977cd19916e3adbcd7b30a8e"></a>

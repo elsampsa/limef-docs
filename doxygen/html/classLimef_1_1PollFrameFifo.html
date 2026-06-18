@@ -22,7 +22,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">My Project<span id="projectnumber">&#160;0.1.0</span>
+   <div id="projectname">My Project<span id="projectnumber">&#160;0.2.0</span>
    </div>
   </td>
  </tr>
@@ -100,13 +100,15 @@ Collaboration diagram for Limef::PollFrameFifo&lt; T &gt;:</div>
 <div class="dyncontent">
 <div class="center"><img src="classLimef_1_1PollFrameFifo__coll__graph.png" border="0" usemap="#aLimef_1_1PollFrameFifo_3_01T_01_4_coll__map" alt="Collaboration graph"/></div>
 <map name="aLimef_1_1PollFrameFifo_3_01T_01_4_coll__map" id="aLimef_1_1PollFrameFifo_3_01T_01_4_coll__map">
-<area shape="rect" title="FrameFifo that can be multiplexed with poll/select." alt="" coords="96,183,289,208"/>
-<area shape="rect" href="classLimef_1_1FrameFifo.html" title="FrameFifo: a stack and a fifo." alt="" coords="108,108,277,133"/>
-<area shape="poly" title=" " alt="" coords="195,148,195,182,190,182,190,148"/>
-<area shape="rect" href="structLimef_1_1FrameFifoContext.html" title="Parameters and behaviour for a FrameFifo." alt="" coords="5,13,188,38"/>
-<area shape="poly" title=" " alt="" coords="120,46,183,106,179,110,116,49"/>
-<area shape="rect" href="classLimef_1_1CircularBuffer.html" title=" " alt="" coords="213,5,367,45"/>
-<area shape="poly" title=" " alt="" coords="262,57,207,110,203,106,259,53"/>
+<area shape="rect" title="FrameFifo that can be multiplexed with poll/select." alt="" coords="97,271,291,296"/>
+<area shape="rect" href="classLimef_1_1FrameFifo.html" title="FrameFifo: a stack and a fifo." alt="" coords="109,196,279,221"/>
+<area shape="poly" title=" " alt="" coords="197,236,197,270,191,270,191,236"/>
+<area shape="rect" href="structLimef_1_1FrameFifoContext.html" title="Parameters and behaviour for a FrameFifo." alt="" coords="5,101,188,126"/>
+<area shape="poly" title=" " alt="" coords="120,134,184,194,180,198,117,137"/>
+<area shape="rect" title=" " alt="" coords="39,5,155,31"/>
+<area shape="poly" title=" " alt="" coords="99,44,99,101,94,101,94,44"/>
+<area shape="rect" href="classLimef_1_1CircularBuffer.html" title=" " alt="" coords="213,93,367,133"/>
+<area shape="poly" title=" " alt="" coords="263,145,208,198,204,194,259,141"/>
 </map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
@@ -120,6 +122,8 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ad9980c8f68f165842735280645d2e31b" id="r_ad9980c8f68f165842735280645d2e31b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1PollFrameFifo.html#ad9980c8f68f165842735280645d2e31b">writeCopy</a> (const <a class="el" href="classLimef_1_1frame_1_1Frame.html">Limef::frame::Frame</a> *f) override</td></tr>
 <tr class="memdesc:ad9980c8f68f165842735280645d2e31b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write a copy of the frame and signal the eventfd.  <br /></td></tr>
 <tr class="separator:ad9980c8f68f165842735280645d2e31b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acd0cd378f7c219afd3cab8fba7dde510" id="r_acd0cd378f7c219afd3cab8fba7dde510"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1PollFrameFifo.html#acd0cd378f7c219afd3cab8fba7dde510">close</a> () override</td></tr>
+<tr class="separator:acd0cd378f7c219afd3cab8fba7dde510"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4c70bb1a5c1f9186cefff0f52263e807" id="r_a4c70bb1a5c1f9186cefff0f52263e807"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classLimef_1_1frame_1_1Frame.html">Limef::frame::Frame</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1PollFrameFifo.html#a4c70bb1a5c1f9186cefff0f52263e807">tryRead</a> ()</td></tr>
 <tr class="memdesc:a4c70bb1a5c1f9186cefff0f52263e807"><td class="mdescLeft">&#160;</td><td class="mdescRight">Non-blocking read for use after poll signals.  <br /></td></tr>
 <tr class="separator:a4c70bb1a5c1f9186cefff0f52263e807"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -130,8 +134,6 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:ad182f0c91ccd33e749eb0023dc99734d inherit pub_methods_classLimef_1_1FrameFifo"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a29dee5bbb70b7e6c0f8026e4d0ac5af3 inherit pub_methods_classLimef_1_1FrameFifo" id="r_a29dee5bbb70b7e6c0f8026e4d0ac5af3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1FrameFifo.html#a29dee5bbb70b7e6c0f8026e4d0ac5af3">setLogger</a> (std::shared_ptr&lt; spdlog::logger &gt; <a class="el" href="classLimef_1_1FrameFifo.html#a333e987413143998975504a7ad9dd621">logger</a>)</td></tr>
 <tr class="separator:a29dee5bbb70b7e6c0f8026e4d0ac5af3 inherit pub_methods_classLimef_1_1FrameFifo"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a79c9ff5561e0908ea2ead9a20d1e4102 inherit pub_methods_classLimef_1_1FrameFifo" id="r_a79c9ff5561e0908ea2ead9a20d1e4102"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1FrameFifo.html#a79c9ff5561e0908ea2ead9a20d1e4102">close</a> ()</td></tr>
-<tr class="separator:a79c9ff5561e0908ea2ead9a20d1e4102 inherit pub_methods_classLimef_1_1FrameFifo"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a67e35ab9a3ccae23b7311681cda5ae6a inherit pub_methods_classLimef_1_1FrameFifo" id="r_a67e35ab9a3ccae23b7311681cda5ae6a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classLimef_1_1frame_1_1Frame.html">Limef::frame::Frame</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1FrameFifo.html#a67e35ab9a3ccae23b7311681cda5ae6a">read</a> (std::chrono::microseconds timeout)</td></tr>
 <tr class="separator:a67e35ab9a3ccae23b7311681cda5ae6a inherit pub_methods_classLimef_1_1FrameFifo"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a914a43cab1194cdec1d8aef3e9c1eaeb inherit pub_methods_classLimef_1_1FrameFifo" id="r_a914a43cab1194cdec1d8aef3e9c1eaeb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1FrameFifo.html#a914a43cab1194cdec1d8aef3e9c1eaeb">recycle</a> (<a class="el" href="classLimef_1_1frame_1_1Frame.html">Limef::frame::Frame</a> *frame)</td></tr>
@@ -183,9 +185,9 @@ class Limef::PollFrameFifo&lt; T &gt;</div><p><a class="el" href="classLimef_1_1
 <div class="line">        <a class="code hl_variable" href="classLimef_1_1FrameFifo.html#adaad6c4b4d2186e77bbd198272f8033c">fifo</a>.recycle(frame);</div>
 <div class="line">    }</div>
 <div class="line">}</div>
-<div class="ttc" id="aclassLimef_1_1FrameFifo_html_a7635a3d97e8313a52516b27c086d14a0"><div class="ttname"><a href="classLimef_1_1FrameFifo.html#a7635a3d97e8313a52516b27c086d14a0">Limef::FrameFifo::ctx</a></div><div class="ttdeci">const FrameFifoContext ctx</div><div class="ttdef"><b>Definition</b> framefifo.h:123</div></div>
-<div class="ttc" id="aclassLimef_1_1FrameFifo_html_adaad6c4b4d2186e77bbd198272f8033c"><div class="ttname"><a href="classLimef_1_1FrameFifo.html#adaad6c4b4d2186e77bbd198272f8033c">Limef::FrameFifo::fifo</a></div><div class="ttdeci">std::deque&lt; Limef::frame::Frame * &gt; fifo</div><div class="ttdef"><b>Definition</b> framefifo.h:128</div></div>
-<div class="ttc" id="aclassLimef_1_1PollFrameFifo_html"><div class="ttname"><a href="classLimef_1_1PollFrameFifo.html">Limef::PollFrameFifo</a></div><div class="ttdoc">FrameFifo that can be multiplexed with poll/select.</div><div class="ttdef"><b>Definition</b> pollframefifo.h:55</div></div>
+<div class="ttc" id="aclassLimef_1_1FrameFifo_html_a7635a3d97e8313a52516b27c086d14a0"><div class="ttname"><a href="classLimef_1_1FrameFifo.html#a7635a3d97e8313a52516b27c086d14a0">Limef::FrameFifo::ctx</a></div><div class="ttdeci">const FrameFifoContext ctx</div><div class="ttdef"><b>Definition</b> framefifo.h:120</div></div>
+<div class="ttc" id="aclassLimef_1_1FrameFifo_html_adaad6c4b4d2186e77bbd198272f8033c"><div class="ttname"><a href="classLimef_1_1FrameFifo.html#adaad6c4b4d2186e77bbd198272f8033c">Limef::FrameFifo::fifo</a></div><div class="ttdeci">std::deque&lt; Limef::frame::Frame * &gt; fifo</div><div class="ttdef"><b>Definition</b> framefifo.h:125</div></div>
+<div class="ttc" id="aclassLimef_1_1PollFrameFifo_html"><div class="ttname"><a href="classLimef_1_1PollFrameFifo.html">Limef::PollFrameFifo</a></div><div class="ttdoc">FrameFifo that can be multiplexed with poll/select.</div><div class="ttdef"><b>Definition</b> pollframefifo.h:52</div></div>
 </div><!-- fragment --> </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a166085dd607549aae768a6ef9602197b" name="a166085dd607549aae768a6ef9602197b"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a166085dd607549aae768a6ef9602197b">&#9670;&#160;</a></span>PollFrameFifo()</h2>
@@ -226,6 +228,36 @@ template&lt;typename T &gt; </div>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="acd0cd378f7c219afd3cab8fba7dde510" name="acd0cd378f7c219afd3cab8fba7dde510"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acd0cd378f7c219afd3cab8fba7dde510">&#9670;&#160;</a></span>close()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classLimef_1_1PollFrameFifo.html">Limef::PollFrameFifo</a>&lt; T &gt;::close </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Stop waiting for all condition variables asap </p>
+
+<p>Reimplemented from <a class="el" href="classLimef_1_1FrameFifo.html#a7381badb5c0f1fcd7b96a08e282a8b57">Limef::FrameFifo&lt; T &gt;</a>.</p>
+
+</div>
+</div>
 <a id="a89bccda5f6830fa144c5f928a3aaf04f" name="a89bccda5f6830fa144c5f928a3aaf04f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a89bccda5f6830fa144c5f928a3aaf04f">&#9670;&#160;</a></span>getFd()</h2>
 

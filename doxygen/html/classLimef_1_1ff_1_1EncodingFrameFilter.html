@@ -22,7 +22,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">My Project<span id="projectnumber">&#160;0.1.0</span>
+   <div id="projectname">My Project<span id="projectnumber">&#160;0.2.0</span>
    </div>
   </td>
  </tr>
@@ -113,7 +113,7 @@ Collaboration diagram for Limef::ff::EncodingFrameFilter:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ac5747f43238ff63e5b34b8f2bf4d73ac" id="r_ac5747f43238ff63e5b34b8f2bf4d73ac"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1ff_1_1EncodingFrameFilter.html#ac5747f43238ff63e5b34b8f2bf4d73ac">EncodingFrameFilter</a> (std::string <a class="el" href="classLimef_1_1ff_1_1FrameFilter.html#adb255db62a05c800af1d73cba2201812">name</a>=&quot;EncodingFrameFilter&quot;, const <a class="el" href="namespaceLimef_1_1encode.html#a0ebda6eac295f45a08ec712e01f0d7ee">Limef::encode::VideoEncoderParams</a> &amp;video_params=<a class="el" href="structLimef_1_1encode_1_1FFmpegEncoderParams.html">Limef::encode::FFmpegEncoderParams</a>{}, const <a class="el" href="namespaceLimef_1_1encode.html#a0ebda6eac295f45a08ec712e01f0d7ee">Limef::encode::VideoEncoderParams</a> *audio_params=nullptr)</td></tr>
+<tr class="memitem:ac5747f43238ff63e5b34b8f2bf4d73ac" id="r_ac5747f43238ff63e5b34b8f2bf4d73ac"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1ff_1_1EncodingFrameFilter.html#ac5747f43238ff63e5b34b8f2bf4d73ac">EncodingFrameFilter</a> (std::string <a class="el" href="classLimef_1_1ff_1_1FrameFilter.html#adb255db62a05c800af1d73cba2201812">name</a>=&quot;EncodingFrameFilter&quot;, const <a class="el" href="namespaceLimef_1_1encode.html#a775c9ee569e74ba056bcd7a3cacdb47f">Limef::encode::VideoEncoderParams</a> &amp;video_params=<a class="el" href="structLimef_1_1encode_1_1FFmpegEncoderParams.html">Limef::encode::FFmpegEncoderParams</a>{}, const <a class="el" href="namespaceLimef_1_1encode.html#a775c9ee569e74ba056bcd7a3cacdb47f">Limef::encode::VideoEncoderParams</a> *audio_params=nullptr)</td></tr>
 <tr class="memdesc:ac5747f43238ff63e5b34b8f2bf4d73ac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct an encoding framefilter.  <br /></td></tr>
 <tr class="separator:ac5747f43238ff63e5b34b8f2bf4d73ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2e3135567fbdabba3997372a58bb0f87" id="r_a2e3135567fbdabba3997372a58bb0f87"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1ff_1_1EncodingFrameFilter.html#a2e3135567fbdabba3997372a58bb0f87">~EncodingFrameFilter</a> () override</td></tr>
@@ -204,7 +204,7 @@ Additional Inherited Members</h2></td></tr>
 <p>Type checking:</p><ul>
 <li>If a CodecFrame (encoded stream info) is received instead of StreamFrame, a warning is logged - this likely indicates misrouted frames.</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md18"></a>
+<h2><a class="anchor" id="autotoc_md28"></a>
 StreamFrame::from_source and encoder reinitialisation</h2>
 <p>Receiving a <code>StreamFrame</code> normally triggers a full encoder teardown and reinitialisation (flush, delete, recreate). This is correct for genuine stream lifecycle events (source restart, resolution change).</p>
 <p>However, intermediate filters such as <code><a class="el" href="classLimef_1_1ff_1_1SwitchFrameFilter.html" title="Routes incoming frames to exactly one of N output terminals.">SwitchFrameFilter</a></code> may replay a cached <code>StreamFrame</code> with <code>from_source = false</code> when a new branch is activated. In that case the encoder skips reinitialisation, because the stream parameters have not actually changed — only the routing has.</p>
@@ -228,13 +228,13 @@ StreamFrame::from_source and encoder reinitialisation</h2>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="namespaceLimef_1_1encode.html#a0ebda6eac295f45a08ec712e01f0d7ee">Limef::encode::VideoEncoderParams</a> &amp;&#160;</td>
+          <td class="paramtype">const <a class="el" href="namespaceLimef_1_1encode.html#a775c9ee569e74ba056bcd7a3cacdb47f">Limef::encode::VideoEncoderParams</a> &amp;&#160;</td>
           <td class="paramname"><em>video_params</em> = <code><a class="el" href="structLimef_1_1encode_1_1FFmpegEncoderParams.html">Limef::encode::FFmpegEncoderParams</a>{}</code>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="namespaceLimef_1_1encode.html#a0ebda6eac295f45a08ec712e01f0d7ee">Limef::encode::VideoEncoderParams</a> *&#160;</td>
+          <td class="paramtype">const <a class="el" href="namespaceLimef_1_1encode.html#a775c9ee569e74ba056bcd7a3cacdb47f">Limef::encode::VideoEncoderParams</a> *&#160;</td>
           <td class="paramname"><em>audio_params</em> = <code>nullptr</code>&#160;</td>
         </tr>
         <tr>
@@ -268,7 +268,7 @@ StreamFrame::from_source and encoder reinitialisation</h2>
 <div class="line">V4L2EncoderParams v4l2_params;</div>
 <div class="line">v4l2_params.device = <span class="stringliteral">&quot;/dev/video2&quot;</span>;</div>
 <div class="line"><a class="code hl_class" href="classLimef_1_1ff_1_1EncodingFrameFilter.html">EncodingFrameFilter</a> enc(<span class="stringliteral">&quot;encoder&quot;</span>, v4l2_params);</div>
-<div class="ttc" id="aclassLimef_1_1ff_1_1EncodingFrameFilter_html"><div class="ttname"><a href="classLimef_1_1ff_1_1EncodingFrameFilter.html">Limef::ff::EncodingFrameFilter</a></div><div class="ttdoc">A FrameFilter that encodes frames.</div><div class="ttdef"><b>Definition</b> encoding.h:69</div></div>
+<div class="ttc" id="aclassLimef_1_1ff_1_1EncodingFrameFilter_html"><div class="ttname"><a href="classLimef_1_1ff_1_1EncodingFrameFilter.html">Limef::ff::EncodingFrameFilter</a></div><div class="ttdoc">A FrameFilter that encodes frames.</div><div class="ttdef"><b>Definition</b> encoding.h:67</div></div>
 </div><!-- fragment --> 
 </div>
 </div>

@@ -22,7 +22,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">My Project<span id="projectnumber">&#160;0.1.0</span>
+   <div id="projectname">My Project<span id="projectnumber">&#160;0.2.0</span>
    </div>
   </td>
  </tr>
@@ -92,6 +92,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:af28ea773cd53de4376b5892ec221eee1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2ccc501b89649df7668afd7cf10b2cb5" id="r_a2ccc501b89649df7668afd7cf10b2cb5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1thread_1_1WebSocketStreamBuffer.html#a2ccc501b89649df7668afd7cf10b2cb5">cacheMOOV</a> (const <a class="el" href="classLimef_1_1frame_1_1RawFrame.html">Limef::frame::RawFrame</a> *raw_frame)</td></tr>
 <tr class="separator:a2ccc501b89649df7668afd7cf10b2cb5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a64188fb47c00b780ac6459266d14e289" id="r_a64188fb47c00b780ac6459266d14e289"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1thread_1_1WebSocketStreamBuffer.html#a64188fb47c00b780ac6459266d14e289">cacheWebMInit</a> (const <a class="el" href="classLimef_1_1frame_1_1RawFrame.html">Limef::frame::RawFrame</a> *raw_frame)</td></tr>
+<tr class="separator:a64188fb47c00b780ac6459266d14e289"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8068cf137c6089e6cb74b748111d33ee" id="r_a8068cf137c6089e6cb74b748111d33ee"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1thread_1_1WebSocketStreamBuffer.html#a8068cf137c6089e6cb74b748111d33ee">getClientCount</a> ()</td></tr>
 <tr class="separator:a8068cf137c6089e6cb74b748111d33ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af7a77e5c1d25fea83756ef4eeb311096" id="r_af7a77e5c1d25fea83756ef4eeb311096"><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1thread_1_1WebSocketStreamBuffer.html#af7a77e5c1d25fea83756ef4eeb311096">getFramesSent</a> ()</td></tr>
@@ -115,6 +117,10 @@ Public Attributes</h2></td></tr>
 <tr class="separator:a4e0362bb2808f53f3e9adaee2af19d4b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9048f0546b0ce30f9abbbafa8ef46cf7" id="r_a9048f0546b0ce30f9abbbafa8ef46cf7"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1thread_1_1WebSocketStreamBuffer.html#a9048f0546b0ce30f9abbbafa8ef46cf7">has_init_segments</a> {false}</td></tr>
 <tr class="separator:a9048f0546b0ce30f9abbbafa8ef46cf7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7ea235853562422473150b4229541233" id="r_a7ea235853562422473150b4229541233"><td class="memItemLeft" align="right" valign="top">std::vector&lt; uint8_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1thread_1_1WebSocketStreamBuffer.html#a7ea235853562422473150b4229541233">webm_init_box</a></td></tr>
+<tr class="separator:a7ea235853562422473150b4229541233"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a927edb7a8746a2e9b353c979d311ceae" id="r_a927edb7a8746a2e9b353c979d311ceae"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1thread_1_1WebSocketStreamBuffer.html#a927edb7a8746a2e9b353c979d311ceae">has_webm_init</a> {false}</td></tr>
+<tr class="separator:a927edb7a8746a2e9b353c979d311ceae"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a21dc5b2af08f991b25f31433ebb3de29" id="r_a21dc5b2af08f991b25f31433ebb3de29"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1thread_1_1WebSocketStreamBuffer.html#a21dc5b2af08f991b25f31433ebb3de29">has_waiting_clients</a> {false}</td></tr>
 <tr class="separator:a21dc5b2af08f991b25f31433ebb3de29"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af62a8ab647db0a607e6d17cce2afdbf2" id="r_af62a8ab647db0a607e6d17cce2afdbf2"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1thread_1_1WebSocketStreamBuffer.html#af62a8ab647db0a607e6d17cce2afdbf2">has_active_clients</a> {false}</td></tr>
@@ -204,6 +210,24 @@ Public Attributes</h2></td></tr>
       <table class="memname">
         <tr>
           <td class="memname">void Limef::thread::WebSocketStreamBuffer::cacheMOOV </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classLimef_1_1frame_1_1RawFrame.html">Limef::frame::RawFrame</a> *&#160;</td>
+          <td class="paramname"><em>raw_frame</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a64188fb47c00b780ac6459266d14e289" name="a64188fb47c00b780ac6459266d14e289"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a64188fb47c00b780ac6459266d14e289">&#9670;&#160;</a></span>cacheWebMInit()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Limef::thread::WebSocketStreamBuffer::cacheWebMInit </td>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="classLimef_1_1frame_1_1RawFrame.html">Limef::frame::RawFrame</a> *&#160;</td>
           <td class="paramname"><em>raw_frame</em></td><td>)</td>
@@ -396,6 +420,20 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="a927edb7a8746a2e9b353c979d311ceae" name="a927edb7a8746a2e9b353c979d311ceae"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a927edb7a8746a2e9b353c979d311ceae">&#9670;&#160;</a></span>has_webm_init</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Limef::thread::WebSocketStreamBuffer::has_webm_init {false}</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a4e0362bb2808f53f3e9adaee2af19d4b" name="a4e0362bb2808f53f3e9adaee2af19d4b"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a4e0362bb2808f53f3e9adaee2af19d4b">&#9670;&#160;</a></span>moov_box</h2>
 
@@ -446,6 +484,20 @@ Public Attributes</h2></td></tr>
       <table class="memname">
         <tr>
           <td class="memname">std::unordered_set&lt;uWS::WebSocket&lt;false, true, <a class="el" href="structLimef_1_1thread_1_1PerSocketData.html">PerSocketData</a>&gt;*&gt; Limef::thread::WebSocketStreamBuffer::waiting_clients</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a7ea235853562422473150b4229541233" name="a7ea235853562422473150b4229541233"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7ea235853562422473150b4229541233">&#9670;&#160;</a></span>webm_init_box</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;uint8_t&gt; Limef::thread::WebSocketStreamBuffer::webm_init_box</td>
         </tr>
       </table>
 </div><div class="memdoc">

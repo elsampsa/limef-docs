@@ -22,7 +22,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">My Project<span id="projectnumber">&#160;0.1.0</span>
+   <div id="projectname">My Project<span id="projectnumber">&#160;0.2.0</span>
    </div>
   </td>
  </tr>
@@ -110,6 +110,10 @@ Namespaces</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:namespaceLimef_1_1timestamp" id="r_namespaceLimef_1_1timestamp"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLimef_1_1timestamp.html">timestamp</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:namespaceLimef_1_1v4l2" id="r_namespaceLimef_1_1v4l2"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLimef_1_1v4l2.html">v4l2</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:namespaceLimef_1_1webrtc" id="r_namespaceLimef_1_1webrtc"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLimef_1_1webrtc.html">webrtc</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
@@ -139,7 +143,7 @@ Classes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
 Enumerations</h2></td></tr>
-<tr class="memitem:ab3f21e06ce812c9f9b7f47da2f6a2188" id="r_ab3f21e06ce812c9f9b7f47da2f6a2188"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLimef.html#ab3f21e06ce812c9f9b7f47da2f6a2188">HWAccel</a> { <a class="el" href="namespaceLimef.html#ab3f21e06ce812c9f9b7f47da2f6a2188a6f56aa4e2561eb66f17f6d8de8070a77">SW</a>
+<tr class="memitem:ab3f21e06ce812c9f9b7f47da2f6a2188" id="r_ab3f21e06ce812c9f9b7f47da2f6a2188"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLimef.html#ab3f21e06ce812c9f9b7f47da2f6a2188">HWAccel</a> { <a class="el" href="namespaceLimef.html#ab3f21e06ce812c9f9b7f47da2f6a2188ab50339a10e1de285ac99d4c3990b8693">NONE</a>
 , <a class="el" href="namespaceLimef.html#ab3f21e06ce812c9f9b7f47da2f6a2188ab80a85e9723eafdfdfb1221ae4bb4bf3">VAAPI</a>
 , <a class="el" href="namespaceLimef.html#ab3f21e06ce812c9f9b7f47da2f6a2188aa33b7755e5f9b504d2d038eaca4ff28d">CUDA</a>
  }</td></tr>
@@ -163,9 +167,15 @@ Functions</h2></td></tr>
 <tr class="memitem:afc8325017a434da4b9477bfabec42a56" id="r_afc8325017a434da4b9477bfabec42a56"><td class="memItemLeft" align="right" valign="top">AVBufferRef *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLimef.html#afc8325017a434da4b9477bfabec42a56">createHWDeviceContext</a> (<a class="el" href="namespaceLimef.html#ab3f21e06ce812c9f9b7f47da2f6a2188">HWAccel</a> accel, const std::string &amp;device=&quot;&quot;)</td></tr>
 <tr class="memdesc:afc8325017a434da4b9477bfabec42a56"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create hardware device context.  <br /></td></tr>
 <tr class="separator:afc8325017a434da4b9477bfabec42a56"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adef1a5749308b6229b7d772e0fab74fb" id="r_adef1a5749308b6229b7d772e0fab74fb"><td class="memItemLeft" align="right" valign="top">AVBufferRef *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLimef.html#adef1a5749308b6229b7d772e0fab74fb">createHWDeviceContext</a> (<a class="el" href="namespaceLimef_1_1frame.html#a2a0e8597a20bf03625897c499c620c6e">Limef::frame::BufferLocation</a> loc, const std::string &amp;device=&quot;&quot;)</td></tr>
+<tr class="memdesc:adef1a5749308b6229b7d772e0fab74fb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create hardware device context from a BufferLocation target.  <br /></td></tr>
+<tr class="separator:adef1a5749308b6229b7d772e0fab74fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a566225301f49f981f12fb6fbdfd78aa8" id="r_a566225301f49f981f12fb6fbdfd78aa8"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLimef.html#a566225301f49f981f12fb6fbdfd78aa8">hwAccelToString</a> (<a class="el" href="namespaceLimef.html#ab3f21e06ce812c9f9b7f47da2f6a2188">HWAccel</a> accel)</td></tr>
 <tr class="memdesc:a566225301f49f981f12fb6fbdfd78aa8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert HWAccel to string for logging.  <br /></td></tr>
 <tr class="separator:a566225301f49f981f12fb6fbdfd78aa8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1a1d7635962eae28f2b88ca0a335ba14" id="r_a1a1d7635962eae28f2b88ca0a335ba14"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespaceLimef_1_1frame.html#a2a0e8597a20bf03625897c499c620c6e">Limef::frame::BufferLocation</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLimef.html#a1a1d7635962eae28f2b88ca0a335ba14">hwAccelToBufferLocation</a> (<a class="el" href="namespaceLimef.html#ab3f21e06ce812c9f9b7f47da2f6a2188">HWAccel</a> accel)</td></tr>
+<tr class="memdesc:a1a1d7635962eae28f2b88ca0a335ba14"><td class="mdescLeft">&#160;</td><td class="mdescRight">Map HWAccel to the BufferLocation the decoder will produce.  <br /></td></tr>
+<tr class="separator:a1a1d7635962eae28f2b88ca0a335ba14"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a38968f7f9ad45f7a69823c3e48dd6117" id="r_a38968f7f9ad45f7a69823c3e48dd6117"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLimef.html#a38968f7f9ad45f7a69823c3e48dd6117">getVersion</a> ()</td></tr>
 <tr class="separator:a38968f7f9ad45f7a69823c3e48dd6117"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -191,9 +201,10 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Hardware acceleration backends. </p>
-<p>Note: This is for FFmpeg-based hardware acceleration only. V4L2 backend is separate (use V4L2EncoderParams/V4L2DecoderParams instead). </p>
+<p>Note: This is for FFmpeg-based hardware acceleration only. V4L2 backend is separate (use V4L2EncoderParams/V4L2NVDecoderParams instead).</p>
+<p>Note: NONE (not None) is used to avoid conflict with the X11 macro None=0L. </p>
 <table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="ab3f21e06ce812c9f9b7f47da2f6a2188a6f56aa4e2561eb66f17f6d8de8070a77" name="ab3f21e06ce812c9f9b7f47da2f6a2188a6f56aa4e2561eb66f17f6d8de8070a77"></a>SW&#160;</td><td class="fielddoc"><p>Software encoding/decoding. </p>
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="ab3f21e06ce812c9f9b7f47da2f6a2188ab50339a10e1de285ac99d4c3990b8693" name="ab3f21e06ce812c9f9b7f47da2f6a2188ab50339a10e1de285ac99d4c3990b8693"></a>NONE&#160;</td><td class="fielddoc"><p>Software encoding/decoding (no hardware accelerator) </p>
 </td></tr>
 <tr><td class="fieldname"><a id="ab3f21e06ce812c9f9b7f47da2f6a2188ab80a85e9723eafdfdfb1221ae4bb4bf3" name="ab3f21e06ce812c9f9b7f47da2f6a2188ab80a85e9723eafdfdfb1221ae4bb4bf3"></a>VAAPI&#160;</td><td class="fielddoc"><p>Intel/AMD hardware via VAAPI. </p>
 </td></tr>
@@ -205,7 +216,7 @@ Functions</h2></td></tr>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
 <a id="afc8325017a434da4b9477bfabec42a56" name="afc8325017a434da4b9477bfabec42a56"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afc8325017a434da4b9477bfabec42a56">&#9670;&#160;</a></span>createHWDeviceContext()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#afc8325017a434da4b9477bfabec42a56">&#9670;&#160;</a></span>createHWDeviceContext() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -240,6 +251,45 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>AVBufferRef* Device context, or nullptr on failure </dd></dl>
+
+</div>
+</div>
+<a id="adef1a5749308b6229b7d772e0fab74fb" name="adef1a5749308b6229b7d772e0fab74fb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adef1a5749308b6229b7d772e0fab74fb">&#9670;&#160;</a></span>createHWDeviceContext() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">AVBufferRef * Limef::createHWDeviceContext </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="namespaceLimef_1_1frame.html#a2a0e8597a20bf03625897c499c620c6e">Limef::frame::BufferLocation</a>&#160;</td>
+          <td class="paramname"><em>loc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>device</em> = <code>&quot;&quot;</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Create hardware device context from a BufferLocation target. </p>
+<p>Convenience overload for fifos and filters that work with BufferLocation. Only VAAPI and CUDA_FFMPEG produce a non-null context.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">loc</td><td>Target buffer location </td></tr>
+    <tr><td class="paramname">device</td><td>Device path (empty = auto-detect) </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>AVBufferRef* Device context, or nullptr for CPU/unsupported locations </dd></dl>
 
 </div>
 </div>
@@ -344,6 +394,34 @@ Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+</div>
+</div>
+<a id="a1a1d7635962eae28f2b88ca0a335ba14" name="a1a1d7635962eae28f2b88ca0a335ba14"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1a1d7635962eae28f2b88ca0a335ba14">&#9670;&#160;</a></span>hwAccelToBufferLocation()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="namespaceLimef_1_1frame.html#a2a0e8597a20bf03625897c499c620c6e">Limef::frame::BufferLocation</a> Limef::hwAccelToBufferLocation </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="namespaceLimef.html#ab3f21e06ce812c9f9b7f47da2f6a2188">HWAccel</a>&#160;</td>
+          <td class="paramname"><em>accel</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Map HWAccel to the BufferLocation the decoder will produce. </p>
 
 </div>
 </div>

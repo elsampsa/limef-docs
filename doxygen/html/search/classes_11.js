@@ -11,7 +11,7 @@ var searchData=
   ['thread_3c_20limef_3a_3aframe_3a_3anullframe_20_3e_8',['Thread&lt; Limef::frame::NullFrame &gt;',['../classLimef_1_1thread_1_1Thread.html',1,'Limef::thread']]],
   ['thread_3c_20limef_3a_3aframe_3a_3apacketframe_20_3e_9',['Thread&lt; Limef::frame::PacketFrame &gt;',['../classLimef_1_1thread_1_1Thread.html',1,'Limef::thread']]],
   ['thread_3c_20limef_3a_3aframe_3a_3arawframe_20_3e_10',['Thread&lt; Limef::frame::RawFrame &gt;',['../classLimef_1_1thread_1_1Thread.html',1,'Limef::thread']]],
-  ['thread_3c_20limef_3a_3aframe_3a_3artppacketframe_20_3e_11',['Thread&lt; Limef::frame::RTPPacketFrame &gt;',['../classLimef_1_1thread_1_1Thread.html',1,'Limef::thread']]],
+  ['thread_3c_20limef_3a_3aframe_3a_3artpframe_20_3e_11',['Thread&lt; Limef::frame::RTPFrame &gt;',['../classLimef_1_1thread_1_1Thread.html',1,'Limef::thread']]],
   ['thread_3c_20limef_3a_3aframe_3a_3atensorframe_20_3e_12',['Thread&lt; Limef::frame::TensorFrame &gt;',['../classLimef_1_1thread_1_1Thread.html',1,'Limef::thread']]],
   ['threadbase_13',['ThreadBase',['../classLimef_1_1thread_1_1ThreadBase.html',1,'Limef::thread']]],
   ['timestampwrapper_14',['TimestampWrapper',['../classLimef_1_1timestamp_1_1TimestampWrapper.html',1,'Limef::timestamp']]],

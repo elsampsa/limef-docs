@@ -22,7 +22,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">My Project<span id="projectnumber">&#160;0.1.0</span>
+   <div id="projectname">My Project<span id="projectnumber">&#160;0.2.0</span>
    </div>
   </td>
  </tr>
@@ -103,17 +103,24 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLimef_1_1encode_1_1V4L2EncoderParams.html">V4L2EncoderParams</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Encoding parameters for <a class="el" href="classLimef_1_1encode_1_1V4L2Encoder.html" title="V4L2 Memory-to-Memory encoder.">V4L2Encoder</a>.  <a href="structLimef_1_1encode_1_1V4L2EncoderParams.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1encode_1_1V4L2NVEncoder.html">V4L2NVEncoder</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">V4L2 Memory-to-Memory encoder.  <a href="classLimef_1_1encode_1_1V4L2NVEncoder.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLimef_1_1encode_1_1V4L2NVEncoderParams.html">V4L2NVEncoderParams</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Encoding parameters for <a class="el" href="classLimef_1_1encode_1_1V4L2NVEncoder.html" title="V4L2 Memory-to-Memory encoder.">V4L2NVEncoder</a>.  <a href="structLimef_1_1encode_1_1V4L2NVEncoderParams.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 Typedefs</h2></td></tr>
-<tr class="memitem:a0ebda6eac295f45a08ec712e01f0d7ee" id="r_a0ebda6eac295f45a08ec712e01f0d7ee"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLimef_1_1encode.html#a0ebda6eac295f45a08ec712e01f0d7ee">VideoEncoderParams</a> = std::variant&lt; <a class="el" href="structLimef_1_1encode_1_1FFmpegEncoderParams.html">FFmpegEncoderParams</a>, <a class="el" href="structLimef_1_1encode_1_1V4L2EncoderParams.html">V4L2EncoderParams</a> &gt;</td></tr>
-<tr class="memdesc:a0ebda6eac295f45a08ec712e01f0d7ee"><td class="mdescLeft">&#160;</td><td class="mdescRight">Variant type for encoder parameters.  <br /></td></tr>
-<tr class="separator:a0ebda6eac295f45a08ec712e01f0d7ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a775c9ee569e74ba056bcd7a3cacdb47f" id="r_a775c9ee569e74ba056bcd7a3cacdb47f"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLimef_1_1encode.html#a775c9ee569e74ba056bcd7a3cacdb47f">VideoEncoderParams</a> = std::variant&lt; <a class="el" href="structLimef_1_1encode_1_1FFmpegEncoderParams.html">FFmpegEncoderParams</a>, <a class="el" href="structLimef_1_1encode_1_1V4L2EncoderParams.html">V4L2EncoderParams</a>, <a class="el" href="structLimef_1_1encode_1_1V4L2NVEncoderParams.html">V4L2NVEncoderParams</a> &gt;</td></tr>
+<tr class="memdesc:a775c9ee569e74ba056bcd7a3cacdb47f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Variant type for encoder parameters.  <br /></td></tr>
+<tr class="separator:a775c9ee569e74ba056bcd7a3cacdb47f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
 Enumerations</h2></td></tr>
 <tr class="memitem:a9a90d334e46e01a4d8b9ec8b067f9ea2" id="r_a9a90d334e46e01a4d8b9ec8b067f9ea2"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLimef_1_1encode.html#a9a90d334e46e01a4d8b9ec8b067f9ea2">EncoderBackend</a> { <a class="el" href="namespaceLimef_1_1encode.html#a9a90d334e46e01a4d8b9ec8b067f9ea2ac6822fecd09163125469db27944e993b">FFmpeg</a> = 0
 , <a class="el" href="namespaceLimef_1_1encode.html#a9a90d334e46e01a4d8b9ec8b067f9ea2a09907146601bd24370d831fe9cf9858c">V4L2</a> = 1
+, <a class="el" href="namespaceLimef_1_1encode.html#a9a90d334e46e01a4d8b9ec8b067f9ea2a25a081eddc615896cfddd78ab39e55ae">V4L2NV</a> = 2
  }</td></tr>
 <tr class="memdesc:a9a90d334e46e01a4d8b9ec8b067f9ea2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Available encoder backends.  <a href="namespaceLimef_1_1encode.html#a9a90d334e46e01a4d8b9ec8b067f9ea2">More...</a><br /></td></tr>
 <tr class="separator:a9a90d334e46e01a4d8b9ec8b067f9ea2"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -133,10 +140,10 @@ Functions</h2></td></tr>
 <tr class="memitem:a19515f5ea744fdc72be0e4870827d964" id="r_a19515f5ea744fdc72be0e4870827d964"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLimef_1_1encode.html#a19515f5ea744fdc72be0e4870827d964">isEncoderAvailable</a> (<a class="el" href="namespaceLimef_1_1encode.html#a9a90d334e46e01a4d8b9ec8b067f9ea2">EncoderBackend</a> backend)</td></tr>
 <tr class="memdesc:a19515f5ea744fdc72be0e4870827d964"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if a specific encoder backend is available.  <br /></td></tr>
 <tr class="separator:a19515f5ea744fdc72be0e4870827d964"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a35983a0e92ddcc225a24ad838aada26f" id="r_a35983a0e92ddcc225a24ad838aada26f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespaceLimef_1_1encode.html#a9a90d334e46e01a4d8b9ec8b067f9ea2">EncoderBackend</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLimef_1_1encode.html#a35983a0e92ddcc225a24ad838aada26f">getBackend</a> (const <a class="el" href="namespaceLimef_1_1encode.html#a0ebda6eac295f45a08ec712e01f0d7ee">VideoEncoderParams</a> &amp;params)</td></tr>
+<tr class="memitem:a35983a0e92ddcc225a24ad838aada26f" id="r_a35983a0e92ddcc225a24ad838aada26f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespaceLimef_1_1encode.html#a9a90d334e46e01a4d8b9ec8b067f9ea2">EncoderBackend</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLimef_1_1encode.html#a35983a0e92ddcc225a24ad838aada26f">getBackend</a> (const <a class="el" href="namespaceLimef_1_1encode.html#a775c9ee569e74ba056bcd7a3cacdb47f">VideoEncoderParams</a> &amp;params)</td></tr>
 <tr class="memdesc:a35983a0e92ddcc225a24ad838aada26f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the backend type from encoder params.  <br /></td></tr>
 <tr class="separator:a35983a0e92ddcc225a24ad838aada26f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa2147aa4746e1d02cd2dfb051da237b9" id="r_aa2147aa4746e1d02cd2dfb051da237b9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classLimef_1_1encode_1_1Encoder.html">Encoder</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLimef_1_1encode.html#aa2147aa4746e1d02cd2dfb051da237b9">createEncoder</a> (const std::string &amp;name, const <a class="el" href="namespaceLimef_1_1encode.html#a0ebda6eac295f45a08ec712e01f0d7ee">VideoEncoderParams</a> &amp;params)</td></tr>
+<tr class="memitem:aa2147aa4746e1d02cd2dfb051da237b9" id="r_aa2147aa4746e1d02cd2dfb051da237b9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classLimef_1_1encode_1_1Encoder.html">Encoder</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLimef_1_1encode.html#aa2147aa4746e1d02cd2dfb051da237b9">createEncoder</a> (const std::string &amp;name, const <a class="el" href="namespaceLimef_1_1encode.html#a775c9ee569e74ba056bcd7a3cacdb47f">VideoEncoderParams</a> &amp;params)</td></tr>
 <tr class="memdesc:aa2147aa4746e1d02cd2dfb051da237b9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create an encoder from variant parameters.  <br /></td></tr>
 <tr class="separator:aa2147aa4746e1d02cd2dfb051da237b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a51d6d4f5e646119c4ad6ac48c8f2c31f" id="r_a51d6d4f5e646119c4ad6ac48c8f2c31f"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLimef_1_1encode.html#a51d6d4f5e646119c4ad6ac48c8f2c31f">getEncoderName</a> (AVCodecID codec_id, HWAccel hw_accel)</td></tr>
@@ -144,14 +151,14 @@ Functions</h2></td></tr>
 <tr class="separator:a51d6d4f5e646119c4ad6ac48c8f2c31f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Typedef Documentation</h2>
-<a id="a0ebda6eac295f45a08ec712e01f0d7ee" name="a0ebda6eac295f45a08ec712e01f0d7ee"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0ebda6eac295f45a08ec712e01f0d7ee">&#9670;&#160;</a></span>VideoEncoderParams</h2>
+<a id="a775c9ee569e74ba056bcd7a3cacdb47f" name="a775c9ee569e74ba056bcd7a3cacdb47f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a775c9ee569e74ba056bcd7a3cacdb47f">&#9670;&#160;</a></span>VideoEncoderParams</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">using <a class="el" href="namespaceLimef_1_1encode.html#a0ebda6eac295f45a08ec712e01f0d7ee">Limef::encode::VideoEncoderParams</a> = typedef std::variant&lt; <a class="el" href="structLimef_1_1encode_1_1FFmpegEncoderParams.html">FFmpegEncoderParams</a>, <a class="el" href="structLimef_1_1encode_1_1V4L2EncoderParams.html">V4L2EncoderParams</a> &gt;</td>
+          <td class="memname">using <a class="el" href="namespaceLimef_1_1encode.html#a775c9ee569e74ba056bcd7a3cacdb47f">Limef::encode::VideoEncoderParams</a> = typedef std::variant&lt; <a class="el" href="structLimef_1_1encode_1_1FFmpegEncoderParams.html">FFmpegEncoderParams</a>, <a class="el" href="structLimef_1_1encode_1_1V4L2EncoderParams.html">V4L2EncoderParams</a>, <a class="el" href="structLimef_1_1encode_1_1V4L2NVEncoderParams.html">V4L2NVEncoderParams</a> &gt;</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -161,21 +168,21 @@ Functions</h2></td></tr>
 <p>Example: </p><div class="fragment"><div class="line"><span class="comment">// FFmpeg backend (always available)</span></div>
 <div class="line"><a class="code hl_struct" href="structLimef_1_1encode_1_1FFmpegEncoderParams.html">FFmpegEncoderParams</a> ffmpeg_params;</div>
 <div class="line">ffmpeg_params.<a class="code hl_variable" href="structLimef_1_1encode_1_1FFmpegEncoderParams.html#a387b003626b987808153eddd21655b22">codec_id</a> = AV_CODEC_ID_H264;</div>
-<div class="line"><a class="code hl_typedef" href="namespaceLimef_1_1encode.html#a0ebda6eac295f45a08ec712e01f0d7ee">VideoEncoderParams</a> params = ffmpeg_params;</div>
+<div class="line"><a class="code hl_typedef" href="namespaceLimef_1_1encode.html#a775c9ee569e74ba056bcd7a3cacdb47f">VideoEncoderParams</a> params = ffmpeg_params;</div>
 <div class="line"> </div>
 <div class="line"><span class="comment">// V4L2 backend (check availability first)</span></div>
 <div class="line"><span class="keywordflow">if</span> (<a class="code hl_function" href="namespaceLimef_1_1encode.html#a19515f5ea744fdc72be0e4870827d964">isEncoderAvailable</a>(<a class="code hl_enumvalue" href="namespaceLimef_1_1encode.html#a9a90d334e46e01a4d8b9ec8b067f9ea2a09907146601bd24370d831fe9cf9858c">EncoderBackend::V4L2</a>)) {</div>
 <div class="line">    <a class="code hl_struct" href="structLimef_1_1encode_1_1V4L2EncoderParams.html">V4L2EncoderParams</a> v4l2_params;</div>
 <div class="line">    v4l2_params.<a class="code hl_variable" href="structLimef_1_1encode_1_1V4L2EncoderParams.html#a463a0991820ac8200009585e40085c28">device</a> = <span class="stringliteral">&quot;/dev/video2&quot;</span>;</div>
-<div class="line">    <a class="code hl_typedef" href="namespaceLimef_1_1encode.html#a0ebda6eac295f45a08ec712e01f0d7ee">VideoEncoderParams</a> params = v4l2_params;</div>
+<div class="line">    <a class="code hl_typedef" href="namespaceLimef_1_1encode.html#a775c9ee569e74ba056bcd7a3cacdb47f">VideoEncoderParams</a> params = v4l2_params;</div>
 <div class="line">}</div>
-<div class="ttc" id="anamespaceLimef_1_1encode_html_a0ebda6eac295f45a08ec712e01f0d7ee"><div class="ttname"><a href="namespaceLimef_1_1encode.html#a0ebda6eac295f45a08ec712e01f0d7ee">Limef::encode::VideoEncoderParams</a></div><div class="ttdeci">std::variant&lt; FFmpegEncoderParams, V4L2EncoderParams &gt; VideoEncoderParams</div><div class="ttdoc">Variant type for encoder parameters.</div><div class="ttdef"><b>Definition</b> encoder_factory.h:64</div></div>
-<div class="ttc" id="anamespaceLimef_1_1encode_html_a19515f5ea744fdc72be0e4870827d964"><div class="ttname"><a href="namespaceLimef_1_1encode.html#a19515f5ea744fdc72be0e4870827d964">Limef::encode::isEncoderAvailable</a></div><div class="ttdeci">bool isEncoderAvailable(EncoderBackend backend)</div><div class="ttdoc">Check if a specific encoder backend is available.</div><div class="ttdef"><b>Definition</b> encoder_factory.cpp:44</div></div>
-<div class="ttc" id="anamespaceLimef_1_1encode_html_a9a90d334e46e01a4d8b9ec8b067f9ea2a09907146601bd24370d831fe9cf9858c"><div class="ttname"><a href="namespaceLimef_1_1encode.html#a9a90d334e46e01a4d8b9ec8b067f9ea2a09907146601bd24370d831fe9cf9858c">Limef::encode::EncoderBackend::V4L2</a></div><div class="ttdeci">@ V4L2</div><div class="ttdoc">V4L2 Memory-to-Memory API (Jetson, embedded Linux)</div></div>
-<div class="ttc" id="astructLimef_1_1encode_1_1FFmpegEncoderParams_html"><div class="ttname"><a href="structLimef_1_1encode_1_1FFmpegEncoderParams.html">Limef::encode::FFmpegEncoderParams</a></div><div class="ttdoc">Encoding parameters for FFmpegEncoder.</div><div class="ttdef"><b>Definition</b> ffmpeg_encoder.h:73</div></div>
-<div class="ttc" id="astructLimef_1_1encode_1_1FFmpegEncoderParams_html_a387b003626b987808153eddd21655b22"><div class="ttname"><a href="structLimef_1_1encode_1_1FFmpegEncoderParams.html#a387b003626b987808153eddd21655b22">Limef::encode::FFmpegEncoderParams::codec_id</a></div><div class="ttdeci">AVCodecID codec_id</div><div class="ttdoc">Target codec.</div><div class="ttdef"><b>Definition</b> ffmpeg_encoder.h:74</div></div>
-<div class="ttc" id="astructLimef_1_1encode_1_1V4L2EncoderParams_html"><div class="ttname"><a href="structLimef_1_1encode_1_1V4L2EncoderParams.html">Limef::encode::V4L2EncoderParams</a></div><div class="ttdoc">Encoding parameters for V4L2Encoder.</div><div class="ttdef"><b>Definition</b> v4l2_encoder.h:38</div></div>
-<div class="ttc" id="astructLimef_1_1encode_1_1V4L2EncoderParams_html_a463a0991820ac8200009585e40085c28"><div class="ttname"><a href="structLimef_1_1encode_1_1V4L2EncoderParams.html#a463a0991820ac8200009585e40085c28">Limef::encode::V4L2EncoderParams::device</a></div><div class="ttdeci">std::string device</div><div class="ttdoc">V4L2 device path (vicodec encoder default)</div><div class="ttdef"><b>Definition</b> v4l2_encoder.h:39</div></div>
+<div class="ttc" id="anamespaceLimef_1_1encode_html_a19515f5ea744fdc72be0e4870827d964"><div class="ttname"><a href="namespaceLimef_1_1encode.html#a19515f5ea744fdc72be0e4870827d964">Limef::encode::isEncoderAvailable</a></div><div class="ttdeci">bool isEncoderAvailable(EncoderBackend backend)</div><div class="ttdoc">Check if a specific encoder backend is available.</div><div class="ttdef"><b>Definition</b> encoder_factory.cpp:47</div></div>
+<div class="ttc" id="anamespaceLimef_1_1encode_html_a775c9ee569e74ba056bcd7a3cacdb47f"><div class="ttname"><a href="namespaceLimef_1_1encode.html#a775c9ee569e74ba056bcd7a3cacdb47f">Limef::encode::VideoEncoderParams</a></div><div class="ttdeci">std::variant&lt; FFmpegEncoderParams, V4L2EncoderParams, V4L2NVEncoderParams &gt; VideoEncoderParams</div><div class="ttdoc">Variant type for encoder parameters.</div><div class="ttdef"><b>Definition</b> encoder_factory.h:63</div></div>
+<div class="ttc" id="anamespaceLimef_1_1encode_html_a9a90d334e46e01a4d8b9ec8b067f9ea2a09907146601bd24370d831fe9cf9858c"><div class="ttname"><a href="namespaceLimef_1_1encode.html#a9a90d334e46e01a4d8b9ec8b067f9ea2a09907146601bd24370d831fe9cf9858c">Limef::encode::EncoderBackend::V4L2</a></div><div class="ttdeci">@ V4L2</div><div class="ttdoc">V4L2 Memory-to-Memory API (Jetson vicodec, generic M2M)</div></div>
+<div class="ttc" id="astructLimef_1_1encode_1_1FFmpegEncoderParams_html"><div class="ttname"><a href="structLimef_1_1encode_1_1FFmpegEncoderParams.html">Limef::encode::FFmpegEncoderParams</a></div><div class="ttdoc">Encoding parameters for FFmpegEncoder.</div><div class="ttdef"><b>Definition</b> ffmpeg_encoder.h:70</div></div>
+<div class="ttc" id="astructLimef_1_1encode_1_1FFmpegEncoderParams_html_a387b003626b987808153eddd21655b22"><div class="ttname"><a href="structLimef_1_1encode_1_1FFmpegEncoderParams.html#a387b003626b987808153eddd21655b22">Limef::encode::FFmpegEncoderParams::codec_id</a></div><div class="ttdeci">AVCodecID codec_id</div><div class="ttdoc">Target codec.</div><div class="ttdef"><b>Definition</b> ffmpeg_encoder.h:71</div></div>
+<div class="ttc" id="astructLimef_1_1encode_1_1V4L2EncoderParams_html"><div class="ttname"><a href="structLimef_1_1encode_1_1V4L2EncoderParams.html">Limef::encode::V4L2EncoderParams</a></div><div class="ttdoc">Encoding parameters for V4L2Encoder.</div><div class="ttdef"><b>Definition</b> v4l2_encoder.h:36</div></div>
+<div class="ttc" id="astructLimef_1_1encode_1_1V4L2EncoderParams_html_a463a0991820ac8200009585e40085c28"><div class="ttname"><a href="structLimef_1_1encode_1_1V4L2EncoderParams.html#a463a0991820ac8200009585e40085c28">Limef::encode::V4L2EncoderParams::device</a></div><div class="ttdeci">std::string device</div><div class="ttdoc">V4L2 device path (vicodec encoder default)</div><div class="ttdef"><b>Definition</b> v4l2_encoder.h:37</div></div>
 </div><!-- fragment --> 
 </div>
 </div>
@@ -204,7 +211,9 @@ Functions</h2></td></tr>
 <table class="fieldtable">
 <tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a9a90d334e46e01a4d8b9ec8b067f9ea2ac6822fecd09163125469db27944e993b" name="a9a90d334e46e01a4d8b9ec8b067f9ea2ac6822fecd09163125469db27944e993b"></a>FFmpeg&#160;</td><td class="fielddoc"><p>FFmpeg-based software/hardware encoding. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a9a90d334e46e01a4d8b9ec8b067f9ea2a09907146601bd24370d831fe9cf9858c" name="a9a90d334e46e01a4d8b9ec8b067f9ea2a09907146601bd24370d831fe9cf9858c"></a>V4L2&#160;</td><td class="fielddoc"><p>V4L2 Memory-to-Memory API (Jetson, embedded Linux) </p>
+<tr><td class="fieldname"><a id="a9a90d334e46e01a4d8b9ec8b067f9ea2a09907146601bd24370d831fe9cf9858c" name="a9a90d334e46e01a4d8b9ec8b067f9ea2a09907146601bd24370d831fe9cf9858c"></a>V4L2&#160;</td><td class="fielddoc"><p>V4L2 Memory-to-Memory API (Jetson vicodec, generic M2M) </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a9a90d334e46e01a4d8b9ec8b067f9ea2a25a081eddc615896cfddd78ab39e55ae" name="a9a90d334e46e01a4d8b9ec8b067f9ea2a25a081eddc615896cfddd78ab39e55ae"></a>V4L2NV&#160;</td><td class="fielddoc"><p>V4L2 M2M with NvBufSurface DMABUF+EGL+CUDA (Jetson NVENC) </p>
 </td></tr>
 </table>
 
@@ -260,7 +269,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="namespaceLimef_1_1encode.html#a0ebda6eac295f45a08ec712e01f0d7ee">VideoEncoderParams</a> &amp;&#160;</td>
+          <td class="paramtype">const <a class="el" href="namespaceLimef_1_1encode.html#a775c9ee569e74ba056bcd7a3cacdb47f">VideoEncoderParams</a> &amp;&#160;</td>
           <td class="paramname"><em>params</em>&#160;</td>
         </tr>
         <tr>
@@ -320,7 +329,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname"><a class="el" href="namespaceLimef_1_1encode.html#a9a90d334e46e01a4d8b9ec8b067f9ea2">EncoderBackend</a> Limef::encode::getBackend </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="namespaceLimef_1_1encode.html#a0ebda6eac295f45a08ec712e01f0d7ee">VideoEncoderParams</a> &amp;&#160;</td>
+          <td class="paramtype">const <a class="el" href="namespaceLimef_1_1encode.html#a775c9ee569e74ba056bcd7a3cacdb47f">VideoEncoderParams</a> &amp;&#160;</td>
           <td class="paramname"><em>params</em></td><td>)</td>
           <td></td>
         </tr>

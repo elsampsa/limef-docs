@@ -22,7 +22,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">My Project<span id="projectnumber">&#160;0.1.0</span>
+   <div id="projectname">My Project<span id="projectnumber">&#160;0.2.0</span>
    </div>
   </td>
  </tr>
@@ -79,8 +79,8 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:aa142b0be069ff1ca7b8061f248995315" id="r_aa142b0be069ff1ca7b8061f248995315"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPythonInterface.html#aa142b0be069ff1ca7b8061f248995315">PythonInterface</a> (int stack_size=10, bool leaky=true)</td></tr>
-<tr class="separator:aa142b0be069ff1ca7b8061f248995315"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9622f8bd2434315d727069250f6058e2" id="r_a9622f8bd2434315d727069250f6058e2"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPythonInterface.html#a9622f8bd2434315d727069250f6058e2">PythonInterface</a> (int stack_size=10, bool leaky=true, std::size_t fifo_size=0)</td></tr>
+<tr class="separator:a9622f8bd2434315d727069250f6058e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af373ba5c8c781f8110fc22402796165a" id="r_af373ba5c8c781f8110fc22402796165a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPythonInterface.html#af373ba5c8c781f8110fc22402796165a">PythonInterface</a> (const <a class="el" href="classPythonInterface.html">PythonInterface</a> &amp;)=delete</td></tr>
 <tr class="separator:af373ba5c8c781f8110fc22402796165a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5ad10c0a5746bb1c278f92396361a3b4" id="r_a5ad10c0a5746bb1c278f92396361a3b4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classPythonInterface.html">PythonInterface</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPythonInterface.html#a5ad10c0a5746bb1c278f92396361a3b4">operator=</a> (const <a class="el" href="classPythonInterface.html">PythonInterface</a> &amp;)=delete</td></tr>
@@ -93,8 +93,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:ab3b67d8ec9b7f8a9d8961b7f48eb15bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="aa142b0be069ff1ca7b8061f248995315" name="aa142b0be069ff1ca7b8061f248995315"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa142b0be069ff1ca7b8061f248995315">&#9670;&#160;</a></span>PythonInterface() <span class="overload">[1/2]</span></h2>
+<a id="a9622f8bd2434315d727069250f6058e2" name="a9622f8bd2434315d727069250f6058e2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9622f8bd2434315d727069250f6058e2">&#9670;&#160;</a></span>PythonInterface() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -112,7 +112,13 @@ Public Member Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>leaky</em> = <code>true</code>&#160;</td>
+          <td class="paramname"><em>leaky</em> = <code>true</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramname"><em>fifo_size</em> = <code>0</code>&#160;</td>
         </tr>
         <tr>
           <td></td>

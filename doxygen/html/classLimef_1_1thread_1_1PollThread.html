@@ -22,7 +22,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">My Project<span id="projectnumber">&#160;0.1.0</span>
+   <div id="projectname">My Project<span id="projectnumber">&#160;0.2.0</span>
    </div>
   </td>
  </tr>
@@ -103,20 +103,22 @@ Collaboration diagram for Limef::thread::PollThread&lt; T &gt;:</div>
 <div class="dyncontent">
 <div class="center"><img src="classLimef_1_1thread_1_1PollThread__coll__graph.png" border="0" usemap="#aLimef_1_1thread_1_1PollThread_3_01T_01_4_coll__map" alt="Collaboration graph"/></div>
 <map name="aLimef_1_1thread_1_1PollThread_3_01T_01_4_coll__map" id="aLimef_1_1thread_1_1PollThread_3_01T_01_4_coll__map">
-<area shape="rect" title="Example thread demonstrating PollFrameFifo usage." alt="" coords="203,345,425,371"/>
-<area shape="rect" href="classLimef_1_1thread_1_1Thread.html" title="A multithreading base class." alt="" coords="215,271,413,296"/>
-<area shape="poly" title=" " alt="" coords="317,310,317,345,311,345,311,310"/>
-<area shape="rect" href="classLimef_1_1thread_1_1ThreadBase.html" title=" " alt="" coords="5,168,199,193"/>
-<area shape="poly" title=" " alt="" coords="140,197,291,268,289,273,138,202"/>
-<area shape="rect" href="structLimef_1_1FrameFifoContext.html" title="Parameters and behaviour for a FrameFifo." alt="" coords="223,168,405,193"/>
-<area shape="poly" title=" " alt="" coords="317,207,317,271,311,271,311,207"/>
-<area shape="rect" href="classLimef_1_1ff_1_1EmptyFrameFilter.html" title="Dummy FrameFilter" alt="" coords="429,168,628,193"/>
-<area shape="poly" title=" " alt="" coords="493,202,339,273,337,268,491,197"/>
+<area shape="rect" title="Example thread demonstrating PollFrameFifo usage." alt="" coords="203,359,425,384"/>
+<area shape="rect" href="classLimef_1_1thread_1_1Thread.html" title="A multithreading base class." alt="" coords="215,284,413,309"/>
+<area shape="poly" title=" " alt="" coords="317,324,317,358,311,358,311,324"/>
+<area shape="rect" href="classLimef_1_1thread_1_1ThreadBase.html" title=" " alt="" coords="5,181,199,207"/>
+<area shape="poly" title=" " alt="" coords="140,210,291,282,289,286,138,215"/>
+<area shape="rect" href="structLimef_1_1FrameFifoContext.html" title="Parameters and behaviour for a FrameFifo." alt="" coords="223,181,405,207"/>
+<area shape="poly" title=" " alt="" coords="317,221,317,284,311,284,311,221"/>
+<area shape="rect" title=" " alt="" coords="256,93,372,119"/>
+<area shape="poly" title=" " alt="" coords="317,133,317,181,311,181,311,133"/>
+<area shape="rect" href="classLimef_1_1ff_1_1EmptyFrameFilter.html" title="Dummy FrameFilter" alt="" coords="429,181,628,207"/>
+<area shape="poly" title=" " alt="" coords="493,215,339,286,337,282,491,210"/>
 <area shape="rect" href="classLimef_1_1ff_1_1SimpleFrameFilter.html" title="A base class for simple one&#45;to&#45;one framefilters." alt="" coords="427,93,630,119"/>
-<area shape="poly" title=" " alt="" coords="531,133,531,168,526,168,526,133"/>
-<area shape="rect" href="classLimef_1_1ff_1_1FrameFilter.html" title=" " alt="" coords="450,5,607,31"/>
-<area shape="poly" title=" " alt="" coords="529,45,529,55,530,93,525,93,523,55,524,44"/>
-<area shape="poly" title=" " alt="" coords="531,45,531,93,526,93,526,45"/>
+<area shape="poly" title=" " alt="" coords="531,133,531,181,526,181,526,133"/>
+<area shape="rect" href="classLimef_1_1ff_1_1FrameFilter.html" title=" " alt="" coords="449,5,606,31"/>
+<area shape="poly" title=" " alt="" coords="528,45,527,69,530,93,524,93,522,69,522,45"/>
+<area shape="poly" title=" " alt="" coords="530,45,531,93,526,93,525,45"/>
 </map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
@@ -140,14 +142,17 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:af0e3b1bce401a7f877396146e8afb57d inherit pub_methods_classLimef_1_1thread_1_1Thread" id="r_af0e3b1bce401a7f877396146e8afb57d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1thread_1_1Thread.html#af0e3b1bce401a7f877396146e8afb57d">isRunning</a> () const override</td></tr>
 <tr class="memdesc:af0e3b1bce401a7f877396146e8afb57d inherit pub_methods_classLimef_1_1thread_1_1Thread"><td class="mdescLeft">&#160;</td><td class="mdescRight">has the thread been started or not?  <br /></td></tr>
 <tr class="separator:af0e3b1bce401a7f877396146e8afb57d inherit pub_methods_classLimef_1_1thread_1_1Thread"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab6fe98003a127d64d35cd4d06636bfcb inherit pub_methods_classLimef_1_1thread_1_1Thread" id="r_ab6fe98003a127d64d35cd4d06636bfcb"><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1thread_1_1Thread.html#ab6fe98003a127d64d35cd4d06636bfcb">getTaskCallCount</a> () const</td></tr>
+<tr class="memdesc:ab6fe98003a127d64d35cd4d06636bfcb inherit pub_methods_classLimef_1_1thread_1_1Thread"><td class="mdescLeft">&#160;</td><td class="mdescRight">true while <a class="el" href="classLimef_1_1thread_1_1Thread.html#a68b383b869edf65ee86f8d57cb261508" title="Threads main functionality. Uses preRun, postRun, processFrame, frameTask and task.">mainLoop()</a> is executing  <br /></td></tr>
+<tr class="separator:ab6fe98003a127d64d35cd4d06636bfcb inherit pub_methods_classLimef_1_1thread_1_1Thread"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af8b77ceb90bd5b244a77c9c98679d363 inherit pub_methods_classLimef_1_1thread_1_1Thread" id="r_af8b77ceb90bd5b244a77c9c98679d363"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1thread_1_1Thread.html#af8b77ceb90bd5b244a77c9c98679d363">requestStop</a> () override</td></tr>
-<tr class="memdesc:af8b77ceb90bd5b244a77c9c98679d363 inherit pub_methods_classLimef_1_1thread_1_1Thread"><td class="mdescLeft">&#160;</td><td class="mdescRight">true while <a class="el" href="classLimef_1_1thread_1_1Thread.html#a68b383b869edf65ee86f8d57cb261508" title="Threads main functionality. Uses preRun, postRun, processFrame, frameTask and task.">mainLoop()</a> is executing  <br /></td></tr>
+<tr class="memdesc:af8b77ceb90bd5b244a77c9c98679d363 inherit pub_methods_classLimef_1_1thread_1_1Thread"><td class="mdescLeft">&#160;</td><td class="mdescRight">request thread termination  <br /></td></tr>
 <tr class="separator:af8b77ceb90bd5b244a77c9c98679d363 inherit pub_methods_classLimef_1_1thread_1_1Thread"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1425dd0dba2d54bbbcdc0f8376e1bbeb inherit pub_methods_classLimef_1_1thread_1_1Thread" id="r_a1425dd0dba2d54bbbcdc0f8376e1bbeb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1thread_1_1Thread.html#a1425dd0dba2d54bbbcdc0f8376e1bbeb">waitStop</a> () override</td></tr>
 <tr class="memdesc:a1425dd0dba2d54bbbcdc0f8376e1bbeb inherit pub_methods_classLimef_1_1thread_1_1Thread"><td class="mdescLeft">&#160;</td><td class="mdescRight">wait for thread termination  <br /></td></tr>
 <tr class="separator:a1425dd0dba2d54bbbcdc0f8376e1bbeb inherit pub_methods_classLimef_1_1thread_1_1Thread"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9e0b393eea3a942be09f88b60b5746ff inherit pub_methods_classLimef_1_1thread_1_1Thread" id="r_a9e0b393eea3a942be09f88b60b5746ff"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1thread_1_1Thread.html#a9e0b393eea3a942be09f88b60b5746ff">stop</a> () override</td></tr>
-<tr class="memdesc:a9e0b393eea3a942be09f88b60b5746ff inherit pub_methods_classLimef_1_1thread_1_1Thread"><td class="mdescLeft">&#160;</td><td class="mdescRight">combined <a class="el" href="classLimef_1_1thread_1_1Thread.html#af8b77ceb90bd5b244a77c9c98679d363" title="true while mainLoop() is executing">requestStop()</a> and <a class="el" href="classLimef_1_1thread_1_1Thread.html#a1425dd0dba2d54bbbcdc0f8376e1bbeb" title="wait for thread termination">waitStop()</a>  <br /></td></tr>
+<tr class="memdesc:a9e0b393eea3a942be09f88b60b5746ff inherit pub_methods_classLimef_1_1thread_1_1Thread"><td class="mdescLeft">&#160;</td><td class="mdescRight">combined <a class="el" href="classLimef_1_1thread_1_1Thread.html#af8b77ceb90bd5b244a77c9c98679d363" title="request thread termination">requestStop()</a> and <a class="el" href="classLimef_1_1thread_1_1Thread.html#a1425dd0dba2d54bbbcdc0f8376e1bbeb" title="wait for thread termination">waitStop()</a>  <br /></td></tr>
 <tr class="separator:a9e0b393eea3a942be09f88b60b5746ff inherit pub_methods_classLimef_1_1thread_1_1Thread"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a468dd8135b2708fa32662e9cc0c3549d inherit pub_methods_classLimef_1_1thread_1_1Thread" id="r_a468dd8135b2708fa32662e9cc0c3549d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1thread_1_1Thread.html#a468dd8135b2708fa32662e9cc0c3549d">setAffinity</a> (int core_id) override</td></tr>
 <tr class="memdesc:a468dd8135b2708fa32662e9cc0c3549d inherit pub_methods_classLimef_1_1thread_1_1Thread"><td class="mdescLeft">&#160;</td><td class="mdescRight">Binds the thread to a certain CPU.  <br /></td></tr>
@@ -238,8 +243,8 @@ Protected Member Functions</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
 <tr class="inherit_header pro_attribs_classLimef_1_1thread_1_1Thread"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_classLimef_1_1thread_1_1Thread')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="classLimef_1_1thread_1_1Thread.html">Limef::thread::Thread&lt; T &gt;</a></td></tr>
-<tr class="memitem:af35b3c2c9bdb52517cd295bf1b837f1e inherit pro_attribs_classLimef_1_1thread_1_1Thread" id="r_af35b3c2c9bdb52517cd295bf1b837f1e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1thread_1_1Thread.html#af35b3c2c9bdb52517cd295bf1b837f1e">stop_requested_</a></td></tr>
-<tr class="separator:af35b3c2c9bdb52517cd295bf1b837f1e inherit pro_attribs_classLimef_1_1thread_1_1Thread"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a991d4fc6d1bca78a4cd2207ff39c06f8 inherit pro_attribs_classLimef_1_1thread_1_1Thread" id="r_a991d4fc6d1bca78a4cd2207ff39c06f8"><td class="memItemLeft" align="right" valign="top">std::atomic&lt; bool &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1thread_1_1Thread.html#a991d4fc6d1bca78a4cd2207ff39c06f8">stop_requested_</a></td></tr>
+<tr class="separator:a991d4fc6d1bca78a4cd2207ff39c06f8 inherit pro_attribs_classLimef_1_1thread_1_1Thread"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6c9a250e57ccbe5aa94a21e8d466a0f9 inherit pro_attribs_classLimef_1_1thread_1_1Thread" id="r_a6c9a250e57ccbe5aa94a21e8d466a0f9"><td class="memItemLeft" align="right" valign="top">std::atomic&lt; bool &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1thread_1_1Thread.html#a6c9a250e57ccbe5aa94a21e8d466a0f9">running_</a> {false}</td></tr>
 <tr class="separator:a6c9a250e57ccbe5aa94a21e8d466a0f9 inherit pro_attribs_classLimef_1_1thread_1_1Thread"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4b2a53ec35355f09efe8d903562553c5 inherit pro_attribs_classLimef_1_1thread_1_1Thread" id="r_a4b2a53ec35355f09efe8d903562553c5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structLimef_1_1FrameFifoContext.html">Limef::FrameFifoContext</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1thread_1_1Thread.html#a4b2a53ec35355f09efe8d903562553c5">ctx</a></td></tr>
@@ -249,6 +254,8 @@ Additional Inherited Members</h2></td></tr>
 <tr class="separator:afa2b2954bbaf77643ee3b9c0998b0fc1 inherit pro_attribs_classLimef_1_1thread_1_1Thread"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1c120ab9e05fd070b81231a0e1f8e42e inherit pro_attribs_classLimef_1_1thread_1_1Thread" id="r_a1c120ab9e05fd070b81231a0e1f8e42e"><td class="memItemLeft" align="right" valign="top">std::chrono::steady_clock::time_point&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1thread_1_1Thread.html#a1c120ab9e05fd070b81231a0e1f8e42e">task_last_exec</a></td></tr>
 <tr class="separator:a1c120ab9e05fd070b81231a0e1f8e42e inherit pro_attribs_classLimef_1_1thread_1_1Thread"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5c7a558af562e01df30454417bd54602 inherit pro_attribs_classLimef_1_1thread_1_1Thread" id="r_a5c7a558af562e01df30454417bd54602"><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1thread_1_1Thread.html#a5c7a558af562e01df30454417bd54602">task_call_count_</a> {0}</td></tr>
+<tr class="separator:a5c7a558af562e01df30454417bd54602 inherit pro_attribs_classLimef_1_1thread_1_1Thread"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a58c9161cd729c34b7cfc3af5d67e9957 inherit pro_attribs_classLimef_1_1thread_1_1Thread" id="r_a58c9161cd729c34b7cfc3af5d67e9957"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="classLimef_1_1ff_1_1FrameFifoFrameFilter.html">Limef::ff::FrameFifoFrameFilter</a>&lt; T &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1thread_1_1Thread.html#a58c9161cd729c34b7cfc3af5d67e9957">framefifo_ff</a></td></tr>
 <tr class="separator:a58c9161cd729c34b7cfc3af5d67e9957 inherit pro_attribs_classLimef_1_1thread_1_1Thread"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3e00850cd9564a52dd35901ee4beff85 inherit pro_attribs_classLimef_1_1thread_1_1Thread" id="r_a3e00850cd9564a52dd35901ee4beff85"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classLimef_1_1ff_1_1EmptyFrameFilter.html">Limef::ff::EmptyFrameFilter</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1thread_1_1Thread.html#a3e00850cd9564a52dd35901ee4beff85">input_ff</a></td></tr>
@@ -285,7 +292,7 @@ class Limef::thread::PollThread&lt; T &gt;</div><p>Example thread demonstrating 
 <div class="line">    fds.push_back({listen_fd_, POLLIN, 0});</div>
 <div class="line">    fds.push_back({<a class="code hl_function" href="classLimef_1_1thread_1_1PollThread.html#a2b2acd008e72c5433b0fa9f359a553cc">getFifoFd</a>(), POLLIN, 0});</div>
 <div class="line"> </div>
-<div class="line">    <span class="keywordflow">while</span> (!<a class="code hl_variable" href="classLimef_1_1thread_1_1Thread.html#af35b3c2c9bdb52517cd295bf1b837f1e">stop_requested_</a>) {</div>
+<div class="line">    <span class="keywordflow">while</span> (!<a class="code hl_variable" href="classLimef_1_1thread_1_1Thread.html#a991d4fc6d1bca78a4cd2207ff39c06f8">stop_requested_</a>) {</div>
 <div class="line">        <span class="keywordtype">int</span> timeout_ms = computeTaskTimeout();</div>
 <div class="line">        poll(fds.data(), fds.size(), timeout_ms);</div>
 <div class="line"> </div>
@@ -305,14 +312,14 @@ class Limef::thread::PollThread&lt; T &gt;</div><p>Example thread demonstrating 
 <div class="line">    }</div>
 <div class="line">    <a class="code hl_function" href="classLimef_1_1thread_1_1Thread.html#a97a5965a49e4892557d1337fe6c14560">postRun</a>();</div>
 <div class="line">}</div>
-<div class="ttc" id="aclassLimef_1_1thread_1_1PollThread_html_a2b2acd008e72c5433b0fa9f359a553cc"><div class="ttname"><a href="classLimef_1_1thread_1_1PollThread.html#a2b2acd008e72c5433b0fa9f359a553cc">Limef::thread::PollThread::getFifoFd</a></div><div class="ttdeci">int getFifoFd() const</div><div class="ttdoc">Get the eventfd for use in poll()</div><div class="ttdef"><b>Definition</b> pollthread.h:94</div></div>
-<div class="ttc" id="aclassLimef_1_1thread_1_1PollThread_html_a6449330f2b6e873bca6776b953936899"><div class="ttname"><a href="classLimef_1_1thread_1_1PollThread.html#a6449330f2b6e873bca6776b953936899">Limef::thread::PollThread::pollFrameFifo</a></div><div class="ttdeci">PollFrameFifo&lt; T &gt; * pollFrameFifo() const</div><div class="ttdoc">Get the PollFrameFifo for tryRead() access.</div><div class="ttdef"><b>Definition</b> pollthread.h:101</div></div>
+<div class="ttc" id="aclassLimef_1_1thread_1_1PollThread_html_a2b2acd008e72c5433b0fa9f359a553cc"><div class="ttname"><a href="classLimef_1_1thread_1_1PollThread.html#a2b2acd008e72c5433b0fa9f359a553cc">Limef::thread::PollThread::getFifoFd</a></div><div class="ttdeci">int getFifoFd() const</div><div class="ttdoc">Get the eventfd for use in poll()</div><div class="ttdef"><b>Definition</b> pollthread.h:91</div></div>
+<div class="ttc" id="aclassLimef_1_1thread_1_1PollThread_html_a6449330f2b6e873bca6776b953936899"><div class="ttname"><a href="classLimef_1_1thread_1_1PollThread.html#a6449330f2b6e873bca6776b953936899">Limef::thread::PollThread::pollFrameFifo</a></div><div class="ttdeci">PollFrameFifo&lt; T &gt; * pollFrameFifo() const</div><div class="ttdoc">Get the PollFrameFifo for tryRead() access.</div><div class="ttdef"><b>Definition</b> pollthread.h:98</div></div>
 <div class="ttc" id="aclassLimef_1_1thread_1_1Thread_html_a463ae243a655cb32b1514a084aad29a9"><div class="ttname"><a href="classLimef_1_1thread_1_1Thread.html#a463ae243a655cb32b1514a084aad29a9">Limef::thread::Thread::task</a></div><div class="ttdeci">virtual std::chrono::microseconds task()</div><div class="ttdoc">Internal/backend method: a periodic task done by the thread (in addition to receiving frames)</div></div>
 <div class="ttc" id="aclassLimef_1_1thread_1_1Thread_html_a68ad8ff6956f7d2e984f65486e44684b"><div class="ttname"><a href="classLimef_1_1thread_1_1Thread.html#a68ad8ff6956f7d2e984f65486e44684b">Limef::thread::Thread::frameTask</a></div><div class="ttdeci">virtual void frameTask(Limef::frame::Frame *frame)</div><div class="ttdoc">Internal/backend method: starting point in processing all frames: uses processFrame and handleSignalF...</div></div>
 <div class="ttc" id="aclassLimef_1_1thread_1_1Thread_html_a6bdc4eb2ee2b1c16d6fedc90e0214f9a"><div class="ttname"><a href="classLimef_1_1thread_1_1Thread.html#a6bdc4eb2ee2b1c16d6fedc90e0214f9a">Limef::thread::Thread::sendSignal__</a></div><div class="ttdeci">void sendSignal__(const Limef::signal::Signal &amp;signal)</div></div>
 <div class="ttc" id="aclassLimef_1_1thread_1_1Thread_html_a6db667e7caba7120e1aa11d8180fff00"><div class="ttname"><a href="classLimef_1_1thread_1_1Thread.html#a6db667e7caba7120e1aa11d8180fff00">Limef::thread::Thread::preRun</a></div><div class="ttdeci">virtual void preRun()</div><div class="ttdoc">Internal/backend method: executed just before the mainLoop starts.</div></div>
 <div class="ttc" id="aclassLimef_1_1thread_1_1Thread_html_a97a5965a49e4892557d1337fe6c14560"><div class="ttname"><a href="classLimef_1_1thread_1_1Thread.html#a97a5965a49e4892557d1337fe6c14560">Limef::thread::Thread::postRun</a></div><div class="ttdeci">virtual void postRun()</div><div class="ttdoc">Internal/backend method: executed immediately before the mainLoop exits.</div></div>
-<div class="ttc" id="aclassLimef_1_1thread_1_1Thread_html_af35b3c2c9bdb52517cd295bf1b837f1e"><div class="ttname"><a href="classLimef_1_1thread_1_1Thread.html#af35b3c2c9bdb52517cd295bf1b837f1e">Limef::thread::Thread::stop_requested_</a></div><div class="ttdeci">bool stop_requested_</div><div class="ttdef"><b>Definition</b> thread.h:193</div></div>
+<div class="ttc" id="aclassLimef_1_1thread_1_1Thread_html_a991d4fc6d1bca78a4cd2207ff39c06f8"><div class="ttname"><a href="classLimef_1_1thread_1_1Thread.html#a991d4fc6d1bca78a4cd2207ff39c06f8">Limef::thread::Thread::stop_requested_</a></div><div class="ttdeci">std::atomic&lt; bool &gt; stop_requested_</div><div class="ttdef"><b>Definition</b> thread.h:191</div></div>
 </div><!-- fragment --> </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="aa13346de03ce375613751892739ea619" name="aa13346de03ce375613751892739ea619"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aa13346de03ce375613751892739ea619">&#9670;&#160;</a></span>PollThread()</h2>
@@ -444,7 +451,7 @@ template&lt;typename T &gt; </div>
 
 <p>Reimplemented from <a class="el" href="classLimef_1_1thread_1_1Thread.html#a68b383b869edf65ee86f8d57cb261508">Limef::thread::Thread&lt; T &gt;</a>.</p>
 
-<p>Reimplemented in <a class="el" href="classLimef_1_1rtsp_1_1RTSPServerThread.html#a086738df1adce128398ee723dcc14062">Limef::rtsp::RTSPServerThread</a>.</p>
+<p>Reimplemented in <a class="el" href="classLimef_1_1rtsp_1_1RTSPServerThread.html#a086738df1adce128398ee723dcc14062">Limef::rtsp::RTSPServerThread</a>, and <a class="el" href="classLimef_1_1webrtc_1_1WebRTCServerThread.html#a9ea28ea4940a712854b919dc81effcfb">Limef::webrtc::WebRTCServerThread</a>.</p>
 
 </div>
 </div>

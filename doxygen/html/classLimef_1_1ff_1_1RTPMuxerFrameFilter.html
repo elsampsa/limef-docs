@@ -22,7 +22,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">My Project<span id="projectnumber">&#160;0.1.0</span>
+   <div id="projectname">My Project<span id="projectnumber">&#160;0.2.0</span>
    </div>
   </td>
  </tr>
@@ -85,7 +85,7 @@ $(function() {
 <p><a class="el" href="classLimef_1_1ff_1_1FrameFilter.html">FrameFilter</a> that muxes elementary streams into RTP packets.  
  <a href="classLimef_1_1ff_1_1RTPMuxerFrameFilter.html#details">More...</a></p>
 
-<p><code>#include &lt;rtp.h&gt;</code></p>
+<p><code>#include &lt;rtpmuxer.h&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for Limef::ff::RTPMuxerFrameFilter:</div>
 <div class="dyncontent">
@@ -182,24 +182,25 @@ Additional Inherited Members</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p><a class="el" href="classLimef_1_1ff_1_1FrameFilter.html">FrameFilter</a> that muxes elementary streams into RTP packets. </p>
-<p>Takes a CodecFrame first to get stream information and generate SDP, then accepts PacketFrames and outputs RTPPacketFrames.</p>
+<p>Takes a CodecFrame first to get stream information and generate SDP, then accepts PacketFrames and outputs RTPFrames.</p>
 <p>Flow: </p><div class="fragment"><div class="line">CodecFrame → <a class="code hl_class" href="classLimef_1_1ff_1_1RTPMuxerFrameFilter.html">RTPMuxerFrameFilter</a></div>
 <div class="line">                ├── SDPFrame (once, downstream)</div>
 <div class="line">                └── (waits <span class="keywordflow">for</span> packets)</div>
 <div class="line"> </div>
 <div class="line">PacketFrame → <a class="code hl_class" href="classLimef_1_1ff_1_1RTPMuxerFrameFilter.html">RTPMuxerFrameFilter</a></div>
-<div class="line">                └── RTPPacketFrame (per RTP packet)</div>
-<div class="ttc" id="aclassLimef_1_1ff_1_1RTPMuxerFrameFilter_html"><div class="ttname"><a href="classLimef_1_1ff_1_1RTPMuxerFrameFilter.html">Limef::ff::RTPMuxerFrameFilter</a></div><div class="ttdoc">FrameFilter that muxes elementary streams into RTP packets.</div><div class="ttdef"><b>Definition</b> rtp.h:87</div></div>
+<div class="line">                └── RTPFrame (per RTP/RTCP packet)</div>
+<div class="ttc" id="aclassLimef_1_1ff_1_1RTPMuxerFrameFilter_html"><div class="ttname"><a href="classLimef_1_1ff_1_1RTPMuxerFrameFilter.html">Limef::ff::RTPMuxerFrameFilter</a></div><div class="ttdoc">FrameFilter that muxes elementary streams into RTP packets.</div><div class="ttdef"><b>Definition</b> rtpmuxer.h:88</div></div>
 </div><!-- fragment --><p>Usage: </p><div class="fragment"><div class="line"><a class="code hl_class" href="classLimef_1_1ff_1_1RTPMuxerFrameFilter.html">RTPMuxerFrameFilter</a> rtp_muxer(<span class="stringliteral">&quot;rtp&quot;</span>);</div>
 <div class="line">rtp_muxer.cc(downstream);</div>
 <div class="line"> </div>
 <div class="line"><span class="comment">// Send CodecFrame first - SDPFrame will be passed downstream</span></div>
 <div class="line">rtp_muxer.go(&amp;codec_frame);</div>
 <div class="line"> </div>
-<div class="line"><span class="comment">// Then send packets - RTPPacketFrames will be passed downstream</span></div>
+<div class="line"><span class="comment">// Then send packets - RTPFrames will be passed downstream</span></div>
 <div class="line">rtp_muxer.go(&amp;packet_frame);</div>
 </div><!-- fragment --><p>The RTP muxer uses FFmpeg's RTP format. Each track gets its own AVFormatContext because RTP only supports one stream per context. SDP is generated from all tracks using av_sdp_create().</p>
-<h2><a class="anchor" id="autotoc_md22"></a>
+<p>Incoming PacketFrames must already be in the correct bitstream format (e.g. Annex B for H.264/H.265). Use <a class="el" href="classLimef_1_1ff_1_1AnnexBFrameFilter.html" title="FrameFilter that converts H.264/H.265 video from AVCC to Annex B format.">AnnexBFrameFilter</a> upstream if needed.</p>
+<h2><a class="anchor" id="autotoc_md35"></a>
 Codec Compatibility</h2>
 <p>Best supported combinations for wide client compatibility:</p>
 <table class="markdownTable">
@@ -301,8 +302,8 @@ Codec Compatibility</h2>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>/home/sampsa/limef/limef/src/framefilter/<a class="el" href="rtp_8h.html">rtp.h</a></li>
-<li>/home/sampsa/limef/limef/src/framefilter/<a class="el" href="rtp_8cpp.html">rtp.cpp</a></li>
+<li>/home/sampsa/limef/limef/src/framefilter/<a class="el" href="rtpmuxer_8h.html">rtpmuxer.h</a></li>
+<li>/home/sampsa/limef/limef/src/framefilter/<a class="el" href="rtpmuxer_8cpp.html">rtpmuxer.cpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

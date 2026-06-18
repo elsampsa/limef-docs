@@ -22,7 +22,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">My Project<span id="projectnumber">&#160;0.1.0</span>
+   <div id="projectname">My Project<span id="projectnumber">&#160;0.2.0</span>
    </div>
   </td>
  </tr>
@@ -100,6 +100,9 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:ae019604afb153a36c907b435a2f338a5" id="r_ae019604afb153a36c907b435a2f338a5"><td class="memItemLeft" align="right" valign="top">std::vector&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLimef_1_1rtsp_1_1RTPStream.html#ae019604afb153a36c907b435a2f338a5">session_fds</a></td></tr>
 <tr class="memdesc:ae019604afb153a36c907b435a2f338a5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Socket fds of subscribed clients.  <br /></td></tr>
 <tr class="separator:ae019604afb153a36c907b435a2f338a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abb4e17e5ecc9cb1d562c081e70ddf2c4" id="r_abb4e17e5ecc9cb1d562c081e70ddf2c4"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLimef_1_1rtsp_1_1RTPStream.html#abb4e17e5ecc9cb1d562c081e70ddf2c4">paused</a> {false}</td></tr>
+<tr class="memdesc:abb4e17e5ecc9cb1d562c081e70ddf2c4"><td class="mdescLeft">&#160;</td><td class="mdescRight">When true, RTP forwarding is silently suppressed.  <br /></td></tr>
+<tr class="separator:abb4e17e5ecc9cb1d562c081e70ddf2c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acf7446136152ced5ec920f7923abe9d2" id="r_acf7446136152ced5ec920f7923abe9d2"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLimef_1_1rtsp_1_1RTPStream.html#acf7446136152ced5ec920f7923abe9d2">udp_rtp_fd</a> = -1</td></tr>
 <tr class="memdesc:acf7446136152ced5ec920f7923abe9d2"><td class="mdescLeft">&#160;</td><td class="mdescRight">UDP socket for sending RTP.  <br /></td></tr>
 <tr class="separator:acf7446136152ced5ec920f7923abe9d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -116,6 +119,22 @@ Public Attributes</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Per-stream state. </p>
 </div><h2 class="groupheader">Member Data Documentation</h2>
+<a id="abb4e17e5ecc9cb1d562c081e70ddf2c4" name="abb4e17e5ecc9cb1d562c081e70ddf2c4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abb4e17e5ecc9cb1d562c081e70ddf2c4">&#9670;&#160;</a></span>paused</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Limef::rtsp::RTPStream::paused {false}</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>When true, RTP forwarding is silently suppressed. </p>
+
+</div>
+</div>
 <a id="a92bd12f58602e7d9111a6709d65fdd48" name="a92bd12f58602e7d9111a6709d65fdd48"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a92bd12f58602e7d9111a6709d65fdd48">&#9670;&#160;</a></span>sdp</h2>
 

@@ -22,7 +22,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">My Project<span id="projectnumber">&#160;0.1.0</span>
+   <div id="projectname">My Project<span id="projectnumber">&#160;0.2.0</span>
    </div>
   </td>
  </tr>
@@ -77,8 +77,7 @@ $(function() {
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
 <a href="#enum-members">Enumerations</a> &#124;
-<a href="#func-members">Functions</a> &#124;
-<a href="#var-members">Variables</a>  </div>
+<a href="#func-members">Functions</a>  </div>
   <div class="headertitle"><div class="title">Limef::frame Namespace Reference</div></div>
 </div><!--header-->
 <div class="contents">
@@ -112,8 +111,8 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1frame_1_1RawFrame.html">RawFrame</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classLimef_1_1frame_1_1Frame.html" title="Frame base class.">Frame</a> containing raw muxed stream data.  <a href="classLimef_1_1frame_1_1RawFrame.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1frame_1_1RTPPacketFrame.html">RTPPacketFrame</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classLimef_1_1frame_1_1Frame.html" title="Frame base class.">Frame</a> containing RTP or RTCP packet data.  <a href="classLimef_1_1frame_1_1RTPPacketFrame.html#details">More...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1frame_1_1RTPFrame.html">RTPFrame</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classLimef_1_1frame_1_1Frame.html" title="Frame base class.">Frame</a> containing RTP or RTCP packet data.  <a href="classLimef_1_1frame_1_1RTPFrame.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1frame_1_1SDPFrame.html">SDPFrame</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classLimef_1_1frame_1_1Frame.html" title="Frame base class.">Frame</a> containing SDP (Session Description Protocol) data.  <a href="classLimef_1_1frame_1_1SDPFrame.html#details">More...</a><br /></td></tr>
@@ -133,13 +132,13 @@ Enumerations</h2></td></tr>
 <tr class="memitem:a2a0e8597a20bf03625897c499c620c6e" id="r_a2a0e8597a20bf03625897c499c620c6e"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLimef_1_1frame.html#a2a0e8597a20bf03625897c499c620c6e">BufferLocation</a> { <br />
 &#160;&#160;<a class="el" href="namespaceLimef_1_1frame.html#a2a0e8597a20bf03625897c499c620c6ea2b55387dd066c5bac646ac61543d152d">CPU</a>
 , <a class="el" href="namespaceLimef_1_1frame.html#a2a0e8597a20bf03625897c499c620c6eab80a85e9723eafdfdfb1221ae4bb4bf3">VAAPI</a>
+, <a class="el" href="namespaceLimef_1_1frame.html#a2a0e8597a20bf03625897c499c620c6ea7c58ab21fab79e4a6b4abd65c4147b3b">CUDA_FFMPEG</a>
 , <a class="el" href="namespaceLimef_1_1frame.html#a2a0e8597a20bf03625897c499c620c6eaa33b7755e5f9b504d2d038eaca4ff28d">CUDA</a>
-, <a class="el" href="namespaceLimef_1_1frame.html#a2a0e8597a20bf03625897c499c620c6ea4efb999ba6e2fb45ecba889585efac18">DMABuf</a>
 , <br />
 &#160;&#160;<a class="el" href="namespaceLimef_1_1frame.html#a2a0e8597a20bf03625897c499c620c6ea38625270231b647116c80bcbc4f9d1d8">Vulkan</a>
 <br />
  }</td></tr>
-<tr class="memdesc:a2a0e8597a20bf03625897c499c620c6e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Location of frame buffer memory.  <a href="namespaceLimef_1_1frame.html#a2a0e8597a20bf03625897c499c620c6e">More...</a><br /></td></tr>
+<tr class="memdesc:a2a0e8597a20bf03625897c499c620c6e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Location of frame buffer memory (authoritative — set explicitly, never inferred)  <a href="namespaceLimef_1_1frame.html#a2a0e8597a20bf03625897c499c620c6e">More...</a><br /></td></tr>
 <tr class="separator:a2a0e8597a20bf03625897c499c620c6e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab9cc5488441f6cdcaffb6d29b679a4de" id="r_ab9cc5488441f6cdcaffb6d29b679a4de"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLimef_1_1frame.html#ab9cc5488441f6cdcaffb6d29b679a4de">FrameClass</a> { <br />
 &#160;&#160;<a class="el" href="namespaceLimef_1_1frame.html#ab9cc5488441f6cdcaffb6d29b679a4deabbb93ef26e3c101ff11cdd21cab08a94">Null</a>
@@ -153,7 +152,7 @@ Enumerations</h2></td></tr>
 , <a class="el" href="namespaceLimef_1_1frame.html#ab9cc5488441f6cdcaffb6d29b679a4deaeae835e83c0494a376229f254f7d3392">Stream</a>
 , <br />
 &#160;&#160;<a class="el" href="namespaceLimef_1_1frame.html#ab9cc5488441f6cdcaffb6d29b679a4dea081ef54584e3dfae6e72ffa694daed91">SDP</a>
-, <a class="el" href="namespaceLimef_1_1frame.html#ab9cc5488441f6cdcaffb6d29b679a4deaab214ca8a41f9bf570d56d744e7c78c2">RTPPacket</a>
+, <a class="el" href="namespaceLimef_1_1frame.html#ab9cc5488441f6cdcaffb6d29b679a4deaf82a692bd388b13723eef7a7f0fba8f5">RTP</a>
 , <a class="el" href="namespaceLimef_1_1frame.html#ab9cc5488441f6cdcaffb6d29b679a4deaf20fc369b14cb5d40e695dab98bcb742">Tensor</a>
 <br />
  }</td></tr>
@@ -173,6 +172,8 @@ Enumerations</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
+<tr class="memitem:a7c5d35952d122a51a03000ec97a27c1c" id="r_a7c5d35952d122a51a03000ec97a27c1c"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLimef_1_1frame.html#a7c5d35952d122a51a03000ec97a27c1c">bufferLocationName</a> (<a class="el" href="namespaceLimef_1_1frame.html#a2a0e8597a20bf03625897c499c620c6e">BufferLocation</a> loc)</td></tr>
+<tr class="separator:a7c5d35952d122a51a03000ec97a27c1c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7021450b83e1a519cc7a6931a1323b0b" id="r_a7021450b83e1a519cc7a6931a1323b0b"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLimef_1_1frame.html#a7021450b83e1a519cc7a6931a1323b0b">alignSize</a> (size_t size, size_t alignment=32)</td></tr>
 <tr class="memdesc:a7021450b83e1a519cc7a6931a1323b0b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Align a size to the specified boundary. Used by some frame classes to de/serialize data.  <br /></td></tr>
 <tr class="separator:a7021450b83e1a519cc7a6931a1323b0b"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -181,12 +182,6 @@ Functions</h2></td></tr>
 <tr class="separator:a5ac5b70666545c154d11edefd79f7fe2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1a8cf163b15bfda901136b0c9fed9a43" id="r_a1a8cf163b15bfda901136b0c9fed9a43"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLimef_1_1frame.html#a1a8cf163b15bfda901136b0c9fed9a43">dtypeName</a> (<a class="el" href="namespaceLimef_1_1frame.html#a35c6dbafa1f42654aa4fa1e1e2487810">DType</a> dtype) noexcept</td></tr>
 <tr class="separator:a1a8cf163b15bfda901136b0c9fed9a43"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
-Variables</h2></td></tr>
-<tr class="memitem:acedac4f711f60935e74c8bfef8c910ba" id="r_acedac4f711f60935e74c8bfef8c910ba"><td class="memItemLeft" align="right" valign="top">constexpr int64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLimef_1_1frame.html#acedac4f711f60935e74c8bfef8c910ba">RTP_NOPTS_VALUE</a> = INT64_MIN</td></tr>
-<tr class="memdesc:acedac4f711f60935e74c8bfef8c910ba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sentinel value for invalid PTS/DTS (same as AV_NOPTS_VALUE)  <br /></td></tr>
-<tr class="separator:acedac4f711f60935e74c8bfef8c910ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Frames encapsulate data and signals. </p>
@@ -211,18 +206,19 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Location of frame buffer memory. </p>
-<p>Used to track where the decoded frame data lives, enabling zero-copy pipelines when source and destination support the same buffer type. </p>
+<p>Location of frame buffer memory (authoritative — set explicitly, never inferred) </p>
+<p>Every <a class="el" href="classLimef_1_1frame_1_1DecodedFrame.html" title="Frame containing either decoded video, audio data or both.">DecodedFrame</a> carries a bufferlocation_ member that is the single source of truth for where pixel data lives. Whoever creates or transforms a frame is responsible for setting it via setBufferLocation(). updateFrom() sets it on the destination frame after completing the transfer.</p>
+<p>Frames are always emitted as CPU or CUDA — DMA-buf fds are consumed internally by V4L2NVDecoder and ArgusCameraThread before any frame reaches downstream filters. </p>
 <table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a2a0e8597a20bf03625897c499c620c6ea2b55387dd066c5bac646ac61543d152d" name="a2a0e8597a20bf03625897c499c620c6ea2b55387dd066c5bac646ac61543d152d"></a>CPU&#160;</td><td class="fielddoc"><p>System RAM (software decode or downloaded from GPU) </p>
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a2a0e8597a20bf03625897c499c620c6ea2b55387dd066c5bac646ac61543d152d" name="a2a0e8597a20bf03625897c499c620c6ea2b55387dd066c5bac646ac61543d152d"></a>CPU&#160;</td><td class="fielddoc"><p>System RAM (AV_PIX_FMT_NV12 / YUV420P / etc.) </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a2a0e8597a20bf03625897c499c620c6eab80a85e9723eafdfdfb1221ae4bb4bf3" name="a2a0e8597a20bf03625897c499c620c6eab80a85e9723eafdfdfb1221ae4bb4bf3"></a>VAAPI&#160;</td><td class="fielddoc"><p>Intel/AMD GPU via VAAPI. </p>
+<tr><td class="fieldname"><a id="a2a0e8597a20bf03625897c499c620c6eab80a85e9723eafdfdfb1221ae4bb4bf3" name="a2a0e8597a20bf03625897c499c620c6eab80a85e9723eafdfdfb1221ae4bb4bf3"></a>VAAPI&#160;</td><td class="fielddoc"><p>GPU via ffmpeg hw_frames_ctx / VAAPI device. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a2a0e8597a20bf03625897c499c620c6eaa33b7755e5f9b504d2d038eaca4ff28d" name="a2a0e8597a20bf03625897c499c620c6eaa33b7755e5f9b504d2d038eaca4ff28d"></a>CUDA&#160;</td><td class="fielddoc"><p>NVIDIA GPU via CUDA. </p>
+<tr><td class="fieldname"><a id="a2a0e8597a20bf03625897c499c620c6ea7c58ab21fab79e4a6b4abd65c4147b3b" name="a2a0e8597a20bf03625897c499c620c6ea7c58ab21fab79e4a6b4abd65c4147b3b"></a>CUDA_FFMPEG&#160;</td><td class="fielddoc"><p>GPU via ffmpeg hw_frames_ctx / CUDA device (FFmpeg hw decoder output) </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a2a0e8597a20bf03625897c499c620c6ea4efb999ba6e2fb45ecba889585efac18" name="a2a0e8597a20bf03625897c499c620c6ea4efb999ba6e2fb45ecba889585efac18"></a>DMABuf&#160;</td><td class="fielddoc"><p>Linux DMA buffer (V4L2, Jetson) </p>
+<tr><td class="fieldname"><a id="a2a0e8597a20bf03625897c499c620c6eaa33b7755e5f9b504d2d038eaca4ff28d" name="a2a0e8597a20bf03625897c499c620c6eaa33b7755e5f9b504d2d038eaca4ff28d"></a>CUDA&#160;</td><td class="fielddoc"><p>GPU via plain cudaMalloc — no hw_frames_ctx, data[0]/[1] are device ptrs. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a2a0e8597a20bf03625897c499c620c6ea38625270231b647116c80bcbc4f9d1d8" name="a2a0e8597a20bf03625897c499c620c6ea38625270231b647116c80bcbc4f9d1d8"></a>Vulkan&#160;</td><td class="fielddoc"><p>Vulkan image (future) </p>
+<tr><td class="fieldname"><a id="a2a0e8597a20bf03625897c499c620c6ea38625270231b647116c80bcbc4f9d1d8" name="a2a0e8597a20bf03625897c499c620c6ea38625270231b647116c80bcbc4f9d1d8"></a>Vulkan&#160;</td><td class="fielddoc"><p>GPU via ffmpeg hw_frames_ctx / Vulkan device. </p>
 </td></tr>
 </table>
 
@@ -300,7 +296,7 @@ Variables</h2></td></tr>
 </td></tr>
 <tr><td class="fieldname"><a id="ab9cc5488441f6cdcaffb6d29b679a4dea081ef54584e3dfae6e72ffa694daed91" name="ab9cc5488441f6cdcaffb6d29b679a4dea081ef54584e3dfae6e72ffa694daed91"></a>SDP&#160;</td><td class="fielddoc"><p>identifies class <code><a class="el" href="classLimef_1_1frame_1_1SDPFrame.html" title="Frame containing SDP (Session Description Protocol) data.">SDPFrame</a></code> (SDP for RTSP) </p>
 </td></tr>
-<tr><td class="fieldname"><a id="ab9cc5488441f6cdcaffb6d29b679a4deaab214ca8a41f9bf570d56d744e7c78c2" name="ab9cc5488441f6cdcaffb6d29b679a4deaab214ca8a41f9bf570d56d744e7c78c2"></a>RTPPacket&#160;</td><td class="fielddoc"><p>identifies class <code><a class="el" href="classLimef_1_1frame_1_1RTPPacketFrame.html" title="Frame containing RTP or RTCP packet data.">RTPPacketFrame</a></code> (RTP/RTCP packets) </p>
+<tr><td class="fieldname"><a id="ab9cc5488441f6cdcaffb6d29b679a4deaf82a692bd388b13723eef7a7f0fba8f5" name="ab9cc5488441f6cdcaffb6d29b679a4deaf82a692bd388b13723eef7a7f0fba8f5"></a>RTP&#160;</td><td class="fielddoc"><p>identifies class <code><a class="el" href="classLimef_1_1frame_1_1RTPFrame.html" title="Frame containing RTP or RTCP packet data.">RTPFrame</a></code> (RTP/RTCP packets) </p>
 </td></tr>
 <tr><td class="fieldname"><a id="ab9cc5488441f6cdcaffb6d29b679a4deaf20fc369b14cb5d40e695dab98bcb742" name="ab9cc5488441f6cdcaffb6d29b679a4deaf20fc369b14cb5d40e695dab98bcb742"></a>Tensor&#160;</td><td class="fielddoc"><p>identifies class <code><a class="el" href="classLimef_1_1frame_1_1TensorFrame.html" title="General-purpose multi-plane tensor frame, decoupled from FFmpeg.">TensorFrame</a></code> (general N-plane tensor, CPU or GPU) </p>
 </td></tr>
@@ -355,6 +351,32 @@ Variables</h2></td></tr>
 
 </div>
 </div>
+<a id="a7c5d35952d122a51a03000ec97a27c1c" name="a7c5d35952d122a51a03000ec97a27c1c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7c5d35952d122a51a03000ec97a27c1c">&#9670;&#160;</a></span>bufferLocationName()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char * Limef::frame::bufferLocationName </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="namespaceLimef_1_1frame.html#a2a0e8597a20bf03625897c499c620c6e">BufferLocation</a>&#160;</td>
+          <td class="paramname"><em>loc</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a1a8cf163b15bfda901136b0c9fed9a43" name="a1a8cf163b15bfda901136b0c9fed9a43"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a1a8cf163b15bfda901136b0c9fed9a43">&#9670;&#160;</a></span>dtypeName()</h2>
 
@@ -406,31 +428,6 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Bytes per element for a given DType. </p>
-
-</div>
-</div>
-<h2 class="groupheader">Variable Documentation</h2>
-<a id="acedac4f711f60935e74c8bfef8c910ba" name="acedac4f711f60935e74c8bfef8c910ba"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#acedac4f711f60935e74c8bfef8c910ba">&#9670;&#160;</a></span>RTP_NOPTS_VALUE</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">constexpr int64_t Limef::frame::RTP_NOPTS_VALUE = INT64_MIN</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Sentinel value for invalid PTS/DTS (same as AV_NOPTS_VALUE) </p>
 
 </div>
 </div>

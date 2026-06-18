@@ -22,7 +22,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">My Project<span id="projectnumber">&#160;0.1.0</span>
+   <div id="projectname">My Project<span id="projectnumber">&#160;0.2.0</span>
    </div>
   </td>
  </tr>
@@ -105,6 +105,9 @@ Functions</h2></td></tr>
 <tr class="separator:ad261b2e0cae2c29520082cd43ffc7f4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7123661786c4de5395b6afd1d02c7126" id="r_a7123661786c4de5395b6afd1d02c7126"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespaceLimef_1_1timestamp.html#a9e3025bf67a8933e000ba4403e3cfc26">Timestamp</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLimef_1_1timestamp.html#a7123661786c4de5395b6afd1d02c7126">fromTimePoint</a> (std::chrono::system_clock::time_point tp)</td></tr>
 <tr class="separator:a7123661786c4de5395b6afd1d02c7126"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3f92657b0775ac2e78193c8212b5b627" id="r_a3f92657b0775ac2e78193c8212b5b627"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLimef_1_1timestamp.html#a3f92657b0775ac2e78193c8212b5b627">formatAbsoluteTimestamp</a> (<a class="el" href="namespaceLimef_1_1timestamp.html#a9e3025bf67a8933e000ba4403e3cfc26">Timestamp</a> ts)</td></tr>
+<tr class="memdesc:a3f92657b0775ac2e78193c8212b5b627"><td class="mdescLeft">&#160;</td><td class="mdescRight">Format an absolute timestamp as a human-readable string.  <br /></td></tr>
+<tr class="separator:a3f92657b0775ac2e78193c8212b5b627"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Typedef Documentation</h2>
 <a id="a9e3025bf67a8933e000ba4403e3cfc26" name="a9e3025bf67a8933e000ba4403e3cfc26"></a>
@@ -122,6 +125,43 @@ Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
+<a id="a3f92657b0775ac2e78193c8212b5b627" name="a3f92657b0775ac2e78193c8212b5b627"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3f92657b0775ac2e78193c8212b5b627">&#9670;&#160;</a></span>formatAbsoluteTimestamp()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string Limef::timestamp::formatAbsoluteTimestamp </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="namespaceLimef_1_1timestamp.html#a9e3025bf67a8933e000ba4403e3cfc26">Timestamp</a>&#160;</td>
+          <td class="paramname"><em>ts</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Format an absolute timestamp as a human-readable string. </p>
+<p>Output format: <code>YYYY-DOY-HH-SSSSSS.ffffff</code></p><ul>
+<li>YYYY : calendar year</li>
+<li>DOY : day of year (001–366)</li>
+<li>HH : hour of day (00–23)</li>
+<li>SSSSSS: second of the hour (000000–035999)</li>
+<li>ffffff : fractional seconds (6 digits, microsecond resolution)</li>
+</ul>
+<p>Example: <code>2027-132-12-003100.141230</code></p>
+<p>If the timestamp is invalid (≤ 0) the string <code>&lt;INVALID&gt;</code> is returned. </p>
+
+</div>
+</div>
 <a id="a7123661786c4de5395b6afd1d02c7126" name="a7123661786c4de5395b6afd1d02c7126"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a7123661786c4de5395b6afd1d02c7126">&#9670;&#160;</a></span>fromTimePoint()</h2>
 

@@ -22,7 +22,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">My Project<span id="projectnumber">&#160;0.1.0</span>
+   <div id="projectname">My Project<span id="projectnumber">&#160;0.2.0</span>
    </div>
   </td>
  </tr>
@@ -81,7 +81,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>CPU converter subclasses for DecodedToTensorFrameFilter.  
+<p>CPU converter for DecodedToTensorFrameFilter.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="decoded__to__tensor_8h.html">decoded_to_tensor.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
@@ -89,7 +89,7 @@ Include dependency graph for decoded_to_tensor_cpu.h:</div>
 <div class="dyncontent">
 <div class="center"><img src="decoded__to__tensor__cpu_8h__incl.png" border="0" usemap="#a_2home_2sampsa_2limef_2limef_2src_2framefilter_2decoded__to__tensor__cpu_8h" alt=""/></div>
 <map name="a_2home_2sampsa_2limef_2limef_2src_2framefilter_2decoded__to__tensor__cpu_8h" id="a_2home_2sampsa_2limef_2limef_2src_2framefilter_2decoded__to__tensor__cpu_8h">
-<area shape="rect" title="CPU converter subclasses for DecodedToTensorFrameFilter." alt="" coords="1739,5,1929,60"/>
+<area shape="rect" title="CPU converter for DecodedToTensorFrameFilter." alt="" coords="1739,5,1929,60"/>
 <area shape="rect" href="decoded__to__tensor_8h.html" title="DecodedToTensorFrameFilter — converts DecodedFrame → TensorFrame (c, h, w)" alt="" coords="1756,108,1912,133"/>
 <area shape="poly" title=" " alt="" coords="1837,60,1837,94,1831,94,1831,60"/>
 <area shape="rect" href="simple_8h.html" title="FrameFilter virtual class for simple chainable framefilters." alt="" coords="1647,181,1725,207"/>
@@ -199,21 +199,18 @@ This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="decoded__to__tensor__cpu_8h__dep__incl.png" border="0" usemap="#a_2home_2sampsa_2limef_2limef_2src_2framefilter_2decoded__to__tensor__cpu_8hdep" alt=""/></div>
 <map name="a_2home_2sampsa_2limef_2limef_2src_2framefilter_2decoded__to__tensor__cpu_8hdep" id="a_2home_2sampsa_2limef_2limef_2src_2framefilter_2decoded__to__tensor__cpu_8hdep">
-<area shape="rect" title="CPU converter subclasses for DecodedToTensorFrameFilter." alt="" coords="104,5,295,60"/>
+<area shape="rect" title="CPU converter for DecodedToTensorFrameFilter." alt="" coords="104,5,295,60"/>
 <area shape="rect" href="decoded__to__tensor_8cpp.html" title="DecodedToTensorFrameFilter implementation." alt="" coords="5,108,180,163"/>
 <area shape="poly" title=" " alt="" coords="163,72,122,110,119,106,160,68"/>
-<area shape="rect" href="decoded__to__tensor__cpu_8cpp.html" title="CPU converter implementations for DecodedToTensorFrameFilter." alt="" coords="204,108,411,163"/>
+<area shape="rect" href="decoded__to__tensor__cpu_8cpp.html" title="CpuSwScaleConverter — converts any CPU DecodedFrame to a CHW TensorFrame." alt="" coords="204,108,411,163"/>
 <area shape="poly" title=" " alt="" coords="240,68,281,106,277,110,236,72"/>
 </map>
 </div>
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1ff_1_1GBRPConverter.html">Limef::ff::GBRPConverter</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts AV_PIX_FMT_GBRP (planar GBR, 8-bit) → TensorFrame (c, h, w) UInt8.  <a href="classLimef_1_1ff_1_1GBRPConverter.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1ff_1_1GRAY8Converter.html">Limef::ff::GRAY8Converter</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts AV_PIX_FMT_GRAY8 → TensorFrame (1, h, w) UInt8.  <a href="classLimef_1_1ff_1_1GRAY8Converter.html#details">More...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1ff_1_1CpuSwScaleConverter.html">Limef::ff::CpuSwScaleConverter</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts any CPU DecodedFrame → TensorFrame (c, h, w) UInt8 via libswscale.  <a href="classLimef_1_1ff_1_1CpuSwScaleConverter.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="namespaces" name="namespaces"></a>
@@ -225,19 +222,38 @@ Namespaces</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>CPU converter subclasses for DecodedToTensorFrameFilter. </p>
+<div class="textblock"><p>CPU converter for DecodedToTensorFrameFilter. </p>
 <dl class="section author"><dt>Author</dt><dd>Sampsa Riikonen </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>2025 </dd></dl>
 <dl class="section version"><dt>Version</dt><dd>1.6.1</dd></dl>
-<h2><a class="anchor" id="autotoc_md12"></a>
-Expected usage</h2>
-<p>Prepend a SwScaleFrameFilter that normalises the pixel format to either AV_PIX_FMT_GBRP (colour) or AV_PIX_FMT_GRAY8 (greyscale). Any other format arriving here is rejected (one-time error log, filter deactivates).</p>
-<h2><a class="anchor" id="autotoc_md13"></a>
-Why GBRP and not packed RGB24?</h2>
-<p>GBRP is planar: each channel (G, B, R) lives in its own contiguous AVFrame plane. Converting to the output shape (C, H, W) is then three row-by-row memcpys in the desired channel order — no element-wise scatter needed. Packed RGB24 (interleaved RGBRGB…) would require de-interleaving, which is roughly 3× more memory traffic for the same result.</p>
-<h2><a class="anchor" id="autotoc_md14"></a>
-Future: direct format converters</h2>
-<p>A single-copy path (e.g. YUV420P → CHW directly, without the SwScale hop) is possible but would need SIMD (SSE/AVX/NEON) to match SwScale's throughput. Add such converters here only when profiling shows the two-copy path is a real bottleneck. </p>
+<h2><a class="anchor" id="autotoc_md21"></a>
+Design</h2>
+<p>A single <code>CpuSwScaleConverter</code> replaces the former GBRP / GRAY8 / NV12 three-converter approach. It accepts any CPU-location DecodedFrame and uses FFmpeg's <code>libswscale</code> to convert the input pixel format to either:</p>
+<ul>
+<li><code>AV_PIX_FMT_GBRP</code> (colour) — planar GBR, 8-bit per channel</li>
+<li><code>AV_PIX_FMT_GRAY8</code> (greyscale) — detected from the format descriptor</li>
+</ul>
+<p>The GBRP planes are written <b>directly</b> into the TensorFrame CHW buffer via permuted destination pointers — no second memcpy pass:</p>
+<div class="fragment"><div class="line">GBRP plane order: dst[0]=G, dst[1]=B, dst[2]=R</div>
+<div class="line"> </div>
+<div class="line">CHW RGB (ch0=R, ch1=G, ch2=B):</div>
+<div class="line">  dst[0] → out + 1·H·W   (G → slot 1)</div>
+<div class="line">  dst[1] → out + 2·H·W   (B → slot 2)</div>
+<div class="line">  dst[2] → out + 0·H·W   (R → slot 0)</div>
+<div class="line"> </div>
+<div class="line">CHW BGR (ch0=B, ch1=G, ch2=R):</div>
+<div class="line">  dst[0] → out + 1·H·W   (G → slot 1)</div>
+<div class="line">  dst[1] → out + 0·H·W   (B → slot 0)</div>
+<div class="line">  dst[2] → out + 2·H·W   (R → slot 2)</div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md22"></a>
+SwsContext lifecycle</h2>
+<p>The context is cached across frames and recreated only when the source pixel format or frame dimensions change.</p>
+<h2><a class="anchor" id="autotoc_md23"></a>
+Colorspace correctness</h2>
+<p><code>libswscale</code> reads <code>AVFrame::colorspace</code> and <code>AVFrame::color_range</code> and applies the correct YCbCr→RGB matrix automatically. All hardware-decoder outputs (bcm2835-codec NV12, vicodec YUV420P, USB webcam YUYV422, etc.) are handled.</p>
+<h2><a class="anchor" id="autotoc_md24"></a>
+No SwScaleFrameFilter prefix needed</h2>
+<p>Unlike the former design, callers do NOT need to prepend a SwScaleFrameFilter. The converter internally handles any CPU pixel format. </p>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

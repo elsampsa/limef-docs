@@ -207,7 +207,7 @@
     <li><a href="https://github.com/elsampsa/limef-apps" target="_blank" rel="noopener noreferrer"><i class="fa fa-github" style="font-size: 16pt"></i> App examples </a></li>
     <li><a href="https://github.com/elsampsa/limef-plugins" target="_blank" rel="noopener noreferrer"><i class="fa fa-github" style="font-size: 16pt"></i> Plugin examples </a></li>
     <li><a href="https://github.com/elsampsa/limef-docs/issues" target="_blank" rel="noopener noreferrer"><i class="fa fa-bug" style="font-size: 16pt"></i> Public issues </a></li>
-    <li><a href="https://github.com/elsampsa/limef-releases/releases" target="_blank" rel="noopener noreferrer"><i class="fa fa-download" style="font-size: 16pt"></i> Releases </a></li>
+    <li><a href="https://github.com/elsampsa/limef-releases/releases" target="_blank" rel="noopener noreferrer"><i class="fa fa-download" style="font-size: 16pt"></i> Releases (private) </a></li>
     <li><a href="https://github.com/sponsors/elsampsa" target="_blank" rel="noopener noreferrer"><i class="fa fa-heart" style="font-size: 16pt"></i> Sponsor </a></li>
 </ul>
 </div><form class="sidebar-search-container" method="get" action="../search.html" role="search">
@@ -237,7 +237,7 @@
 <li class="toctree-l2"><a class="reference internal" href="shmem.html">Shared Memory</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../distribution.html">Distributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../distribution.html">Distributing and Licensing</a></li>
 </ul>
 
 </div>
@@ -290,37 +290,38 @@ The base class is <a class="reference internal" href="#_CPPv4N5Limef5frame5Frame
 <dl class="cpp enum-class">
 <dt class="sig sig-object cpp" id="_CPPv4N5Limef5frame14BufferLocationE">
 <span id="_CPPv3N5Limef5frame14BufferLocationE"></span><span id="_CPPv2N5Limef5frame14BufferLocationE"></span><span class="target" id="namespaceLimef_1_1frame_1a2a0e8597a20bf03625897c499c620c6e"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">BufferLocation</span></span></span><a class="headerlink" href="#_CPPv4N5Limef5frame14BufferLocationE" title="Link to this definition">¶</a><br /></dt>
-<dd><p>Location of frame buffer memory. </p>
-<p>Used to track where the decoded frame data lives, enabling zero-copy pipelines when source and destination support the same buffer type. </p>
+<dd><p>Location of frame buffer memory (authoritative — set explicitly, never inferred) </p>
+<p>Every DecodedFrame carries a bufferlocation_ member that is the single source of truth for where pixel data lives. Whoever creates or transforms a frame is responsible for setting it via setBufferLocation(). updateFrom() sets it on the destination frame after completing the transfer.</p>
+<p>Frames are always emitted as CPU or CUDA — DMA-buf fds are consumed internally by V4L2NVDecoder and ArgusCameraThread before any frame reaches downstream filters. </p>
 <p><em>Values:</em></p>
 <dl class="cpp enumerator">
 <dt class="sig sig-object cpp" id="_CPPv4N5Limef5frame14BufferLocation3CPUE">
 <span id="_CPPv3N5Limef5frame14BufferLocation3CPUE"></span><span id="_CPPv2N5Limef5frame14BufferLocation3CPUE"></span><span class="target" id="namespaceLimef_1_1frame_1a2a0e8597a20bf03625897c499c620c6ea2b55387dd066c5bac646ac61543d152d"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">CPU</span></span></span><a class="headerlink" href="#_CPPv4N5Limef5frame14BufferLocation3CPUE" title="Link to this definition">¶</a><br /></dt>
-<dd><p>System RAM (software decode or downloaded from GPU) </p>
+<dd><p>System RAM (AV_PIX_FMT_NV12 / YUV420P / etc.) </p>
 </dd></dl>
 
 <dl class="cpp enumerator">
 <dt class="sig sig-object cpp" id="_CPPv4N5Limef5frame14BufferLocation5VAAPIE">
 <span id="_CPPv3N5Limef5frame14BufferLocation5VAAPIE"></span><span id="_CPPv2N5Limef5frame14BufferLocation5VAAPIE"></span><span class="target" id="namespaceLimef_1_1frame_1a2a0e8597a20bf03625897c499c620c6eab80a85e9723eafdfdfb1221ae4bb4bf3"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">VAAPI</span></span></span><a class="headerlink" href="#_CPPv4N5Limef5frame14BufferLocation5VAAPIE" title="Link to this definition">¶</a><br /></dt>
-<dd><p>Intel/AMD GPU via VAAPI. </p>
+<dd><p>GPU via ffmpeg hw_frames_ctx / VAAPI device. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef5frame14BufferLocation11CUDA_FFMPEGE">
+<span id="_CPPv3N5Limef5frame14BufferLocation11CUDA_FFMPEGE"></span><span id="_CPPv2N5Limef5frame14BufferLocation11CUDA_FFMPEGE"></span><span class="target" id="namespaceLimef_1_1frame_1a2a0e8597a20bf03625897c499c620c6ea7c58ab21fab79e4a6b4abd65c4147b3b"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">CUDA_FFMPEG</span></span></span><a class="headerlink" href="#_CPPv4N5Limef5frame14BufferLocation11CUDA_FFMPEGE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>GPU via ffmpeg hw_frames_ctx / CUDA device (FFmpeg hw decoder output) </p>
 </dd></dl>
 
 <dl class="cpp enumerator">
 <dt class="sig sig-object cpp" id="_CPPv4N5Limef5frame14BufferLocation4CUDAE">
 <span id="_CPPv3N5Limef5frame14BufferLocation4CUDAE"></span><span id="_CPPv2N5Limef5frame14BufferLocation4CUDAE"></span><span class="target" id="namespaceLimef_1_1frame_1a2a0e8597a20bf03625897c499c620c6eaa33b7755e5f9b504d2d038eaca4ff28d"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">CUDA</span></span></span><a class="headerlink" href="#_CPPv4N5Limef5frame14BufferLocation4CUDAE" title="Link to this definition">¶</a><br /></dt>
-<dd><p>NVIDIA GPU via CUDA. </p>
-</dd></dl>
-
-<dl class="cpp enumerator">
-<dt class="sig sig-object cpp" id="_CPPv4N5Limef5frame14BufferLocation6DMABufE">
-<span id="_CPPv3N5Limef5frame14BufferLocation6DMABufE"></span><span id="_CPPv2N5Limef5frame14BufferLocation6DMABufE"></span><span class="target" id="namespaceLimef_1_1frame_1a2a0e8597a20bf03625897c499c620c6ea4efb999ba6e2fb45ecba889585efac18"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">DMABuf</span></span></span><a class="headerlink" href="#_CPPv4N5Limef5frame14BufferLocation6DMABufE" title="Link to this definition">¶</a><br /></dt>
-<dd><p>Linux DMA buffer (V4L2, Jetson) </p>
+<dd><p>GPU via plain cudaMalloc — no hw_frames_ctx, data[0]/[1] are device ptrs. </p>
 </dd></dl>
 
 <dl class="cpp enumerator">
 <dt class="sig sig-object cpp" id="_CPPv4N5Limef5frame14BufferLocation6VulkanE">
 <span id="_CPPv3N5Limef5frame14BufferLocation6VulkanE"></span><span id="_CPPv2N5Limef5frame14BufferLocation6VulkanE"></span><span class="target" id="namespaceLimef_1_1frame_1a2a0e8597a20bf03625897c499c620c6ea38625270231b647116c80bcbc4f9d1d8"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Vulkan</span></span></span><a class="headerlink" href="#_CPPv4N5Limef5frame14BufferLocation6VulkanE" title="Link to this definition">¶</a><br /></dt>
-<dd><p>Vulkan image (future) </p>
+<dd><p>GPU via ffmpeg hw_frames_ctx / Vulkan device. </p>
 </dd></dl>
 
 </dd></dl>
@@ -386,9 +387,9 @@ The base class is <a class="reference internal" href="#_CPPv4N5Limef5frame5Frame
 </dd></dl>
 
 <dl class="cpp enumerator">
-<dt class="sig sig-object cpp" id="_CPPv4N5Limef5frame10FrameClass9RTPPacketE">
-<span id="_CPPv3N5Limef5frame10FrameClass9RTPPacketE"></span><span id="_CPPv2N5Limef5frame10FrameClass9RTPPacketE"></span><span class="target" id="namespaceLimef_1_1frame_1ab9cc5488441f6cdcaffb6d29b679a4deaab214ca8a41f9bf570d56d744e7c78c2"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">RTPPacket</span></span></span><a class="headerlink" href="#_CPPv4N5Limef5frame10FrameClass9RTPPacketE" title="Link to this definition">¶</a><br /></dt>
-<dd><p>identifies class <code class="docutils literal notranslate"><span class="pre">RTPPacketFrame</span></code> (RTP/RTCP packets) </p>
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef5frame10FrameClass3RTPE">
+<span id="_CPPv3N5Limef5frame10FrameClass3RTPE"></span><span id="_CPPv2N5Limef5frame10FrameClass3RTPE"></span><span class="target" id="namespaceLimef_1_1frame_1ab9cc5488441f6cdcaffb6d29b679a4deaf82a692bd388b13723eef7a7f0fba8f5"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">RTP</span></span></span><a class="headerlink" href="#_CPPv4N5Limef5frame10FrameClass3RTPE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>identifies class <code class="docutils literal notranslate"><span class="pre">RTPFrame</span></code> (RTP/RTCP packets) </p>
 </dd></dl>
 
 <dl class="cpp enumerator">
@@ -435,6 +436,11 @@ The base class is <a class="reference internal" href="#_CPPv4N5Limef5frame5Frame
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-functions">Functions</p>
 <dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef5frame18bufferLocationNameE14BufferLocation">
+<span id="_CPPv3N5Limef5frame18bufferLocationNameE14BufferLocation"></span><span id="_CPPv2N5Limef5frame18bufferLocationNameE14BufferLocation"></span><span id="Limef::frame::bufferLocationName__BufferLocation"></span><span class="target" id="namespaceLimef_1_1frame_1a7c5d35952d122a51a03000ec97a27c1c"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">bufferLocationName</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv4N5Limef5frame14BufferLocationE" title="Limef::frame::BufferLocation"><span class="n"><span class="pre">BufferLocation</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">loc</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5Limef5frame18bufferLocationNameE14BufferLocation" title="Link to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N5Limef5frame9alignSizeE6size_t6size_t">
 <span id="_CPPv3N5Limef5frame9alignSizeE6size_t6size_t"></span><span id="_CPPv2N5Limef5frame9alignSizeE6size_t6size_t"></span><span id="Limef::frame::alignSize__s.s"></span><span class="target" id="namespaceLimef_1_1frame_1a7021450b83e1a519cc7a6931a1323b0b"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">alignSize</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">size</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">alignment</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">32</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5Limef5frame9alignSizeE6size_t6size_t" title="Link to this definition">¶</a><br /></dt>
 <dd><p>Align a size to the specified boundary. Used by some frame classes to de/serialize data. </p>
@@ -477,12 +483,6 @@ The base class is <a class="reference internal" href="#_CPPv4N5Limef5frame5Frame
 </div>
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-variables">Variables</p>
-<dl class="cpp var">
-<dt class="sig sig-object cpp" id="_CPPv4N5Limef5frame15RTP_NOPTS_VALUEE">
-<span id="_CPPv3N5Limef5frame15RTP_NOPTS_VALUEE"></span><span id="_CPPv2N5Limef5frame15RTP_NOPTS_VALUEE"></span><span id="Limef::frame::RTP_NOPTS_VALUE__int64_t"></span><span class="target" id="namespaceLimef_1_1frame_1acedac4f711f60935e74c8bfef8c910ba"></span><span class="k"><span class="pre">constexpr</span></span><span class="w"> </span><span class="n"><span class="pre">int64_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">RTP_NOPTS_VALUE</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="n"><span class="pre">INT64_MIN</span></span><a class="headerlink" href="#_CPPv4N5Limef5frame15RTP_NOPTS_VALUEE" title="Link to this definition">¶</a><br /></dt>
-<dd><p>Sentinel value for invalid PTS/DTS (same as AV_NOPTS_VALUE) </p>
-</dd></dl>
-
 <dl class="cpp var">
 <dt class="sig sig-object cpp" id="_CPPv4N5Limef5frame17TENSOR_MAX_PLANESE">
 <span id="_CPPv3N5Limef5frame17TENSOR_MAX_PLANESE"></span><span id="_CPPv2N5Limef5frame17TENSOR_MAX_PLANESE"></span><span id="Limef::frame::TENSOR_MAX_PLANES__i"></span><span class="target" id="namespaceLimef_1_1frame_1a8342e83c01d73a696c8fe4bcf3f1fb4e"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">constexpr</span></span><span class="w"> </span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">TENSOR_MAX_PLANES</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">4</span></span><a class="headerlink" href="#_CPPv4N5Limef5frame17TENSOR_MAX_PLANESE" title="Link to this definition">¶</a><br /></dt>
@@ -789,51 +789,86 @@ The base class is <a class="reference internal" href="#_CPPv4N5Limef5frame5Frame
 </dd></dl>
 
 <dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv4NK5Limef5frame12DecodedFrame8locationEv">
-<span id="_CPPv3NK5Limef5frame12DecodedFrame8locationEv"></span><span id="_CPPv2NK5Limef5frame12DecodedFrame8locationEv"></span><span id="Limef::frame::DecodedFrame::locationC"></span><span class="target" id="classLimef_1_1frame_1_1DecodedFrame_1a4cad3eb5483079eb80b4c996216714d3"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4N5Limef5frame14BufferLocationE" title="Limef::frame::BufferLocation"><span class="n"><span class="pre">BufferLocation</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">location</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">noexcept</span></span><a class="headerlink" href="#_CPPv4NK5Limef5frame12DecodedFrame8locationEv" title="Link to this definition">¶</a><br /></dt>
-<dd><p>Get the location of the frame buffer. </p>
+<dt class="sig sig-object cpp" id="_CPPv4NK5Limef5frame12DecodedFrame17getBufferLocationEv">
+<span id="_CPPv3NK5Limef5frame12DecodedFrame17getBufferLocationEv"></span><span id="_CPPv2NK5Limef5frame12DecodedFrame17getBufferLocationEv"></span><span id="Limef::frame::DecodedFrame::getBufferLocationC"></span><span class="target" id="classLimef_1_1frame_1_1DecodedFrame_1a3008620e62ad8ab08c5ab90112dd7650"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4N5Limef5frame14BufferLocationE" title="Limef::frame::BufferLocation"><span class="n"><span class="pre">BufferLocation</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getBufferLocation</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">noexcept</span></span><a class="headerlink" href="#_CPPv4NK5Limef5frame12DecodedFrame17getBufferLocationEv" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Get the authoritative buffer location for this frame. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef5frame12DecodedFrame17setBufferLocationE14BufferLocation">
+<span id="_CPPv3N5Limef5frame12DecodedFrame17setBufferLocationE14BufferLocation"></span><span id="_CPPv2N5Limef5frame12DecodedFrame17setBufferLocationE14BufferLocation"></span><span id="Limef::frame::DecodedFrame::setBufferLocation__BufferLocation"></span><span class="target" id="classLimef_1_1frame_1_1DecodedFrame_1a3e6a3235a08da2bec7705b9b794d4fa1"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">setBufferLocation</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv4N5Limef5frame14BufferLocationE" title="Limef::frame::BufferLocation"><span class="n"><span class="pre">BufferLocation</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">loc</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">noexcept</span></span><a class="headerlink" href="#_CPPv4N5Limef5frame12DecodedFrame17setBufferLocationE14BufferLocation" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Set the buffer location — caller must ensure AVFrame state is consistent. </p>
 </dd></dl>
 
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4NK5Limef5frame12DecodedFrame7isOnCPUEv">
 <span id="_CPPv3NK5Limef5frame12DecodedFrame7isOnCPUEv"></span><span id="_CPPv2NK5Limef5frame12DecodedFrame7isOnCPUEv"></span><span id="Limef::frame::DecodedFrame::isOnCPUC"></span><span class="target" id="classLimef_1_1frame_1_1DecodedFrame_1a3d6087f80957c3ad4d72af03c0ead632"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">isOnCPU</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">noexcept</span></span><a class="headerlink" href="#_CPPv4NK5Limef5frame12DecodedFrame7isOnCPUEv" title="Link to this definition">¶</a><br /></dt>
-<dd><p>Check if frame data is on CPU. </p>
+<dd><p>Check if frame data is in CPU-accessible memory. </p>
 </dd></dl>
 
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4NK5Limef5frame12DecodedFrame7isOnGPUEv">
 <span id="_CPPv3NK5Limef5frame12DecodedFrame7isOnGPUEv"></span><span id="_CPPv2NK5Limef5frame12DecodedFrame7isOnGPUEv"></span><span id="Limef::frame::DecodedFrame::isOnGPUC"></span><span class="target" id="classLimef_1_1frame_1_1DecodedFrame_1a647f295dcdd74698325db955a86d8f41"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">isOnGPU</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">noexcept</span></span><a class="headerlink" href="#_CPPv4NK5Limef5frame12DecodedFrame7isOnGPUEv" title="Link to this definition">¶</a><br /></dt>
-<dd><p>Check if frame data is on GPU/hardware. </p>
+<dd><p>Check if frame data is on GPU (not CPU-accessible without a transfer) </p>
 </dd></dl>
 
 <dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv4NK5Limef5frame12DecodedFrame8dmaBufFdEv">
-<span id="_CPPv3NK5Limef5frame12DecodedFrame8dmaBufFdEv"></span><span id="_CPPv2NK5Limef5frame12DecodedFrame8dmaBufFdEv"></span><span id="Limef::frame::DecodedFrame::dmaBufFdC"></span><span class="target" id="classLimef_1_1frame_1_1DecodedFrame_1a3e4b7c2cbe019e53ce32ed39884cbea8"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">dmaBufFd</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">noexcept</span></span><a class="headerlink" href="#_CPPv4NK5Limef5frame12DecodedFrame8dmaBufFdEv" title="Link to this definition">¶</a><br /></dt>
-<dd><p>Get DMA-buf file descriptor (returns -1 if not a DMA-buf frame) </p>
-</dd></dl>
-
-<dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv4N5Limef5frame12DecodedFrame11setDMABufFdEi">
-<span id="_CPPv3N5Limef5frame12DecodedFrame11setDMABufFdEi"></span><span id="_CPPv2N5Limef5frame12DecodedFrame11setDMABufFdEi"></span><span id="Limef::frame::DecodedFrame::setDMABufFd__i"></span><span class="target" id="classLimef_1_1frame_1_1DecodedFrame_1aae859ea2cd763e46249518dd2fb7f2c9"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">setDMABufFd</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">fd</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">noexcept</span></span><a class="headerlink" href="#_CPPv4N5Limef5frame12DecodedFrame11setDMABufFdEi" title="Link to this definition">¶</a><br /></dt>
-<dd><p>Set DMA-buf file descriptor (for V4L2 backend) </p>
-</dd></dl>
-
-<dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv4N5Limef5frame12DecodedFrame15setTargetHWPoolEP11AVBufferRef">
-<span id="_CPPv3N5Limef5frame12DecodedFrame15setTargetHWPoolEP11AVBufferRef"></span><span id="_CPPv2N5Limef5frame12DecodedFrame15setTargetHWPoolEP11AVBufferRef"></span><span id="Limef::frame::DecodedFrame::setTargetHWPool__AVBufferRefP"></span><span class="target" id="classLimef_1_1frame_1_1DecodedFrame_1ab547389aee5382e904c2b39459bb3d08"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">setTargetHWPool</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">AVBufferRef</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">pool</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">noexcept</span></span><a class="headerlink" href="#_CPPv4N5Limef5frame12DecodedFrame15setTargetHWPoolEP11AVBufferRef" title="Link to this definition">¶</a><br /></dt>
-<dd><p>Set target HW frames pool for GPU→GPU copy in updateFrom()</p>
-<p>When set, updateFrom() will allocate from this pool and do a true GPU→GPU copy instead of just referencing the source buffer. Used by FrameFifo to ensure stack frames own their GPU buffers.</p>
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef5frame12DecodedFrame17setupNVDECCPUViewEiiP7uint8_tP7uint8_t6size_t">
+<span id="_CPPv3N5Limef5frame12DecodedFrame17setupNVDECCPUViewEiiP7uint8_tP7uint8_t6size_t"></span><span id="_CPPv2N5Limef5frame12DecodedFrame17setupNVDECCPUViewEiiP7uint8_tP7uint8_t6size_t"></span><span id="Limef::frame::DecodedFrame::setupNVDECCPUView__i.i.uint8_tP.uint8_tP.s"></span><span class="target" id="classLimef_1_1frame_1_1DecodedFrame_1a9a2991300586a91fa8df00a6fa3cede4"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">setupNVDECCPUView</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">width</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">height</span></span>, <span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">y_ptr</span></span>, <span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">uv_ptr</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">y_sz</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5Limef5frame12DecodedFrame17setupNVDECCPUViewEiiP7uint8_tP7uint8_t6size_t" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Set up frame as a non-owning CPU NV12 view into pre-mapped NVMM memory. </p>
+<p>Used by V4L2NVDecoder’s EXPBUF-at-setup path: CAPTURE slot CPU pointers are established once in setupCapture() and outlive individual frames. The V4L2NVDecoder owns the memory — this frame holds a no-op AVBufferRef so that AVFrame reference-counting does not free the mapping on unref.</p>
+<p>Pointers remain valid until V4L2NVDecoder re-queues the slot via the next status() call (hold/release contract validated in playground/jetson/2/).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>pool</strong> – The hw_frames_ctx pool to allocate from (not owned, must outlive frame) </p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>width</strong> – Frame width </p></li>
+<li><p><strong>height</strong> – Frame height </p></li>
+<li><p><strong>y_ptr</strong> – Pre-mapped Y-plane CPU pointer (owned by V4L2NVDecoder) </p></li>
+<li><p><strong>uv_ptr</strong> – Pre-mapped UV-plane CPU pointer (owned by V4L2NVDecoder) </p></li>
+<li><p><strong>y_sz</strong> – Y-plane size in bytes </p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv4NK5Limef5frame12DecodedFrame15getTargetHWPoolEv">
-<span id="_CPPv3NK5Limef5frame12DecodedFrame15getTargetHWPoolEv"></span><span id="_CPPv2NK5Limef5frame12DecodedFrame15getTargetHWPoolEv"></span><span id="Limef::frame::DecodedFrame::getTargetHWPoolC"></span><span class="target" id="classLimef_1_1frame_1_1DecodedFrame_1af49a23f1a6203bffdbd665242e88fdfa"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="n"><span class="pre">AVBufferRef</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">getTargetHWPool</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">noexcept</span></span><a class="headerlink" href="#_CPPv4NK5Limef5frame12DecodedFrame15getTargetHWPoolEv" title="Link to this definition">¶</a><br /></dt>
-<dd><p>Get the target HW pool (nullptr if not set) </p>
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef5frame12DecodedFrame17setupArgusCPUViewEiiP7uint8_tP7uint8_tii">
+<span id="_CPPv3N5Limef5frame12DecodedFrame17setupArgusCPUViewEiiP7uint8_tP7uint8_tii"></span><span id="_CPPv2N5Limef5frame12DecodedFrame17setupArgusCPUViewEiiP7uint8_tP7uint8_tii"></span><span id="Limef::frame::DecodedFrame::setupArgusCPUView__i.i.uint8_tP.uint8_tP.i.i"></span><span class="target" id="classLimef_1_1frame_1_1DecodedFrame_1a477a36b2fd7ca25fe1be808b746161c2"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">setupArgusCPUView</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">width</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">height</span></span>, <span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">y_ptr</span></span>, <span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">uv_ptr</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">y_pitch</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">uv_pitch</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5Limef5frame12DecodedFrame17setupArgusCPUViewEiiP7uint8_tP7uint8_tii" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Non-owning CPU NV12 view into a pre-mapped pitch-linear NvBufSurface. </p>
+<p>Used by ArgusCameraThread after copyToNvBuffer + NvBufSurfaceSyncForCpu. ArgusCameraThread owns the NvBufSurface mapping for the stream lifetime. Pitch comes from planeParams.pitch[] (may differ from width due to alignment).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>width</strong> – Frame width in pixels </p></li>
+<li><p><strong>height</strong> – Frame height in pixels </p></li>
+<li><p><strong>y_ptr</strong> – Pre-mapped Y-plane CPU pointer </p></li>
+<li><p><strong>uv_ptr</strong> – Pre-mapped UV-plane CPU pointer </p></li>
+<li><p><strong>y_pitch</strong> – Y-plane row stride in bytes </p></li>
+<li><p><strong>uv_pitch</strong> – UV-plane row stride in bytes </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef5frame12DecodedFrame18setupCPUNvBufVideoEiii6size_t">
+<span id="_CPPv3N5Limef5frame12DecodedFrame18setupCPUNvBufVideoEiii6size_t"></span><span id="_CPPv2N5Limef5frame12DecodedFrame18setupCPUNvBufVideoEiii6size_t"></span><span id="Limef::frame::DecodedFrame::setupCPUNvBufVideo__i.i.i.s"></span><span class="target" id="classLimef_1_1frame_1_1DecodedFrame_1a1ae9d73c908408228512595636849229"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">setupCPUNvBufVideo</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">width</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">height</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">dma_fd</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">nv12_size</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5Limef5frame12DecodedFrame18setupCPUNvBufVideoEiii6size_t" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Set up frame as CPU NV12 from a NvBuf dma-buf fd (mmap, zero-copy). </p>
+<p>mmaps the fd into userspace, sets data[0]/[1] directly into the mmap’d region, and attaches a custom AVBufferRef destructor that calls munmap + close. No pixel copy — the mmap IS the AVFrame buffer.</p>
+<p>Caller must NOT close dma_fd after this call.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>width</strong> – Frame width </p></li>
+<li><p><strong>height</strong> – Frame height </p></li>
+<li><p><strong>dma_fd</strong> – DMA-buf fd (ownership transferred) </p></li>
+<li><p><strong>nv12_size</strong> – Total NV12 size in bytes (width * height * 3 / 2) </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>true on success </p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="cpp function">
@@ -911,6 +946,12 @@ The base class is <a class="reference internal" href="#_CPPv4N5Limef5frame5Frame
 <dt class="sig sig-object cpp" id="_CPPv4NK5Limef5frame12DecodedFrame11getTimeBaseEv">
 <span id="_CPPv3NK5Limef5frame12DecodedFrame11getTimeBaseEv"></span><span id="_CPPv2NK5Limef5frame12DecodedFrame11getTimeBaseEv"></span><span id="Limef::frame::DecodedFrame::getTimeBaseC"></span><span class="target" id="classLimef_1_1frame_1_1DecodedFrame_1a397764c0be472b4fa8397c88e87403b8"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="n"><span class="pre">AVRational</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getTimeBase</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">noexcept</span></span><a class="headerlink" href="#_CPPv4NK5Limef5frame12DecodedFrame11getTimeBaseEv" title="Link to this definition">¶</a><br /></dt>
 <dd><p>Get the timebase of this frame’s timestamps </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK5Limef5frame12DecodedFrame6hasPTSEv">
+<span id="_CPPv3NK5Limef5frame12DecodedFrame6hasPTSEv"></span><span id="_CPPv2NK5Limef5frame12DecodedFrame6hasPTSEv"></span><span id="Limef::frame::DecodedFrame::hasPTSC"></span><span class="target" id="classLimef_1_1frame_1_1DecodedFrame_1a929ab28b9e0c6af075cc16d260cd4e36"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">hasPTS</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">noexcept</span></span><a class="headerlink" href="#_CPPv4NK5Limef5frame12DecodedFrame6hasPTSEv" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Returns true if the frame has a valid PTS (i.e. pts != AV_NOPTS_VALUE and timebase is set). </p>
 </dd></dl>
 
 <dl class="cpp function">
@@ -1047,7 +1088,7 @@ Writes all data it can - the return value indicates the number of bytes that wou
 </pre></div>
 </div>
 </p>
-<p>Subclassed by Limef::frame::CodecFrame, Limef::frame::DecodedFrame, Limef::frame::InfoFrame, Limef::frame::NullFrame, Limef::frame::PacketFrame, Limef::frame::RTPPacketFrame, Limef::frame::RawFrame, Limef::frame::SDPFrame, Limef::frame::SignalFrame, Limef::frame::TensorFrame</p>
+<p>Subclassed by Limef::frame::CodecFrame, Limef::frame::DecodedFrame, Limef::frame::InfoFrame, Limef::frame::NullFrame, Limef::frame::PacketFrame, Limef::frame::RTPFrame, Limef::frame::RawFrame, Limef::frame::SDPFrame, Limef::frame::SignalFrame, Limef::frame::TensorFrame</p>
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
 <dl class="cpp function">
@@ -1339,6 +1380,48 @@ Writes all data it can - the return value indicates the number of bytes that wou
 <dt class="sig sig-object cpp" id="_CPPv4NK5Limef5frame11PacketFrame14dumpPacketInfoE6size_t">
 <span id="_CPPv3NK5Limef5frame11PacketFrame14dumpPacketInfoE6size_t"></span><span id="_CPPv2NK5Limef5frame11PacketFrame14dumpPacketInfoE6size_t"></span><span id="Limef::frame::PacketFrame::dumpPacketInfo__sC"></span><span class="target" id="classLimef_1_1frame_1_1PacketFrame_1a32593ee3ca3a3e26699d3389c9b2fdaa"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">dumpPacketInfo</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">bytesToDump</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">16</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK5Limef5frame11PacketFrame14dumpPacketInfoE6size_t" title="Link to this definition">¶</a><br /></dt>
 <dd><p>Returns a string that dymps first n bytes of AVPacket’s payload. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK5Limef5frame11PacketFrame5isKeyEv">
+<span id="_CPPv3NK5Limef5frame11PacketFrame5isKeyEv"></span><span id="_CPPv2NK5Limef5frame11PacketFrame5isKeyEv"></span><span id="Limef::frame::PacketFrame::isKeyC"></span><span class="target" id="classLimef_1_1frame_1_1PacketFrame_1a2ecec86d5fa20d248134b6d527fee3e7"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">isKey</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">noexcept</span></span><a class="headerlink" href="#_CPPv4NK5Limef5frame11PacketFrame5isKeyEv" title="Link to this definition">¶</a><br /></dt>
+<dd><p>This works for both AVCC and Annex-B type streams: it marks the start of a sequence If this is true and the stream is Annex-B, then it contains sps+pps+iframe Otherwise just iframe </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK5Limef5frame11PacketFrame12annexBOffsetEv">
+<span id="_CPPv3NK5Limef5frame11PacketFrame12annexBOffsetEv"></span><span id="_CPPv2NK5Limef5frame11PacketFrame12annexBOffsetEv"></span><span id="Limef::frame::PacketFrame::annexBOffsetC"></span><span class="target" id="classLimef_1_1frame_1_1PacketFrame_1a8e43622a48a8398f8c695d6c5263d989"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">annexBOffset</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">noexcept</span></span><a class="headerlink" href="#_CPPv4NK5Limef5frame11PacketFrame12annexBOffsetEv" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Returns the Annex B start-code length (3 or 4) if the packet begins with a start code, or 0 if the packet is in AVCC (length-prefixed) format or empty. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK5Limef5frame11PacketFrame8isAnnexBEv">
+<span id="_CPPv3NK5Limef5frame11PacketFrame8isAnnexBEv"></span><span id="_CPPv2NK5Limef5frame11PacketFrame8isAnnexBEv"></span><span id="Limef::frame::PacketFrame::isAnnexBC"></span><span class="target" id="classLimef_1_1frame_1_1PacketFrame_1af0f064d821b26a0c1f6f9d7014ea6b9d"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">isAnnexB</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">noexcept</span></span><a class="headerlink" href="#_CPPv4NK5Limef5frame11PacketFrame8isAnnexBEv" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Returns true if the packet is in Annex B byte-stream format. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK5Limef5frame11PacketFrame5isSPSEv">
+<span id="_CPPv3NK5Limef5frame11PacketFrame5isSPSEv"></span><span id="_CPPv2NK5Limef5frame11PacketFrame5isSPSEv"></span><span id="Limef::frame::PacketFrame::isSPSC"></span><span class="target" id="classLimef_1_1frame_1_1PacketFrame_1a3953ed8aa8c5d52b6b69df3258925043"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">isSPS</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">noexcept</span></span><a class="headerlink" href="#_CPPv4NK5Limef5frame11PacketFrame5isSPSEv" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Returns true if any NAL unit in this packet is a Sequence Parameter Set (H.264 type 7 / H.265 type 33). Works for both Annex B and AVCC formats. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK5Limef5frame11PacketFrame5isPPSEv">
+<span id="_CPPv3NK5Limef5frame11PacketFrame5isPPSEv"></span><span id="_CPPv2NK5Limef5frame11PacketFrame5isPPSEv"></span><span id="Limef::frame::PacketFrame::isPPSC"></span><span class="target" id="classLimef_1_1frame_1_1PacketFrame_1a970fe6ab835a416dbad3dc03073f5259"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">isPPS</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">noexcept</span></span><a class="headerlink" href="#_CPPv4NK5Limef5frame11PacketFrame5isPPSEv" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Returns true if any NAL unit in this packet is a Picture Parameter Set (H.264 type 8 / H.265 type 34). Works for both Annex B and AVCC formats. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK5Limef5frame11PacketFrame5isVPSEv">
+<span id="_CPPv3NK5Limef5frame11PacketFrame5isVPSEv"></span><span id="_CPPv2NK5Limef5frame11PacketFrame5isVPSEv"></span><span id="Limef::frame::PacketFrame::isVPSC"></span><span class="target" id="classLimef_1_1frame_1_1PacketFrame_1a955e0793bf1600ecd0be3514979c9d28"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">isVPS</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">noexcept</span></span><a class="headerlink" href="#_CPPv4NK5Limef5frame11PacketFrame5isVPSEv" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Returns true if any NAL unit in this packet is a Video Parameter Set (H.265 type 32 only). Always false for non-H.265 codecs. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK5Limef5frame11PacketFrame6hasPTSEv">
+<span id="_CPPv3NK5Limef5frame11PacketFrame6hasPTSEv"></span><span id="_CPPv2NK5Limef5frame11PacketFrame6hasPTSEv"></span><span id="Limef::frame::PacketFrame::hasPTSC"></span><span class="target" id="classLimef_1_1frame_1_1PacketFrame_1a9830e51edec2b3b5251c8ba7ee4a91d8"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">hasPTS</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">noexcept</span></span><a class="headerlink" href="#_CPPv4NK5Limef5frame11PacketFrame6hasPTSEv" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Returns true if the packet has a valid PTS (i.e. pts != AV_NOPTS_VALUE and timebase is set). </p>
 </dd></dl>
 
 <dl class="cpp function">
@@ -1670,47 +1753,28 @@ Writes all data it can - the return value indicates the number of bytes that wou
 </dd></dl>
 
 <dl class="cpp class">
-<dt class="sig sig-object cpp" id="_CPPv4N5Limef5frame14RTPPacketFrameE">
-<span id="_CPPv3N5Limef5frame14RTPPacketFrameE"></span><span id="_CPPv2N5Limef5frame14RTPPacketFrameE"></span><span id="Limef::frame::RTPPacketFrame"></span><span class="target" id="classLimef_1_1frame_1_1RTPPacketFrame"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">RTPPacketFrame</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><span class="n"><span class="pre">Limef</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N5Limef5frameE" title="Limef::frame"><span class="n"><span class="pre">frame</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N5Limef5frame5FrameE" title="Limef::frame::Frame"><span class="n"><span class="pre">Frame</span></span></a><a class="headerlink" href="#_CPPv4N5Limef5frame14RTPPacketFrameE" title="Link to this definition">¶</a><br /></dt>
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef5frame8RTPFrameE">
+<span id="_CPPv3N5Limef5frame8RTPFrameE"></span><span id="_CPPv2N5Limef5frame8RTPFrameE"></span><span id="Limef::frame::RTPFrame"></span><span class="target" id="classLimef_1_1frame_1_1RTPFrame"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">RTPFrame</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><span class="n"><span class="pre">Limef</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N5Limef5frameE" title="Limef::frame"><span class="n"><span class="pre">frame</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N5Limef5frame5FrameE" title="Limef::frame::Frame"><span class="n"><span class="pre">Frame</span></span></a><a class="headerlink" href="#_CPPv4N5Limef5frame8RTPFrameE" title="Link to this definition">¶</a><br /></dt>
 <dd><div class="docutils container">
-<em>#include &lt;rtppacketframe.h&gt;</em></div>
+<em>#include &lt;rtpframe.h&gt;</em></div>
 <p>Frame containing RTP or RTCP packet data. </p>
-<p>Used to carry individual RTP/RTCP packets from RTPMuxerFrameFilter to RTSPServerThread for transmission to clients.</p>
-<p>Example usage: <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">RTPPacketFrame</span><span class="w"> </span><span class="n">rtp</span><span class="p">;</span>
+<p>Used to carry individual RTP/RTCP packets from RTPMuxerFrameFilter to RTSPServerThread / WebRTCServerThread for transmission to clients.</p>
+<p>This is very similar to RawFrame: just raw muxed bytes, but it carries some metadata set by the RTPMuxerFrameFilter.</p>
+<p>One RTP packet is typically a small fragment of, say, sps+pps+iframe (if annex b) blob, or b-frame, or whatever. RTP receivers don’t mind if the first byte blob they get is a part of a b-frame, i.e. midstream/frame.</p>
+<p>However, it’s better if the stream is self-contained, i.e. Annex-B = sps and pps come self-contained in the stream always together with the iframe.</p>
+<p>Example usage: <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">RTPFrame</span><span class="w"> </span><span class="n">rtp</span><span class="p">;</span>
 <span class="n">rtp</span><span class="p">.</span><span class="n">setData</span><span class="p">(</span><span class="n">packet_bytes</span><span class="p">,</span><span class="w"> </span><span class="n">packet_size</span><span class="p">);</span>
 <span class="n">rtp</span><span class="p">.</span><span class="n">setTrackIndex</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span><span class="w">  </span><span class="c1">// video track</span>
-<span class="n">rtp</span><span class="p">.</span><span class="n">setPacketType</span><span class="p">(</span><span class="n">RTPPacketFrame</span><span class="o">::</span><span class="n">PacketType</span><span class="o">::</span><span class="n">RTP</span><span class="p">);</span>
+<span class="n">rtp</span><span class="p">.</span><span class="n">setPacketType</span><span class="p">(</span><span class="n">RTPFrame</span><span class="o">::</span><span class="n">PacketType</span><span class="o">::</span><span class="n">RTP</span><span class="p">);</span>
 <span class="n">pass</span><span class="p">(</span><span class="o">&amp;</span><span class="n">rtp</span><span class="p">);</span>
 </pre></div>
 </div>
 </p>
 <div class="breathe-sectiondef docutils container">
-<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-types">Public Types</p>
-<dl class="cpp enum-class">
-<dt class="sig sig-object cpp" id="_CPPv4N5Limef5frame14RTPPacketFrame10PacketTypeE">
-<span id="_CPPv3N5Limef5frame14RTPPacketFrame10PacketTypeE"></span><span id="_CPPv2N5Limef5frame14RTPPacketFrame10PacketTypeE"></span><span class="target" id="classLimef_1_1frame_1_1RTPPacketFrame_1a981bff2e9ebf3ec2de123697547a51da"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">PacketType</span></span></span><a class="headerlink" href="#_CPPv4N5Limef5frame14RTPPacketFrame10PacketTypeE" title="Link to this definition">¶</a><br /></dt>
-<dd><p>Packet type identifier. </p>
-<p><em>Values:</em></p>
-<dl class="cpp enumerator">
-<dt class="sig sig-object cpp" id="_CPPv4N5Limef5frame14RTPPacketFrame10PacketType3RTPE">
-<span id="_CPPv3N5Limef5frame14RTPPacketFrame10PacketType3RTPE"></span><span id="_CPPv2N5Limef5frame14RTPPacketFrame10PacketType3RTPE"></span><span class="target" id="classLimef_1_1frame_1_1RTPPacketFrame_1a981bff2e9ebf3ec2de123697547a51daaf82a692bd388b13723eef7a7f0fba8f5"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">RTP</span></span></span><a class="headerlink" href="#_CPPv4N5Limef5frame14RTPPacketFrame10PacketType3RTPE" title="Link to this definition">¶</a><br /></dt>
-<dd><p>RTP data packet. </p>
-</dd></dl>
-
-<dl class="cpp enumerator">
-<dt class="sig sig-object cpp" id="_CPPv4N5Limef5frame14RTPPacketFrame10PacketType4RTCPE">
-<span id="_CPPv3N5Limef5frame14RTPPacketFrame10PacketType4RTCPE"></span><span id="_CPPv2N5Limef5frame14RTPPacketFrame10PacketType4RTCPE"></span><span class="target" id="classLimef_1_1frame_1_1RTPPacketFrame_1a981bff2e9ebf3ec2de123697547a51daa7cfed553fe188de2eaec88c4bc0a4c9f"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">RTCP</span></span></span><a class="headerlink" href="#_CPPv4N5Limef5frame14RTPPacketFrame10PacketType4RTCPE" title="Link to this definition">¶</a><br /></dt>
-<dd><p>RTCP control packet (SR, RR, etc.) </p>
-</dd></dl>
-
-</dd></dl>
-
-</div>
-<div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
 <dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv4NK5Limef5frame14RTPPacketFrame13getFrameClassEv">
-<span id="_CPPv3NK5Limef5frame14RTPPacketFrame13getFrameClassEv"></span><span id="_CPPv2NK5Limef5frame14RTPPacketFrame13getFrameClassEv"></span><span id="Limef::frame::RTPPacketFrame::getFrameClassC"></span><span class="target" id="classLimef_1_1frame_1_1RTPPacketFrame_1a2a49da1efc2f9f0874785e7ed73e99a3"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4N5Limef5frame10FrameClassE" title="Limef::frame::FrameClass"><span class="n"><span class="pre">FrameClass</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getFrameClass</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">noexcept</span></span><span class="w"> </span><span class="k"><span class="pre">override</span></span><a class="headerlink" href="#_CPPv4NK5Limef5frame14RTPPacketFrame13getFrameClassEv" title="Link to this definition">¶</a><br /></dt>
+<dt class="sig sig-object cpp" id="_CPPv4NK5Limef5frame8RTPFrame13getFrameClassEv">
+<span id="_CPPv3NK5Limef5frame8RTPFrame13getFrameClassEv"></span><span id="_CPPv2NK5Limef5frame8RTPFrame13getFrameClassEv"></span><span id="Limef::frame::RTPFrame::getFrameClassC"></span><span class="target" id="classLimef_1_1frame_1_1RTPFrame_1ac509e1c0188f1097dc72ef8af0121304"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4N5Limef5frame10FrameClassE" title="Limef::frame::FrameClass"><span class="n"><span class="pre">FrameClass</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getFrameClass</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">noexcept</span></span><span class="w"> </span><span class="k"><span class="pre">override</span></span><a class="headerlink" href="#_CPPv4NK5Limef5frame8RTPFrame13getFrameClassEv" title="Link to this definition">¶</a><br /></dt>
 <dd><p>Return <code class="docutils literal notranslate"><span class="pre">Frame</span></code>’s type. </p>
 <p>Return’s Frame’s <code class="docutils literal notranslate"><span class="pre">Limef::FrameClass</span></code> that can be used to identify the subclass of the Frame. You can use it like this: <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">frame</span><span class="o">-&gt;</span><span class="n">getFrameClass</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">FrameClass</span><span class="o">::</span><span class="n">Packet</span>
 </pre></div>
@@ -1719,135 +1783,95 @@ Writes all data it can - the return value indicates the number of bytes that wou
 </dd></dl>
 
 <dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv4N5Limef5frame14RTPPacketFrame5resetEv">
-<span id="_CPPv3N5Limef5frame14RTPPacketFrame5resetEv"></span><span id="_CPPv2N5Limef5frame14RTPPacketFrame5resetEv"></span><span id="Limef::frame::RTPPacketFrame::reset"></span><span class="target" id="classLimef_1_1frame_1_1RTPPacketFrame_1a20298e1557afb404abf8d2157d9c3894"></span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">reset</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">noexcept</span></span><span class="w"> </span><span class="k"><span class="pre">override</span></span><a class="headerlink" href="#_CPPv4N5Limef5frame14RTPPacketFrame5resetEv" title="Link to this definition">¶</a><br /></dt>
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef5frame8RTPFrame5resetEv">
+<span id="_CPPv3N5Limef5frame8RTPFrame5resetEv"></span><span id="_CPPv2N5Limef5frame8RTPFrame5resetEv"></span><span id="Limef::frame::RTPFrame::reset"></span><span class="target" id="classLimef_1_1frame_1_1RTPFrame_1a1dd289f7b5d76b16071114d903b40e28"></span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">reset</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">noexcept</span></span><span class="w"> </span><span class="k"><span class="pre">override</span></span><a class="headerlink" href="#_CPPv4N5Limef5frame8RTPFrame5resetEv" title="Link to this definition">¶</a><br /></dt>
 <dd><p>Resets the state of the frame (if any) </p>
 </dd></dl>
 
 <dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv4NK5Limef5frame14RTPPacketFrame5cloneEv">
-<span id="_CPPv3NK5Limef5frame14RTPPacketFrame5cloneEv"></span><span id="_CPPv2NK5Limef5frame14RTPPacketFrame5cloneEv"></span><span id="Limef::frame::RTPPacketFrame::cloneC"></span><span class="target" id="classLimef_1_1frame_1_1RTPPacketFrame_1a3b82a6832af6a2364c92187e1cb234a5"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4N5Limef5frame5FrameE" title="Limef::frame::Frame"><span class="n"><span class="pre">Frame</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">clone</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">override</span></span><a class="headerlink" href="#_CPPv4NK5Limef5frame14RTPPacketFrame5cloneEv" title="Link to this definition">¶</a><br /></dt>
+<dt class="sig sig-object cpp" id="_CPPv4NK5Limef5frame8RTPFrame5cloneEv">
+<span id="_CPPv3NK5Limef5frame8RTPFrame5cloneEv"></span><span id="_CPPv2NK5Limef5frame8RTPFrame5cloneEv"></span><span id="Limef::frame::RTPFrame::cloneC"></span><span class="target" id="classLimef_1_1frame_1_1RTPFrame_1aa2b169e2210a37c335cba136424aa7c7"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4N5Limef5frame5FrameE" title="Limef::frame::Frame"><span class="n"><span class="pre">Frame</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">clone</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">override</span></span><a class="headerlink" href="#_CPPv4NK5Limef5frame8RTPFrame5cloneEv" title="Link to this definition">¶</a><br /></dt>
 <dd><p>Returns a cloned frame. Implement carefully! Is used extensively by <code class="docutils literal notranslate"><span class="pre">Limef::FrameFifo</span></code>. </p>
 </dd></dl>
 
 <dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv4N5Limef5frame14RTPPacketFrame10updateFromEPK5Frame">
-<span id="_CPPv3N5Limef5frame14RTPPacketFrame10updateFromEPK5Frame"></span><span id="_CPPv2N5Limef5frame14RTPPacketFrame10updateFromEPK5Frame"></span><span id="Limef::frame::RTPPacketFrame::updateFrom__FrameCP"></span><span class="target" id="classLimef_1_1frame_1_1RTPPacketFrame_1a0132db9d9855eb616b710cdcebaa28a7"></span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">updateFrom</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4N5Limef5frame5FrameE" title="Limef::frame::Frame"><span class="n"><span class="pre">Frame</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">other</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">override</span></span><a class="headerlink" href="#_CPPv4N5Limef5frame14RTPPacketFrame10updateFromEPK5Frame" title="Link to this definition">¶</a><br /></dt>
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef5frame8RTPFrame10updateFromEPK5Frame">
+<span id="_CPPv3N5Limef5frame8RTPFrame10updateFromEPK5Frame"></span><span id="_CPPv2N5Limef5frame8RTPFrame10updateFromEPK5Frame"></span><span id="Limef::frame::RTPFrame::updateFrom__FrameCP"></span><span class="target" id="classLimef_1_1frame_1_1RTPFrame_1a2cb48b2749e5266af686227bc1236100"></span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">updateFrom</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4N5Limef5frame5FrameE" title="Limef::frame::Frame"><span class="n"><span class="pre">Frame</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">other</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">override</span></span><a class="headerlink" href="#_CPPv4N5Limef5frame8RTPFrame10updateFromEPK5Frame" title="Link to this definition">¶</a><br /></dt>
 <dd><p>Updates the current frame (copy operation) using the input frame. </p>
 </dd></dl>
 
 <dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv4NK5Limef5frame14RTPPacketFrame4dumpEv">
-<span id="_CPPv3NK5Limef5frame14RTPPacketFrame4dumpEv"></span><span id="_CPPv2NK5Limef5frame14RTPPacketFrame4dumpEv"></span><span id="Limef::frame::RTPPacketFrame::dumpC"></span><span class="target" id="classLimef_1_1frame_1_1RTPPacketFrame_1a20308190a325d148353815355ed55410"></span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">dump</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">override</span></span><a class="headerlink" href="#_CPPv4NK5Limef5frame14RTPPacketFrame4dumpEv" title="Link to this definition">¶</a><br /></dt>
+<dt class="sig sig-object cpp" id="_CPPv4NK5Limef5frame8RTPFrame4dumpEv">
+<span id="_CPPv3NK5Limef5frame8RTPFrame4dumpEv"></span><span id="_CPPv2NK5Limef5frame8RTPFrame4dumpEv"></span><span id="Limef::frame::RTPFrame::dumpC"></span><span class="target" id="classLimef_1_1frame_1_1RTPFrame_1a563dbb244ee225851629188f49e5c691"></span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">dump</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">override</span></span><a class="headerlink" href="#_CPPv4NK5Limef5frame8RTPFrame4dumpEv" title="Link to this definition">¶</a><br /></dt>
 <dd><p>Returns a one-liner string representation of the frame. </p>
 </dd></dl>
 
 <dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv4N5Limef5frame14RTPPacketFrame7setDataEPK7uint8_t6size_tb">
-<span id="_CPPv3N5Limef5frame14RTPPacketFrame7setDataEPK7uint8_t6size_tb"></span><span id="_CPPv2N5Limef5frame14RTPPacketFrame7setDataEPK7uint8_t6size_tb"></span><span id="Limef::frame::RTPPacketFrame::setData__uint8_tCP.s.b"></span><span class="target" id="classLimef_1_1frame_1_1RTPPacketFrame_1a5fd6d3087f132801db8b234f0f8d21e7"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">setData</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">data</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">size</span></span>, <span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">shrink</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="k"><span class="pre">false</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5Limef5frame14RTPPacketFrame7setDataEPK7uint8_t6size_tb" title="Link to this definition">¶</a><br /></dt>
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef5frame8RTPFrame7setDataEPK7uint8_t6size_tb">
+<span id="_CPPv3N5Limef5frame8RTPFrame7setDataEPK7uint8_t6size_tb"></span><span id="_CPPv2N5Limef5frame8RTPFrame7setDataEPK7uint8_t6size_tb"></span><span id="Limef::frame::RTPFrame::setData__uint8_tCP.s.b"></span><span class="target" id="classLimef_1_1frame_1_1RTPFrame_1a0f325bd1fa0f0aa80e0c7edf6029be0e"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">setData</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">data</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">size</span></span>, <span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">shrink</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="k"><span class="pre">false</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5Limef5frame8RTPFrame7setDataEPK7uint8_t6size_tb" title="Link to this definition">¶</a><br /></dt>
 <dd><p>Set packet data. </p>
-<p>Copies data into internal buffer. Buffer grows as needed but doesn’t shrink unless explicitly requested.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>data</strong> – Source data pointer </p></li>
-<li><p><strong>size</strong> – Size of data in bytes </p></li>
-<li><p><strong>shrink</strong> – If true, buffer will be shrunk if significantly larger than needed </p></li>
-</ul>
-</dd>
-</dl>
+<p>Copies data into internal buffer. Buffer grows as needed but doesn’t shrink unless explicitly requested. </p>
 </dd></dl>
 
 <dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv4NK5Limef5frame14RTPPacketFrame7getDataEv">
-<span id="_CPPv3NK5Limef5frame14RTPPacketFrame7getDataEv"></span><span id="_CPPv2NK5Limef5frame14RTPPacketFrame7getDataEv"></span><span id="Limef::frame::RTPPacketFrame::getDataC"></span><span class="target" id="classLimef_1_1frame_1_1RTPPacketFrame_1aaaf66f2e5d8348beedeb0ac257632721"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">getData</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">noexcept</span></span><a class="headerlink" href="#_CPPv4NK5Limef5frame14RTPPacketFrame7getDataEv" title="Link to this definition">¶</a><br /></dt>
+<dt class="sig sig-object cpp" id="_CPPv4NK5Limef5frame8RTPFrame7getDataEv">
+<span id="_CPPv3NK5Limef5frame8RTPFrame7getDataEv"></span><span id="_CPPv2NK5Limef5frame8RTPFrame7getDataEv"></span><span id="Limef::frame::RTPFrame::getDataC"></span><span class="target" id="classLimef_1_1frame_1_1RTPFrame_1a308b38a17c3b346f8612e932c18443bc"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">getData</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">noexcept</span></span><a class="headerlink" href="#_CPPv4NK5Limef5frame8RTPFrame7getDataEv" title="Link to this definition">¶</a><br /></dt>
 <dd><p>Get pointer to internal data buffer. </p>
 </dd></dl>
 
 <dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv4NK5Limef5frame14RTPPacketFrame7getSizeEv">
-<span id="_CPPv3NK5Limef5frame14RTPPacketFrame7getSizeEv"></span><span id="_CPPv2NK5Limef5frame14RTPPacketFrame7getSizeEv"></span><span id="Limef::frame::RTPPacketFrame::getSizeC"></span><span class="target" id="classLimef_1_1frame_1_1RTPPacketFrame_1a9da8baa6c4b5bd6decbeae66949bbe04"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getSize</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">noexcept</span></span><a class="headerlink" href="#_CPPv4NK5Limef5frame14RTPPacketFrame7getSizeEv" title="Link to this definition">¶</a><br /></dt>
+<dt class="sig sig-object cpp" id="_CPPv4NK5Limef5frame8RTPFrame7getSizeEv">
+<span id="_CPPv3NK5Limef5frame8RTPFrame7getSizeEv"></span><span id="_CPPv2NK5Limef5frame8RTPFrame7getSizeEv"></span><span id="Limef::frame::RTPFrame::getSizeC"></span><span class="target" id="classLimef_1_1frame_1_1RTPFrame_1a0c6a0483eeafea2ddeca1eae9216e6a4"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getSize</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">noexcept</span></span><a class="headerlink" href="#_CPPv4NK5Limef5frame8RTPFrame7getSizeEv" title="Link to this definition">¶</a><br /></dt>
 <dd><p>Get current data size in bytes. </p>
 </dd></dl>
 
 <dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv4NK5Limef5frame14RTPPacketFrame11getCapacityEv">
-<span id="_CPPv3NK5Limef5frame14RTPPacketFrame11getCapacityEv"></span><span id="_CPPv2NK5Limef5frame14RTPPacketFrame11getCapacityEv"></span><span id="Limef::frame::RTPPacketFrame::getCapacityC"></span><span class="target" id="classLimef_1_1frame_1_1RTPPacketFrame_1ab54fcc23d6948ca93d717b23e4a04c24"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getCapacity</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">noexcept</span></span><a class="headerlink" href="#_CPPv4NK5Limef5frame14RTPPacketFrame11getCapacityEv" title="Link to this definition">¶</a><br /></dt>
+<dt class="sig sig-object cpp" id="_CPPv4NK5Limef5frame8RTPFrame11getCapacityEv">
+<span id="_CPPv3NK5Limef5frame8RTPFrame11getCapacityEv"></span><span id="_CPPv2NK5Limef5frame8RTPFrame11getCapacityEv"></span><span id="Limef::frame::RTPFrame::getCapacityC"></span><span class="target" id="classLimef_1_1frame_1_1RTPFrame_1a49e061113fef8b08294bb2813d20fab1"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getCapacity</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">noexcept</span></span><a class="headerlink" href="#_CPPv4NK5Limef5frame8RTPFrame11getCapacityEv" title="Link to this definition">¶</a><br /></dt>
 <dd><p>Get allocated buffer capacity. </p>
 </dd></dl>
 
 <dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv4NK5Limef5frame14RTPPacketFrame13getPacketTypeEv">
-<span id="_CPPv3NK5Limef5frame14RTPPacketFrame13getPacketTypeEv"></span><span id="_CPPv2NK5Limef5frame14RTPPacketFrame13getPacketTypeEv"></span><span id="Limef::frame::RTPPacketFrame::getPacketTypeC"></span><span class="target" id="classLimef_1_1frame_1_1RTPPacketFrame_1a007e5ce21a35148be5f3a6017baa30ab"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4N5Limef5frame14RTPPacketFrame10PacketTypeE" title="Limef::frame::RTPPacketFrame::PacketType"><span class="n"><span class="pre">PacketType</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getPacketType</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">noexcept</span></span><a class="headerlink" href="#_CPPv4NK5Limef5frame14RTPPacketFrame13getPacketTypeEv" title="Link to this definition">¶</a><br /></dt>
+<dt class="sig sig-object cpp" id="_CPPv4NK5Limef5frame8RTPFrame13getPacketTypeEv">
+<span id="_CPPv3NK5Limef5frame8RTPFrame13getPacketTypeEv"></span><span id="_CPPv2NK5Limef5frame8RTPFrame13getPacketTypeEv"></span><span id="Limef::frame::RTPFrame::getPacketTypeC"></span><span class="target" id="classLimef_1_1frame_1_1RTPFrame_1aeffa37b6902e58d46e9b7202104ebc21"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="n"><span class="pre">PacketType</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getPacketType</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">noexcept</span></span><a class="headerlink" href="#_CPPv4NK5Limef5frame8RTPFrame13getPacketTypeEv" title="Link to this definition">¶</a><br /></dt>
 <dd><p>Get packet type (RTP or RTCP) </p>
 </dd></dl>
 
 <dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv4N5Limef5frame14RTPPacketFrame13setPacketTypeE10PacketType">
-<span id="_CPPv3N5Limef5frame14RTPPacketFrame13setPacketTypeE10PacketType"></span><span id="_CPPv2N5Limef5frame14RTPPacketFrame13setPacketTypeE10PacketType"></span><span id="Limef::frame::RTPPacketFrame::setPacketType__PacketType"></span><span class="target" id="classLimef_1_1frame_1_1RTPPacketFrame_1ae40890dac83af176ca2a9a36f3be30c2"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">setPacketType</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv4N5Limef5frame14RTPPacketFrame10PacketTypeE" title="Limef::frame::RTPPacketFrame::PacketType"><span class="n"><span class="pre">PacketType</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">type</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">noexcept</span></span><a class="headerlink" href="#_CPPv4N5Limef5frame14RTPPacketFrame13setPacketTypeE10PacketType" title="Link to this definition">¶</a><br /></dt>
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef5frame8RTPFrame13setPacketTypeE10PacketType">
+<span id="_CPPv3N5Limef5frame8RTPFrame13setPacketTypeE10PacketType"></span><span id="_CPPv2N5Limef5frame8RTPFrame13setPacketTypeE10PacketType"></span><span id="Limef::frame::RTPFrame::setPacketType__PacketType"></span><span class="target" id="classLimef_1_1frame_1_1RTPFrame_1a9e098ddcc5746d04f6acf62659d2508c"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">setPacketType</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">PacketType</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">t</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">noexcept</span></span><a class="headerlink" href="#_CPPv4N5Limef5frame8RTPFrame13setPacketTypeE10PacketType" title="Link to this definition">¶</a><br /></dt>
 <dd><p>Set packet type. </p>
 </dd></dl>
 
 <dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv4NK5Limef5frame14RTPPacketFrame13getTrackIndexEv">
-<span id="_CPPv3NK5Limef5frame14RTPPacketFrame13getTrackIndexEv"></span><span id="_CPPv2NK5Limef5frame14RTPPacketFrame13getTrackIndexEv"></span><span id="Limef::frame::RTPPacketFrame::getTrackIndexC"></span><span class="target" id="classLimef_1_1frame_1_1RTPPacketFrame_1a12bd2234076d8ad6a919607ecc2af716"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getTrackIndex</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">noexcept</span></span><a class="headerlink" href="#_CPPv4NK5Limef5frame14RTPPacketFrame13getTrackIndexEv" title="Link to this definition">¶</a><br /></dt>
+<dt class="sig sig-object cpp" id="_CPPv4NK5Limef5frame8RTPFrame13getTrackIndexEv">
+<span id="_CPPv3NK5Limef5frame8RTPFrame13getTrackIndexEv"></span><span id="_CPPv2NK5Limef5frame8RTPFrame13getTrackIndexEv"></span><span id="Limef::frame::RTPFrame::getTrackIndexC"></span><span class="target" id="classLimef_1_1frame_1_1RTPFrame_1a404fb5bccf8007927a316783cb959dcd"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getTrackIndex</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">noexcept</span></span><a class="headerlink" href="#_CPPv4NK5Limef5frame8RTPFrame13getTrackIndexEv" title="Link to this definition">¶</a><br /></dt>
 <dd><p>Get track index (0=video, 1=audio, etc.) </p>
 </dd></dl>
 
 <dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv4N5Limef5frame14RTPPacketFrame13setTrackIndexEi">
-<span id="_CPPv3N5Limef5frame14RTPPacketFrame13setTrackIndexEi"></span><span id="_CPPv2N5Limef5frame14RTPPacketFrame13setTrackIndexEi"></span><span id="Limef::frame::RTPPacketFrame::setTrackIndex__i"></span><span class="target" id="classLimef_1_1frame_1_1RTPPacketFrame_1a6413c499708d007449a65fe6069ae19d"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">setTrackIndex</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">index</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">noexcept</span></span><a class="headerlink" href="#_CPPv4N5Limef5frame14RTPPacketFrame13setTrackIndexEi" title="Link to this definition">¶</a><br /></dt>
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef5frame8RTPFrame13setTrackIndexEi">
+<span id="_CPPv3N5Limef5frame8RTPFrame13setTrackIndexEi"></span><span id="_CPPv2N5Limef5frame8RTPFrame13setTrackIndexEi"></span><span id="Limef::frame::RTPFrame::setTrackIndex__i"></span><span class="target" id="classLimef_1_1frame_1_1RTPFrame_1aab1e257173edd889d8fb85ff84e6239d"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">setTrackIndex</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">idx</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">noexcept</span></span><a class="headerlink" href="#_CPPv4N5Limef5frame8RTPFrame13setTrackIndexEi" title="Link to this definition">¶</a><br /></dt>
 <dd><p>Set track index. </p>
 </dd></dl>
 
 <dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv4NK5Limef5frame14RTPPacketFrame10isKeyframeEv">
-<span id="_CPPv3NK5Limef5frame14RTPPacketFrame10isKeyframeEv"></span><span id="_CPPv2NK5Limef5frame14RTPPacketFrame10isKeyframeEv"></span><span id="Limef::frame::RTPPacketFrame::isKeyframeC"></span><span class="target" id="classLimef_1_1frame_1_1RTPPacketFrame_1a3cc1f7a5015c9f4b075d81109017e0c5"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">isKeyframe</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">noexcept</span></span><a class="headerlink" href="#_CPPv4NK5Limef5frame14RTPPacketFrame10isKeyframeEv" title="Link to this definition">¶</a><br /></dt>
-<dd><p>Check if this packet is from a keyframe (video only) </p>
+<dt class="sig sig-object cpp" id="_CPPv4NK5Limef5frame8RTPFrame10isSeqStartEv">
+<span id="_CPPv3NK5Limef5frame8RTPFrame10isSeqStartEv"></span><span id="_CPPv2NK5Limef5frame8RTPFrame10isSeqStartEv"></span><span id="Limef::frame::RTPFrame::isSeqStartC"></span><span class="target" id="classLimef_1_1frame_1_1RTPFrame_1a5bd957752bff81bbc7eceddade697777"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">isSeqStart</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">noexcept</span></span><a class="headerlink" href="#_CPPv4NK5Limef5frame8RTPFrame10isSeqStartEv" title="Link to this definition">¶</a><br /></dt>
+<dd><p>True if this is the first RTP packet of a new access unit. </p>
+<p>Set on the first writeCallback per av_write_frame() call. Use this to gate new-client delivery: wait until isSeqStart() before sending to a late-joining peer, avoiding mid-frame delivery. Not set for RTCP packets. </p>
 </dd></dl>
 
 <dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv4N5Limef5frame14RTPPacketFrame11setKeyframeEb">
-<span id="_CPPv3N5Limef5frame14RTPPacketFrame11setKeyframeEb"></span><span id="_CPPv2N5Limef5frame14RTPPacketFrame11setKeyframeEb"></span><span id="Limef::frame::RTPPacketFrame::setKeyframe__b"></span><span class="target" id="classLimef_1_1frame_1_1RTPPacketFrame_1ac24a9b5ee1bf4120ef4d65ddaad7b871"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">setKeyframe</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">kf</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">noexcept</span></span><a class="headerlink" href="#_CPPv4N5Limef5frame14RTPPacketFrame11setKeyframeEb" title="Link to this definition">¶</a><br /></dt>
-<dd><p>Set keyframe flag. </p>
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef5frame8RTPFrame11setSeqStartEb">
+<span id="_CPPv3N5Limef5frame8RTPFrame11setSeqStartEb"></span><span id="_CPPv2N5Limef5frame8RTPFrame11setSeqStartEb"></span><span id="Limef::frame::RTPFrame::setSeqStart__b"></span><span class="target" id="classLimef_1_1frame_1_1RTPFrame_1abd5e5e91e0a48d4ce301eb8fc83c028c"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">setSeqStart</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">s</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">noexcept</span></span><a class="headerlink" href="#_CPPv4N5Limef5frame8RTPFrame11setSeqStartEb" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Set sequence-start flag. </p>
 </dd></dl>
 
 <dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv4NK5Limef5frame14RTPPacketFrame6getPTSEv">
-<span id="_CPPv3NK5Limef5frame14RTPPacketFrame6getPTSEv"></span><span id="_CPPv2NK5Limef5frame14RTPPacketFrame6getPTSEv"></span><span id="Limef::frame::RTPPacketFrame::getPTSC"></span><span class="target" id="classLimef_1_1frame_1_1RTPPacketFrame_1a89a04d79ba818c15e1ab2da782e7f32a"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="n"><span class="pre">int64_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getPTS</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">noexcept</span></span><a class="headerlink" href="#_CPPv4NK5Limef5frame14RTPPacketFrame6getPTSEv" title="Link to this definition">¶</a><br /></dt>
-<dd><p>Get PTS (presentation timestamp) </p>
-</dd></dl>
-
-<dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv4N5Limef5frame14RTPPacketFrame6setPTSE7int64_t">
-<span id="_CPPv3N5Limef5frame14RTPPacketFrame6setPTSE7int64_t"></span><span id="_CPPv2N5Limef5frame14RTPPacketFrame6setPTSE7int64_t"></span><span id="Limef::frame::RTPPacketFrame::setPTS__int64_t"></span><span class="target" id="classLimef_1_1frame_1_1RTPPacketFrame_1a24e372c1480e4fadc997c5ab754d44c6"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">setPTS</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">int64_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">pts</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">noexcept</span></span><a class="headerlink" href="#_CPPv4N5Limef5frame14RTPPacketFrame6setPTSE7int64_t" title="Link to this definition">¶</a><br /></dt>
-<dd><p>Set PTS. </p>
-</dd></dl>
-
-<dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv4NK5Limef5frame14RTPPacketFrame6getDTSEv">
-<span id="_CPPv3NK5Limef5frame14RTPPacketFrame6getDTSEv"></span><span id="_CPPv2NK5Limef5frame14RTPPacketFrame6getDTSEv"></span><span id="Limef::frame::RTPPacketFrame::getDTSC"></span><span class="target" id="classLimef_1_1frame_1_1RTPPacketFrame_1a61eaa0fe84d7a13976de029eda4629de"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="n"><span class="pre">int64_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getDTS</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">noexcept</span></span><a class="headerlink" href="#_CPPv4NK5Limef5frame14RTPPacketFrame6getDTSEv" title="Link to this definition">¶</a><br /></dt>
-<dd><p>Get DTS (decode timestamp) </p>
-</dd></dl>
-
-<dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv4N5Limef5frame14RTPPacketFrame6setDTSE7int64_t">
-<span id="_CPPv3N5Limef5frame14RTPPacketFrame6setDTSE7int64_t"></span><span id="_CPPv2N5Limef5frame14RTPPacketFrame6setDTSE7int64_t"></span><span id="Limef::frame::RTPPacketFrame::setDTS__int64_t"></span><span class="target" id="classLimef_1_1frame_1_1RTPPacketFrame_1ae5abe7405b8645eca5bcab21baeefe66"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">setDTS</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">int64_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">dts</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">noexcept</span></span><a class="headerlink" href="#_CPPv4N5Limef5frame14RTPPacketFrame6setDTSE7int64_t" title="Link to this definition">¶</a><br /></dt>
-<dd><p>Set DTS. </p>
-</dd></dl>
-
-<dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv4NK5Limef5frame14RTPPacketFrame9peekBytesE6size_t">
-<span id="_CPPv3NK5Limef5frame14RTPPacketFrame9peekBytesE6size_t"></span><span id="_CPPv2NK5Limef5frame14RTPPacketFrame9peekBytesE6size_t"></span><span id="Limef::frame::RTPPacketFrame::peekBytes__sC"></span><span class="target" id="classLimef_1_1frame_1_1RTPPacketFrame_1a4a01e4b9221f8461b5d9ed8e9644b402"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">peekBytes</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">n</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK5Limef5frame14RTPPacketFrame9peekBytesE6size_t" title="Link to this definition">¶</a><br /></dt>
+<dt class="sig sig-object cpp" id="_CPPv4NK5Limef5frame8RTPFrame9peekBytesE6size_t">
+<span id="_CPPv3NK5Limef5frame8RTPFrame9peekBytesE6size_t"></span><span id="_CPPv2NK5Limef5frame8RTPFrame9peekBytesE6size_t"></span><span id="Limef::frame::RTPFrame::peekBytes__sC"></span><span class="target" id="classLimef_1_1frame_1_1RTPFrame_1adc50a022ce42c2744e5d888e522f1836"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">peekBytes</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">n</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK5Limef5frame8RTPFrame9peekBytesE6size_t" title="Link to this definition">¶</a><br /></dt>
 <dd><p>Peek at first N bytes of data (for debugging) </p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>n</strong> – Number of bytes to peek at </p>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>std::string Hexadecimal representation of bytes </p>
-</dd>
-</dl>
 </dd></dl>
 
 </div>
@@ -2183,8 +2207,8 @@ Writes all data it can - the return value indicates the number of bytes that wou
 <li><a class="reference internal" href="#_CPPv4N5Limef5frame14BufferLocationE"><code class="docutils literal notranslate"><span class="pre">BufferLocation</span></code></a><ul>
 <li><a class="reference internal" href="#_CPPv4N5Limef5frame14BufferLocation3CPUE"><code class="docutils literal notranslate"><span class="pre">CPU</span></code></a></li>
 <li><a class="reference internal" href="#_CPPv4N5Limef5frame14BufferLocation5VAAPIE"><code class="docutils literal notranslate"><span class="pre">VAAPI</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef5frame14BufferLocation11CUDA_FFMPEGE"><code class="docutils literal notranslate"><span class="pre">CUDA_FFMPEG</span></code></a></li>
 <li><a class="reference internal" href="#_CPPv4N5Limef5frame14BufferLocation4CUDAE"><code class="docutils literal notranslate"><span class="pre">CUDA</span></code></a></li>
-<li><a class="reference internal" href="#_CPPv4N5Limef5frame14BufferLocation6DMABufE"><code class="docutils literal notranslate"><span class="pre">DMABuf</span></code></a></li>
 <li><a class="reference internal" href="#_CPPv4N5Limef5frame14BufferLocation6VulkanE"><code class="docutils literal notranslate"><span class="pre">Vulkan</span></code></a></li>
 </ul>
 </li>
@@ -2198,7 +2222,7 @@ Writes all data it can - the return value indicates the number of bytes that wou
 <li><a class="reference internal" href="#_CPPv4N5Limef5frame10FrameClass4InfoE"><code class="docutils literal notranslate"><span class="pre">Info</span></code></a></li>
 <li><a class="reference internal" href="#_CPPv4N5Limef5frame10FrameClass6StreamE"><code class="docutils literal notranslate"><span class="pre">Stream</span></code></a></li>
 <li><a class="reference internal" href="#_CPPv4N5Limef5frame10FrameClass3SDPE"><code class="docutils literal notranslate"><span class="pre">SDP</span></code></a></li>
-<li><a class="reference internal" href="#_CPPv4N5Limef5frame10FrameClass9RTPPacketE"><code class="docutils literal notranslate"><span class="pre">RTPPacket</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef5frame10FrameClass3RTPE"><code class="docutils literal notranslate"><span class="pre">RTP</span></code></a></li>
 <li><a class="reference internal" href="#_CPPv4N5Limef5frame10FrameClass6TensorE"><code class="docutils literal notranslate"><span class="pre">Tensor</span></code></a></li>
 </ul>
 </li>
@@ -2210,12 +2234,12 @@ Writes all data it can - the return value indicates the number of bytes that wou
 <li><a class="reference internal" href="#_CPPv4N5Limef5frame5DType7Float64E"><code class="docutils literal notranslate"><span class="pre">Float64</span></code></a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#_CPPv4N5Limef5frame18bufferLocationNameE14BufferLocation"><code class="docutils literal notranslate"><span class="pre">bufferLocationName()</span></code></a></li>
 <li><a class="reference internal" href="#_CPPv4N5Limef5frame9alignSizeE6size_t6size_t"><code class="docutils literal notranslate"><span class="pre">alignSize()</span></code></a></li>
 <li><a class="reference internal" href="#_CPPv4N5Limef5frame24computeContiguousStridesEiPK7int64_t6size_tP7int64_t"><code class="docutils literal notranslate"><span class="pre">computeContiguousStrides()</span></code></a></li>
 <li><a class="reference internal" href="#_CPPv4N5Limef5frame12contentBytesEiPK7int64_t5DType"><code class="docutils literal notranslate"><span class="pre">contentBytes()</span></code></a></li>
 <li><a class="reference internal" href="#_CPPv4N5Limef5frame9dtypeSizeE5DType"><code class="docutils literal notranslate"><span class="pre">dtypeSize()</span></code></a></li>
 <li><a class="reference internal" href="#_CPPv4N5Limef5frame9dtypeNameE5DType"><code class="docutils literal notranslate"><span class="pre">dtypeName()</span></code></a></li>
-<li><a class="reference internal" href="#_CPPv4N5Limef5frame15RTP_NOPTS_VALUEE"><code class="docutils literal notranslate"><span class="pre">RTP_NOPTS_VALUE</span></code></a></li>
 <li><a class="reference internal" href="#_CPPv4N5Limef5frame17TENSOR_MAX_PLANESE"><code class="docutils literal notranslate"><span class="pre">TENSOR_MAX_PLANES</span></code></a></li>
 <li><a class="reference internal" href="#_CPPv4N5Limef5frame15TENSOR_MAX_DIMSE"><code class="docutils literal notranslate"><span class="pre">TENSOR_MAX_DIMS</span></code></a></li>
 <li><a class="reference internal" href="#_CPPv4N5Limef5frame10CodecFrameE"><code class="docutils literal notranslate"><span class="pre">Limef::frame::CodecFrame</span></code></a><ul>
@@ -2251,13 +2275,13 @@ Writes all data it can - the return value indicates the number of bytes that wou
 <li><a class="reference internal" href="#_CPPv4NK5Limef5frame12DecodedFrame9getHeightEv"><code class="docutils literal notranslate"><span class="pre">getHeight()</span></code></a></li>
 <li><a class="reference internal" href="#_CPPv4NK5Limef5frame12DecodedFrame14getVideoFormatEv"><code class="docutils literal notranslate"><span class="pre">getVideoFormat()</span></code></a></li>
 <li><a class="reference internal" href="#_CPPv4NK5Limef5frame12DecodedFrame9isHWFrameEv"><code class="docutils literal notranslate"><span class="pre">isHWFrame()</span></code></a></li>
-<li><a class="reference internal" href="#_CPPv4NK5Limef5frame12DecodedFrame8locationEv"><code class="docutils literal notranslate"><span class="pre">location()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4NK5Limef5frame12DecodedFrame17getBufferLocationEv"><code class="docutils literal notranslate"><span class="pre">getBufferLocation()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef5frame12DecodedFrame17setBufferLocationE14BufferLocation"><code class="docutils literal notranslate"><span class="pre">setBufferLocation()</span></code></a></li>
 <li><a class="reference internal" href="#_CPPv4NK5Limef5frame12DecodedFrame7isOnCPUEv"><code class="docutils literal notranslate"><span class="pre">isOnCPU()</span></code></a></li>
 <li><a class="reference internal" href="#_CPPv4NK5Limef5frame12DecodedFrame7isOnGPUEv"><code class="docutils literal notranslate"><span class="pre">isOnGPU()</span></code></a></li>
-<li><a class="reference internal" href="#_CPPv4NK5Limef5frame12DecodedFrame8dmaBufFdEv"><code class="docutils literal notranslate"><span class="pre">dmaBufFd()</span></code></a></li>
-<li><a class="reference internal" href="#_CPPv4N5Limef5frame12DecodedFrame11setDMABufFdEi"><code class="docutils literal notranslate"><span class="pre">setDMABufFd()</span></code></a></li>
-<li><a class="reference internal" href="#_CPPv4N5Limef5frame12DecodedFrame15setTargetHWPoolEP11AVBufferRef"><code class="docutils literal notranslate"><span class="pre">setTargetHWPool()</span></code></a></li>
-<li><a class="reference internal" href="#_CPPv4NK5Limef5frame12DecodedFrame15getTargetHWPoolEv"><code class="docutils literal notranslate"><span class="pre">getTargetHWPool()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef5frame12DecodedFrame17setupNVDECCPUViewEiiP7uint8_tP7uint8_t6size_t"><code class="docutils literal notranslate"><span class="pre">setupNVDECCPUView()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef5frame12DecodedFrame17setupArgusCPUViewEiiP7uint8_tP7uint8_tii"><code class="docutils literal notranslate"><span class="pre">setupArgusCPUView()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef5frame12DecodedFrame18setupCPUNvBufVideoEiii6size_t"><code class="docutils literal notranslate"><span class="pre">setupCPUNvBufVideo()</span></code></a></li>
 <li><a class="reference internal" href="#_CPPv4NK5Limef5frame12DecodedFrame10getCPUDataEi"><code class="docutils literal notranslate"><span class="pre">getCPUData()</span></code></a></li>
 <li><a class="reference internal" href="#_CPPv4NK5Limef5frame12DecodedFrame12getCPUFormatEv"><code class="docutils literal notranslate"><span class="pre">getCPUFormat()</span></code></a></li>
 <li><a class="reference internal" href="#_CPPv4NK5Limef5frame12DecodedFrame14getCPULinesizeEi"><code class="docutils literal notranslate"><span class="pre">getCPULinesize()</span></code></a></li>
@@ -2267,6 +2291,7 @@ Writes all data it can - the return value indicates the number of bytes that wou
 <li><a class="reference internal" href="#_CPPv4NK5Limef5frame12DecodedFrame14getAudioFormatEv"><code class="docutils literal notranslate"><span class="pre">getAudioFormat()</span></code></a></li>
 <li><a class="reference internal" href="#_CPPv4N5Limef5frame12DecodedFrame11setTimeBaseERK10AVRational"><code class="docutils literal notranslate"><span class="pre">setTimeBase()</span></code></a></li>
 <li><a class="reference internal" href="#_CPPv4NK5Limef5frame12DecodedFrame11getTimeBaseEv"><code class="docutils literal notranslate"><span class="pre">getTimeBase()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4NK5Limef5frame12DecodedFrame6hasPTSEv"><code class="docutils literal notranslate"><span class="pre">hasPTS()</span></code></a></li>
 <li><a class="reference internal" href="#_CPPv4NK5Limef5frame12DecodedFrame12getTimestampEv"><code class="docutils literal notranslate"><span class="pre">getTimestamp()</span></code></a></li>
 <li><a class="reference internal" href="#_CPPv4N5Limef5frame12DecodedFrame12setTimestampENSt6chrono12microsecondsE"><code class="docutils literal notranslate"><span class="pre">setTimestamp()</span></code></a></li>
 <li><a class="reference internal" href="#_CPPv4NK5Limef5frame12DecodedFrame8getFrameEv"><code class="docutils literal notranslate"><span class="pre">getFrame()</span></code></a></li>
@@ -2323,6 +2348,13 @@ Writes all data it can - the return value indicates the number of bytes that wou
 <li><a class="reference internal" href="#_CPPv4N5Limef5frame11PacketFrame7setDataEPK7uint8_tib"><code class="docutils literal notranslate"><span class="pre">setData()</span></code></a></li>
 <li><a class="reference internal" href="#_CPPv4NK5Limef5frame11PacketFrame15dumpFirstNBytesE6size_t"><code class="docutils literal notranslate"><span class="pre">dumpFirstNBytes()</span></code></a></li>
 <li><a class="reference internal" href="#_CPPv4NK5Limef5frame11PacketFrame14dumpPacketInfoE6size_t"><code class="docutils literal notranslate"><span class="pre">dumpPacketInfo()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4NK5Limef5frame11PacketFrame5isKeyEv"><code class="docutils literal notranslate"><span class="pre">isKey()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4NK5Limef5frame11PacketFrame12annexBOffsetEv"><code class="docutils literal notranslate"><span class="pre">annexBOffset()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4NK5Limef5frame11PacketFrame8isAnnexBEv"><code class="docutils literal notranslate"><span class="pre">isAnnexB()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4NK5Limef5frame11PacketFrame5isSPSEv"><code class="docutils literal notranslate"><span class="pre">isSPS()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4NK5Limef5frame11PacketFrame5isPPSEv"><code class="docutils literal notranslate"><span class="pre">isPPS()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4NK5Limef5frame11PacketFrame5isVPSEv"><code class="docutils literal notranslate"><span class="pre">isVPS()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4NK5Limef5frame11PacketFrame6hasPTSEv"><code class="docutils literal notranslate"><span class="pre">hasPTS()</span></code></a></li>
 <li><a class="reference internal" href="#_CPPv4N5Limef5frame11PacketFrame12setMediaTypeE11AVMediaType"><code class="docutils literal notranslate"><span class="pre">setMediaType()</span></code></a></li>
 <li><a class="reference internal" href="#_CPPv4N5Limef5frame11PacketFrame11setTimeBaseERK10AVRational"><code class="docutils literal notranslate"><span class="pre">setTimeBase()</span></code></a></li>
 <li><a class="reference internal" href="#_CPPv4NK5Limef5frame11PacketFrame11getTimeBaseEv"><code class="docutils literal notranslate"><span class="pre">getTimeBase()</span></code></a></li>
@@ -2371,32 +2403,23 @@ Writes all data it can - the return value indicates the number of bytes that wou
 <li><a class="reference internal" href="#_CPPv4NK5Limef5frame8RawFrame11hasOverflowEv"><code class="docutils literal notranslate"><span class="pre">hasOverflow()</span></code></a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#_CPPv4N5Limef5frame14RTPPacketFrameE"><code class="docutils literal notranslate"><span class="pre">Limef::frame::RTPPacketFrame</span></code></a><ul>
-<li><a class="reference internal" href="#_CPPv4N5Limef5frame14RTPPacketFrame10PacketTypeE"><code class="docutils literal notranslate"><span class="pre">PacketType</span></code></a><ul>
-<li><a class="reference internal" href="#_CPPv4N5Limef5frame14RTPPacketFrame10PacketType3RTPE"><code class="docutils literal notranslate"><span class="pre">RTP</span></code></a></li>
-<li><a class="reference internal" href="#_CPPv4N5Limef5frame14RTPPacketFrame10PacketType4RTCPE"><code class="docutils literal notranslate"><span class="pre">RTCP</span></code></a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#_CPPv4NK5Limef5frame14RTPPacketFrame13getFrameClassEv"><code class="docutils literal notranslate"><span class="pre">getFrameClass()</span></code></a></li>
-<li><a class="reference internal" href="#_CPPv4N5Limef5frame14RTPPacketFrame5resetEv"><code class="docutils literal notranslate"><span class="pre">reset()</span></code></a></li>
-<li><a class="reference internal" href="#_CPPv4NK5Limef5frame14RTPPacketFrame5cloneEv"><code class="docutils literal notranslate"><span class="pre">clone()</span></code></a></li>
-<li><a class="reference internal" href="#_CPPv4N5Limef5frame14RTPPacketFrame10updateFromEPK5Frame"><code class="docutils literal notranslate"><span class="pre">updateFrom()</span></code></a></li>
-<li><a class="reference internal" href="#_CPPv4NK5Limef5frame14RTPPacketFrame4dumpEv"><code class="docutils literal notranslate"><span class="pre">dump()</span></code></a></li>
-<li><a class="reference internal" href="#_CPPv4N5Limef5frame14RTPPacketFrame7setDataEPK7uint8_t6size_tb"><code class="docutils literal notranslate"><span class="pre">setData()</span></code></a></li>
-<li><a class="reference internal" href="#_CPPv4NK5Limef5frame14RTPPacketFrame7getDataEv"><code class="docutils literal notranslate"><span class="pre">getData()</span></code></a></li>
-<li><a class="reference internal" href="#_CPPv4NK5Limef5frame14RTPPacketFrame7getSizeEv"><code class="docutils literal notranslate"><span class="pre">getSize()</span></code></a></li>
-<li><a class="reference internal" href="#_CPPv4NK5Limef5frame14RTPPacketFrame11getCapacityEv"><code class="docutils literal notranslate"><span class="pre">getCapacity()</span></code></a></li>
-<li><a class="reference internal" href="#_CPPv4NK5Limef5frame14RTPPacketFrame13getPacketTypeEv"><code class="docutils literal notranslate"><span class="pre">getPacketType()</span></code></a></li>
-<li><a class="reference internal" href="#_CPPv4N5Limef5frame14RTPPacketFrame13setPacketTypeE10PacketType"><code class="docutils literal notranslate"><span class="pre">setPacketType()</span></code></a></li>
-<li><a class="reference internal" href="#_CPPv4NK5Limef5frame14RTPPacketFrame13getTrackIndexEv"><code class="docutils literal notranslate"><span class="pre">getTrackIndex()</span></code></a></li>
-<li><a class="reference internal" href="#_CPPv4N5Limef5frame14RTPPacketFrame13setTrackIndexEi"><code class="docutils literal notranslate"><span class="pre">setTrackIndex()</span></code></a></li>
-<li><a class="reference internal" href="#_CPPv4NK5Limef5frame14RTPPacketFrame10isKeyframeEv"><code class="docutils literal notranslate"><span class="pre">isKeyframe()</span></code></a></li>
-<li><a class="reference internal" href="#_CPPv4N5Limef5frame14RTPPacketFrame11setKeyframeEb"><code class="docutils literal notranslate"><span class="pre">setKeyframe()</span></code></a></li>
-<li><a class="reference internal" href="#_CPPv4NK5Limef5frame14RTPPacketFrame6getPTSEv"><code class="docutils literal notranslate"><span class="pre">getPTS()</span></code></a></li>
-<li><a class="reference internal" href="#_CPPv4N5Limef5frame14RTPPacketFrame6setPTSE7int64_t"><code class="docutils literal notranslate"><span class="pre">setPTS()</span></code></a></li>
-<li><a class="reference internal" href="#_CPPv4NK5Limef5frame14RTPPacketFrame6getDTSEv"><code class="docutils literal notranslate"><span class="pre">getDTS()</span></code></a></li>
-<li><a class="reference internal" href="#_CPPv4N5Limef5frame14RTPPacketFrame6setDTSE7int64_t"><code class="docutils literal notranslate"><span class="pre">setDTS()</span></code></a></li>
-<li><a class="reference internal" href="#_CPPv4NK5Limef5frame14RTPPacketFrame9peekBytesE6size_t"><code class="docutils literal notranslate"><span class="pre">peekBytes()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef5frame8RTPFrameE"><code class="docutils literal notranslate"><span class="pre">Limef::frame::RTPFrame</span></code></a><ul>
+<li><a class="reference internal" href="#_CPPv4NK5Limef5frame8RTPFrame13getFrameClassEv"><code class="docutils literal notranslate"><span class="pre">getFrameClass()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef5frame8RTPFrame5resetEv"><code class="docutils literal notranslate"><span class="pre">reset()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4NK5Limef5frame8RTPFrame5cloneEv"><code class="docutils literal notranslate"><span class="pre">clone()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef5frame8RTPFrame10updateFromEPK5Frame"><code class="docutils literal notranslate"><span class="pre">updateFrom()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4NK5Limef5frame8RTPFrame4dumpEv"><code class="docutils literal notranslate"><span class="pre">dump()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef5frame8RTPFrame7setDataEPK7uint8_t6size_tb"><code class="docutils literal notranslate"><span class="pre">setData()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4NK5Limef5frame8RTPFrame7getDataEv"><code class="docutils literal notranslate"><span class="pre">getData()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4NK5Limef5frame8RTPFrame7getSizeEv"><code class="docutils literal notranslate"><span class="pre">getSize()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4NK5Limef5frame8RTPFrame11getCapacityEv"><code class="docutils literal notranslate"><span class="pre">getCapacity()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4NK5Limef5frame8RTPFrame13getPacketTypeEv"><code class="docutils literal notranslate"><span class="pre">getPacketType()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef5frame8RTPFrame13setPacketTypeE10PacketType"><code class="docutils literal notranslate"><span class="pre">setPacketType()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4NK5Limef5frame8RTPFrame13getTrackIndexEv"><code class="docutils literal notranslate"><span class="pre">getTrackIndex()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef5frame8RTPFrame13setTrackIndexEi"><code class="docutils literal notranslate"><span class="pre">setTrackIndex()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4NK5Limef5frame8RTPFrame10isSeqStartEv"><code class="docutils literal notranslate"><span class="pre">isSeqStart()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef5frame8RTPFrame11setSeqStartEb"><code class="docutils literal notranslate"><span class="pre">setSeqStart()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4NK5Limef5frame8RTPFrame9peekBytesE6size_t"><code class="docutils literal notranslate"><span class="pre">peekBytes()</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#_CPPv4N5Limef5frame8SDPFrameE"><code class="docutils literal notranslate"><span class="pre">Limef::frame::SDPFrame</span></code></a><ul>

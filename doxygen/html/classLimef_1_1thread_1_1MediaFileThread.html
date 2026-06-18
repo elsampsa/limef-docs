@@ -22,7 +22,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">My Project<span id="projectnumber">&#160;0.1.0</span>
+   <div id="projectname">My Project<span id="projectnumber">&#160;0.2.0</span>
    </div>
   </td>
  </tr>
@@ -81,7 +81,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>A safe media playback thread.  
+<p>Media playback thread with DTS-ordered buffering.  
  <a href="classLimef_1_1thread_1_1MediaFileThread.html#details">More...</a></p>
 
 <p><code>#include &lt;mediafile.h&gt;</code></p>
@@ -90,7 +90,7 @@ Inheritance diagram for Limef::thread::MediaFileThread:</div>
 <div class="dyncontent">
 <div class="center"><img src="classLimef_1_1thread_1_1MediaFileThread__inherit__graph.png" border="0" usemap="#aLimef_1_1thread_1_1MediaFileThread_inherit__map" alt="Inheritance graph"/></div>
 <map name="aLimef_1_1thread_1_1MediaFileThread_inherit__map" id="aLimef_1_1thread_1_1MediaFileThread_inherit__map">
-<area shape="rect" title="A safe media playback thread." alt="" coords="27,152,206,192"/>
+<area shape="rect" title="Media playback thread with DTS&#45;ordered buffering." alt="" coords="27,152,206,192"/>
 <area shape="rect" href="classLimef_1_1thread_1_1ComposeThread.html" title="Base class for composite threads." alt="" coords="5,79,228,104"/>
 <area shape="poly" title=" " alt="" coords="119,118,119,152,114,152,114,118"/>
 <area shape="rect" href="classLimef_1_1thread_1_1ThreadBase.html" title=" " alt="" coords="20,5,213,31"/>
@@ -102,7 +102,7 @@ Collaboration diagram for Limef::thread::MediaFileThread:</div>
 <div class="dyncontent">
 <div class="center"><img src="classLimef_1_1thread_1_1MediaFileThread__coll__graph.png" border="0" usemap="#aLimef_1_1thread_1_1MediaFileThread_coll__map" alt="Collaboration graph"/></div>
 <map name="aLimef_1_1thread_1_1MediaFileThread_coll__map" id="aLimef_1_1thread_1_1MediaFileThread_coll__map">
-<area shape="rect" title="A safe media playback thread." alt="" coords="27,152,206,192"/>
+<area shape="rect" title="Media playback thread with DTS&#45;ordered buffering." alt="" coords="27,152,206,192"/>
 <area shape="rect" href="classLimef_1_1thread_1_1ComposeThread.html" title="Base class for composite threads." alt="" coords="5,79,228,104"/>
 <area shape="poly" title=" " alt="" coords="119,118,119,152,114,152,114,118"/>
 <area shape="rect" href="classLimef_1_1thread_1_1ThreadBase.html" title=" " alt="" coords="20,5,213,31"/>
@@ -192,15 +192,14 @@ Additional Inherited Members</h2></td></tr>
 <tr class="separator:a673569fed39d27b2fa291b3abef21f1c inherit pro_attribs_classLimef_1_1thread_1_1ThreadBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>A safe media playback thread. </p>
+<div class="textblock"><p>Media playback thread with DTS-ordered buffering. </p>
 <p>Creates a chain of:</p>
 <ol type="1">
-<li><a class="el" href="classLimef_1_1thread_1_1MediaFileThread1.html" title="MediaFileThread1.">MediaFileThread1</a> for reading files and transcoding / checking them to some standard form</li>
+<li><a class="el" href="classLimef_1_1thread_1_1MediaFileThread0.html" title="Thread for reading media files using FFmpeg.">MediaFileThread0</a> for reading files and sending packets as-is</li>
 <li><a class="el" href="classLimef_1_1thread_1_1OrderedPacketBufferThread.html" title="Thread for buffering PacketFrames with DTS ordering.">OrderedPacketBufferThread</a> for DTS ordering and buffering</li>
 </ol>
-<p>NOTE: <a class="el" href="classLimef_1_1thread_1_1MediaFileThread1.html" title="MediaFileThread1.">MediaFileThread1</a> includes conversion to AAC</p>
 <p>NOTE: thread starting order will be (2) -&gt; (1) </p><pre class="fragment">                thread border
-</pre><p> <a class="el" href="classLimef_1_1thread_1_1MediaFileThread1.html" title="MediaFileThread1.">MediaFileThread1</a> -&gt;| <a class="el" href="classLimef_1_1thread_1_1OrderedPacketBufferThread.html" title="Thread for buffering PacketFrames with DTS ordering.">OrderedPacketBufferThread</a> </p>
+</pre><p> <a class="el" href="classLimef_1_1thread_1_1MediaFileThread0.html" title="Thread for reading media files using FFmpeg.">MediaFileThread0</a> -&gt;| <a class="el" href="classLimef_1_1thread_1_1OrderedPacketBufferThread.html" title="Thread for buffering PacketFrames with DTS ordering.">OrderedPacketBufferThread</a> </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a91530266de2a2f51ef211cfef80ad7f4" name="a91530266de2a2f51ef211cfef80ad7f4"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a91530266de2a2f51ef211cfef80ad7f4">&#9670;&#160;</a></span>MediaFileThread()</h2>

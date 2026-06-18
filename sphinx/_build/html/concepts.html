@@ -207,7 +207,7 @@
     <li><a href="https://github.com/elsampsa/limef-apps" target="_blank" rel="noopener noreferrer"><i class="fa fa-github" style="font-size: 16pt"></i> App examples </a></li>
     <li><a href="https://github.com/elsampsa/limef-plugins" target="_blank" rel="noopener noreferrer"><i class="fa fa-github" style="font-size: 16pt"></i> Plugin examples </a></li>
     <li><a href="https://github.com/elsampsa/limef-docs/issues" target="_blank" rel="noopener noreferrer"><i class="fa fa-bug" style="font-size: 16pt"></i> Public issues </a></li>
-    <li><a href="https://github.com/elsampsa/limef-releases/releases" target="_blank" rel="noopener noreferrer"><i class="fa fa-download" style="font-size: 16pt"></i> Releases </a></li>
+    <li><a href="https://github.com/elsampsa/limef-releases/releases" target="_blank" rel="noopener noreferrer"><i class="fa fa-download" style="font-size: 16pt"></i> Releases (private) </a></li>
     <li><a href="https://github.com/sponsors/elsampsa" target="_blank" rel="noopener noreferrer"><i class="fa fa-heart" style="font-size: 16pt"></i> Sponsor </a></li>
 </ul>
 </div><form class="sidebar-search-container" method="get" action="search.html" role="search">
@@ -237,7 +237,7 @@
 <li class="toctree-l2"><a class="reference internal" href="api/shmem.html">Shared Memory</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="distribution.html">Distributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="distribution.html">Distributing and Licensing</a></li>
 </ul>
 
 </div>
@@ -322,7 +322,7 @@ Each frame class corresponds to a subclass of <a class="reference internal" href
 <td><p><a class="reference internal" href="api/frames.html#_CPPv4N5Limef5frame8SDPFrameE" title="Limef::frame::SDPFrame"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">Limef::frame::SDPFrame</span></code></a> — SDP for RTSP</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">FrameClass::RTPPacket</span></code></p></td>
-<td><p><a class="reference internal" href="api/frames.html#_CPPv4N5Limef5frame14RTPPacketFrameE" title="Limef::frame::RTPPacketFrame"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">Limef::frame::RTPPacketFrame</span></code></a> — RTP/RTCP packets</p></td>
+<td><p><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">Limef::frame::RTPPacketFrame</span></code> — RTP/RTCP packets</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">FrameClass::Tensor</span></code></p></td>
 <td><p><a class="reference internal" href="api/frames.html#_CPPv4N5Limef5frame11TensorFrameE" title="Limef::frame::TensorFrame"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">Limef::frame::TensorFrame</span></code></a> — N-plane tensor, CPU or GPU</p></td>
@@ -513,7 +513,7 @@ The same pipeline as above looks like this:</p>
 <p><code class="docutils literal notranslate"><span class="pre">cc()</span></code> stores raw C++ pointers — Python’s garbage collector has no visibility into
 these references.  Any Python object whose refcount drops to zero will be destroyed
 even if a C++ chain still points at it, causing a crash or a “pure virtual method
-called” abort:</p>
+called” abort</p>
 </div>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
@@ -551,7 +551,7 @@ variable holding it and is GC’d immediately after the statement.</p></li>
 <li><p><strong>Reassigning <code class="docutils literal notranslate"><span class="pre">chain</span></code></strong> — <code class="docutils literal notranslate"><span class="pre">chain</span> <span class="pre">=</span> <span class="pre">chain.cc(x)</span></code> drops the reference to whatever
 <code class="docutils literal notranslate"><span class="pre">chain</span></code> pointed to before; if that was the only reference, the object is GC’d.</p></li>
 <li><p><strong>Context temporaries</strong> — <code class="docutils literal notranslate"><span class="pre">SomeThread(SomeCtx())</span></code> is only safe when the C++
-constructor copies the context by value (which Limef thread constructors do).</p></li>
+constructor copies the context by value</p></li>
 </ul>
 </section>
 </section>

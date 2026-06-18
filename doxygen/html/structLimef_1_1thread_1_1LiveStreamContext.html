@@ -22,7 +22,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">My Project<span id="projectnumber">&#160;0.1.0</span>
+   <div id="projectname">My Project<span id="projectnumber">&#160;0.2.0</span>
    </div>
   </td>
  </tr>
@@ -99,9 +99,12 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:a539c9bdfa28fb1610f8457bde2190729" id="r_a539c9bdfa28fb1610f8457bde2190729"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="common_8h.html#a1e8e0cda772e93f68194758169e21ab9">Slot</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLimef_1_1thread_1_1LiveStreamContext.html#a539c9bdfa28fb1610f8457bde2190729">slot</a> {1}</td></tr>
 <tr class="memdesc:a539c9bdfa28fb1610f8457bde2190729"><td class="mdescLeft">&#160;</td><td class="mdescRight">Slot identifying this stream.  <br /></td></tr>
 <tr class="separator:a539c9bdfa28fb1610f8457bde2190729"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6202b755d006ecca53c3c0f15292dd4c" id="r_a6202b755d006ecca53c3c0f15292dd4c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLimef_1_1thread_1_1LiveStreamContext.html#a6202b755d006ecca53c3c0f15292dd4c">timeout_sec</a> {5}</td></tr>
-<tr class="memdesc:a6202b755d006ecca53c3c0f15292dd4c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read timeout in seconds.  <br /></td></tr>
+<tr class="memitem:a6202b755d006ecca53c3c0f15292dd4c" id="r_a6202b755d006ecca53c3c0f15292dd4c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLimef_1_1thread_1_1LiveStreamContext.html#a6202b755d006ecca53c3c0f15292dd4c">timeout_sec</a> {15}</td></tr>
+<tr class="memdesc:a6202b755d006ecca53c3c0f15292dd4c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read timeout in seconds (av_read_frame streaming phase) - if no packets in this many secs during streaming, then reconnect.  <br /></td></tr>
 <tr class="separator:a6202b755d006ecca53c3c0f15292dd4c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a24c00a7d8e2c5e9c1f304d267b15fcac" id="r_a24c00a7d8e2c5e9c1f304d267b15fcac"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLimef_1_1thread_1_1LiveStreamContext.html#a24c00a7d8e2c5e9c1f304d267b15fcac">timeout_connect_sec</a> {20}</td></tr>
+<tr class="memdesc:a24c00a7d8e2c5e9c1f304d267b15fcac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Connection timeout in seconds (avformat_open_input setup phase) - if RTSP DESCRIBE/SETUP/PLAY handshake is not completed within this many seconds, reconnect.  <br /></td></tr>
+<tr class="separator:a24c00a7d8e2c5e9c1f304d267b15fcac"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0e3538f69481c8a3570f47f34e633a3c" id="r_a0e3538f69481c8a3570f47f34e633a3c"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLimef_1_1thread_1_1LiveStreamContext.html#a0e3538f69481c8a3570f47f34e633a3c">rtsp_transport</a> {&quot;tcp&quot;}</td></tr>
 <tr class="memdesc:a0e3538f69481c8a3570f47f34e633a3c"><td class="mdescLeft">&#160;</td><td class="mdescRight">RTSP transport (tcp/udp) for RTSP sources.  <br /></td></tr>
 <tr class="separator:a0e3538f69481c8a3570f47f34e633a3c"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -112,14 +115,23 @@ Public Attributes</h2></td></tr>
 <tr class="memdesc:a2de8f53e7fa3a46b9095e5e45b2321e5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Maximum number of reopen attempts: -1: infinite, 0: none, etc.  <br /></td></tr>
 <tr class="separator:a2de8f53e7fa3a46b9095e5e45b2321e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a06885bb8f14e206cafdddcde63506be9" id="r_a06885bb8f14e206cafdddcde63506be9"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLimef_1_1thread_1_1LiveStreamContext.html#a06885bb8f14e206cafdddcde63506be9">timeout_start_sec</a> {5}</td></tr>
-<tr class="memdesc:a06885bb8f14e206cafdddcde63506be9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Start value for retry timeout.  <br /></td></tr>
+<tr class="memdesc:a06885bb8f14e206cafdddcde63506be9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Start value for retry timeout - try to re-establish connection after this many seconds.  <br /></td></tr>
 <tr class="separator:a06885bb8f14e206cafdddcde63506be9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a489f37281d7e394e434543c1bb292f3e" id="r_a489f37281d7e394e434543c1bb292f3e"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLimef_1_1thread_1_1LiveStreamContext.html#a489f37281d7e394e434543c1bb292f3e">timeout_max_sec</a> {60}</td></tr>
-<tr class="memdesc:a489f37281d7e394e434543c1bb292f3e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Max value for retry timeout.  <br /></td></tr>
+<tr class="memdesc:a489f37281d7e394e434543c1bb292f3e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Max value for retry timeout - try to re-establish connection after this many seconds.  <br /></td></tr>
 <tr class="separator:a489f37281d7e394e434543c1bb292f3e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1b46b4c321c1dcbc381bc8bf58134316" id="r_a1b46b4c321c1dcbc381bc8bf58134316"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLimef_1_1thread_1_1LiveStreamContext.html#a1b46b4c321c1dcbc381bc8bf58134316">factor</a> {2}</td></tr>
 <tr class="memdesc:a1b46b4c321c1dcbc381bc8bf58134316"><td class="mdescLeft">&#160;</td><td class="mdescRight">Factor to increase retry timeouts.  <br /></td></tr>
 <tr class="separator:a1b46b4c321c1dcbc381bc8bf58134316"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af580704656ab094bd110fde0ed16edeb" id="r_af580704656ab094bd110fde0ed16edeb"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLimef_1_1thread_1_1LiveStreamContext.html#af580704656ab094bd110fde0ed16edeb">probe_duration_sec</a> {15}</td></tr>
+<tr class="separator:af580704656ab094bd110fde0ed16edeb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afb63dbb6c7a9ac28a17842192d979197" id="r_afb63dbb6c7a9ac28a17842192d979197"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLimef_1_1thread_1_1LiveStreamContext.html#afb63dbb6c7a9ac28a17842192d979197">use_ntp</a> {false}</td></tr>
+<tr class="separator:afb63dbb6c7a9ac28a17842192d979197"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3451525e1b19f7e8cded1c92dcfc2c09" id="r_a3451525e1b19f7e8cded1c92dcfc2c09"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLimef_1_1thread_1_1LiveStreamContext.html#a3451525e1b19f7e8cded1c92dcfc2c09">ntp_timeout_sec</a> {10}</td></tr>
+<tr class="memdesc:a3451525e1b19f7e8cded1c92dcfc2c09"><td class="mdescLeft">&#160;</td><td class="mdescRight">Warn if no NTP timestamp received within this many seconds after stream open.  <br /></td></tr>
+<tr class="separator:a3451525e1b19f7e8cded1c92dcfc2c09"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a01483af5750ec8fdbfc71381121329af" id="r_a01483af5750ec8fdbfc71381121329af"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLimef_1_1thread_1_1LiveStreamContext.html#a01483af5750ec8fdbfc71381121329af">reconnect_interval_sec</a> {0}</td></tr>
+<tr class="separator:a01483af5750ec8fdbfc71381121329af"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Configuration context for live stream reader. </p>
@@ -193,6 +205,54 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="a3451525e1b19f7e8cded1c92dcfc2c09" name="a3451525e1b19f7e8cded1c92dcfc2c09"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3451525e1b19f7e8cded1c92dcfc2c09">&#9670;&#160;</a></span>ntp_timeout_sec</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Limef::thread::LiveStreamContext::ntp_timeout_sec {10}</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Warn if no NTP timestamp received within this many seconds after stream open. </p>
+
+</div>
+</div>
+<a id="af580704656ab094bd110fde0ed16edeb" name="af580704656ab094bd110fde0ed16edeb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af580704656ab094bd110fde0ed16edeb">&#9670;&#160;</a></span>probe_duration_sec</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Limef::thread::LiveStreamContext::probe_duration_sec {15}</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>How long avformat_find_stream_info is allowed to probe for codec parameters, in seconds. On a lightly loaded system packets arrive quickly and the probe completes in well under a second. On a heavily loaded system (many parallel streams, valgrind, slow hardware) the server may be slow to deliver the first keyframe and the default FFmpeg probe window (~5 s) expires before width/height can be determined, causing a spurious retry loop. Increase this for production deployments with many concurrent streams or slow cameras.</p>
+<p>The wall-clock interrupt deadline is set to 1.2× this value, giving FFmpeg time to hit its own internal limit before the hard abort fires.</p>
+<p>Default: 15 s (3× the FFmpeg internal default). </p>
+
+</div>
+</div>
+<a id="a01483af5750ec8fdbfc71381121329af" name="a01483af5750ec8fdbfc71381121329af"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a01483af5750ec8fdbfc71381121329af">&#9670;&#160;</a></span>reconnect_interval_sec</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Limef::thread::LiveStreamContext::reconnect_interval_sec {0}</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Mandatory reconnection interval in seconds. When non-zero, the stream is forcibly dropped and re-opened after this many seconds of continuous streaming. Useful for cameras (notably some Chinese IP cameras) whose streams start lagging or corrupting after long sessions. The reconnect follows the normal backoff path (onLost emitted, then onConnected once the new session is established). Default: 0 = never force-reconnect. </p>
+
+</div>
+</div>
 <a id="a2de8f53e7fa3a46b9095e5e45b2321e5" name="a2de8f53e7fa3a46b9095e5e45b2321e5"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a2de8f53e7fa3a46b9095e5e45b2321e5">&#9670;&#160;</a></span>reopen_retry_max</h2>
 
@@ -241,6 +301,22 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="a24c00a7d8e2c5e9c1f304d267b15fcac" name="a24c00a7d8e2c5e9c1f304d267b15fcac"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a24c00a7d8e2c5e9c1f304d267b15fcac">&#9670;&#160;</a></span>timeout_connect_sec</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Limef::thread::LiveStreamContext::timeout_connect_sec {20}</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Connection timeout in seconds (avformat_open_input setup phase) - if RTSP DESCRIBE/SETUP/PLAY handshake is not completed within this many seconds, reconnect. </p>
+
+</div>
+</div>
 <a id="a489f37281d7e394e434543c1bb292f3e" name="a489f37281d7e394e434543c1bb292f3e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a489f37281d7e394e434543c1bb292f3e">&#9670;&#160;</a></span>timeout_max_sec</h2>
 
@@ -253,7 +329,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Max value for retry timeout. </p>
+<p>Max value for retry timeout - try to re-establish connection after this many seconds. </p>
 
 </div>
 </div>
@@ -264,12 +340,12 @@ Public Attributes</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int Limef::thread::LiveStreamContext::timeout_sec {5}</td>
+          <td class="memname">int Limef::thread::LiveStreamContext::timeout_sec {15}</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Read timeout in seconds. </p>
+<p>Read timeout in seconds (av_read_frame streaming phase) - if no packets in this many secs during streaming, then reconnect. </p>
 
 </div>
 </div>
@@ -285,7 +361,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Start value for retry timeout. </p>
+<p>Start value for retry timeout - try to re-establish connection after this many seconds. </p>
 
 </div>
 </div>
@@ -301,6 +377,24 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>Stream URL (e.g., "rtsp://camera.example.com/stream") </p>
+
+</div>
+</div>
+<a id="afb63dbb6c7a9ac28a17842192d979197" name="afb63dbb6c7a9ac28a17842192d979197"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afb63dbb6c7a9ac28a17842192d979197">&#9670;&#160;</a></span>use_ntp</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Limef::thread::LiveStreamContext::use_ntp {false}</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Use NTP wallclock from RTCP Sender Reports as the absolute timestamp.</p>
+<p>When true, absolute timestamps are taken from the camera's NTP clock (delivered via RTCP Sender Reports). This enables wall-clock-aligned multi-stream synchronisation, but relies on the camera having a correctly configured NTP clock. A camera with a wrong clock (wrong year, large drift) will produce garbage absolute timestamps that break presentation scheduling — symptoms include a frozen first frame, pipeline stalls, or frames that never appear.</p>
+<p>Before the first RTCP SR arrives (typically 1–5 s after stream open), the t0+PTS_delta fallback is used regardless of this setting, so early packets are always timestamped consistently.</p>
+<p>Default: false (t0+PTS_delta, safe for all cameras). Set to true only when you know the camera's NTP is reliable. </p>
 
 </div>
 </div>

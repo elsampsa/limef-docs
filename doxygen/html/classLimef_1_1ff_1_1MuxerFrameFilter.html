@@ -22,7 +22,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">My Project<span id="projectnumber">&#160;0.1.0</span>
+   <div id="projectname">My Project<span id="projectnumber">&#160;0.2.0</span>
    </div>
   </td>
  </tr>
@@ -185,6 +185,8 @@ Additional Inherited Members</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p><a class="el" href="classLimef_1_1ff_1_1FrameFilter.html">FrameFilter</a> that muxes elementary streams into a container format. </p>
+<p>This is a very general muxing framefilter that produces RawFrame(s) that are processed by downstream framefilters and threads as just muxed media stream: just raw bytestream</p>
+<p>For more specifically muxed stream, feel free to implement more complementary framefilters, see for example <a class="el" href="classLimef_1_1ff_1_1RTPMuxerFrameFilter.html" title="FrameFilter that muxes elementary streams into RTP packets.">RTPMuxerFrameFilter</a>.</p>
 <p>Takes a CodecFrame first to get stream information, then accepts elementary PacketFrames (H.264, AAC, etc.) as input and outputs RawFrames containing muxed data in specified container format.</p>
 <p>The first output will contain format headers required for initializing downstream demuxers.</p>
 <p>Internals:</p>

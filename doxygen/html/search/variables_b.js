@@ -6,8 +6,9 @@ var searchData=
   ['max_5fage_3',['max_age',['../structLimef_1_1thread_1_1PresenterContext.html#a7a700fe9503597b87854cf991853be24',1,'Limef::thread::PresenterContext']]],
   ['max_5fb_5fframes_4',['max_b_frames',['../structLimef_1_1encode_1_1FFmpegEncoderParams.html#aa5f9ea2524fa4a6bfdb08c172e055203',1,'Limef::encode::FFmpegEncoderParams']]],
   ['max_5fdelay_5fms_5',['max_delay_ms',['../structLimef_1_1thread_1_1LiveStreamContext.html#a42eb5c608da000e493c64f27a97c8f94',1,'Limef::thread::LiveStreamContext']]],
-  ['max_5foutput_5fdts_6',['max_output_dts',['../structLimef_1_1ff_1_1RTPTrackContext.html#acca4c2a92a8cdbbbafdf3b4d608e7bed',1,'Limef::ff::RTPTrackContext']]],
-  ['media_5ftype_7',['media_type',['../structLimef_1_1ff_1_1RTPTrackContext.html#a084a26d2acf52128560808d73a78b89f',1,'Limef::ff::RTPTrackContext']]],
-  ['method_8',['method',['../structLimef_1_1rtsp_1_1Request.html#ad3646fd93a7617ed254d4c06b4929d14',1,'Limef::rtsp::Request']]],
-  ['moov_5fbox_9',['moov_box',['../classLimef_1_1thread_1_1WebSocketStreamBuffer.html#a4e0362bb2808f53f3e9adaee2af19d4b',1,'Limef::thread::WebSocketStreamBuffer']]]
+  ['max_5ffuture_5fage_6',['max_future_age',['../structLimef_1_1thread_1_1PresenterContext.html#af073b387ea17f1988c65cccc8e8a125c',1,'Limef::thread::PresenterContext']]],
+  ['max_5foutput_5fdts_7',['max_output_dts',['../structLimef_1_1ff_1_1RTPTrackContext.html#acca4c2a92a8cdbbbafdf3b4d608e7bed',1,'Limef::ff::RTPTrackContext']]],
+  ['media_5ftype_8',['media_type',['../structLimef_1_1ff_1_1RTPTrackContext.html#a084a26d2acf52128560808d73a78b89f',1,'Limef::ff::RTPTrackContext']]],
+  ['method_9',['method',['../structLimef_1_1rtsp_1_1Request.html#ad3646fd93a7617ed254d4c06b4929d14',1,'Limef::rtsp::Request::method'],['../structLimef_1_1webrtc_1_1HttpRequest.html#a8ff480ba61f072d71e3e9f9942cdfbbf',1,'Limef::webrtc::HttpRequest::method']]],
+  ['moov_5fbox_10',['moov_box',['../classLimef_1_1thread_1_1WebSocketStreamBuffer.html#a4e0362bb2808f53f3e9adaee2af19d4b',1,'Limef::thread::WebSocketStreamBuffer']]]
 ];

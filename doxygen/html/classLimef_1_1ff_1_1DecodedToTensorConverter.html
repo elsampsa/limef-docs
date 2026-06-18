@@ -22,7 +22,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">My Project<span id="projectnumber">&#160;0.1.0</span>
+   <div id="projectname">My Project<span id="projectnumber">&#160;0.2.0</span>
    </div>
   </td>
  </tr>
@@ -90,11 +90,9 @@ Inheritance diagram for Limef::ff::DecodedToTensorConverter:</div>
 <div class="dyncontent">
 <div class="center"><img src="classLimef_1_1ff_1_1DecodedToTensorConverter__inherit__graph.png" border="0" usemap="#aLimef_1_1ff_1_1DecodedToTensorConverter_inherit__map" alt="Inheritance graph"/></div>
 <map name="aLimef_1_1ff_1_1DecodedToTensorConverter_inherit__map" id="aLimef_1_1ff_1_1DecodedToTensorConverter_inherit__map">
-<area shape="rect" title="Abstract base for pixel&#45;format converters used by DecodedToTensorFrameFilter." alt="" coords="104,5,300,45"/>
-<area shape="rect" href="classLimef_1_1ff_1_1GBRPConverter.html" title="Converts AV_PIX_FMT_GBRP (planar GBR, 8&#45;bit) → TensorFrame (c, h, w) UInt8." alt="" coords="5,93,188,119"/>
-<area shape="poly" title=" " alt="" coords="167,56,114,95,111,91,164,51"/>
-<area shape="rect" href="classLimef_1_1ff_1_1GRAY8Converter.html" title="Converts AV_PIX_FMT_GRAY8 → TensorFrame (1, h, w) UInt8." alt="" coords="212,93,403,119"/>
-<area shape="poly" title=" " alt="" coords="240,51,293,91,290,95,237,56"/>
+<area shape="rect" title="Abstract base for pixel&#45;format converters used by DecodedToTensorFrameFilter." alt="" coords="21,5,217,45"/>
+<area shape="rect" href="classLimef_1_1ff_1_1CpuSwScaleConverter.html" title="Converts any CPU DecodedFrame → TensorFrame (c, h, w) UInt8 via libswscale." alt="" coords="5,93,232,119"/>
+<area shape="poly" title=" " alt="" coords="121,59,121,93,116,93,116,59"/>
 </map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
@@ -102,9 +100,9 @@ Inheritance diagram for Limef::ff::DecodedToTensorConverter:</div>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:aa0b294c3c1210aa576b0bfdb95a48efa" id="r_aa0b294c3c1210aa576b0bfdb95a48efa"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1ff_1_1DecodedToTensorConverter.html#aa0b294c3c1210aa576b0bfdb95a48efa">~DecodedToTensorConverter</a> ()=default</td></tr>
 <tr class="separator:aa0b294c3c1210aa576b0bfdb95a48efa"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af9f0a8066c61f88f856d839623984857" id="r_af9f0a8066c61f88f856d839623984857"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1ff_1_1DecodedToTensorConverter.html#af9f0a8066c61f88f856d839623984857">accepts</a> (AVPixelFormat fmt) const =0</td></tr>
-<tr class="memdesc:af9f0a8066c61f88f856d839623984857"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return true if this converter handles <code>fmt</code>.  <br /></td></tr>
-<tr class="separator:af9f0a8066c61f88f856d839623984857"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5bf44c8c31f883b6ca5ca076ab7e156f" id="r_a5bf44c8c31f883b6ca5ca076ab7e156f"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1ff_1_1DecodedToTensorConverter.html#a5bf44c8c31f883b6ca5ca076ab7e156f">accepts</a> (const <a class="el" href="classLimef_1_1frame_1_1DecodedFrame.html">frame::DecodedFrame</a> &amp;df) const =0</td></tr>
+<tr class="memdesc:a5bf44c8c31f883b6ca5ca076ab7e156f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return true if this converter handles <code>df</code> (may inspect format and location).  <br /></td></tr>
+<tr class="separator:a5bf44c8c31f883b6ca5ca076ab7e156f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acfe27c8b601e6b9323eb4c6c124e49b7" id="r_acfe27c8b601e6b9323eb4c6c124e49b7"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1ff_1_1DecodedToTensorConverter.html#acfe27c8b601e6b9323eb4c6c124e49b7">convert</a> (const <a class="el" href="classLimef_1_1frame_1_1DecodedFrame.html">frame::DecodedFrame</a> &amp;src, <a class="el" href="classLimef_1_1frame_1_1TensorFrame.html">frame::TensorFrame</a> &amp;dst, <a class="el" href="namespaceLimef_1_1ff.html#af018a2c3826323836ca844514b40c56f">ChannelOrder</a> order)=0</td></tr>
 <tr class="memdesc:acfe27c8b601e6b9323eb4c6c124e49b7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert <code>src</code> into <code>dst</code>.  <br /></td></tr>
 <tr class="separator:acfe27c8b601e6b9323eb4c6c124e49b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -143,8 +141,8 @@ Public Member Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="af9f0a8066c61f88f856d839623984857" name="af9f0a8066c61f88f856d839623984857"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af9f0a8066c61f88f856d839623984857">&#9670;&#160;</a></span>accepts()</h2>
+<a id="a5bf44c8c31f883b6ca5ca076ab7e156f" name="a5bf44c8c31f883b6ca5ca076ab7e156f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5bf44c8c31f883b6ca5ca076ab7e156f">&#9670;&#160;</a></span>accepts()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -155,8 +153,8 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="memname">virtual bool Limef::ff::DecodedToTensorConverter::accepts </td>
           <td>(</td>
-          <td class="paramtype">AVPixelFormat&#160;</td>
-          <td class="paramname"><em>fmt</em></td><td>)</td>
+          <td class="paramtype">const <a class="el" href="classLimef_1_1frame_1_1DecodedFrame.html">frame::DecodedFrame</a> &amp;&#160;</td>
+          <td class="paramname"><em>df</em></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
@@ -167,9 +165,9 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Return true if this converter handles <code>fmt</code>. </p>
+<p>Return true if this converter handles <code>df</code> (may inspect format and location). </p>
 
-<p>Implemented in <a class="el" href="classLimef_1_1ff_1_1GBRPConverter.html#a903a03d98342a3667406782115145e79">Limef::ff::GBRPConverter</a>, and <a class="el" href="classLimef_1_1ff_1_1GRAY8Converter.html#a86691e1ff5aee674582defb2fbda92ff">Limef::ff::GRAY8Converter</a>.</p>
+<p>Implemented in <a class="el" href="classLimef_1_1ff_1_1CpuSwScaleConverter.html#ae4c4ba65f8ba090faf0c0de495744e33">Limef::ff::CpuSwScaleConverter</a>.</p>
 
 </div>
 </div>
@@ -225,7 +223,7 @@ Public Member Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>true on success; false to signal a conversion error (frame is dropped). </dd></dl>
 
-<p>Implemented in <a class="el" href="classLimef_1_1ff_1_1GBRPConverter.html#a774bfdc99358cae5e4e7d82840a39d33">Limef::ff::GBRPConverter</a>, and <a class="el" href="classLimef_1_1ff_1_1GRAY8Converter.html#a876dc4fa75938b37d3fc7fcde942ae79">Limef::ff::GRAY8Converter</a>.</p>
+<p>Implemented in <a class="el" href="classLimef_1_1ff_1_1CpuSwScaleConverter.html#a95f3610b07f29afe94c9cb76fa07f8db">Limef::ff::CpuSwScaleConverter</a>.</p>
 
 </div>
 </div>
@@ -254,7 +252,7 @@ Public Member Functions</h2></td></tr>
 
 <p>Short name used in log messages. </p>
 
-<p>Implemented in <a class="el" href="classLimef_1_1ff_1_1GBRPConverter.html#aca3dd9ac854953e758deaa7f01f5362e">Limef::ff::GBRPConverter</a>, and <a class="el" href="classLimef_1_1ff_1_1GRAY8Converter.html#ae4753285d271b690d99b57a869e8c29c">Limef::ff::GRAY8Converter</a>.</p>
+<p>Implemented in <a class="el" href="classLimef_1_1ff_1_1CpuSwScaleConverter.html#a5aef3ec2ee50c5a051b0c200986b5317">Limef::ff::CpuSwScaleConverter</a>.</p>
 
 </div>
 </div>

@@ -22,7 +22,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">My Project<span id="projectnumber">&#160;0.1.0</span>
+   <div id="projectname">My Project<span id="projectnumber">&#160;0.2.0</span>
    </div>
   </td>
  </tr>
@@ -182,7 +182,7 @@ Additional Inherited Members</h2></td></tr>
 <li>A newer frame for the same slot replaces the cached one.</li>
 <li>All other frame types are never cached.</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md26"></a>
+<h2><a class="anchor" id="autotoc_md40"></a>
 from_source flag on replayed StreamFrames</h2>
 <p>When a <code>StreamFrame</code> is replayed from the cache (i.e. sent as part of a <code><a class="el" href="classLimef_1_1ff_1_1SwitchFrameFilter.html#a5686e2f28bb1ff0fc325900fdbc798c6" title="Activate output terminal index.">toggle()</a></code> activation rather than having arrived live from upstream), <code>StreamFrame::from_source</code> is set to <code>false</code> on the replayed copy before it is forwarded. This lets downstream filters distinguish a genuine stream lifecycle event (source restart, resolution change) from a cold-branch relay.</p>
 <p>Downstream filters that maintain persistent state (e.g. <a class="el" href="classLimef_1_1ff_1_1EncodingFrameFilter.html" title="A FrameFilter that encodes frames.">EncodingFrameFilter</a>) can skip reinitialisation when <code>from_source == false</code>. Alternatively, place a <code><a class="el" href="classLimef_1_1ff_1_1StreamGateFrameFilter.html" title="Passes only source-originated StreamFrames; drops relay replays.">StreamGateFrameFilter</a></code> immediately downstream to drop all relay StreamFrames before they reach stateful filters.</p>
@@ -193,7 +193,7 @@ from_source flag on replayed StreamFrames</h2>
 <div class="line"> </div>
 <div class="line">sw.toggle(1);   <span class="comment">// route all frames to ff2</span></div>
 <div class="line">sw.toggle(-1);  <span class="comment">// drop all frames (no active terminal)</span></div>
-<div class="ttc" id="aclassLimef_1_1ff_1_1SwitchFrameFilter_html"><div class="ttname"><a href="classLimef_1_1ff_1_1SwitchFrameFilter.html">Limef::ff::SwitchFrameFilter</a></div><div class="ttdoc">Routes incoming frames to exactly one of N output terminals.</div><div class="ttdef"><b>Definition</b> switch.h:69</div></div>
+<div class="ttc" id="aclassLimef_1_1ff_1_1SwitchFrameFilter_html"><div class="ttname"><a href="classLimef_1_1ff_1_1SwitchFrameFilter.html">Limef::ff::SwitchFrameFilter</a></div><div class="ttdoc">Routes incoming frames to exactly one of N output terminals.</div><div class="ttdef"><b>Definition</b> switch.h:66</div></div>
 </div><!-- fragment --><p>Thread safe: <code><a class="el" href="classLimef_1_1ff_1_1SwitchFrameFilter.html#a5686e2f28bb1ff0fc325900fdbc798c6" title="Activate output terminal index.">toggle()</a></code> may be called from any thread while the filterchain is running. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a168c170782e0e51e5a5f63f56692c0a2" name="a168c170782e0e51e5a5f63f56692c0a2"></a>

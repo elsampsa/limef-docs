@@ -22,7 +22,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">My Project<span id="projectnumber">&#160;0.1.0</span>
+   <div id="projectname">My Project<span id="projectnumber">&#160;0.2.0</span>
    </div>
   </td>
  </tr>
@@ -79,8 +79,8 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a20dc6e28e73855c2020c9008c075163b" id="r_a20dc6e28e73855c2020c9008c075163b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTensorPythonInterface.html#a20dc6e28e73855c2020c9008c075163b">TensorPythonInterface</a> (int stack_size=10, bool leaky=true, <a class="el" href="namespaceLimef.html#ab3f21e06ce812c9f9b7f47da2f6a2188">Limef::HWAccel</a> hw_accel=<a class="el" href="namespaceLimef.html#ab3f21e06ce812c9f9b7f47da2f6a2188a6f56aa4e2561eb66f17f6d8de8070a77">Limef::HWAccel::SW</a>)</td></tr>
-<tr class="separator:a20dc6e28e73855c2020c9008c075163b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7edc7cae032072d3334dabb7bdd9662b" id="r_a7edc7cae032072d3334dabb7bdd9662b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTensorPythonInterface.html#a7edc7cae032072d3334dabb7bdd9662b">TensorPythonInterface</a> (int stack_size=10, bool leaky=true, <a class="el" href="namespaceLimef_1_1frame.html#a2a0e8597a20bf03625897c499c620c6e">Limef::frame::BufferLocation</a> target=<a class="el" href="namespaceLimef_1_1frame.html#a2a0e8597a20bf03625897c499c620c6ea2b55387dd066c5bac646ac61543d152d">Limef::frame::BufferLocation::CPU</a>, std::size_t fifo_size=0)</td></tr>
+<tr class="separator:a7edc7cae032072d3334dabb7bdd9662b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6917d517f3a10dfab90ce58656f49cfc" id="r_a6917d517f3a10dfab90ce58656f49cfc"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTensorPythonInterface.html#a6917d517f3a10dfab90ce58656f49cfc">TensorPythonInterface</a> (const <a class="el" href="classTensorPythonInterface.html">TensorPythonInterface</a> &amp;)=delete</td></tr>
 <tr class="separator:a6917d517f3a10dfab90ce58656f49cfc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab22085a419d9d1de05963a951ef599c8" id="r_ab22085a419d9d1de05963a951ef599c8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classTensorPythonInterface.html">TensorPythonInterface</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTensorPythonInterface.html#ab22085a419d9d1de05963a951ef599c8">operator=</a> (const <a class="el" href="classTensorPythonInterface.html">TensorPythonInterface</a> &amp;)=delete</td></tr>
@@ -93,8 +93,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a975bf4dcd23e8ce80a2a1fc5cb518caa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a20dc6e28e73855c2020c9008c075163b" name="a20dc6e28e73855c2020c9008c075163b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a20dc6e28e73855c2020c9008c075163b">&#9670;&#160;</a></span>TensorPythonInterface() <span class="overload">[1/2]</span></h2>
+<a id="a7edc7cae032072d3334dabb7bdd9662b" name="a7edc7cae032072d3334dabb7bdd9662b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7edc7cae032072d3334dabb7bdd9662b">&#9670;&#160;</a></span>TensorPythonInterface() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -117,8 +117,14 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="namespaceLimef.html#ab3f21e06ce812c9f9b7f47da2f6a2188">Limef::HWAccel</a>&#160;</td>
-          <td class="paramname"><em>hw_accel</em> = <code><a class="el" href="namespaceLimef.html#ab3f21e06ce812c9f9b7f47da2f6a2188a6f56aa4e2561eb66f17f6d8de8070a77">Limef::HWAccel::SW</a></code>&#160;</td>
+          <td class="paramtype"><a class="el" href="namespaceLimef_1_1frame.html#a2a0e8597a20bf03625897c499c620c6e">Limef::frame::BufferLocation</a>&#160;</td>
+          <td class="paramname"><em>target</em> = <code><a class="el" href="namespaceLimef_1_1frame.html#a2a0e8597a20bf03625897c499c620c6ea2b55387dd066c5bac646ac61543d152d">Limef::frame::BufferLocation::CPU</a></code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramname"><em>fifo_size</em> = <code>0</code>&#160;</td>
         </tr>
         <tr>
           <td></td>

@@ -22,7 +22,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">My Project<span id="projectnumber">&#160;0.1.0</span>
+   <div id="projectname">My Project<span id="projectnumber">&#160;0.2.0</span>
    </div>
   </td>
  </tr>
@@ -85,21 +85,11 @@ $(function() {
  <a href="structLimef_1_1decode_1_1FFmpegDecoderParams.html#details">More...</a></p>
 
 <p><code>#include &lt;ffmpeg_decoder.h&gt;</code></p>
-<div class="dynheader">
-Collaboration diagram for Limef::decode::FFmpegDecoderParams:</div>
-<div class="dyncontent">
-<div class="center"><img src="structLimef_1_1decode_1_1FFmpegDecoderParams__coll__graph.png" border="0" usemap="#aLimef_1_1decode_1_1FFmpegDecoderParams_coll__map" alt="Collaboration graph"/></div>
-<map name="aLimef_1_1decode_1_1FFmpegDecoderParams_coll__map" id="aLimef_1_1decode_1_1FFmpegDecoderParams_coll__map">
-<area shape="rect" title="Decoding parameters for FFmpegDecoder." alt="" coords="5,93,233,133"/>
-<area shape="rect" title=" " alt="" coords="80,5,159,31"/>
-<area shape="poly" title=" " alt="" coords="122,44,122,93,117,93,117,44"/>
-</map>
-<center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:a957e4a2608bca8144907af8db5712112" id="r_a957e4a2608bca8144907af8db5712112"><td class="memItemLeft" align="right" valign="top">HWAccel&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLimef_1_1decode_1_1FFmpegDecoderParams.html#a957e4a2608bca8144907af8db5712112">hw_accel</a> {<a class="el" href="namespaceLimef.html#ab3f21e06ce812c9f9b7f47da2f6a2188a6f56aa4e2561eb66f17f6d8de8070a77">HWAccel::SW</a>}</td></tr>
-<tr class="memdesc:a957e4a2608bca8144907af8db5712112"><td class="mdescLeft">&#160;</td><td class="mdescRight">Hardware acceleration backend.  <br /></td></tr>
+<tr class="memitem:a957e4a2608bca8144907af8db5712112" id="r_a957e4a2608bca8144907af8db5712112"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespaceLimef.html#ab3f21e06ce812c9f9b7f47da2f6a2188">HWAccel</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLimef_1_1decode_1_1FFmpegDecoderParams.html#a957e4a2608bca8144907af8db5712112">hw_accel</a> {<a class="el" href="namespaceLimef.html#ab3f21e06ce812c9f9b7f47da2f6a2188ab50339a10e1de285ac99d4c3990b8693">HWAccel::NONE</a>}</td></tr>
+<tr class="memdesc:a957e4a2608bca8144907af8db5712112"><td class="mdescLeft">&#160;</td><td class="mdescRight">Hardware acceleration backend (None = software)  <br /></td></tr>
 <tr class="separator:a957e4a2608bca8144907af8db5712112"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a17efeac4e5fe45f91006909fc9933831" id="r_a17efeac4e5fe45f91006909fc9933831"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLimef_1_1decode_1_1FFmpegDecoderParams.html#a17efeac4e5fe45f91006909fc9933831">hw_device</a></td></tr>
 <tr class="memdesc:a17efeac4e5fe45f91006909fc9933831"><td class="mdescLeft">&#160;</td><td class="mdescRight">Device path (empty = auto-detect)  <br /></td></tr>
@@ -114,21 +104,16 @@ Public Attributes</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Decoding parameters for <a class="el" href="classLimef_1_1decode_1_1FFmpegDecoder.html" title="FFmpeg-based decoder for video and audio streams.">FFmpegDecoder</a>. </p>
 <p>Contains threading and hardware acceleration settings. The stream itself is passed separately to the constructor since it varies per-stream (comes from CodecFrame at runtime).</p>
-<p>Example usage: </p><div class="fragment"><div class="line"><span class="comment">// Software decoding with multithreading</span></div>
-<div class="line"><a class="code hl_struct" href="structLimef_1_1decode_1_1FFmpegDecoderParams.html">FFmpegDecoderParams</a> params;</div>
-<div class="line">params.<a class="code hl_variable" href="structLimef_1_1decode_1_1FFmpegDecoderParams.html#a957e4a2608bca8144907af8db5712112">hw_accel</a> = <a class="code hl_enumvalue" href="namespaceLimef.html#ab3f21e06ce812c9f9b7f47da2f6a2188a6f56aa4e2561eb66f17f6d8de8070a77">HWAccel::SW</a>;</div>
-<div class="line">params.<a class="code hl_variable" href="structLimef_1_1decode_1_1FFmpegDecoderParams.html#a9843b365b6bf779fdb2fa5bf2f54d68b">thread_count</a> = 4;</div>
+<p>Example usage: </p><div class="fragment"><div class="line"><span class="comment">// Software decoding (default)</span></div>
+<div class="line"><a class="code hl_struct" href="structLimef_1_1decode_1_1FFmpegDecoderParams.html">FFmpegDecoderParams</a> params;  <span class="comment">// hw_accel = HWAccel::NONE by default</span></div>
 <div class="line"> </div>
 <div class="line"><span class="comment">// VAAPI hardware decoding</span></div>
 <div class="line"><a class="code hl_struct" href="structLimef_1_1decode_1_1FFmpegDecoderParams.html">FFmpegDecoderParams</a> params;</div>
 <div class="line">params.<a class="code hl_variable" href="structLimef_1_1decode_1_1FFmpegDecoderParams.html#a957e4a2608bca8144907af8db5712112">hw_accel</a> = <a class="code hl_enumvalue" href="namespaceLimef.html#ab3f21e06ce812c9f9b7f47da2f6a2188ab80a85e9723eafdfdfb1221ae4bb4bf3">HWAccel::VAAPI</a>;</div>
-<div class="line"><span class="comment">// hw_device uses sensible default, or specify:</span></div>
-<div class="line"><span class="comment">// params.hw_device = &quot;/dev/dri/renderD128&quot;;</span></div>
-<div class="ttc" id="anamespaceLimef_html_ab3f21e06ce812c9f9b7f47da2f6a2188a6f56aa4e2561eb66f17f6d8de8070a77"><div class="ttname"><a href="namespaceLimef.html#ab3f21e06ce812c9f9b7f47da2f6a2188a6f56aa4e2561eb66f17f6d8de8070a77">Limef::HWAccel::SW</a></div><div class="ttdeci">@ SW</div><div class="ttdoc">Software encoding/decoding.</div></div>
+<div class="line"><span class="comment">// params.hw_device = &quot;/dev/dri/renderD128&quot;;  // optional, auto-detected</span></div>
 <div class="ttc" id="anamespaceLimef_html_ab3f21e06ce812c9f9b7f47da2f6a2188ab80a85e9723eafdfdfb1221ae4bb4bf3"><div class="ttname"><a href="namespaceLimef.html#ab3f21e06ce812c9f9b7f47da2f6a2188ab80a85e9723eafdfdfb1221ae4bb4bf3">Limef::HWAccel::VAAPI</a></div><div class="ttdeci">@ VAAPI</div><div class="ttdoc">Intel/AMD hardware via VAAPI.</div></div>
-<div class="ttc" id="astructLimef_1_1decode_1_1FFmpegDecoderParams_html"><div class="ttname"><a href="structLimef_1_1decode_1_1FFmpegDecoderParams.html">Limef::decode::FFmpegDecoderParams</a></div><div class="ttdoc">Decoding parameters for FFmpegDecoder.</div><div class="ttdef"><b>Definition</b> ffmpeg_decoder.h:74</div></div>
-<div class="ttc" id="astructLimef_1_1decode_1_1FFmpegDecoderParams_html_a957e4a2608bca8144907af8db5712112"><div class="ttname"><a href="structLimef_1_1decode_1_1FFmpegDecoderParams.html#a957e4a2608bca8144907af8db5712112">Limef::decode::FFmpegDecoderParams::hw_accel</a></div><div class="ttdeci">HWAccel hw_accel</div><div class="ttdoc">Hardware acceleration backend.</div><div class="ttdef"><b>Definition</b> ffmpeg_decoder.h:76</div></div>
-<div class="ttc" id="astructLimef_1_1decode_1_1FFmpegDecoderParams_html_a9843b365b6bf779fdb2fa5bf2f54d68b"><div class="ttname"><a href="structLimef_1_1decode_1_1FFmpegDecoderParams.html#a9843b365b6bf779fdb2fa5bf2f54d68b">Limef::decode::FFmpegDecoderParams::thread_count</a></div><div class="ttdeci">int thread_count</div><div class="ttdoc">Number of decoding threads.</div><div class="ttdef"><b>Definition</b> ffmpeg_decoder.h:80</div></div>
+<div class="ttc" id="astructLimef_1_1decode_1_1FFmpegDecoderParams_html"><div class="ttname"><a href="structLimef_1_1decode_1_1FFmpegDecoderParams.html">Limef::decode::FFmpegDecoderParams</a></div><div class="ttdoc">Decoding parameters for FFmpegDecoder.</div><div class="ttdef"><b>Definition</b> ffmpeg_decoder.h:42</div></div>
+<div class="ttc" id="astructLimef_1_1decode_1_1FFmpegDecoderParams_html_a957e4a2608bca8144907af8db5712112"><div class="ttname"><a href="structLimef_1_1decode_1_1FFmpegDecoderParams.html#a957e4a2608bca8144907af8db5712112">Limef::decode::FFmpegDecoderParams::hw_accel</a></div><div class="ttdeci">HWAccel hw_accel</div><div class="ttdoc">Hardware acceleration backend (None = software)</div><div class="ttdef"><b>Definition</b> ffmpeg_decoder.h:43</div></div>
 </div><!-- fragment --> </div><h2 class="groupheader">Member Data Documentation</h2>
 <a id="a957e4a2608bca8144907af8db5712112" name="a957e4a2608bca8144907af8db5712112"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a957e4a2608bca8144907af8db5712112">&#9670;&#160;</a></span>hw_accel</h2>
@@ -137,12 +122,12 @@ Public Attributes</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">HWAccel Limef::decode::FFmpegDecoderParams::hw_accel {<a class="el" href="namespaceLimef.html#ab3f21e06ce812c9f9b7f47da2f6a2188a6f56aa4e2561eb66f17f6d8de8070a77">HWAccel::SW</a>}</td>
+          <td class="memname"><a class="el" href="namespaceLimef.html#ab3f21e06ce812c9f9b7f47da2f6a2188">HWAccel</a> Limef::decode::FFmpegDecoderParams::hw_accel {<a class="el" href="namespaceLimef.html#ab3f21e06ce812c9f9b7f47da2f6a2188ab50339a10e1de285ac99d4c3990b8693">HWAccel::NONE</a>}</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Hardware acceleration backend. </p>
+<p>Hardware acceleration backend (None = software) </p>
 
 </div>
 </div>

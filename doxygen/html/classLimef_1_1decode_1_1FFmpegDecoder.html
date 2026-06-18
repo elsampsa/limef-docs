@@ -22,7 +22,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">My Project<span id="projectnumber">&#160;0.1.0</span>
+   <div id="projectname">My Project<span id="projectnumber">&#160;0.2.0</span>
    </div>
   </td>
  </tr>
@@ -155,7 +155,7 @@ Additional Inherited Members</h2></td></tr>
 <div class="textblock"><p>FFmpeg-based decoder for video and audio streams. </p>
 <p>Supports both software decoding and hardware-accelerated decoding via FFmpeg's hwaccel infrastructure (VAAPI, NVDEC, etc.)</p>
 <p>Example usage: </p><div class="fragment"><div class="line"><a class="code hl_struct" href="structLimef_1_1decode_1_1FFmpegDecoderParams.html">FFmpegDecoderParams</a> params;</div>
-<div class="line">params.<a class="code hl_variable" href="structLimef_1_1decode_1_1FFmpegDecoderParams.html#a957e4a2608bca8144907af8db5712112">hw_accel</a> = <a class="code hl_enumvalue" href="namespaceLimef.html#ab3f21e06ce812c9f9b7f47da2f6a2188ab80a85e9723eafdfdfb1221ae4bb4bf3">HWAccel::VAAPI</a>;</div>
+<div class="line">params.<a class="code hl_variable" href="structLimef_1_1decode_1_1FFmpegDecoderParams.html#a957e4a2608bca8144907af8db5712112">hw_accel</a> = <a class="code hl_enumvalue" href="namespaceLimef.html#ab3f21e06ce812c9f9b7f47da2f6a2188ab80a85e9723eafdfdfb1221ae4bb4bf3">HWAccel::VAAPI</a>;  <span class="comment">// or HWAccel::CUDA</span></div>
 <div class="line"> </div>
 <div class="line"><span class="comment">// stream comes from CodecFrame or AVFormatContext</span></div>
 <div class="line"><a class="code hl_class" href="classLimef_1_1decode_1_1FFmpegDecoder.html">FFmpegDecoder</a> dec(<span class="stringliteral">&quot;my-decoder&quot;</span>, stream, params);</div>
@@ -172,13 +172,13 @@ Additional Inherited Members</h2></td></tr>
 <div class="line">    <span class="keyword">const</span> DecodedFrame&amp; frame = dec.getFrame();</div>
 <div class="line">    <span class="comment">// process frame</span></div>
 <div class="line">}</div>
-<div class="ttc" id="aclassLimef_1_1decode_1_1FFmpegDecoder_html"><div class="ttname"><a href="classLimef_1_1decode_1_1FFmpegDecoder.html">Limef::decode::FFmpegDecoder</a></div><div class="ttdoc">FFmpeg-based decoder for video and audio streams.</div><div class="ttdef"><b>Definition</b> ffmpeg_decoder.h:112</div></div>
-<div class="ttc" id="anamespaceLimef_1_1decode_html_ac17c8285fc9a2f620ebacd0d99fb8b5f"><div class="ttname"><a href="namespaceLimef_1_1decode.html#ac17c8285fc9a2f620ebacd0d99fb8b5f">Limef::decode::DecoderStatus</a></div><div class="ttdeci">DecoderStatus</div><div class="ttdoc">Status codes returned by decoder.</div><div class="ttdef"><b>Definition</b> decoder.h:58</div></div>
+<div class="ttc" id="aclassLimef_1_1decode_1_1FFmpegDecoder_html"><div class="ttname"><a href="classLimef_1_1decode_1_1FFmpegDecoder.html">Limef::decode::FFmpegDecoder</a></div><div class="ttdoc">FFmpeg-based decoder for video and audio streams.</div><div class="ttdef"><b>Definition</b> ffmpeg_decoder.h:79</div></div>
+<div class="ttc" id="anamespaceLimef_1_1decode_html_ac17c8285fc9a2f620ebacd0d99fb8b5f"><div class="ttname"><a href="namespaceLimef_1_1decode.html#ac17c8285fc9a2f620ebacd0d99fb8b5f">Limef::decode::DecoderStatus</a></div><div class="ttdeci">DecoderStatus</div><div class="ttdoc">Status codes returned by decoder.</div><div class="ttdef"><b>Definition</b> decoder.h:55</div></div>
 <div class="ttc" id="anamespaceLimef_1_1decode_html_ac17c8285fc9a2f620ebacd0d99fb8b5fa12a21322aa2eb06c6c592438cf9452f4"><div class="ttname"><a href="namespaceLimef_1_1decode.html#ac17c8285fc9a2f620ebacd0d99fb8b5fa12a21322aa2eb06c6c592438cf9452f4">Limef::decode::DecoderStatus::NeedsRead</a></div><div class="ttdeci">@ NeedsRead</div><div class="ttdoc">Decoded frame available, call getFrame()</div></div>
 <div class="ttc" id="anamespaceLimef_1_1decode_html_ac17c8285fc9a2f620ebacd0d99fb8b5fac137688dd3fe4599b79282cfd2049f40"><div class="ttname"><a href="namespaceLimef_1_1decode.html#ac17c8285fc9a2f620ebacd0d99fb8b5fac137688dd3fe4599b79282cfd2049f40">Limef::decode::DecoderStatus::NeedsMoreData</a></div><div class="ttdeci">@ NeedsMoreData</div><div class="ttdoc">Ready to accept more packets via push()</div></div>
 <div class="ttc" id="anamespaceLimef_html_ab3f21e06ce812c9f9b7f47da2f6a2188ab80a85e9723eafdfdfb1221ae4bb4bf3"><div class="ttname"><a href="namespaceLimef.html#ab3f21e06ce812c9f9b7f47da2f6a2188ab80a85e9723eafdfdfb1221ae4bb4bf3">Limef::HWAccel::VAAPI</a></div><div class="ttdeci">@ VAAPI</div><div class="ttdoc">Intel/AMD hardware via VAAPI.</div></div>
-<div class="ttc" id="astructLimef_1_1decode_1_1FFmpegDecoderParams_html"><div class="ttname"><a href="structLimef_1_1decode_1_1FFmpegDecoderParams.html">Limef::decode::FFmpegDecoderParams</a></div><div class="ttdoc">Decoding parameters for FFmpegDecoder.</div><div class="ttdef"><b>Definition</b> ffmpeg_decoder.h:74</div></div>
-<div class="ttc" id="astructLimef_1_1decode_1_1FFmpegDecoderParams_html_a957e4a2608bca8144907af8db5712112"><div class="ttname"><a href="structLimef_1_1decode_1_1FFmpegDecoderParams.html#a957e4a2608bca8144907af8db5712112">Limef::decode::FFmpegDecoderParams::hw_accel</a></div><div class="ttdeci">HWAccel hw_accel</div><div class="ttdoc">Hardware acceleration backend.</div><div class="ttdef"><b>Definition</b> ffmpeg_decoder.h:76</div></div>
+<div class="ttc" id="astructLimef_1_1decode_1_1FFmpegDecoderParams_html"><div class="ttname"><a href="structLimef_1_1decode_1_1FFmpegDecoderParams.html">Limef::decode::FFmpegDecoderParams</a></div><div class="ttdoc">Decoding parameters for FFmpegDecoder.</div><div class="ttdef"><b>Definition</b> ffmpeg_decoder.h:42</div></div>
+<div class="ttc" id="astructLimef_1_1decode_1_1FFmpegDecoderParams_html_a957e4a2608bca8144907af8db5712112"><div class="ttname"><a href="structLimef_1_1decode_1_1FFmpegDecoderParams.html#a957e4a2608bca8144907af8db5712112">Limef::decode::FFmpegDecoderParams::hw_accel</a></div><div class="ttdeci">HWAccel hw_accel</div><div class="ttdoc">Hardware acceleration backend (None = software)</div><div class="ttdef"><b>Definition</b> ffmpeg_decoder.h:43</div></div>
 </div><!-- fragment --> </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a4f3fde24beaab686113a434990b38a13" name="a4f3fde24beaab686113a434990b38a13"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a4f3fde24beaab686113a434990b38a13">&#9670;&#160;</a></span>FFmpegDecoder()</h2>
