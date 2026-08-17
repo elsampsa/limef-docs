@@ -22,7 +22,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">My Project<span id="projectnumber">&#160;0.2.0</span>
+   <div id="projectname">My Project<span id="projectnumber">&#160;0.3.0</span>
    </div>
   </td>
  </tr>
@@ -93,11 +93,12 @@ $(function() {
   <tr class="even"><td class="entry"><a class="el" href="classLimef_1_1encode_1_1Encoder.html#aaed1c908362688673f7fdb053bff5e28">isInitialized</a>() const =0</td><td class="entry"><a class="el" href="classLimef_1_1encode_1_1Encoder.html">Limef::encode::Encoder</a></td><td class="entry"><span class="mlabel">pure virtual</span></td></tr>
   <tr class="odd"><td class="entry"><a class="el" href="classLimef_1_1encode_1_1Encoder.html#ad82ee66dd9078b6936d83ef352b8ce3c">operator=</a>(const Encoder &amp;)=delete</td><td class="entry"><a class="el" href="classLimef_1_1encode_1_1Encoder.html">Limef::encode::Encoder</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="classLimef_1_1encode_1_1Encoder.html#ae09e9be391ea59532aa391541f5f2245">push</a>(const Limef::frame::DecodedFrame *frame)=0</td><td class="entry"><a class="el" href="classLimef_1_1encode_1_1Encoder.html">Limef::encode::Encoder</a></td><td class="entry"><span class="mlabel">pure virtual</span></td></tr>
-  <tr class="odd"><td class="entry"><a class="el" href="classLimef_1_1encode_1_1Encoder.html#aff2b5594d7f9f7cdec7999feca64dafc">setLogger</a>(std::shared_ptr&lt; spdlog::logger &gt; logger)=0</td><td class="entry"><a class="el" href="classLimef_1_1encode_1_1Encoder.html">Limef::encode::Encoder</a></td><td class="entry"><span class="mlabel">pure virtual</span></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="classLimef_1_1encode_1_1Encoder.html#ac18d7eb04f0572dce4214c267dee4c49">setPacketFrame</a>(Limef::frame::PacketFrame &amp;frame)=0</td><td class="entry"><a class="el" href="classLimef_1_1encode_1_1Encoder.html">Limef::encode::Encoder</a></td><td class="entry"><span class="mlabel">pure virtual</span></td></tr>
-  <tr class="odd"><td class="entry"><a class="el" href="classLimef_1_1encode_1_1Encoder.html#ad9089cd34fbf7e3dc843be39ee6f29f2">setStreamIndex</a>(int idx)=0</td><td class="entry"><a class="el" href="classLimef_1_1encode_1_1Encoder.html">Limef::encode::Encoder</a></td><td class="entry"><span class="mlabel">pure virtual</span></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="classLimef_1_1encode_1_1Encoder.html#a1716375ddf48c10e7d43b5a99d4aa8ca">status</a>()=0</td><td class="entry"><a class="el" href="classLimef_1_1encode_1_1Encoder.html">Limef::encode::Encoder</a></td><td class="entry"><span class="mlabel">pure virtual</span></td></tr>
-  <tr class="odd"><td class="entry"><a class="el" href="classLimef_1_1encode_1_1Encoder.html#ae7f16e1e82876c8251b3b91d905ea5b2">~Encoder</a>()=default</td><td class="entry"><a class="el" href="classLimef_1_1encode_1_1Encoder.html">Limef::encode::Encoder</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="classLimef_1_1encode_1_1Encoder.html#a113333bbdeefffc92e6d9c5e0ecb1c8d">requestKeyFrame</a>()</td><td class="entry"><a class="el" href="classLimef_1_1encode_1_1Encoder.html">Limef::encode::Encoder</a></td><td class="entry"><span class="mlabel">inline</span><span class="mlabel">virtual</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classLimef_1_1encode_1_1Encoder.html#aff2b5594d7f9f7cdec7999feca64dafc">setLogger</a>(std::shared_ptr&lt; spdlog::logger &gt; logger)=0</td><td class="entry"><a class="el" href="classLimef_1_1encode_1_1Encoder.html">Limef::encode::Encoder</a></td><td class="entry"><span class="mlabel">pure virtual</span></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="classLimef_1_1encode_1_1Encoder.html#ac18d7eb04f0572dce4214c267dee4c49">setPacketFrame</a>(Limef::frame::PacketFrame &amp;frame)=0</td><td class="entry"><a class="el" href="classLimef_1_1encode_1_1Encoder.html">Limef::encode::Encoder</a></td><td class="entry"><span class="mlabel">pure virtual</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classLimef_1_1encode_1_1Encoder.html#ad9089cd34fbf7e3dc843be39ee6f29f2">setStreamIndex</a>(int idx)=0</td><td class="entry"><a class="el" href="classLimef_1_1encode_1_1Encoder.html">Limef::encode::Encoder</a></td><td class="entry"><span class="mlabel">pure virtual</span></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="classLimef_1_1encode_1_1Encoder.html#a1716375ddf48c10e7d43b5a99d4aa8ca">status</a>()=0</td><td class="entry"><a class="el" href="classLimef_1_1encode_1_1Encoder.html">Limef::encode::Encoder</a></td><td class="entry"><span class="mlabel">pure virtual</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classLimef_1_1encode_1_1Encoder.html#ae7f16e1e82876c8251b3b91d905ea5b2">~Encoder</a>()=default</td><td class="entry"><a class="el" href="classLimef_1_1encode_1_1Encoder.html">Limef::encode::Encoder</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
 </table></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

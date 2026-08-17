@@ -22,7 +22,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">My Project<span id="projectnumber">&#160;0.2.0</span>
+   <div id="projectname">My Project<span id="projectnumber">&#160;0.3.0</span>
    </div>
   </td>
  </tr>
@@ -133,6 +133,9 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a8859439e651e25418a9197605f01ae14"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ada1ce427ffd9b58d0c235c4b0b49d1db" id="r_ada1ce427ffd9b58d0c235c4b0b49d1db"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1thread_1_1USBCameraThread.html#ada1ce427ffd9b58d0c235c4b0b49d1db">~USBCameraThread</a> () override</td></tr>
 <tr class="separator:ada1ce427ffd9b58d0c235c4b0b49d1db"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afa4edff95f888006fdc05fcacab443a1" id="r_afa4edff95f888006fdc05fcacab443a1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1thread_1_1USBCameraThread.html#afa4edff95f888006fdc05fcacab443a1">reinit</a> ()</td></tr>
+<tr class="memdesc:afa4edff95f888006fdc05fcacab443a1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Frontend: trigger a device close+reopen. Same effect as an automatic stall-triggered reinit — mainly useful for testing.  <br /></td></tr>
+<tr class="separator:afa4edff95f888006fdc05fcacab443a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classLimef_1_1thread_1_1ProducerThread"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classLimef_1_1thread_1_1ProducerThread')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classLimef_1_1thread_1_1ProducerThread.html">Limef::thread::ProducerThread</a></td></tr>
 <tr class="memitem:a7ef3fbec561ff155f570fee8c1d76f7d inherit pub_methods_classLimef_1_1thread_1_1ProducerThread" id="r_a7ef3fbec561ff155f570fee8c1d76f7d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1thread_1_1ProducerThread.html#a7ef3fbec561ff155f570fee8c1d76f7d">ProducerThread</a> (std::string name, const <a class="el" href="common_8h.html#a1e8e0cda772e93f68194758169e21ab9">Slot</a> <a class="el" href="classLimef_1_1thread_1_1ProducerThread.html#a32357498701ad1388bccafab098803aa">slot</a>, const <a class="el" href="structLimef_1_1FrameFifoContext.html">Limef::FrameFifoContext</a> &amp;<a class="el" href="classLimef_1_1thread_1_1Thread.html#a4b2a53ec35355f09efe8d903562553c5">ctx</a>, int <a class="el" href="classLimef_1_1thread_1_1ProducerThread.html#a43171fbdd89ea5711d2273e418afbddb">framesPerSecond</a>)</td></tr>
 <tr class="separator:a7ef3fbec561ff155f570fee8c1d76f7d inherit pub_methods_classLimef_1_1thread_1_1ProducerThread"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -215,14 +218,14 @@ Protected Member Functions</h2></td></tr>
 <tr class="memitem:a8ce64d313e1e1f3abdcb6af39ac778c7" id="r_a8ce64d313e1e1f3abdcb6af39ac778c7"><td class="memItemLeft" align="right" valign="top">std::chrono::microseconds&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1thread_1_1USBCameraThread.html#a8ce64d313e1e1f3abdcb6af39ac778c7">task</a> () override</td></tr>
 <tr class="memdesc:a8ce64d313e1e1f3abdcb6af39ac778c7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read next frame from camera, convert, send downstream.  <br /></td></tr>
 <tr class="separator:a8ce64d313e1e1f3abdcb6af39ac778c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acc9b85c9dbf812a92656c7298087737e" id="r_acc9b85c9dbf812a92656c7298087737e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1thread_1_1USBCameraThread.html#acc9b85c9dbf812a92656c7298087737e">handleSignalFrame</a> (const <a class="el" href="classLimef_1_1frame_1_1SignalFrame.html">Limef::frame::SignalFrame</a> *signalFrame) override</td></tr>
+<tr class="memdesc:acc9b85c9dbf812a92656c7298087737e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handles custom signals as per <code><a class="el" href="classLimef_1_1thread_1_1USBCameraSignal.html" title="A signal for USBCameraThread">USBCameraSignal</a></code>  <br /></td></tr>
+<tr class="separator:acc9b85c9dbf812a92656c7298087737e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pro_methods_classLimef_1_1thread_1_1ProducerThread"><td colspan="2" onclick="javascript:toggleInherit('pro_methods_classLimef_1_1thread_1_1ProducerThread')"><img src="closed.png" alt="-"/>&#160;Protected Member Functions inherited from <a class="el" href="classLimef_1_1thread_1_1ProducerThread.html">Limef::thread::ProducerThread</a></td></tr>
 <tr class="memitem:afc4f40b0eb31fdcc42dab6ad4a71e5c1 inherit pro_methods_classLimef_1_1thread_1_1ProducerThread" id="r_afc4f40b0eb31fdcc42dab6ad4a71e5c1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1thread_1_1ProducerThread.html#afc4f40b0eb31fdcc42dab6ad4a71e5c1">processFrame</a> (<a class="el" href="classLimef_1_1frame_1_1Frame.html">Limef::frame::Frame</a> *frame) override</td></tr>
 <tr class="memdesc:afc4f40b0eb31fdcc42dab6ad4a71e5c1 inherit pro_methods_classLimef_1_1thread_1_1ProducerThread"><td class="mdescLeft">&#160;</td><td class="mdescRight">A produced thread doesn't process any incoming frames: this method is empty.  <br /></td></tr>
 <tr class="separator:afc4f40b0eb31fdcc42dab6ad4a71e5c1 inherit pro_methods_classLimef_1_1thread_1_1ProducerThread"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pro_methods_classLimef_1_1thread_1_1Thread"><td colspan="2" onclick="javascript:toggleInherit('pro_methods_classLimef_1_1thread_1_1Thread')"><img src="closed.png" alt="-"/>&#160;Protected Member Functions inherited from <a class="el" href="classLimef_1_1thread_1_1Thread.html">Limef::thread::Thread&lt; Limef::frame::NullFrame &gt;</a></td></tr>
-<tr class="memitem:a74a954c6200ebd7973b4246a846b628f inherit pro_methods_classLimef_1_1thread_1_1Thread" id="r_a74a954c6200ebd7973b4246a846b628f"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1thread_1_1Thread.html#a74a954c6200ebd7973b4246a846b628f">handleSignalFrame</a> (const <a class="el" href="classLimef_1_1frame_1_1SignalFrame.html">Limef::frame::SignalFrame</a> *signalFrame)</td></tr>
-<tr class="memdesc:a74a954c6200ebd7973b4246a846b628f inherit pro_methods_classLimef_1_1thread_1_1Thread"><td class="mdescLeft">&#160;</td><td class="mdescRight">Internal/backend method: handle thread specific signal classes (if there are any)  <br /></td></tr>
-<tr class="separator:a74a954c6200ebd7973b4246a846b628f inherit pro_methods_classLimef_1_1thread_1_1Thread"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a68ad8ff6956f7d2e984f65486e44684b inherit pro_methods_classLimef_1_1thread_1_1Thread" id="r_a68ad8ff6956f7d2e984f65486e44684b"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1thread_1_1Thread.html#a68ad8ff6956f7d2e984f65486e44684b">frameTask</a> (<a class="el" href="classLimef_1_1frame_1_1Frame.html">Limef::frame::Frame</a> *frame)</td></tr>
 <tr class="memdesc:a68ad8ff6956f7d2e984f65486e44684b inherit pro_methods_classLimef_1_1thread_1_1Thread"><td class="mdescLeft">&#160;</td><td class="mdescRight">Internal/backend method: starting point in processing all frames: uses processFrame and handleSignalFrame. Handles BasicSignalFrames.  <br /></td></tr>
 <tr class="separator:a68ad8ff6956f7d2e984f65486e44684b inherit pro_methods_classLimef_1_1thread_1_1Thread"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -291,7 +294,7 @@ Additional Inherited Members</h2></td></tr>
 <div class="textblock"><p><a class="el" href="classLimef_1_1thread_1_1Thread.html" title="A multithreading base class.">Thread</a> for capturing frames from USB cameras. </p>
 <p>Reads raw frames from a V4L2 device, converts them to the target pixel format using SwScale, and sends them downstream as DecodedFrames.</p>
 <p>On startup, sends a StreamFrame with video stream information. Then continuously sends DecodedFrames with pixel data.</p>
-<h2><a class="anchor" id="autotoc_md73"></a>
+<h2><a class="anchor" id="autotoc_md77"></a>
 Example Usage</h2>
 <div class="fragment"><div class="line"><a class="code hl_struct" href="structLimef_1_1thread_1_1USBCameraContext.html">USBCameraContext</a> <a class="code hl_variable" href="classLimef_1_1thread_1_1Thread.html#a4b2a53ec35355f09efe8d903562553c5">ctx</a>(<span class="stringliteral">&quot;/dev/video0&quot;</span>, 1);</div>
 <div class="line"><a class="code hl_variable" href="classLimef_1_1thread_1_1Thread.html#a4b2a53ec35355f09efe8d903562553c5">ctx</a>.width = 1280;</div>
@@ -310,8 +313,8 @@ Example Usage</h2>
 <div class="line"><span class="comment">// ... capture frames ...</span></div>
 <div class="line">camera.stop();</div>
 <div class="ttc" id="aclassLimef_1_1thread_1_1Thread_html_a4b2a53ec35355f09efe8d903562553c5"><div class="ttname"><a href="classLimef_1_1thread_1_1Thread.html#a4b2a53ec35355f09efe8d903562553c5">Limef::thread::Thread&lt; Limef::frame::NullFrame &gt;::ctx</a></div><div class="ttdeci">Limef::FrameFifoContext ctx</div><div class="ttdef"><b>Definition</b> thread.h:193</div></div>
-<div class="ttc" id="aclassLimef_1_1thread_1_1USBCameraThread_html"><div class="ttname"><a href="classLimef_1_1thread_1_1USBCameraThread.html">Limef::thread::USBCameraThread</a></div><div class="ttdoc">Thread for capturing frames from USB cameras.</div><div class="ttdef"><b>Definition</b> usbcamera.h:99</div></div>
-<div class="ttc" id="astructLimef_1_1thread_1_1USBCameraContext_html"><div class="ttname"><a href="structLimef_1_1thread_1_1USBCameraContext.html">Limef::thread::USBCameraContext</a></div><div class="ttdoc">Configuration for USB camera capture.</div><div class="ttdef"><b>Definition</b> usbcamera.h:56</div></div>
+<div class="ttc" id="aclassLimef_1_1thread_1_1USBCameraThread_html"><div class="ttname"><a href="classLimef_1_1thread_1_1USBCameraThread.html">Limef::thread::USBCameraThread</a></div><div class="ttdoc">Thread for capturing frames from USB cameras.</div><div class="ttdef"><b>Definition</b> usbcamera.h:124</div></div>
+<div class="ttc" id="astructLimef_1_1thread_1_1USBCameraContext_html"><div class="ttname"><a href="structLimef_1_1thread_1_1USBCameraContext.html">Limef::thread::USBCameraContext</a></div><div class="ttdoc">Configuration for USB camera capture.</div><div class="ttdef"><b>Definition</b> usbcamera.h:75</div></div>
 </div><!-- fragment --> </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a8859439e651e25418a9197605f01ae14" name="a8859439e651e25418a9197605f01ae14"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a8859439e651e25418a9197605f01ae14">&#9670;&#160;</a></span>USBCameraThread()</h2>
@@ -382,6 +385,36 @@ Example Usage</h2>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="acc9b85c9dbf812a92656c7298087737e" name="acc9b85c9dbf812a92656c7298087737e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acc9b85c9dbf812a92656c7298087737e">&#9670;&#160;</a></span>handleSignalFrame()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Limef::thread::USBCameraThread::handleSignalFrame </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classLimef_1_1frame_1_1SignalFrame.html">Limef::frame::SignalFrame</a> *&#160;</td>
+          <td class="paramname"><em>signalFrame</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Handles custom signals as per <code><a class="el" href="classLimef_1_1thread_1_1USBCameraSignal.html" title="A signal for USBCameraThread">USBCameraSignal</a></code> </p>
+
+<p>Reimplemented from <a class="el" href="classLimef_1_1thread_1_1Thread.html#a74a954c6200ebd7973b4246a846b628f">Limef::thread::Thread&lt; Limef::frame::NullFrame &gt;</a>.</p>
+
+</div>
+</div>
 <a id="aec1d31801a0de5a29dca8aa4b2bf39f3" name="aec1d31801a0de5a29dca8aa4b2bf39f3"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aec1d31801a0de5a29dca8aa4b2bf39f3">&#9670;&#160;</a></span>postRun()</h2>
 
@@ -437,6 +470,25 @@ Example Usage</h2>
 <p>Initialize V4L2 device, send StreamFrame downstream. </p>
 
 <p>Reimplemented from <a class="el" href="classLimef_1_1thread_1_1ProducerThread.html#a277712e2f732a4750605096461e5f889">Limef::thread::ProducerThread</a>.</p>
+
+</div>
+</div>
+<a id="afa4edff95f888006fdc05fcacab443a1" name="afa4edff95f888006fdc05fcacab443a1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afa4edff95f888006fdc05fcacab443a1">&#9670;&#160;</a></span>reinit()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Limef::thread::USBCameraThread::reinit </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Frontend: trigger a device close+reopen. Same effect as an automatic stall-triggered reinit — mainly useful for testing. </p>
 
 </div>
 </div>

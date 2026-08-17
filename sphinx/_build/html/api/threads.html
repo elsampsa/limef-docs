@@ -1378,7 +1378,52 @@ Each thread exposes <a class="reference internal" href="#_CPPv4N5Limef6thread6Th
 <dd><p>Format to request from camera via VIDIOC_S_FMT. </p>
 </dd></dl>
 
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6thread16USBCameraContext17reinit_timeout_msE">
+<span id="_CPPv3N5Limef6thread16USBCameraContext17reinit_timeout_msE"></span><span id="_CPPv2N5Limef6thread16USBCameraContext17reinit_timeout_msE"></span><span id="Limef::thread::USBCameraContext::reinit_timeout_ms__i"></span><span class="target" id="structLimef_1_1thread_1_1USBCameraContext_1a22088e5d84e7b16d72e3dcc4626a78ff"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">reinit_timeout_ms</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="p"><span class="pre">{</span></span><span class="m"><span class="pre">10000</span></span><span class="p"><span class="pre">}</span></span><a class="headerlink" href="#_CPPv4N5Limef6thread16USBCameraContext17reinit_timeout_msE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>milliseconds of no successful readFrame() before an automatic reinit is triggered </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6thread16USBCameraContext15reinit_retry_msE">
+<span id="_CPPv3N5Limef6thread16USBCameraContext15reinit_retry_msE"></span><span id="_CPPv2N5Limef6thread16USBCameraContext15reinit_retry_msE"></span><span id="Limef::thread::USBCameraContext::reinit_retry_ms__i"></span><span class="target" id="structLimef_1_1thread_1_1USBCameraContext_1a199a4fd1666e2bec43f826809112b0a8"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">reinit_retry_ms</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="p"><span class="pre">{</span></span><span class="m"><span class="pre">5000</span></span><span class="p"><span class="pre">}</span></span><a class="headerlink" href="#_CPPv4N5Limef6thread16USBCameraContext15reinit_retry_msE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>ms between reinit attempts while device is down, before backoff kicks in </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6thread16USBCameraContext20reinit_backoff_afterE">
+<span id="_CPPv3N5Limef6thread16USBCameraContext20reinit_backoff_afterE"></span><span id="_CPPv2N5Limef6thread16USBCameraContext20reinit_backoff_afterE"></span><span id="Limef::thread::USBCameraContext::reinit_backoff_after__i"></span><span class="target" id="structLimef_1_1thread_1_1USBCameraContext_1aee1640962c7e3e975eb758e11d244bdd"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">reinit_backoff_after</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="p"><span class="pre">{</span></span><span class="m"><span class="pre">5</span></span><span class="p"><span class="pre">}</span></span><a class="headerlink" href="#_CPPv4N5Limef6thread16USBCameraContext20reinit_backoff_afterE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>consecutive failed reinit attempts before switching to the slower cadence </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6thread16USBCameraContext17reinit_backoff_msE">
+<span id="_CPPv3N5Limef6thread16USBCameraContext17reinit_backoff_msE"></span><span id="_CPPv2N5Limef6thread16USBCameraContext17reinit_backoff_msE"></span><span id="Limef::thread::USBCameraContext::reinit_backoff_ms__i"></span><span class="target" id="structLimef_1_1thread_1_1USBCameraContext_1a710757648adc2e387acd32b3a7d92905"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">reinit_backoff_ms</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="p"><span class="pre">{</span></span><span class="m"><span class="pre">30000</span></span><span class="p"><span class="pre">}</span></span><a class="headerlink" href="#_CPPv4N5Limef6thread16USBCameraContext17reinit_backoff_msE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>ms between reinit attempts once backed off </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6thread16USBCameraContext20eagain_retry_divisorE">
+<span id="_CPPv3N5Limef6thread16USBCameraContext20eagain_retry_divisorE"></span><span id="_CPPv2N5Limef6thread16USBCameraContext20eagain_retry_divisorE"></span><span id="Limef::thread::USBCameraContext::eagain_retry_divisor__i"></span><span class="target" id="structLimef_1_1thread_1_1USBCameraContext_1a51128037f31050f2dc23238768ef7619"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">eagain_retry_divisor</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="p"><span class="pre">{</span></span><span class="m"><span class="pre">2</span></span><span class="p"><span class="pre">}</span></span><a class="headerlink" href="#_CPPv4N5Limef6thread16USBCameraContext20eagain_retry_divisorE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>EAGAIN retry interval = frame_interval / this divisor (default: half a frame period) </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6thread16USBCameraContext19eagain_retry_max_msE">
+<span id="_CPPv3N5Limef6thread16USBCameraContext19eagain_retry_max_msE"></span><span id="_CPPv2N5Limef6thread16USBCameraContext19eagain_retry_max_msE"></span><span id="Limef::thread::USBCameraContext::eagain_retry_max_ms__i"></span><span class="target" id="structLimef_1_1thread_1_1USBCameraContext_1ad6e6e66c9b0b3ac114a922d6be3e75c2"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">eagain_retry_max_ms</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="p"><span class="pre">{</span></span><span class="m"><span class="pre">50</span></span><span class="p"><span class="pre">}</span></span><a class="headerlink" href="#_CPPv4N5Limef6thread16USBCameraContext19eagain_retry_max_msE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>upper bound on the EAGAIN retry interval (frame_interval / divisor), regardless of requested fps </p>
+</dd></dl>
+
 </div>
+</dd></dl>
+
+<dl class="cpp class">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6thread15USBCameraSignalE">
+<span id="_CPPv3N5Limef6thread15USBCameraSignalE"></span><span id="_CPPv2N5Limef6thread15USBCameraSignalE"></span><span id="Limef::thread::USBCameraSignal"></span><span class="target" id="classLimef_1_1thread_1_1USBCameraSignal"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">USBCameraSignal</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><span class="n"><span class="pre">Limef</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="signals.html#_CPPv4N5Limef6signalE" title="Limef::signal"><span class="n"><span class="pre">signal</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="signals.html#_CPPv4N5Limef6signal6SignalE" title="Limef::signal::Signal"><span class="n"><span class="pre">Signal</span></span></a><a class="headerlink" href="#_CPPv4N5Limef6thread15USBCameraSignalE" title="Link to this definition">¶</a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;usbcamera.h&gt;</em></div>
+<p>A signal for <code class="docutils literal notranslate"><span class="pre">USBCameraThread</span></code></p>
+<p>A custom signal class for the <code class="docutils literal notranslate"><span class="pre">USBCameraThread</span></code> thread class, used to trigger a device reinit (close+reopen) on demand — mainly useful for testing the automatic stall-detection/reinit path without waiting for real hardware to misbehave. </p>
 </dd></dl>
 
 <dl class="cpp class">
@@ -1408,7 +1453,57 @@ Each thread exposes <a class="reference internal" href="#_CPPv4N5Limef6thread6Th
 </dl>
 </dd></dl>
 
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6thread15USBCameraThread6reinitEv">
+<span id="_CPPv3N5Limef6thread15USBCameraThread6reinitEv"></span><span id="_CPPv2N5Limef6thread15USBCameraThread6reinitEv"></span><span id="Limef::thread::USBCameraThread::reinit"></span><span class="target" id="classLimef_1_1thread_1_1USBCameraThread_1afa4edff95f888006fdc05fcacab443a1"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">reinit</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5Limef6thread15USBCameraThread6reinitEv" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Frontend: trigger a device close+reopen. Same effect as an automatic stall-triggered reinit — mainly useful for testing. </p>
+</dd></dl>
+
 </div>
+</dd></dl>
+
+<dl class="cpp class">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6thread24WebSocketBroadcastServerE">
+<span id="_CPPv3N5Limef6thread24WebSocketBroadcastServerE"></span><span id="_CPPv2N5Limef6thread24WebSocketBroadcastServerE"></span><span id="Limef::thread::WebSocketBroadcastServer"></span><span class="target" id="classLimef_1_1thread_1_1WebSocketBroadcastServer"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">WebSocketBroadcastServer</span></span></span><a class="headerlink" href="#_CPPv4N5Limef6thread24WebSocketBroadcastServerE" title="Link to this definition">¶</a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;websocket_broadcast.h&gt;</em></div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6thread24WebSocketBroadcastServer11startServerEiNSt6chrono7secondsE">
+<span id="_CPPv3N5Limef6thread24WebSocketBroadcastServer11startServerEiNSt6chrono7secondsE"></span><span id="_CPPv2N5Limef6thread24WebSocketBroadcastServer11startServerEiNSt6chrono7secondsE"></span><span id="Limef::thread::WebSocketBroadcastServer::startServer__i.std::chrono::seconds"></span><span class="target" id="classLimef_1_1thread_1_1WebSocketBroadcastServer_1a9676749717a086e4755111ccf5c925a9"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">startServer</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">port</span></span>, <span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">chrono</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">seconds</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">timeout</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">chrono</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">seconds</span></span><span class="p"><span class="pre">(</span></span><span class="m"><span class="pre">10</span></span><span class="p"><span class="pre">)</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5Limef6thread24WebSocketBroadcastServer11startServerEiNSt6chrono7secondsE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Start listening on <code class="docutils literal notranslate"><span class="pre">port</span></code>. Blocks (up to <code class="docutils literal notranslate"><span class="pre">timeout</span></code>) until the server is actually listening or has failed to start. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>false on failure or timeout. Calling this while already running also fails immediately (returns false, does not restart). </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6thread24WebSocketBroadcastServer10stopServerEv">
+<span id="_CPPv3N5Limef6thread24WebSocketBroadcastServer10stopServerEv"></span><span id="_CPPv2N5Limef6thread24WebSocketBroadcastServer10stopServerEv"></span><span id="Limef::thread::WebSocketBroadcastServer::stopServer"></span><span class="target" id="classLimef_1_1thread_1_1WebSocketBroadcastServer_1afc3bb31ff6bfafeb045825b9d5710f84"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">stopServer</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5Limef6thread24WebSocketBroadcastServer10stopServerEv" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Stop the server and join its background thread. Blocks until fully stopped. Safe to call even if the server was never started or has already been stopped (no-op in that case). Called automatically from the destructor if still running. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK5Limef6thread24WebSocketBroadcastServer14getClientCountEv">
+<span id="_CPPv3NK5Limef6thread24WebSocketBroadcastServer14getClientCountEv"></span><span id="_CPPv2NK5Limef6thread24WebSocketBroadcastServer14getClientCountEv"></span><span id="Limef::thread::WebSocketBroadcastServer::getClientCountC"></span><span class="target" id="classLimef_1_1thread_1_1WebSocketBroadcastServer_1ae2f1b7d0e34079f5712251e15a67cd65"></span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getClientCount</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK5Limef6thread24WebSocketBroadcastServer14getClientCountEv" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Number of currently connected clients. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6thread24WebSocketBroadcastServer13broadcastTextENSt6stringE">
+<span id="_CPPv3N5Limef6thread24WebSocketBroadcastServer13broadcastTextENSt6stringE"></span><span id="_CPPv2N5Limef6thread24WebSocketBroadcastServer13broadcastTextENSt6stringE"></span><span id="Limef::thread::WebSocketBroadcastServer::broadcastText__ss"></span><span class="target" id="classLimef_1_1thread_1_1WebSocketBroadcastServer_1a26bdbe5eb4edfdf8dfd3229676038d2c"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">broadcastText</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">message</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5Limef6thread24WebSocketBroadcastServer13broadcastTextENSt6stringE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Broadcast a text message to every currently connected client. Safe to call from any thread. A no-op if the server isn’t running (before startServer() or after stopServer()). </p>
+</dd></dl>
+
+</div>
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6thread24WebSocketBroadcastServer4ImplE">
+<span id="_CPPv3N5Limef6thread24WebSocketBroadcastServer4ImplE"></span><span id="_CPPv2N5Limef6thread24WebSocketBroadcastServer4ImplE"></span><span id="Limef::thread::WebSocketBroadcastServer::Impl"></span><span class="target" id="structLimef_1_1thread_1_1WebSocketBroadcastServer_1_1Impl"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Impl</span></span></span><a class="headerlink" href="#_CPPv4N5Limef6thread24WebSocketBroadcastServer4ImplE" title="Link to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
 </dd></dl>
 
 <dl class="cpp class">
@@ -1717,10 +1812,26 @@ Each thread exposes <a class="reference internal" href="#_CPPv4N5Limef6thread6Th
 <li><a class="reference internal" href="#_CPPv4N5Limef6thread16USBCameraContext6heightE"><code class="docutils literal notranslate"><span class="pre">height</span></code></a></li>
 <li><a class="reference internal" href="#_CPPv4N5Limef6thread16USBCameraContext3fpsE"><code class="docutils literal notranslate"><span class="pre">fps</span></code></a></li>
 <li><a class="reference internal" href="#_CPPv4N5Limef6thread16USBCameraContext14capture_formatE"><code class="docutils literal notranslate"><span class="pre">capture_format</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6thread16USBCameraContext17reinit_timeout_msE"><code class="docutils literal notranslate"><span class="pre">reinit_timeout_ms</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6thread16USBCameraContext15reinit_retry_msE"><code class="docutils literal notranslate"><span class="pre">reinit_retry_ms</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6thread16USBCameraContext20reinit_backoff_afterE"><code class="docutils literal notranslate"><span class="pre">reinit_backoff_after</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6thread16USBCameraContext17reinit_backoff_msE"><code class="docutils literal notranslate"><span class="pre">reinit_backoff_ms</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6thread16USBCameraContext20eagain_retry_divisorE"><code class="docutils literal notranslate"><span class="pre">eagain_retry_divisor</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6thread16USBCameraContext19eagain_retry_max_msE"><code class="docutils literal notranslate"><span class="pre">eagain_retry_max_ms</span></code></a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6thread15USBCameraSignalE"><code class="docutils literal notranslate"><span class="pre">Limef::thread::USBCameraSignal</span></code></a></li>
 <li><a class="reference internal" href="#_CPPv4N5Limef6thread15USBCameraThreadE"><code class="docutils literal notranslate"><span class="pre">Limef::thread::USBCameraThread</span></code></a><ul>
 <li><a class="reference internal" href="#_CPPv4N5Limef6thread15USBCameraThread15USBCameraThreadENSt6stringERK16USBCameraContext"><code class="docutils literal notranslate"><span class="pre">USBCameraThread()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6thread15USBCameraThread6reinitEv"><code class="docutils literal notranslate"><span class="pre">reinit()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6thread24WebSocketBroadcastServerE"><code class="docutils literal notranslate"><span class="pre">Limef::thread::WebSocketBroadcastServer</span></code></a><ul>
+<li><a class="reference internal" href="#_CPPv4N5Limef6thread24WebSocketBroadcastServer11startServerEiNSt6chrono7secondsE"><code class="docutils literal notranslate"><span class="pre">startServer()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6thread24WebSocketBroadcastServer10stopServerEv"><code class="docutils literal notranslate"><span class="pre">stopServer()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4NK5Limef6thread24WebSocketBroadcastServer14getClientCountEv"><code class="docutils literal notranslate"><span class="pre">getClientCount()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6thread24WebSocketBroadcastServer13broadcastTextENSt6stringE"><code class="docutils literal notranslate"><span class="pre">broadcastText()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6thread24WebSocketBroadcastServer4ImplE"><code class="docutils literal notranslate"><span class="pre">Limef::thread::WebSocketBroadcastServer::Impl</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#_CPPv4N5Limef6thread21WebSocketServerSignalE"><code class="docutils literal notranslate"><span class="pre">Limef::thread::WebSocketServerSignal</span></code></a></li>

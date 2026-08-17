@@ -763,6 +763,58 @@ Use <a class="reference internal" href="#_CPPv4N5Limef2ff17SimpleFrameFilterE" t
 <dd><p>Return number of DecodedFrames received so far. </p>
 </dd></dl>
 
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK5Limef2ff23CountDecodedFrameFilter14sinceLastFrameEv">
+<span id="_CPPv3NK5Limef2ff23CountDecodedFrameFilter14sinceLastFrameEv"></span><span id="_CPPv2NK5Limef2ff23CountDecodedFrameFilter14sinceLastFrameEv"></span><span id="Limef::ff::CountDecodedFrameFilter::sinceLastFrameC"></span><span class="target" id="classLimef_1_1ff_1_1CountDecodedFrameFilter_1a45ec6f586dadd33654d185c9696611da"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">long</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">sinceLastFrame</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK5Limef2ff23CountDecodedFrameFilter14sinceLastFrameEv" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Milliseconds since the last DecodedFrame; -1 if none has arrived yet. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp class">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef2ff22CountTensorFrameFilterE">
+<span id="_CPPv3N5Limef2ff22CountTensorFrameFilterE"></span><span id="_CPPv2N5Limef2ff22CountTensorFrameFilterE"></span><span id="Limef::ff::CountTensorFrameFilter"></span><span class="target" id="classLimef_1_1ff_1_1CountTensorFrameFilter"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">CountTensorFrameFilter</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><span class="n"><span class="pre">Limef</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N5Limef2ffE" title="Limef::ff"><span class="n"><span class="pre">ff</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N5Limef2ff17SimpleFrameFilterE" title="Limef::ff::SimpleFrameFilter"><span class="n"><span class="pre">SimpleFrameFilter</span></span></a><a class="headerlink" href="#_CPPv4N5Limef2ff22CountTensorFrameFilterE" title="Link to this definition">¶</a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;count.h&gt;</em></div>
+<p>Count TensorFrames and report count + fps on demand. </p>
+<p>All frames are passed downstream unchanged. Only <code class="docutils literal notranslate"><span class="pre">TensorFrame</span></code>s (FrameClass::Tensor) are counted. Timing starts on the first TensorFrame seen.</p>
+<p><code class="docutils literal notranslate"><span class="pre">report()</span></code> and <code class="docutils literal notranslate"><span class="pre">getCount()</span></code> are safe to call from any thread.</p>
+<p>Example: <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">CountTensorFrameFilter</span><span class="w"> </span><span class="n">counter</span><span class="p">(</span><span class="s">&quot;counter&quot;</span><span class="p">);</span>
+<span class="n">camera</span><span class="p">.</span><span class="n">getOutput</span><span class="p">().</span><span class="n">cc</span><span class="p">(</span><span class="n">counter</span><span class="p">);</span>
+<span class="c1">// ... run for a while ...</span>
+<span class="n">counter</span><span class="p">.</span><span class="n">report</span><span class="p">();</span><span class="w">   </span><span class="c1">// logs: &quot;counter: 150 frames in 10.0s → 15.0 fps&quot;</span>
+</pre></div>
+</div>
+</p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef2ff22CountTensorFrameFilter2goEPKN5Limef5frame5FrameE">
+<span id="_CPPv3N5Limef2ff22CountTensorFrameFilter2goEPKN5Limef5frame5FrameE"></span><span id="_CPPv2N5Limef2ff22CountTensorFrameFilter2goEPKN5Limef5frame5FrameE"></span><span id="Limef::ff::CountTensorFrameFilter::go__Limef::frame::FrameCP"></span><span class="target" id="classLimef_1_1ff_1_1CountTensorFrameFilter_1af90d5985c76795fec814fe72d9a3cbda"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">go</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">Limef</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="frames.html#_CPPv4N5Limef5frameE" title="Limef::frame"><span class="n"><span class="pre">frame</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="frames.html#_CPPv4N5Limef5frame5FrameE" title="Limef::frame::Frame"><span class="n"><span class="pre">Frame</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">frame</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">override</span></span><a class="headerlink" href="#_CPPv4N5Limef2ff22CountTensorFrameFilter2goEPKN5Limef5frame5FrameE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Implementation of the framefilter action. </p>
+<p>Uses <code class="docutils literal notranslate"><span class="pre">Limef::ff:FrameFilter::pass</span></code> to pass frames downstream.</p>
+<p>The framefilter ensures that the frame is not modified. If it needs a modified frame it has to take an internal copy of the frame first. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK5Limef2ff22CountTensorFrameFilter6reportEv">
+<span id="_CPPv3NK5Limef2ff22CountTensorFrameFilter6reportEv"></span><span id="_CPPv2NK5Limef2ff22CountTensorFrameFilter6reportEv"></span><span id="Limef::ff::CountTensorFrameFilter::reportC"></span><span class="target" id="classLimef_1_1ff_1_1CountTensorFrameFilter_1a6e3a26300b03d770ceda3c7d823cc959"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">report</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK5Limef2ff22CountTensorFrameFilter6reportEv" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Log frame count and mean fps since the first TensorFrame. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK5Limef2ff22CountTensorFrameFilter8getCountEv">
+<span id="_CPPv3NK5Limef2ff22CountTensorFrameFilter8getCountEv"></span><span id="_CPPv2NK5Limef2ff22CountTensorFrameFilter8getCountEv"></span><span id="Limef::ff::CountTensorFrameFilter::getCountC"></span><span class="target" id="classLimef_1_1ff_1_1CountTensorFrameFilter_1ad00e74650366b0379a760bf4ce308fea"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">long</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getCount</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK5Limef2ff22CountTensorFrameFilter8getCountEv" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Return number of TensorFrames received so far. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK5Limef2ff22CountTensorFrameFilter14sinceLastFrameEv">
+<span id="_CPPv3NK5Limef2ff22CountTensorFrameFilter14sinceLastFrameEv"></span><span id="_CPPv2NK5Limef2ff22CountTensorFrameFilter14sinceLastFrameEv"></span><span id="Limef::ff::CountTensorFrameFilter::sinceLastFrameC"></span><span class="target" id="classLimef_1_1ff_1_1CountTensorFrameFilter_1ad70501d120658d162d972f08945e3d90"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">long</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">sinceLastFrame</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK5Limef2ff22CountTensorFrameFilter14sinceLastFrameEv" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Milliseconds since the last TensorFrame; -1 if none has arrived yet. </p>
+</dd></dl>
+
 </div>
 </dd></dl>
 
@@ -855,6 +907,26 @@ Use <a class="reference internal" href="#_CPPv4N5Limef2ff17SimpleFrameFilterE" t
 <dt class="sig sig-object cpp" id="_CPPv4N5Limef2ff15CUDAScaleParams13output_formatE">
 <span id="_CPPv3N5Limef2ff15CUDAScaleParams13output_formatE"></span><span id="_CPPv2N5Limef2ff15CUDAScaleParams13output_formatE"></span><span id="Limef::ff::CUDAScaleParams::output_format__AVPixelFormat"></span><span class="target" id="structLimef_1_1ff_1_1CUDAScaleParams_1a711e5d8a06c67aa2de201c7a1d4eb417"></span><span class="n"><span class="pre">AVPixelFormat</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">output_format</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="p"><span class="pre">{</span></span><span class="n"><span class="pre">AV_PIX_FMT_NV12</span></span><span class="p"><span class="pre">}</span></span><a class="headerlink" href="#_CPPv4N5Limef2ff15CUDAScaleParams13output_formatE" title="Link to this definition">¶</a><br /></dt>
 <dd><p>Output pixel format. AV_PIX_FMT_NV12 (default) preserves NV12 layout. AV_PIX_FMT_YUV420P scales AND de-interleaves the UV plane in one GPU pass, producing a CUDA frame with planar U/V ready for DecodedDownloadFrameFilter + VP8. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp class">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef2ff23CudaToFFmpegFrameFilterE">
+<span id="_CPPv3N5Limef2ff23CudaToFFmpegFrameFilterE"></span><span id="_CPPv2N5Limef2ff23CudaToFFmpegFrameFilterE"></span><span id="Limef::ff::CudaToFFmpegFrameFilter"></span><span class="target" id="classLimef_1_1ff_1_1CudaToFFmpegFrameFilter"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">CudaToFFmpegFrameFilter</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><span class="n"><span class="pre">Limef</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N5Limef2ffE" title="Limef::ff"><span class="n"><span class="pre">ff</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N5Limef2ff17SimpleFrameFilterE" title="Limef::ff::SimpleFrameFilter"><span class="n"><span class="pre">SimpleFrameFilter</span></span></a><a class="headerlink" href="#_CPPv4N5Limef2ff23CudaToFFmpegFrameFilterE" title="Link to this definition">¶</a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;cuda_to_ffmpeg.h&gt;</em></div>
+<p>Converts BufferLocation::CUDA frames to BufferLocation::CUDA_FFMPEG. </p>
+<p>Allocates an AVHWFramesContext (AV_HWDEVICE_TYPE_CUDA, NV12, pooled) on the first incoming CUDA frame and copies each frame into the pool via D2D cudaMemcpy2D. The output frame has hw_frames_ctx set and can be consumed directly by h264_nvenc / hevc_nvenc / av1_nvenc without an upload step. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef2ff23CudaToFFmpegFrameFilter2goEPKN5Limef5frame5FrameE">
+<span id="_CPPv3N5Limef2ff23CudaToFFmpegFrameFilter2goEPKN5Limef5frame5FrameE"></span><span id="_CPPv2N5Limef2ff23CudaToFFmpegFrameFilter2goEPKN5Limef5frame5FrameE"></span><span id="Limef::ff::CudaToFFmpegFrameFilter::go__Limef::frame::FrameCP"></span><span class="target" id="classLimef_1_1ff_1_1CudaToFFmpegFrameFilter_1a6019e6183e86825a4f272b320db8848f"></span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">go</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">Limef</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="frames.html#_CPPv4N5Limef5frameE" title="Limef::frame"><span class="n"><span class="pre">frame</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="frames.html#_CPPv4N5Limef5frame5FrameE" title="Limef::frame::Frame"><span class="n"><span class="pre">Frame</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">frame</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">override</span></span><a class="headerlink" href="#_CPPv4N5Limef2ff23CudaToFFmpegFrameFilter2goEPKN5Limef5frame5FrameE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Implementation of the framefilter action. </p>
+<p>Uses <code class="docutils literal notranslate"><span class="pre">Limef::ff:FrameFilter::pass</span></code> to pass frames downstream.</p>
+<p>The framefilter ensures that the frame is not modified. If it needs a modified frame it has to take an internal copy of the frame first. </p>
 </dd></dl>
 
 </div>
@@ -1223,6 +1295,14 @@ Example: <div class="highlight-cpp notranslate"><div class="highlight"><pre><spa
 <p>The framefilter ensures that the frame is not modified. If it needs a modified frame it has to take an internal copy of the frame first. </p>
 </dd></dl>
 
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef2ff19EncodingFrameFilter15requestKeyFrameEv">
+<span id="_CPPv3N5Limef2ff19EncodingFrameFilter15requestKeyFrameEv"></span><span id="_CPPv2N5Limef2ff19EncodingFrameFilter15requestKeyFrameEv"></span><span id="Limef::ff::EncodingFrameFilter::requestKeyFrame"></span><span class="target" id="classLimef_1_1ff_1_1EncodingFrameFilter_1a3980622d4c562df4291311b791e88b89"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">requestKeyFrame</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5Limef2ff19EncodingFrameFilter15requestKeyFrameEv" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Request a keyframe from the video encoder on its next output. </p>
+<p>Rare exception to the “no public setters on framefilters” rule (see CLAUDE.md, “Thread Safety: FrameFilter Chains”): safe to call from any thread (e.g. a WebRTC PLI callback) because it’s mutex-protected against the driving thread’s own use of video_encoder_ in go()/ setupEncoders() (which may delete/recreate the encoder concurrently).</p>
+<p>No-op if there is no video encoder yet (e.g. before the first StreamFrame/DecodedFrame arrives). </p>
+</dd></dl>
+
 </div>
 </dd></dl>
 
@@ -1535,6 +1615,27 @@ Example: <div class="highlight-cpp notranslate"><div class="highlight"><pre><spa
 </dd></dl>
 
 <dl class="cpp class">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef2ff20MuteAudioFrameFilterE">
+<span id="_CPPv3N5Limef2ff20MuteAudioFrameFilterE"></span><span id="_CPPv2N5Limef2ff20MuteAudioFrameFilterE"></span><span id="Limef::ff::MuteAudioFrameFilter"></span><span class="target" id="classLimef_1_1ff_1_1MuteAudioFrameFilter"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">MuteAudioFrameFilter</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><span class="n"><span class="pre">Limef</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N5Limef2ffE" title="Limef::ff"><span class="n"><span class="pre">ff</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N5Limef2ff17SimpleFrameFilterE" title="Limef::ff::SimpleFrameFilter"><span class="n"><span class="pre">SimpleFrameFilter</span></span></a><a class="headerlink" href="#_CPPv4N5Limef2ff20MuteAudioFrameFilterE" title="Link to this definition">¶</a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;muteaudio.h&gt;</em></div>
+<p>Drops all audio from the stream. </p>
+<p>CodecFrame: copies the frame but removes all audio streams before passing downstream. PacketFrame with audio media type: silently dropped. All other frame types: passed through unchanged.</p>
+<p>Use this upstream of WebRTCMuxerFrameFilter when the file/RTSP source carries an audio codec that WebRTC does not accept (e.g. PCM S16LE). </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef2ff20MuteAudioFrameFilter2goEPKN5Limef5frame5FrameE">
+<span id="_CPPv3N5Limef2ff20MuteAudioFrameFilter2goEPKN5Limef5frame5FrameE"></span><span id="_CPPv2N5Limef2ff20MuteAudioFrameFilter2goEPKN5Limef5frame5FrameE"></span><span id="Limef::ff::MuteAudioFrameFilter::go__Limef::frame::FrameCP"></span><span class="target" id="classLimef_1_1ff_1_1MuteAudioFrameFilter_1a85436d43db3b3401d96820f444c09bfd"></span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">go</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">Limef</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="frames.html#_CPPv4N5Limef5frameE" title="Limef::frame"><span class="n"><span class="pre">frame</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="frames.html#_CPPv4N5Limef5frame5FrameE" title="Limef::frame::Frame"><span class="n"><span class="pre">Frame</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">frame</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">override</span></span><a class="headerlink" href="#_CPPv4N5Limef2ff20MuteAudioFrameFilter2goEPKN5Limef5frame5FrameE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Implementation of the framefilter action. </p>
+<p>Uses <code class="docutils literal notranslate"><span class="pre">Limef::ff:FrameFilter::pass</span></code> to pass frames downstream.</p>
+<p>The framefilter ensures that the frame is not modified. If it needs a modified frame it has to take an internal copy of the frame first. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp class">
 <dt class="sig sig-object cpp" id="_CPPv4N5Limef2ff16MuxerFrameFilterE">
 <span id="_CPPv3N5Limef2ff16MuxerFrameFilterE"></span><span id="_CPPv2N5Limef2ff16MuxerFrameFilterE"></span><span id="Limef::ff::MuxerFrameFilter"></span><span class="target" id="classLimef_1_1ff_1_1MuxerFrameFilter"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">MuxerFrameFilter</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><span class="n"><span class="pre">Limef</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N5Limef2ffE" title="Limef::ff"><span class="n"><span class="pre">ff</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N5Limef2ff17SimpleFrameFilterE" title="Limef::ff::SimpleFrameFilter"><span class="n"><span class="pre">SimpleFrameFilter</span></span></a><a class="headerlink" href="#_CPPv4N5Limef2ff16MuxerFrameFilterE" title="Link to this definition">¶</a><br /></dt>
 <dd><div class="docutils container">
@@ -1634,6 +1735,32 @@ Example: <div class="highlight-cpp notranslate"><div class="highlight"><pre><spa
 </dd></dl>
 
 <dl class="cpp class">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef2ff18PutInfoFrameFilterE">
+<span id="_CPPv3N5Limef2ff18PutInfoFrameFilterE"></span><span id="_CPPv2N5Limef2ff18PutInfoFrameFilterE"></span><span id="Limef::ff::PutInfoFrameFilter"></span><span class="target" id="classLimef_1_1ff_1_1PutInfoFrameFilter"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">PutInfoFrameFilter</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><span class="n"><span class="pre">Limef</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N5Limef2ffE" title="Limef::ff"><span class="n"><span class="pre">ff</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N5Limef2ff17SimpleFrameFilterE" title="Limef::ff::SimpleFrameFilter"><span class="n"><span class="pre">SimpleFrameFilter</span></span></a><a class="headerlink" href="#_CPPv4N5Limef2ff18PutInfoFrameFilterE" title="Link to this definition">¶</a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;putinfo.h&gt;</em></div>
+<p>Injects InfoFrames into the pipeline from an external thread. </p>
+<p>All frames are passed downstream unchanged. Calling put() from any thread queues a message; the next go() call (on the driving thread) drains the queue and emits an InfoFrame per message before forwarding the regular frame. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef2ff18PutInfoFrameFilter2goEPKN5Limef5frame5FrameE">
+<span id="_CPPv3N5Limef2ff18PutInfoFrameFilter2goEPKN5Limef5frame5FrameE"></span><span id="_CPPv2N5Limef2ff18PutInfoFrameFilter2goEPKN5Limef5frame5FrameE"></span><span id="Limef::ff::PutInfoFrameFilter::go__Limef::frame::FrameCP"></span><span class="target" id="classLimef_1_1ff_1_1PutInfoFrameFilter_1a8e79f47c22bad7ab19b5ec5d2c875b98"></span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">go</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">Limef</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="frames.html#_CPPv4N5Limef5frameE" title="Limef::frame"><span class="n"><span class="pre">frame</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="frames.html#_CPPv4N5Limef5frame5FrameE" title="Limef::frame::Frame"><span class="n"><span class="pre">Frame</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">frame</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">override</span></span><a class="headerlink" href="#_CPPv4N5Limef2ff18PutInfoFrameFilter2goEPKN5Limef5frame5FrameE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Implementation of the framefilter action. </p>
+<p>Uses <code class="docutils literal notranslate"><span class="pre">Limef::ff:FrameFilter::pass</span></code> to pass frames downstream.</p>
+<p>The framefilter ensures that the frame is not modified. If it needs a modified frame it has to take an internal copy of the frame first. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef2ff18PutInfoFrameFilter3putERKNSt6stringE">
+<span id="_CPPv3N5Limef2ff18PutInfoFrameFilter3putERKNSt6stringE"></span><span id="_CPPv2N5Limef2ff18PutInfoFrameFilter3putERKNSt6stringE"></span><span id="Limef::ff::PutInfoFrameFilter::put__ssCR"></span><span class="target" id="classLimef_1_1ff_1_1PutInfoFrameFilter_1a935f641d48ab12edefbbab5b6fc1dd9b"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">put</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">msg</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5Limef2ff18PutInfoFrameFilter3putERKNSt6stringE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Queue a message for injection as an InfoFrame. Thread-safe — may be called from any thread. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp class">
 <dt class="sig sig-object cpp" id="_CPPv4N5Limef2ff19RTPMuxerFrameFilterE">
 <span id="_CPPv3N5Limef2ff19RTPMuxerFrameFilterE"></span><span id="_CPPv2N5Limef2ff19RTPMuxerFrameFilterE"></span><span id="Limef::ff::RTPMuxerFrameFilter"></span><span class="target" id="classLimef_1_1ff_1_1RTPMuxerFrameFilter"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">RTPMuxerFrameFilter</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><span class="n"><span class="pre">Limef</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N5Limef2ffE" title="Limef::ff"><span class="n"><span class="pre">ff</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N5Limef2ff17SimpleFrameFilterE" title="Limef::ff::SimpleFrameFilter"><span class="n"><span class="pre">SimpleFrameFilter</span></span></a><a class="headerlink" href="#_CPPv4N5Limef2ff19RTPMuxerFrameFilterE" title="Link to this definition">¶</a><br /></dt>
 <dd><div class="docutils container">
@@ -1664,6 +1791,19 @@ PacketFrame → RTPMuxerFrameFilter
 <p>Incoming PacketFrames must already be in the correct bitstream format (e.g. Annex B for H.264/H.265). Use AnnexBFrameFilter upstream if needed.</p>
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef2ff19RTPMuxerFrameFilter19RTPMuxerFrameFilterENSt6stringEi">
+<span id="_CPPv3N5Limef2ff19RTPMuxerFrameFilter19RTPMuxerFrameFilterENSt6stringEi"></span><span id="_CPPv2N5Limef2ff19RTPMuxerFrameFilter19RTPMuxerFrameFilterENSt6stringEi"></span><span id="Limef::ff::RTPMuxerFrameFilter::RTPMuxerFrameFilter__ss.i"></span><span class="target" id="classLimef_1_1ff_1_1RTPMuxerFrameFilter_1af824f7530930699a80f7bd6510638167"></span><span class="k"><span class="pre">explicit</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">RTPMuxerFrameFilter</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">name</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="s"><span class="pre">&quot;RTPMuxerFrameFilter&quot;</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">packet_size</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">1400</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5Limef2ff19RTPMuxerFrameFilter19RTPMuxerFrameFilterENSt6stringEi" title="Link to this definition">¶</a><br /></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> – label for logging </p></li>
+<li><p><strong>packet_size</strong> – max size in bytes of each muxed RTP packet (default 1400, i.e. a plain-Ethernet path MTU of ~1500 minus IP/UDP headers). Lower this when the packets must additionally survive a tunnel/VPN hop (e.g. Tailscale, MTU 1280) between this muxer and the client, since nothing downstream fragments an oversized RTP/SRTP packet - see WebRTCMuxerFrameFilter. </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N5Limef2ff19RTPMuxerFrameFilter2goEPKN5Limef5frame5FrameE">
 <span id="_CPPv3N5Limef2ff19RTPMuxerFrameFilter2goEPKN5Limef5frame5FrameE"></span><span id="_CPPv2N5Limef2ff19RTPMuxerFrameFilter2goEPKN5Limef5frame5FrameE"></span><span id="Limef::ff::RTPMuxerFrameFilter::go__Limef::frame::FrameCP"></span><span class="target" id="classLimef_1_1ff_1_1RTPMuxerFrameFilter_1a9c95ab5b03d5e9d669c933f022b323ed"></span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">go</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">Limef</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="frames.html#_CPPv4N5Limef5frameE" title="Limef::frame"><span class="n"><span class="pre">frame</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="frames.html#_CPPv4N5Limef5frame5FrameE" title="Limef::frame::Frame"><span class="n"><span class="pre">Frame</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">frame</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">override</span></span><a class="headerlink" href="#_CPPv4N5Limef2ff19RTPMuxerFrameFilter2goEPKN5Limef5frame5FrameE" title="Link to this definition">¶</a><br /></dt>
@@ -1868,7 +2008,7 @@ PacketFrame → RTPMuxerFrameFilter
 </div>
 </p>
 <p>For subclasses, you should only implement the virtual method <code class="docutils literal notranslate"><span class="pre">Limef::ff::SimpleFrameFilter::go</span></code></p>
-<p>Subclassed by Limef::ff::FrameFifoFrameFilter&lt; Limef::frame::DecodedFrame &gt;, Limef::ff::FrameFifoFrameFilter&lt; Limef::frame::TensorFrame &gt;, Limef::ff::AnnexBFrameFilter, Limef::ff::AudioTranscodeFrameFilter, Limef::ff::CUDAScaleFrameFilter, Limef::ff::CodecAssertFrameFilter, Limef::ff::CodecCacheFrameFilter, Limef::ff::CodecMessageFrameFilter, Limef::ff::CountDecodedFrameFilter, Limef::ff::DecodedDownloadFrameFilter, Limef::ff::DecodedToTensorFrameFilter, Limef::ff::DecodedUploadFrameFilter, Limef::ff::DecodingFrameFilter, Limef::ff::DumpFrameFilter, Limef::ff::DumpPacketFrameFilter, Limef::ff::EmptyFrameFilter, Limef::ff::EncodeCheckFrameFilter, Limef::ff::EncodingFrameFilter, Limef::ff::FrameFifoFrameFilter&lt; T &gt;, Limef::ff::GateFrameFilter, Limef::ff::H264StripParamSetsFrameFilter, Limef::ff::InfoFrameFilter, Limef::ff::MP4PartitionFrameFilter, Limef::ff::MP4ProbeFrameFilter, Limef::ff::MuxerFrameFilter, Limef::ff::RTPMuxerFrameFilter, Limef::ff::ShmemServerFrameFilter, Limef::ff::StreamGateFrameFilter, Limef::ff::SwScaleFrameFilter, Limef::ff::TensorToDecodedFrameFilter, Limef::ff::WebMPartitionFrameFilter, Limef::ff::WritePNGFrameFilter</p>
+<p>Subclassed by Limef::ff::FrameFifoFrameFilter&lt; Limef::frame::DecodedFrame &gt;, Limef::ff::FrameFifoFrameFilter&lt; Limef::frame::TensorFrame &gt;, Limef::ff::AnnexBFrameFilter, Limef::ff::AudioTranscodeFrameFilter, Limef::ff::CUDAScaleFrameFilter, Limef::ff::CodecAssertFrameFilter, Limef::ff::CodecCacheFrameFilter, Limef::ff::CodecMessageFrameFilter, Limef::ff::CountDecodedFrameFilter, Limef::ff::CountTensorFrameFilter, Limef::ff::CudaToFFmpegFrameFilter, Limef::ff::DecodedDownloadFrameFilter, Limef::ff::DecodedToTensorFrameFilter, Limef::ff::DecodedUploadFrameFilter, Limef::ff::DecodingFrameFilter, Limef::ff::DumpFrameFilter, Limef::ff::DumpPacketFrameFilter, Limef::ff::EmptyFrameFilter, Limef::ff::EncodeCheckFrameFilter, Limef::ff::EncodingFrameFilter, Limef::ff::FrameFifoFrameFilter&lt; T &gt;, Limef::ff::GateFrameFilter, Limef::ff::H264StripParamSetsFrameFilter, Limef::ff::InfoFrameFilter, Limef::ff::MP4PartitionFrameFilter, Limef::ff::MP4ProbeFrameFilter, Limef::ff::MuteAudioFrameFilter, Limef::ff::MuxerFrameFilter, Limef::ff::PutInfoFrameFilter, Limef::ff::RTPMuxerFrameFilter, Limef::ff::ShmemServerFrameFilter, Limef::ff::StreamGateFrameFilter, Limef::ff::SwScaleFrameFilter, Limef::ff::TensorToDecodedFrameFilter, Limef::ff::ThrottleFrameFilter, Limef::ff::WebMPartitionFrameFilter, Limef::ff::WritePNGFrameFilter</p>
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
 <dl class="cpp function">
@@ -2114,6 +2254,78 @@ PacketFrame → RTPMuxerFrameFilter
 </dd></dl>
 
 <dl class="cpp class">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef2ff19ThrottleFrameFilterE">
+<span id="_CPPv3N5Limef2ff19ThrottleFrameFilterE"></span><span id="_CPPv2N5Limef2ff19ThrottleFrameFilterE"></span><span id="Limef::ff::ThrottleFrameFilter"></span><span class="target" id="classLimef_1_1ff_1_1ThrottleFrameFilter"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ThrottleFrameFilter</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><span class="n"><span class="pre">Limef</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N5Limef2ffE" title="Limef::ff"><span class="n"><span class="pre">ff</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N5Limef2ff17SimpleFrameFilterE" title="Limef::ff::SimpleFrameFilter"><span class="n"><span class="pre">SimpleFrameFilter</span></span></a><a class="headerlink" href="#_CPPv4N5Limef2ff19ThrottleFrameFilterE" title="Link to this definition">¶</a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;throttle.h&gt;</em></div>
+<p>Rate-limit payload frames by minimum inter-frame interval. </p>
+<p>Forwards a payload frame (Packet, Decoded, Tensor) downstream only when at least <code class="docutils literal notranslate"><span class="pre">interval</span></code> microseconds have elapsed since the last forwarded payload frame, as measured by the frame’s absolute timestamp.</p>
+<p><ul class="simple">
+<li><p>Non-payload frames (Signal, Codec, Stream, SDP, RTP, Info, …) pass through unconditionally.</p></li>
+<li><p>Payload frames with an invalid absolute timestamp pass through unconditionally.</p></li>
+<li><p>The very first payload frame always passes through (no prior reference point).</p></li>
+</ul>
+</p>
+<p>Two orthogonal controls:<ul class="simple">
+<li><p><strong>Rate-limiter</strong> (<code class="docutils literal notranslate"><span class="pre">setState</span></code> / <code class="docutils literal notranslate"><span class="pre">setInterval</span></code>): drops frames that arrive too soon after the previous forwarded frame.</p></li>
+<li><p><strong>Gate</strong> (<code class="docutils literal notranslate"><span class="pre">open</span></code> / <code class="docutils literal notranslate"><span class="pre">close</span></code>): drops <em>all</em> payload frames when closed, regardless of timestamps or the rate-limiter state.</p></li>
+</ul>
+</p>
+<p>All control methods are mutex-protected and safe to call from any thread.</p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef2ff19ThrottleFrameFilter8setStateEb">
+<span id="_CPPv3N5Limef2ff19ThrottleFrameFilter8setStateEb"></span><span id="_CPPv2N5Limef2ff19ThrottleFrameFilter8setStateEb"></span><span id="Limef::ff::ThrottleFrameFilter::setState__b"></span><span class="target" id="classLimef_1_1ff_1_1ThrottleFrameFilter_1a702ae06f546b5d5ea9cd8169dc0e0645"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">setState</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">enabled</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5Limef2ff19ThrottleFrameFilter8setStateEb" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Enable or disable the rate-limiter. </p>
+<p>When enabled (default), payload frames are forwarded only when the inter-frame interval condition is met. When disabled, all payload frames pass through immediately with no timestamp check — equivalent to removing the filter from the chain. Non-payload frames are unaffected by this flag. Thread-safe. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK5Limef2ff19ThrottleFrameFilter8getStateEv">
+<span id="_CPPv3NK5Limef2ff19ThrottleFrameFilter8getStateEv"></span><span id="_CPPv2NK5Limef2ff19ThrottleFrameFilter8getStateEv"></span><span id="Limef::ff::ThrottleFrameFilter::getStateC"></span><span class="target" id="classLimef_1_1ff_1_1ThrottleFrameFilter_1a43d89c4b942456493e0a94d5f2688a4c"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getState</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK5Limef2ff19ThrottleFrameFilter8getStateEv" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Return true if the rate-limiter is currently enabled. Thread-safe. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef2ff19ThrottleFrameFilter11setIntervalEi">
+<span id="_CPPv3N5Limef2ff19ThrottleFrameFilter11setIntervalEi"></span><span id="_CPPv2N5Limef2ff19ThrottleFrameFilter11setIntervalEi"></span><span id="Limef::ff::ThrottleFrameFilter::setInterval__i"></span><span class="target" id="classLimef_1_1ff_1_1ThrottleFrameFilter_1ac3ee4a7d878c4346902accfdc60137af"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">setInterval</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">interval_ms</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5Limef2ff19ThrottleFrameFilter11setIntervalEi" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Change the minimum inter-frame interval. </p>
+<p>Sets the minimum time (in milliseconds) that must elapse between two consecutively forwarded payload frames. Setting 0 ms passes every frame (since any delta ≥ 0), but still incurs the timestamp check overhead; prefer setState(false) for a true pass-through. Thread-safe; takes effect on the next go() call. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef2ff19ThrottleFrameFilter5closeEv">
+<span id="_CPPv3N5Limef2ff19ThrottleFrameFilter5closeEv"></span><span id="_CPPv2N5Limef2ff19ThrottleFrameFilter5closeEv"></span><span id="Limef::ff::ThrottleFrameFilter::close"></span><span class="target" id="classLimef_1_1ff_1_1ThrottleFrameFilter_1a2f0eb1aab6c78656f12a216a2d99ea7f"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">close</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5Limef2ff19ThrottleFrameFilter5closeEv" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Close the gate — drop all payload frames until open() is called. </p>
+<p>Acts independently of the rate-limiter (setState). When the gate is closed, no payload frames reach downstream regardless of timestamps or the enabled flag. Non-payload frames (Signal, Codec, Stream, Info, …) still pass through. Thread-safe. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef2ff19ThrottleFrameFilter4openEv">
+<span id="_CPPv3N5Limef2ff19ThrottleFrameFilter4openEv"></span><span id="_CPPv2N5Limef2ff19ThrottleFrameFilter4openEv"></span><span id="Limef::ff::ThrottleFrameFilter::open"></span><span class="target" id="classLimef_1_1ff_1_1ThrottleFrameFilter_1acb746a1c146a2f02222c6e651294aa20"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">open</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5Limef2ff19ThrottleFrameFilter4openEv" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Open the gate — resume forwarding payload frames. </p>
+<p>Also resets the internal timestamp reference so the very next payload frame passes immediately (no waiting for the interval to elapse from the last frame before close() was called). Thread-safe. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK5Limef2ff19ThrottleFrameFilter6isOpenEv">
+<span id="_CPPv3NK5Limef2ff19ThrottleFrameFilter6isOpenEv"></span><span id="_CPPv2NK5Limef2ff19ThrottleFrameFilter6isOpenEv"></span><span id="Limef::ff::ThrottleFrameFilter::isOpenC"></span><span class="target" id="classLimef_1_1ff_1_1ThrottleFrameFilter_1a5a6c50f1a8947a2e91daff3d436e471b"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">isOpen</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK5Limef2ff19ThrottleFrameFilter6isOpenEv" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Return true if the gate is currently open. Thread-safe. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef2ff19ThrottleFrameFilter2goEPKN5Limef5frame5FrameE">
+<span id="_CPPv3N5Limef2ff19ThrottleFrameFilter2goEPKN5Limef5frame5FrameE"></span><span id="_CPPv2N5Limef2ff19ThrottleFrameFilter2goEPKN5Limef5frame5FrameE"></span><span id="Limef::ff::ThrottleFrameFilter::go__Limef::frame::FrameCP"></span><span class="target" id="classLimef_1_1ff_1_1ThrottleFrameFilter_1a3b4680f764d3e68a2aac859efcbd17ca"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">go</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">Limef</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="frames.html#_CPPv4N5Limef5frameE" title="Limef::frame"><span class="n"><span class="pre">frame</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="frames.html#_CPPv4N5Limef5frame5FrameE" title="Limef::frame::Frame"><span class="n"><span class="pre">Frame</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">frame</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">override</span></span><a class="headerlink" href="#_CPPv4N5Limef2ff19ThrottleFrameFilter2goEPKN5Limef5frame5FrameE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Implementation of the framefilter action. </p>
+<p>Uses <code class="docutils literal notranslate"><span class="pre">Limef::ff:FrameFilter::pass</span></code> to pass frames downstream.</p>
+<p>The framefilter ensures that the frame is not modified. If it needs a modified frame it has to take an internal copy of the frame first. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp class">
 <dt class="sig sig-object cpp" id="_CPPv4N5Limef2ff15WebMFrameFilterE">
 <span id="_CPPv3N5Limef2ff15WebMFrameFilterE"></span><span id="_CPPv2N5Limef2ff15WebMFrameFilterE"></span><span id="Limef::ff::WebMFrameFilter"></span><span class="target" id="classLimef_1_1ff_1_1WebMFrameFilter"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">WebMFrameFilter</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><span class="n"><span class="pre">Limef</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N5Limef2ffE" title="Limef::ff"><span class="n"><span class="pre">ff</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N5Limef2ff18ComposeFrameFilterE" title="Limef::ff::ComposeFrameFilter"><span class="n"><span class="pre">ComposeFrameFilter</span></span></a><a class="headerlink" href="#_CPPv4N5Limef2ff15WebMFrameFilterE" title="Link to this definition">¶</a><br /></dt>
 <dd><div class="docutils container">
@@ -2183,6 +2395,24 @@ PacketFrame → RTPMuxerFrameFilter
 <em>#include &lt;webrtcmuxer.h&gt;</em></div>
 <p>Composite filter that canonizes a stream for WebRTC delivery. </p>
 <p>Chains: CodecAssertFrameFilter → RTPMuxerFrameFilter</p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef2ff22WebRTCMuxerFrameFilter22WebRTCMuxerFrameFilterENSt6stringEi">
+<span id="_CPPv3N5Limef2ff22WebRTCMuxerFrameFilter22WebRTCMuxerFrameFilterENSt6stringEi"></span><span id="_CPPv2N5Limef2ff22WebRTCMuxerFrameFilter22WebRTCMuxerFrameFilterENSt6stringEi"></span><span id="Limef::ff::WebRTCMuxerFrameFilter::WebRTCMuxerFrameFilter__ss.i"></span><span class="target" id="classLimef_1_1ff_1_1WebRTCMuxerFrameFilter_1a8c129d8575f14750ebbd937273845513"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="k"><span class="pre">explicit</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">WebRTCMuxerFrameFilter</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">name</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="s"><span class="pre">&quot;WebRTCMuxerFrameFilter&quot;</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">mtu</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">1200</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5Limef2ff22WebRTCMuxerFrameFilter22WebRTCMuxerFrameFilterENSt6stringEi" title="Link to this definition">¶</a><br /></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> – label for logging </p></li>
+<li><p><strong>mtu</strong> – path MTU to the client in bytes (default 1200, matching WebRTCServerThread’s default). Nothing downstream fragments an oversized RTP/SRTP packet - libdatachannel’s own <code class="docutils literal notranslate"><span class="pre">mtu</span></code> config only bounds its own SCTP/DTLS traffic, not media tracks - so the RTP muxer’s packet size must itself be kept at or below <code class="docutils literal notranslate"><span class="pre">mtu</span></code><p>. Pass the same value given to WebRTCServerThread; lower both when routing over a VPN/tunnel such as Tailscale (MTU 1280) to avoid EMSGSIZE (“datagram is</p>
+<p>too large”) errors.</p>
+</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
 </dd></dl>
 
 <dl class="cpp class">
@@ -2327,6 +2557,14 @@ PacketFrame → RTPMuxerFrameFilter
 <li><a class="reference internal" href="#_CPPv4N5Limef2ff23CountDecodedFrameFilter2goEPKN5Limef5frame5FrameE"><code class="docutils literal notranslate"><span class="pre">go()</span></code></a></li>
 <li><a class="reference internal" href="#_CPPv4NK5Limef2ff23CountDecodedFrameFilter6reportEv"><code class="docutils literal notranslate"><span class="pre">report()</span></code></a></li>
 <li><a class="reference internal" href="#_CPPv4NK5Limef2ff23CountDecodedFrameFilter8getCountEv"><code class="docutils literal notranslate"><span class="pre">getCount()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4NK5Limef2ff23CountDecodedFrameFilter14sinceLastFrameEv"><code class="docutils literal notranslate"><span class="pre">sinceLastFrame()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#_CPPv4N5Limef2ff22CountTensorFrameFilterE"><code class="docutils literal notranslate"><span class="pre">Limef::ff::CountTensorFrameFilter</span></code></a><ul>
+<li><a class="reference internal" href="#_CPPv4N5Limef2ff22CountTensorFrameFilter2goEPKN5Limef5frame5FrameE"><code class="docutils literal notranslate"><span class="pre">go()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4NK5Limef2ff22CountTensorFrameFilter6reportEv"><code class="docutils literal notranslate"><span class="pre">report()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4NK5Limef2ff22CountTensorFrameFilter8getCountEv"><code class="docutils literal notranslate"><span class="pre">getCount()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4NK5Limef2ff22CountTensorFrameFilter14sinceLastFrameEv"><code class="docutils literal notranslate"><span class="pre">sinceLastFrame()</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#_CPPv4N5Limef2ff19CpuSwScaleConverterE"><code class="docutils literal notranslate"><span class="pre">Limef::ff::CpuSwScaleConverter</span></code></a><ul>
@@ -2343,6 +2581,10 @@ PacketFrame → RTPMuxerFrameFilter
 <li><a class="reference internal" href="#_CPPv4N5Limef2ff15CUDAScaleParams9dst_widthE"><code class="docutils literal notranslate"><span class="pre">dst_width</span></code></a></li>
 <li><a class="reference internal" href="#_CPPv4N5Limef2ff15CUDAScaleParams10dst_heightE"><code class="docutils literal notranslate"><span class="pre">dst_height</span></code></a></li>
 <li><a class="reference internal" href="#_CPPv4N5Limef2ff15CUDAScaleParams13output_formatE"><code class="docutils literal notranslate"><span class="pre">output_format</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#_CPPv4N5Limef2ff23CudaToFFmpegFrameFilterE"><code class="docutils literal notranslate"><span class="pre">Limef::ff::CudaToFFmpegFrameFilter</span></code></a><ul>
+<li><a class="reference internal" href="#_CPPv4N5Limef2ff23CudaToFFmpegFrameFilter2goEPKN5Limef5frame5FrameE"><code class="docutils literal notranslate"><span class="pre">go()</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#_CPPv4N5Limef2ff26DecodedDownloadFrameFilterE"><code class="docutils literal notranslate"><span class="pre">Limef::ff::DecodedDownloadFrameFilter</span></code></a><ul>
@@ -2390,6 +2632,7 @@ PacketFrame → RTPMuxerFrameFilter
 <li><a class="reference internal" href="#_CPPv4N5Limef2ff19EncodingFrameFilterE"><code class="docutils literal notranslate"><span class="pre">Limef::ff::EncodingFrameFilter</span></code></a><ul>
 <li><a class="reference internal" href="#_CPPv4N5Limef2ff19EncodingFrameFilter19EncodingFrameFilterENSt6stringERKN5Limef6encode18VideoEncoderParamsEPKN5Limef6encode18VideoEncoderParamsE"><code class="docutils literal notranslate"><span class="pre">EncodingFrameFilter()</span></code></a></li>
 <li><a class="reference internal" href="#_CPPv4N5Limef2ff19EncodingFrameFilter2goEPKN5Limef5frame5FrameE"><code class="docutils literal notranslate"><span class="pre">go()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef2ff19EncodingFrameFilter15requestKeyFrameEv"><code class="docutils literal notranslate"><span class="pre">requestKeyFrame()</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#_CPPv4N5Limef2ff15FMP4FrameFilterE"><code class="docutils literal notranslate"><span class="pre">Limef::ff::FMP4FrameFilter</span></code></a><ul>
@@ -2434,6 +2677,10 @@ PacketFrame → RTPMuxerFrameFilter
 <li><a class="reference internal" href="#_CPPv4N5Limef2ff19MP4ProbeFrameFilter2goEPKN5Limef5frame5FrameE"><code class="docutils literal notranslate"><span class="pre">go()</span></code></a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#_CPPv4N5Limef2ff20MuteAudioFrameFilterE"><code class="docutils literal notranslate"><span class="pre">Limef::ff::MuteAudioFrameFilter</span></code></a><ul>
+<li><a class="reference internal" href="#_CPPv4N5Limef2ff20MuteAudioFrameFilter2goEPKN5Limef5frame5FrameE"><code class="docutils literal notranslate"><span class="pre">go()</span></code></a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#_CPPv4N5Limef2ff16MuxerFrameFilterE"><code class="docutils literal notranslate"><span class="pre">Limef::ff::MuxerFrameFilter</span></code></a><ul>
 <li><a class="reference internal" href="#_CPPv4N5Limef2ff16MuxerFrameFilter5closeEv"><code class="docutils literal notranslate"><span class="pre">close()</span></code></a></li>
 <li><a class="reference internal" href="#_CPPv4N5Limef2ff16MuxerFrameFilter2goEPKN5Limef5frame5FrameE"><code class="docutils literal notranslate"><span class="pre">go()</span></code></a></li>
@@ -2450,7 +2697,13 @@ PacketFrame → RTPMuxerFrameFilter
 <li><a class="reference internal" href="#_CPPv4N5Limef2ff13MuxingContext4WebMEv"><code class="docutils literal notranslate"><span class="pre">WebM()</span></code></a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#_CPPv4N5Limef2ff18PutInfoFrameFilterE"><code class="docutils literal notranslate"><span class="pre">Limef::ff::PutInfoFrameFilter</span></code></a><ul>
+<li><a class="reference internal" href="#_CPPv4N5Limef2ff18PutInfoFrameFilter2goEPKN5Limef5frame5FrameE"><code class="docutils literal notranslate"><span class="pre">go()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef2ff18PutInfoFrameFilter3putERKNSt6stringE"><code class="docutils literal notranslate"><span class="pre">put()</span></code></a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#_CPPv4N5Limef2ff19RTPMuxerFrameFilterE"><code class="docutils literal notranslate"><span class="pre">Limef::ff::RTPMuxerFrameFilter</span></code></a><ul>
+<li><a class="reference internal" href="#_CPPv4N5Limef2ff19RTPMuxerFrameFilter19RTPMuxerFrameFilterENSt6stringEi"><code class="docutils literal notranslate"><span class="pre">RTPMuxerFrameFilter()</span></code></a></li>
 <li><a class="reference internal" href="#_CPPv4N5Limef2ff19RTPMuxerFrameFilter2goEPKN5Limef5frame5FrameE"><code class="docutils literal notranslate"><span class="pre">go()</span></code></a></li>
 </ul>
 </li>
@@ -2511,6 +2764,16 @@ PacketFrame → RTPMuxerFrameFilter
 <li><a class="reference internal" href="#_CPPv4N5Limef2ff26TensorToDecodedFrameFilter2goEPKN5frame5FrameE"><code class="docutils literal notranslate"><span class="pre">go()</span></code></a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#_CPPv4N5Limef2ff19ThrottleFrameFilterE"><code class="docutils literal notranslate"><span class="pre">Limef::ff::ThrottleFrameFilter</span></code></a><ul>
+<li><a class="reference internal" href="#_CPPv4N5Limef2ff19ThrottleFrameFilter8setStateEb"><code class="docutils literal notranslate"><span class="pre">setState()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4NK5Limef2ff19ThrottleFrameFilter8getStateEv"><code class="docutils literal notranslate"><span class="pre">getState()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef2ff19ThrottleFrameFilter11setIntervalEi"><code class="docutils literal notranslate"><span class="pre">setInterval()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef2ff19ThrottleFrameFilter5closeEv"><code class="docutils literal notranslate"><span class="pre">close()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef2ff19ThrottleFrameFilter4openEv"><code class="docutils literal notranslate"><span class="pre">open()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4NK5Limef2ff19ThrottleFrameFilter6isOpenEv"><code class="docutils literal notranslate"><span class="pre">isOpen()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef2ff19ThrottleFrameFilter2goEPKN5Limef5frame5FrameE"><code class="docutils literal notranslate"><span class="pre">go()</span></code></a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#_CPPv4N5Limef2ff15WebMFrameFilterE"><code class="docutils literal notranslate"><span class="pre">Limef::ff::WebMFrameFilter</span></code></a><ul>
 <li><a class="reference internal" href="#_CPPv4N5Limef2ff15WebMFrameFilter4openEv"><code class="docutils literal notranslate"><span class="pre">open()</span></code></a></li>
 <li><a class="reference internal" href="#_CPPv4N5Limef2ff15WebMFrameFilter5closeEv"><code class="docutils literal notranslate"><span class="pre">close()</span></code></a></li>
@@ -2520,7 +2783,10 @@ PacketFrame → RTPMuxerFrameFilter
 <li><a class="reference internal" href="#_CPPv4N5Limef2ff24WebMPartitionFrameFilter2goEPKN5Limef5frame5FrameE"><code class="docutils literal notranslate"><span class="pre">go()</span></code></a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#_CPPv4N5Limef2ff22WebRTCMuxerFrameFilterE"><code class="docutils literal notranslate"><span class="pre">Limef::ff::WebRTCMuxerFrameFilter</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef2ff22WebRTCMuxerFrameFilterE"><code class="docutils literal notranslate"><span class="pre">Limef::ff::WebRTCMuxerFrameFilter</span></code></a><ul>
+<li><a class="reference internal" href="#_CPPv4N5Limef2ff22WebRTCMuxerFrameFilter22WebRTCMuxerFrameFilterENSt6stringEi"><code class="docutils literal notranslate"><span class="pre">WebRTCMuxerFrameFilter()</span></code></a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#_CPPv4N5Limef2ff19WritePNGFrameFilterE"><code class="docutils literal notranslate"><span class="pre">Limef::ff::WritePNGFrameFilter</span></code></a><ul>
 <li><a class="reference internal" href="#_CPPv4N5Limef2ff19WritePNGFrameFilter2goEPKN5Limef5frame5FrameE"><code class="docutils literal notranslate"><span class="pre">go()</span></code></a></li>
 </ul>

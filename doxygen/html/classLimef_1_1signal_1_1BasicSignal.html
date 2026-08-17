@@ -22,7 +22,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">My Project<span id="projectnumber">&#160;0.2.0</span>
+   <div id="projectname">My Project<span id="projectnumber">&#160;0.3.0</span>
    </div>
   </td>
  </tr>
@@ -77,7 +77,6 @@ $(function() {
   <div class="summary">
 <a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="#pro-attribs">Protected Attributes</a> &#124;
 <a href="classLimef_1_1signal_1_1BasicSignal-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">Limef::signal::BasicSignal Class Reference</div></div>
@@ -122,25 +121,20 @@ Public Types</h2></td></tr>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a790a03232b373d603b1a72657a376297" id="r_a790a03232b373d603b1a72657a376297"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1signal_1_1BasicSignal.html#a790a03232b373d603b1a72657a376297">BasicSignal</a> (<a class="el" href="classLimef_1_1signal_1_1BasicSignal.html#a6d0ba93048e0682b214d4ae5654db4f3">Operation</a> <a class="el" href="classLimef_1_1signal_1_1BasicSignal.html#a2d77a80a937b0093f0662144bf4e748d">operation</a>)</td></tr>
 <tr class="separator:a790a03232b373d603b1a72657a376297"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2ee469f1c0d1e3e494c70148d1b26d33" id="r_a2ee469f1c0d1e3e494c70148d1b26d33"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespaceLimef_1_1signal.html#aaf87ae235935d3cf395850dc5deea980">SignalClass</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1signal_1_1BasicSignal.html#a2ee469f1c0d1e3e494c70148d1b26d33">getSignalClass</a> () const noexcept override</td></tr>
-<tr class="separator:a2ee469f1c0d1e3e494c70148d1b26d33"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9a6dd17a270c8880657133bcc7666bf1" id="r_a9a6dd17a270c8880657133bcc7666bf1"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="classLimef_1_1signal_1_1Signal.html">Signal</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1signal_1_1BasicSignal.html#a9a6dd17a270c8880657133bcc7666bf1">clone</a> () const override</td></tr>
-<tr class="separator:a9a6dd17a270c8880657133bcc7666bf1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5203b727d9e816ecbd176211be83ecd0" id="r_a5203b727d9e816ecbd176211be83ecd0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classLimef_1_1signal_1_1BasicSignal.html#a6d0ba93048e0682b214d4ae5654db4f3">Operation</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1signal_1_1BasicSignal.html#a5203b727d9e816ecbd176211be83ecd0">getOperation</a> () const</td></tr>
 <tr class="memdesc:a5203b727d9e816ecbd176211be83ecd0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the <code>Limef::BasicSignal::Operation</code> type.  <br /></td></tr>
 <tr class="separator:a5203b727d9e816ecbd176211be83ecd0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classLimef_1_1signal_1_1Signal"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classLimef_1_1signal_1_1Signal')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classLimef_1_1signal_1_1Signal.html">Limef::signal::Signal</a></td></tr>
 <tr class="memitem:a92bdea53197afde2f00579eb5f8261d2 inherit pub_methods_classLimef_1_1signal_1_1Signal" id="r_a92bdea53197afde2f00579eb5f8261d2"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1signal_1_1Signal.html#a92bdea53197afde2f00579eb5f8261d2">~Signal</a> ()=default</td></tr>
 <tr class="separator:a92bdea53197afde2f00579eb5f8261d2 inherit pub_methods_classLimef_1_1signal_1_1Signal"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa12fe588506c8b077ee95d12065c6a7c inherit pub_methods_classLimef_1_1signal_1_1Signal" id="r_aa12fe588506c8b077ee95d12065c6a7c"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="namespaceLimef_1_1signal.html#a5a318a83d5659a9f1e6339be985d8906">SignalClass</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1signal_1_1Signal.html#aa12fe588506c8b077ee95d12065c6a7c">getSignalClass</a> () const noexcept=0</td></tr>
+<tr class="separator:aa12fe588506c8b077ee95d12065c6a7c inherit pub_methods_classLimef_1_1signal_1_1Signal"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa17e88a3dbb9e9131a68116f69b05956 inherit pub_methods_classLimef_1_1signal_1_1Signal" id="r_aa17e88a3dbb9e9131a68116f69b05956"><td class="memItemLeft" align="right" valign="top">virtual std::unique_ptr&lt; <a class="el" href="classLimef_1_1signal_1_1Signal.html">Signal</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1signal_1_1Signal.html#aa17e88a3dbb9e9131a68116f69b05956">clone</a> () const =0</td></tr>
+<tr class="separator:aa17e88a3dbb9e9131a68116f69b05956 inherit pub_methods_classLimef_1_1signal_1_1Signal"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a09fae9af4e8789686b14d4bdc16ae2b9 inherit pub_methods_classLimef_1_1signal_1_1Signal" id="r_a09fae9af4e8789686b14d4bdc16ae2b9"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
 <tr class="memitem:a09fae9af4e8789686b14d4bdc16ae2b9 inherit pub_methods_classLimef_1_1signal_1_1Signal"><td class="memTemplItemLeft" align="right" valign="top">T *&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classLimef_1_1signal_1_1Signal.html#a09fae9af4e8789686b14d4bdc16ae2b9">as</a> ()</td></tr>
 <tr class="memdesc:a09fae9af4e8789686b14d4bdc16ae2b9 inherit pub_methods_classLimef_1_1signal_1_1Signal"><td class="mdescLeft">&#160;</td><td class="mdescRight">Test and cast signal type Tests if the signal is of desired type and if so, cast it to the desider type, otherwise return nullptr, i.e.:  <br /></td></tr>
 <tr class="separator:a09fae9af4e8789686b14d4bdc16ae2b9 inherit pub_methods_classLimef_1_1signal_1_1Signal"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
-Static Public Member Functions</h2></td></tr>
-<tr class="memitem:a435e2d987e50b67306488f22e71247e0" id="r_a435e2d987e50b67306488f22e71247e0"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="namespaceLimef_1_1signal.html#aaf87ae235935d3cf395850dc5deea980">SignalClass</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1signal_1_1BasicSignal.html#a435e2d987e50b67306488f22e71247e0">staticSignalClass</a> ()</td></tr>
-<tr class="separator:a435e2d987e50b67306488f22e71247e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
@@ -212,33 +206,6 @@ Protected Attributes</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a9a6dd17a270c8880657133bcc7666bf1" name="a9a6dd17a270c8880657133bcc7666bf1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9a6dd17a270c8880657133bcc7666bf1">&#9670;&#160;</a></span>clone()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::unique_ptr&lt; <a class="el" href="classLimef_1_1signal_1_1Signal.html">Signal</a> &gt; Limef::signal::BasicSignal::clone </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Implements <a class="el" href="classLimef_1_1signal_1_1Signal.html#aa17e88a3dbb9e9131a68116f69b05956">Limef::signal::Signal</a>.</p>
-
-</div>
-</div>
 <a id="a5203b727d9e816ecbd176211be83ecd0" name="a5203b727d9e816ecbd176211be83ecd0"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a5203b727d9e816ecbd176211be83ecd0">&#9670;&#160;</a></span>getOperation()</h2>
 
@@ -263,58 +230,6 @@ Protected Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Return the <code>Limef::BasicSignal::Operation</code> type. </p>
-
-</div>
-</div>
-<a id="a2ee469f1c0d1e3e494c70148d1b26d33" name="a2ee469f1c0d1e3e494c70148d1b26d33"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2ee469f1c0d1e3e494c70148d1b26d33">&#9670;&#160;</a></span>getSignalClass()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="namespaceLimef_1_1signal.html#aaf87ae235935d3cf395850dc5deea980">SignalClass</a> Limef::signal::BasicSignal::getSignalClass </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">override</span><span class="mlabel">virtual</span><span class="mlabel">noexcept</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Implements <a class="el" href="classLimef_1_1signal_1_1Signal.html#aa12fe588506c8b077ee95d12065c6a7c">Limef::signal::Signal</a>.</p>
-
-</div>
-</div>
-<a id="a435e2d987e50b67306488f22e71247e0" name="a435e2d987e50b67306488f22e71247e0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a435e2d987e50b67306488f22e71247e0">&#9670;&#160;</a></span>staticSignalClass()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">static <a class="el" href="namespaceLimef_1_1signal.html#aaf87ae235935d3cf395850dc5deea980">SignalClass</a> Limef::signal::BasicSignal::staticSignalClass </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
 
 </div>
 </div>

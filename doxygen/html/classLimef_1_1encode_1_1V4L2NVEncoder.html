@@ -22,7 +22,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">My Project<span id="projectnumber">&#160;0.2.0</span>
+   <div id="projectname">My Project<span id="projectnumber">&#160;0.3.0</span>
    </div>
   </td>
  </tr>
@@ -154,6 +154,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ab0ed80374aef830a65c15cbc5711531d" id="r_ab0ed80374aef830a65c15cbc5711531d"><td class="memItemLeft" align="right" valign="top">AVRational&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1encode_1_1V4L2NVEncoder.html#ab0ed80374aef830a65c15cbc5711531d">getFrameRate</a> () const override</td></tr>
 <tr class="memdesc:ab0ed80374aef830a65c15cbc5711531d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get encoder output frame rate.  <br /></td></tr>
 <tr class="separator:ab0ed80374aef830a65c15cbc5711531d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a50b47dc4e72dbd552533c0424ca3b9ec" id="r_a50b47dc4e72dbd552533c0424ca3b9ec"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1encode_1_1V4L2NVEncoder.html#a50b47dc4e72dbd552533c0424ca3b9ec">requestKeyFrame</a> () override</td></tr>
+<tr class="memdesc:a50b47dc4e72dbd552533c0424ca3b9ec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Request that the encoder emit a keyframe on its next output.  <br /></td></tr>
+<tr class="separator:a50b47dc4e72dbd552533c0424ca3b9ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classLimef_1_1encode_1_1Encoder"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classLimef_1_1encode_1_1Encoder')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classLimef_1_1encode_1_1Encoder.html">Limef::encode::Encoder</a></td></tr>
 <tr class="memitem:ae7f16e1e82876c8251b3b91d905ea5b2 inherit pub_methods_classLimef_1_1encode_1_1Encoder" id="r_ae7f16e1e82876c8251b3b91d905ea5b2"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1encode_1_1Encoder.html#ae7f16e1e82876c8251b3b91d905ea5b2">~Encoder</a> ()=default</td></tr>
 <tr class="separator:ae7f16e1e82876c8251b3b91d905ea5b2 inherit pub_methods_classLimef_1_1encode_1_1Encoder"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -199,7 +202,7 @@ Additional Inherited Members</h2></td></tr>
 <div class="line"><span class="keywordflow">if</span> (enc.status() == <a class="code hl_enumvalue" href="namespaceLimef_1_1encode.html#a0ec82277889e6b439a46bc4d5b1bc122a12a21322aa2eb06c6c592438cf9452f4">EncoderStatus::NeedsRead</a>) {</div>
 <div class="line">    <span class="keyword">const</span> PacketFrame&amp; pkt = enc.getPacket();</div>
 <div class="line">}</div>
-<div class="ttc" id="aclassLimef_1_1encode_1_1V4L2NVEncoder_html"><div class="ttname"><a href="classLimef_1_1encode_1_1V4L2NVEncoder.html">Limef::encode::V4L2NVEncoder</a></div><div class="ttdoc">V4L2 Memory-to-Memory encoder.</div><div class="ttdef"><b>Definition</b> v4l2_nv_encoder.h:157</div></div>
+<div class="ttc" id="aclassLimef_1_1encode_1_1V4L2NVEncoder_html"><div class="ttname"><a href="classLimef_1_1encode_1_1V4L2NVEncoder.html">Limef::encode::V4L2NVEncoder</a></div><div class="ttdoc">V4L2 Memory-to-Memory encoder.</div><div class="ttdef"><b>Definition</b> v4l2_nv_encoder.h:168</div></div>
 <div class="ttc" id="anamespaceLimef_1_1encode_html_a0ec82277889e6b439a46bc4d5b1bc122a12a21322aa2eb06c6c592438cf9452f4"><div class="ttname"><a href="namespaceLimef_1_1encode.html#a0ec82277889e6b439a46bc4d5b1bc122a12a21322aa2eb06c6c592438cf9452f4">Limef::encode::EncoderStatus::NeedsRead</a></div><div class="ttdeci">@ NeedsRead</div><div class="ttdoc">Encoded packet available, call getPacket()</div></div>
 <div class="ttc" id="astructLimef_1_1encode_1_1V4L2NVEncoderParams_html"><div class="ttname"><a href="structLimef_1_1encode_1_1V4L2NVEncoderParams.html">Limef::encode::V4L2NVEncoderParams</a></div><div class="ttdoc">Encoding parameters for V4L2NVEncoder.</div><div class="ttdef"><b>Definition</b> v4l2_nv_encoder.h:92</div></div>
 <div class="ttc" id="astructLimef_1_1encode_1_1V4L2NVEncoderParams_html_a013326d74e1e8f28c3a4e36636452286"><div class="ttname"><a href="structLimef_1_1encode_1_1V4L2NVEncoderParams.html#a013326d74e1e8f28c3a4e36636452286">Limef::encode::V4L2NVEncoderParams::codec_fourcc</a></div><div class="ttdeci">uint32_t codec_fourcc</div><div class="ttdoc">Output codec (FWHT, H264, HEVC)</div><div class="ttdef"><b>Definition</b> v4l2_nv_encoder.h:100</div></div>
@@ -570,6 +573,38 @@ Additional Inherited Members</h2></td></tr>
 </dl>
 
 <p>Implements <a class="el" href="classLimef_1_1encode_1_1Encoder.html#ae09e9be391ea59532aa391541f5f2245">Limef::encode::Encoder</a>.</p>
+
+</div>
+</div>
+<a id="a50b47dc4e72dbd552533c0424ca3b9ec" name="a50b47dc4e72dbd552533c0424ca3b9ec"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a50b47dc4e72dbd552533c0424ca3b9ec">&#9670;&#160;</a></span>requestKeyFrame()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Limef::encode::V4L2NVEncoder::requestKeyFrame </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Request that the encoder emit a keyframe on its next output. </p>
+<p>LIMEF_V4L2_NV (Jetson NVENC): issues VIDIOC_S_CTRL of V4L2_CID_MPEG_VIDEOENC_FORCE_IDR_FRAME (V4L2_CID_MPEG_BASE+567, defined in NVIDIA's v4l2_nv_extensions.h) - the NVENC-specific control for forcing a true IDR, distinct from mainline V4L2_CID_MPEG_VIDEO_FORCE_KEY_FRAME used by V4L2Encoder/vicodec. Not verified on hardware — implemented from the NVIDIA Jetson Linux Multimedia API header/docs only (no Jetson device available in this dev environment).</p>
+<p>Non-LIMEF_V4L2_NV build (vicodec fallback): uses the mainline V4L2_CID_MPEG_VIDEO_FORCE_KEY_FRAME control, same as <a class="el" href="classLimef_1_1encode_1_1V4L2Encoder.html" title="V4L2 Memory-to-Memory encoder.">V4L2Encoder</a>.</p>
+<p>Mutex-protected (ctrl_mutex_) since this may be called from a foreign thread concurrently with the driving thread's <a class="el" href="classLimef_1_1encode_1_1V4L2NVEncoder.html#a2e4eea71d000dad7e5e60d1026a1596f" title="Push decoded frame for encoding.">push()</a>/status() calls, which also touch fd_. </p>
+
+<p>Reimplemented from <a class="el" href="classLimef_1_1encode_1_1Encoder.html#a113333bbdeefffc92e6d9c5e0ecb1c8d">Limef::encode::Encoder</a>.</p>
 
 </div>
 </div>

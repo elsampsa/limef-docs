@@ -22,7 +22,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">My Project<span id="projectnumber">&#160;0.2.0</span>
+   <div id="projectname">My Project<span id="projectnumber">&#160;0.3.0</span>
    </div>
   </td>
  </tr>
@@ -77,7 +77,6 @@ $(function() {
   <div class="summary">
 <a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="classLimef_1_1webrtc_1_1WebRTCServerSignal-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">Limef::webrtc::WebRTCServerSignal Class Reference</div></div>
 </div><!--header-->
@@ -118,10 +117,6 @@ Public Types</h2></td></tr>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a05f30c460073f7a5f0f90ae8d48b61fe" id="r_a05f30c460073f7a5f0f90ae8d48b61fe"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1webrtc_1_1WebRTCServerSignal.html#a05f30c460073f7a5f0f90ae8d48b61fe">WebRTCServerSignal</a> (<a class="el" href="classLimef_1_1webrtc_1_1WebRTCServerSignal.html#ae883629ca177a3e62c7a57a7f20d01e5">Operation</a> op, int slot, const std::string &amp;uuid=&quot;&quot;)</td></tr>
 <tr class="separator:a05f30c460073f7a5f0f90ae8d48b61fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2ece6d584547b9048b7fc5f14f21b256" id="r_a2ece6d584547b9048b7fc5f14f21b256"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespaceLimef_1_1signal.html#aaf87ae235935d3cf395850dc5deea980">Limef::signal::SignalClass</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1webrtc_1_1WebRTCServerSignal.html#a2ece6d584547b9048b7fc5f14f21b256">getSignalClass</a> () const noexcept override</td></tr>
-<tr class="separator:a2ece6d584547b9048b7fc5f14f21b256"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acc0f722dbeadb1e27a81267a663d03f3" id="r_acc0f722dbeadb1e27a81267a663d03f3"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="classLimef_1_1signal_1_1Signal.html">Limef::signal::Signal</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1webrtc_1_1WebRTCServerSignal.html#acc0f722dbeadb1e27a81267a663d03f3">clone</a> () const override</td></tr>
-<tr class="separator:acc0f722dbeadb1e27a81267a663d03f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae543e3e5bc9022552482476b062d58d1" id="r_ae543e3e5bc9022552482476b062d58d1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classLimef_1_1webrtc_1_1WebRTCServerSignal.html#ae883629ca177a3e62c7a57a7f20d01e5">Operation</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1webrtc_1_1WebRTCServerSignal.html#ae543e3e5bc9022552482476b062d58d1">getOperation</a> () const</td></tr>
 <tr class="separator:ae543e3e5bc9022552482476b062d58d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aead344168c30f871fc000e9fe3045e25" id="r_aead344168c30f871fc000e9fe3045e25"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1webrtc_1_1WebRTCServerSignal.html#aead344168c30f871fc000e9fe3045e25">getSlot</a> () const</td></tr>
@@ -131,15 +126,14 @@ Public Member Functions</h2></td></tr>
 <tr class="inherit_header pub_methods_classLimef_1_1signal_1_1Signal"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classLimef_1_1signal_1_1Signal')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classLimef_1_1signal_1_1Signal.html">Limef::signal::Signal</a></td></tr>
 <tr class="memitem:a92bdea53197afde2f00579eb5f8261d2 inherit pub_methods_classLimef_1_1signal_1_1Signal" id="r_a92bdea53197afde2f00579eb5f8261d2"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1signal_1_1Signal.html#a92bdea53197afde2f00579eb5f8261d2">~Signal</a> ()=default</td></tr>
 <tr class="separator:a92bdea53197afde2f00579eb5f8261d2 inherit pub_methods_classLimef_1_1signal_1_1Signal"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa12fe588506c8b077ee95d12065c6a7c inherit pub_methods_classLimef_1_1signal_1_1Signal" id="r_aa12fe588506c8b077ee95d12065c6a7c"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="namespaceLimef_1_1signal.html#a5a318a83d5659a9f1e6339be985d8906">SignalClass</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1signal_1_1Signal.html#aa12fe588506c8b077ee95d12065c6a7c">getSignalClass</a> () const noexcept=0</td></tr>
+<tr class="separator:aa12fe588506c8b077ee95d12065c6a7c inherit pub_methods_classLimef_1_1signal_1_1Signal"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa17e88a3dbb9e9131a68116f69b05956 inherit pub_methods_classLimef_1_1signal_1_1Signal" id="r_aa17e88a3dbb9e9131a68116f69b05956"><td class="memItemLeft" align="right" valign="top">virtual std::unique_ptr&lt; <a class="el" href="classLimef_1_1signal_1_1Signal.html">Signal</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1signal_1_1Signal.html#aa17e88a3dbb9e9131a68116f69b05956">clone</a> () const =0</td></tr>
+<tr class="separator:aa17e88a3dbb9e9131a68116f69b05956 inherit pub_methods_classLimef_1_1signal_1_1Signal"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a09fae9af4e8789686b14d4bdc16ae2b9 inherit pub_methods_classLimef_1_1signal_1_1Signal" id="r_a09fae9af4e8789686b14d4bdc16ae2b9"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
 <tr class="memitem:a09fae9af4e8789686b14d4bdc16ae2b9 inherit pub_methods_classLimef_1_1signal_1_1Signal"><td class="memTemplItemLeft" align="right" valign="top">T *&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classLimef_1_1signal_1_1Signal.html#a09fae9af4e8789686b14d4bdc16ae2b9">as</a> ()</td></tr>
 <tr class="memdesc:a09fae9af4e8789686b14d4bdc16ae2b9 inherit pub_methods_classLimef_1_1signal_1_1Signal"><td class="mdescLeft">&#160;</td><td class="mdescRight">Test and cast signal type Tests if the signal is of desired type and if so, cast it to the desider type, otherwise return nullptr, i.e.:  <br /></td></tr>
 <tr class="separator:a09fae9af4e8789686b14d4bdc16ae2b9 inherit pub_methods_classLimef_1_1signal_1_1Signal"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
-Static Public Member Functions</h2></td></tr>
-<tr class="memitem:ad92ac698b2a915fb999415ed07193eb8" id="r_ad92ac698b2a915fb999415ed07193eb8"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="namespaceLimef_1_1signal.html#aaf87ae235935d3cf395850dc5deea980">Limef::signal::SignalClass</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1webrtc_1_1WebRTCServerSignal.html#ad92ac698b2a915fb999415ed07193eb8">staticSignalClass</a> ()</td></tr>
-<tr class="separator:ad92ac698b2a915fb999415ed07193eb8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Enumeration Documentation</h2>
 <a id="ae883629ca177a3e62c7a57a7f20d01e5" name="ae883629ca177a3e62c7a57a7f20d01e5"></a>
@@ -214,33 +208,6 @@ Static Public Member Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="acc0f722dbeadb1e27a81267a663d03f3" name="acc0f722dbeadb1e27a81267a663d03f3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#acc0f722dbeadb1e27a81267a663d03f3">&#9670;&#160;</a></span>clone()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::unique_ptr&lt; <a class="el" href="classLimef_1_1signal_1_1Signal.html">Limef::signal::Signal</a> &gt; Limef::webrtc::WebRTCServerSignal::clone </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Implements <a class="el" href="classLimef_1_1signal_1_1Signal.html#aa17e88a3dbb9e9131a68116f69b05956">Limef::signal::Signal</a>.</p>
-
-</div>
-</div>
 <a id="ae543e3e5bc9022552482476b062d58d1" name="ae543e3e5bc9022552482476b062d58d1"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae543e3e5bc9022552482476b062d58d1">&#9670;&#160;</a></span>getOperation()</h2>
 
@@ -263,33 +230,6 @@ Static Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-</div>
-</div>
-<a id="a2ece6d584547b9048b7fc5f14f21b256" name="a2ece6d584547b9048b7fc5f14f21b256"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2ece6d584547b9048b7fc5f14f21b256">&#9670;&#160;</a></span>getSignalClass()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="namespaceLimef_1_1signal.html#aaf87ae235935d3cf395850dc5deea980">Limef::signal::SignalClass</a> Limef::webrtc::WebRTCServerSignal::getSignalClass </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">override</span><span class="mlabel">virtual</span><span class="mlabel">noexcept</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Implements <a class="el" href="classLimef_1_1signal_1_1Signal.html#aa12fe588506c8b077ee95d12065c6a7c">Limef::signal::Signal</a>.</p>
 
 </div>
 </div>
@@ -337,31 +277,6 @@ Static Public Member Functions</h2></td></tr>
   </td>
   <td class="mlabels-right">
 <span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="ad92ac698b2a915fb999415ed07193eb8" name="ad92ac698b2a915fb999415ed07193eb8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad92ac698b2a915fb999415ed07193eb8">&#9670;&#160;</a></span>staticSignalClass()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">static <a class="el" href="namespaceLimef_1_1signal.html#aaf87ae235935d3cf395850dc5deea980">Limef::signal::SignalClass</a> Limef::webrtc::WebRTCServerSignal::staticSignalClass </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">

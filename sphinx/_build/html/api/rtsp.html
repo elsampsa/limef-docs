@@ -538,6 +538,29 @@ The main class is <a class="reference internal" href="#_CPPv4N5Limef4rtsp16RTSPS
 </div>
 </dd></dl>
 
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef4rtsp17RTSPServerContextE">
+<span id="_CPPv3N5Limef4rtsp17RTSPServerContextE"></span><span id="_CPPv2N5Limef4rtsp17RTSPServerContextE"></span><span id="Limef::rtsp::RTSPServerContext"></span><span class="target" id="structLimef_1_1rtsp_1_1RTSPServerContext"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">RTSPServerContext</span></span></span><a class="headerlink" href="#_CPPv4N5Limef4rtsp17RTSPServerContextE" title="Link to this definition">¶</a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;rtspserverthread.h&gt;</em></div>
+<p>Network settings for RTSPServerThread. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef4rtsp17RTSPServerContext4portE">
+<span id="_CPPv3N5Limef4rtsp17RTSPServerContext4portE"></span><span id="_CPPv2N5Limef4rtsp17RTSPServerContext4portE"></span><span id="Limef::rtsp::RTSPServerContext::port__i"></span><span class="target" id="structLimef_1_1rtsp_1_1RTSPServerContext_1a58742a2f0462f69964275ab6899ce906"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">port</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">554</span></span><a class="headerlink" href="#_CPPv4N5Limef4rtsp17RTSPServerContext4portE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>TCP port to listen on. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef4rtsp17RTSPServerContext12bind_addressE">
+<span id="_CPPv3N5Limef4rtsp17RTSPServerContext12bind_addressE"></span><span id="_CPPv2N5Limef4rtsp17RTSPServerContext12bind_addressE"></span><span id="Limef::rtsp::RTSPServerContext::bind_address__ss"></span><span class="target" id="structLimef_1_1rtsp_1_1RTSPServerContext_1af045deefd34863a7f2716bb785bb0c23"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">bind_address</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="p"><span class="pre">{</span></span><span class="p"><span class="pre">}</span></span><a class="headerlink" href="#_CPPv4N5Limef4rtsp17RTSPServerContext12bind_addressE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>IPv4 address to bind to (e.g. “100.84.182.90”), or empty (default) to bind to 0.0.0.0 (any interface). Applies to the TCP listen socket and the per-stream UDP RTP/RTCP sockets (UDP transport mode). </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
 <dl class="cpp class">
 <dt class="sig sig-object cpp" id="_CPPv4N5Limef4rtsp16RTSPServerSignalE">
 <span id="_CPPv3N5Limef4rtsp16RTSPServerSignalE"></span><span id="_CPPv2N5Limef4rtsp16RTSPServerSignalE"></span><span id="Limef::rtsp::RTSPServerSignal"></span><span class="target" id="classLimef_1_1rtsp_1_1RTSPServerSignal"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">RTSPServerSignal</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><span class="n"><span class="pre">Limef</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="signals.html#_CPPv4N5Limef6signalE" title="Limef::signal"><span class="n"><span class="pre">signal</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="signals.html#_CPPv4N5Limef6signal6SignalE" title="Limef::signal::Signal"><span class="n"><span class="pre">Signal</span></span></a><a class="headerlink" href="#_CPPv4N5Limef4rtsp16RTSPServerSignalE" title="Link to this definition">¶</a><br /></dt>
@@ -569,7 +592,7 @@ The main class is <a class="reference internal" href="#_CPPv4N5Limef4rtsp16RTSPS
 </pre></div>
 </div>
 </p>
-<p>Usage: <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">RTSPServerThread</span><span class="w"> </span><span class="n">server</span><span class="p">(</span><span class="s">&quot;rtsp&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">FrameFifoContext</span><span class="p">(</span><span class="nb">false</span><span class="p">,</span><span class="w"> </span><span class="mi">30</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="p">),</span><span class="w"> </span><span class="mi">8554</span><span class="p">);</span>
+<p>Usage: <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">RTSPServerThread</span><span class="w"> </span><span class="n">server</span><span class="p">(</span><span class="s">&quot;rtsp&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">FrameFifoContext</span><span class="p">(</span><span class="nb">false</span><span class="p">,</span><span class="w"> </span><span class="mi">30</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="p">),</span><span class="w"> </span><span class="n">RTSPServerContext</span><span class="p">{</span><span class="mi">8554</span><span class="p">});</span>
 
 <span class="c1">// Connect callbacks</span>
 <span class="n">server</span><span class="p">.</span><span class="n">streamRequired</span><span class="p">.</span><span class="n">connect</span><span class="p">([</span><span class="o">&amp;</span><span class="p">](</span><span class="kt">int</span><span class="w"> </span><span class="n">slot</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
@@ -591,8 +614,8 @@ The main class is <a class="reference internal" href="#_CPPv4N5Limef4rtsp16RTSPS
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
 <dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv4N5Limef4rtsp16RTSPServerThread16RTSPServerThreadENSt6stringERKN5Limef16FrameFifoContextEi">
-<span id="_CPPv3N5Limef4rtsp16RTSPServerThread16RTSPServerThreadENSt6stringERKN5Limef16FrameFifoContextEi"></span><span id="_CPPv2N5Limef4rtsp16RTSPServerThread16RTSPServerThreadENSt6stringERKN5Limef16FrameFifoContextEi"></span><span id="Limef::rtsp::RTSPServerThread::RTSPServerThread__ss.Limef::FrameFifoContextCR.i"></span><span class="target" id="classLimef_1_1rtsp_1_1RTSPServerThread_1a78f3db21ffe760f4be7ccfc8877b617c"></span><span class="sig-name descname"><span class="n"><span class="pre">RTSPServerThread</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">name</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">Limef</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">FrameFifoContext</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">ctx</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">port</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">554</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5Limef4rtsp16RTSPServerThread16RTSPServerThreadENSt6stringERKN5Limef16FrameFifoContextEi" title="Link to this definition">¶</a><br /></dt>
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef4rtsp16RTSPServerThread16RTSPServerThreadENSt6stringERKN5Limef16FrameFifoContextERK17RTSPServerContext">
+<span id="_CPPv3N5Limef4rtsp16RTSPServerThread16RTSPServerThreadENSt6stringERKN5Limef16FrameFifoContextERK17RTSPServerContext"></span><span id="_CPPv2N5Limef4rtsp16RTSPServerThread16RTSPServerThreadENSt6stringERKN5Limef16FrameFifoContextERK17RTSPServerContext"></span><span id="Limef::rtsp::RTSPServerThread::RTSPServerThread__ss.Limef::FrameFifoContextCR.RTSPServerContextCR"></span><span class="target" id="classLimef_1_1rtsp_1_1RTSPServerThread_1a348a8f3f81520f02100d05e333aac018"></span><span class="sig-name descname"><span class="n"><span class="pre">RTSPServerThread</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">name</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">Limef</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">FrameFifoContext</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">ctx</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4N5Limef4rtsp17RTSPServerContextE" title="Limef::rtsp::RTSPServerContext"><span class="n"><span class="pre">RTSPServerContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">net</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4N5Limef4rtsp17RTSPServerContextE" title="Limef::rtsp::RTSPServerContext"><span class="n"><span class="pre">RTSPServerContext</span></span></a><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">)</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5Limef4rtsp16RTSPServerThread16RTSPServerThreadENSt6stringERKN5Limef16FrameFifoContextERK17RTSPServerContext" title="Link to this definition">¶</a><br /></dt>
 <dd><p>Construct RTSP server thread. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -611,7 +634,7 @@ The main class is <a class="reference internal" href="#_CPPv4N5Limef4rtsp16RTSPS
 </pre></div>
 </div>
 </p></li>
-<li><p><strong>port</strong> – TCP port to listen on (default 554) </p></li>
+<li><p><strong>net</strong> – Network settings — port and (optionally) a bind address restricting which interface the server listens/sends on (e.g. a Tailscale IP). </p></li>
 </ul>
 </dd>
 </dl>
@@ -858,9 +881,14 @@ The main class is <a class="reference internal" href="#_CPPv4N5Limef4rtsp16RTSPS
 <li><a class="reference internal" href="#_CPPv4N5Limef4rtsp9RTPStream13udp_rtcp_portE"><code class="docutils literal notranslate"><span class="pre">udp_rtcp_port</span></code></a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#_CPPv4N5Limef4rtsp17RTSPServerContextE"><code class="docutils literal notranslate"><span class="pre">Limef::rtsp::RTSPServerContext</span></code></a><ul>
+<li><a class="reference internal" href="#_CPPv4N5Limef4rtsp17RTSPServerContext4portE"><code class="docutils literal notranslate"><span class="pre">port</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef4rtsp17RTSPServerContext12bind_addressE"><code class="docutils literal notranslate"><span class="pre">bind_address</span></code></a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#_CPPv4N5Limef4rtsp16RTSPServerSignalE"><code class="docutils literal notranslate"><span class="pre">Limef::rtsp::RTSPServerSignal</span></code></a></li>
 <li><a class="reference internal" href="#_CPPv4N5Limef4rtsp16RTSPServerThreadE"><code class="docutils literal notranslate"><span class="pre">Limef::rtsp::RTSPServerThread</span></code></a><ul>
-<li><a class="reference internal" href="#_CPPv4N5Limef4rtsp16RTSPServerThread16RTSPServerThreadENSt6stringERKN5Limef16FrameFifoContextEi"><code class="docutils literal notranslate"><span class="pre">RTSPServerThread()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef4rtsp16RTSPServerThread16RTSPServerThreadENSt6stringERKN5Limef16FrameFifoContextERK17RTSPServerContext"><code class="docutils literal notranslate"><span class="pre">RTSPServerThread()</span></code></a></li>
 <li><a class="reference internal" href="#_CPPv4N5Limef4rtsp16RTSPServerThread6exposeEiRKNSt6stringE"><code class="docutils literal notranslate"><span class="pre">expose()</span></code></a></li>
 <li><a class="reference internal" href="#_CPPv4N5Limef4rtsp16RTSPServerThread8unexposeEi"><code class="docutils literal notranslate"><span class="pre">unexpose()</span></code></a></li>
 <li><a class="reference internal" href="#_CPPv4N5Limef4rtsp16RTSPServerThread11pauseStreamEi"><code class="docutils literal notranslate"><span class="pre">pauseStream()</span></code></a></li>

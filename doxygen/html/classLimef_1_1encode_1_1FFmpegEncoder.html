@@ -22,7 +22,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">My Project<span id="projectnumber">&#160;0.2.0</span>
+   <div id="projectname">My Project<span id="projectnumber">&#160;0.3.0</span>
    </div>
   </td>
  </tr>
@@ -155,6 +155,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a82873f1cf0ef76dba4aace537e0065bc" id="r_a82873f1cf0ef76dba4aace537e0065bc"><td class="memItemLeft" align="right" valign="top">AVRational&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1encode_1_1FFmpegEncoder.html#a82873f1cf0ef76dba4aace537e0065bc">getFrameRate</a> () const override</td></tr>
 <tr class="memdesc:a82873f1cf0ef76dba4aace537e0065bc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get encoder output frame rate.  <br /></td></tr>
 <tr class="separator:a82873f1cf0ef76dba4aace537e0065bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a534871e054d4081e342dcefa647d0d3d" id="r_a534871e054d4081e342dcefa647d0d3d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1encode_1_1FFmpegEncoder.html#a534871e054d4081e342dcefa647d0d3d">requestKeyFrame</a> () override</td></tr>
+<tr class="memdesc:a534871e054d4081e342dcefa647d0d3d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Request that the encoder emit a keyframe on its next <a class="el" href="classLimef_1_1encode_1_1FFmpegEncoder.html#ad51eec5a6dad632ef7b1c9566a57060d" title="Push decoded frame for encoding.">push()</a>  <br /></td></tr>
+<tr class="separator:a534871e054d4081e342dcefa647d0d3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classLimef_1_1encode_1_1Encoder"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classLimef_1_1encode_1_1Encoder')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classLimef_1_1encode_1_1Encoder.html">Limef::encode::Encoder</a></td></tr>
 <tr class="memitem:ae7f16e1e82876c8251b3b91d905ea5b2 inherit pub_methods_classLimef_1_1encode_1_1Encoder" id="r_ae7f16e1e82876c8251b3b91d905ea5b2"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1encode_1_1Encoder.html#ae7f16e1e82876c8251b3b91d905ea5b2">~Encoder</a> ()=default</td></tr>
 <tr class="separator:ae7f16e1e82876c8251b3b91d905ea5b2 inherit pub_methods_classLimef_1_1encode_1_1Encoder"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -197,13 +200,13 @@ Additional Inherited Members</h2></td></tr>
 <div class="line">    <span class="keyword">const</span> PacketFrame&amp; pkt = enc.getPacket();</div>
 <div class="line">    <span class="comment">// send packet downstream</span></div>
 <div class="line">}</div>
-<div class="ttc" id="aclassLimef_1_1encode_1_1FFmpegEncoder_html"><div class="ttname"><a href="classLimef_1_1encode_1_1FFmpegEncoder.html">Limef::encode::FFmpegEncoder</a></div><div class="ttdoc">FFmpeg-based encoder for video and audio streams.</div><div class="ttdef"><b>Definition</b> ffmpeg_encoder.h:151</div></div>
+<div class="ttc" id="aclassLimef_1_1encode_1_1FFmpegEncoder_html"><div class="ttname"><a href="classLimef_1_1encode_1_1FFmpegEncoder.html">Limef::encode::FFmpegEncoder</a></div><div class="ttdoc">FFmpeg-based encoder for video and audio streams.</div><div class="ttdef"><b>Definition</b> ffmpeg_encoder.h:159</div></div>
 <div class="ttc" id="anamespaceLimef_1_1encode_html_a0ec82277889e6b439a46bc4d5b1bc122"><div class="ttname"><a href="namespaceLimef_1_1encode.html#a0ec82277889e6b439a46bc4d5b1bc122">Limef::encode::EncoderStatus</a></div><div class="ttdeci">EncoderStatus</div><div class="ttdoc">Status codes returned by encoder.</div><div class="ttdef"><b>Definition</b> encoder.h:52</div></div>
 <div class="ttc" id="anamespaceLimef_1_1encode_html_a0ec82277889e6b439a46bc4d5b1bc122a12a21322aa2eb06c6c592438cf9452f4"><div class="ttname"><a href="namespaceLimef_1_1encode.html#a0ec82277889e6b439a46bc4d5b1bc122a12a21322aa2eb06c6c592438cf9452f4">Limef::encode::EncoderStatus::NeedsRead</a></div><div class="ttdeci">@ NeedsRead</div><div class="ttdoc">Encoded packet available, call getPacket()</div></div>
 <div class="ttc" id="anamespaceLimef_1_1encode_html_a0ec82277889e6b439a46bc4d5b1bc122ac137688dd3fe4599b79282cfd2049f40"><div class="ttname"><a href="namespaceLimef_1_1encode.html#a0ec82277889e6b439a46bc4d5b1bc122ac137688dd3fe4599b79282cfd2049f40">Limef::encode::EncoderStatus::NeedsMoreData</a></div><div class="ttdeci">@ NeedsMoreData</div><div class="ttdoc">Ready to accept more frames via push()</div></div>
-<div class="ttc" id="astructLimef_1_1encode_1_1FFmpegEncoderParams_html"><div class="ttname"><a href="structLimef_1_1encode_1_1FFmpegEncoderParams.html">Limef::encode::FFmpegEncoderParams</a></div><div class="ttdoc">Encoding parameters for FFmpegEncoder.</div><div class="ttdef"><b>Definition</b> ffmpeg_encoder.h:70</div></div>
-<div class="ttc" id="astructLimef_1_1encode_1_1FFmpegEncoderParams_html_a387b003626b987808153eddd21655b22"><div class="ttname"><a href="structLimef_1_1encode_1_1FFmpegEncoderParams.html#a387b003626b987808153eddd21655b22">Limef::encode::FFmpegEncoderParams::codec_id</a></div><div class="ttdeci">AVCodecID codec_id</div><div class="ttdoc">Target codec.</div><div class="ttdef"><b>Definition</b> ffmpeg_encoder.h:71</div></div>
-<div class="ttc" id="astructLimef_1_1encode_1_1FFmpegEncoderParams_html_adc86a75719bc0c19ac659be15780f15e"><div class="ttname"><a href="structLimef_1_1encode_1_1FFmpegEncoderParams.html#adc86a75719bc0c19ac659be15780f15e">Limef::encode::FFmpegEncoderParams::bitrate</a></div><div class="ttdeci">int64_t bitrate</div><div class="ttdoc">Target bitrate in bits/sec.</div><div class="ttdef"><b>Definition</b> ffmpeg_encoder.h:72</div></div>
+<div class="ttc" id="astructLimef_1_1encode_1_1FFmpegEncoderParams_html"><div class="ttname"><a href="structLimef_1_1encode_1_1FFmpegEncoderParams.html">Limef::encode::FFmpegEncoderParams</a></div><div class="ttdoc">Encoding parameters for FFmpegEncoder.</div><div class="ttdef"><b>Definition</b> ffmpeg_encoder.h:73</div></div>
+<div class="ttc" id="astructLimef_1_1encode_1_1FFmpegEncoderParams_html_a387b003626b987808153eddd21655b22"><div class="ttname"><a href="structLimef_1_1encode_1_1FFmpegEncoderParams.html#a387b003626b987808153eddd21655b22">Limef::encode::FFmpegEncoderParams::codec_id</a></div><div class="ttdeci">AVCodecID codec_id</div><div class="ttdoc">Target codec.</div><div class="ttdef"><b>Definition</b> ffmpeg_encoder.h:74</div></div>
+<div class="ttc" id="astructLimef_1_1encode_1_1FFmpegEncoderParams_html_adc86a75719bc0c19ac659be15780f15e"><div class="ttname"><a href="structLimef_1_1encode_1_1FFmpegEncoderParams.html#adc86a75719bc0c19ac659be15780f15e">Limef::encode::FFmpegEncoderParams::bitrate</a></div><div class="ttdeci">int64_t bitrate</div><div class="ttdoc">Target bitrate in bits/sec.</div><div class="ttdef"><b>Definition</b> ffmpeg_encoder.h:75</div></div>
 </div><!-- fragment --> </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a6c87948837309306653b43dfa0112412" name="a6c87948837309306653b43dfa0112412"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a6c87948837309306653b43dfa0112412">&#9670;&#160;</a></span>FFmpegEncoder()</h2>
@@ -579,6 +582,42 @@ Additional Inherited Members</h2></td></tr>
 </dl>
 
 <p>Implements <a class="el" href="classLimef_1_1encode_1_1Encoder.html#ae09e9be391ea59532aa391541f5f2245">Limef::encode::Encoder</a>.</p>
+
+</div>
+</div>
+<a id="a534871e054d4081e342dcefa647d0d3d" name="a534871e054d4081e342dcefa647d0d3d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a534871e054d4081e342dcefa647d0d3d">&#9670;&#160;</a></span>requestKeyFrame()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Limef::encode::FFmpegEncoder::requestKeyFrame </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Request that the encoder emit a keyframe on its next <a class="el" href="classLimef_1_1encode_1_1FFmpegEncoder.html#ad51eec5a6dad632ef7b1c9566a57060d" title="Push decoded frame for encoding.">push()</a> </p>
+<p>Sets a flag (std::atomic, safe to call from any thread) that <a class="el" href="classLimef_1_1encode_1_1FFmpegEncoder.html#ad51eec5a6dad632ef7b1c9566a57060d" title="Push decoded frame for encoding.">push()</a> consumes on the next call: the AVFrame handed to avcodec_send_frame() has AVFrame::pict_type forced to AV_PICTURE_TYPE_I.</p>
+<p>This is the mechanism all four encoder families produced by <a class="el" href="namespaceLimef_1_1encode.html#a51d6d4f5e646119c4ad6ac48c8f2c31f" title="Get FFmpeg encoder name for codec + acceleration combination.">getEncoderName()</a> honour for forcing a keyframe:</p><ul>
+<li>libvpx/libvpx-vp9 (libavcodec/libvpxenc.c): checks pict_type == AV_PICTURE_TYPE_I</li>
+<li>libaom-av1 (libavcodec/libaomenc.c): checks pict_type == AV_PICTURE_TYPE_I</li>
+<li>*_vaapi (libavcodec/vaapi_encode.c): pict_type == AV_PICTURE_TYPE_I -&gt; force_idr</li>
+<li>*_nvenc (libavcodec/nvenc.c): pict_type == AV_PICTURE_TYPE_I -&gt; FORCEIDR/FORCEINTRA (nvenc additionally needs the "forced-idr" AVOption enabled, which initVideoEncoder() sets for CUDA/nvenc so a full IDR with SPS/PPS is produced rather than a plain forced-intra frame without parameter sets) mjpeg is intra-only so the flag is a no-op there (every frame already a keyframe). </li>
+</ul>
+
+<p>Reimplemented from <a class="el" href="classLimef_1_1encode_1_1Encoder.html#a113333bbdeefffc92e6d9c5e0ecb1c8d">Limef::encode::Encoder</a>.</p>
 
 </div>
 </div>

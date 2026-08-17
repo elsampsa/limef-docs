@@ -22,7 +22,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">My Project<span id="projectnumber">&#160;0.2.0</span>
+   <div id="projectname">My Project<span id="projectnumber">&#160;0.3.0</span>
    </div>
   </td>
  </tr>
@@ -220,9 +220,9 @@ Example — CPU video frame</h2>
 <div class="line">tf.<a class="code hl_function" href="classLimef_1_1frame_1_1TensorFrame.html#a2c9c8dd4c3522f8fc234d16dfbc22c15">reserveCPUPlane</a>(0, 3, shape, <a class="code hl_enumvalue" href="namespaceLimef_1_1frame.html#a35c6dbafa1f42654aa4fa1e1e2487810a166495adc0d0f53bee6baecc577f5204">DType::Float32</a>);</div>
 <div class="line">tf.<a class="code hl_function" href="classLimef_1_1frame_1_1TensorFrame.html#ac69a6e35952cccd60b99c548b753af5c">setNumPlanes</a>(1);</div>
 <div class="line"><span class="comment">// tf.planes[0].data_ is a 3*1080*1920*4 byte buffer</span></div>
-<div class="ttc" id="aclassLimef_1_1frame_1_1TensorFrame_html"><div class="ttname"><a href="classLimef_1_1frame_1_1TensorFrame.html">Limef::frame::TensorFrame</a></div><div class="ttdoc">General-purpose multi-plane tensor frame, decoupled from FFmpeg.</div><div class="ttdef"><b>Definition</b> tensorframe.h:153</div></div>
+<div class="ttc" id="aclassLimef_1_1frame_1_1TensorFrame_html"><div class="ttname"><a href="classLimef_1_1frame_1_1TensorFrame.html">Limef::frame::TensorFrame</a></div><div class="ttdoc">General-purpose multi-plane tensor frame, decoupled from FFmpeg.</div><div class="ttdef"><b>Definition</b> tensorframe.h:159</div></div>
 <div class="ttc" id="aclassLimef_1_1frame_1_1TensorFrame_html_a2c9c8dd4c3522f8fc234d16dfbc22c15"><div class="ttname"><a href="classLimef_1_1frame_1_1TensorFrame.html#a2c9c8dd4c3522f8fc234d16dfbc22c15">Limef::frame::TensorFrame::reserveCPUPlane</a></div><div class="ttdeci">bool reserveCPUPlane(int plane_idx, int ndim, const int64_t *shape, DType dtype)</div><div class="ttdoc">Allocate or reuse a CPU plane.</div><div class="ttdef"><b>Definition</b> tensorframe.cpp:124</div></div>
-<div class="ttc" id="aclassLimef_1_1frame_1_1TensorFrame_html_ac69a6e35952cccd60b99c548b753af5c"><div class="ttname"><a href="classLimef_1_1frame_1_1TensorFrame.html#ac69a6e35952cccd60b99c548b753af5c">Limef::frame::TensorFrame::setNumPlanes</a></div><div class="ttdeci">void setNumPlanes(int n) noexcept</div><div class="ttdef"><b>Definition</b> tensorframe.h:205</div></div>
+<div class="ttc" id="aclassLimef_1_1frame_1_1TensorFrame_html_ac69a6e35952cccd60b99c548b753af5c"><div class="ttname"><a href="classLimef_1_1frame_1_1TensorFrame.html#ac69a6e35952cccd60b99c548b753af5c">Limef::frame::TensorFrame::setNumPlanes</a></div><div class="ttdeci">void setNumPlanes(int n) noexcept</div><div class="ttdef"><b>Definition</b> tensorframe.h:211</div></div>
 <div class="ttc" id="anamespaceLimef_1_1frame_html_a35c6dbafa1f42654aa4fa1e1e2487810a166495adc0d0f53bee6baecc577f5204"><div class="ttname"><a href="namespaceLimef_1_1frame.html#a35c6dbafa1f42654aa4fa1e1e2487810a166495adc0d0f53bee6baecc577f5204">Limef::frame::DType::Float32</a></div><div class="ttdeci">@ Float32</div></div>
 </div><!-- fragment --><h2><a class="anchor" id="autotoc_md9"></a>
 Example — GPU video frame</h2>

@@ -22,7 +22,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">My Project<span id="projectnumber">&#160;0.2.0</span>
+   <div id="projectname">My Project<span id="projectnumber">&#160;0.3.0</span>
    </div>
   </td>
  </tr>
@@ -155,6 +155,9 @@ Functions</h2></td></tr>
 <tr class="memitem:a3878761370f6ac935be06e0768a6afdd" id="r_a3878761370f6ac935be06e0768a6afdd"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="namespaceLimef.html#ab3f21e06ce812c9f9b7f47da2f6a2188">HWAccel</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLimef.html#a3878761370f6ac935be06e0768a6afdd">getAvailableHWAccel</a> ()</td></tr>
 <tr class="memdesc:a3878761370f6ac935be06e0768a6afdd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get available hardware accelerators.  <br /></td></tr>
 <tr class="separator:a3878761370f6ac935be06e0768a6afdd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0aefcae5c39f5617cc942d95f018307f" id="r_a0aefcae5c39f5617cc942d95f018307f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLimef.html#a0aefcae5c39f5617cc942d95f018307f">isCUDARuntimeAvailable</a> ()</td></tr>
+<tr class="memdesc:a0aefcae5c39f5617cc942d95f018307f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the CUDA runtime is available (at least one GPU present)  <br /></td></tr>
+<tr class="separator:a0aefcae5c39f5617cc942d95f018307f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad0a66a1cd1bb09e1b37b2a2f46da1d17" id="r_ad0a66a1cd1bb09e1b37b2a2f46da1d17"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLimef.html#ad0a66a1cd1bb09e1b37b2a2f46da1d17">isHWAccelAvailable</a> (<a class="el" href="namespaceLimef.html#ab3f21e06ce812c9f9b7f47da2f6a2188">HWAccel</a> accel)</td></tr>
 <tr class="memdesc:ad0a66a1cd1bb09e1b37b2a2f46da1d17"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if specific hardware accelerator is available.  <br /></td></tr>
 <tr class="separator:ad0a66a1cd1bb09e1b37b2a2f46da1d17"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -450,6 +453,31 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Convert HWAccel to string for logging. </p>
+
+</div>
+</div>
+<a id="a0aefcae5c39f5617cc942d95f018307f" name="a0aefcae5c39f5617cc942d95f018307f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0aefcae5c39f5617cc942d95f018307f">&#9670;&#160;</a></span>isCUDARuntimeAvailable()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Limef::isCUDARuntimeAvailable </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Check if the CUDA runtime is available (at least one GPU present) </p>
+<p>Unlike isHWAccelAvailable(HWAccel::CUDA), this does NOT require FFmpeg to be compiled with CUDA hwcontext support (CONFIG_CUDA). Use this when you only need raw CUDA operations: cudaMemcpy, kernel launches, BufferLocation::CUDA frames (TensorFrame GPU path, DecodedUploadFrameFilter, <a class="el" href="classLimef_1_1DecodedFrameFifo.html" title="FrameFifo for DecodedFrame with GPU buffer pool support.">DecodedFrameFifo</a> with CUDA target, CUDAScaleFrameFilter).</p>
+<p>On Jetson, FFmpeg is intentionally built without CUDA (video codec uses V4L2), but the CUDA runtime is fully available — this returns true there while isHWAccelAvailable(HWAccel::CUDA) returns false.</p>
+<p>Returns false when built without -Dcuda_native=ON (LIMEF_CUDA not defined).</p>
+<p>Unlike isHWAccelAvailable(HWAccel::CUDA), this does NOT require FFmpeg to be compiled with CUDA hwcontext support (CONFIG_CUDA). Use this when you only need raw CUDA operations (cudaMemcpy, kernel launches, TensorFrame GPU path).</p>
+<p>On Jetson, FFmpeg is intentionally built without CUDA (video codec goes via V4L2), but the CUDA runtime is fully present — this function returns true there while isHWAccelAvailable(HWAccel::CUDA) returns false.</p>
+<p>Returns false when built without -Dcuda_native=ON (LIMEF_CUDA not defined). </p>
 
 </div>
 </div>

@@ -1,12 +1,15 @@
 var searchData=
 [
-  ['name_0',['name',['../classLimef_1_1ff_1_1FrameFilter.html#adb255db62a05c800af1d73cba2201812',1,'Limef::ff::FrameFilter::name'],['../classLimef_1_1FrameFifo.html#aef7fd79792d4eec7a571a7b892a7316d',1,'Limef::FrameFifo::name']]],
-  ['name_5f_1',['name_',['../classLimef_1_1thread_1_1ThreadBase.html#a7f2454b564276dc5fae1d13d01ad0f32',1,'Limef::thread::ThreadBase']]],
-  ['nbytes_2',['nbytes',['../structLimef_1_1frame_1_1Plane.html#a0c97f7a170e8267e30e48247bd34e443',1,'Limef::frame::Plane']]],
-  ['ndim_3',['ndim',['../structLimef_1_1frame_1_1Plane.html#a8986cbc29fcf2904dfa4e470bf501ed3',1,'Limef::frame::Plane']]],
-  ['next_4',['next',['../classLimef_1_1ff_1_1ComposeFrameFilter.html#a6ebbc8f4629b7811843c34c4cd83ff01',1,'Limef::ff::ComposeFrameFilter::next'],['../classLimef_1_1ff_1_1SimpleFrameFilter.html#adcb91c7719c180281e6e73a9b8ccc089',1,'Limef::ff::SimpleFrameFilter::next']]],
-  ['ntp_5ftimeout_5fsec_5',['ntp_timeout_sec',['../structLimef_1_1thread_1_1LiveStreamContext.html#a3451525e1b19f7e8cded1c92dcfc2c09',1,'Limef::thread::LiveStreamContext']]],
-  ['num_5fcapture_5fbuffers_6',['num_capture_buffers',['../structLimef_1_1decode_1_1V4L2DecoderParams.html#a6bcc33b2bcf855be9675857a55f1931f',1,'Limef::decode::V4L2DecoderParams::num_capture_buffers'],['../structLimef_1_1encode_1_1V4L2NVEncoderParams.html#acb0b0309de99d906a8afc7a8f6888c16',1,'Limef::encode::V4L2NVEncoderParams::num_capture_buffers'],['../structLimef_1_1encode_1_1V4L2EncoderParams.html#aaec89cdc6345b721406b46c0cf7f98b2',1,'Limef::encode::V4L2EncoderParams::num_capture_buffers'],['../structLimef_1_1decode_1_1V4L2NVDecoderParams.html#a3c5b5044994f5821264790c29cf24d94',1,'Limef::decode::V4L2NVDecoderParams::num_capture_buffers']]],
-  ['num_5foutput_5fbuffers_7',['num_output_buffers',['../structLimef_1_1decode_1_1V4L2DecoderParams.html#a1cd81b2c7b175fcae414b0a45b54e87a',1,'Limef::decode::V4L2DecoderParams::num_output_buffers'],['../structLimef_1_1decode_1_1V4L2NVDecoderParams.html#aa1e298779bc090d8d45f5dc3c2e2dbb2',1,'Limef::decode::V4L2NVDecoderParams::num_output_buffers'],['../structLimef_1_1encode_1_1V4L2EncoderParams.html#a5e1df40d278edba272e53e83cff325e4',1,'Limef::encode::V4L2EncoderParams::num_output_buffers'],['../structLimef_1_1encode_1_1V4L2NVEncoderParams.html#acbc4896ba5b0a6ee218d043647808e68',1,'Limef::encode::V4L2NVEncoderParams::num_output_buffers']]],
-  ['number_5fbuffer_8',['number_buffer',['../classdetail_1_1serializer.html#ace18a55b8304310fee309d31e54a3e27',1,'detail::serializer']]]
+  ['m_5fdata_0',['m_data',['../classbasic__json.html#a4f7fd3c3afd2abb77797652506ab6bc0',1,'basic_json']]],
+  ['m_5fit_1',['m_it',['../classdetail_1_1iter__impl.html#a79b7b8c6b778d9f7e76b086b45d9ea2e',1,'detail::iter_impl']]],
+  ['m_5fvalue_2',['m_value',['../classbasic__json.html#acd0f167153f047a246b51858d7c921b8',1,'basic_json']]],
+  ['max_5fage_3',['max_age',['../structLimef_1_1thread_1_1PresenterContext.html#a7a700fe9503597b87854cf991853be24',1,'Limef::thread::PresenterContext']]],
+  ['max_5fb_5fframes_4',['max_b_frames',['../structLimef_1_1encode_1_1FFmpegEncoderParams.html#aa5f9ea2524fa4a6bfdb08c172e055203',1,'Limef::encode::FFmpegEncoderParams']]],
+  ['max_5fdelay_5fms_5',['max_delay_ms',['../structLimef_1_1thread_1_1LiveStreamContext.html#a42eb5c608da000e493c64f27a97c8f94',1,'Limef::thread::LiveStreamContext']]],
+  ['max_5ffuture_5fage_6',['max_future_age',['../structLimef_1_1thread_1_1PresenterContext.html#af073b387ea17f1988c65cccc8e8a125c',1,'Limef::thread::PresenterContext']]],
+  ['max_5foutput_5fdts_7',['max_output_dts',['../structLimef_1_1ff_1_1RTPTrackContext.html#acca4c2a92a8cdbbbafdf3b4d608e7bed',1,'Limef::ff::RTPTrackContext']]],
+  ['media_5ftype_8',['media_type',['../structLimef_1_1ff_1_1RTPTrackContext.html#a084a26d2acf52128560808d73a78b89f',1,'Limef::ff::RTPTrackContext']]],
+  ['method_9',['method',['../structLimef_1_1rtsp_1_1Request.html#ad3646fd93a7617ed254d4c06b4929d14',1,'Limef::rtsp::Request::method'],['../structLimef_1_1webrtc_1_1HttpRequest.html#a8ff480ba61f072d71e3e9f9942cdfbbf',1,'Limef::webrtc::HttpRequest::method']]],
+  ['moov_5fbox_10',['moov_box',['../classLimef_1_1thread_1_1WebSocketStreamBuffer.html#a4e0362bb2808f53f3e9adaee2af19d4b',1,'Limef::thread::WebSocketStreamBuffer']]],
+  ['mtu_11',['mtu',['../structLimef_1_1webrtc_1_1WebRTCServerContext.html#a2299aef8d3908d71c30b72eb8a407699',1,'Limef::webrtc::WebRTCServerContext']]]
 ];

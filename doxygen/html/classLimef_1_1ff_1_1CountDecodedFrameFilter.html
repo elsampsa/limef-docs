@@ -22,7 +22,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">My Project<span id="projectnumber">&#160;0.2.0</span>
+   <div id="projectname">My Project<span id="projectnumber">&#160;0.3.0</span>
    </div>
   </td>
  </tr>
@@ -124,6 +124,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:ae6e8a5bbb060a4df3ad2e943f6097440"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa5c1cf53ae8561b724866d6f1738709a" id="r_aa5c1cf53ae8561b724866d6f1738709a"><td class="memItemLeft" align="right" valign="top">long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1ff_1_1CountDecodedFrameFilter.html#aa5c1cf53ae8561b724866d6f1738709a">getCount</a> () const</td></tr>
 <tr class="separator:aa5c1cf53ae8561b724866d6f1738709a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a45ec6f586dadd33654d185c9696611da" id="r_a45ec6f586dadd33654d185c9696611da"><td class="memItemLeft" align="right" valign="top">long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1ff_1_1CountDecodedFrameFilter.html#a45ec6f586dadd33654d185c9696611da">sinceLastFrame</a> () const</td></tr>
+<tr class="separator:a45ec6f586dadd33654d185c9696611da"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classLimef_1_1ff_1_1SimpleFrameFilter"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classLimef_1_1ff_1_1SimpleFrameFilter')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classLimef_1_1ff_1_1SimpleFrameFilter.html">Limef::ff::SimpleFrameFilter</a></td></tr>
 <tr class="memitem:a984df01893ff459fca55125b875cf07e inherit pub_methods_classLimef_1_1ff_1_1SimpleFrameFilter" id="r_a984df01893ff459fca55125b875cf07e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1ff_1_1SimpleFrameFilter.html#a984df01893ff459fca55125b875cf07e">SimpleFrameFilter</a> (std::string <a class="el" href="classLimef_1_1ff_1_1FrameFilter.html#adb255db62a05c800af1d73cba2201812">name</a>=&quot;SimpleFrameFilter&quot;)</td></tr>
 <tr class="separator:a984df01893ff459fca55125b875cf07e inherit pub_methods_classLimef_1_1ff_1_1SimpleFrameFilter"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -326,6 +328,32 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <p>Log frame count and mean fps since the first DecodedFrame. </p>
+
+</div>
+</div>
+<a id="a45ec6f586dadd33654d185c9696611da" name="a45ec6f586dadd33654d185c9696611da"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a45ec6f586dadd33654d185c9696611da">&#9670;&#160;</a></span>sinceLastFrame()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">long Limef::ff::CountDecodedFrameFilter::sinceLastFrame </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Milliseconds since the last DecodedFrame; -1 if none has arrived yet. </p>
 
 </div>
 </div>

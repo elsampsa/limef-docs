@@ -31,7 +31,9 @@ var searchData=
   ['container_5finput_5fadapter_5ffactory_28',['container_input_adapter_factory',['../structdetail_1_1container__input__adapter__factory__impl_1_1container__input__adapter__factory.html',1,'detail::container_input_adapter_factory_impl']]],
   ['container_5finput_5fadapter_5ffactory_3c_20containertype_2c_20void_5ft_3c_20decltype_28begin_28std_3a_3adeclval_3c_20containertype_20_3e_28_29_29_2c_20end_28std_3a_3adeclval_3c_20containertype_20_3e_28_29_29_29_3e_20_3e_29',['container_input_adapter_factory&lt; ContainerType, void_t&lt; decltype(begin(std::declval&lt; ContainerType &gt;()), end(std::declval&lt; ContainerType &gt;()))&gt; &gt;',['../structdetail_1_1container__input__adapter__factory__impl_1_1container__input__adapter__factory_3983614ac0e8828aa386ca24b1ddc2bd1.html',1,'detail::container_input_adapter_factory_impl']]],
   ['countdecodedframefilter_30',['CountDecodedFrameFilter',['../classLimef_1_1ff_1_1CountDecodedFrameFilter.html',1,'Limef::ff']]],
-  ['cpuswscaleconverter_31',['CpuSwScaleConverter',['../classLimef_1_1ff_1_1CpuSwScaleConverter.html',1,'Limef::ff']]],
-  ['cudascaleframefilter_32',['CUDAScaleFrameFilter',['../classLimef_1_1ff_1_1CUDAScaleFrameFilter.html',1,'Limef::ff']]],
-  ['cudascaleparams_33',['CUDAScaleParams',['../structLimef_1_1ff_1_1CUDAScaleParams.html',1,'Limef::ff']]]
+  ['counttensorframefilter_31',['CountTensorFrameFilter',['../classLimef_1_1ff_1_1CountTensorFrameFilter.html',1,'Limef::ff']]],
+  ['cpuswscaleconverter_32',['CpuSwScaleConverter',['../classLimef_1_1ff_1_1CpuSwScaleConverter.html',1,'Limef::ff']]],
+  ['cudascaleframefilter_33',['CUDAScaleFrameFilter',['../classLimef_1_1ff_1_1CUDAScaleFrameFilter.html',1,'Limef::ff']]],
+  ['cudascaleparams_34',['CUDAScaleParams',['../structLimef_1_1ff_1_1CUDAScaleParams.html',1,'Limef::ff']]],
+  ['cudatoffmpegframefilter_35',['CudaToFFmpegFrameFilter',['../classLimef_1_1ff_1_1CudaToFFmpegFrameFilter.html',1,'Limef::ff']]]
 ];

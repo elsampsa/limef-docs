@@ -22,7 +22,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">My Project<span id="projectnumber">&#160;0.2.0</span>
+   <div id="projectname">My Project<span id="projectnumber">&#160;0.3.0</span>
    </div>
   </td>
  </tr>
@@ -113,8 +113,8 @@ Collaboration diagram for Limef::ff::WebRTCMuxerFrameFilter:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a5521266a2ba77f6bb573321a65a56dc3" id="r_a5521266a2ba77f6bb573321a65a56dc3"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1ff_1_1WebRTCMuxerFrameFilter.html#a5521266a2ba77f6bb573321a65a56dc3">WebRTCMuxerFrameFilter</a> (std::string <a class="el" href="classLimef_1_1ff_1_1FrameFilter.html#adb255db62a05c800af1d73cba2201812">name</a>=&quot;WebRTCMuxerFrameFilter&quot;)</td></tr>
-<tr class="separator:a5521266a2ba77f6bb573321a65a56dc3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8c129d8575f14750ebbd937273845513" id="r_a8c129d8575f14750ebbd937273845513"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1ff_1_1WebRTCMuxerFrameFilter.html#a8c129d8575f14750ebbd937273845513">WebRTCMuxerFrameFilter</a> (std::string <a class="el" href="classLimef_1_1ff_1_1FrameFilter.html#adb255db62a05c800af1d73cba2201812">name</a>=&quot;WebRTCMuxerFrameFilter&quot;, int mtu=1200)</td></tr>
+<tr class="separator:a8c129d8575f14750ebbd937273845513"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classLimef_1_1ff_1_1ComposeFrameFilter"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classLimef_1_1ff_1_1ComposeFrameFilter')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classLimef_1_1ff_1_1ComposeFrameFilter.html">Limef::ff::ComposeFrameFilter</a></td></tr>
 <tr class="memitem:aa0de1003ddefee7630d563d3fa64f8e0 inherit pub_methods_classLimef_1_1ff_1_1ComposeFrameFilter" id="r_aa0de1003ddefee7630d563d3fa64f8e0"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1ff_1_1ComposeFrameFilter.html#aa0de1003ddefee7630d563d3fa64f8e0">ComposeFrameFilter</a> (std::string <a class="el" href="classLimef_1_1ff_1_1FrameFilter.html#adb255db62a05c800af1d73cba2201812">name</a>=&quot;ComposeFrameFilter&quot;)</td></tr>
 <tr class="separator:aa0de1003ddefee7630d563d3fa64f8e0 inherit pub_methods_classLimef_1_1ff_1_1ComposeFrameFilter"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -186,7 +186,7 @@ Additional Inherited Members</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Composite filter that canonizes a stream for WebRTC delivery. </p>
 <p>Chains: <a class="el" href="classLimef_1_1ff_1_1CodecAssertFrameFilter.html" title="FrameFilter that asserts the incoming stream matches an allowed codec pair.">CodecAssertFrameFilter</a> → <a class="el" href="classLimef_1_1ff_1_1RTPMuxerFrameFilter.html" title="FrameFilter that muxes elementary streams into RTP packets.">RTPMuxerFrameFilter</a></p>
-<h2><a class="anchor" id="autotoc_md53"></a>
+<h2><a class="anchor" id="autotoc_md57"></a>
 WebRTC codec constraints (extremely strict)</h2>
 <p>RFC 8834 mandates specific codec support in all WebRTC implementations:</p>
 <table class="markdownTable">
@@ -227,8 +227,8 @@ WebRTC codec constraints (extremely strict)</h2>
 <div class="line">encoder.cc(webrtc_muxer).cc(webrtc_server.getInput());</div>
 <div class="ttc" id="aclassLimef_1_1ff_1_1WebRTCMuxerFrameFilter_html"><div class="ttname"><a href="classLimef_1_1ff_1_1WebRTCMuxerFrameFilter.html">Limef::ff::WebRTCMuxerFrameFilter</a></div><div class="ttdoc">Composite filter that canonizes a stream for WebRTC delivery.</div><div class="ttdef"><b>Definition</b> webrtcmuxer.h:57</div></div>
 </div><!-- fragment --> </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a5521266a2ba77f6bb573321a65a56dc3" name="a5521266a2ba77f6bb573321a65a56dc3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5521266a2ba77f6bb573321a65a56dc3">&#9670;&#160;</a></span>WebRTCMuxerFrameFilter()</h2>
+<a id="a8c129d8575f14750ebbd937273845513" name="a8c129d8575f14750ebbd937273845513"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8c129d8575f14750ebbd937273845513">&#9670;&#160;</a></span>WebRTCMuxerFrameFilter()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -240,8 +240,18 @@ WebRTC codec constraints (extremely strict)</h2>
           <td class="memname">Limef::ff::WebRTCMuxerFrameFilter::WebRTCMuxerFrameFilter </td>
           <td>(</td>
           <td class="paramtype">std::string&#160;</td>
-          <td class="paramname"><em>name</em> = <code>&quot;WebRTCMuxerFrameFilter&quot;</code></td><td>)</td>
+          <td class="paramname"><em>name</em> = <code>&quot;WebRTCMuxerFrameFilter&quot;</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>mtu</em> = <code>1200</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
   </td>
@@ -250,6 +260,14 @@ WebRTC codec constraints (extremely strict)</h2>
   </tr>
 </table>
 </div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">name</td><td>label for logging </td></tr>
+    <tr><td class="paramname">mtu</td><td>path MTU to the client in bytes (default 1200, matching WebRTCServerThread's default). Nothing downstream fragments an oversized RTP/SRTP packet - libdatachannel's own <code>mtu</code> config only bounds its own SCTP/DTLS traffic, not media tracks - so the RTP muxer's packet size must itself be kept at or below <code>mtu</code>. Pass the same value given to WebRTCServerThread; lower both when routing over a VPN/tunnel such as Tailscale (MTU 1280) to avoid EMSGSIZE ("datagram is
+            too large") errors. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

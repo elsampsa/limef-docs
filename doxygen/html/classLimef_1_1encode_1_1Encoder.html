@@ -22,7 +22,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">My Project<span id="projectnumber">&#160;0.2.0</span>
+   <div id="projectname">My Project<span id="projectnumber">&#160;0.3.0</span>
    </div>
   </td>
  </tr>
@@ -147,6 +147,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a81892b54bedf5e2afc29f297acc8122d" id="r_a81892b54bedf5e2afc29f297acc8122d"><td class="memItemLeft" align="right" valign="top">virtual AVRational&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1encode_1_1Encoder.html#a81892b54bedf5e2afc29f297acc8122d">getFrameRate</a> () const</td></tr>
 <tr class="memdesc:a81892b54bedf5e2afc29f297acc8122d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get encoder output frame rate.  <br /></td></tr>
 <tr class="separator:a81892b54bedf5e2afc29f297acc8122d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a113333bbdeefffc92e6d9c5e0ecb1c8d" id="r_a113333bbdeefffc92e6d9c5e0ecb1c8d"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1encode_1_1Encoder.html#a113333bbdeefffc92e6d9c5e0ecb1c8d">requestKeyFrame</a> ()</td></tr>
+<tr class="memdesc:a113333bbdeefffc92e6d9c5e0ecb1c8d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Request that the encoder produce a keyframe on its next output.  <br /></td></tr>
+<tr class="separator:a113333bbdeefffc92e6d9c5e0ecb1c8d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-methods" name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
@@ -596,6 +599,37 @@ Protected Member Functions</h2></td></tr>
 </dl>
 
 <p>Implemented in <a class="el" href="classLimef_1_1encode_1_1FFmpegEncoder.html#ad51eec5a6dad632ef7b1c9566a57060d">Limef::encode::FFmpegEncoder</a>, <a class="el" href="classLimef_1_1encode_1_1V4L2Encoder.html#aba20aae39b30a48c2e18b105c815fb62">Limef::encode::V4L2Encoder</a>, and <a class="el" href="classLimef_1_1encode_1_1V4L2NVEncoder.html#a2e4eea71d000dad7e5e60d1026a1596f">Limef::encode::V4L2NVEncoder</a>.</p>
+
+</div>
+</div>
+<a id="a113333bbdeefffc92e6d9c5e0ecb1c8d" name="a113333bbdeefffc92e6d9c5e0ecb1c8d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a113333bbdeefffc92e6d9c5e0ecb1c8d">&#9670;&#160;</a></span>requestKeyFrame()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void Limef::encode::Encoder::requestKeyFrame </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Request that the encoder produce a keyframe on its next output. </p>
+<p>Typically triggered by a downstream client asking for a fresh intra frame (e.g. a WebRTC PLI/FIR, or a newly-joined RTSP client). May be called from a thread other than the one driving <a class="el" href="classLimef_1_1encode_1_1Encoder.html#ae09e9be391ea59532aa391541f5f2245" title="Push decoded frame for encoding.">push()</a>/status()/ <a class="el" href="classLimef_1_1encode_1_1Encoder.html#ac81d29e88d403709eeadec5566727e33" title="Get encoded packet.">getPacket()</a> — implementations MUST be internally mutex-protected against concurrent encode calls.</p>
+<p>Default implementation does nothing but log a warning — override for backends that support forcing a keyframe (see <a class="el" href="classLimef_1_1encode_1_1FFmpegEncoder.html" title="FFmpeg-based encoder for video and audio streams.">FFmpegEncoder</a>, <a class="el" href="classLimef_1_1encode_1_1V4L2Encoder.html" title="V4L2 Memory-to-Memory encoder.">V4L2Encoder</a>, <a class="el" href="classLimef_1_1encode_1_1V4L2NVEncoder.html" title="V4L2 Memory-to-Memory encoder.">V4L2NVEncoder</a>). </p>
+
+<p>Reimplemented in <a class="el" href="classLimef_1_1encode_1_1FFmpegEncoder.html#a534871e054d4081e342dcefa647d0d3d">Limef::encode::FFmpegEncoder</a>, <a class="el" href="classLimef_1_1encode_1_1V4L2Encoder.html#ae8822c6732af3f12b4f9065ab544d5a1">Limef::encode::V4L2Encoder</a>, and <a class="el" href="classLimef_1_1encode_1_1V4L2NVEncoder.html#a50b47dc4e72dbd552533c0424ca3b9ec">Limef::encode::V4L2NVEncoder</a>.</p>
 
 </div>
 </div>

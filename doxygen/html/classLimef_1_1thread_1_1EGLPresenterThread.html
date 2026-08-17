@@ -22,7 +22,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">My Project<span id="projectnumber">&#160;0.2.0</span>
+   <div id="projectname">My Project<span id="projectnumber">&#160;0.3.0</span>
    </div>
   </td>
  </tr>
@@ -292,7 +292,7 @@ Additional Inherited Members</h2></td></tr>
 </ul>
 </li>
 </ul>
-<h3><a class="anchor" id="autotoc_md58"></a>
+<h3><a class="anchor" id="autotoc_md62"></a>
 CUDA zero-copy and EGL: X11 vs Wayland</h3>
 <p><code>cudaGraphicsEGLRegisterImage</code> requires NVIDIA's own EGL stack. On X11, <code>eglGetDisplay(x11_dpy_)</code> goes through GLVND dispatch and lands on <b>Mesa EGL</b> (the default X11 vendor), whose memory is not NVIDIA-backed — CUDA returns <code>cudaErrorUnknown</code> and the code falls back to CPU upload. Forcing NVIDIA's EGL vendor (<code>__EGL_VENDOR_LIBRARY_FILENAMES</code>) causes <code>eglGetDisplay</code> itself to fail because NVIDIA's EGL does not serve X11 windows; they use GLX for X11.</p>
 <p>On <b>native Wayland</b> (<code>EGL_PLATFORM_WAYLAND_KHR</code>), the compositor talks directly to NVIDIA's Wayland EGL backend, so <code>cudaGraphicsEGLRegisterImage</code> is expected to work as-is once the Wayland window path is added to <code><a class="el" href="classLimef_1_1thread_1_1EGLPresenterThread.html#a07ed09364085fd5eb33a5d63681f5b08">preRun()</a></code>.</p>

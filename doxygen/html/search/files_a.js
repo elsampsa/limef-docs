@@ -9,6 +9,8 @@ var searchData=
   ['mp4_5fprobe_2emd_6',['mp4_probe.md',['../mp4__probe_8md.html',1,'']]],
   ['mp4part_2ecpp_7',['mp4part.cpp',['../mp4part_8cpp.html',1,'']]],
   ['mp4part_2eh_8',['mp4part.h',['../mp4part_8h.html',1,'']]],
-  ['muxer_2ecpp_9',['muxer.cpp',['../muxer_8cpp.html',1,'']]],
-  ['muxer_2eh_10',['muxer.h',['../muxer_8h.html',1,'']]]
+  ['muteaudio_2ecpp_9',['muteaudio.cpp',['../muteaudio_8cpp.html',1,'']]],
+  ['muteaudio_2eh_10',['muteaudio.h',['../muteaudio_8h.html',1,'']]],
+  ['muxer_2ecpp_11',['muxer.cpp',['../muxer_8cpp.html',1,'']]],
+  ['muxer_2eh_12',['muxer.h',['../muxer_8h.html',1,'']]]
 ];

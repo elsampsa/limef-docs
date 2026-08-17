@@ -11,6 +11,8 @@ var searchData=
   ['webrtcserverthread_2eh_8',['webrtcserverthread.h',['../webrtcserverthread_8h.html',1,'']]],
   ['websocket_2ecpp_9',['websocket.cpp',['../websocket_8cpp.html',1,'']]],
   ['websocket_2eh_10',['websocket.h',['../websocket_8h.html',1,'']]],
-  ['write_5fpng_2ecpp_11',['write_png.cpp',['../write__png_8cpp.html',1,'']]],
-  ['write_5fpng_2eh_12',['write_png.h',['../write__png_8h.html',1,'']]]
+  ['websocket_5fbroadcast_2ecpp_11',['websocket_broadcast.cpp',['../websocket__broadcast_8cpp.html',1,'']]],
+  ['websocket_5fbroadcast_2eh_12',['websocket_broadcast.h',['../websocket__broadcast_8h.html',1,'']]],
+  ['write_5fpng_2ecpp_13',['write_png.cpp',['../write__png_8cpp.html',1,'']]],
+  ['write_5fpng_2eh_14',['write_png.h',['../write__png_8h.html',1,'']]]
 ];

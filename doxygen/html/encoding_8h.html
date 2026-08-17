@@ -22,7 +22,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">My Project<span id="projectnumber">&#160;0.2.0</span>
+   <div id="projectname">My Project<span id="projectnumber">&#160;0.3.0</span>
    </div>
   </td>
  </tr>
@@ -88,134 +88,140 @@ $(function() {
 <code>#include &quot;<a class="el" href="streamframe_8h.html">frame/streamframe.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="signalframe_8h.html">frame/signalframe.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="codecframe_8h.html">frame/codecframe.h</a>&quot;</code><br />
+<code>#include &lt;mutex&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for encoding.h:</div>
 <div class="dyncontent">
 <div class="center"><img src="encoding_8h__incl.png" border="0" usemap="#a_2home_2sampsa_2limef_2limef_2src_2framefilter_2encoding_8h" alt=""/></div>
 <map name="a_2home_2sampsa_2limef_2limef_2src_2framefilter_2encoding_8h" id="a_2home_2sampsa_2limef_2limef_2src_2framefilter_2encoding_8h">
-<area shape="rect" title=" " alt="" coords="796,5,952,60"/>
-<area shape="rect" href="simple_8h.html" title="FrameFilter virtual class for simple chainable framefilters." alt="" coords="1207,108,1285,133"/>
-<area shape="poly" title=" " alt="" coords="953,49,1194,105,1193,110,952,55"/>
-<area shape="rect" href="timestamp_8h.html" title=" " alt="" coords="1174,577,1291,603"/>
-<area shape="poly" title=" " alt="" coords="953,37,1044,46,1145,60,1236,80,1272,92,1298,106,1321,124,1335,142,1344,164,1346,193,1346,423,1344,446,1337,468,1315,509,1287,544,1260,570,1256,567,1283,540,1311,506,1332,466,1338,445,1341,423,1341,193,1338,165,1331,145,1317,128,1295,110,1270,97,1234,85,1144,65,1043,51,952,42"/>
-<area shape="rect" href="encoder__factory_8h.html" title="Encoder factory for creating backend&#45;specific encoders." alt="" coords="194,108,394,133"/>
-<area shape="poly" title=" " alt="" coords="796,48,385,109,384,103,795,43"/>
-<area shape="rect" href="packetframe_8h.html" title="Frame class encapsulating ffmpeg&#39;s AVPacket." alt="" coords="461,409,631,434"/>
-<area shape="poly" title=" " alt="" coords="864,61,833,119,787,196,728,279,695,319,658,355,622,383,585,405,582,400,619,379,655,351,691,315,724,276,783,193,829,117,859,59"/>
-<area shape="rect" href="decodedframe_8h.html" title="Frame class encapsulating ffmpeg&#39;s AVFrame for both decoded video and audio." alt="" coords="203,409,385,434"/>
-<area shape="poly" title=" " alt="" coords="796,36,700,44,650,53,601,67,557,88,523,115,510,131,500,149,493,170,491,193,491,269,488,295,477,319,461,339,441,358,395,387,348,407,346,402,392,382,438,353,457,336,472,316,482,294,486,268,486,193,488,169,495,147,505,128,519,111,555,83,599,62,648,48,700,38,795,30"/>
-<area shape="rect" href="streamframe_8h.html" title="Frame containing stream information for encoders (raw/decoded sources)" alt="" coords="811,328,985,353"/>
-<area shape="poly" title=" " alt="" coords="879,60,899,314,893,314,873,60"/>
-<area shape="rect" href="codecframe_8h.html" title=" " alt="" coords="757,409,868,434"/>
-<area shape="poly" title=" " alt="" coords="846,62,822,88,799,119,782,154,775,193,775,269,778,304,786,338,805,395,800,397,780,339,773,304,770,269,770,192,777,153,795,116,818,84,842,59"/>
-<area shape="rect" href="signalframe_8h.html" title="Frame class encapsulating control signals to threads." alt="" coords="1151,409,1306,434"/>
-<area shape="poly" title=" " alt="" coords="953,40,1023,56,1058,69,1092,85,1122,104,1146,129,1162,158,1167,192,1167,268,1172,305,1184,340,1215,396,1210,399,1179,342,1167,306,1162,269,1162,193,1157,160,1141,132,1118,109,1089,89,1056,74,1021,61,952,46"/>
-<area shape="rect" href="framefilter_8h.html" title="FrameFilter virtual class." alt="" coords="1203,255,1305,280"/>
-<area shape="poly" title=" " alt="" coords="1249,134,1255,241,1250,241,1244,134"/>
-<area shape="rect" href="frame_8h.html" title="Base class for Frame class. Different Frame classes encapsulate different ffmpeg objects." alt="" coords="1050,497,1178,522"/>
-<area shape="poly" title=" " alt="" coords="1242,282,1193,331,1165,365,1142,403,1127,444,1119,483,1114,482,1122,443,1137,400,1161,362,1189,328,1238,278"/>
-<area shape="rect" href="common_8h.html" title="List of common header files." alt="" coords="1181,651,1284,676"/>
-<area shape="poly" title=" " alt="" coords="1121,521,1137,558,1164,601,1184,622,1206,640,1203,644,1181,626,1160,604,1133,561,1116,523"/>
-<area shape="poly" title=" " alt="" coords="1133,520,1205,567,1202,572,1130,524"/>
-<area shape="rect" title=" " alt="" coords="2479,724,2549,749"/>
-<area shape="poly" title=" " alt="" coords="1284,663,1852,682,2199,699,2348,710,2465,722,2465,727,2348,715,2199,704,1852,687,1284,669"/>
-<area shape="rect" title=" " alt="" coords="304,724,369,749"/>
-<area shape="poly" title=" " alt="" coords="1181,668,1045,671,849,680,620,698,383,727,383,722,619,692,849,675,1044,666,1181,662"/>
-<area shape="rect" title=" " alt="" coords="394,724,461,749"/>
-<area shape="poly" title=" " alt="" coords="1181,668,1058,673,885,682,683,700,475,727,474,721,683,694,884,677,1058,667,1181,663"/>
-<area shape="rect" title=" " alt="" coords="485,724,551,749"/>
-<area shape="poly" title=" " alt="" coords="1181,669,921,685,746,702,565,727,565,721,745,697,920,680,1181,664"/>
-<area shape="rect" title=" " alt="" coords="576,724,647,749"/>
-<area shape="poly" title=" " alt="" coords="1181,670,959,689,813,705,661,727,660,721,812,700,959,683,1181,665"/>
-<area shape="rect" title=" " alt="" coords="134,724,193,749"/>
-<area shape="poly" title=" " alt="" coords="1181,667,1019,667,780,673,498,691,351,707,207,727,206,722,351,701,497,686,780,668,1019,661,1181,661"/>
-<area shape="rect" title=" " alt="" coords="671,724,751,749"/>
-<area shape="poly" title=" " alt="" coords="1181,672,1001,693,765,727,765,721,1001,687,1181,667"/>
-<area shape="rect" title=" " alt="" coords="776,724,849,749"/>
-<area shape="poly" title=" " alt="" coords="1181,674,1042,695,864,727,863,721,1041,690,1181,669"/>
-<area shape="rect" title=" " alt="" coords="874,724,949,749"/>
-<area shape="poly" title=" " alt="" coords="1182,678,963,726,962,721,1180,673"/>
-<area shape="rect" title=" " alt="" coords="973,724,1044,749"/>
-<area shape="poly" title=" " alt="" coords="1197,679,1058,723,1056,717,1196,673"/>
-<area shape="rect" title=" " alt="" coords="1069,724,1143,749"/>
-<area shape="poly" title=" " alt="" coords="1214,678,1140,719,1137,715,1211,674"/>
-<area shape="rect" title=" " alt="" coords="217,724,280,749"/>
-<area shape="poly" title=" " alt="" coords="1181,667,1032,669,814,676,558,694,425,708,294,727,293,721,424,703,557,689,814,671,1032,663,1181,662"/>
-<area shape="rect" title=" " alt="" coords="1167,724,1253,749"/>
-<area shape="poly" title=" " alt="" coords="1231,677,1220,712,1215,710,1226,676"/>
-<area shape="rect" title=" " alt="" coords="1277,724,1367,749"/>
-<area shape="poly" title=" " alt="" coords="1249,674,1298,713,1295,717,1245,678"/>
-<area shape="rect" title=" " alt="" coords="1391,724,1455,749"/>
-<area shape="poly" title=" " alt="" coords="1264,674,1380,716,1378,721,1262,679"/>
-<area shape="rect" title=" " alt="" coords="1479,724,1538,749"/>
-<area shape="poly" title=" " alt="" coords="1280,674,1467,721,1466,726,1278,679"/>
-<area shape="rect" title=" " alt="" coords="1563,724,1625,749"/>
-<area shape="poly" title=" " alt="" coords="1285,671,1402,691,1549,721,1548,727,1401,697,1284,676"/>
-<area shape="rect" title=" " alt="" coords="1650,724,1701,749"/>
-<area shape="poly" title=" " alt="" coords="1285,667,1439,686,1536,702,1637,721,1636,727,1535,707,1438,691,1284,672"/>
-<area shape="rect" title=" " alt="" coords="1725,724,1767,749"/>
-<area shape="poly" title=" " alt="" coords="1284,665,1470,682,1589,698,1712,722,1711,727,1588,704,1469,687,1284,670"/>
-<area shape="rect" title=" " alt="" coords="1792,724,1855,749"/>
-<area shape="poly" title=" " alt="" coords="1284,665,1496,683,1635,699,1779,722,1778,727,1634,705,1496,688,1284,670"/>
-<area shape="rect" title=" " alt="" coords="1879,724,1987,749"/>
-<area shape="poly" title=" " alt="" coords="1284,665,1531,685,1865,721,1865,726,1530,690,1284,671"/>
-<area shape="rect" title=" " alt="" coords="2011,724,2078,749"/>
-<area shape="poly" title=" " alt="" coords="1284,663,1408,667,1583,677,1787,694,1998,721,1997,727,1787,700,1583,682,1408,673,1284,668"/>
-<area shape="rect" title=" " alt="" coords="2102,724,2166,749"/>
-<area shape="poly" title=" " alt="" coords="1284,662,1422,665,1619,674,1850,692,2089,722,2088,727,1850,697,1619,679,1422,671,1284,668"/>
-<area shape="rect" title=" " alt="" coords="2190,724,2262,749"/>
-<area shape="poly" title=" " alt="" coords="1284,662,1434,665,1653,673,1911,691,2045,704,2177,722,2176,727,2044,710,1910,696,1653,679,1434,670,1284,668"/>
-<area shape="rect" title=" " alt="" coords="2287,724,2355,749"/>
-<area shape="poly" title=" " alt="" coords="1284,662,1448,663,1691,670,1977,688,2126,703,2273,722,2273,727,2125,708,1977,694,1690,676,1448,668,1284,667"/>
-<area shape="rect" title=" " alt="" coords="2379,724,2454,749"/>
-<area shape="poly" title=" " alt="" coords="1284,662,1461,662,1726,669,2040,687,2204,702,2366,721,2365,727,2204,707,2040,693,1726,675,1461,668,1284,667"/>
+<area shape="rect" title=" " alt="" coords="1139,5,1295,60"/>
+<area shape="rect" href="simple_8h.html" title="FrameFilter virtual class for simple chainable framefilters." alt="" coords="1269,108,1348,133"/>
+<area shape="poly" title=" " alt="" coords="1247,58,1288,96,1284,100,1243,62"/>
+<area shape="rect" title=" " alt="" coords="2455,724,2519,749"/>
+<area shape="poly" title=" " alt="" coords="1296,38,1432,54,1509,67,1585,84,1654,104,1710,128,1732,142,1749,158,1760,174,1763,192,1763,591,1769,616,1785,637,1810,654,1843,669,1884,680,1930,689,2036,700,2261,709,2362,713,2442,722,2442,727,2362,718,2261,714,2035,705,1929,694,1883,685,1841,674,1807,659,1781,641,1764,618,1758,592,1758,193,1755,176,1745,161,1729,146,1708,133,1652,109,1584,89,1508,72,1431,60,1295,43"/>
+<area shape="rect" href="timestamp_8h.html" title=" " alt="" coords="1211,577,1329,603"/>
+<area shape="poly" title=" " alt="" coords="1296,42,1410,63,1534,94,1589,114,1633,137,1664,163,1672,177,1675,192,1675,342,1673,370,1666,396,1654,420,1639,442,1600,480,1552,512,1499,537,1444,556,1343,581,1342,575,1442,551,1497,532,1550,507,1597,476,1635,439,1650,417,1661,394,1668,369,1670,342,1670,193,1667,179,1660,166,1631,141,1587,119,1532,99,1408,68,1295,47"/>
+<area shape="rect" href="encoder__factory_8h.html" title="Encoder factory for creating backend&#45;specific encoders." alt="" coords="578,108,778,133"/>
+<area shape="poly" title=" " alt="" coords="1139,49,764,108,763,103,1138,44"/>
+<area shape="rect" href="packetframe_8h.html" title="Frame class encapsulating ffmpeg&#39;s AVPacket." alt="" coords="790,409,961,434"/>
+<area shape="poly" title=" " alt="" coords="1139,49,1076,66,1014,95,989,113,968,136,955,162,950,193,950,269,945,307,931,342,913,374,896,399,891,396,909,371,926,340,939,305,945,268,945,192,950,161,964,133,985,110,1012,90,1074,61,1138,43"/>
+<area shape="rect" href="decodedframe_8h.html" title="Frame class encapsulating ffmpeg&#39;s AVFrame for both decoded video and audio." alt="" coords="481,409,664,434"/>
+<area shape="poly" title=" " alt="" coords="1138,40,985,49,806,63,649,84,596,96,568,110,545,142,532,179,527,218,529,259,545,336,565,395,560,397,539,338,524,260,522,218,527,177,540,139,564,106,594,91,648,78,805,58,985,44,1138,35"/>
+<area shape="rect" href="streamframe_8h.html" title="Frame containing stream information for encoders (raw/decoded sources)" alt="" coords="1129,328,1304,353"/>
+<area shape="poly" title=" " alt="" coords="1219,60,1219,314,1214,314,1214,60"/>
+<area shape="rect" href="codecframe_8h.html" title=" " alt="" coords="1036,409,1147,434"/>
+<area shape="poly" title=" " alt="" coords="1179,62,1150,87,1123,117,1102,153,1096,172,1094,193,1094,269,1094,395,1089,395,1089,269,1089,193,1091,171,1097,151,1118,114,1147,83,1176,58"/>
+<area shape="rect" href="signalframe_8h.html" title="Frame class encapsulating control signals to threads." alt="" coords="1430,409,1585,434"/>
+<area shape="poly" title=" " alt="" coords="1295,45,1396,68,1503,101,1551,120,1589,142,1615,166,1622,179,1625,192,1625,269,1622,290,1616,311,1594,348,1566,379,1538,402,1534,398,1562,375,1590,345,1611,309,1617,289,1619,269,1619,193,1617,181,1611,169,1586,146,1548,125,1502,106,1395,73,1294,51"/>
+<area shape="rect" href="framefilter_8h.html" title="FrameFilter virtual class." alt="" coords="1299,255,1401,280"/>
+<area shape="poly" title=" " alt="" coords="1315,133,1346,241,1340,242,1309,135"/>
+<area shape="rect" href="frame_8h.html" title="Base class for Frame class. Different Frame classes encapsulate different ffmpeg objects." alt="" coords="1110,497,1238,522"/>
+<area shape="poly" title=" " alt="" coords="1358,279,1371,310,1383,352,1385,399,1380,422,1369,443,1346,467,1316,485,1284,497,1252,505,1251,500,1283,492,1314,480,1342,463,1365,440,1375,420,1380,399,1378,353,1366,312,1353,281"/>
+<area shape="rect" href="common_8h.html" title="List of common header files." alt="" coords="1204,651,1307,676"/>
+<area shape="poly" title=" " alt="" coords="1178,522,1185,558,1202,601,1216,622,1233,639,1229,643,1212,625,1197,604,1180,560,1173,523"/>
+<area shape="poly" title=" " alt="" coords="1190,520,1247,567,1244,571,1186,524"/>
+<area shape="rect" title=" " alt="" coords="1497,724,1568,749"/>
+<area shape="poly" title=" " alt="" coords="1301,673,1485,720,1483,725,1299,679"/>
+<area shape="rect" title=" " alt="" coords="1592,724,1657,749"/>
+<area shape="poly" title=" " alt="" coords="1308,670,1427,691,1579,721,1578,727,1426,697,1307,676"/>
+<area shape="rect" title=" " alt="" coords="1682,724,1749,749"/>
+<area shape="poly" title=" " alt="" coords="1307,668,1469,689,1669,721,1670,721,1669,727,1668,727,1469,694,1307,673"/>
+<area shape="rect" title=" " alt="" coords="1773,724,1839,749"/>
+<area shape="poly" title=" " alt="" coords="1307,666,1502,685,1628,701,1759,721,1759,727,1628,706,1501,690,1307,671"/>
+<area shape="rect" title=" " alt="" coords="1864,724,1935,749"/>
+<area shape="poly" title=" " alt="" coords="1307,665,1539,683,1692,699,1850,721,1850,727,1691,704,1538,688,1307,670"/>
+<area shape="rect" title=" " alt="" coords="207,724,266,749"/>
+<area shape="poly" title=" " alt="" coords="1204,667,1049,668,822,675,555,693,417,708,280,727,279,722,416,702,555,687,822,669,1049,662,1204,661"/>
+<area shape="rect" title=" " alt="" coords="1959,724,2039,749"/>
+<area shape="poly" title=" " alt="" coords="1307,664,1577,681,1758,698,1946,721,1946,727,1758,703,1576,686,1307,669"/>
+<area shape="rect" title=" " alt="" coords="2064,724,2137,749"/>
+<area shape="poly" title=" " alt="" coords="1307,663,1618,678,1831,695,2051,722,2050,727,1830,700,1617,683,1307,668"/>
+<area shape="rect" title=" " alt="" coords="2162,724,2237,749"/>
+<area shape="poly" title=" " alt="" coords="1307,663,1450,666,1656,675,1898,693,2148,721,2148,727,1898,698,1656,680,1450,671,1307,668"/>
+<area shape="rect" title=" " alt="" coords="2261,724,2332,749"/>
+<area shape="poly" title=" " alt="" coords="1307,664,1764,685,2037,702,2248,722,2248,727,2037,707,1764,690,1307,669"/>
+<area shape="rect" title=" " alt="" coords="2357,724,2431,749"/>
+<area shape="poly" title=" " alt="" coords="1307,664,1808,684,2111,701,2343,722,2343,727,2110,706,1808,689,1307,669"/>
+<area shape="rect" title=" " alt="" coords="365,724,428,749"/>
+<area shape="poly" title=" " alt="" coords="1204,668,1073,671,886,680,668,698,442,727,441,722,667,693,886,675,1073,666,1204,663"/>
+<area shape="rect" title=" " alt="" coords="453,724,538,749"/>
+<area shape="poly" title=" " alt="" coords="1204,670,929,687,744,703,552,727,551,721,743,698,929,681,1204,664"/>
+<area shape="rect" title=" " alt="" coords="562,724,653,749"/>
+<area shape="poly" title=" " alt="" coords="1204,671,975,690,824,706,667,727,666,721,823,701,975,685,1204,666"/>
+<area shape="rect" title=" " alt="" coords="677,724,741,749"/>
+<area shape="poly" title=" " alt="" coords="1204,671,1010,690,885,706,755,727,754,721,884,700,1010,684,1204,666"/>
+<area shape="rect" title=" " alt="" coords="765,724,823,749"/>
+<area shape="poly" title=" " alt="" coords="1204,672,1044,692,838,727,837,721,1044,687,1204,667"/>
+<area shape="rect" title=" " alt="" coords="848,724,911,749"/>
+<area shape="poly" title=" " alt="" coords="1204,675,1081,696,925,727,924,721,1080,691,1203,670"/>
+<area shape="rect" title=" " alt="" coords="290,724,341,749"/>
+<area shape="poly" title=" " alt="" coords="1204,667,1060,667,851,674,607,693,480,708,354,727,354,722,479,702,606,687,851,669,1060,662,1204,661"/>
+<area shape="rect" title=" " alt="" coords="935,724,978,749"/>
+<area shape="poly" title=" " alt="" coords="1204,677,1109,697,992,727,990,721,1108,692,1203,672"/>
+<area shape="rect" title=" " alt="" coords="1003,724,1065,749"/>
+<area shape="poly" title=" " alt="" coords="1221,679,1079,724,1077,719,1219,673"/>
+<area shape="rect" title=" " alt="" coords="1089,724,1197,749"/>
+<area shape="poly" title=" " alt="" coords="1239,678,1175,719,1172,714,1236,674"/>
+<area shape="rect" title=" " alt="" coords="1222,724,1289,749"/>
+<area shape="poly" title=" " alt="" coords="1258,676,1258,710,1253,710,1253,676"/>
+<area shape="rect" title=" " alt="" coords="1313,724,1377,749"/>
+<area shape="poly" title=" " alt="" coords="1271,674,1321,713,1318,717,1268,678"/>
+<area shape="rect" title=" " alt="" coords="1401,724,1473,749"/>
+<area shape="poly" title=" " alt="" coords="1285,674,1395,716,1393,721,1283,679"/>
+<area shape="rect" title=" " alt="" coords="117,724,183,749"/>
+<area shape="poly" title=" " alt="" coords="1204,667,1037,668,791,675,499,693,347,707,197,727,197,722,346,702,498,687,790,669,1037,662,1204,661"/>
+<area shape="poly" title=" " alt="" coords="1307,663,1854,681,2187,698,2330,709,2442,722,2442,727,2330,715,2187,704,1854,686,1307,669"/>
 <area shape="rect" title=" " alt="" coords="5,724,92,749"/>
-<area shape="poly" title=" " alt="" coords="1181,668,745,683,437,700,122,727,106,729,105,723,122,721,437,695,744,678,1181,663"/>
-<area shape="poly" title=" " alt="" coords="1235,603,1235,637,1230,637,1230,603"/>
-<area shape="poly" title=" " alt="" coords="194,129,157,135,120,146,84,162,52,183,33,202,22,219,17,240,15,266,15,591,18,624,24,656,41,710,36,712,19,658,13,625,10,591,10,266,11,239,17,217,29,198,48,179,81,157,118,141,156,130,193,123"/>
-<area shape="rect" href="encoder_8h.html" title="Abstract Encoder interface for encoding video and audio streams." alt="" coords="251,328,337,353"/>
-<area shape="poly" title=" " alt="" coords="297,134,297,314,291,314,291,134"/>
-<area shape="rect" href="ffmpeg__encoder_8h.html" title="FFmpeg&#45;based Encoder implementation." alt="" coords="526,255,665,280"/>
-<area shape="poly" title=" " alt="" coords="319,131,560,246,558,251,317,136"/>
-<area shape="rect" href="v4l2__encoder_8h.html" title="V4L2 Memory&#45;to&#45;Memory Encoder implementation." alt="" coords="101,255,221,280"/>
-<area shape="poly" title=" " alt="" coords="286,135,219,208,183,246,179,243,215,205,282,132"/>
-<area shape="rect" href="v4l2__nv__encoder_8h.html" title="V4L2 Memory&#45;to&#45;Memory Encoder implementation." alt="" coords="63,181,205,207"/>
-<area shape="poly" title=" " alt="" coords="269,136,174,178,172,173,267,131"/>
-<area shape="rect" title=" " alt="" coords="332,181,400,207"/>
-<area shape="poly" title=" " alt="" coords="308,132,346,170,343,174,304,136"/>
-<area shape="poly" title=" " alt="" coords="331,351,497,402,495,407,330,356"/>
-<area shape="rect" href="avdep_8h.html" title="List of common ffmpeg header files. Definition of some functions to call FFmpeg API directly from Lim..." alt="" coords="380,497,467,522"/>
-<area shape="poly" title=" " alt="" coords="256,356,220,374,205,387,192,403,185,422,192,440,210,459,229,470,248,476,268,478,314,478,340,481,368,487,378,490,377,495,367,492,339,486,314,484,268,483,247,481,227,475,207,463,188,443,180,422,188,400,201,383,217,370,253,351"/>
-<area shape="poly" title=" " alt="" coords="297,354,297,395,291,395,291,354"/>
-<area shape="poly" title=" " alt="" coords="622,431,1037,494,1036,499,622,437"/>
-<area shape="poly" title=" " alt="" coords="531,436,453,491,450,486,528,432"/>
-<area shape="poly" title=" " alt="" coords="386,431,449,439,1037,498,1036,503,448,444,385,437"/>
-<area shape="poly" title=" " alt="" coords="313,432,396,487,393,491,310,436"/>
-<area shape="rect" href="decoded__frame__generated_8h.html" title=" " alt="" coords="163,489,356,529"/>
-<area shape="poly" title=" " alt="" coords="292,435,275,477,270,475,287,433"/>
-<area shape="poly" title=" " alt="" coords="548,283,351,329,349,324,546,277"/>
-<area shape="poly" title=" " alt="" coords="645,277,836,322,835,327,643,283"/>
-<area shape="rect" href="hwaccel_8h.html" title="Hardware acceleration types and utilities." alt="" coords="546,328,645,353"/>
-<area shape="poly" title=" " alt="" coords="598,280,598,314,593,314,593,280"/>
-<area shape="poly" title=" " alt="" coords="887,355,837,401,834,397,884,352"/>
-<area shape="rect" href="stream__frame__generated_8h.html" title=" " alt="" coords="893,401,1077,441"/>
-<area shape="poly" title=" " alt="" coords="913,352,955,390,952,394,909,355"/>
-<area shape="poly" title=" " alt="" coords="854,432,1061,490,1060,495,853,437"/>
-<area shape="poly" title=" " alt="" coords="761,437,481,498,480,493,760,431"/>
-<area shape="poly" title=" " alt="" coords="611,352,627,369,642,392,651,417,650,430,646,443,616,479,569,518,510,558,444,597,308,670,202,721,200,716,306,665,441,593,507,553,566,513,612,475,641,440,645,429,645,418,637,394,623,373,607,356"/>
-<area shape="poly" title=" " alt="" coords="624,351,658,371,689,400,707,426,717,450,721,476,722,508,722,593,670,614,551,651,294,725,293,720,550,646,668,609,717,590,717,508,716,476,712,452,703,429,685,403,655,375,622,356"/>
-<area shape="poly" title=" " alt="" coords="547,352,496,370,471,384,451,403,439,422,431,442,426,483,420,482,426,441,434,419,447,400,468,380,493,365,545,347"/>
-<area shape="poly" title=" " alt="" coords="552,356,352,408,350,403,551,351"/>
-<area shape="poly" title=" " alt="" coords="140,282,113,302,91,329,67,372,58,391,55,409,60,430,76,456,106,487,152,527,186,549,231,569,285,586,346,601,486,625,639,641,795,652,942,658,1167,660,1167,665,942,663,794,657,639,647,485,630,345,607,284,591,229,574,184,554,148,531,102,491,72,459,55,432,50,409,53,389,62,370,86,327,109,298,137,278"/>
-<area shape="poly" title=" " alt="" coords="183,278,261,319,259,324,181,282"/>
-<area shape="rect" href="fourcc_8h.html" title="V4L2 fourcc &lt;&#45;&gt; FFmpeg type mapping utilities." alt="" coords="101,328,220,353"/>
-<area shape="poly" title=" " alt="" coords="163,280,163,314,158,314,158,280"/>
-<area shape="poly" title=" " alt="" coords="162,354,162,396,168,419,180,440,201,458,222,470,242,475,264,477,311,478,338,480,368,487,378,490,377,495,367,492,337,486,311,483,263,483,241,481,220,475,198,463,176,443,163,421,157,396,156,354"/>
-<area shape="poly" title=" " alt="" coords="141,206,154,241,149,243,136,208"/>
-<area shape="poly" title=" " alt="" coords="1215,436,1142,490,1139,486,1212,432"/>
-<area shape="rect" href="signal_8h.html" title="Definition of signals that are encapsulated into SignalFrame(s)" alt="" coords="1325,577,1453,603"/>
-<area shape="poly" title=" " alt="" coords="1242,432,1370,565,1366,569,1238,436"/>
-<area shape="poly" title=" " alt="" coords="1365,605,1272,647,1270,642,1363,600"/>
+<area shape="poly" title=" " alt="" coords="1204,667,1025,669,756,677,437,695,270,709,106,727,106,721,270,704,436,690,756,672,1025,664,1203,662"/>
+<area shape="poly" title=" " alt="" coords="1270,604,1263,638,1258,637,1265,602"/>
+<area shape="poly" title=" " alt="" coords="578,135,515,145,444,161,372,183,301,212,239,250,211,272,188,296,169,323,154,353,145,385,142,420,142,592,135,629,118,664,96,693,74,717,70,713,92,690,114,661,130,627,137,591,137,420,140,384,149,351,164,320,184,293,208,268,236,245,299,208,370,178,443,156,514,140,578,130"/>
+<area shape="rect" href="encoder_8h.html" title="Abstract Encoder interface for encoding video and audio streams." alt="" coords="647,328,733,353"/>
+<area shape="poly" title=" " alt="" coords="681,134,691,314,686,314,676,134"/>
+<area shape="rect" href="ffmpeg__encoder_8h.html" title="FFmpeg&#45;based Encoder implementation." alt="" coords="289,255,427,280"/>
+<area shape="poly" title=" " alt="" coords="657,136,503,209,400,252,398,247,501,204,654,131"/>
+<area shape="rect" href="v4l2__encoder_8h.html" title="V4L2 Memory&#45;to&#45;Memory Encoder implementation." alt="" coords="779,255,899,280"/>
+<area shape="poly" title=" " alt="" coords="779,127,830,145,853,160,872,180,878,196,877,214,860,245,856,243,872,212,873,197,868,183,850,164,828,150,778,132"/>
+<area shape="rect" href="v4l2__nv__encoder_8h.html" title="V4L2 Memory&#45;to&#45;Memory Encoder implementation." alt="" coords="716,181,859,207"/>
+<area shape="poly" title=" " alt="" coords="697,131,759,171,756,176,694,136"/>
+<area shape="rect" title=" " alt="" coords="572,181,640,207"/>
+<area shape="poly" title=" " alt="" coords="668,136,629,174,626,170,664,132"/>
+<area shape="poly" title=" " alt="" coords="718,351,837,401,835,406,716,356"/>
+<area shape="rect" href="avdep_8h.html" title="List of common ffmpeg header files. Definition of some functions to call FFmpeg API directly from Lim..." alt="" coords="701,497,788,522"/>
+<area shape="poly" title=" " alt="" coords="696,353,739,483,734,485,691,354"/>
+<area shape="poly" title=" " alt="" coords="674,356,603,403,600,399,671,351"/>
+<area shape="poly" title=" " alt="" coords="916,432,1122,490,1120,495,915,437"/>
+<area shape="poly" title=" " alt="" coords="859,436,775,491,772,487,856,432"/>
+<area shape="poly" title=" " alt="" coords="654,431,1097,494,1096,500,653,437"/>
+<area shape="poly" title=" " alt="" coords="597,432,710,488,708,493,595,437"/>
+<area shape="rect" href="decoded__frame__generated_8h.html" title=" " alt="" coords="476,489,669,529"/>
+<area shape="poly" title=" " alt="" coords="575,434,575,475,570,475,570,434"/>
+<area shape="poly" title=" " alt="" coords="341,282,312,305,280,336,254,376,246,397,243,420,243,591,240,710,235,710,238,591,238,420,241,396,249,373,276,333,309,301,338,278"/>
+<area shape="poly" title=" " alt="" coords="350,282,334,303,319,329,300,373,294,420,294,591,300,656,311,710,306,711,295,657,289,591,289,420,295,372,314,327,330,300,346,279"/>
+<area shape="poly" title=" " alt="" coords="328,282,287,302,242,332,223,351,207,372,196,395,193,420,193,591,190,625,183,658,164,712,158,710,177,656,184,624,187,591,187,420,191,393,202,369,219,347,239,328,284,298,326,278"/>
+<area shape="poly" title=" " alt="" coords="412,277,634,325,633,330,411,283"/>
+<area shape="poly" title=" " alt="" coords="428,272,1116,328,1115,334,427,277"/>
+<area shape="rect" href="hwaccel_8h.html" title="Hardware acceleration types and utilities." alt="" coords="329,328,427,353"/>
+<area shape="poly" title=" " alt="" coords="364,280,374,314,369,316,359,281"/>
+<area shape="poly" title=" " alt="" coords="1200,356,1123,403,1120,399,1197,351"/>
+<area shape="rect" href="stream__frame__generated_8h.html" title=" " alt="" coords="1171,401,1355,441"/>
+<area shape="poly" title=" " alt="" coords="1226,352,1247,388,1243,391,1221,355"/>
+<area shape="poly" title=" " alt="" coords="1104,432,1155,484,1151,488,1101,436"/>
+<area shape="poly" title=" " alt="" coords="1046,437,802,497,800,492,1044,431"/>
+<area shape="poly" title=" " alt="" coords="376,354,357,419,348,463,345,508,345,592,337,631,317,666,291,695,266,718,262,714,287,691,312,662,332,629,339,591,339,508,343,462,352,418,371,353"/>
+<area shape="poly" title=" " alt="" coords="382,353,390,419,395,508,395,591,398,710,393,710,390,591,390,508,385,419,377,354"/>
+<area shape="poly" title=" " alt="" coords="387,352,420,395,443,419,470,439,525,463,571,472,620,476,681,487,695,490,694,496,680,492,619,481,571,477,523,468,467,444,440,423,415,399,383,355"/>
+<area shape="poly" title=" " alt="" coords="407,351,533,401,531,406,405,356"/>
+<area shape="poly" title=" " alt="" coords="869,278,908,298,951,329,971,348,986,370,997,394,1001,420,1001,510,1006,541,1020,567,1041,589,1067,607,1129,634,1191,650,1190,655,1127,639,1064,612,1037,593,1015,570,1001,543,995,511,995,420,992,395,982,372,967,352,948,333,906,303,866,282"/>
+<area shape="poly" title=" " alt="" coords="900,271,1086,291,1201,306,1316,325,1399,336,1466,341,1497,347,1529,357,1562,374,1598,399,1631,433,1651,469,1662,505,1669,542,1676,578,1688,612,1709,644,1743,674,1770,688,1802,698,1881,713,1974,719,2074,720,2277,716,2367,717,2442,722,2441,727,2367,722,2277,722,2074,726,1973,725,1880,718,1801,704,1768,692,1741,678,1705,648,1683,615,1671,579,1664,543,1657,507,1646,471,1627,436,1595,403,1559,378,1527,362,1496,352,1465,346,1398,341,1315,331,1200,311,1086,296,899,276"/>
+<area shape="poly" title=" " alt="" coords="816,282,728,324,726,320,814,278"/>
+<area shape="rect" href="fourcc_8h.html" title="V4L2 fourcc &lt;&#45;&gt; FFmpeg type mapping utilities." alt="" coords="769,328,888,353"/>
+<area shape="poly" title=" " alt="" coords="840,281,835,315,830,314,835,280"/>
+<area shape="poly" title=" " alt="" coords="818,355,799,376,780,403,763,444,752,483,747,482,758,442,776,400,795,373,814,352"/>
+<area shape="poly" title=" " alt="" coords="798,205,825,242,821,245,794,209"/>
+<area shape="poly" title=" " alt="" coords="1463,437,1232,496,1231,491,1462,432"/>
+<area shape="rect" href="signal_8h.html" title="Definition of signals that are encapsulated into SignalFrame(s)" alt="" coords="1403,577,1531,603"/>
+<area shape="poly" title=" " alt="" coords="1507,435,1476,565,1471,563,1502,433"/>
+<area shape="poly" title=" " alt="" coords="1434,605,1303,649,1302,644,1432,600"/>
 </map>
 </div>
 </div><div class="textblock"><div class="dynheader">

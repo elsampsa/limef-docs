@@ -609,6 +609,14 @@ implementation is <a class="reference internal" href="#_CPPv4N5Limef6encode13FFm
 </dl>
 </dd></dl>
 
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6encode7Encoder15requestKeyFrameEv">
+<span id="_CPPv3N5Limef6encode7Encoder15requestKeyFrameEv"></span><span id="_CPPv2N5Limef6encode7Encoder15requestKeyFrameEv"></span><span id="Limef::encode::Encoder::requestKeyFrame"></span><span class="target" id="classLimef_1_1encode_1_1Encoder_1a113333bbdeefffc92e6d9c5e0ecb1c8d"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">requestKeyFrame</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5Limef6encode7Encoder15requestKeyFrameEv" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Request that the encoder produce a keyframe on its next output. </p>
+<p>Typically triggered by a downstream client asking for a fresh intra frame (e.g. a WebRTC PLI/FIR, or a newly-joined RTSP client). May be called from a thread other than the one driving push()/status()/ getPacket() — implementations MUST be internally mutex-protected against concurrent encode calls.</p>
+<p>Default implementation does nothing but log a warning — override for backends that support forcing a keyframe (see FFmpegEncoder, V4L2Encoder, V4L2NVEncoder). </p>
+</dd></dl>
+
 </div>
 </dd></dl>
 
@@ -801,6 +809,20 @@ implementation is <a class="reference internal" href="#_CPPv4N5Limef6encode13FFm
 </dl>
 </dd></dl>
 
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6encode13FFmpegEncoder15requestKeyFrameEv">
+<span id="_CPPv3N5Limef6encode13FFmpegEncoder15requestKeyFrameEv"></span><span id="_CPPv2N5Limef6encode13FFmpegEncoder15requestKeyFrameEv"></span><span id="Limef::encode::FFmpegEncoder::requestKeyFrame"></span><span class="target" id="classLimef_1_1encode_1_1FFmpegEncoder_1a534871e054d4081e342dcefa647d0d3d"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">requestKeyFrame</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">override</span></span><a class="headerlink" href="#_CPPv4N5Limef6encode13FFmpegEncoder15requestKeyFrameEv" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Request that the encoder emit a keyframe on its next push()</p>
+<p>Sets a flag (std::atomic, safe to call from any thread) that push() consumes on the next call: the AVFrame handed to avcodec_send_frame() has AVFrame::pict_type forced to AV_PICTURE_TYPE_I.</p>
+<p>This is the mechanism all four encoder families produced by getEncoderName() honour for forcing a keyframe:<ul class="simple">
+<li><p>libvpx/libvpx-vp9 (libavcodec/libvpxenc.c): checks pict_type == AV_PICTURE_TYPE_I</p></li>
+<li><p>libaom-av1 (libavcodec/libaomenc.c): checks pict_type == AV_PICTURE_TYPE_I</p></li>
+<li><p>*_vaapi (libavcodec/vaapi_encode.c): pict_type == AV_PICTURE_TYPE_I -&gt; force_idr</p></li>
+<li><p>*_nvenc (libavcodec/nvenc.c): pict_type == AV_PICTURE_TYPE_I -&gt; FORCEIDR/FORCEINTRA (nvenc additionally needs the “forced-idr” AVOption enabled, which initVideoEncoder() sets for CUDA/nvenc so a full IDR with SPS/PPS is produced rather than a plain forced-intra frame without parameter sets) mjpeg is intra-only so the flag is a no-op there (every frame already a keyframe). </p></li>
+</ul>
+</p>
+</dd></dl>
+
 </div>
 </dd></dl>
 
@@ -900,6 +922,12 @@ implementation is <a class="reference internal" href="#_CPPv4N5Limef6encode13FFm
 <p><strong>NVENC note:</strong> h264_nvenc always outputs Annex B byte-stream packets regardless of this flag. The flag only controls where SPS/PPS parameter sets appear:</p>
 <p>true — SPS/PPS in extradata only, absent from packets. RTPMuxerFrameFilter reads extradata from CodecFrame → SDP gets profile-level-id and sprop-parameter-sets. Required for RTSP. IDR packets carry no inline SPS/PPS — browsers cannot decode without them.</p>
 <p>false — extradata empty, SPS/PPS prepended inline before every IDR packet. SDP lacks profile-level-id / sprop-parameter-sets. Required for WebRTC with NVENC. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6encode19FFmpegEncoderParams7optionsE">
+<span id="_CPPv3N5Limef6encode19FFmpegEncoderParams7optionsE"></span><span id="_CPPv2N5Limef6encode19FFmpegEncoderParams7optionsE"></span><span id="Limef::encode::FFmpegEncoderParams::options__std::map:ss.ss:"></span><span class="target" id="structLimef_1_1encode_1_1FFmpegEncoderParams_1a355d53ca2b5827501e0f6c94d9ad02d7"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">map</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">options</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="p"><span class="pre">{</span></span><span class="p"><span class="pre">}</span></span><a class="headerlink" href="#_CPPv4N5Limef6encode19FFmpegEncoderParams7optionsE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Extra AVOptions passed verbatim to the encoder via av_dict_set(). Use for encoder-private options not covered by named fields above. Example (NVENC): {“delay”, “0”}, {“rc”, “cbr”} </p>
 </dd></dl>
 
 </div>
@@ -1113,6 +1141,14 @@ implementation is <a class="reference internal" href="#_CPPv4N5Limef6encode13FFm
 <dd class="field-odd"><p>AVRational Frame rate (e.g., {30, 1} for 30fps) </p>
 </dd>
 </dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6encode11V4L2Encoder15requestKeyFrameEv">
+<span id="_CPPv3N5Limef6encode11V4L2Encoder15requestKeyFrameEv"></span><span id="_CPPv2N5Limef6encode11V4L2Encoder15requestKeyFrameEv"></span><span id="Limef::encode::V4L2Encoder::requestKeyFrame"></span><span class="target" id="classLimef_1_1encode_1_1V4L2Encoder_1ae8822c6732af3f12b4f9065ab544d5a1"></span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">requestKeyFrame</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">override</span></span><a class="headerlink" href="#_CPPv4N5Limef6encode11V4L2Encoder15requestKeyFrameEv" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Request that the encoder emit a keyframe on its next output. </p>
+<p>Issues a VIDIOC_S_CTRL of V4L2_CID_MPEG_VIDEO_FORCE_KEY_FRAME on the device fd. This is the mainline V4L2 stateful-encoder control (V4L2_CID_CODEC_BASE+229, see linux/v4l2-controls.h) implemented by vicodec and other generic V4L2 M2M encoder drivers this class targets — NOT the NVIDIA-specific V4L2_CID_MPEG_VIDEOENC_FORCE_IDR_FRAME used by V4L2NVEncoder’s LIMEF_V4L2_NV path.</p>
+<p>Mutex-protected (ctrl_mutex_) since this may be called from a foreign thread concurrently with the driving thread’s push()/status() calls, which also touch fd_. </p>
 </dd></dl>
 
 </div>
@@ -1352,6 +1388,15 @@ implementation is <a class="reference internal" href="#_CPPv4N5Limef6encode13FFm
 </dl>
 </dd></dl>
 
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6encode13V4L2NVEncoder15requestKeyFrameEv">
+<span id="_CPPv3N5Limef6encode13V4L2NVEncoder15requestKeyFrameEv"></span><span id="_CPPv2N5Limef6encode13V4L2NVEncoder15requestKeyFrameEv"></span><span id="Limef::encode::V4L2NVEncoder::requestKeyFrame"></span><span class="target" id="classLimef_1_1encode_1_1V4L2NVEncoder_1a50b47dc4e72dbd552533c0424ca3b9ec"></span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">requestKeyFrame</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">override</span></span><a class="headerlink" href="#_CPPv4N5Limef6encode13V4L2NVEncoder15requestKeyFrameEv" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Request that the encoder emit a keyframe on its next output. </p>
+<p>LIMEF_V4L2_NV (Jetson NVENC): issues VIDIOC_S_CTRL of V4L2_CID_MPEG_VIDEOENC_FORCE_IDR_FRAME (V4L2_CID_MPEG_BASE+567, defined in NVIDIA’s v4l2_nv_extensions.h) - the NVENC-specific control for forcing a true IDR, distinct from mainline V4L2_CID_MPEG_VIDEO_FORCE_KEY_FRAME used by V4L2Encoder/vicodec. Not verified on hardware — implemented from the NVIDIA Jetson Linux Multimedia API header/docs only (no Jetson device available in this dev environment).</p>
+<p>Non-LIMEF_V4L2_NV build (vicodec fallback): uses the mainline V4L2_CID_MPEG_VIDEO_FORCE_KEY_FRAME control, same as V4L2Encoder.</p>
+<p>Mutex-protected (ctrl_mutex_) since this may be called from a foreign thread concurrently with the driving thread’s push()/status() calls, which also touch fd_. </p>
+</dd></dl>
+
 </div>
 </dd></dl>
 
@@ -1410,6 +1455,18 @@ implementation is <a class="reference internal" href="#_CPPv4N5Limef6encode13FFm
 <dt class="sig sig-object cpp" id="_CPPv4N5Limef6encode19V4L2NVEncoderParams13global_headerE">
 <span id="_CPPv3N5Limef6encode19V4L2NVEncoderParams13global_headerE"></span><span id="_CPPv2N5Limef6encode19V4L2NVEncoderParams13global_headerE"></span><span id="Limef::encode::V4L2NVEncoderParams::global_header__b"></span><span class="target" id="structLimef_1_1encode_1_1V4L2NVEncoderParams_1a4eb71f882869327e25f7d3456ece77d3"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">global_header</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="p"><span class="pre">{</span></span><span class="k"><span class="pre">true</span></span><span class="p"><span class="pre">}</span></span><a class="headerlink" href="#_CPPv4N5Limef6encode19V4L2NVEncoderParams13global_headerE" title="Link to this definition">¶</a><br /></dt>
 <dd><p>true: SPS/PPS in extradata (RTSP/SDP); false: prepend to each IDR in software </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6encode19V4L2NVEncoderParams12h264_profileE">
+<span id="_CPPv3N5Limef6encode19V4L2NVEncoderParams12h264_profileE"></span><span id="_CPPv2N5Limef6encode19V4L2NVEncoderParams12h264_profileE"></span><span id="Limef::encode::V4L2NVEncoderParams::h264_profile__i"></span><span class="target" id="structLimef_1_1encode_1_1V4L2NVEncoderParams_1ae9edb3ebdadadb7ab8e4411f17595b7b"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">h264_profile</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="p"><span class="pre">{</span></span><span class="n"><span class="pre">V4L2_MPEG_VIDEO_H264_PROFILE_HIGH</span></span><span class="p"><span class="pre">}</span></span><a class="headerlink" href="#_CPPv4N5Limef6encode19V4L2NVEncoderParams12h264_profileE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>H.264 profile (only applied when codec_fourcc == V4L2_PIX_FMT_H264). Supported values on Jetson NVENC: V4L2_MPEG_VIDEO_H264_PROFILE_BASELINE (0), V4L2_MPEG_VIDEO_H264_PROFILE_MAIN (2), V4L2_MPEG_VIDEO_H264_PROFILE_HIGH (4). </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N5Limef6encode19V4L2NVEncoderParams10h264_levelE">
+<span id="_CPPv3N5Limef6encode19V4L2NVEncoderParams10h264_levelE"></span><span id="_CPPv2N5Limef6encode19V4L2NVEncoderParams10h264_levelE"></span><span id="Limef::encode::V4L2NVEncoderParams::h264_level__i"></span><span class="target" id="structLimef_1_1encode_1_1V4L2NVEncoderParams_1a51dca0cb807d8b0a79b877224ef12135"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">h264_level</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="p"><span class="pre">{</span></span><span class="n"><span class="pre">V4L2_MPEG_VIDEO_H264_LEVEL_4_1</span></span><span class="p"><span class="pre">}</span></span><a class="headerlink" href="#_CPPv4N5Limef6encode19V4L2NVEncoderParams10h264_levelE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>H.264 level (only applied when codec_fourcc == V4L2_PIX_FMT_H264). Default V4L2_MPEG_VIDEO_H264_LEVEL_4_1 (value 12) covers up to 1080p&#64;30. WebRTC browsers require a valid non-zero level_idc; the Jetson driver otherwise defaults to level 0 which produces an invalid profile-level-id in the SDP. </p>
 </dd></dl>
 
 </div>
@@ -1510,6 +1567,7 @@ implementation is <a class="reference internal" href="#_CPPv4N5Limef6encode13FFm
 <li><a class="reference internal" href="#_CPPv4NK5Limef6encode7Encoder14getCodecParamsEv"><code class="docutils literal notranslate"><span class="pre">getCodecParams()</span></code></a></li>
 <li><a class="reference internal" href="#_CPPv4NK5Limef6encode7Encoder11getTimeBaseEv"><code class="docutils literal notranslate"><span class="pre">getTimeBase()</span></code></a></li>
 <li><a class="reference internal" href="#_CPPv4NK5Limef6encode7Encoder12getFrameRateEv"><code class="docutils literal notranslate"><span class="pre">getFrameRate()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6encode7Encoder15requestKeyFrameEv"><code class="docutils literal notranslate"><span class="pre">requestKeyFrame()</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#_CPPv4N5Limef6encode13FFmpegEncoderE"><code class="docutils literal notranslate"><span class="pre">Limef::encode::FFmpegEncoder</span></code></a><ul>
@@ -1528,6 +1586,7 @@ implementation is <a class="reference internal" href="#_CPPv4N5Limef6encode13FFm
 <li><a class="reference internal" href="#_CPPv4NK5Limef6encode13FFmpegEncoder14getCodecParamsEv"><code class="docutils literal notranslate"><span class="pre">getCodecParams()</span></code></a></li>
 <li><a class="reference internal" href="#_CPPv4NK5Limef6encode13FFmpegEncoder11getTimeBaseEv"><code class="docutils literal notranslate"><span class="pre">getTimeBase()</span></code></a></li>
 <li><a class="reference internal" href="#_CPPv4NK5Limef6encode13FFmpegEncoder12getFrameRateEv"><code class="docutils literal notranslate"><span class="pre">getFrameRate()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6encode13FFmpegEncoder15requestKeyFrameEv"><code class="docutils literal notranslate"><span class="pre">requestKeyFrame()</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#_CPPv4N5Limef6encode19FFmpegEncoderParamsE"><code class="docutils literal notranslate"><span class="pre">Limef::encode::FFmpegEncoderParams</span></code></a><ul>
@@ -1543,6 +1602,7 @@ implementation is <a class="reference internal" href="#_CPPv4N5Limef6encode13FFm
 <li><a class="reference internal" href="#_CPPv4N5Limef6encode19FFmpegEncoderParams3crfE"><code class="docutils literal notranslate"><span class="pre">crf</span></code></a></li>
 <li><a class="reference internal" href="#_CPPv4N5Limef6encode19FFmpegEncoderParams12thread_countE"><code class="docutils literal notranslate"><span class="pre">thread_count</span></code></a></li>
 <li><a class="reference internal" href="#_CPPv4N5Limef6encode19FFmpegEncoderParams13global_headerE"><code class="docutils literal notranslate"><span class="pre">global_header</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6encode19FFmpegEncoderParams7optionsE"><code class="docutils literal notranslate"><span class="pre">options</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#_CPPv4N5Limef6encode10V4L2BufferE"><code class="docutils literal notranslate"><span class="pre">Limef::encode::V4L2Buffer</span></code></a><ul>
@@ -1567,6 +1627,7 @@ implementation is <a class="reference internal" href="#_CPPv4N5Limef6encode13FFm
 <li><a class="reference internal" href="#_CPPv4NK5Limef6encode11V4L2Encoder14getCodecParamsEv"><code class="docutils literal notranslate"><span class="pre">getCodecParams()</span></code></a></li>
 <li><a class="reference internal" href="#_CPPv4NK5Limef6encode11V4L2Encoder11getTimeBaseEv"><code class="docutils literal notranslate"><span class="pre">getTimeBase()</span></code></a></li>
 <li><a class="reference internal" href="#_CPPv4NK5Limef6encode11V4L2Encoder12getFrameRateEv"><code class="docutils literal notranslate"><span class="pre">getFrameRate()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6encode11V4L2Encoder15requestKeyFrameEv"><code class="docutils literal notranslate"><span class="pre">requestKeyFrame()</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#_CPPv4N5Limef6encode17V4L2EncoderParamsE"><code class="docutils literal notranslate"><span class="pre">Limef::encode::V4L2EncoderParams</span></code></a><ul>
@@ -1594,6 +1655,7 @@ implementation is <a class="reference internal" href="#_CPPv4N5Limef6encode13FFm
 <li><a class="reference internal" href="#_CPPv4NK5Limef6encode13V4L2NVEncoder14getCodecParamsEv"><code class="docutils literal notranslate"><span class="pre">getCodecParams()</span></code></a></li>
 <li><a class="reference internal" href="#_CPPv4NK5Limef6encode13V4L2NVEncoder11getTimeBaseEv"><code class="docutils literal notranslate"><span class="pre">getTimeBase()</span></code></a></li>
 <li><a class="reference internal" href="#_CPPv4NK5Limef6encode13V4L2NVEncoder12getFrameRateEv"><code class="docutils literal notranslate"><span class="pre">getFrameRate()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6encode13V4L2NVEncoder15requestKeyFrameEv"><code class="docutils literal notranslate"><span class="pre">requestKeyFrame()</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#_CPPv4N5Limef6encode19V4L2NVEncoderParamsE"><code class="docutils literal notranslate"><span class="pre">Limef::encode::V4L2NVEncoderParams</span></code></a><ul>
@@ -1605,6 +1667,8 @@ implementation is <a class="reference internal" href="#_CPPv4N5Limef6encode13FFm
 <li><a class="reference internal" href="#_CPPv4N5Limef6encode19V4L2NVEncoderParams18num_output_buffersE"><code class="docutils literal notranslate"><span class="pre">num_output_buffers</span></code></a></li>
 <li><a class="reference internal" href="#_CPPv4N5Limef6encode19V4L2NVEncoderParams19num_capture_buffersE"><code class="docutils literal notranslate"><span class="pre">num_capture_buffers</span></code></a></li>
 <li><a class="reference internal" href="#_CPPv4N5Limef6encode19V4L2NVEncoderParams13global_headerE"><code class="docutils literal notranslate"><span class="pre">global_header</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6encode19V4L2NVEncoderParams12h264_profileE"><code class="docutils literal notranslate"><span class="pre">h264_profile</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6encode19V4L2NVEncoderParams10h264_levelE"><code class="docutils literal notranslate"><span class="pre">h264_level</span></code></a></li>
 </ul>
 </li>
 </ul>

@@ -1,14 +1,12 @@
 var searchData=
 [
-  ['object_5fiterator_0',['object_iterator',['../structdetail_1_1internal__iterator.html#acf787101c4778e750cfdb0f44066a6ef',1,'detail::internal_iterator']]],
-  ['onconnected_1',['onConnected',['../classLimef_1_1thread_1_1LiveStreamThread.html#a36b848625c5f9954b605750d3b81e254',1,'Limef::thread::LiveStreamThread']]],
-  ['onlost_2',['onLost',['../classLimef_1_1thread_1_1LiveStreamThread.html#abedefd5a9a0dd91ec072dfb149727cc1',1,'Limef::thread::LiveStreamThread']]],
-  ['operation_3',['operation',['../classLimef_1_1signal_1_1BasicSignal.html#a2d77a80a937b0093f0662144bf4e748d',1,'Limef::signal::BasicSignal']]],
-  ['options_4',['options',['../structLimef_1_1ff_1_1AudioTranscodeContext.html#ac70427b9cd1535176828134cc39110bc',1,'Limef::ff::AudioTranscodeContext::options'],['../classLimef_1_1ff_1_1MuxingContext.html#afac3444a28c4ab6dc82ad5e061a98954',1,'Limef::ff::MuxingContext::options']]],
-  ['output_5fff_5',['output_ff',['../classLimef_1_1thread_1_1Thread.html#ad555d83a481bc3609b6bef8a16eb4dbb',1,'Limef::thread::Thread']]],
-  ['output_5fff_5f_6',['output_ff_',['../classPythonInterfaceClient.html#ab578f235c1eec91901b56096e00fbc43',1,'PythonInterfaceClient::output_ff_'],['../classTensorPythonInterfaceClient.html#ac87abc00badc0ccd11dc3e43ccb8f7d8',1,'TensorPythonInterfaceClient::output_ff_']]],
-  ['output_5ffilter_7',['output_filter',['../classLimef_1_1ff_1_1ComposeFrameFilter.html#abb725c9a77ee9bf0de9f7950f73a43a1',1,'Limef::ff::ComposeFrameFilter']]],
-  ['output_5fformat_8',['output_format',['../structLimef_1_1ff_1_1CUDAScaleParams.html#a711e5d8a06c67aa2de201c7a1d4eb417',1,'Limef::ff::CUDAScaleParams']]],
-  ['output_5ffourcc_9',['output_fourcc',['../structLimef_1_1decode_1_1V4L2DecoderParams.html#ad4b5a48b4e30a7bbfe5bec0ef49882e6',1,'Limef::decode::V4L2DecoderParams::output_fourcc'],['../structLimef_1_1decode_1_1V4L2NVDecoderParams.html#ad2ac19c7c6696ef2753dea58a820d80f',1,'Limef::decode::V4L2NVDecoderParams::output_fourcc']]],
-  ['owned_10',['owned',['../classPyDecodedFrame.html#a18e43e45f4e2ced08b64e74029e5d721',1,'PyDecodedFrame::owned'],['../classPyTensorFrame.html#a86cae587d83f13db5c61df4874eafcbc',1,'PyTensorFrame::owned']]]
+  ['name_0',['name',['../classLimef_1_1ff_1_1FrameFilter.html#adb255db62a05c800af1d73cba2201812',1,'Limef::ff::FrameFilter::name'],['../classLimef_1_1FrameFifo.html#aef7fd79792d4eec7a571a7b892a7316d',1,'Limef::FrameFifo::name']]],
+  ['name_5f_1',['name_',['../classLimef_1_1thread_1_1ThreadBase.html#a7f2454b564276dc5fae1d13d01ad0f32',1,'Limef::thread::ThreadBase']]],
+  ['nbytes_2',['nbytes',['../structLimef_1_1frame_1_1Plane.html#a0c97f7a170e8267e30e48247bd34e443',1,'Limef::frame::Plane']]],
+  ['ndim_3',['ndim',['../structLimef_1_1frame_1_1Plane.html#a8986cbc29fcf2904dfa4e470bf501ed3',1,'Limef::frame::Plane']]],
+  ['next_4',['next',['../classLimef_1_1ff_1_1ComposeFrameFilter.html#a6ebbc8f4629b7811843c34c4cd83ff01',1,'Limef::ff::ComposeFrameFilter::next'],['../classLimef_1_1ff_1_1SimpleFrameFilter.html#adcb91c7719c180281e6e73a9b8ccc089',1,'Limef::ff::SimpleFrameFilter::next']]],
+  ['ntp_5ftimeout_5fsec_5',['ntp_timeout_sec',['../structLimef_1_1thread_1_1LiveStreamContext.html#a3451525e1b19f7e8cded1c92dcfc2c09',1,'Limef::thread::LiveStreamContext']]],
+  ['num_5fcapture_5fbuffers_6',['num_capture_buffers',['../structLimef_1_1decode_1_1V4L2DecoderParams.html#a6bcc33b2bcf855be9675857a55f1931f',1,'Limef::decode::V4L2DecoderParams::num_capture_buffers'],['../structLimef_1_1encode_1_1V4L2NVEncoderParams.html#acb0b0309de99d906a8afc7a8f6888c16',1,'Limef::encode::V4L2NVEncoderParams::num_capture_buffers'],['../structLimef_1_1encode_1_1V4L2EncoderParams.html#aaec89cdc6345b721406b46c0cf7f98b2',1,'Limef::encode::V4L2EncoderParams::num_capture_buffers'],['../structLimef_1_1decode_1_1V4L2NVDecoderParams.html#a3c5b5044994f5821264790c29cf24d94',1,'Limef::decode::V4L2NVDecoderParams::num_capture_buffers']]],
+  ['num_5foutput_5fbuffers_7',['num_output_buffers',['../structLimef_1_1decode_1_1V4L2DecoderParams.html#a1cd81b2c7b175fcae414b0a45b54e87a',1,'Limef::decode::V4L2DecoderParams::num_output_buffers'],['../structLimef_1_1decode_1_1V4L2NVDecoderParams.html#aa1e298779bc090d8d45f5dc3c2e2dbb2',1,'Limef::decode::V4L2NVDecoderParams::num_output_buffers'],['../structLimef_1_1encode_1_1V4L2EncoderParams.html#a5e1df40d278edba272e53e83cff325e4',1,'Limef::encode::V4L2EncoderParams::num_output_buffers'],['../structLimef_1_1encode_1_1V4L2NVEncoderParams.html#acbc4896ba5b0a6ee218d043647808e68',1,'Limef::encode::V4L2NVEncoderParams::num_output_buffers']]],
+  ['number_5fbuffer_8',['number_buffer',['../classdetail_1_1serializer.html#ace18a55b8304310fee309d31e54a3e27',1,'detail::serializer']]]
 ];

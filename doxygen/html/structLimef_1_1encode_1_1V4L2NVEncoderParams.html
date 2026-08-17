@@ -22,7 +22,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">My Project<span id="projectnumber">&#160;0.2.0</span>
+   <div id="projectname">My Project<span id="projectnumber">&#160;0.3.0</span>
    </div>
   </td>
  </tr>
@@ -112,6 +112,10 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:a4eb71f882869327e25f7d3456ece77d3" id="r_a4eb71f882869327e25f7d3456ece77d3"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLimef_1_1encode_1_1V4L2NVEncoderParams.html#a4eb71f882869327e25f7d3456ece77d3">global_header</a> {true}</td></tr>
 <tr class="memdesc:a4eb71f882869327e25f7d3456ece77d3"><td class="mdescLeft">&#160;</td><td class="mdescRight">true: SPS/PPS in extradata (RTSP/SDP); false: prepend to each IDR in software  <br /></td></tr>
 <tr class="separator:a4eb71f882869327e25f7d3456ece77d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae9edb3ebdadadb7ab8e4411f17595b7b" id="r_ae9edb3ebdadadb7ab8e4411f17595b7b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLimef_1_1encode_1_1V4L2NVEncoderParams.html#ae9edb3ebdadadb7ab8e4411f17595b7b">h264_profile</a> {V4L2_MPEG_VIDEO_H264_PROFILE_HIGH}</td></tr>
+<tr class="separator:ae9edb3ebdadadb7ab8e4411f17595b7b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a51dca0cb807d8b0a79b877224ef12135" id="r_a51dca0cb807d8b0a79b877224ef12135"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLimef_1_1encode_1_1V4L2NVEncoderParams.html#a51dca0cb807d8b0a79b877224ef12135">h264_level</a> {V4L2_MPEG_VIDEO_H264_LEVEL_4_1}</td></tr>
+<tr class="separator:a51dca0cb807d8b0a79b877224ef12135"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Encoding parameters for <a class="el" href="classLimef_1_1encode_1_1V4L2NVEncoder.html" title="V4L2 Memory-to-Memory encoder.">V4L2NVEncoder</a>. </p>
@@ -194,6 +198,36 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Keyframe interval. </p>
+
+</div>
+</div>
+<a id="a51dca0cb807d8b0a79b877224ef12135" name="a51dca0cb807d8b0a79b877224ef12135"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a51dca0cb807d8b0a79b877224ef12135">&#9670;&#160;</a></span>h264_level</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Limef::encode::V4L2NVEncoderParams::h264_level {V4L2_MPEG_VIDEO_H264_LEVEL_4_1}</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>H.264 level (only applied when codec_fourcc == V4L2_PIX_FMT_H264). Default V4L2_MPEG_VIDEO_H264_LEVEL_4_1 (value 12) covers up to 1080p@30. WebRTC browsers require a valid non-zero level_idc; the Jetson driver otherwise defaults to level 0 which produces an invalid profile-level-id in the SDP. </p>
+
+</div>
+</div>
+<a id="ae9edb3ebdadadb7ab8e4411f17595b7b" name="ae9edb3ebdadadb7ab8e4411f17595b7b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae9edb3ebdadadb7ab8e4411f17595b7b">&#9670;&#160;</a></span>h264_profile</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Limef::encode::V4L2NVEncoderParams::h264_profile {V4L2_MPEG_VIDEO_H264_PROFILE_HIGH}</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>H.264 profile (only applied when codec_fourcc == V4L2_PIX_FMT_H264). Supported values on Jetson NVENC: V4L2_MPEG_VIDEO_H264_PROFILE_BASELINE (0), V4L2_MPEG_VIDEO_H264_PROFILE_MAIN (2), V4L2_MPEG_VIDEO_H264_PROFILE_HIGH (4). </p>
 
 </div>
 </div>

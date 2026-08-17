@@ -22,7 +22,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">My Project<span id="projectnumber">&#160;0.2.0</span>
+   <div id="projectname">My Project<span id="projectnumber">&#160;0.3.0</span>
    </div>
   </td>
  </tr>
@@ -134,6 +134,8 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:a95dc3e400706e6ade197567b9f31b205" id="r_a95dc3e400706e6ade197567b9f31b205"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLimef_1_1encode_1_1FFmpegEncoderParams.html#a95dc3e400706e6ade197567b9f31b205">global_header</a> {true}</td></tr>
 <tr class="memdesc:a95dc3e400706e6ade197567b9f31b205"><td class="mdescLeft">&#160;</td><td class="mdescRight">Store SPS/PPS in extradata rather than inline in the stream.  <br /></td></tr>
 <tr class="separator:a95dc3e400706e6ade197567b9f31b205"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a355d53ca2b5827501e0f6c94d9ad02d7" id="r_a355d53ca2b5827501e0f6c94d9ad02d7"><td class="memItemLeft" align="right" valign="top">std::map&lt; std::string, std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLimef_1_1encode_1_1FFmpegEncoderParams.html#a355d53ca2b5827501e0f6c94d9ad02d7">options</a> {}</td></tr>
+<tr class="separator:a355d53ca2b5827501e0f6c94d9ad02d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Encoding parameters for <a class="el" href="classLimef_1_1encode_1_1FFmpegEncoder.html" title="FFmpeg-based encoder for video and audio streams.">FFmpegEncoder</a>. </p>
@@ -151,9 +153,9 @@ Public Attributes</h2></td></tr>
 <div class="line">params.<a class="code hl_variable" href="structLimef_1_1encode_1_1FFmpegEncoderParams.html#ae29af35d0dd32c5fed2acaf4f89ebd61">hw_accel</a> = <a class="code hl_enumvalue" href="namespaceLimef.html#ab3f21e06ce812c9f9b7f47da2f6a2188ab50339a10e1de285ac99d4c3990b8693">HWAccel::NONE</a>;  <span class="comment">// uses libvpx</span></div>
 <div class="ttc" id="anamespaceLimef_html_ab3f21e06ce812c9f9b7f47da2f6a2188ab50339a10e1de285ac99d4c3990b8693"><div class="ttname"><a href="namespaceLimef.html#ab3f21e06ce812c9f9b7f47da2f6a2188ab50339a10e1de285ac99d4c3990b8693">Limef::HWAccel::NONE</a></div><div class="ttdeci">@ NONE</div><div class="ttdoc">Software encoding/decoding (no hardware accelerator)</div></div>
 <div class="ttc" id="anamespaceLimef_html_ab3f21e06ce812c9f9b7f47da2f6a2188ab80a85e9723eafdfdfb1221ae4bb4bf3"><div class="ttname"><a href="namespaceLimef.html#ab3f21e06ce812c9f9b7f47da2f6a2188ab80a85e9723eafdfdfb1221ae4bb4bf3">Limef::HWAccel::VAAPI</a></div><div class="ttdeci">@ VAAPI</div><div class="ttdoc">Intel/AMD hardware via VAAPI.</div></div>
-<div class="ttc" id="astructLimef_1_1encode_1_1FFmpegEncoderParams_html"><div class="ttname"><a href="structLimef_1_1encode_1_1FFmpegEncoderParams.html">Limef::encode::FFmpegEncoderParams</a></div><div class="ttdoc">Encoding parameters for FFmpegEncoder.</div><div class="ttdef"><b>Definition</b> ffmpeg_encoder.h:70</div></div>
-<div class="ttc" id="astructLimef_1_1encode_1_1FFmpegEncoderParams_html_a387b003626b987808153eddd21655b22"><div class="ttname"><a href="structLimef_1_1encode_1_1FFmpegEncoderParams.html#a387b003626b987808153eddd21655b22">Limef::encode::FFmpegEncoderParams::codec_id</a></div><div class="ttdeci">AVCodecID codec_id</div><div class="ttdoc">Target codec.</div><div class="ttdef"><b>Definition</b> ffmpeg_encoder.h:71</div></div>
-<div class="ttc" id="astructLimef_1_1encode_1_1FFmpegEncoderParams_html_ae29af35d0dd32c5fed2acaf4f89ebd61"><div class="ttname"><a href="structLimef_1_1encode_1_1FFmpegEncoderParams.html#ae29af35d0dd32c5fed2acaf4f89ebd61">Limef::encode::FFmpegEncoderParams::hw_accel</a></div><div class="ttdeci">HWAccel hw_accel</div><div class="ttdoc">Hardware acceleration backend.</div><div class="ttdef"><b>Definition</b> ffmpeg_encoder.h:75</div></div>
+<div class="ttc" id="astructLimef_1_1encode_1_1FFmpegEncoderParams_html"><div class="ttname"><a href="structLimef_1_1encode_1_1FFmpegEncoderParams.html">Limef::encode::FFmpegEncoderParams</a></div><div class="ttdoc">Encoding parameters for FFmpegEncoder.</div><div class="ttdef"><b>Definition</b> ffmpeg_encoder.h:73</div></div>
+<div class="ttc" id="astructLimef_1_1encode_1_1FFmpegEncoderParams_html_a387b003626b987808153eddd21655b22"><div class="ttname"><a href="structLimef_1_1encode_1_1FFmpegEncoderParams.html#a387b003626b987808153eddd21655b22">Limef::encode::FFmpegEncoderParams::codec_id</a></div><div class="ttdeci">AVCodecID codec_id</div><div class="ttdoc">Target codec.</div><div class="ttdef"><b>Definition</b> ffmpeg_encoder.h:74</div></div>
+<div class="ttc" id="astructLimef_1_1encode_1_1FFmpegEncoderParams_html_ae29af35d0dd32c5fed2acaf4f89ebd61"><div class="ttname"><a href="structLimef_1_1encode_1_1FFmpegEncoderParams.html#ae29af35d0dd32c5fed2acaf4f89ebd61">Limef::encode::FFmpegEncoderParams::hw_accel</a></div><div class="ttdeci">HWAccel hw_accel</div><div class="ttdoc">Hardware acceleration backend.</div><div class="ttdef"><b>Definition</b> ffmpeg_encoder.h:78</div></div>
 </div><!-- fragment --> </div><h2 class="groupheader">Member Data Documentation</h2>
 <a id="adc86a75719bc0c19ac659be15780f15e" name="adc86a75719bc0c19ac659be15780f15e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#adc86a75719bc0c19ac659be15780f15e">&#9670;&#160;</a></span>bitrate</h2>
@@ -283,6 +285,21 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Max B-frames (-1 = codec default) </p>
+
+</div>
+</div>
+<a id="a355d53ca2b5827501e0f6c94d9ad02d7" name="a355d53ca2b5827501e0f6c94d9ad02d7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a355d53ca2b5827501e0f6c94d9ad02d7">&#9670;&#160;</a></span>options</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::map&lt;std::string, std::string&gt; Limef::encode::FFmpegEncoderParams::options {}</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Extra AVOptions passed verbatim to the encoder via av_dict_set(). Use for encoder-private options not covered by named fields above. Example (NVENC): {"delay", "0"}, {"rc", "cbr"} </p>
 
 </div>
 </div>

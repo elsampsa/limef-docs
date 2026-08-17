@@ -22,7 +22,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">My Project<span id="projectnumber">&#160;0.2.0</span>
+   <div id="projectname">My Project<span id="projectnumber">&#160;0.3.0</span>
    </div>
   </td>
  </tr>
@@ -281,11 +281,11 @@ class Limef::thread::Thread&lt; T &gt;</div><p>A multithreading base class. </p>
 <li>thread "backend" methods: these are used internally by the thread after it has been spawned.</li>
 <li>a single, unified fifo for handling incoming <code>Frame</code>s and commands, the <code><a class="el" href="classLimef_1_1FrameFifo.html" title="FrameFifo: a stack and a fifo.">FrameFifo</a></code>.</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md65"></a>
+<h2><a class="anchor" id="autotoc_md69"></a>
 thread intercom</h2>
 <p>The only communication channel of the thread to the "outside" world (i.e. to main thread) is the <code><a class="el" href="classLimef_1_1FrameFifo.html" title="FrameFifo: a stack and a fifo.">FrameFifo</a></code>.</p>
 <p><a class="el" href="classLimef_1_1thread_1_1Thread.html" title="A multithreading base class.">Thread</a> backend receives a continuous stream of <code>Frame</code>s into its <code><a class="el" href="classLimef_1_1FrameFifo.html" title="FrameFifo: a stack and a fifo.">FrameFifo</a></code> and based on those <code>Frame</code>s it performs actions. These can be, for example, the decoding of the <code>Frame</code> and sending it downstream, or if the <code>Frame</code> is a <code>SignalFrame</code>, perform some action, for example, to stop the thread: it is important to note that thread control is also achieved by streaming frames into the <code><a class="el" href="classLimef_1_1FrameFifo.html" title="FrameFifo: a stack and a fifo.">FrameFifo</a></code>.</p>
-<h2><a class="anchor" id="autotoc_md66"></a>
+<h2><a class="anchor" id="autotoc_md70"></a>
 templating</h2>
 <p>While a thread class reads and accepts all frames from it's <code><a class="el" href="classLimef_1_1FrameFifo.html" title="FrameFifo: a stack and a fifo.">FrameFifo</a></code>, it is templated by a special frame type.</p>
 <p>The special frame type is handled in another way than all the other frame types: if an incoming frame belongs to the special frame type, an internal frame of that type is pulled from the <a class="el" href="classLimef_1_1FrameFifo.html" title="FrameFifo: a stack and a fifo.">FrameFifo</a>, and a copy of the incoming frame is made into the internal frame. After this, that internal frame is placed into a fifo for further processing and sent downstream.</p>
@@ -295,10 +295,10 @@ templating</h2>
 <p>A <code>SignalFrame</code> on the other hand, arrives very seldomly, so such copying avoiding reallocation is not necessary.</p>
 <p>A note on the implementation: the said logic of handling special frame class differently, is implemented in the <code><a class="el" href="classLimef_1_1FrameFifo.html" title="FrameFifo: a stack and a fifo.">Limef::FrameFifo</a></code> class, and so the <code><a class="el" href="classLimef_1_1thread_1_1Thread.html" title="A multithreading base class.">Limef::thread::Thread</a></code> implementation looks pretty simple.</p>
 <p>The input framefilter of the thread is connected to the framefifo in the ctor.</p>
-<h2><a class="anchor" id="autotoc_md67"></a>
+<h2><a class="anchor" id="autotoc_md71"></a>
 periodic tasks</h2>
 <p>In addition to receiving frames, processing them and sending them downstream, a thread can have an internal, periodic task, defined in <code><a class="el" href="classLimef_1_1thread_1_1Thread.html#a463ae243a655cb32b1514a084aad29a9" title="Internal/backend method: a periodic task done by the thread (in addition to receiving frames)">Thread::task</a></code>. The processing of incoming frames and the periodic execution of the task is "interleaved" and guaranteed to happen always in time. For example implementation of a periodic task, see <code><a class="el" href="classLimef_1_1thread_1_1ExampleThread.html" title="An example thread.">ExampleThread</a></code> and <code><a class="el" href="classLimef_1_1thread_1_1ProducerThread.html" title="A prototype frame producing thread (aka source)">ProducerThread</a></code> source codes.</p>
-<h2><a class="anchor" id="autotoc_md68"></a>
+<h2><a class="anchor" id="autotoc_md72"></a>
 thread usage example</h2>
 <p>An example how you would use a thread subclass named <code><a class="el" href="classLimef_1_1thread_1_1ExampleThread.html" title="An example thread.">ExampleThread</a></code>: </p><div class="fragment"><div class="line"><a class="code hl_class" href="classLimef_1_1thread_1_1ExampleThread.html">ExampleThread</a> exampleThread(<span class="stringliteral">&quot;example&quot;</span>, <a class="code hl_struct" href="structLimef_1_1FrameFifoContext.html">FrameFifoContext</a>(<span class="keyword">false</span>, 5, 10));</div>
 <div class="line">exampleThread.start(); <span class="comment">// starts the thread &quot;backend&quot;</span></div>
@@ -308,7 +308,7 @@ thread usage example</h2>
 <div class="line">exampleThread.pingCall2(2);</div>
 <div class="line">std::this_thread::sleep_for(std::chrono::seconds(10));</div>
 <div class="line">exampleThread.stop(); <span class="comment">// sends a signalframe to the backend telling the thread to stop</span></div>
-<div class="ttc" id="aclassLimef_1_1thread_1_1ExampleThread_html"><div class="ttname"><a href="classLimef_1_1thread_1_1ExampleThread.html">Limef::thread::ExampleThread</a></div><div class="ttdoc">An example thread.</div><div class="ttdef"><b>Definition</b> examplethread.h:54</div></div>
+<div class="ttc" id="aclassLimef_1_1thread_1_1ExampleThread_html"><div class="ttname"><a href="classLimef_1_1thread_1_1ExampleThread.html">Limef::thread::ExampleThread</a></div><div class="ttdoc">An example thread.</div><div class="ttdef"><b>Definition</b> examplethread.h:52</div></div>
 <div class="ttc" id="astructLimef_1_1FrameFifoContext_html"><div class="ttname"><a href="structLimef_1_1FrameFifoContext.html">Limef::FrameFifoContext</a></div><div class="ttdoc">Parameters and behaviour for a FrameFifo.</div><div class="ttdef"><b>Definition</b> framefifocontext.h:45</div></div>
 </div><!-- fragment --> </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="ad0f506f536978e316e0013810609cb31" name="ad0f506f536978e316e0013810609cb31"></a>
@@ -728,7 +728,7 @@ template&lt;typename T &gt; </div>
 
 <p>Internal/backend method: handle thread specific signal classes (if there are any) </p>
 
-<p>Reimplemented in <a class="el" href="classLimef_1_1webrtc_1_1WebRTCServerThread.html#a27a151b9cacf1dc4e132f2aaf66f7e12">Limef::webrtc::WebRTCServerThread</a>, <a class="el" href="classLimef_1_1rtsp_1_1RTSPServerThread.html#afcbae0ce10635a486927fd31c116ba83">Limef::rtsp::RTSPServerThread</a>, <a class="el" href="classLimef_1_1thread_1_1ExampleThread.html#a7d737bf7d017df23143efc3f2a93cc3c">Limef::thread::ExampleThread</a>, <a class="el" href="classLimef_1_1thread_1_1MediaFileThread0.html#a51949db72856948d7e51f9ca0303b60e">Limef::thread::MediaFileThread0</a>, and <a class="el" href="classLimef_1_1thread_1_1WebSocketServerThread.html#aed19097f6d213b59687becfabf19cca0">Limef::thread::WebSocketServerThread</a>.</p>
+<p>Reimplemented in <a class="el" href="classLimef_1_1webrtc_1_1WebRTCServerThread.html#a27a151b9cacf1dc4e132f2aaf66f7e12">Limef::webrtc::WebRTCServerThread</a>, <a class="el" href="classLimef_1_1rtsp_1_1RTSPServerThread.html#afcbae0ce10635a486927fd31c116ba83">Limef::rtsp::RTSPServerThread</a>, <a class="el" href="classLimef_1_1thread_1_1ExampleThread.html#a7d737bf7d017df23143efc3f2a93cc3c">Limef::thread::ExampleThread</a>, <a class="el" href="classLimef_1_1thread_1_1MediaFileThread0.html#a51949db72856948d7e51f9ca0303b60e">Limef::thread::MediaFileThread0</a>, <a class="el" href="classLimef_1_1thread_1_1USBCameraThread.html#acc9b85c9dbf812a92656c7298087737e">Limef::thread::USBCameraThread</a>, and <a class="el" href="classLimef_1_1thread_1_1WebSocketServerThread.html#aed19097f6d213b59687becfabf19cca0">Limef::thread::WebSocketServerThread</a>.</p>
 
 </div>
 </div>

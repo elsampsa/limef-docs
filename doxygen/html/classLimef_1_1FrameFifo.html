@@ -22,7 +22,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">My Project<span id="projectnumber">&#160;0.2.0</span>
+   <div id="projectname">My Project<span id="projectnumber">&#160;0.3.0</span>
    </div>
   </td>
  </tr>
@@ -156,6 +156,12 @@ Protected Attributes</h2></td></tr>
 <tr class="separator:a0223eedd1aad4f264acb72664cee35d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abacc8483459cbe78784bd804d2c44583" id="r_abacc8483459cbe78784bd804d2c44583"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1FrameFifo.html#abacc8483459cbe78784bd804d2c44583">closed</a></td></tr>
 <tr class="separator:abacc8483459cbe78784bd804d2c44583"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afde9734fb838fa2cc2207e1e35d24681" id="r_afde9734fb838fa2cc2207e1e35d24681"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1FrameFifo.html#afde9734fb838fa2cc2207e1e35d24681">starving_</a> {false}</td></tr>
+<tr class="separator:afde9734fb838fa2cc2207e1e35d24681"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aba59da528128002c76a138d87bf45624" id="r_aba59da528128002c76a138d87bf45624"><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1FrameFifo.html#aba59da528128002c76a138d87bf45624">starve_count_</a> {0}</td></tr>
+<tr class="separator:aba59da528128002c76a138d87bf45624"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9c8746155a64e855c46f0ebc4b5c1e38" id="r_a9c8746155a64e855c46f0ebc4b5c1e38"><td class="memItemLeft" align="right" valign="top">std::chrono::steady_clock::time_point&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1FrameFifo.html#a9c8746155a64e855c46f0ebc4b5c1e38">starve_start_</a></td></tr>
+<tr class="separator:a9c8746155a64e855c46f0ebc4b5c1e38"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><div class="compoundTemplParams">template&lt;typename T&gt;<br />
@@ -621,6 +627,78 @@ template&lt;typename T &gt; </div>
       <table class="memname">
         <tr>
           <td class="memname">std::condition_variable <a class="el" href="classLimef_1_1FrameFifo.html">Limef::FrameFifo</a>&lt; T &gt;::stack_ready_condition</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aba59da528128002c76a138d87bf45624" name="aba59da528128002c76a138d87bf45624"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aba59da528128002c76a138d87bf45624">&#9670;&#160;</a></span>starve_count_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint64_t <a class="el" href="classLimef_1_1FrameFifo.html">Limef::FrameFifo</a>&lt; T &gt;::starve_count_ {0}</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a9c8746155a64e855c46f0ebc4b5c1e38" name="a9c8746155a64e855c46f0ebc4b5c1e38"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9c8746155a64e855c46f0ebc4b5c1e38">&#9670;&#160;</a></span>starve_start_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::chrono::steady_clock::time_point <a class="el" href="classLimef_1_1FrameFifo.html">Limef::FrameFifo</a>&lt; T &gt;::starve_start_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="afde9734fb838fa2cc2207e1e35d24681" name="afde9734fb838fa2cc2207e1e35d24681"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afde9734fb838fa2cc2207e1e35d24681">&#9670;&#160;</a></span>starving_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="classLimef_1_1FrameFifo.html">Limef::FrameFifo</a>&lt; T &gt;::starving_ {false}</td>
         </tr>
       </table>
   </td>

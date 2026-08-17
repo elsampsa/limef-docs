@@ -22,7 +22,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">My Project<span id="projectnumber">&#160;0.2.0</span>
+   <div id="projectname">My Project<span id="projectnumber">&#160;0.3.0</span>
    </div>
   </td>
  </tr>
@@ -114,8 +114,8 @@ Collaboration diagram for Limef::ff::RTPMuxerFrameFilter:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ac47cf11248595330352a471409138a4b" id="r_ac47cf11248595330352a471409138a4b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1ff_1_1RTPMuxerFrameFilter.html#ac47cf11248595330352a471409138a4b">RTPMuxerFrameFilter</a> (std::string <a class="el" href="classLimef_1_1ff_1_1FrameFilter.html#adb255db62a05c800af1d73cba2201812">name</a>=&quot;RTPMuxerFrameFilter&quot;)</td></tr>
-<tr class="separator:ac47cf11248595330352a471409138a4b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af824f7530930699a80f7bd6510638167" id="r_af824f7530930699a80f7bd6510638167"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1ff_1_1RTPMuxerFrameFilter.html#af824f7530930699a80f7bd6510638167">RTPMuxerFrameFilter</a> (std::string <a class="el" href="classLimef_1_1ff_1_1FrameFilter.html#adb255db62a05c800af1d73cba2201812">name</a>=&quot;RTPMuxerFrameFilter&quot;, int packet_size=1400)</td></tr>
+<tr class="separator:af824f7530930699a80f7bd6510638167"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2f762e0156c6f221f40fafc7340510a2" id="r_a2f762e0156c6f221f40fafc7340510a2"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1ff_1_1RTPMuxerFrameFilter.html#a2f762e0156c6f221f40fafc7340510a2">~RTPMuxerFrameFilter</a> () override</td></tr>
 <tr class="separator:a2f762e0156c6f221f40fafc7340510a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9c95ab5b03d5e9d669c933f022b323ed" id="r_a9c95ab5b03d5e9d669c933f022b323ed"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1ff_1_1RTPMuxerFrameFilter.html#a9c95ab5b03d5e9d669c933f022b323ed">go</a> (const <a class="el" href="classLimef_1_1frame_1_1Frame.html">Limef::frame::Frame</a> *frame) override</td></tr>
@@ -217,8 +217,8 @@ Codec Compatibility</h2>
 </table>
 <p>H.264 + AAC is recommended for maximum interoperability. VP8 + Opus is the best royalty-free option. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="ac47cf11248595330352a471409138a4b" name="ac47cf11248595330352a471409138a4b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac47cf11248595330352a471409138a4b">&#9670;&#160;</a></span>RTPMuxerFrameFilter()</h2>
+<a id="af824f7530930699a80f7bd6510638167" name="af824f7530930699a80f7bd6510638167"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af824f7530930699a80f7bd6510638167">&#9670;&#160;</a></span>RTPMuxerFrameFilter()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -230,8 +230,18 @@ Codec Compatibility</h2>
           <td class="memname">Limef::ff::RTPMuxerFrameFilter::RTPMuxerFrameFilter </td>
           <td>(</td>
           <td class="paramtype">std::string&#160;</td>
-          <td class="paramname"><em>name</em> = <code>&quot;RTPMuxerFrameFilter&quot;</code></td><td>)</td>
+          <td class="paramname"><em>name</em> = <code>&quot;RTPMuxerFrameFilter&quot;</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>packet_size</em> = <code>1400</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
   </td>
@@ -240,6 +250,13 @@ Codec Compatibility</h2>
   </tr>
 </table>
 </div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">name</td><td>label for logging </td></tr>
+    <tr><td class="paramname">packet_size</td><td>max size in bytes of each muxed RTP packet (default 1400, i.e. a plain-Ethernet path MTU of ~1500 minus IP/UDP headers). Lower this when the packets must additionally survive a tunnel/VPN hop (e.g. Tailscale, MTU 1280) between this muxer and the client, since nothing downstream fragments an oversized RTP/SRTP packet - see <a class="el" href="classLimef_1_1ff_1_1WebRTCMuxerFrameFilter.html" title="Composite filter that canonizes a stream for WebRTC delivery.">WebRTCMuxerFrameFilter</a>. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

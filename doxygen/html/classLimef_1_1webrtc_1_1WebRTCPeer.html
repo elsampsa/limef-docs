@@ -22,7 +22,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">My Project<span id="projectnumber">&#160;0.2.0</span>
+   <div id="projectname">My Project<span id="projectnumber">&#160;0.3.0</span>
    </div>
   </td>
  </tr>
@@ -91,6 +91,10 @@ $(function() {
 Public Types</h2></td></tr>
 <tr class="memitem:ac77afda721797d172126bdc9475f7ddd" id="r_ac77afda721797d172126bdc9475f7ddd"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1webrtc_1_1WebRTCPeer.html#ac77afda721797d172126bdc9475f7ddd">StateCallback</a> = std::function&lt; void(const std::string &amp;peer_id, <a class="el" href="namespaceLimef_1_1webrtc.html#a761b65b2167605acb83c8da9577a1424">WebRTCPeerState</a>)&gt;</td></tr>
 <tr class="separator:ac77afda721797d172126bdc9475f7ddd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a51adea2a1b44a8779bbca01609ae7a89" id="r_a51adea2a1b44a8779bbca01609ae7a89"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1webrtc_1_1WebRTCPeer.html#a51adea2a1b44a8779bbca01609ae7a89">KeyframeCallback</a> = std::function&lt; void(const std::string &amp;peer_id)&gt;</td></tr>
+<tr class="separator:a51adea2a1b44a8779bbca01609ae7a89"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8cfee48d1ae8c06b84a71fb4284e44e8" id="r_a8cfee48d1ae8c06b84a71fb4284e44e8"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1webrtc_1_1WebRTCPeer.html#a8cfee48d1ae8c06b84a71fb4284e44e8">GatheringCallback</a> = std::function&lt; void(const std::string &amp;peer_id)&gt;</td></tr>
+<tr class="separator:a8cfee48d1ae8c06b84a71fb4284e44e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -102,9 +106,12 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:aa888a32fc5da251af89c1ce79c25839a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4af674d1d08e59b6d9a5e6f3a0c1f7d9" id="r_a4af674d1d08e59b6d9a5e6f3a0c1f7d9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classLimef_1_1webrtc_1_1WebRTCPeer.html">WebRTCPeer</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1webrtc_1_1WebRTCPeer.html#a4af674d1d08e59b6d9a5e6f3a0c1f7d9">operator=</a> (const <a class="el" href="classLimef_1_1webrtc_1_1WebRTCPeer.html">WebRTCPeer</a> &amp;)=delete</td></tr>
 <tr class="separator:a4af674d1d08e59b6d9a5e6f3a0c1f7d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a91abd9c55badd0c437e17fd984ce364e" id="r_a91abd9c55badd0c437e17fd984ce364e"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1webrtc_1_1WebRTCPeer.html#a91abd9c55badd0c437e17fd984ce364e">createOffer</a> (int timeout_ms=2000)</td></tr>
-<tr class="memdesc:a91abd9c55badd0c437e17fd984ce364e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate the SDP offer and wait for ICE gathering to finish.  <br /></td></tr>
-<tr class="separator:a91abd9c55badd0c437e17fd984ce364e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3b0c2c42a24f024bf3be865e86d6ea50" id="r_a3b0c2c42a24f024bf3be865e86d6ea50"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1webrtc_1_1WebRTCPeer.html#a3b0c2c42a24f024bf3be865e86d6ea50">beginOffer</a> ()</td></tr>
+<tr class="memdesc:a3b0c2c42a24f024bf3be865e86d6ea50"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate the SDP offer and start ICE gathering.  <br /></td></tr>
+<tr class="separator:a3b0c2c42a24f024bf3be865e86d6ea50"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab9c063f2362604016b61445cf37fb228" id="r_ab9c063f2362604016b61445cf37fb228"><td class="memItemLeft" align="right" valign="top">std::optional&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1webrtc_1_1WebRTCPeer.html#ab9c063f2362604016b61445cf37fb228">getLocalSdp</a> () const</td></tr>
+<tr class="memdesc:ab9c063f2362604016b61445cf37fb228"><td class="mdescLeft">&#160;</td><td class="mdescRight">SDP of the current local offer, once gathering has completed.  <br /></td></tr>
+<tr class="separator:ab9c063f2362604016b61445cf37fb228"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9d35e5e7bf69980074def4ece9a6a548" id="r_a9d35e5e7bf69980074def4ece9a6a548"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1webrtc_1_1WebRTCPeer.html#a9d35e5e7bf69980074def4ece9a6a548">setAnswer</a> (const std::string &amp;sdp)</td></tr>
 <tr class="memdesc:a9d35e5e7bf69980074def4ece9a6a548"><td class="mdescLeft">&#160;</td><td class="mdescRight">Feed the browser's SDP answer to the PeerConnection. ICE connectivity checks and DTLS begin immediately.  <br /></td></tr>
 <tr class="separator:a9d35e5e7bf69980074def4ece9a6a548"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -128,19 +135,53 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a2247d29be618d5238b558de0058c34f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aeeef44ba46c9099cb5ec18fdd7a08a62" id="r_aeeef44ba46c9099cb5ec18fdd7a08a62"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1webrtc_1_1WebRTCPeer.html#aeeef44ba46c9099cb5ec18fdd7a08a62">setStateCallback</a> (<a class="el" href="classLimef_1_1webrtc_1_1WebRTCPeer.html#ac77afda721797d172126bdc9475f7ddd">StateCallback</a> cb)</td></tr>
 <tr class="separator:aeeef44ba46c9099cb5ec18fdd7a08a62"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a57e14592e76dae30d75343de98baedac" id="r_a57e14592e76dae30d75343de98baedac"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1webrtc_1_1WebRTCPeer.html#a57e14592e76dae30d75343de98baedac">setKeyframeCallback</a> (<a class="el" href="classLimef_1_1webrtc_1_1WebRTCPeer.html#a51adea2a1b44a8779bbca01609ae7a89">KeyframeCallback</a> cb)</td></tr>
+<tr class="memdesc:a57e14592e76dae30d75343de98baedac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Register a callback for keyframe requests (PLI/FIR) from this peer.  <br /></td></tr>
+<tr class="separator:a57e14592e76dae30d75343de98baedac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a02345a80945fd9bdee63e865ca89f0ff" id="r_a02345a80945fd9bdee63e865ca89f0ff"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1webrtc_1_1WebRTCPeer.html#a02345a80945fd9bdee63e865ca89f0ff">setGatheringCallback</a> (<a class="el" href="classLimef_1_1webrtc_1_1WebRTCPeer.html#a8cfee48d1ae8c06b84a71fb4284e44e8">GatheringCallback</a> cb)</td></tr>
+<tr class="memdesc:a02345a80945fd9bdee63e865ca89f0ff"><td class="mdescLeft">&#160;</td><td class="mdescRight">Register a callback for ICE gathering completion.  <br /></td></tr>
+<tr class="separator:a02345a80945fd9bdee63e865ca89f0ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>One WebRTC client connection — analogous to RTSPSession. </p>
 <p>Owns a libdatachannel PeerConnection plus one shared_ptr&lt;Track&gt; per media track. The server-first offer flow:</p>
 <ol type="1">
 <li>Construct with parsed track descriptions.</li>
-<li>Call <a class="el" href="classLimef_1_1webrtc_1_1WebRTCPeer.html#a91abd9c55badd0c437e17fd984ce364e" title="Generate the SDP offer and wait for ICE gathering to finish.">createOffer()</a> — blocks until ICE gathering completes (LAN: &lt;100 ms).</li>
-<li>Send the returned SDP to the browser; record the peer_id.</li>
+<li>Register <a class="el" href="classLimef_1_1webrtc_1_1WebRTCPeer.html#a02345a80945fd9bdee63e865ca89f0ff" title="Register a callback for ICE gathering completion.">setGatheringCallback()</a>, then call <a class="el" href="classLimef_1_1webrtc_1_1WebRTCPeer.html#a3b0c2c42a24f024bf3be865e86d6ea50" title="Generate the SDP offer and start ICE gathering.">beginOffer()</a> — returns immediately; ICE gathering runs in the background (LAN: &lt;100 ms, but not bounded — see <a class="el" href="classLimef_1_1webrtc_1_1WebRTCServerThread.html" title="WebRTC server thread — streams live video/audio to browser clients.">WebRTCServerThread</a>'s own deadline handling).</li>
+<li>Once the gathering callback fires, call <a class="el" href="classLimef_1_1webrtc_1_1WebRTCPeer.html#ab9c063f2362604016b61445cf37fb228" title="SDP of the current local offer, once gathering has completed.">getLocalSdp()</a> and send it to the browser; record the peer_id.</li>
 <li>When the browser POSTs its answer, call <a class="el" href="classLimef_1_1webrtc_1_1WebRTCPeer.html#a9d35e5e7bf69980074def4ece9a6a548" title="Feed the browser&#39;s SDP answer to the PeerConnection. ICE connectivity checks and DTLS begin immediate...">setAnswer()</a>.</li>
 <li>libdatachannel handles ICE + DTLS internally; state → Connected.</li>
 <li>Call <a class="el" href="classLimef_1_1webrtc_1_1WebRTCPeer.html#a618b590eadba2ecb72fa62bb99d6741a" title="Send one raw RTP packet to the browser. Silently dropped if the track is not open yet.">sendRTP()</a> on every incoming RTPFrame. </li>
 </ol>
 </div><h2 class="groupheader">Member Typedef Documentation</h2>
+<a id="a8cfee48d1ae8c06b84a71fb4284e44e8" name="a8cfee48d1ae8c06b84a71fb4284e44e8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8cfee48d1ae8c06b84a71fb4284e44e8">&#9670;&#160;</a></span>GatheringCallback</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="classLimef_1_1webrtc_1_1WebRTCPeer.html#a8cfee48d1ae8c06b84a71fb4284e44e8">Limef::webrtc::WebRTCPeer::GatheringCallback</a> =  std::function&lt;void(const std::string&amp; peer_id)&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a51adea2a1b44a8779bbca01609ae7a89" name="a51adea2a1b44a8779bbca01609ae7a89"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a51adea2a1b44a8779bbca01609ae7a89">&#9670;&#160;</a></span>KeyframeCallback</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="classLimef_1_1webrtc_1_1WebRTCPeer.html#a51adea2a1b44a8779bbca01609ae7a89">Limef::webrtc::WebRTCPeer::KeyframeCallback</a> =  std::function&lt;void(const std::string&amp; peer_id)&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="ac77afda721797d172126bdc9475f7ddd" name="ac77afda721797d172126bdc9475f7ddd"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ac77afda721797d172126bdc9475f7ddd">&#9670;&#160;</a></span>StateCallback</h2>
 
@@ -279,6 +320,26 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="a3b0c2c42a24f024bf3be865e86d6ea50" name="a3b0c2c42a24f024bf3be865e86d6ea50"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3b0c2c42a24f024bf3be865e86d6ea50">&#9670;&#160;</a></span>beginOffer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Limef::webrtc::WebRTCPeer::beginOffer </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Generate the SDP offer and start ICE gathering. </p>
+<p>Returns immediately — does NOT block. Register <a class="el" href="classLimef_1_1webrtc_1_1WebRTCPeer.html#a02345a80945fd9bdee63e865ca89f0ff" title="Register a callback for ICE gathering completion.">setGatheringCallback()</a> before calling this. The callback fires (from a libdatachannel thread, same contract as <a class="el" href="classLimef_1_1webrtc_1_1WebRTCPeer.html#aeeef44ba46c9099cb5ec18fdd7a08a62">setStateCallback()</a>) once gathering completes; the caller is responsible for its own timeout, since libdatachannel gives no guarantee gathering ever reaches Complete (e.g. an unreachable STUN server). </p>
+
+</div>
+</div>
 <a id="a2247d29be618d5238b558de0058c34f9" name="a2247d29be618d5238b558de0058c34f9"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a2247d29be618d5238b558de0058c34f9">&#9670;&#160;</a></span>clearSeqStartWait()</h2>
 
@@ -304,28 +365,6 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a91abd9c55badd0c437e17fd984ce364e" name="a91abd9c55badd0c437e17fd984ce364e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a91abd9c55badd0c437e17fd984ce364e">&#9670;&#160;</a></span>createOffer()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::string Limef::webrtc::WebRTCPeer::createOffer </td>
-          <td>(</td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>timeout_ms</em> = <code>2000</code></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Generate the SDP offer and wait for ICE gathering to finish. </p>
-<p>Blocks the caller for at most timeout_ms milliseconds. On LAN/tailnet ICE gathering typically completes in &lt;100 ms. Returns empty string on timeout or error.</p>
-<p>// TODO(internet): if STUN is configured, allow a longer timeout (e.g. 5 s) so candidates from the STUN server have time to arrive. </p>
-
-</div>
-</div>
 <a id="aa4153800f5fafeae53dff4271c800da6" name="aa4153800f5fafeae53dff4271c800da6"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aa4153800f5fafeae53dff4271c800da6">&#9670;&#160;</a></span>getId()</h2>
 
@@ -348,6 +387,26 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab9c063f2362604016b61445cf37fb228" name="ab9c063f2362604016b61445cf37fb228"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab9c063f2362604016b61445cf37fb228">&#9670;&#160;</a></span>getLocalSdp()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::optional&lt; std::string &gt; Limef::webrtc::WebRTCPeer::getLocalSdp </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>SDP of the current local offer, once gathering has completed. </p>
+<dl class="section return"><dt>Returns</dt><dd>nullopt if gathering hasn't completed (or failed). </dd></dl>
 
 </div>
 </div>
@@ -511,6 +570,64 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Feed the browser's SDP answer to the PeerConnection. ICE connectivity checks and DTLS begin immediately. </p>
+
+</div>
+</div>
+<a id="a02345a80945fd9bdee63e865ca89f0ff" name="a02345a80945fd9bdee63e865ca89f0ff"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a02345a80945fd9bdee63e865ca89f0ff">&#9670;&#160;</a></span>setGatheringCallback()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Limef::webrtc::WebRTCPeer::setGatheringCallback </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classLimef_1_1webrtc_1_1WebRTCPeer.html#a8cfee48d1ae8c06b84a71fb4284e44e8">GatheringCallback</a>&#160;</td>
+          <td class="paramname"><em>cb</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Register a callback for ICE gathering completion. </p>
+<p>Called from libdatachannel threads once gathering reaches Complete — same threading contract as <a class="el" href="classLimef_1_1webrtc_1_1WebRTCPeer.html#aeeef44ba46c9099cb5ec18fdd7a08a62">setStateCallback()</a>. Must be set before <a class="el" href="classLimef_1_1webrtc_1_1WebRTCPeer.html#a3b0c2c42a24f024bf3be865e86d6ea50" title="Generate the SDP offer and start ICE gathering.">beginOffer()</a>. Fires at most once. </p>
+
+</div>
+</div>
+<a id="a57e14592e76dae30d75343de98baedac" name="a57e14592e76dae30d75343de98baedac"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a57e14592e76dae30d75343de98baedac">&#9670;&#160;</a></span>setKeyframeCallback()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Limef::webrtc::WebRTCPeer::setKeyframeCallback </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classLimef_1_1webrtc_1_1WebRTCPeer.html#a51adea2a1b44a8779bbca01609ae7a89">KeyframeCallback</a>&#160;</td>
+          <td class="paramname"><em>cb</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Register a callback for keyframe requests (PLI/FIR) from this peer. </p>
+<p>Called from libdatachannel threads whenever the browser's receiver sends a Picture Loss Indication for the video track — same threading contract as <a class="el" href="classLimef_1_1webrtc_1_1WebRTCPeer.html#aeeef44ba46c9099cb5ec18fdd7a08a62">setStateCallback()</a>: only safe to touch atomics / thread-safe queues from inside the callback. </p>
 
 </div>
 </div>

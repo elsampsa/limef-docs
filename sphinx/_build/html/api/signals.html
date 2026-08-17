@@ -285,61 +285,12 @@ The base class is <a class="reference internal" href="#_CPPv4N5Limef6signal6Sign
 <span id="_CPPv3N5Limef6signalE"></span><span id="_CPPv2N5Limef6signalE"></span><span id="Limef::signal"></span><span class="target" id="namespaceLimef_1_1signal"></span><span class="k"><span class="pre">namespace</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">signal</span></span></span><a class="headerlink" href="#_CPPv4N5Limef6signalE" title="Link to this definition">¶</a><br /></dt>
 <dd><p>Signalling threads and filterchains. </p>
 <div class="breathe-sectiondef docutils container">
-<p class="breathe-sectiondef-title rubric" id="breathe-section-title-enums">Enums</p>
-<dl class="cpp enum-class">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-typedefs">Typedefs</p>
+<dl class="cpp type">
 <dt class="sig sig-object cpp" id="_CPPv4N5Limef6signal11SignalClassE">
-<span id="_CPPv3N5Limef6signal11SignalClassE"></span><span id="_CPPv2N5Limef6signal11SignalClassE"></span><span class="target" id="namespaceLimef_1_1signal_1aaf87ae235935d3cf395850dc5deea980"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">SignalClass</span></span></span><a class="headerlink" href="#_CPPv4N5Limef6signal11SignalClassE" title="Link to this definition">¶</a><br /></dt>
-<dd><p>Identify the signal subclass</p>
-<p>When creating new signal classes to their associated threads, you need to register the new signal class always here </p>
-<p><em>Values:</em></p>
-<dl class="cpp enumerator">
-<dt class="sig sig-object cpp" id="_CPPv4N5Limef6signal11SignalClass10NullSignalE">
-<span id="_CPPv3N5Limef6signal11SignalClass10NullSignalE"></span><span id="_CPPv2N5Limef6signal11SignalClass10NullSignalE"></span><span class="target" id="namespaceLimef_1_1signal_1aaf87ae235935d3cf395850dc5deea980a20d944e028fb6d36923c480c380cf478"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">NullSignal</span></span></span><a class="headerlink" href="#_CPPv4N5Limef6signal11SignalClass10NullSignalE" title="Link to this definition">¶</a><br /></dt>
-<dd><p>identifies class NullSignal</p>
-</dd></dl>
-
-<dl class="cpp enumerator">
-<dt class="sig sig-object cpp" id="_CPPv4N5Limef6signal11SignalClass11BasicSignalE">
-<span id="_CPPv3N5Limef6signal11SignalClass11BasicSignalE"></span><span id="_CPPv2N5Limef6signal11SignalClass11BasicSignalE"></span><span class="target" id="namespaceLimef_1_1signal_1aaf87ae235935d3cf395850dc5deea980ac507456ca57339ea02f3b6e57e450b73"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">BasicSignal</span></span></span><a class="headerlink" href="#_CPPv4N5Limef6signal11SignalClass11BasicSignalE" title="Link to this definition">¶</a><br /></dt>
-<dd><p>identifies class BasicSignal</p>
-</dd></dl>
-
-<dl class="cpp enumerator">
-<dt class="sig sig-object cpp" id="_CPPv4N5Limef6signal11SignalClass13ExampleSignalE">
-<span id="_CPPv3N5Limef6signal11SignalClass13ExampleSignalE"></span><span id="_CPPv2N5Limef6signal11SignalClass13ExampleSignalE"></span><span class="target" id="namespaceLimef_1_1signal_1aaf87ae235935d3cf395850dc5deea980a1d64661e1f11c60672b76849312fa36e"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ExampleSignal</span></span></span><a class="headerlink" href="#_CPPv4N5Limef6signal11SignalClass13ExampleSignalE" title="Link to this definition">¶</a><br /></dt>
-<dd><p>identifies class ExampleSignal </p>
-</dd></dl>
-
-<dl class="cpp enumerator">
-<dt class="sig sig-object cpp" id="_CPPv4N5Limef6signal11SignalClass15MediaFileSignalE">
-<span id="_CPPv3N5Limef6signal11SignalClass15MediaFileSignalE"></span><span id="_CPPv2N5Limef6signal11SignalClass15MediaFileSignalE"></span><span class="target" id="namespaceLimef_1_1signal_1aaf87ae235935d3cf395850dc5deea980a3bc9b94834a296af8db15336e1f544f6"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">MediaFileSignal</span></span></span><a class="headerlink" href="#_CPPv4N5Limef6signal11SignalClass15MediaFileSignalE" title="Link to this definition">¶</a><br /></dt>
-<dd><p>identifies class MedaFileSignal: signals for Limef::thread::MediaFileThread0</p>
-</dd></dl>
-
-<dl class="cpp enumerator">
-<dt class="sig sig-object cpp" id="_CPPv4N5Limef6signal11SignalClass21WebSocketServerSignalE">
-<span id="_CPPv3N5Limef6signal11SignalClass21WebSocketServerSignalE"></span><span id="_CPPv2N5Limef6signal11SignalClass21WebSocketServerSignalE"></span><span class="target" id="namespaceLimef_1_1signal_1aaf87ae235935d3cf395850dc5deea980ad10c74c6ec4b10b9cd8b5ddf0e04b10d"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">WebSocketServerSignal</span></span></span><a class="headerlink" href="#_CPPv4N5Limef6signal11SignalClass21WebSocketServerSignalE" title="Link to this definition">¶</a><br /></dt>
-<dd><p>identifies class WebSocketServerSignal: signals for Limef::thread::WebSocketServer </p>
-</dd></dl>
-
-<dl class="cpp enumerator">
-<dt class="sig sig-object cpp" id="_CPPv4N5Limef6signal11SignalClass17FlowControlSignalE">
-<span id="_CPPv3N5Limef6signal11SignalClass17FlowControlSignalE"></span><span id="_CPPv2N5Limef6signal11SignalClass17FlowControlSignalE"></span><span class="target" id="namespaceLimef_1_1signal_1aaf87ae235935d3cf395850dc5deea980a341cc5ee295fd5c7dfb0d9c59193192e"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">FlowControlSignal</span></span></span><a class="headerlink" href="#_CPPv4N5Limef6signal11SignalClass17FlowControlSignalE" title="Link to this definition">¶</a><br /></dt>
-<dd><p>identifies class FlowControlSignal: signals for framefilter flow control </p>
-</dd></dl>
-
-<dl class="cpp enumerator">
-<dt class="sig sig-object cpp" id="_CPPv4N5Limef6signal11SignalClass16RTSPServerSignalE">
-<span id="_CPPv3N5Limef6signal11SignalClass16RTSPServerSignalE"></span><span id="_CPPv2N5Limef6signal11SignalClass16RTSPServerSignalE"></span><span class="target" id="namespaceLimef_1_1signal_1aaf87ae235935d3cf395850dc5deea980a3dd8e691ec06b67922271f4180c12c23"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">RTSPServerSignal</span></span></span><a class="headerlink" href="#_CPPv4N5Limef6signal11SignalClass16RTSPServerSignalE" title="Link to this definition">¶</a><br /></dt>
-<dd><p>identifies class RTSPServerSignal: signals for Limef::rtsp::RTSPServerThread</p>
-</dd></dl>
-
-<dl class="cpp enumerator">
-<dt class="sig sig-object cpp" id="_CPPv4N5Limef6signal11SignalClass18WebRTCServerSignalE">
-<span id="_CPPv3N5Limef6signal11SignalClass18WebRTCServerSignalE"></span><span id="_CPPv2N5Limef6signal11SignalClass18WebRTCServerSignalE"></span><span class="target" id="namespaceLimef_1_1signal_1aaf87ae235935d3cf395850dc5deea980a2a167514cc42d706f5f9d69e27ca0aea"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">WebRTCServerSignal</span></span></span><a class="headerlink" href="#_CPPv4N5Limef6signal11SignalClass18WebRTCServerSignalE" title="Link to this definition">¶</a><br /></dt>
-<dd><p>identifies class WebRTCServerSignal: signals for Limef::webrtc::WebRTCServerThread</p>
-</dd></dl>
-
+<span id="_CPPv3N5Limef6signal11SignalClassE"></span><span id="_CPPv2N5Limef6signal11SignalClassE"></span><span class="target" id="namespaceLimef_1_1signal_1a5a318a83d5659a9f1e6339be985d8906"></span><span class="k"><span class="pre">using</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">SignalClass</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">type_index</span></span><a class="headerlink" href="#_CPPv4N5Limef6signal11SignalClassE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Identifies the signal subclass.</p>
+<p>Backed by <code class="docutils literal notranslate"><span class="pre">std::type_index</span></code>, so every concrete <code class="docutils literal notranslate"><span class="pre">Signal</span></code> subclass gets a unique identity for free (via <code class="docutils literal notranslate"><span class="pre">SIGNAL_CLASS</span></code>) — no central registry to edit. This means plugins can define their own <code class="docutils literal notranslate"><span class="pre">Signal</span></code> subclasses (for their own <code class="docutils literal notranslate"><span class="pre">Thread</span></code>s) without ever touching this file. </p>
 </dd></dl>
 
 </div>
@@ -430,11 +381,15 @@ The base class is <a class="reference internal" href="#_CPPv4N5Limef6signal6Sign
 <em>#include &lt;signal.h&gt;</em></div>
 <p>Signal base class. </p>
 <p>Signals are encapsulated into <code class="docutils literal notranslate"><span class="pre">SignalFrame</span></code>s and they are used to inform <code class="docutils literal notranslate"><span class="pre">Thread</span></code>’s and downstream framefilters about actions and parameters they should do and use.</p>
-<p>Each subclass must implement method <code class="docutils literal notranslate"><span class="pre">staticSignalClass</span></code> that is used by <code class="docutils literal notranslate"><span class="pre">Signal::as</span></code>, for example: <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">static</span><span class="w"> </span><span class="n">SignalClass</span><span class="w"> </span><span class="nf">staticSignalClass</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">SignalClass</span><span class="o">::</span><span class="n">NullSignal</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<p>Use the <code class="docutils literal notranslate"><span class="pre">SIGNAL_CLASS(ClassName)</span></code> macro in every concrete subclass to implement <code class="docutils literal notranslate"><span class="pre">getSignalClass()</span></code>, <code class="docutils literal notranslate"><span class="pre">clone()</span></code>, and <code class="docutils literal notranslate"><span class="pre">staticSignalClass()</span></code> (used by <code class="docutils literal notranslate"><span class="pre">Signal::as</span></code>), for example: <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">MySignal</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">Signal</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">SIGNAL_CLASS</span><span class="p">(</span><span class="n">MySignal</span><span class="p">)</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="p">...</span>
+<span class="p">};</span>
 </pre></div>
 </div>
 </p>
-<p>Subclassed by Limef::rtsp::RTSPServerSignal, Limef::signal::BasicSignal, Limef::signal::FlowControlSignal, Limef::signal::NullSignal, Limef::thread::ExampleSignal, Limef::thread::MediaFileSignal, Limef::thread::WebSocketServerSignal, Limef::webrtc::WebRTCServerSignal</p>
+<p>Subclassed by Limef::rtsp::RTSPServerSignal, Limef::signal::BasicSignal, Limef::signal::FlowControlSignal, Limef::signal::NullSignal, Limef::thread::ExampleSignal, Limef::thread::MediaFileSignal, Limef::thread::USBCameraSignal, Limef::thread::WebSocketServerSignal, Limef::webrtc::WebRTCServerSignal</p>
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
 <dl class="cpp function">
@@ -510,17 +465,7 @@ The base class is <a class="reference internal" href="#_CPPv4N5Limef6signal6Sign
             <ul>
 <li><a class="reference internal" href="#">Signals</a><ul>
 <li><a class="reference internal" href="#_CPPv4N5Limef6signalE"><code class="docutils literal notranslate"><span class="pre">Limef::signal</span></code></a><ul>
-<li><a class="reference internal" href="#_CPPv4N5Limef6signal11SignalClassE"><code class="docutils literal notranslate"><span class="pre">SignalClass</span></code></a><ul>
-<li><a class="reference internal" href="#_CPPv4N5Limef6signal11SignalClass10NullSignalE"><code class="docutils literal notranslate"><span class="pre">NullSignal</span></code></a></li>
-<li><a class="reference internal" href="#_CPPv4N5Limef6signal11SignalClass11BasicSignalE"><code class="docutils literal notranslate"><span class="pre">BasicSignal</span></code></a></li>
-<li><a class="reference internal" href="#_CPPv4N5Limef6signal11SignalClass13ExampleSignalE"><code class="docutils literal notranslate"><span class="pre">ExampleSignal</span></code></a></li>
-<li><a class="reference internal" href="#_CPPv4N5Limef6signal11SignalClass15MediaFileSignalE"><code class="docutils literal notranslate"><span class="pre">MediaFileSignal</span></code></a></li>
-<li><a class="reference internal" href="#_CPPv4N5Limef6signal11SignalClass21WebSocketServerSignalE"><code class="docutils literal notranslate"><span class="pre">WebSocketServerSignal</span></code></a></li>
-<li><a class="reference internal" href="#_CPPv4N5Limef6signal11SignalClass17FlowControlSignalE"><code class="docutils literal notranslate"><span class="pre">FlowControlSignal</span></code></a></li>
-<li><a class="reference internal" href="#_CPPv4N5Limef6signal11SignalClass16RTSPServerSignalE"><code class="docutils literal notranslate"><span class="pre">RTSPServerSignal</span></code></a></li>
-<li><a class="reference internal" href="#_CPPv4N5Limef6signal11SignalClass18WebRTCServerSignalE"><code class="docutils literal notranslate"><span class="pre">WebRTCServerSignal</span></code></a></li>
-</ul>
-</li>
+<li><a class="reference internal" href="#_CPPv4N5Limef6signal11SignalClassE"><code class="docutils literal notranslate"><span class="pre">SignalClass</span></code></a></li>
 <li><a class="reference internal" href="#_CPPv4N5Limef6signal11BasicSignalE"><code class="docutils literal notranslate"><span class="pre">Limef::signal::BasicSignal</span></code></a><ul>
 <li><a class="reference internal" href="#_CPPv4N5Limef6signal11BasicSignal9OperationE"><code class="docutils literal notranslate"><span class="pre">Operation</span></code></a><ul>
 <li><a class="reference internal" href="#_CPPv4N5Limef6signal11BasicSignal9Operation4nullE"><code class="docutils literal notranslate"><span class="pre">null</span></code></a></li>

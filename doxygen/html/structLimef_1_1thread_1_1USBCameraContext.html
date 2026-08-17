@@ -22,7 +22,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">My Project<span id="projectnumber">&#160;0.2.0</span>
+   <div id="projectname">My Project<span id="projectnumber">&#160;0.3.0</span>
    </div>
   </td>
  </tr>
@@ -114,6 +114,24 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:a06e119e05751748e9ab264da332a0115" id="r_a06e119e05751748e9ab264da332a0115"><td class="memItemLeft" align="right" valign="top">AVPixelFormat&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLimef_1_1thread_1_1USBCameraContext.html#a06e119e05751748e9ab264da332a0115">capture_format</a> {AV_PIX_FMT_YUYV422}</td></tr>
 <tr class="memdesc:a06e119e05751748e9ab264da332a0115"><td class="mdescLeft">&#160;</td><td class="mdescRight">Format to request from camera via VIDIOC_S_FMT.  <br /></td></tr>
 <tr class="separator:a06e119e05751748e9ab264da332a0115"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a22088e5d84e7b16d72e3dcc4626a78ff" id="r_a22088e5d84e7b16d72e3dcc4626a78ff"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLimef_1_1thread_1_1USBCameraContext.html#a22088e5d84e7b16d72e3dcc4626a78ff">reinit_timeout_ms</a> {10000}</td></tr>
+<tr class="memdesc:a22088e5d84e7b16d72e3dcc4626a78ff"><td class="mdescLeft">&#160;</td><td class="mdescRight">milliseconds of no successful readFrame() before an automatic reinit is triggered  <br /></td></tr>
+<tr class="separator:a22088e5d84e7b16d72e3dcc4626a78ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a199a4fd1666e2bec43f826809112b0a8" id="r_a199a4fd1666e2bec43f826809112b0a8"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLimef_1_1thread_1_1USBCameraContext.html#a199a4fd1666e2bec43f826809112b0a8">reinit_retry_ms</a> {5000}</td></tr>
+<tr class="memdesc:a199a4fd1666e2bec43f826809112b0a8"><td class="mdescLeft">&#160;</td><td class="mdescRight">ms between reinit attempts while device is down, before backoff kicks in  <br /></td></tr>
+<tr class="separator:a199a4fd1666e2bec43f826809112b0a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aee1640962c7e3e975eb758e11d244bdd" id="r_aee1640962c7e3e975eb758e11d244bdd"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLimef_1_1thread_1_1USBCameraContext.html#aee1640962c7e3e975eb758e11d244bdd">reinit_backoff_after</a> {5}</td></tr>
+<tr class="memdesc:aee1640962c7e3e975eb758e11d244bdd"><td class="mdescLeft">&#160;</td><td class="mdescRight">consecutive failed reinit attempts before switching to the slower cadence  <br /></td></tr>
+<tr class="separator:aee1640962c7e3e975eb758e11d244bdd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a710757648adc2e387acd32b3a7d92905" id="r_a710757648adc2e387acd32b3a7d92905"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLimef_1_1thread_1_1USBCameraContext.html#a710757648adc2e387acd32b3a7d92905">reinit_backoff_ms</a> {30000}</td></tr>
+<tr class="memdesc:a710757648adc2e387acd32b3a7d92905"><td class="mdescLeft">&#160;</td><td class="mdescRight">ms between reinit attempts once backed off  <br /></td></tr>
+<tr class="separator:a710757648adc2e387acd32b3a7d92905"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a51128037f31050f2dc23238768ef7619" id="r_a51128037f31050f2dc23238768ef7619"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLimef_1_1thread_1_1USBCameraContext.html#a51128037f31050f2dc23238768ef7619">eagain_retry_divisor</a> {2}</td></tr>
+<tr class="memdesc:a51128037f31050f2dc23238768ef7619"><td class="mdescLeft">&#160;</td><td class="mdescRight">EAGAIN retry interval = frame_interval / this divisor (default: half a frame period)  <br /></td></tr>
+<tr class="separator:a51128037f31050f2dc23238768ef7619"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad6e6e66c9b0b3ac114a922d6be3e75c2" id="r_ad6e6e66c9b0b3ac114a922d6be3e75c2"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLimef_1_1thread_1_1USBCameraContext.html#ad6e6e66c9b0b3ac114a922d6be3e75c2">eagain_retry_max_ms</a> {50}</td></tr>
+<tr class="memdesc:ad6e6e66c9b0b3ac114a922d6be3e75c2"><td class="mdescLeft">&#160;</td><td class="mdescRight">upper bound on the EAGAIN retry interval (frame_interval / divisor), regardless of requested fps  <br /></td></tr>
+<tr class="separator:ad6e6e66c9b0b3ac114a922d6be3e75c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Configuration for USB camera capture. </p>
@@ -212,6 +230,38 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="a51128037f31050f2dc23238768ef7619" name="a51128037f31050f2dc23238768ef7619"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a51128037f31050f2dc23238768ef7619">&#9670;&#160;</a></span>eagain_retry_divisor</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Limef::thread::USBCameraContext::eagain_retry_divisor {2}</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>EAGAIN retry interval = frame_interval / this divisor (default: half a frame period) </p>
+
+</div>
+</div>
+<a id="ad6e6e66c9b0b3ac114a922d6be3e75c2" name="ad6e6e66c9b0b3ac114a922d6be3e75c2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad6e6e66c9b0b3ac114a922d6be3e75c2">&#9670;&#160;</a></span>eagain_retry_max_ms</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Limef::thread::USBCameraContext::eagain_retry_max_ms {50}</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>upper bound on the EAGAIN retry interval (frame_interval / divisor), regardless of requested fps </p>
+
+</div>
+</div>
 <a id="a6b44c0d8cdab6d0687ebcafebed8acdc" name="a6b44c0d8cdab6d0687ebcafebed8acdc"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a6b44c0d8cdab6d0687ebcafebed8acdc">&#9670;&#160;</a></span>fps</h2>
 
@@ -241,6 +291,70 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Requested capture height. </p>
+
+</div>
+</div>
+<a id="aee1640962c7e3e975eb758e11d244bdd" name="aee1640962c7e3e975eb758e11d244bdd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aee1640962c7e3e975eb758e11d244bdd">&#9670;&#160;</a></span>reinit_backoff_after</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Limef::thread::USBCameraContext::reinit_backoff_after {5}</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>consecutive failed reinit attempts before switching to the slower cadence </p>
+
+</div>
+</div>
+<a id="a710757648adc2e387acd32b3a7d92905" name="a710757648adc2e387acd32b3a7d92905"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a710757648adc2e387acd32b3a7d92905">&#9670;&#160;</a></span>reinit_backoff_ms</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Limef::thread::USBCameraContext::reinit_backoff_ms {30000}</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>ms between reinit attempts once backed off </p>
+
+</div>
+</div>
+<a id="a199a4fd1666e2bec43f826809112b0a8" name="a199a4fd1666e2bec43f826809112b0a8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a199a4fd1666e2bec43f826809112b0a8">&#9670;&#160;</a></span>reinit_retry_ms</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Limef::thread::USBCameraContext::reinit_retry_ms {5000}</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>ms between reinit attempts while device is down, before backoff kicks in </p>
+
+</div>
+</div>
+<a id="a22088e5d84e7b16d72e3dcc4626a78ff" name="a22088e5d84e7b16d72e3dcc4626a78ff"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a22088e5d84e7b16d72e3dcc4626a78ff">&#9670;&#160;</a></span>reinit_timeout_ms</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Limef::thread::USBCameraContext::reinit_timeout_ms {10000}</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>milliseconds of no successful readFrame() before an automatic reinit is triggered </p>
 
 </div>
 </div>

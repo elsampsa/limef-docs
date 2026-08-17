@@ -18,10 +18,12 @@ var searchData=
   ['priority_5ftag_15',['priority_tag',['../structdetail_1_1priority__tag.html',1,'detail']]],
   ['priority_5ftag_3c_200_20_3e_16',['priority_tag&lt; 0 &gt;',['../structdetail_1_1priority__tag_3_010_01_4.html',1,'detail']]],
   ['producerthread_17',['ProducerThread',['../classLimef_1_1thread_1_1ProducerThread.html',1,'Limef::thread']]],
-  ['pydecodedframe_18',['PyDecodedFrame',['../classPyDecodedFrame.html',1,'']]],
-  ['pystreamframe_19',['PyStreamFrame',['../classPyStreamFrame.html',1,'']]],
-  ['pystreaminfo_20',['PyStreamInfo',['../structPyStreamInfo.html',1,'']]],
-  ['pytensorframe_21',['PyTensorFrame',['../classPyTensorFrame.html',1,'']]],
-  ['pythoninterface_22',['PythonInterface',['../classPythonInterface.html',1,'']]],
-  ['pythoninterfaceclient_23',['PythonInterfaceClient',['../classPythonInterfaceClient.html',1,'']]]
+  ['putinfoframefilter_18',['PutInfoFrameFilter',['../classLimef_1_1ff_1_1PutInfoFrameFilter.html',1,'Limef::ff']]],
+  ['pydecodedframe_19',['PyDecodedFrame',['../classPyDecodedFrame.html',1,'']]],
+  ['pyinfoframe_20',['PyInfoFrame',['../classPyInfoFrame.html',1,'']]],
+  ['pystreamframe_21',['PyStreamFrame',['../classPyStreamFrame.html',1,'']]],
+  ['pystreaminfo_22',['PyStreamInfo',['../structPyStreamInfo.html',1,'']]],
+  ['pytensorframe_23',['PyTensorFrame',['../classPyTensorFrame.html',1,'']]],
+  ['pythoninterface_24',['PythonInterface',['../classPythonInterface.html',1,'']]],
+  ['pythoninterfaceclient_25',['PythonInterfaceClient',['../classPythonInterfaceClient.html',1,'']]]
 ];

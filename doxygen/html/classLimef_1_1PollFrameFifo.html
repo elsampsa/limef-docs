@@ -22,7 +22,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">My Project<span id="projectnumber">&#160;0.2.0</span>
+   <div id="projectname">My Project<span id="projectnumber">&#160;0.3.0</span>
    </div>
   </td>
  </tr>
@@ -165,6 +165,12 @@ Additional Inherited Members</h2></td></tr>
 <tr class="separator:a0223eedd1aad4f264acb72664cee35d3 inherit pro_attribs_classLimef_1_1FrameFifo"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abacc8483459cbe78784bd804d2c44583 inherit pro_attribs_classLimef_1_1FrameFifo" id="r_abacc8483459cbe78784bd804d2c44583"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1FrameFifo.html#abacc8483459cbe78784bd804d2c44583">closed</a></td></tr>
 <tr class="separator:abacc8483459cbe78784bd804d2c44583 inherit pro_attribs_classLimef_1_1FrameFifo"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afde9734fb838fa2cc2207e1e35d24681 inherit pro_attribs_classLimef_1_1FrameFifo" id="r_afde9734fb838fa2cc2207e1e35d24681"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1FrameFifo.html#afde9734fb838fa2cc2207e1e35d24681">starving_</a> {false}</td></tr>
+<tr class="separator:afde9734fb838fa2cc2207e1e35d24681 inherit pro_attribs_classLimef_1_1FrameFifo"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aba59da528128002c76a138d87bf45624 inherit pro_attribs_classLimef_1_1FrameFifo" id="r_aba59da528128002c76a138d87bf45624"><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1FrameFifo.html#aba59da528128002c76a138d87bf45624">starve_count_</a> {0}</td></tr>
+<tr class="separator:aba59da528128002c76a138d87bf45624 inherit pro_attribs_classLimef_1_1FrameFifo"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9c8746155a64e855c46f0ebc4b5c1e38 inherit pro_attribs_classLimef_1_1FrameFifo" id="r_a9c8746155a64e855c46f0ebc4b5c1e38"><td class="memItemLeft" align="right" valign="top">std::chrono::steady_clock::time_point&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLimef_1_1FrameFifo.html#a9c8746155a64e855c46f0ebc4b5c1e38">starve_start_</a></td></tr>
+<tr class="separator:a9c8746155a64e855c46f0ebc4b5c1e38 inherit pro_attribs_classLimef_1_1FrameFifo"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><div class="compoundTemplParams">template&lt;typename T&gt;<br />
@@ -185,8 +191,8 @@ class Limef::PollFrameFifo&lt; T &gt;</div><p><a class="el" href="classLimef_1_1
 <div class="line">        <a class="code hl_variable" href="classLimef_1_1FrameFifo.html#adaad6c4b4d2186e77bbd198272f8033c">fifo</a>.recycle(frame);</div>
 <div class="line">    }</div>
 <div class="line">}</div>
-<div class="ttc" id="aclassLimef_1_1FrameFifo_html_a7635a3d97e8313a52516b27c086d14a0"><div class="ttname"><a href="classLimef_1_1FrameFifo.html#a7635a3d97e8313a52516b27c086d14a0">Limef::FrameFifo::ctx</a></div><div class="ttdeci">const FrameFifoContext ctx</div><div class="ttdef"><b>Definition</b> framefifo.h:120</div></div>
-<div class="ttc" id="aclassLimef_1_1FrameFifo_html_adaad6c4b4d2186e77bbd198272f8033c"><div class="ttname"><a href="classLimef_1_1FrameFifo.html#adaad6c4b4d2186e77bbd198272f8033c">Limef::FrameFifo::fifo</a></div><div class="ttdeci">std::deque&lt; Limef::frame::Frame * &gt; fifo</div><div class="ttdef"><b>Definition</b> framefifo.h:125</div></div>
+<div class="ttc" id="aclassLimef_1_1FrameFifo_html_a7635a3d97e8313a52516b27c086d14a0"><div class="ttname"><a href="classLimef_1_1FrameFifo.html#a7635a3d97e8313a52516b27c086d14a0">Limef::FrameFifo::ctx</a></div><div class="ttdeci">const FrameFifoContext ctx</div><div class="ttdef"><b>Definition</b> framefifo.h:121</div></div>
+<div class="ttc" id="aclassLimef_1_1FrameFifo_html_adaad6c4b4d2186e77bbd198272f8033c"><div class="ttname"><a href="classLimef_1_1FrameFifo.html#adaad6c4b4d2186e77bbd198272f8033c">Limef::FrameFifo::fifo</a></div><div class="ttdeci">std::deque&lt; Limef::frame::Frame * &gt; fifo</div><div class="ttdef"><b>Definition</b> framefifo.h:126</div></div>
 <div class="ttc" id="aclassLimef_1_1PollFrameFifo_html"><div class="ttname"><a href="classLimef_1_1PollFrameFifo.html">Limef::PollFrameFifo</a></div><div class="ttdoc">FrameFifo that can be multiplexed with poll/select.</div><div class="ttdef"><b>Definition</b> pollframefifo.h:52</div></div>
 </div><!-- fragment --> </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a166085dd607549aae768a6ef9602197b" name="a166085dd607549aae768a6ef9602197b"></a>

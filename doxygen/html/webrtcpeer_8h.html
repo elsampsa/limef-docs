@@ -22,7 +22,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">My Project<span id="projectnumber">&#160;0.2.0</span>
+   <div id="projectname">My Project<span id="projectnumber">&#160;0.3.0</span>
    </div>
   </td>
  </tr>
@@ -83,10 +83,9 @@ $(function() {
 <div class="textblock"><code>#include &quot;<a class="el" href="webrtc_8h.html">webrtc.h</a>&quot;</code><br />
 <code>#include &lt;rtc/rtc.hpp&gt;</code><br />
 <code>#include &lt;atomic&gt;</code><br />
-<code>#include &lt;condition_variable&gt;</code><br />
 <code>#include &lt;functional&gt;</code><br />
 <code>#include &lt;memory&gt;</code><br />
-<code>#include &lt;mutex&gt;</code><br />
+<code>#include &lt;optional&gt;</code><br />
 <code>#include &lt;string&gt;</code><br />
 <code>#include &lt;vector&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
@@ -94,25 +93,23 @@ Include dependency graph for webrtcpeer.h:</div>
 <div class="dyncontent">
 <div class="center"><img src="webrtcpeer_8h__incl.png" border="0" usemap="#a_2home_2sampsa_2limef_2limef_2src_2webrtc_2webrtcpeer_8h" alt=""/></div>
 <map name="a_2home_2sampsa_2limef_2limef_2src_2webrtc_2webrtcpeer_8h" id="a_2home_2sampsa_2limef_2limef_2src_2webrtc_2webrtcpeer_8h">
-<area shape="rect" title=" " alt="" coords="297,5,516,45"/>
+<area shape="rect" title=" " alt="" coords="247,5,465,45"/>
 <area shape="rect" href="webrtc_8h.html" title=" " alt="" coords="158,93,237,119"/>
-<area shape="poly" title=" " alt="" coords="357,48,242,91,240,86,356,43"/>
+<area shape="poly" title=" " alt="" coords="319,48,234,90,232,85,317,43"/>
 <area shape="rect" title=" " alt="" coords="5,167,64,192"/>
-<area shape="poly" title=" " alt="" coords="298,42,211,62,168,77,127,96,86,125,54,158,51,154,83,121,124,91,166,72,210,57,297,37"/>
+<area shape="poly" title=" " alt="" coords="254,48,189,67,127,96,86,126,55,158,51,154,83,122,124,91,187,62,252,43"/>
 <area shape="rect" title=" " alt="" coords="89,167,151,192"/>
-<area shape="poly" title=" " alt="" coords="297,33,258,41,218,53,181,71,149,95,138,108,131,123,124,153,119,152,126,121,134,105,145,91,178,66,217,48,257,36,296,28"/>
+<area shape="poly" title=" " alt="" coords="247,43,194,63,170,77,149,95,132,123,124,154,119,152,127,121,145,92,167,73,192,58,246,38"/>
 <area shape="rect" title=" " alt="" coords="261,93,349,119"/>
-<area shape="poly" title=" " alt="" coords="384,48,333,87,330,82,381,43"/>
+<area shape="poly" title=" " alt="" coords="346,47,323,83,318,80,341,44"/>
 <area shape="rect" title=" " alt="" coords="373,93,440,119"/>
-<area shape="poly" title=" " alt="" coords="409,46,409,79,404,79,404,46"/>
-<area shape="rect" title=" " alt="" coords="465,93,607,119"/>
-<area shape="poly" title=" " alt="" coords="439,43,507,84,504,88,437,48"/>
-<area shape="rect" title=" " alt="" coords="631,93,718,119"/>
-<area shape="poly" title=" " alt="" coords="472,43,623,87,622,92,470,48"/>
-<area shape="rect" title=" " alt="" coords="743,93,820,119"/>
-<area shape="poly" title=" " alt="" coords="500,43,730,91,729,96,499,48"/>
-<area shape="rect" title=" " alt="" coords="844,93,908,119"/>
-<area shape="poly" title=" " alt="" coords="516,38,662,60,831,91,830,96,661,65,516,43"/>
+<area shape="poly" title=" " alt="" coords="371,44,394,80,389,83,366,47"/>
+<area shape="rect" title=" " alt="" coords="465,93,551,119"/>
+<area shape="poly" title=" " alt="" coords="394,43,474,84,472,89,391,48"/>
+<area shape="rect" title=" " alt="" coords="576,93,653,119"/>
+<area shape="poly" title=" " alt="" coords="419,43,565,87,563,92,417,48"/>
+<area shape="rect" title=" " alt="" coords="677,93,752,119"/>
+<area shape="poly" title=" " alt="" coords="445,43,664,90,663,96,444,48"/>
 <area shape="poly" title=" " alt="" coords="172,121,75,163,73,159,170,116"/>
 <area shape="poly" title=" " alt="" coords="187,121,145,159,141,155,183,117"/>
 <area shape="rect" title=" " alt="" coords="176,167,227,192"/>

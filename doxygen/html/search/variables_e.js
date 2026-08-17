@@ -1,15 +1,14 @@
 var searchData=
 [
-  ['path_0',['path',['../structLimef_1_1webrtc_1_1HttpRequest.html#aea6f854e2f8af6aee105e5a7ac350c2b',1,'Limef::webrtc::HttpRequest']]],
-  ['paused_1',['paused',['../structLimef_1_1rtsp_1_1RTPStream.html#abb4e17e5ecc9cb1d562c081e70ddf2c4',1,'Limef::rtsp::RTPStream::paused'],['../structLimef_1_1webrtc_1_1WebRTCStream.html#a7fb47d342bb9143cfb6fe5a872eedf70',1,'Limef::webrtc::WebRTCStream::paused']]],
-  ['payload_5ftype_2',['payload_type',['../structLimef_1_1webrtc_1_1ParsedTrack.html#a3696c8287c4c185e9979f68a112a1ddc',1,'Limef::webrtc::ParsedTrack']]],
-  ['peer_5fids_3',['peer_ids',['../structLimef_1_1webrtc_1_1WebRTCStream.html#a666d38d711338f1fbc566067728818cc',1,'Limef::webrtc::WebRTCStream']]],
-  ['pixel_5ffmts_4',['pixel_fmts',['../structLimef_1_1v4l2_1_1DeviceInfo.html#af2dfbd44797c2182d2bacecec1e87ff4',1,'Limef::v4l2::DeviceInfo']]],
-  ['planes_5',['planes',['../classLimef_1_1frame_1_1TensorFrame.html#a03619f2e0bf5e542ebfe1a233441fc7c',1,'Limef::frame::TensorFrame']]],
-  ['port_6',['port',['../classLimef_1_1thread_1_1WebSocketServerSignal.html#a9dc439f3af97baf3cdd665455a1a901b',1,'Limef::thread::WebSocketServerSignal']]],
-  ['preset_7',['preset',['../structLimef_1_1encode_1_1FFmpegEncoderParams.html#a662231c163e7dd6e6325c83266b28c88',1,'Limef::encode::FFmpegEncoderParams']]],
-  ['primitive_5fiterator_8',['primitive_iterator',['../structdetail_1_1internal__iterator.html#a8bb8034d2d35fb129e0dd742ce024e44',1,'detail::internal_iterator']]],
-  ['probe_5fduration_5fsec_9',['probe_duration_sec',['../structLimef_1_1thread_1_1LiveStreamContext.html#af580704656ab094bd110fde0ed16edeb',1,'Limef::thread::LiveStreamContext']]],
-  ['profile_10',['profile',['../structLimef_1_1encode_1_1FFmpegEncoderParams.html#a268b69e67627fe7c0c958ee917152f02',1,'Limef::encode::FFmpegEncoderParams']]],
-  ['pull_5ferrors_5f_11',['pull_errors_',['../classLimef_1_1shmem_1_1ShmemClient.html#aef99ed5eb618e544c205c8bdc62dded0',1,'Limef::shmem::ShmemClient']]]
+  ['object_5fiterator_0',['object_iterator',['../structdetail_1_1internal__iterator.html#acf787101c4778e750cfdb0f44066a6ef',1,'detail::internal_iterator']]],
+  ['onconnected_1',['onConnected',['../classLimef_1_1thread_1_1LiveStreamThread.html#a36b848625c5f9954b605750d3b81e254',1,'Limef::thread::LiveStreamThread']]],
+  ['onlost_2',['onLost',['../classLimef_1_1thread_1_1LiveStreamThread.html#abedefd5a9a0dd91ec072dfb149727cc1',1,'Limef::thread::LiveStreamThread']]],
+  ['operation_3',['operation',['../classLimef_1_1signal_1_1BasicSignal.html#a2d77a80a937b0093f0662144bf4e748d',1,'Limef::signal::BasicSignal']]],
+  ['options_4',['options',['../structLimef_1_1encode_1_1FFmpegEncoderParams.html#a355d53ca2b5827501e0f6c94d9ad02d7',1,'Limef::encode::FFmpegEncoderParams::options'],['../structLimef_1_1ff_1_1AudioTranscodeContext.html#ac70427b9cd1535176828134cc39110bc',1,'Limef::ff::AudioTranscodeContext::options'],['../classLimef_1_1ff_1_1MuxingContext.html#afac3444a28c4ab6dc82ad5e061a98954',1,'Limef::ff::MuxingContext::options']]],
+  ['output_5fff_5',['output_ff',['../classLimef_1_1thread_1_1Thread.html#ad555d83a481bc3609b6bef8a16eb4dbb',1,'Limef::thread::Thread']]],
+  ['output_5fff_5f_6',['output_ff_',['../classPythonInterfaceClient.html#ab578f235c1eec91901b56096e00fbc43',1,'PythonInterfaceClient::output_ff_'],['../classTensorPythonInterfaceClient.html#ac87abc00badc0ccd11dc3e43ccb8f7d8',1,'TensorPythonInterfaceClient::output_ff_']]],
+  ['output_5ffilter_7',['output_filter',['../classLimef_1_1ff_1_1ComposeFrameFilter.html#abb725c9a77ee9bf0de9f7950f73a43a1',1,'Limef::ff::ComposeFrameFilter']]],
+  ['output_5fformat_8',['output_format',['../structLimef_1_1ff_1_1CUDAScaleParams.html#a711e5d8a06c67aa2de201c7a1d4eb417',1,'Limef::ff::CUDAScaleParams']]],
+  ['output_5ffourcc_9',['output_fourcc',['../structLimef_1_1decode_1_1V4L2DecoderParams.html#ad4b5a48b4e30a7bbfe5bec0ef49882e6',1,'Limef::decode::V4L2DecoderParams::output_fourcc'],['../structLimef_1_1decode_1_1V4L2NVDecoderParams.html#ad2ac19c7c6696ef2753dea58a820d80f',1,'Limef::decode::V4L2NVDecoderParams::output_fourcc']]],
+  ['owned_10',['owned',['../classPyDecodedFrame.html#a18e43e45f4e2ced08b64e74029e5d721',1,'PyDecodedFrame::owned'],['../classPyTensorFrame.html#a86cae587d83f13db5c61df4874eafcbc',1,'PyTensorFrame::owned']]]
 ];

@@ -16,6 +16,7 @@ var searchData=
   ['moved_5for_5fcopied_13',['moved_or_copied',['../classdetail_1_1json__ref.html#ad37b535229db57173a6cd57aadba9662',1,'detail::json_ref']]],
   ['mp4partitionframefilter_14',['MP4PartitionFrameFilter',['../classLimef_1_1ff_1_1MP4PartitionFrameFilter.html#ab027ab2ada20faf433976dd990b21123',1,'Limef::ff::MP4PartitionFrameFilter']]],
   ['mp4probeframefilter_15',['MP4ProbeFrameFilter',['../classLimef_1_1ff_1_1MP4ProbeFrameFilter.html#ace59079790ad153e132f2abd64529e17',1,'Limef::ff::MP4ProbeFrameFilter']]],
-  ['muxerframefilter_16',['MuxerFrameFilter',['../classLimef_1_1ff_1_1MuxerFrameFilter.html#a780b2e45b34d707ca2c8ce7a48f7f996',1,'Limef::ff::MuxerFrameFilter']]],
-  ['muxingcontext_17',['MuxingContext',['../classLimef_1_1ff_1_1MuxingContext.html#a90f4481ed39f214b8f0b4e3f601987e9',1,'Limef::ff::MuxingContext']]]
+  ['muteaudioframefilter_16',['MuteAudioFrameFilter',['../classLimef_1_1ff_1_1MuteAudioFrameFilter.html#a84d464ca2c788f5cc68cd2047df0c38c',1,'Limef::ff::MuteAudioFrameFilter']]],
+  ['muxerframefilter_17',['MuxerFrameFilter',['../classLimef_1_1ff_1_1MuxerFrameFilter.html#a780b2e45b34d707ca2c8ce7a48f7f996',1,'Limef::ff::MuxerFrameFilter']]],
+  ['muxingcontext_18',['MuxingContext',['../classLimef_1_1ff_1_1MuxingContext.html#a90f4481ed39f214b8f0b4e3f601987e9',1,'Limef::ff::MuxingContext']]]
 ];
