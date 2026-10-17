@@ -3,7 +3,7 @@
 This is a simple example showing how limef works.
 
 ```python
-from limef import SomeClass
+from limef.core import SomeClass
 ```
 
 First, we create an instance:

@@ -28,7 +28,7 @@ We stream at the file's **natural playback speed** by setting `fps = -1`.
 
 import time
 import sys
-import limef
+import limef.core as limef
 
 """<md-comment>
 ## Build the filterchain

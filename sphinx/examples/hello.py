@@ -3,7 +3,7 @@
 
 This is a simple example showing how limef works.
 """
-from limef import SomeClass
+from limef.core import SomeClass
 
 """<md-comment>
 First, we create an instance:

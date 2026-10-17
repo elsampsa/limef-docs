@@ -214,7 +214,7 @@ Limef has Python bindings, so filter chains can be built entirely from Python.
 The same pipeline as above looks like this:
 
 ```python
-import limef
+import limef.core as limef
 
 analyze = limef.DumpFrameFilter("analyzer")
 muxer   = limef.MuxerFrameFilter("muxer", mux_ctx)
